@@ -1,0 +1,11 @@
+<script src="https://unpkg.com/axios@1.6.8/dist/axios.min.js"></script>
+<script>
+  // Intercept requests to Pluto and send them to our proxy to get around CORS
+  axios.interceptors.request.use(function(config) {
+    config.url = config.url.replace("https://pluto.sums.su/", "/__pluto_proxy__/")
+    return config;
+  })
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+<link rel="stylesheet" href="https://assets-cdn.sums.su/YU/CSS/custom-yusu.css?v=13.01.24">
