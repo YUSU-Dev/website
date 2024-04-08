@@ -1,4 +1,4 @@
-import Shop from "./index.vue";
+import Shop from "./shop.vue";
 
 export default {
   title: "Shop",
