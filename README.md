@@ -2,9 +2,11 @@
 
 A development environment for Vue components for the YUSU website.
 
+To get started, clone this repo and run `npm ci`.
+
 ## Running
 
-Soon™ there will be a way to serve the components locally while developing.
+Run `npm run dev`, then go to http://localhost:3000 for instructions.
 
 ## Building
 
@@ -28,6 +30,16 @@ register("foo", Foo);
 
 You can now use it anywhere on the website as the `<yusu-foo>` tag.
 
+### Using Third-Party Libraries
+
+You can use third-party libraries using standard JavaScript `import` syntax.
+However, currently(™) the bundler won't bundle them into the component bundle <sup>the word "bundle" doesn't look real anymore</sup>.
+
+There are two solutions for this:
+1. Import directly from a CDN (unpkg.com is a good one). If so, make sure you use the ESM version of the library.
+2. For commonly used libraries (currently `vue` and `axios`) we've configured build-time import rewrites, so you can write `import from "vue"` and the built JS will reference it from unpkg. You can see these in `rollup.config.mjs` (look for `importMap`).
+    (Watch out! This does the same thing as standard [import maps](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap), but at **build time**, not runtime, because import maps' [browser support](https://caniuse.com/import-maps), particularly on mobile, isn't wide enough yet.)
+
 ## Storybook
 
 You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in.
@@ -49,5 +61,7 @@ export const Default = {
 
 // Any other stories here
 ```
+
+To use Storybook, run `npm run storybook`.
 
 Storybook's [Vue tutorial](https://storybook.js.org/tutorials/intro-to-storybook/vue/en/get-started/) may be useful.
