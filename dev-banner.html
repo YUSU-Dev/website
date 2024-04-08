@@ -6,6 +6,11 @@
     <body>
         <h1>YUSU Vue 3 Components</h1>
         <p>If you can see this page, the development server is working.</p>
-        <p>You can now reference components using <code>&lt;script type="module" src="http://localhost:3000/components/foo.component.js"&gt;</code> tags.</p>
+        <p>You can now reference the following components:</p>
+        <ul>
+            {{#components}}
+            <li><code>&lt;{{ name }}&gt;&lt;/{{ name }}&gt;</code> (from <code>&lt;script type="module" src="{{url}}"&gt;&lt;/script&gt;</code>)</li>
+            {{/components}}
+        </ul>
     </body>
 </html>
