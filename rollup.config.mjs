@@ -28,6 +28,7 @@ export default {
       {
         imports: {
           vue: `https://unpkg.com/vue@${vueVersion}/dist/vue.runtime.esm-browser.prod.js`,
+          axios: "https://unpkg.com/axios@1.6.8/dist/esm/axios.min.js",
         },
       },
     ]),

@@ -1,18 +1,9 @@
 // @ts-check
 /// <reference path="./globals.d.ts" />
 
-import Vue from "vue";
+import { defineCustomElement } from "vue";
 
-window._vueApp ||= Vue.createApp({});
-
-export function register(component) {
-    window._vueApp.component(component);
+export function register(name, component) {
+    const el = defineCustomElement(component);
+    customElements.define(`yusu-${name}`, el);
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    if (window._didMountVue) {
-        return;
-    }
-    window._vueApp.mount("#main");
-    window._didMountVue = true;
-});

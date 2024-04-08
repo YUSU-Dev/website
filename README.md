@@ -23,8 +23,10 @@ For a component named `foo`, it must be named `foo.component.js` and will look l
 import { register } from "../_common/registerComponent";
 import Foo from "./foo.vue";
 
-register(Foo);
+register("foo", Foo);
 ```
+
+You can now use it anywhere on the website as the `<yusu-foo>` tag.
 
 ## Storybook
 
