@@ -124,6 +124,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   props: ["siteid", "title", "featuredshop", "hidefilter", "selectedgroup"],
