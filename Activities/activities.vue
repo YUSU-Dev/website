@@ -1,11 +1,13 @@
+<link rel="stylesheet" href="https://use.typekit.net/jxs0adx.css"></link>
 <style>
 body {
-  font-family: "Poppins", sans-serif !important;
+  font-family: "soleil", sans-serif !important;
 }
 
 .v-enter-active {
   transition: opacity 0.5s ease;
 }
+
 .v-leave-active {
   transition: opacity 0.5s ease;
   position: absolute;
@@ -24,7 +26,7 @@ body {
       </div>
       <div class="flex justify-center">
         <i class="fa-solid fa-magnifying-glass text-3xl flex items-center mr-3"></i>
-        <input class="border-2 border-black p-4 rounded" type="text" aria-label="search for an activity" name="search"
+        <input class="border-2 border-black p-4 rounded-lg" type="text" aria-label="search for an activity" name="search"
           placeholder="Search..." style="height: 40px;" v-on:keyup="search($event)" />
       </div>
       <div class="relative flex justify-center mt-12 border-b-4 border-black pb-8">
@@ -39,23 +41,26 @@ body {
               <h3 class="sr-only">Filters</h3>
               <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
                 <li v-for="Parent in ParentCategories"
-                  @click.prevent="SelectedParent = Parent; SelectedCategory = ''; getGroups();" class="px-4 py-2 border-2 rounded border-black bg-amber-400 hover:bg-amber-500">
-                  <a v-bind:class="{ 'active': (SelectedParent.id === Parent.id) }" class="">
-                    {{ Parent.name }}
+                  @click.prevent="SelectedParent = Parent; SelectedCategory = ''; getGroups();" class=" ">
+                  <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedParent.id === Parent.id) }"
+                    class="w-full h-full flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-xl rounded-lg">
+                    <h3>{{ Parent.name }}</h3>
                   </a>
                 </li>
               </ul>
-              <ul class="nav nav-pills nav-fill g-mb-30" v-if="SelectedParent">
-                <li class="nav-item" @click.prevent="SelectedCategory = ''; getGroups();">
-                  <a v-bind:class="{ 'active': (SelectedCategory === '') }" href="#" class="nav-link">
-                    <span>All</span>
+              <ul class="flex flex-wrap justify-center mt-6 gap-2" v-if="SelectedParent">
+                <li class="" @click.prevent="SelectedCategory = ''; getGroups();">
+                  <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedCategory === '') }" href="#"
+                    class="flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-lg rounded-lg">
+                    <h4>All</h4>
                   </a>
                 </li>
                 <li v-for="Category in filteredCategories" @click.prevent="SelectedCategory = Category; getGroups();"
-                  class="nav-item" v-if="SelectedParent">
-                  <a v-bind:class="{ 'active': (SelectedCategory.id === Category.id) }" class="nav-link"
+                  class="" v-if="SelectedParent">
+                  <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedCategory.id === Category.id) }"
+                    class="flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-lg rounded-lg"
                     :href="'/student-life/clubs-and-socs?category=' + Category.id">
-                    <span>{{ Category.name }}</span>
+                    <h4>{{ Category.name }}</h4>
                   </a>
                 </li>
               </ul>
@@ -63,43 +68,28 @@ body {
           </div>
         </Transition>
       </div>
-      <!-- <div class="col-12">
-          <hr />
-        </div> -->
-      <!-- <div class="row socs-list g-mb-10 p-0 justify-content-center w-100"> -->
-      <!-- Activity -->
-      <!-- <div class="col-5 col-md-2 mx-2 my-2 activity-article d-block" v-for="Activity in Groups">
+      <div class="flex flex-wrap gap-6 mt-12 justify-center">
+        <!-- Activity -->
+        <a v-for="Activity in Groups" :href="'/activities/view/' + Activity.url_name">
+          <div class="w-[282px] min-h-[315px] h-full border-black border">
             <div>
-              <a :href="'/activities/view/' + Activity.url_name">
-                <div>
-                  <div v-if="Activity.thumbnail_url" class="d-none d-md-block justify-content-center"
-                    style="height: 9em;overflow:hidden; background-position: center; background-repeat: no-repeat; background-size: contain; cursor:pointer;"
-                    v-bind:style="'background-image:url(' + Activity.thumbnail_url + ');'"
-                    v-bind:alt="Activity.name + ' Logo'" />
-                  <div v-else class="d-none d-md-block justify-content-center"
-                    style="height: 9em;overflow:hidden ;background-image:url('https://yusu.s3.eu-west-2.amazonaws.com/sums/website/images/placeholder-events.png');
-                              background-position: center; background-repeat: no-repeat; background-size: contain; cursor:pointer;" alt="Yusu Activities Logo" />
-                  <div v-if="Activity.thumbnail_url" class="d-md-none justify-content-center"
-                    style="height: 9em;overflow:hidden; background-position: center; background-repeat: no-repeat; background-size: contain; cursor:pointer;"
-                    v-bind:style="'background-image:url(' + Activity.thumbnail_url + ');'"
-                    v-bind:alt="Activity.name + ' Logo'" />
-                  <div v-else class="d-md-none justify-content-center"
-                    style="height: 5em;overflow:hidden ;background-image:url('https://yusu.s3.eu-west-2.amazonaws.com/sums/website/images/placeholder-events.png');
-                              background-position: center; background-repeat: no-repeat; background-size: contain; cursor:pointer;" alt="Yusu Activities Logo" />
-
-                </div>
-                <div class="h6 g-color-grey g-mb-5 text-center align-bottom btn-block">
-                  <p class="g-color-black">{{ Activity.name }}</p>
-                </div>
-              </a>
+              <div v-if="Activity.thumbnail_url" class="w-full h-[202px] bg-center bg-cover" style=""
+                v-bind:style="'background-image:url(' + Activity.thumbnail_url + ');'"
+                v-bind:alt="Activity.name + ' Logo'" />
+              <div v-else class="w-full h-[202px] bg-center bg-cover"
+                style="background-image:url('https://assets-cdn.sums.su/YU/IMG/YUSU_logo_single.png');"
+                alt="Yusu Activities Logo" />
             </div>
-          </div> -->
-      <!-- Activity end-->
-      <!-- </div> -->
-      <!-- <div class="row d-flex justify-content-center m-3" v-if="MoreResults">
-          <button type="button" class="btn-more" @click="moreGroups()">Load More <i
-              class="fa fa-chevron-down"></i></button>
-        </div> -->
+            <div class="my-6 mx-6">
+              <p class="text-xl font-semibold">{{ Activity.name }}</p>
+            </div>
+          </div>
+        </a>
+        <!-- Activity end-->
+      </div>
+      <div class="flex justify-center mt-10" v-if="MoreResults">
+        <button type="button" class="bg-black border border-black text-white px-6 py-2 rounded-lg hover:bg-white hover:text-black" @click="moreGroups()">Load More <i class="fa fa-chevron-down"></i></button>
+      </div>
     </div>
   </div>
 </template>
