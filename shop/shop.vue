@@ -126,8 +126,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   props: ["siteid", "title", "featuredshop", "hidefilter", "selectedgroup"],
   data() {
