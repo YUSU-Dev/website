@@ -16,7 +16,7 @@ jobs:
   deploy:
     environment:
         name: github-pages
-        url: ${{ steps.build-publish.outputs.page_url }}
+        url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     # Job steps
     steps:
@@ -28,10 +28,17 @@ jobs:
         with:
           node-version: '20'
 
-      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
-      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.1
+      - name: 'Build'
+        shell: bash
+        run: npm ci && npm run build-storybook
+    
+      - name: 'Upload'
+        uses: actions/upload-artifact@v3
         with:
-          install_command: npm ci
-          build_command: npm run build-storybook
-          path: storybook-static # default: dist/storybook
-          checkout: false # default: true
+            path: storybook-static
+    
+      - name: 'Deploy to GitHub Pages'
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+            token: ${{ github.token }}
