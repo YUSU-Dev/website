@@ -24,7 +24,12 @@ const config = {
     return mergeConfig(config, {
       plugins: [
         vue()
-      ]
+      ],
+      build: {
+        rollupOptions: {
+         external: ['axios'],
+        }
+      }
     });
   }
 };
