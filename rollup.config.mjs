@@ -7,7 +7,7 @@ import { minify } from "rollup-plugin-esbuild";
 
 const vueVersion = "3.4.21";
 
-const entrypoints = globSync("*/*.component.js", {
+const entrypoints = globSync("*/**/*.component.js", {
   ignore: ["dist/**"],
 });
 

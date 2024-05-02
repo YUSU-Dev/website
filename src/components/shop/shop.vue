@@ -29,7 +29,7 @@
                 @change="updateCategory($event)"
               >
                 <option value="">All</option>
-                <option v-for="category in Categories" :value="category.id">
+                <option v-for="category in Categories" :value="category.id" :key="category.id">
                   {{ category.name }}
                 </option>
               </select>
@@ -43,7 +43,7 @@
                 @change="updateGroup($event)"
               >
                 <option value="">All</option>
-                <option v-for="activity in Groups" :value="activity.id">
+                <option v-for="activity in Groups" :value="activity.id" :key="activity.id">
                   {{ activity.name }}
                 </option>
               </select>
@@ -65,6 +65,7 @@
             }"
             class="col-9 my-3 d-flex align-items-stretch"
             v-for="product in Products"
+            :key="product.id"
           >
             <a
               class="card w-100"

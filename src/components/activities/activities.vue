@@ -1,23 +1,3 @@
-<link rel="stylesheet" href="https://use.typekit.net/jxs0adx.css"></link>
-<style>
-body {
-  font-family: "soleil", sans-serif !important;
-}
-
-.v-enter-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-leave-active {
-  transition: opacity 0.5s ease;
-  position: absolute;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>
 <template>
   <div class="container mx-auto p-10 border-l-4 border-r-4 border-black" id="societies-a-z">
     <div class="justify-center">
@@ -41,7 +21,7 @@ body {
               <h3 class="sr-only">Filters</h3>
               <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
                 <li v-for="Parent in ParentCategories"
-                  @click.prevent="SelectedParent = Parent; SelectedCategory = ''; getGroups();" class=" ">
+                  @click.prevent="SelectedParent = Parent; SelectedCategory = ''; getGroups();" class=" " :key=Parent.id>
                   <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedParent.id === Parent.id) }"
                     class="w-full h-full flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-xl rounded-lg">
                     <h3>{{ Parent.name }}</h3>
@@ -56,7 +36,7 @@ body {
                   </a>
                 </li>
                 <li v-for="Category in filteredCategories" @click.prevent="SelectedCategory = Category; getGroups();"
-                  class="" v-if="SelectedParent">
+                  class="" v-if="SelectedParent" :key=Category.id>
                   <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedCategory.id === Category.id) }"
                     class="flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-lg rounded-lg"
                     :href="'/student-life/clubs-and-socs?category=' + Category.id">
@@ -70,7 +50,7 @@ body {
       </div>
       <div class="flex flex-wrap gap-6 mt-12 justify-center">
         <!-- Activity -->
-        <a v-for="Activity in Groups" :href="'/activities/view/' + Activity.url_name">
+        <a v-for="Activity in Groups" :href="'/activities/view/' + Activity.url_name" :key=Activity.id>
           <div class="w-[282px] min-h-[315px] h-full border-black border">
             <div>
               <div v-if="Activity.thumbnail_url" class="w-full h-[202px] bg-center bg-cover" style=""
