@@ -1,6 +1,6 @@
-# YUSU Vue 3 Components
+# Website
 
-A development environment for Vue components for the YUSU website.
+A UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
 
 To get started, clone this repo and run `npm ci`.
 

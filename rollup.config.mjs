@@ -4,10 +4,11 @@ import vue from "rollup-plugin-vue";
 import { rollupImportMapPlugin as importMap } from "rollup-plugin-import-map";
 import replace from "@rollup/plugin-replace";
 import { minify } from "rollup-plugin-esbuild";
+import postcss from 'rollup-plugin-postcss';
 
 const vueVersion = "3.4.21";
 
-const entrypoints = globSync("*/*.component.js", {
+const entrypoints = globSync("*/**/*.component.js", {
   ignore: ["dist/**"],
 });
 
@@ -34,5 +35,6 @@ export default {
     ]),
     vue({}),
     minify(),
+    postcss(),
   ],
 };

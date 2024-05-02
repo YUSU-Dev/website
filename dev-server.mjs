@@ -16,9 +16,9 @@ const watcher = watch({
   },
 });
 
-const components = globSync("*/*.component.js", {
+const components = globSync("*/**/*.component.js", {
   ignore: ["dist/**"],
-}).map(filePath => filePath.split(path.sep)[1].replace(".component.js", ""));
+}).map(filePath => filePath.split(path.sep)[2].replace(".component.js", ""));
 
 let didStartServer = false;
 function startServer() {
