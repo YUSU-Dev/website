@@ -1,4 +1,5 @@
-# Website
+# Website 
+[![Build and Publish Storybook to GitHub Pages](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/deploy-gh-pages.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/deploy-gh-pages.yml) [![Build and Upload to R2](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml)
 
 A UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
 
