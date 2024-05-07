@@ -1,7 +1,7 @@
 import Shop from "./shop.vue";
 
 export default {
-  title: "Shop",
+  title: "Components/Shop",
   component: Shop,
 };
 

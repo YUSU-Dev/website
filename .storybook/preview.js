@@ -10,4 +10,6 @@ const preview = {
   },
 };
 
+import "../src/main.css"
+
 export default preview;

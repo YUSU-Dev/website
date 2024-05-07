@@ -1,7 +1,7 @@
 import Activities from "./activities.vue";
 
 export default {
-  title: "Activities",
+  title: "Components/Activities",
   component: Activities,
 };
 
