@@ -1,7 +1,7 @@
 import News from "./news.vue";
 
 export default {
-  title: "News",
+  title: "Components/News",
   component: News,
 };
 
