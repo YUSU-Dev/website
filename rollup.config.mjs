@@ -6,6 +6,8 @@ import replace from "@rollup/plugin-replace";
 import { minify } from "rollup-plugin-esbuild";
 import postcss from 'rollup-plugin-postcss';
 
+import postcssConfig from "./postcss.config.mjs";
+
 const vueVersion = "3.4.21";
 
 const entrypoints = globSync("*/**/*.component.js", {
@@ -35,6 +37,9 @@ export default {
     ]),
     vue({}),
     minify(),
-    postcss(),
+    postcss({
+      ...postcssConfig,
+      extract: `components.css`,
+    }),
   ],
 };
