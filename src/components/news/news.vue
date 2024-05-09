@@ -1,4 +1,7 @@
 <style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
   font-family: "soleil", sans-serif !important;
 }

@@ -1,3 +1,8 @@
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>
 <template>
   <div class="container mx-auto p-10 border-l-4 border-r-4 border-black" id="societies-a-z">
     <div class="justify-center">
