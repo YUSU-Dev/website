@@ -7,6 +7,13 @@ export default {
 
 export const Default = {
   args: {
-    siteid: "tZyLG9BX9f4hdTp2HLva5c",
+    signedIn: false,
   }
 };
+
+export const icons = {
+  args: {
+    signedIn: true,
+    icons: true,
+  }
+}
