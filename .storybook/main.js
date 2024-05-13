@@ -26,7 +26,10 @@ const config = {
     return mergeConfig(config, {
       plugins: [
         vue()
-      ]
+      ],
+      css: {
+        postcss: require.resolve("../postcss.config.mjs"),
+      }
     });
   }
 };
