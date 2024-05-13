@@ -1,4 +1,7 @@
 <style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
     font-family: "soleil", sans-serif !important;
 }
@@ -87,7 +90,7 @@ body {
                     <p class="font-bold">Student Voice</p>
                     <i class="fa-solid fa-caret-right mr-2"></i>
                 </button>
-                <button @click="toggleMobileItem('communities')" class="border-black border-b-2 py-3 flex justify-between items-center">
+                <button @click="toggleMobileItem('communities')" class="border-black border-b-2 py-3 flex justify-between items-center text-left">
                     <p class="font-bold">Communities & Leaders</p>
                     <i class="fa-solid fa-caret-right mr-2"></i>
                 </button>
