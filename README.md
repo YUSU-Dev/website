@@ -5,42 +5,6 @@ A UI testing and development environment for York SU website. This repo has two 
 
 To get started, clone this repo and run `npm ci`.
 
-## Running
-
-Run `npm run dev`, then go to http://localhost:3000 for instructions.
-
-## Building
-
-Run `npm run build` to build the component JS into the `dist/` folder.
-
-To use them in production, you will need to reference the component file - make sure you use `<script type="module">` otherwise it will not work.
-
-## Adding a component
-
-To write a component, create a folder for it, and inside it create a `.vue` file for it - inside it you can use any standard Vue features.
-
-To ensure it gets picked up by the build process and can be used on the website, you need to create a small wrapper file.
-For a component named `foo`, it must be named `foo.component.js` and will look like this:
-
-```js
-import { register } from "../_common/registerComponent";
-import Foo from "./foo.vue";
-
-register("foo", Foo);
-```
-
-You can now use it anywhere on the website as the `<yusu-foo>` tag.
-
-### Using Third-Party Libraries
-
-You can use third-party libraries using standard JavaScript `import` syntax.
-However, currently(™) the bundler won't bundle them into the component bundle <sup>the word "bundle" doesn't look real anymore</sup>.
-
-There are two solutions for this:
-1. Import directly from a CDN (unpkg.com is a good one). If so, make sure you use the ESM version of the library.
-2. For commonly used libraries (currently `vue` and `axios`) we've configured build-time import rewrites, so you can write `import from "vue"` and the built JS will reference it from unpkg. You can see these in `rollup.config.mjs` (look for `importMap`).
-    (Watch out! This does the same thing as standard [import maps](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap), but at **build time**, not runtime, because import maps' [browser support](https://caniuse.com/import-maps), particularly on mobile, isn't wide enough yet.)
-
 ## Storybook
 
 You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in.
@@ -66,3 +30,42 @@ export const Default = {
 To use Storybook, run `npm run storybook`.
 
 Storybook's [Vue tutorial](https://storybook.js.org/tutorials/intro-to-storybook/vue/en/get-started/) may be useful.
+
+## Building Vue Components
+
+### Running
+
+Run `npm run dev`, then go to http://localhost:3000 for instructions.
+
+### Building
+
+Run `npm run build` to build the component JS into the `dist/` folder.
+
+To use them in production, you will need to reference the component file - make sure you use `<script type="module">` otherwise it will not work.
+
+### Adding a component
+
+To write a component, create a folder for it, and inside it create a `.vue` file for it - inside it you can use any standard Vue features.
+
+To ensure it gets picked up by the build process and can be used on the website, you need to create a small wrapper file.
+For a component named `foo`, it must be named `foo.component.js` and will look like this:
+
+```js
+import { register } from "../_common/registerComponent";
+import Foo from "./foo.vue";
+
+register("foo", Foo);
+```
+
+You can now use it anywhere on the website as the `<yusu-foo>` tag.
+
+#### Using Third-Party Libraries
+
+You can use third-party libraries using standard JavaScript `import` syntax.
+However, currently(™) the bundler won't bundle them into the component bundle <sup>the word "bundle" doesn't look real anymore</sup>.
+
+There are two solutions for this:
+1. Import directly from a CDN (unpkg.com is a good one). If so, make sure you use the ESM version of the library.
+2. For commonly used libraries (currently `vue` and `axios`) we've configured build-time import rewrites, so you can write `import from "vue"` and the built JS will reference it from unpkg. You can see these in `rollup.config.mjs` (look for `importMap`).
+    (Watch out! This does the same thing as standard [import maps](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap), but at **build time**, not runtime, because import maps' [browser support](https://caniuse.com/import-maps), particularly on mobile, isn't wide enough yet.)
+
