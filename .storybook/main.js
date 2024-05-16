@@ -17,9 +17,7 @@ const config = {
       docgen: "vue-component-meta",
     },
   },
-  docs: {
-    autodocs: "tag",
-  },
+  docs: {},
   async viteFinal(config) {
     const { mergeConfig } = await import('vite');
     const { default: vue } = await import("@vitejs/plugin-vue");
