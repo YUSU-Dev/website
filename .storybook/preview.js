@@ -8,6 +8,7 @@ const preview = {
       },
     },
   },
+  tags: ['autodocs'],
 };
 
 import "../src/main.css"
