@@ -2,26 +2,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   font-family: "soleil", sans-serif !important;
 }
+
 .select2 {
   width: 100% !important;
 }
+
+.select2-container--default .select2-selection--multiple {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 0px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #fad7d9;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  background-color: #fad7d9;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+  text-wrap: balance;
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
 </style>
 <template>
+  <div id="newsTop" class=""></div>
   <div class="grid grid-cols-5 container mx-auto">
 
     <div class="col-span-5 xl:col-span-1 order-1 xl:order-2 mb-5 xl:pl-4">
 
-      <div class="sticky top-4 p-6 bg-[#F4E9E1]">
+      <div class="sticky top-4 p-6 border-black border-[1px]">
         <div class="">
           <div class="">
             <div class="mb-5">
               <label for="search">
                 <h2 class="font-semibold text-xl mb-2">Search</h2>
               </label>
-              <div class="input-group flex">
+              <div class="input-group flex border-black border-[1px]">
                 <input id="search" class="search form-control w-full" @keyup.enter="submitSearch">
                 <div class="input-group-append">
                   <button type="submit" aria-label="Submit" class="btn btn-block btn-secondary bg-black"
@@ -33,7 +58,7 @@ body {
             </div>
             <div class="font-semibold text-xl mb-2">
               <label for="categories-small">
-                <h2 class="">Categories</h2>
+                <h2 class="mb-2">Categories</h2>
               </label>
               <div class="flex">
                 <select id="categories-small" class="categories-small w-100" multiple="multiple">
@@ -49,28 +74,27 @@ body {
     </div>
 
     <div class="col-span-5 xl:col-span-4 order-1 xl:order-1 xl:pr-4 mx-md-0">
-      <div id="masonryRow" class="masonryRow flex flex-wrap" ref="masonryRow">
-        <!-- <div v-if="News.length == 0" class="container-fluid">
-          <h2 class="mb-4 text-center">No Articles Found</h2>
-        </div> -->
+      <div v-if="News.length == 0" class="container mx-auto">
+        <h2 class="mb-4 text-center text-2xl font-semibold mt-16">No Articles Found</h2>
+      </div>
+      <div v-if="loading" class="flex justify-center mt-16 spinner">
+        <i class="fas fa-spinner fa-spin text-5xl"></i>
+      </div>
+      <div class="grid grid-cols-3 news-row">
 
-        <div class="mb-4 w-full sm:w-1/2 lg:w-[33%] news-card px-2 lg:px-3 pb-2 lg:pb-3" v-for="article in News">
-          <div class="transition hover:scale-105 relative">
-            <a :href="'/news/article/' + article.url_title">
-              <div class="">
-                <div class="">
-                  <div v-if="article.thumbnail" class="aspect-square bg-cover bg-center"
-                    :style="{ 'background-image': 'url(' + wrapURL(article.thumbnail) + ')' }">
-                  </div>
-                  <div v-else class="aspect-square bg-cover bg-center"
-                    style="background-image: url('https://d350x4n02brjm.cloudfront.net/sums/website/images/500x500_Placeholder.jpg');">
-                  </div>
-                </div>
-                <div class="p-6 bg-[#F4E9E1] rounded-b-[40px]">
-                  <h3 class="text-xl mb-2 font-semibold">{{ article.title }}</h3>
-                  <p class="mb-3">{{ article.snippet }}</p>
-                  <p class="font-semibold">{{ formatDate(article.date) }}</p>
-                </div>
+        <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3" v-for="article in News">
+          <div class="transition hover:scale-105 relative shadow h-full">
+            <a class="" :href="'/news/article/' + article.url_title">
+              <div v-if="article.thumbnail" class="aspect-square bg-cover bg-center"
+                :style="{ 'background-image': 'url(' + wrapURL(article.thumbnail) + ')' }">
+              </div>
+              <div v-else class="aspect-square bg-cover bg-center"
+                style="background-image: url('https://d350x4n02brjm.cloudfront.net/sums/website/images/500x500_Placeholder.jpg');">
+              </div>
+              <div class="p-6 h-[136px] flex flex-col justify-between">
+                <h3 class="text-xl mb-2 font-semibold line-clamp-2">{{ article.title }}</h3>
+                <!-- <p class="mb-3">{{ article.snippet }}</p> -->
+                <p class="font-semibold">{{ formatDate(article.date) }}</p>
               </div>
             </a>
 
@@ -98,17 +122,22 @@ body {
         </div>
 
       </div>
-      <div v-if="MoreResults && !loading" class="flex justify-center">
-        <button class="rounded shadow bg-[#F4E9E1] transition hover:scale-105" type="button" @click="moreGroups()">
-          <div class="flex items-center p-3">
-            <h3 class="flex items-center h-min text-xl leading-none">Load More</h3>
-            <i class="fa-sharp fa-solid fa-chevron-down pl-2"
-              style="display: flex; align-items: center; font-size: 30px; color: #555;"></i>
-          </div>
+      <div v-if="!loading && News.length" class="flex pl-3 gap-3">
+        <button @click="loadPage(this.Page - 1)" v-if="PreviousResults">
+          <i class="fa-solid fa-chevron-left"></i>
         </button>
-      </div>
-      <div v-if="loading" class="flex justify-center m-5 spinner">
-        <i class="fas fa-spinner fa-spin text-5xl"></i>
+        <button @click="loadPage(this.Page - 1)" v-if="PreviousResults">
+          <p class="px-2 py-2">{{ this.Page - 1 }}</p>
+        </button>
+        <button @click="loadPage(this.Page)">
+          <p :class="{ 'bg-mustard': (this.Page == this.Page) }" class="px-2 py-2">{{ this.Page }}</p>
+        </button>
+        <button @click="loadPage()" v-if="MoreResults">
+          <p class="px-2 py-2">{{ this.Page + 1 }}</p>
+        </button>
+        <button @click="loadPage()" v-if="MoreResults">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -120,7 +149,9 @@ export default {
     return {
       News: [],
       Page: 1,
+      Pages: [],
       MoreResults: false,
+      PreviousResults: false,
       loading: false,
       NewsCategories: {},
       filterCategories: [],
@@ -223,7 +254,6 @@ export default {
         }
       }
       self.NewsCategories = categoriesDictionary;
-      // console.log("Fetching categories took " + categoriesPage + " request");
     },
     getNews: async function (append = false, search = null, categories = null) {
       let self = this;
@@ -231,6 +261,7 @@ export default {
 
       if (!append) {
         self.Page = 1;
+        self.Pages = [1];
       }
       let parameters = "sortBy=name&perPage=10&page=" + self.Page;
       if (search) {
@@ -253,16 +284,16 @@ export default {
           (category_id) => self.NewsCategories[category_id]
         );
       });
-
-      if (append) {
-        self.News = [...self.News, ...response.data.data];
-      } else {
-        self.News = response.data.data;
-      }
+      self.News = response.data.data;
       if (response.data.next_page_url) {
         self.MoreResults = true;
       } else {
         self.MoreResults = false;
+      }
+      if (response.data.prev_page_url) {
+        self.PreviousResults = true;
+      } else {
+        self.PreviousResults = false;
       }
       self.loading = false;
     },
@@ -298,6 +329,7 @@ export default {
       window.history.pushState({}, "", url);
       this.currentURLAccessibilityHelper = url.toString();
       // console.log(url);
+      this.Pages = [];
       this.getNews(false, this.filterSearch, this.filterCategories);
     },
     appendCategory(categoryID) {
@@ -307,25 +339,22 @@ export default {
       this.filterCategories.push(categoryID);
       this.formCategoriesElement.val(this.filterCategories).trigger("change");
     },
-    async moreGroups() {
-      const currentNumberOfArticles = this.News.length;
-      this.Page++;
+    async loadPage(pageNumber = null) {
+      // const currentNumberOfArticles = this.News.length;
+      if (pageNumber) {
+        this.Page = pageNumber;
+      } else {
+        this.Page++;
+      }
+      this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
+      // this.Pages.push(this.Page);
       await this.getNews(true, this.filterSearch, this.filterCategories);
 
-      const nextNode = document
-        .querySelector(".masonryRow")
-        .children[currentNumberOfArticles].querySelector("a");
-      nextNode.scrollIntoView({ behavior: "smooth" });
-      nextNode.focus();
+      const newsTop = document.querySelector("#newsTop")
+      newsTop.scrollIntoView({ behavior: "smooth" });
+      newsTop.focus();
     },
-    layout() {
-      var container = document.querySelector(".masonryRow");
-      var s = new Masonry(container, {
-        // options
-        itemSelector: ".news-card",
-        percenPosition: true,
-      });
-    },
+    layout() { },
     wrapURL(URL) {
       return "'" + URL + "'";
     },

@@ -3,7 +3,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                'beige': '#F4E9E1'
+                'beige': '#F4E9E1',
+                'mustard': '#f2cb50',
             },
         },
     },
