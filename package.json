@@ -1,5 +1,5 @@
 {
-  "name": "yusu-vue-3",
+  "name": "yorksu-vue-3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "build-storybook": "storybook build"
   },
   "keywords": [],
-  "author": "YUSU Digital Team <it@yusu.org>",
+  "author": "University of York Students' Union Digital Team <it@yorksu.org>",
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
