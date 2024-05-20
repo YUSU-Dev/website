@@ -62,7 +62,7 @@ body {
               </label>
               <div class="flex">
                 <select id="categories-small" class="categories-small w-100" multiple="multiple">
-                  <option v-for="(category, categoryID) in NewsCategories" :value="categoryID">{{ category.name }}
+                  <option v-for="(category, categoryID) in NewsCategories" :value="categoryID" :key="categoryID">{{ category.name }}
                   </option>
                 </select>
               </div>
@@ -82,7 +82,7 @@ body {
       </div>
       <div class="grid grid-cols-3 news-row">
 
-        <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3" v-for="article in News">
+        <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3" v-for="article in News" :key="article.id">
           <div class="transition hover:scale-105 relative shadow h-full">
             <a class="" :href="'/news/article/' + article.url_title">
               <div v-if="article.thumbnail" class="aspect-square bg-cover bg-center"
@@ -105,7 +105,7 @@ body {
               <div class="hidden group-hover:flex">
                 <div class="pl-1 pr-5 pb-4 text-white">
                   <ul class="ps-[10px] mb-0 list-none">
-                    <li v-for="category in article.categories">
+                    <li v-for="category in article.categories" :key="category.id">
                       <span @click="appendCategory(category.id)" style="cursor: pointer">
                         &#x2022; <span class="underline">{{ category.name }}</span>
                       </span>
