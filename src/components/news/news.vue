@@ -120,27 +120,13 @@ body {
         </div>
 
       </div>
-      <div v-if="!loading && News.length" class="flex pl-3 gap-3">
-        <button @click="loadPage(this.Page - 1)" v-if="PreviousResults">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button @click="loadPage(this.Page - 1)" v-if="PreviousResults">
-          <p class="px-2 py-2">{{ this.Page - 1 }}</p>
-        </button>
-        <button @click="loadPage(this.Page)">
-          <p :class="{ 'bg-mustard': (this.Page == this.Page) }" class="px-2 py-2">{{ this.Page }}</p>
-        </button>
-        <button @click="loadPage()" v-if="MoreResults">
-          <p class="px-2 py-2">{{ this.Page + 1 }}</p>
-        </button>
-        <button @click="loadPage()" v-if="MoreResults">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
+      <Pagination :loading="loading" :Array="News" :loadPage="loadPage" :Page="Page" :MoreResults="MoreResults"
+        :PreviousResults="PreviousResults" />
     </div>
   </div>
 </template>
 <script>
+import Pagination from '../Pagination/pagination.vue';
 export default {
   props: ["siteid"],
   data() {
