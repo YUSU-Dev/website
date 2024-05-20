@@ -51,7 +51,31 @@ You can now use it anywhere on the website as the `<yorksu-foo>` tag.
 
 ### Data Fetching
 
+Use [axios](https://axios-http.com/docs/intro).
 
+Specifically, import it from [src/_common/axios.mjs](./src/_common/axios.mjs), which is our own version with a few helpful configurations.
+For requests to the SUMS Pluto API it'll automatically set the `X-Site-Id` header so you don't need to pass it.
+Also, when running in Storybook it'll use a local proxy to get around CORS issues.
+
+Here's an example:
+
+```vue
+<!-- src/components/foo/foo.vue -->
+<script>
+import axios from "../../_common/axios.mjs";
+export default {
+  data() {
+    return {
+      groups: []
+    };
+  },
+  async created() {
+    const res = await axios.get("https://pluto.sums.su/api/groups");
+    this.groups = res.data;
+  }
+}
+</script>
+```
 
 ### Using Third-Party Libraries
 
