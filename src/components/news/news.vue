@@ -88,12 +88,10 @@ body {
               <div v-if="article.thumbnail" class="aspect-square bg-cover bg-center"
                 :style="{ 'background-image': 'url(' + wrapURL(article.thumbnail) + ')' }">
               </div>
-              <div v-else class="aspect-square bg-cover bg-center"
-                style="background-image: url('https://d350x4n02brjm.cloudfront.net/sums/website/images/500x500_Placeholder.jpg');">
+              <div v-else class="aspect-square bg-cover bg-center" :style="{ 'background-image': randomImage() }">
               </div>
               <div class="p-6 h-[136px] flex flex-col justify-between">
                 <h3 class="text-xl mb-2 font-semibold line-clamp-2">{{ article.title }}</h3>
-                <!-- <p class="mb-3">{{ article.snippet }}</p> -->
                 <p class="font-semibold">{{ formatDate(article.date) }}</p>
               </div>
             </a>
@@ -160,6 +158,7 @@ export default {
       formSearchElement: null,
       awaitMountPromise: null,
       currentURLAccessibilityHelper: null,
+      images: ['https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg', 'https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg']
     };
   },
   async created() {
@@ -328,7 +327,6 @@ export default {
       url.search = searchParams.toString();
       window.history.pushState({}, "", url);
       this.currentURLAccessibilityHelper = url.toString();
-      // console.log(url);
       this.Pages = [];
       this.getNews(false, this.filterSearch, this.filterCategories);
     },
@@ -340,14 +338,12 @@ export default {
       this.formCategoriesElement.val(this.filterCategories).trigger("change");
     },
     async loadPage(pageNumber = null) {
-      // const currentNumberOfArticles = this.News.length;
       if (pageNumber) {
         this.Page = pageNumber;
       } else {
         this.Page++;
       }
       this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
-      // this.Pages.push(this.Page);
       await this.getNews(true, this.filterSearch, this.filterCategories);
 
       const newsTop = document.querySelector("#newsTop")
@@ -361,7 +357,11 @@ export default {
     formatDate(date) {
       var formattedDate = moment(date).format("DD MMMM YYYY");
       return formattedDate;
-    }
+    },
+    randomImage() {
+      return `url("${this.images[Math.floor(Math.random() * this.images.length)]
+        }")`;
+    },
   },
 };
 </script>
