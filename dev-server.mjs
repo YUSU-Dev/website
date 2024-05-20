@@ -9,6 +9,8 @@ import { globSync } from "glob";
 import Handlebars from "handlebars";
 import path from "node:path";
 
+process.env.NODE_ENV = "development";
+
 const watcher = watch({
   ...config,
   watch: {
