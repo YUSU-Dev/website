@@ -171,10 +171,7 @@ export default {
     }
 
     // create promise to hold mounted() and load data
-    this.awaitMountPromise = Promise.all([
-      self.getNewsCategories(),
-      self.getNews(false, self.filterSearch, self.filterCategories),
-    ]);
+    this.awaitMountPromise = self.getNewsCategories().then(() => self.getNews(false, self.filterSearch, self.filterCategories));
   },
   async mounted() {
     // wait for the signal that created has finished loading data
