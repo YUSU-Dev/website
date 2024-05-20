@@ -20,10 +20,5 @@
 <script>
 export default {
   props: ["loading", "Array", "loadPage", "Page", "MoreResults", "PreviousResults"],
-  data() {
-    return {
-      
-    };
-  },
 };
 </script>
