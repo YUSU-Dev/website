@@ -47,7 +47,7 @@ import Foo from "./foo.vue";
 register("foo", Foo);
 ```
 
-You can now use it anywhere on the website as the `<yusu-foo>` tag.
+You can now use it anywhere on the website as the `<yorksu-foo>` tag.
 
 ### Using Third-Party Libraries
 
@@ -71,7 +71,7 @@ Any merges to `main` on this repo will automatically be deployed to https://asse
 To use them in production, you will need to reference the component file - make sure you use `<script type="module">` otherwise it will not work. For example:
 
 ```html
-<yusu-activities siteid="" title="Clubs and Societies" selectedparents="2,24,39"></yusu-activities>
+<yorksu-activities siteid="" title="Clubs and Societies" selectedparents="2,24,39"></yorksu-activities>
 <script type="module" src="https://assets.yorksu.org/components/activities.component.js"></script>
 ```
 

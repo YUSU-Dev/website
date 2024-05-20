@@ -5,5 +5,5 @@ import { defineCustomElement } from "vue";
 
 export function register(name, component) {
     const el = defineCustomElement(component);
-    customElements.define(`yusu-${name}`, el);
+    customElements.define(`yorksu-${name}`, el);
 }
