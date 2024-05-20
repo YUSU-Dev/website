@@ -49,15 +49,38 @@ register("foo", Foo);
 
 You can now use it anywhere on the website as the `<yorksu-foo>` tag.
 
+### Data Fetching
+
+
+
 ### Using Third-Party Libraries
 
-You can use third-party libraries using standard JavaScript `import` syntax.
-However, currently(™) the bundler won't bundle them into the component bundle <sup>the word "bundle" doesn't look real anymore</sup>.
+You can use third-party libraries using standard JavaScript `import` syntax, as long as
+ * they're in ES Modules format
+ * you import from a CDN using the full https:// URL
+The built file will contain an `import`, so you don't need to add it as a separate script tag.
 
-There are two solutions for this:
-1. Import directly from a CDN (unpkg.com is a good one). If so, make sure you use the ESM version of the library.
-2. For commonly used libraries (currently `vue` and `axios`) we've configured build-time import rewrites, so you can write `import from "vue"` and the built JS will reference it from unpkg. You can see these in `rollup.config.mjs` (look for `importMap`).
-    (Watch out! This does the same thing as standard [import maps](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap), but at **build time**, not runtime, because import maps' [browser support](https://caniuse.com/import-maps), particularly on mobile, isn't wide enough yet.)
+Some good options for CDNs are unpkg.com and esm.sh.
+
+For example, if you wanted to use dayjs in your component:
+
+```vue
+<script>
+import dayjs from "https://esm.sh/dayjs@1.11.11";
+export default {
+  data() {
+    return {
+      time: dayjs().format("HH:mm")
+    }
+  }
+}
+</script>
+<template>
+  <div>
+    The time is {{ time }}
+  </div>
+</template>
+```
 
 ### Developing
 
@@ -73,6 +96,12 @@ To use them in production, you will need to reference the component file - make 
 ```html
 <yorksu-activities siteid="" title="Clubs and Societies" selectedparents="2,24,39"></yorksu-activities>
 <script type="module" src="https://assets.yorksu.org/components/activities.component.js"></script>
+```
+
+You will also need to add the stylesheet - there's one shared across all the components so you only need to add it once:
+
+```html
+<link rel="stylesheet" href="https://assets.yorksu.org/components/components.css">
 ```
 
 Soon™ there will be a streamlined way of doing this using Expression Engine templates.

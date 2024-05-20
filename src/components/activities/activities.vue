@@ -79,6 +79,7 @@
   </div>
 </template>
 <script>
+import axios from "../../_common/axios.mjs";
 export default {
   props: ['siteid', 'selectedparents', 'title', 'selectedcategory'],
   data() {

@@ -5,8 +5,4 @@ export default {
   component: News,
 };
 
-export const Default = {
-  args: {
-    siteid: "tZyLG9BX9f4hdTp2HLva5c",
-  }
-};
+export const Default = {};

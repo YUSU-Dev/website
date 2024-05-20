@@ -127,6 +127,7 @@
 </template>
 
 <script>
+import axios from "../../_common/axios.mjs";
 export default {
   props: ["siteid", "title", "featuredshop", "hidefilter", "selectedgroup"],
   data() {
