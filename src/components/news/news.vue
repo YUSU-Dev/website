@@ -126,8 +126,10 @@ body {
   </div>
 </template>
 <script>
+/* global $ */
 import axios from "../../_common/axios.mjs";
 import Pagination from '../Pagination/pagination.vue';
+import moment from "https://esm.sh/moment@2.30.1";
 export default {
   components: {
     Pagination,
@@ -169,11 +171,10 @@ export default {
     }
 
     // create promise to hold mounted() and load data
-    this.awaitMountPromise = new Promise(async (resolve) => {
-      await self.getNewsCategories();
-      await self.getNews(false, self.filterSearch, self.filterCategories);
-      resolve();
-    });
+    this.awaitMountPromise = Promise.all([
+      self.getNewsCategories(),
+      self.getNews(false, self.filterSearch, self.filterCategories),
+    ]);
   },
   async mounted() {
     // wait for the signal that created has finished loading data
@@ -192,7 +193,7 @@ export default {
 
     self.currentURLAccessibilityHelper = window.location.href;
 
-    window.addEventListener("popstate", function (event) {
+    window.addEventListener("popstate", function () {
       // check whether the URL has changed apart from the hash
       if (
         self.currentURLAccessibilityHelper.split("#")[0] !==
