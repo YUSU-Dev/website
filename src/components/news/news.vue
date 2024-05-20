@@ -128,6 +128,9 @@ body {
 <script>
 import Pagination from '../Pagination/pagination.vue';
 export default {
+  components: {
+    Pagination,
+  },
   props: ["siteid"],
   data() {
     return {
