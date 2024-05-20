@@ -1,7 +1,7 @@
 import js from "@eslint/js";
 import vue from "eslint-plugin-vue";
 import globals from "globals";
-
+import configPretier from "eslint-config-prettier";
 
 export default [
     {
@@ -18,11 +18,11 @@ export default [
             "*.config.js"
         ]
     },
-    ...vue.configs['flat/essential'],
+    ...vue.configs['flat/strongly-recommended'],
     {
         rules: {
             "vue/multi-word-component-names": 0, //  we use web components
-            "vue/html-indent": 0, // Prettier
         }
-    }
+    },
+    configPretier
 ];
