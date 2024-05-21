@@ -41,7 +41,7 @@
                   </a>
                 </li>
                 <li v-for="Category in filteredCategories" @click.prevent="SelectedCategory = Category; getGroups();"
-                  class="" v-if="SelectedParent" :key=Category.id>
+                  class="" :key=Category.id>
                   <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedCategory.id === Category.id) }"
                     class="flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-lg rounded-lg"
                     :href="'/student-life/clubs-and-socs?category=' + Category.id">
