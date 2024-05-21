@@ -3,6 +3,9 @@ import Pagination from "./pagination.vue";
 export default {
   title: "Components/Pagination",
   component: Pagination,
+  parameters: {
+    layout: "centered",
+  }
 };
 
 export const Default = {

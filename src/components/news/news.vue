@@ -80,7 +80,7 @@ body {
       <div v-if="loading" class="flex justify-center mt-16 spinner">
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
-      <div class="grid grid-cols-3 news-row">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
 
         <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3" v-for="article in News" :key="article.id">
           <div class="transition hover:scale-105 relative shadow h-full">
@@ -211,7 +211,6 @@ export default {
     getNewsCategories: async function () {
       let self = this;
       self.loading = true;
-
       let categoriesDictionary = {};
       var foundAllCategories = false;
       var categoriesPage = 1;
