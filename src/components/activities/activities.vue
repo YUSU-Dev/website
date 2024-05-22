@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  font-family: "soleil", sans-serif !important;
+  font-family: "soleil", sans-serif;
 }
 </style>
 <template>
