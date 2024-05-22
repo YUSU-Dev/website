@@ -71,6 +71,7 @@ body {
 <script>
 import Tile from '../Tile/tile.vue';
 import Pagination from '../Pagination/pagination.vue';
+import axios from "../../_common/axios.mjs";
 export default {
   props: ['siteid', 'selectedparents', 'title', 'selectedcategory'],
   components: {
