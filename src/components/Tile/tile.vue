@@ -1,7 +1,7 @@
 <template>
     <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3">
           <div class="transition hover:scale-105 relative shadow h-full">
-            <a class="group" :href="'/news/item/' + url">
+            <a class="group" :href="url">
               <div v-if="image" class="aspect-square bg-cover bg-center"
                 :style="{ 'background-image': 'url(' + image + ')' }">
               </div>
