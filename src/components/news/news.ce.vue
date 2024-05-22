@@ -17,15 +17,21 @@ body {
   border-radius: 0px;
 }
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice {
   background-color: #fad7d9;
 }
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice__remove:hover {
   background-color: #fad7d9;
 }
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice__display {
   text-wrap: balance;
   font-weight: 400;
   font-size: 16px;
@@ -36,9 +42,7 @@ body {
 <template>
   <div id="newsTop" class=""></div>
   <div class="grid grid-cols-5 container mx-auto">
-
     <div class="col-span-5 xl:col-span-1 order-1 xl:order-2 mb-5 xl:pl-4">
-
       <div class="sticky top-4 p-6 border-black border-[1px]">
         <div class="">
           <div class="">
@@ -47,10 +51,20 @@ body {
                 <h2 class="font-semibold text-xl mb-2">Search</h2>
               </label>
               <div class="input-group flex border-black border-[1px]">
-                <input id="search" name="search" placeholder="Search..." class="search form-control w-full p-2" @keyup.enter="submitSearch">
+                <input
+                  id="search"
+                  name="search"
+                  placeholder="Search..."
+                  class="search form-control w-full p-2"
+                  @keyup.enter="submitSearch"
+                />
                 <div class="input-group-append">
-                  <button type="submit" aria-label="Submit" class="btn btn-block btn-secondary bg-black w-full h-full px-1"
-                    @click="submitSearch">
+                  <button
+                    type="submit"
+                    aria-label="Submit"
+                    class="btn btn-block btn-secondary bg-black w-full h-full px-1"
+                    @click="submitSearch"
+                  >
                     <i class="fas fa-search text-white p-2"></i>
                   </button>
                 </div>
@@ -61,8 +75,17 @@ body {
                 <h2 class="mb-2">Categories</h2>
               </label>
               <div class="flex">
-                <select id="categories-small" class="categories-small w-100" multiple="multiple">
-                  <option v-for="(category, categoryID) in NewsCategories" :value="categoryID" :key="categoryID">{{ category.name }}
+                <select
+                  id="categories-small"
+                  class="categories-small w-100"
+                  multiple="multiple"
+                >
+                  <option
+                    v-for="(category, categoryID) in NewsCategories"
+                    :value="categoryID"
+                    :key="categoryID"
+                  >
+                    {{ category.name }}
                   </option>
                 </select>
               </div>
@@ -70,65 +93,92 @@ body {
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="col-span-5 xl:col-span-4 order-1 xl:order-1 xl:pr-4 mx-md-0">
       <div v-if="News.length == 0" class="container mx-auto">
-        <h2 class="mb-4 text-center text-2xl font-semibold mt-16">No Articles Found</h2>
+        <h2 class="mb-4 text-center text-2xl font-semibold mt-16">
+          No Articles Found
+        </h2>
       </div>
       <div v-if="loading" class="flex justify-center mt-16 spinner">
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
-
-        <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3" v-for="article in News" :key="article.id">
+        <div
+          class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3"
+          v-for="article in News"
+          :key="article.id"
+        >
           <div class="transition hover:scale-105 relative shadow h-full">
             <a class="" :href="'/news/article/' + article.url_title">
-              <div v-if="article.thumbnail" class="aspect-square bg-cover bg-center"
-                :style="{ 'background-image': 'url(' + wrapURL(article.thumbnail) + ')' }">
-              </div>
-              <div v-else class="aspect-square bg-cover bg-center" :style="{ 'background-image': randomImage() }">
-              </div>
+              <div
+                v-if="article.thumbnail"
+                class="aspect-square bg-cover bg-center"
+                :style="{
+                  'background-image': 'url(' + wrapURL(article.thumbnail) + ')',
+                }"
+              ></div>
+              <div
+                v-else
+                class="aspect-square bg-cover bg-center"
+                :style="{ 'background-image': randomImage() }"
+              ></div>
               <div class="p-6 h-[136px] flex flex-col justify-between">
-                <h3 class="text-xl mb-2 font-semibold line-clamp-2">{{ article.title }}</h3>
+                <h3 class="text-xl mb-2 font-semibold line-clamp-2">
+                  {{ article.title }}
+                </h3>
                 <p class="font-semibold">{{ formatDate(article.date) }}</p>
               </div>
             </a>
 
-            <div v-if="article.categories.length"
-              class="rounded flex flex-col absolute bg-[#40454d] top-2.5 ml-2 mr-3 max-w-full max-h-[232.33px] overflow-y-auto group">
+            <div
+              v-if="article.categories.length"
+              class="rounded flex flex-col absolute bg-[#40454d] top-2.5 ml-2 mr-3 max-w-full max-h-[232.33px] overflow-y-auto group"
+            >
               <div class="flex">
                 <i class="fa-solid fa-tag p-2 text-white"></i>
-                <p class="m-0 pr-2 flex items-center text-white">{{ article.categories.length }}</p>
+                <p class="m-0 pr-2 flex items-center text-white">
+                  {{ article.categories.length }}
+                </p>
               </div>
               <div class="hidden group-hover:flex">
                 <div class="pl-1 pr-5 pb-4 text-white">
                   <ul class="ps-[10px] mb-0 list-none">
-                    <li v-for="category in article.categories" :key="category.id">
-                      <span @click="appendCategory(category.id)" style="cursor: pointer">
-                        &#x2022; <span class="underline">{{ category.name }}</span>
+                    <li
+                      v-for="category in article.categories"
+                      :key="category.id"
+                    >
+                      <span
+                        @click="appendCategory(category.id)"
+                        style="cursor: pointer"
+                      >
+                        &#x2022;
+                        <span class="underline">{{ category.name }}</span>
                       </span>
                     </li>
                   </ul>
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
-
       </div>
-      <Pagination :loading="loading" :Array="News" :loadPage="loadPage" :Page="Page" :MoreResults="MoreResults"
-        :PreviousResults="PreviousResults" />
+      <Pagination
+        :loading="loading"
+        :Array="News"
+        :loadPage="loadPage"
+        :Page="Page"
+        :MoreResults="MoreResults"
+        :PreviousResults="PreviousResults"
+      />
     </div>
   </div>
 </template>
 <script>
 /* global $ */
 import axios from "../../_common/axios.mjs";
-import Pagination from '../Pagination/pagination.vue';
+import Pagination from "../Pagination/pagination.vue";
 import moment from "https://esm.sh/moment@2.30.1";
 export default {
   components: {
@@ -150,7 +200,10 @@ export default {
       formSearchElement: null,
       awaitMountPromise: null,
       currentURLAccessibilityHelper: null,
-      images: ['https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg', 'https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg']
+      images: [
+        "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg",
+        "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
+      ],
     };
   },
   async created() {
@@ -171,7 +224,11 @@ export default {
     }
 
     // create promise to hold mounted() and load data
-    this.awaitMountPromise = self.getNewsCategories().then(() => self.getNews(false, self.filterSearch, self.filterCategories));
+    this.awaitMountPromise = self
+      .getNewsCategories()
+      .then(() =>
+        self.getNews(false, self.filterSearch, self.filterCategories),
+      );
   },
   async mounted() {
     // wait for the signal that created has finished loading data
@@ -221,7 +278,7 @@ export default {
             headers: {
               "X-Site-Id": self.siteid,
             },
-          }
+          },
         );
 
         page.data.data.forEach((element) => {
@@ -262,12 +319,12 @@ export default {
           headers: {
             "X-Site-Id": self.siteid,
           },
-        }
+        },
       );
 
       response.data.data.forEach((article) => {
         article.categories = article.categories.map(
-          (category_id) => self.NewsCategories[category_id]
+          (category_id) => self.NewsCategories[category_id],
         );
       });
       self.News = response.data.data;
@@ -333,11 +390,11 @@ export default {
       this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
       await this.getNews(true, this.filterSearch, this.filterCategories);
 
-      const newsTop = document.querySelector("#newsTop")
+      const newsTop = document.querySelector("#newsTop");
       newsTop.scrollIntoView({ behavior: "smooth" });
       newsTop.focus();
     },
-    layout() { },
+    layout() {},
     wrapURL(URL) {
       return "'" + URL + "'";
     },
@@ -346,8 +403,9 @@ export default {
       return formattedDate;
     },
     randomImage() {
-      return `url("${this.images[Math.floor(Math.random() * this.images.length)]
-        }")`;
+      return `url("${
+        this.images[Math.floor(Math.random() * this.images.length)]
+      }")`;
     },
   },
 };

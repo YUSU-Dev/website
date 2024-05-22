@@ -11,5 +11,5 @@ export const Default = {
     featuredshop: false,
     hidefilter: false,
     selectedgroup: "",
-  }
+  },
 };

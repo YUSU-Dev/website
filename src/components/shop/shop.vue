@@ -29,7 +29,11 @@
                 @change="updateCategory($event)"
               >
                 <option value="">All</option>
-                <option v-for="category in Categories" :value="category.id" :key="category.id">
+                <option
+                  v-for="category in Categories"
+                  :value="category.id"
+                  :key="category.id"
+                >
                   {{ category.name }}
                 </option>
               </select>
@@ -43,7 +47,11 @@
                 @change="updateGroup($event)"
               >
                 <option value="">All</option>
-                <option v-for="activity in Groups" :value="activity.id" :key="activity.id">
+                <option
+                  v-for="activity in Groups"
+                  :value="activity.id"
+                  :key="activity.id"
+                >
                   {{ activity.name }}
                 </option>
               </select>
@@ -271,7 +279,7 @@ export default {
           Math.max(
             window.pageYOffset,
             document.documentElement.scrollTop,
-            document.body.scrollTop
+            document.body.scrollTop,
           ) +
             window.innerHeight +
             10 >=

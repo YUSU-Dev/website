@@ -8,12 +8,12 @@ export default {
 export const Default = {
   args: {
     signedIn: false,
-  }
+  },
 };
 
 export const icons = {
   args: {
     signedIn: true,
     icons: true,
-  }
-}
+  },
+};
