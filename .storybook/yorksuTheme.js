@@ -1,0 +1,9 @@
+import { create } from "@storybook/theming";
+
+export default create({
+    base: "light",
+    brandTitle: "York Students' Union",
+    brandUrl: "https://www.yorksu.org",
+    brandImage: "https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png",
+    brandTarget: "_blank",
+});
