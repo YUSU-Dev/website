@@ -47,9 +47,9 @@ body {
                 <h2 class="font-semibold text-xl mb-2">Search</h2>
               </label>
               <div class="input-group flex border-black border-[1px]">
-                <input id="search" class="search form-control w-full" @keyup.enter="submitSearch">
+                <input id="search" name="search" placeholder="Search..." class="search form-control w-full p-2" @keyup.enter="submitSearch">
                 <div class="input-group-append">
-                  <button type="submit" aria-label="Submit" class="btn btn-block btn-secondary bg-black"
+                  <button type="submit" aria-label="Submit" class="btn btn-block btn-secondary bg-black w-full h-full px-1"
                     @click="submitSearch">
                     <i class="fas fa-search text-white p-2"></i>
                   </button>
@@ -80,7 +80,7 @@ body {
       <div v-if="loading" class="flex justify-center mt-16 spinner">
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
-      <div class="grid grid-cols-3 news-row">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
 
         <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3" v-for="article in News" :key="article.id">
           <div class="transition hover:scale-105 relative shadow h-full">
@@ -210,7 +210,6 @@ export default {
     getNewsCategories: async function () {
       let self = this;
       self.loading = true;
-
       let categoriesDictionary = {};
       var foundAllCategories = false;
       var categoriesPage = 1;

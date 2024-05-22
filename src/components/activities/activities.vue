@@ -2,19 +2,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "soleil", sans-serif;
+}
 </style>
 <template>
-  <div class="container mx-auto p-10 border-l-4 border-r-4 border-black" id="societies-a-z">
+  <div class="container mx-auto p-10" id="societies-a-z">
     <div class="justify-center">
-      <div class="text-center mb-8">
-        <h2 class="font-bold text-4xl">{{ title }}</h2>
+      <div class="input-group flex px-2 lg:px-3">
+        <input class="border-[1px] border-black search form-control w-full p-2" type="text" aria-label="search for an activity"
+          name="search" placeholder="Search..." v-on:keyup="search($event)">
+        <div class="input-group-append">
+          <button type="submit" aria-label="Submit" class="btn btn-block btn-secondary bg-black w-full h-full px-1" @click="submitSearch">
+            <i class="fas fa-search text-white p-2"></i>
+          </button>
+        </div>
       </div>
-      <div class="flex justify-center">
-        <i class="fa-solid fa-magnifying-glass text-3xl flex items-center mr-3"></i>
-        <input class="border-2 border-black p-4 rounded-lg" type="text" aria-label="search for an activity" name="search"
-          placeholder="Search..." style="height: 40px;" v-on:keyup="search($event)" />
-      </div>
-      <div class="relative flex justify-center mt-12 border-b-4 border-black pb-8">
+      <div class="relative flex mt-12 px-2 lg:px-3 pb-4">
         <Transition>
           <div class="w-full" v-if="Search">
             <h3 class="text-center font-semibold text-3xl">Search Results</h3>
@@ -26,24 +31,25 @@
               <h3 class="sr-only">Filters</h3>
               <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
                 <li v-for="Parent in ParentCategories"
-                  @click.prevent="SelectedParent = Parent; SelectedCategory = ''; getGroups();" class=" " :key=Parent.id>
-                  <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedParent.id === Parent.id) }"
-                    class="w-full h-full flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-xl rounded-lg">
+                  @click.prevent="SelectedParent = Parent; SelectedCategory = ''; getGroups();" class=""
+                  :key=Parent.id>
+                  <a v-bind:class="{ '!bg-light-blue text-black font-semibold': (SelectedParent.id === Parent.id) }"
+                    class="w-full h-full flex justify-center px-4 py-2 border-2 font-semibold border-none bg-mustard text-black hover:bg-light-blue hover:text-black text-xl">
                     <h3>{{ Parent.name }}</h3>
                   </a>
                 </li>
               </ul>
-              <ul class="flex flex-wrap justify-center mt-6 gap-2" v-if="SelectedParent">
+              <ul class="flex flex-wrap mt-6 gap-2" v-if="SelectedParent">
                 <li class="" @click.prevent="SelectedCategory = ''; getGroups();">
-                  <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedCategory === '') }" href="#"
-                    class="flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-lg rounded-lg">
+                  <a v-bind:class="{ '!bg-light-blue text-black font-semibold': (SelectedCategory === '') }" href="#"
+                    class="flex justify-center px-4 py-2 bg-mustard text-black hover:bg-light-blue hover:text-black text-lg">
                     <h4>All</h4>
                   </a>
                 </li>
                 <li v-for="Category in filteredCategories" @click.prevent="SelectedCategory = Category; getGroups();"
                   class="" :key=Category.id>
-                  <a v-bind:class="{ 'bg-white text-black font-semibold': (SelectedCategory.id === Category.id) }"
-                    class="flex justify-center px-4 py-2 border-2 border-black bg-black text-white hover:bg-white hover:text-black text-lg rounded-lg"
+                  <a v-bind:class="{ '!bg-light-blue text-black font-semibold': (SelectedCategory.id === Category.id) }"
+                    class="flex justify-center px-4 py-2 bg-mustard text-black hover:bg-light-blue hover:text-black text-lg"
                     :href="'/student-life/clubs-and-socs?category=' + Category.id">
                     <h4>{{ Category.name }}</h4>
                   </a>
@@ -53,35 +59,25 @@
           </div>
         </Transition>
       </div>
-      <div class="flex flex-wrap gap-6 mt-12 justify-center">
-        <!-- Activity -->
-        <a v-for="Activity in Groups" :href="'/activities/view/' + Activity.url_name" :key=Activity.id>
-          <div class="w-[282px] min-h-[315px] h-full border-black border">
-            <div>
-              <div v-if="Activity.thumbnail_url" class="w-full h-[202px] bg-center bg-cover" style=""
-                v-bind:style="'background-image:url(' + Activity.thumbnail_url + ');'"
-                v-bind:alt="Activity.name + ' Logo'" />
-              <div v-else class="w-full h-[202px] bg-center bg-cover"
-                style="background-image:url('https://assets-cdn.sums.su/YU/IMG/YUSU_logo_single.png');"
-                alt="Yusu Activities Logo" />
-            </div>
-            <div class="my-6 mx-6">
-              <p class="text-xl font-semibold">{{ Activity.name }}</p>
-            </div>
-          </div>
-        </a>
-        <!-- Activity end-->
+      <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mt-10">
+        <Tile v-for="Group in Groups" :key=Group.id :url="'/activities/view/' + Group.url_name" :title="Group.name"
+          :image="Group.thumbnail_url" />
       </div>
-      <div class="flex justify-center mt-10" v-if="MoreResults">
-        <button type="button" class="bg-black border border-black text-white px-6 py-2 rounded-lg hover:bg-white hover:text-black" @click="moreGroups()">Load More <i class="fa fa-chevron-down"></i></button>
-      </div>
+      <Pagination :Array="Groups" :loadPage="loadPage" :Page="Page" :MoreResults="MoreResults"
+        :PreviousResults="PreviousResults" />
     </div>
   </div>
 </template>
 <script>
+import Tile from '../Tile/tile.vue';
+import Pagination from '../Pagination/pagination.vue';
 import axios from "../../_common/axios.mjs";
 export default {
   props: ['siteid', 'selectedparents', 'title', 'selectedcategory'],
+  components: {
+    Tile,
+    Pagination
+  },
   data() {
     return {
       Categories: [],
@@ -93,7 +89,9 @@ export default {
       SelectedParents: [],
       Search: '',
       Page: 1,
+      Pages: [],
       MoreResults: false,
+      PreviousResults: false,
     }
   },
   created() {
@@ -152,7 +150,10 @@ export default {
      */
     getGroups: function (append = false) {
       let self = this;
-      if (!append) { self.Page = 1; }
+      if (!append) {
+        self.Page = 1;
+        self.Pages = [1];
+      }
       let parameters = 'sortBy=name&perPage=20&page=' + self.Page;
       //add relevant parameters to the group search
       if (self.CategoryIDs) {
@@ -171,23 +172,27 @@ export default {
           'X-Site-Id': self.siteid
         }
       }).then(function (response) {
-        //if we want more events (append = true), add to array
-        if (append) {
-          self.Groups = [...self.Groups, ...response.data.data];
-        } else {
-          //otherwise replace current events
-          self.Groups = response.data.data;
-        }
+        self.Groups = response.data.data;
         //If the API says there are more results (ie another page), update the template accordingly
         if (response.data.next_page_url) {
           self.MoreResults = true
         } else {
           self.MoreResults = false
         }
+        if (response.data.prev_page_url) {
+          self.PreviousResults = true;
+        } else {
+          self.PreviousResults = false;
+        }
       })
     },
-    moreGroups() {
-      this.Page++;
+    loadPage(pageNumber = null) {
+      if (pageNumber) {
+        this.Page = pageNumber;
+      } else {
+        this.Page++;
+      }
+      this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
       this.getGroups(true);
     },
     search(event) {
