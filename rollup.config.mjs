@@ -32,7 +32,7 @@ export default {
     minify(),
     postcss({
       ...postcssConfig,
-      extract: `components.css`,
+      // extract: `components.css`,
     }),
   ],
 };
