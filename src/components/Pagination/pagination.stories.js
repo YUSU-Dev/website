@@ -5,7 +5,7 @@ export default {
   component: Pagination,
   parameters: {
     layout: "centered",
-  }
+  },
 };
 
 export const Default = {
@@ -15,5 +15,5 @@ export const Default = {
     Page: 1,
     MoreResults: true,
     PreviousResults: false,
-  }
+  },
 };

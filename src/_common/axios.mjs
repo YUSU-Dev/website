@@ -13,7 +13,7 @@ axios.interceptors.request.use(function (config) {
     ) {
       config.url = config.url.replace(
         "https://pluto.sums.su/",
-        "/__pluto_proxy__/"
+        "/__pluto_proxy__/",
       );
     }
   }
