@@ -45,7 +45,6 @@ export default {
   data() {
     return {
       images: ['https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg', 'https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg'],
-      studentLifeImages: ['https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg', 'https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg']
     };
   },
   methods: {
