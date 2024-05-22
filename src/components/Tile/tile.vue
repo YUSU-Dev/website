@@ -54,8 +54,7 @@ export default {
         }")`;
     },
     formatDate(date) {
-      var formattedDate = moment(date).format("DD MMMM YYYY");
-      return formattedDate;
+      return moment(date).format("DD MMMM YYYY");
     },
   }
 };
