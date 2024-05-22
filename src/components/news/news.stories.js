@@ -1,12 +1,8 @@
-import News from "./news.vue";
+import News from "./news.ce.vue";
 
 export default {
   title: "Components/News",
   component: News,
 };
 
-export const Default = {
-  args: {
-    siteid: "tZyLG9BX9f4hdTp2HLva5c",
-  }
-};
+export const Default = {};

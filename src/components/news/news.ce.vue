@@ -126,6 +126,7 @@ body {
   </div>
 </template>
 <script>
+import axios from "../../_common/axios.mjs";
 import Pagination from '../Pagination/pagination.vue';
 export default {
   components: {

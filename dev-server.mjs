@@ -9,6 +9,8 @@ import { globSync } from "glob";
 import Handlebars from "handlebars";
 import path from "node:path";
 
+process.env.NODE_ENV = "development";
+
 const watcher = watch({
   ...config,
   watch: {
@@ -18,7 +20,7 @@ const watcher = watch({
 
 const components = globSync("*/**/*.component.js", {
   ignore: ["dist/**"],
-}).map(filePath => filePath.split(path.sep)[2].replace(".component.js", ""));
+}).map((filePath) => filePath.split(path.sep)[2].replace(".component.js", ""));
 
 let didStartServer = false;
 function startServer() {
@@ -31,20 +33,26 @@ function startServer() {
   app.use(
     "/components",
     cors({
-      origin: ["https://yusu.org", "https://yu-development.sums.su"],
+      origin: [
+        "https://yusu.org",
+        "https://yorksu.org",
+        "https://yu-development.sums.su",
+      ],
     })
   );
   app.use("/components", serveStatic(".dev"));
 
-  const htmlTemplate = Handlebars.compile(fs.readFileSync("./dev-banner.html", { encoding: "utf-8" }));
+  const htmlTemplate = Handlebars.compile(
+    fs.readFileSync("./dev-banner.html", { encoding: "utf-8" })
+  );
   app.use((req, res) => {
     if (req.originalUrl === "/") {
-    const page = htmlTemplate({
-        components: components.map(c => ({
-            name: `yusu-${c}`,
-            url: `http://localhost:3000/components/${c}.component.js`,
-        }))
-    });
+      const page = htmlTemplate({
+        components: components.map((c) => ({
+          name: `yorksu-${c}`,
+          url: `http://localhost:3000/components/${c}.component.js`,
+        })),
+      });
       res
         .writeHead(200, {
           "Content-Length": Buffer.byteLength(page),
