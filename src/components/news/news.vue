@@ -47,9 +47,9 @@ body {
                 <h2 class="font-semibold text-xl mb-2">Search</h2>
               </label>
               <div class="input-group flex border-black border-[1px]">
-                <input id="search" class="search form-control w-full" @keyup.enter="submitSearch">
+                <input id="search" name="search" placeholder="Search..." class="search form-control w-full p-2" @keyup.enter="submitSearch">
                 <div class="input-group-append">
-                  <button type="submit" aria-label="Submit" class="btn btn-block btn-secondary bg-black"
+                  <button type="submit" aria-label="Submit" class="btn btn-block btn-secondary bg-black w-full h-full px-1"
                     @click="submitSearch">
                     <i class="fas fa-search text-white p-2"></i>
                   </button>
