@@ -17,7 +17,11 @@ export default {
   output: {
     dir: "dist",
     format: "es",
+    paths: {
+      "vue": "https://unpkg.com/vue@3.4.21/dist/vue.runtime.esm-browser.prod.js"
+    }
   },
+  external: ["vue", /^https:\/\//],
   plugins: [
     replace({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV ?? "production"),
