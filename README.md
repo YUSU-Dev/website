@@ -1,4 +1,5 @@
-# Website 
+# Website
+
 [![Build and Publish Storybook to GitHub Pages](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/deploy-gh-pages.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/deploy-gh-pages.yml) [![Build and Upload to R2](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml)
 
 A UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
@@ -21,7 +22,7 @@ export default {
 export const Default = {
   args: {
     // Any props your component takes
-  }
+  },
 };
 
 // Any other stories here
@@ -53,7 +54,7 @@ You can now use it anywhere on the website as the `<yorksu-foo>` tag.
 
 Use [axios](https://axios-http.com/docs/intro).
 
-Specifically, import it from [src/_common/axios.mjs](./src/_common/axios.mjs), which is our own version with a few helpful configurations.
+Specifically, import it from [src/\_common/axios.mjs](./src/_common/axios.mjs), which is our own version with a few helpful configurations.
 For requests to the SUMS Pluto API it'll automatically set the `X-Site-Id` header so you don't need to pass it.
 Also, when running in Storybook it'll use a local proxy to get around CORS issues.
 
@@ -66,23 +67,24 @@ import axios from "../../_common/axios.mjs";
 export default {
   data() {
     return {
-      groups: []
+      groups: [],
     };
   },
   async created() {
     const res = await axios.get("https://pluto.sums.su/api/groups");
     this.groups = res.data;
-  }
-}
+  },
+};
 </script>
 ```
 
 ### Using Third-Party Libraries
 
 You can use third-party libraries using standard JavaScript `import` syntax, as long as
- * they're in ES Modules format
- * you import from a CDN using the full https:// URL
-The built file will contain an `import`, so you don't need to add it as a separate script tag.
+
+- they're in ES Modules format
+- you import from a CDN using the full https:// URL
+  The built file will contain an `import`, so you don't need to add it as a separate script tag.
 
 Some good options for CDNs are unpkg.com and esm.sh.
 
@@ -94,15 +96,13 @@ import dayjs from "https://esm.sh/dayjs@1.11.11";
 export default {
   data() {
     return {
-      time: dayjs().format("HH:mm")
-    }
-  }
-}
+      time: dayjs().format("HH:mm"),
+    };
+  },
+};
 </script>
 <template>
-  <div>
-    The time is {{ time }}
-  </div>
+  <div>The time is {{ time }}</div>
 </template>
 ```
 
@@ -115,17 +115,53 @@ If you want to try out your work-in-progress components on the live website, run
 
 Any merges to `main` on this repo will automatically be deployed to https://assets.yorksu.org (hosted on Cloudflare R2).
 
-To use them in production, you will need to reference the component file - make sure you use `<script type="module">` otherwise it will not work. For example:
+#### Expression Engine Embedding onto pages
+
+To use these files with York SU's instance of Expression Engine you will just need to include the component(s) in the footer embed and then add it to the main html. For example:
 
 ```html
-<yorksu-activities siteid="" title="Clubs and Societies" selectedparents="2,24,39"></yorksu-activities>
-<script type="module" src="https://assets.yorksu.org/components/activities.component.js"></script>
+{embed="core-components/.hero-header" title='title' page_header="seo
+description" image_url='banner url' } ...
+<yorksu-activities
+  siteid=""
+  title="Clubs and Societies"
+  selectedparents="2,24,39"
+></yorksu-activities>
+... {embed="core-components/.footer" vue_comp="activities"}
+```
+
+Behind the scenes this is passed to the `.footer-assets` file which has the following code snippet.
+
+```html
+{exp:su_website_formatter:jsFormat js="{embed:vue_comp}"} {if js_count > 0} {js}
+<script
+  type="module"
+  src="https://assets.yorksu.org/components/{url}.component.js"
+></script>
+{/js} {/if} {/exp:su_website_formatter:jsFormat}
+```
+
+#### Manual addition to pages
+
+To use them in production, not using the above method you will need to reference the component file - make sure you use `<script type="module">` otherwise it will not work. For example:
+
+```html
+<yorksu-activities
+  siteid=""
+  title="Clubs and Societies"
+  selectedparents="2,24,39"
+></yorksu-activities>
+<script
+  type="module"
+  src="https://assets.yorksu.org/components/activities.component.js"
+></script>
 ```
 
 You will also need to add the stylesheet - there's one shared across all the components so you only need to add it once:
 
 ```html
-<link rel="stylesheet" href="https://assets.yorksu.org/components/components.css">
+<link
+  rel="stylesheet"
+  href="https://assets.yorksu.org/components/components.css"
+/>
 ```
-
-Soon™ there will be a streamlined way of doing this using Expression Engine templates.

@@ -7,7 +7,7 @@ body {
 }
 </style>
 <template>
-  <div class="w-full bg-[#F4E9E1]">
+  <nav class="w-full bg-[#F4E9E1]">
     <div class="container mx-auto flex justify-between px-4 3xl:px-0">
       <div class="my-7">
         <img
@@ -490,7 +490,7 @@ body {
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>

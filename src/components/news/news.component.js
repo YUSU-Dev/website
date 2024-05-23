@@ -1,4 +1,4 @@
 import { register } from "../../_common/registerComponent";
-import News from "./news.ce.vue";
+import News from "./news.vue";
 
 register("news", News);
