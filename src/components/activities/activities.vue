@@ -127,6 +127,7 @@
 import Tile from "../Tile/tile.vue";
 import Pagination from "../Pagination/pagination.vue";
 import axios from "../../_common/axios.mjs";
+import "../../main.css";
 export default {
   props: ["siteid", "selectedparents", "title", "selectedcategory"],
   components: {

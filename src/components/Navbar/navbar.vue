@@ -511,6 +511,8 @@ body {
 </template>
 
 <script>
+import "../../main.css";
+
 export default {
   name: "Navbar",
   props: {

@@ -58,6 +58,7 @@
   </div>
 </template>
 <script>
+import "../../main.css";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
 export default {
   props: [

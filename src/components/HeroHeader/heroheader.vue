@@ -7,6 +7,8 @@
 import Navbar from "../Navbar/navbar.vue";
 import HeroBanner from "../HeroBanner/herobanner.vue";
 import Breadcrumb from "../breadcrumb/breadcrumb.vue";
+import "../../main.css";
+
 export default {
   props: ["title", "image"],
   components: {
