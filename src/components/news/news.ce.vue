@@ -105,64 +105,16 @@ body {
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
-        <div
-          class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3"
+        <Tile
           v-for="article in News"
           :key="article.id"
-        >
-          <div class="transition hover:scale-105 relative shadow h-full">
-            <a class="" :href="'/news/article/' + article.url_title">
-              <div
-                v-if="article.thumbnail"
-                class="aspect-square bg-cover bg-center"
-                :style="{
-                  'background-image': 'url(' + wrapURL(article.thumbnail) + ')',
-                }"
-              ></div>
-              <div
-                v-else
-                class="aspect-square bg-cover bg-center"
-                :style="{ 'background-image': randomImage() }"
-              ></div>
-              <div class="p-6 h-[136px] flex flex-col justify-between">
-                <h3 class="text-xl mb-2 font-semibold line-clamp-2">
-                  {{ article.title }}
-                </h3>
-                <p class="font-semibold">{{ formatDate(article.date) }}</p>
-              </div>
-            </a>
-
-            <div
-              v-if="article.categories.length"
-              class="rounded flex flex-col absolute bg-[#40454d] top-2.5 ml-2 mr-3 max-w-full max-h-[232.33px] overflow-y-auto group"
-            >
-              <div class="flex">
-                <i class="fa-solid fa-tag p-2 text-white"></i>
-                <p class="m-0 pr-2 flex items-center text-white">
-                  {{ article.categories.length }}
-                </p>
-              </div>
-              <div class="hidden group-hover:flex">
-                <div class="pl-1 pr-5 pb-4 text-white">
-                  <ul class="ps-[10px] mb-0 list-none">
-                    <li
-                      v-for="category in article.categories"
-                      :key="category.id"
-                    >
-                      <span
-                        @click="appendCategory(category.id)"
-                        style="cursor: pointer"
-                      >
-                        &#x2022;
-                        <span class="underline">{{ category.name }}</span>
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          :title="article.title"
+          :date="article.date"
+          :categories="article.categories"
+          :url="'/news/article/' + article.url_title"
+          :image="article.thumbnail"
+          :appendCategory="appendCategory"
+        />
       </div>
       <Pagination
         :loading="loading"
@@ -179,10 +131,12 @@ body {
 /* global $ */
 import axios from "../../_common/axios.mjs";
 import Pagination from "../Pagination/pagination.vue";
-import moment from "https://esm.sh/moment@2.30.1";
+import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
+import Tile from "../Tile/tile.vue";
 export default {
   components: {
     Pagination,
+    Tile,
   },
   props: ["siteid"],
   data() {
