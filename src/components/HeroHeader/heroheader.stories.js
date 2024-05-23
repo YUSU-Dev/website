@@ -1,0 +1,15 @@
+import HeroHeader from "./heroheader.vue";
+
+export default {
+  title: "Components/HeroHeader",
+  component: HeroHeader,
+  parameters: {},
+};
+
+export const Default = {
+  args: {
+    title: "Student Life Placeholder",
+    image:
+      "https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg",
+  },
+};
