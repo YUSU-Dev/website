@@ -21,7 +21,7 @@
     @apply text-lg font-bold;
   }
   a {
-    @apply hover:underline text-blue-500;
+    @apply underline text-blue-500;
   }
 }
 
