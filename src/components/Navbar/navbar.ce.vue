@@ -510,9 +510,10 @@ body {
   </nav>
 </template>
 
-<script>
+<script setup>
 import "../../main.css";
-
+</script>
+<script>
 export default {
   name: "Navbar",
   props: {
