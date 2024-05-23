@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "soleil", sans-serif;
+  }
+
+  h1 {
+    @apply text-2xl font-bold;
+  }
+
+  h2 {
+    @apply text-xl font-bold;
+  }
+}
+
+@layer components {
+  .select2 {
+    @apply min-w-full;
+  }
+
+  .select2-container--default .select2-selection--multiple {
+    @apply bg-neutral-100 border-none border-r-0;
+  }
+
+  .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    @apply bg-light-pink;
+  }
+
+  .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove:hover {
+    @apply bg-light-pink;
+  }
+
+  .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__display {
+    @apply text-balance text-base font-normal px-2;
+  }
+}

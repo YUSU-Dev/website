@@ -1,12 +1,3 @@
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  font-family: "soleil", sans-serif;
-}
-</style>
 <template>
   <div class="container mx-auto p-10" id="societies-a-z">
     <div class="justify-center">
