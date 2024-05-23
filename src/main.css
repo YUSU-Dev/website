@@ -54,7 +54,6 @@
   }
 
   /* Button Classes */
-
   .btn {
     @apply no-underline py-3 px-3 text-black hover:text-black;
   }
@@ -76,5 +75,13 @@
   }
   .btn-advice-support {
     @apply bg-advice-green hover:bg-light-blue text-white;
+  }
+
+  /* Skip to Main Content */
+  #skiptocontent a {
+    @apply absolute -top-40 left-0 text-black bg-white;
+  }
+  #skiptocontent a:focus {
+    @apply absolute top-5 left-5;
   }
 }
