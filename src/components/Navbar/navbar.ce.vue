@@ -7,9 +7,6 @@ body {
 }
 </style>
 <template>
-  <style>
-    @import "../../main.css";
-  </style>
   <nav class="w-full bg-beige sticky left-0 top-0">
     <div class="container mx-auto flex justify-between px-4 3xl:px-0">
       <div class="my-7">
@@ -513,6 +510,7 @@ body {
   </nav>
 </template>
 <script>
+import "../../main.css";
 export default {
   name: "Navbar",
   props: {
