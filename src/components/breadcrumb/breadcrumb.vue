@@ -18,5 +18,6 @@
   <!-- End Breadcrumb Navigation -->
 </template>
 <script>
+import "../../main.css";
 export default {};
 </script>
