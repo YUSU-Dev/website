@@ -105,7 +105,17 @@ body {
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
-        <div
+        <Tile
+          v-for="article in News"
+          :key="article.id"
+          :title="article.title"
+          :date="article.date"
+          :categories="article.categories"
+          :url="'/news/article/' + article.url_title"
+          :image="article.thumbnail"
+          :appendCategory="appendCategory"
+        />
+        <!-- <div
           class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3"
           v-for="article in News"
           :key="article.id"
@@ -162,7 +172,7 @@ body {
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <Pagination
         :loading="loading"
@@ -180,9 +190,11 @@ body {
 import axios from "../../_common/axios.mjs";
 import Pagination from "../Pagination/pagination.vue";
 import moment from "https://esm.sh/moment@2.30.1";
+import Tile from "../Tile/tile.vue";
 export default {
   components: {
     Pagination,
+    Tile,
   },
   props: ["siteid"],
   data() {

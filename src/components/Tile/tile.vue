@@ -5,7 +5,7 @@
         <div
           v-if="image"
           class="aspect-square bg-cover bg-center"
-          :style="{ 'background-image': 'url(' + image + ')' }"
+          :style="{ 'background-image': 'url(' + wrapURL(image) + ')' }"
         ></div>
         <div
           v-else
@@ -26,28 +26,31 @@
           </div>
         </div>
       </a>
-      <div
-        v-if="categories"
-        class="rounded flex flex-col absolute bg-[#40454d] top-2.5 ml-2 mr-3 max-w-full max-h-[232.33px] overflow-y-auto group"
-      >
-        <div class="flex">
-          <i class="fa-solid fa-tag p-2 text-white"></i>
-          <p class="m-0 pr-2 flex items-center text-white">
-            {{ categories.length }}
-          </p>
-        </div>
-        <div class="hidden group-hover:flex">
-          <div class="pl-1 pr-5 pb-4 text-white">
-            <ul class="ps-[10px] mb-0 list-none">
-              <li v-for="category in categories" :key="category.id">
-                <span
-                  @click="appendCategory(category.id)"
-                  style="cursor: pointer"
-                >
-                  &#x2022; <span class="underline">{{ category.name }}</span>
-                </span>
-              </li>
-            </ul>
+
+      <div v-if="categories">
+        <div
+          v-if="categories.length"
+          class="rounded flex flex-col absolute bg-[#40454d] top-2.5 ml-2 mr-3 max-w-full max-h-[232.33px] overflow-y-auto group"
+        >
+          <div class="flex">
+            <i class="fa-solid fa-tag p-2 text-white"></i>
+            <p class="m-0 pr-2 flex items-center text-white">
+              {{ categories.length }}
+            </p>
+          </div>
+          <div class="hidden group-hover:flex">
+            <div class="pl-1 pr-5 pb-4 text-white">
+              <ul class="ps-[10px] mb-0 list-none">
+                <li v-for="category in categories" :key="category.id">
+                  <span
+                    @click="appendCategory(category.id)"
+                    style="cursor: pointer"
+                  >
+                    &#x2022; <span class="underline">{{ category.name }}</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -57,7 +60,16 @@
 <script>
 import moment from "https://esm.sh/moment@2.30.1";
 export default {
-  props: ["url", "title", "image", "date", "text", "categories", "Brand"],
+  props: [
+    "url",
+    "title",
+    "image",
+    "date",
+    "text",
+    "categories",
+    "Brand",
+    "appendCategory",
+  ],
   data() {
     return {
       images: [
@@ -74,6 +86,9 @@ export default {
     },
     formatDate(date) {
       return moment(date).format("DD MMMM YYYY");
+    },
+    wrapURL(URL) {
+      return "'" + URL + "'";
     },
   },
 };
