@@ -1,4 +1,4 @@
 import { register } from "../../_common/registerComponent";
-import HeroBanner from "./herobanner.vue";
+import HeroBanner from "./herobanner.ce.vue";
 
 register("herobanner", HeroBanner);

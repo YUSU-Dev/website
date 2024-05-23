@@ -1,4 +1,4 @@
-import Breadcrumb from "./breadcrumb.vue";
+import Breadcrumb from "./breadcrumb.ce.vue";
 
 export default {
   title: "Elements/Breadcrumb",

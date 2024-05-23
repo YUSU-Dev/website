@@ -1,4 +1,4 @@
-import Pagination from "./pagination.vue";
+import Pagination from "./pagination.ce.vue";
 
 export default {
   title: "Elements/Pagination",

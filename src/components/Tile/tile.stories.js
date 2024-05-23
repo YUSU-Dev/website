@@ -1,4 +1,4 @@
-import Tile from "./tile.vue";
+import Tile from "./tile.ce.vue";
 
 export default {
   title: "Elements/Tile",

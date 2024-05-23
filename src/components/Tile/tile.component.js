@@ -1,4 +1,4 @@
 import { register } from "../../_common/registerComponent";
-import Tile from "./tile.vue";
+import Tile from "./tile.ce.vue";
 
 register("tile", Tile);

@@ -1,4 +1,4 @@
-import Shop from "./shop.vue";
+import Shop from "./shop.ce.vue";
 
 export default {
   title: "Components/Shop",

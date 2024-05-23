@@ -4,9 +4,9 @@
   <Breadcrumb />
 </template>
 <script>
-import Navbar from "../Navbar/navbar.vue";
-import HeroBanner from "../HeroBanner/herobanner.vue";
-import Breadcrumb from "../breadcrumb/breadcrumb.vue";
+import Navbar from "../Navbar/navbar.ce.vue";
+import HeroBanner from "../HeroBanner/herobanner.ce.vue";
+import Breadcrumb from "../breadcrumb/breadcrumb.ce.vue";
 import "../../main.css";
 
 export default {
