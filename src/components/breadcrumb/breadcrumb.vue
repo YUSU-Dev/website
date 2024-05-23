@@ -13,6 +13,7 @@
         {if crumb_not_last}>{/if}
         {/breadcrumbs} -->
     </p>
+    <!-- {/exp:su_sections:generateBreadcrumbNew} -->
   </div>
   <!-- End Breadcrumb Navigation -->
 </template>
