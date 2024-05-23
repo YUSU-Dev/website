@@ -26,6 +26,7 @@
 }
 
 @layer components {
+  /* Select2 Classes */
   .select2 {
     @apply min-w-full;
   }
@@ -50,5 +51,30 @@
     .select2-selection--multiple
     .select2-selection__choice__display {
     @apply text-balance text-base font-normal px-2;
+  }
+
+  /* Button Classes */
+
+  .btn {
+    @apply no-underline py-3 px-3 text-black hover:text-black;
+  }
+  .btn-primary {
+    @apply bg-mustard hover:bg-primary-pink;
+  }
+  .btn-secondary {
+    @apply bg-black hover:bg-primary-pink text-white px-2 py-1 font-thin;
+  }
+
+  .btn-tertiary {
+    @apply group-hover:translate-x-4 transition;
+  }
+  .btn-student-life {
+    @apply bg-mustard hover:bg-light-blue;
+  }
+  .btn-student-voice {
+    @apply bg-voice-orange hover:bg-light-pink text-white;
+  }
+  .btn-advice-support {
+    @apply bg-advice-green hover:bg-light-blue text-white;
   }
 }
