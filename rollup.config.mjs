@@ -30,7 +30,7 @@ export default {
       __VUE_OPTIONS_API__: "false",
       preventAssignment: true,
     }),
-    vue({}),
+    vue({ postcssOptions: postcssConfig }),
     minify(),
     postcss({
       ...postcssConfig,
