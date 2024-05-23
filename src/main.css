@@ -18,7 +18,7 @@
     @apply text-xl font-bold;
   }
   h4 {
-    @apply text-lh font-bold;
+    @apply text-lg font-bold;
   }
   a {
     @apply hover:underline;
