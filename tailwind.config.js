@@ -13,6 +13,10 @@ export default {
         xs: "476px",
       },
     },
+    fontFamily: {
+      sans: ["soleil", "sans-serif"],
+      serif: ["rooney-web", "serif"],
+    },
   },
   plugins: [],
 };
