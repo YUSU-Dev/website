@@ -1,7 +1,7 @@
 import Tile from "./tile.vue";
 
 export default {
-  title: "Components/Tile",
+  title: "Elements/Tile",
   component: Tile,
   parameters: {
     layout: "centered",
