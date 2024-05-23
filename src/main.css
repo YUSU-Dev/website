@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+
+  h1 {
+    @apply text-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-bold;
+  }
+  h4 {
+    @apply text-lg font-bold;
+  }
+  a {
+    @apply underline text-blue-500;
+  }
+}
+
+@layer components {
+  .select2 {
+    @apply min-w-full;
+  }
+
+  .select2-container--default .select2-selection--multiple {
+    @apply bg-neutral-100 border-none border-r-0;
+  }
+
+  .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    @apply bg-light-pink;
+  }
+
+  .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove:hover {
+    @apply bg-light-pink;
+  }
+
+  .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__display {
+    @apply text-balance text-base font-normal px-2;
+  }
+}
