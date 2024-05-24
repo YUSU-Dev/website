@@ -77,7 +77,9 @@ body {
         </div>
       </div>
     </div>
-    <div class="absolute w-full bg-beige left-0 top-[133px]">
+    <div
+      class="absolute w-full bg-beige left-0 top-[133px] max-h-[calc(100vh-133px)] overflow-y-auto"
+    >
       <div class="navbar container mx-auto hidden px-4 3xl:px-0 pb-12">
         <div v-if="icons" class="flex flex-wrap md:hidden mt-4 mb-8 gap-4">
           <a class="" href="https://yusu.org/search#gsc.tab=0">
