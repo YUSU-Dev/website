@@ -1,11 +1,3 @@
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-body {
-  font-family: "soleil", sans-serif !important;
-}
-</style>
 <template>
   <nav class="w-full bg-beige sticky left-0 top-0">
     <div class="container mx-auto flex justify-between px-4 3xl:px-0">
