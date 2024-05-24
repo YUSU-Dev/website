@@ -503,8 +503,8 @@
     </div>
   </nav>
 </template>
+<style src="../../main.css"></style>
 <script>
-import "../../main.css";
 export default {
   name: "Navbar",
   props: {
