@@ -34,11 +34,6 @@ export default {
     minify(),
     postcss({
       ...postcssConfig,
-      extensions: [".css", ".scss"],
-      minimize: true,
-      inject: {
-        insertAt: "top",
-      },
       // extract: `components.css`,
     }),
   ],
