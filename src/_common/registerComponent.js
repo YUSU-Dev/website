@@ -8,7 +8,10 @@ export function register(name, component) {
   if (componentShadowDom) {
     const styleLink = document.createElement("link");
     styleLink.setAttribute("rel", "stylesheet");
-    styleLink.setAttribute("href", "components.css");
+    styleLink.setAttribute(
+      "href",
+      "https://assets.yorksu.org/components/components.css",
+    );
     componentShadowDom.appendChild(styleLink);
   }
 }
