@@ -22,7 +22,5 @@ export default {
     },
   },
   plugins: [],
-  corePlugins: {
-    preflight: false,
-  },
+  applyBaseStyles: false,
 };
