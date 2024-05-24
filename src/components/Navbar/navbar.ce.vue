@@ -506,8 +506,11 @@
     rel="stylesheet"
     href="https://assets.yorksu.org/components/components.css"
   />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
+  />
 </template>
-<style src="../../main.css"></style>
 <script>
 export default {
   name: "Navbar",
