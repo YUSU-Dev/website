@@ -502,7 +502,10 @@
       </div>
     </div>
   </nav>
-  <link rel="stylesheet" href="../../main.css" />
+  <link
+    rel="stylesheet"
+    href="https://assets.yorksu.org/components/components.css"
+  />
 </template>
 <style src="../../main.css"></style>
 <script>
