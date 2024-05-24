@@ -39,7 +39,7 @@ export default {
       inject: {
         insertAt: "top",
       },
-      extract: `components.css`,
+      // extract: `components.css`,
     }),
   ],
 };
