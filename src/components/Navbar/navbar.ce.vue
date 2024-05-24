@@ -502,6 +502,7 @@
       </div>
     </div>
   </nav>
+  <link rel="stylesheet" href="../../main.css" />
 </template>
 <style src="../../main.css"></style>
 <script>
