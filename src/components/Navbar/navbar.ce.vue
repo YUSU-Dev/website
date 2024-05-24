@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -511,8 +511,8 @@ body {
     </div>
   </nav>
 </template>
-
 <script>
+import "../../main.css";
 export default {
   name: "Navbar",
   props: {

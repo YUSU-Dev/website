@@ -1,4 +1,4 @@
-import News from "./news.vue";
+import News from "./news.ce.vue";
 
 export default {
   title: "Components/News",

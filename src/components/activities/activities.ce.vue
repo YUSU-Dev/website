@@ -124,9 +124,10 @@
   </div>
 </template>
 <script>
-import Tile from "../Tile/tile.vue";
-import Pagination from "../Pagination/pagination.vue";
+import Tile from "../Tile/tile.ce.vue";
+import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
+import "../../main.css";
 export default {
   props: ["siteid", "selectedparents", "title", "selectedcategory"],
   components: {

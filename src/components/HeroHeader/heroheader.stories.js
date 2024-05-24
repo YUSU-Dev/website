@@ -1,4 +1,4 @@
-import HeroHeader from "./heroheader.vue";
+import HeroHeader from "./heroheader.ce.vue";
 
 export default {
   title: "Components/HeroHeader",

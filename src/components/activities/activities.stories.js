@@ -1,4 +1,4 @@
-import Activities from "./activities.vue";
+import Activities from "./activities.ce.vue";
 
 export default {
   title: "Components/Activities",

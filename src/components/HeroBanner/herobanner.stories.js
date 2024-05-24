@@ -1,4 +1,4 @@
-import HeroBanner from "./herobanner.vue";
+import HeroBanner from "./herobanner.ce.vue";
 
 export default {
   title: "Components/HeroBanner",
