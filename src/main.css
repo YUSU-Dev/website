@@ -4,19 +4,19 @@
     @apply font-sans;
   }
   h1 {
-    @apply text-3xl font-bold !important;
+    @apply text-3xl font-bold;
   }
   h2 {
-    @apply text-2xl font-bold !important;
+    @apply text-2xl font-bold;
   }
   h3 {
-    @apply text-xl font-bold !important;
+    @apply text-xl font-bold;
   }
   h4 {
-    @apply text-lg font-bold !important;
+    @apply text-lg font-bold;
   }
   a {
-    @apply underline text-blue-500 !important;
+    @apply underline text-blue-500;
   }
 }
 @tailwind components;
