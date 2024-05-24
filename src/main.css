@@ -84,4 +84,32 @@
   #skiptocontent a:focus {
     @apply absolute top-5 left-5;
   }
+
+  /* Modals */
+  .modal {
+    @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full;
+  }
+  .modal-body {
+    @apply p-4 md:p-5 space-y-4;
+  }
+  .modal-body p {
+    @apply text-base leading-relaxed text-gray-500 dark:text-gray-400;
+  }
+  .modal-dialog {
+    @apply relative p-4 w-full max-w-2xl max-h-full;
+  }
+  .modal-content {
+    @apply relative bg-white rounded-lg shadow dark:bg-gray-700;
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600;
+  }
+
+  .modal-title {
+    @apply text-xl font-semibold dark:text-white;
+  }
+  .modal-footer {
+    @apply flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-3;
+  }
 }
