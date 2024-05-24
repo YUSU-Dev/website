@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <div class="max-w-[1900px] w-full h-[400px]">
+    <div class="bg-repeat w-full h-[400px]">
       <div
         class="flex justify-center items-center h-full bg-center"
         :style="{ 'background-image': 'url(' + image + ')' }"
