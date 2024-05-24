@@ -1,6 +1,6 @@
 //@ts-check
 import { globSync } from "glob";
-import vue from "@vitejs/plugin-vue";
+import vue from "rollup-plugin-vue";
 import replace from "@rollup/plugin-replace";
 import { minify } from "rollup-plugin-esbuild";
 import postcss from "rollup-plugin-postcss";

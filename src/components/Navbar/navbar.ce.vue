@@ -1,11 +1,3 @@
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-body {
-  font-family: "soleil", sans-serif !important;
-}
-</style>
 <template>
   <nav class="w-full bg-beige sticky left-0 top-0">
     <div class="container mx-auto flex justify-between px-4 3xl:px-0">
@@ -59,10 +51,10 @@ body {
           >
         </div>
         <div class="flex justify-end items-center">
-          <a class="hidden lg:flex" href="https://yusu.org/search#gsc.tab=0"
+          <a class="hidden lg:flex" href="/search#gsc.tab=0"
             ><i class="fa-solid fa-magnifying-glass text-3xl"></i
           ></a>
-          <a class="hidden lg:flex" href="https://yusu.org/shop/basket"
+          <a class="hidden lg:flex" href="/shop/basket"
             ><i class="fa-solid fa-basket-shopping text-3xl ml-6"></i
           ></a>
           <button
@@ -82,10 +74,10 @@ body {
     >
       <div class="navbar container mx-auto hidden px-4 3xl:px-0 pb-12">
         <div v-if="icons" class="flex flex-wrap md:hidden mt-4 mb-8 gap-4">
-          <a class="" href="https://yusu.org/search#gsc.tab=0">
+          <a class="" href="/search#gsc.tab=0">
             <i class="fa-solid fa-magnifying-glass text-4xl"></i
           ></a>
-          <a class="" href="https://yusu.org/shop/basket">
+          <a class="" href="/shop/basket">
             <i class="fa-solid fa-basket-shopping text-4xl"></i
           ></a>
           <a class="" href="/">
@@ -133,10 +125,10 @@ body {
             >
           </div>
           <div class="flex flex-col justify-center items-center gap-4">
-            <a class="" href="https://yusu.org/search#gsc.tab=0">
+            <a class="" href="/search#gsc.tab=0">
               <i class="fa-solid fa-magnifying-glass text-4xl"></i
             ></a>
-            <a class="" href="https://yusu.org/shop/basket">
+            <a class="" href="/shop/basket">
               <i class="fa-solid fa-basket-shopping text-4xl"></i
             ></a>
           </div>
@@ -312,13 +304,10 @@ body {
         </div>
         <div class="hidden md:flex lg:hidden justify-end mb-8">
           <div v-if="signedIn" class="flex text-sm gap-3">
-            <a
-              class="flex items-center"
-              href="https://yusu.org/search#gsc.tab=0"
-            >
+            <a class="flex items-center" href="/search#gsc.tab=0">
               <i class="fa-solid fa-magnifying-glass text-2xl"></i
             ></a>
-            <a class="flex items-center" href="https://yusu.org/shop/basket">
+            <a class="flex items-center" href="/shop/basket">
               <i class="fa-solid fa-basket-shopping text-2xl"></i
             ></a>
             <button
@@ -339,13 +328,10 @@ body {
             >
           </div>
           <div v-else class="flex text-sm gap-3">
-            <a
-              class="flex items-center"
-              href="https://yusu.org/search#gsc.tab=0"
-            >
+            <a class="flex items-center" href="/search#gsc.tab=0">
               <i class="fa-solid fa-magnifying-glass text-2xl"></i
             ></a>
-            <a class="flex items-center" href="https://yusu.org/shop/basket">
+            <a class="flex items-center" href="/shop/basket">
               <i class="fa-solid fa-basket-shopping text-2xl"></i
             ></a>
             <button
@@ -510,9 +496,17 @@ body {
       </div>
     </div>
   </nav>
+  <link
+    rel="stylesheet"
+    href="https://assets.yorksu.org/components/components.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
+    crossorigin="anonymous"
+  />
 </template>
 <script>
-import "../../main.css";
 export default {
   name: "Navbar",
   props: {
