@@ -4,14 +4,14 @@ export function register(name, component) {
   const el = defineCustomElement(component);
   customElements.define(`yorksu-${name}`, el);
 
-  const componentShadowDom = document.querySelector(component)?.shadowRoot;
-  if (componentShadowDom) {
+  document.querySelectorAll(component).forEach((element) => {
+    if (!element.shadowRoot) return;
     const styleLink = document.createElement("link");
     styleLink.setAttribute("rel", "stylesheet");
     styleLink.setAttribute(
       "href",
       "https://assets.yorksu.org/components/components.css",
     );
-    componentShadowDom.appendChild(styleLink);
-  }
+    element.shadowRoot.appendChild(styleLink);
+  });
 }
