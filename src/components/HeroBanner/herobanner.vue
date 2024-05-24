@@ -5,7 +5,11 @@
         class="flex justify-center items-center h-full bg-center"
         :style="{ 'background-image': 'url(' + image + ')' }"
       >
-        <h1 class="bg-white px-6 py-3 text-3xl">{{ title }}</h1>
+        <div class="bg-white px-6 py-3 max-w-full mx-2">
+          <h1 class="text-2xl sm:text-3xl text-center break-words w-full">
+            {{ title }}
+          </h1>
+        </div>
       </div>
     </div>
   </div>

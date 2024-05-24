@@ -1,6 +1,9 @@
 <template>
   <Navbar />
   <HeroBanner :title="title" :image="image" />
+  <HeroBanner :title="title" :image="image" />
+  <HeroBanner :title="title" :image="image" />
+  <HeroBanner :title="title" :image="image" />
   <Breadcrumb />
 </template>
 <script>
