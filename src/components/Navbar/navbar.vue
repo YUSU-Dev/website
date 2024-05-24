@@ -503,7 +503,7 @@
     </div>
   </nav>
 </template>
-<style src="../../main.css"></style>
+<style scoped src="../../main.css"></style>
 <script>
 export default {
   name: "Navbar",
