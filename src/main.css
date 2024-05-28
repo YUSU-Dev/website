@@ -19,7 +19,15 @@
     @apply text-lg font-bold;
   }
   body p {
-    @apply mb-3 text-base leading-relaxed text-pretty;
+    @apply text-base leading-relaxed text-pretty;
+  }
+
+  main h1,
+  main h2,
+  main h3,
+  main h4,
+  main p {
+    @apply mb-3;
   }
 
   main a {
