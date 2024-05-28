@@ -85,13 +85,23 @@
       />
     </div>
   </div>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
+    crossorigin="anonymous"
+  />
 </template>
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>
 <script>
-/* global $ */
 import axios from "../../_common/axios.mjs";
 import Pagination from "../Pagination/pagination.ce.vue";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
 import Tile from "../Tile/tile.ce.vue";
+import "../../main.css";
 export default {
   components: {
     Pagination,
