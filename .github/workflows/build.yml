@@ -1,29 +1,29 @@
 name: Build and Upload to R2
 
 on:
-    # TODO: Only done on push for testing. Replace with `release`
-    # when we're ready.
-    push:
-        branches: [ main ]
+  # TODO: Only done on push for testing. Replace with `release`
+  # when we're ready.
+  push:
+    branches: [main]
 
 jobs:
-    build-and-publish:
-        runs-on: ubuntu-latest
+  build-and-publish:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
-              with:
-                node-version: '20.x'
-                cache: 'npm'
-            - run: npm ci
-            - run: npm run build
-            - name: Upload to R2
-              uses: shallwefootball/upload-s3-action@master
-              with:
-                aws_key_id: e30f326bc79f0d75fd1c9bff9fb3e34f
-                aws_secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-                aws_bucket: website-assets
-                endpoint: https://253071de7d6a98119d35de03b25422a8.r2.cloudflarestorage.com
-                source_dir: dist
-                destination_dir: components
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build && npm run build-css
+      - name: Upload to R2
+        uses: shallwefootball/upload-s3-action@master
+        with:
+          aws_key_id: e30f326bc79f0d75fd1c9bff9fb3e34f
+          aws_secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          aws_bucket: website-assets
+          endpoint: https://253071de7d6a98119d35de03b25422a8.r2.cloudflarestorage.com
+          source_dir: dist
+          destination_dir: components

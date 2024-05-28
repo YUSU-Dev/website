@@ -16,6 +16,8 @@
       <div class="flex flex-col my-5 justify-center">
         <div v-if="signedIn" class="mb-4 text-sm hidden lg:flex">
           <button
+            id="__ba_panel"
+            onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
             class="bg-black hover:bg-white text-white hover:text-black px-4 py-1"
             aria-label="Listen with the ReachDeck Toolbar"
             title="Listen with the ReachDeck Toolbar"
@@ -23,15 +25,19 @@
           >
             Accessibility Tools
           </button>
+          <!-- {if logged_in} -->
           <a
             class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
-            >Member Dashboard</a
+            onClick="getBearerToken()"
+            >Student Dashboard</a
           >
           <a
             class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
-            >My Account</a
+            href="/sign-out"
+            >Sign Out</a
           >
         </div>
+        <!-- {if:else} -->
         <div v-else class="mb-4 text-sm hidden lg:flex">
           <button
             class="bg-black hover:bg-white text-white hover:text-black px-4 py-1"
@@ -43,12 +49,15 @@
           </button>
           <a
             class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
+            href="/sign-in"
             >Associate Sign In</a
           >
           <a
             class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
+            href="/sign-in/sso"
             >Student Sign In</a
           >
+          <!-- {/if} -->
         </div>
         <div class="flex justify-end items-center">
           <a class="hidden lg:flex" href="/search#gsc.tab=0"
@@ -80,16 +89,25 @@
           <a class="" href="/shop/basket">
             <i class="fa-solid fa-basket-shopping text-4xl"></i
           ></a>
-          <a class="" href="/">
+          <a
+            class=""
+            id="__ba_panel"
+            onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
+            href="/"
+          >
             <i class="fa-solid fa-universal-access text-4xl"></i>
           </a>
-          <a class="" href="/">
+          <!-- {if logged_in} -->
+          <a class="" onClick="getBearerToken()" href="#">
             <i class="fa-solid fa-circle-user text-4xl"></i>
           </a>
+          <!-- {/if} -->
         </div>
         <div v-else class="flex md:hidden gap-6 mb-4">
           <div v-if="signedIn" class="flex flex-col justify-center gap-y-3">
             <button
+              id="__ba_panel"
+              onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
@@ -97,15 +115,19 @@
             >
               Accessibility Tools
             </button>
+            <!-- {if logged_in} -->
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              onClick="getBearerToken()"
               >Member Dashboard</a
             >
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
-              >My Account</a
+              href="/sign-out"
+              >Sign Out</a
             >
           </div>
+          <!-- {if:else} -->
           <div v-else class="flex flex-col justify-center gap-y-3">
             <button
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
@@ -117,13 +139,16 @@
             </button>
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              href="/sign-in"
               >Associate Sign In</a
             >
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              href="/sign-in/sso"
               >Student Sign In</a
             >
           </div>
+          <!-- {/if} -->
           <div class="flex flex-col justify-center items-center gap-4">
             <a class="" href="/search#gsc.tab=0">
               <i class="fa-solid fa-magnifying-glass text-4xl"></i
@@ -187,16 +212,24 @@
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
             <li class="border-black border-b-2 pb-3">
-              <a href="/" class="hover:underline">Sports A-Z</a>
+              <a href="/student-life/clubs-and-socs" class="hover:underline"
+                >Sports A-Z</a
+              >
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Societies A-Z</a>
+              <a href="/student-life/clubs-and-socs" class="hover:underline"
+                >Societies A-Z</a
+              >
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Adopt an Activity</a>
+              <a href="/student-life/adopt-an-activity" class="hover:underline"
+                >Adopt an Activity</a
+              >
             </li>
             <li class="pt-1">
-              <a href="/" class="hover:underline">Volunteering & Fundraising</a>
+              <a href="/student-life/volunteering" class="hover:underline"
+                >Volunteering & Fundraising</a
+              >
             </li>
           </ul>
         </div>
@@ -207,13 +240,22 @@
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
             <li class="border-black border-b-2 pb-3">
-              <a href="/" class="hover:underline">Elections</a>
+              <a href="/elections" class="hover:underline">Elections</a>
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Suggestions</a>
+              <a href="/suggestions" class="hover:underline">Suggestions</a>
+            </li>
+            <li class="border-black border-b-2 pt-1 pb-3">
+              <a
+                href="/your-voice/campaigns-and-projects"
+                class="hover:underline"
+                >Campaign & Projects</a
+              >
             </li>
             <li class="pt-1">
-              <a href="/" class="hover:underline">Campaign & Projects</a>
+              <a href="/your-voice/research-insight" class="hover:underline"
+                >Research & Insight</a
+              >
             </li>
           </ul>
         </div>
@@ -227,16 +269,19 @@
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
             <li class="border-black border-b-2 pb-3">
-              <a href="/" class="hover:underline">Academic Reps</a>
+              <a href="/your-voice/academic-reps" class="hover:underline"
+                >Academic Reps</a
+              >
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Your Sabbs</a>
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Liberation Networks</a>
+              <a href="/your-voice/officers" class="hover:underline"
+                >Officers and Representation</a
+              >
             </li>
             <li class="pt-1">
-              <a href="/" class="hover:underline">Colleges</a>
+              <a href="/student-life/colleges" class="hover:underline"
+                >Colleges</a
+              >
             </li>
           </ul>
         </div>
@@ -250,10 +295,17 @@
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
             <li class="border-black border-b-2 pb-3">
-              <a href="/" class="hover:underline">Student Group Resource Hub</a>
+              <a
+                href="https://resource-hub.yusu.org"
+                target="_blank"
+                class="hover:underline"
+                >Student Group Resource Hub</a
+              >
             </li>
             <li class="pt-1">
-              <a href="/" class="hover:underline">Book an Event</a>
+              <a href="/events/book-event" class="hover:underline"
+                >Book an Event</a
+              >
             </li>
           </ul>
         </div>
@@ -267,15 +319,24 @@
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
             <li class="border-black border-b-2 pb-3">
-              <a href="/" class="hover:underline"
+              <a href="/advice-support" class="hover:underline"
                 >The Advice & Support Centre</a
               >
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Online Support Guides</a>
+              <a href="/advice-support/support-a-z" class="hover:underline"
+                >Online Support Guides</a
+              >
+            </li>
+            <li class="border-black border-b-2 pt-1 pb-3">
+              <a href="/student-life/cost-of-living" class="hover:underline"
+                >Cost of Living Support</a
+              >
             </li>
             <li class="pt-1">
-              <a href="/" class="hover:underline">Cost of Living Support</a>
+              <a href="/advice-support/complaints" class="hover:underline"
+                >Complaints</a
+              >
             </li>
           </ul>
         </div>
@@ -286,19 +347,30 @@
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
             <li class="border-black border-b-2 pb-3">
-              <a href="/" class="hover:underline">About YorkSU</a>
+              <a href="/about-us" class="hover:underline">About YorkSU</a>
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Jobs</a>
+              <a href="/about-us/documents" class="hover:underline"
+                >Policies and Documents</a
+              >
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Contact Us</a>
+              <a
+                href="https://apply.yusu.org"
+                target="_blank"
+                class="hover:underline"
+                >Jobs</a
+              >
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/" class="hover:underline">Sustainability Hub</a>
+              <a href="/about-us/contact-us" class="hover:underline"
+                >Contact Us</a
+              >
             </li>
-            <li class="pt-1">
-              <a href="/" class="hover:underline">Research & Insight</a>
+            <li class="border-black border-b-2 pt-1 pb-3">
+              <a href="/sustainability" class="hover:underline"
+                >Sustainability at YorkSU</a
+              >
             </li>
           </ul>
         </div>
@@ -318,15 +390,19 @@
             >
               Accessibility Tools
             </button>
+            <!-- {if logged_in} -->
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              onClick="getBearerToken()"
               >Member Dashboard</a
             >
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
-              >My Account</a
+              href="/sign-out"
+              >Sign Out</a
             >
           </div>
+          <!-- {if:else} -->
           <div v-else class="flex text-sm gap-3">
             <a class="flex items-center" href="/search#gsc.tab=0">
               <i class="fa-solid fa-magnifying-glass text-2xl"></i
@@ -344,13 +420,16 @@
             </button>
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              href="/sign-in"
               >Associate Sign In</a
             >
             <a
               class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              href="/sign-in/sso"
               >Student Sign In</a
             >
           </div>
+          <!-- {/if} -->
         </div>
         <div
           class="hidden md:grid md:grid-cols-3 lg:grid-cols-6 border-black border-b-2"
@@ -363,13 +442,25 @@
             </div>
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
-                <li><a href="/" class="hover:underline">Sports A-Z</a></li>
-                <li><a href="/" class="hover:underline">Societies A-Z</a></li>
                 <li>
-                  <a href="/" class="hover:underline">Adopt an Activity</a>
+                  <a href="/student-life/clubs-and-socs" class="hover:underline"
+                    >Sports A-Z</a
+                  >
                 </li>
                 <li>
-                  <a href="/" class="hover:underline"
+                  <a href="/student-life/clubs-and-socs" class="hover:underline"
+                    >Societies A-Z</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/student-life/adopt-an-activity"
+                    class="hover:underline"
+                    >Adopt an Activity</a
+                  >
+                </li>
+                <li>
+                  <a href="/student-life/volunteering" class="hover:underline"
                     >Volunteering & Fundraising</a
                   >
                 </li>
@@ -384,10 +475,23 @@
             </div>
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
-                <li><a href="/" class="hover:underline">Elections</a></li>
-                <li><a href="/" class="hover:underline">Suggestions</a></li>
                 <li>
-                  <a href="/" class="hover:underline">Campaign & Projects</a>
+                  <a href="/elections" class="hover:underline">Elections</a>
+                </li>
+                <li>
+                  <a href="/suggestions" class="hover:underline">Suggestions</a>
+                </li>
+                <li>
+                  <a
+                    href="/your-voice/campaigns-and-projects"
+                    class="hover:underline"
+                    >Campaign & Projects</a
+                  >
+                </li>
+                <li>
+                  <a href="/your-voice/research-insight" class="hover:underline"
+                    >Research & Insight</a
+                  >
                 </li>
               </ul>
             </div>
@@ -400,12 +504,21 @@
             </div>
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
-                <li><a href="/" class="hover:underline">Academic Reps</a></li>
-                <li><a href="/" class="hover:underline">Your Sabbs</a></li>
                 <li>
-                  <a href="/" class="hover:underline">Liberation Networks</a>
+                  <a href="/your-voice/academic-reps" class="hover:underline"
+                    >Academic Reps</a
+                  >
                 </li>
-                <li><a href="/" class="hover:underline">Colleges</a></li>
+                <li>
+                  <a href="/your-voice/officers" class="hover:underline"
+                    >Officers and Representation</a
+                  >
+                </li>
+                <li>
+                  <a href="/student-life/colleges" class="hover:underline"
+                    >Colleges</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -418,11 +531,18 @@
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
                 <li>
-                  <a href="/" class="hover:underline"
+                  <a
+                    href="https://resource-hub.yusu.org"
+                    target="_blank"
+                    class="hover:underline"
                     >Student Group Resource Hub</a
                   >
                 </li>
-                <li><a href="/" class="hover:underline">Book an Event</a></li>
+                <li>
+                  <a href="/events/book-event" class="hover:underline"
+                    >Book an Event</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -435,15 +555,24 @@
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
                 <li>
-                  <a href="/" class="hover:underline"
+                  <a href="/advice-support" class="hover:underline"
                     >The Advice & Support Centre</a
                   >
                 </li>
                 <li>
-                  <a href="/" class="hover:underline">Online Support Guides</a>
+                  <a href="/advice-support/support-a-z" class="hover:underline"
+                    >Online Support Guides</a
+                  >
                 </li>
                 <li>
-                  <a href="/" class="hover:underline">Cost of Living Support</a>
+                  <a href="/student-life/cost-of-living" class="hover:underline"
+                    >Cost of Living Support</a
+                  >
+                </li>
+                <li>
+                  <a href="/advice-support/complaints" class="hover:underline"
+                    >Complaints</a
+                  >
                 </li>
               </ul>
             </div>
@@ -456,12 +585,31 @@
             </div>
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
-                <li><a href="/" class="hover:underline">About YorkSU</a></li>
-                <li><a href="/" class="hover:underline">Accountability</a></li>
-                <li><a href="/" class="hover:underline">Jobs</a></li>
-                <li><a href="/" class="hover:underline">Contact Us</a></li>
                 <li>
-                  <a href="/" class="hover:underline">Sustainability Hub</a>
+                  <a href="/about-us" class="hover:underline">About YorkSU</a>
+                </li>
+                <li>
+                  <a href="/about-us/documents" class="hover:underline"
+                    >Policies and Documents</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://apply.yusu.org"
+                    target="_blank"
+                    class="hover:underline"
+                    >Jobs</a
+                  >
+                </li>
+                <li>
+                  <a href="/about-us/contact-us" class="hover:underline"
+                    >Contact Us</a
+                  >
+                </li>
+                <li>
+                  <a href="/sustainability" class="hover:underline"
+                    >Sustainability at YorkSU</a
+                  >
                 </li>
               </ul>
             </div>
@@ -471,26 +619,38 @@
           <div class="flex flex-wrap gap-5 mb-5 text-2xl md:text-base">
             <a
               class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
+              href="/events"
               >Events</a
             >
             <a
               class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
+              href="/venues"
               >Venues</a
             >
             <a
               class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
+              href="/shop"
               >Shop</a
             >
             <a
               class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
+              href="/news"
               >News</a
             >
           </div>
           <div class="flex gap-3">
-            <a><i class="fa-brands fa-facebook text-2xl"></i></a>
-            <a><i class="fa-brands fa-instagram text-2xl"></i></a>
-            <a><i class="fa-brands fa-tiktok text-2xl"></i></a>
-            <a><i class="fa-brands fa-x-twitter text-2xl"></i></a>
+            <a href="https://facebook.com/yorkunisu" target="_blank"
+              ><i class="fa-brands fa-facebook text-2xl"></i
+            ></a>
+            <a href="https://instagram.com/yorkunisu" target="_blank"
+              ><i class="fa-brands fa-instagram text-2xl"></i
+            ></a>
+            <a href="https://tiktok.com/@yorkunisu" target="_blank"
+              ><i class="fa-brands fa-tiktok text-2xl"></i
+            ></a>
+            <a href="https://x.com/yorkunisu" target="_blank"
+              ><i class="fa-brands fa-x-twitter text-2xl"></i
+            ></a>
           </div>
         </div>
       </div>
@@ -526,3 +686,8 @@ export default {
   },
 };
 </script>
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>
