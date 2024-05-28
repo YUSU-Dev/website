@@ -68,7 +68,7 @@
           ></a>
           <button
             class="ml-12 text-4xl"
-            @click="isOpen = !isOpen"
+            @click="navClosed = !navClosed"
             aria-label="Toggle the website navigation bar"
             title="Toggle the website navigation bar"
             type="button"
@@ -82,7 +82,7 @@
       class="absolute w-full bg-beige left-0 top-[133px] max-h-[calc(100vh-133px)] overflow-y-auto"
     >
       <div
-        :class="{ hidden: !isOpen }"
+        :class="{ hidden: navClosed }"
         class="navbar container mx-auto px-4 3xl:px-0 pb-12"
       >
         <div v-if="icons" class="flex flex-wrap md:hidden mt-4 mb-8 gap-4">
@@ -161,53 +161,65 @@
             ></a>
           </div>
         </div>
-        <div id="mobileItems" class="flex flex-col md:hidden text-2xl">
+        <div
+          id="mobileItems"
+          class="flex flex-col md:hidden text-2xl"
+          :class="{
+            hidden:
+              !activitiesClosed ||
+              !voiceClosed ||
+              !communitiesClosed ||
+              !resourcesClosed ||
+              !aboutClosed ||
+              !supportClosed,
+          }"
+        >
           <button
-            @click="toggleMobileItem('activities')"
+            @click="activitiesClosed = !activitiesClosed"
             class="border-black border-b-2 pb-3 flex justify-between items-center"
           >
             <p class="font-bold">Activities</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
           </button>
           <button
-            @click="toggleMobileItem('voice')"
+            @click="voiceClosed = !voiceClosed"
             class="border-black border-b-2 py-3 flex justify-between items-center"
           >
             <p class="font-bold">Student Voice</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
           </button>
           <button
-            @click="toggleMobileItem('communities')"
+            @click="communitiesClosed = !communitiesClosed"
             class="border-black border-b-2 py-3 flex justify-between items-center text-left"
           >
             <p class="font-bold">Communities & Leaders</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
           </button>
           <button
-            @click="toggleMobileItem('resources')"
+            @click="resourcesClosed = !resourcesClosed"
             class="border-black border-b-2 py-3 flex justify-between items-center"
           >
             <p class="font-bold">Resources</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
           </button>
           <button
-            @click="toggleMobileItem('support')"
+            @click="supportClosed = !supportClosed"
             class="border-black border-b-2 py-3 flex justify-between items-center"
           >
             <p class="font-bold">Support</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
           </button>
           <button
-            @click="toggleMobileItem('about')"
+            @click="aboutClosed = !aboutClosed"
             class="pt-3 flex justify-between items-center"
           >
             <p class="font-bold">About Us</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
           </button>
         </div>
-        <div id="activities" class="hidden">
+        <div id="activities" :class="{ hidden: activitiesClosed }">
           <button
-            @click="toggleMobileItem('activities')"
+            @click="activitiesClosed = !activitiesClosed"
             class="flex items-center"
           >
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
@@ -236,8 +248,8 @@
             </li>
           </ul>
         </div>
-        <div id="voice" class="hidden">
-          <button @click="toggleMobileItem('voice')" class="flex items-center">
+        <div id="voice" :class="{ hidden: voiceClosed }">
+          <button @click="voiceClosed = !voiceClosed" class="flex items-center">
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
             <p class="font-bold text-4xl">Student Voice</p>
           </button>
@@ -262,9 +274,9 @@
             </li>
           </ul>
         </div>
-        <div id="communities" class="hidden">
+        <div id="communities" :class="{ hidden: communitiesClosed }">
           <button
-            @click="toggleMobileItem('communities')"
+            @click="communitiesClosed = !communitiesClosed"
             class="flex items-center"
           >
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
@@ -288,9 +300,9 @@
             </li>
           </ul>
         </div>
-        <div id="resources" class="hidden">
+        <div id="resources" :class="{ hidden: resourcesClosed }">
           <button
-            @click="toggleMobileItem('resources')"
+            @click="resourcesClosed = !resourcesClosed"
             class="flex items-center"
           >
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
@@ -312,9 +324,9 @@
             </li>
           </ul>
         </div>
-        <div id="support" class="hidden">
+        <div id="support" :class="{ hidden: supportClosed }">
           <button
-            @click="toggleMobileItem('support')"
+            @click="supportClosed = !supportClosed"
             class="flex items-center"
           >
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
@@ -343,8 +355,8 @@
             </li>
           </ul>
         </div>
-        <div id="about" class="hidden">
-          <button @click="toggleMobileItem('about')" class="flex items-center">
+        <div id="about" :class="{ hidden: aboutClosed }">
+          <button @click="aboutClosed = !aboutClosed" class="flex items-center">
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
             <p class="font-bold text-4xl">About Us</p>
           </button>
@@ -680,7 +692,13 @@ export default {
   },
   data() {
     return {
-      isOpen: false,
+      navClosed: true,
+      activitiesClosed: true,
+      voiceClosed: true,
+      communitiesClosed: true,
+      resourcesClosed: true,
+      supportClosed: true,
+      aboutClosed: true,
     };
   },
   methods: {
