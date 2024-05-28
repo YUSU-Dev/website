@@ -21,7 +21,7 @@
           </button>
         </div>
       </div>
-      <div class="relative flex mt-12 px-2 lg:px-3 pb-4">
+      <div class="relative flex mt-6 px-2 lg:px-3 pb-4">
         <Transition>
           <div class="w-full" v-if="Search">
             <h3 class="text-center font-semibold text-3xl">Search Results</h3>
@@ -34,7 +34,7 @@
           >
             <div class="">
               <h3 class="sr-only">Filters</h3>
-              <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
+              <!-- <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
                 <li
                   v-for="Parent in ParentCategories"
                   @click.prevent="
@@ -55,7 +55,7 @@
                     <h3>{{ Parent.name }}</h3>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
               <ul class="flex flex-wrap mt-6 gap-2" v-if="SelectedParent">
                 <li
                   class=""
@@ -217,6 +217,9 @@ export default {
      */
     getGroups: function (append = false) {
       let self = this;
+      if (self.ParentCategories.length == 1) {
+        self.SelectedParent = self.ParentCategories[0];
+      }
       if (!append) {
         self.Page = 1;
         self.Pages = [1];
