@@ -103,7 +103,7 @@
         </Transition>
       </div>
       <div
-        class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mt-10"
+        class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 mt-10"
       >
         <Tile
           v-for="Group in Groups"
@@ -122,10 +122,10 @@
       />
     </div>
   </div>
-  <link
+  <!-- <link
     rel="stylesheet"
     href="https://assets.yorksu.org/components/components.css"
-  />
+  /> -->
 </template>
 <script>
 import Tile from "../Tile/tile.ce.vue";
