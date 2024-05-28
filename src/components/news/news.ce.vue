@@ -86,6 +86,11 @@
     </div>
   </div>
 </template>
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>
 <script>
 /* global $ */
 import axios from "../../_common/axios.mjs";
