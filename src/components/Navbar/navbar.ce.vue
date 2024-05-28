@@ -69,7 +69,6 @@
           <button
             class="ml-12 text-4xl"
             @click="toggleNavbar"
-            onClick='$document.querySelector(".navbar").classList.toggle("hidden");'
             aria-label="Toggle the website navigation bar"
             title="Toggle the website navigation bar"
             type="button"
