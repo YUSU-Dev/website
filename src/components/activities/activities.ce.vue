@@ -127,6 +127,11 @@
       />
     </div>
   </div>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
+    crossorigin="anonymous"
+  />
 </template>
 <script>
 import Tile from "../Tile/tile.ce.vue";
