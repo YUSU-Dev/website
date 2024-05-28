@@ -3,19 +3,19 @@
   body {
     @apply font-sans;
   }
-  h1 {
+  body h1 {
     @apply text-3xl font-bold;
   }
-  h2 {
+  body h2 {
     @apply text-2xl font-bold;
   }
-  h3 {
+  body h3 {
     @apply text-xl font-bold;
   }
-  h4 {
+  body h4 {
     @apply text-lg font-bold;
   }
-  p a {
+  body p a {
     @apply underline text-blue-500;
   }
 }
