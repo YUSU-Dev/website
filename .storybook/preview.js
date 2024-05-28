@@ -7,10 +7,11 @@ const preview = {
         date: /Date$/i,
       },
     },
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
-import "../src/main.css"
+import "../src/main.css";
 
 export default preview;
