@@ -663,6 +663,7 @@
   />
 </template>
 <script>
+import "../../main.css";
 export default {
   name: "Navbar",
   props: {
@@ -686,8 +687,3 @@ export default {
   },
 };
 </script>
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
