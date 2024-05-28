@@ -275,7 +275,7 @@
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
               <a href="/your-voice/officers" class="hover:underline"
-                >Your Sabbs</a
+                >Officers and Representation</a
               >
             </li>
             <li class="pt-1">
@@ -511,7 +511,7 @@
                 </li>
                 <li>
                   <a href="/your-voice/officers" class="hover:underline"
-                    >Your Sabbs</a
+                    >Officers and Representation</a
                   >
                 </li>
                 <li>
