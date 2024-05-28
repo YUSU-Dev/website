@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto p-10" id="societies-a-z">
+  <div class="container mx-auto py-10" id="societies-a-z">
     <div class="justify-center">
       <div class="input-group flex px-2 lg:px-3">
         <input
@@ -133,7 +133,7 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
 import "../../main.css";
 export default {
-  props: ["siteid", "selectedparents", "title", "selectedcategory"],
+  props: ["siteid", "selectedparents", "selectedcategory"],
   components: {
     Tile,
     Pagination,
@@ -162,10 +162,6 @@ export default {
       self.CategoryIDs = self.selectedcategory;
     } else {
       self.SelectedParents = "2,24";
-    }
-
-    if (!self.title) {
-      self.title = "Clubs and Societies: A-Z";
     }
     //check if looking for a specific activity, search, etc...
     let urlParams = new URLSearchParams(window.location.search);
