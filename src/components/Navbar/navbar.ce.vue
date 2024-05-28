@@ -701,15 +701,6 @@ export default {
       aboutClosed: true,
     };
   },
-  methods: {
-    toggleNavbar() {
-      document.querySelector(".navbar").classList.toggle("hidden");
-    },
-    toggleMobileItem(item) {
-      document.querySelector("#mobileItems").classList.toggle("hidden");
-      document.querySelector("#" + item).classList.toggle("hidden");
-    },
-  },
 };
 </script>
 <style>
