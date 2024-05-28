@@ -1,8 +1,10 @@
 <script>
 import Searchbar from "../searchbar/searchbar.ce.vue";
 import Button from "../button/button.ce.vue";
+import QuickLinks from "../quickLinks/quickLinks.ce.vue";
 export default {
   components: {
+    QuickLinks,
     Button,
     Searchbar,
   },
@@ -44,6 +46,7 @@ export default {
       <h2 class="text-base py-4">
         Here are a few popular pages you might be interested in:
       </h2>
+      <QuickLinks />
     </div>
     <div>
       <h2 class="text-base py-4">
