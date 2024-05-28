@@ -2,16 +2,19 @@
   <nav class="w-full bg-beige sticky left-0 top-0 z-[1]">
     <div class="container mx-auto flex justify-between px-4 3xl:px-0">
       <div class="my-7">
-        <img
-          class="h-[77px] block sm:hidden"
-          src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
-          alt="University of York Students' Union"
-        />
-        <img
-          class="h-[77px] hidden sm:block"
-          src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
-          alt="University of York Students' Union"
-        />
+        <a href="/">
+          <img
+            class="h-[77px] block sm:hidden"
+            src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
+            alt="University of York Students' Union"
+        /></a>
+        <a href="/">
+          <img
+            class="h-[77px] hidden sm:block"
+            src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
+            alt="University of York Students' Union"
+          />
+        </a>
       </div>
       <div class="flex flex-col my-5 justify-center">
         <div v-if="signedIn" class="mb-4 text-sm hidden lg:flex">
