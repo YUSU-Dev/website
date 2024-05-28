@@ -26,7 +26,13 @@
               <li>Charity Company #10688097 | VAT #GB272458389</li>
               <li>
                 © University of York Students' Union 2024 | All rights reserved
-                | Powered by SUMS
+                | Powered by
+                <a
+                  href="https://sums.digital"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >SUMS</a
+                >
               </li>
             </ul>
           </div>
@@ -42,18 +48,42 @@
             <div class="flex text-sm gap-x-6">
               <div>
                 <ul class="flex flex-col gap-y-1">
-                  <li>Accessibility Statement</li>
-                  <li>Advertise With Us</li>
-                  <li>Environment Impact</li>
-                  <li>Jobs</li>
+                  <li>
+                    <a
+                      href="/about-us/organisational-policies/web-accessibility-statement"
+                      >Accessibility Statement</a
+                    >
+                  </li>
+                  <li><a href="/advertise-with-us">Advertise With Us</a></li>
+                  <li>
+                    <a
+                      href="/about-us/organisational-policies/environmental-impact"
+                      >Environment Impact</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://apply.yorksu.org" target="_blank">Jobs</a>
+                  </li>
                 </ul>
               </div>
               <div>
                 <ul class="flex flex-col gap-y-1">
-                  <li>Our Staff</li>
-                  <li>Refund Policy</li>
-                  <li>Terms & Conditions</li>
-                  <li>Your Privacy</li>
+                  <li><a href="/about-us/staff">Our Staff</a></li>
+                  <li>
+                    <a href="/about-us/organisational-policies/refund-policy"
+                      >Refund Policy</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/about-us/organisational-policies/terms-conditions"
+                      >Terms & Conditions</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/about-us/organisational-policies/data-protection"
+                      >Your Privacy</a
+                    >
+                  </li>
                 </ul>
               </div>
             </div>
@@ -65,9 +95,13 @@
             </div>
             <div class="text-sm">
               <ul class="flex flex-col gap-y-1">
-                <li><i class="fa-solid fa-phone mr-2"></i> 01904 32 3724</li>
                 <li>
-                  <i class="fa-solid fa-envelope mr-2"></i> reception@yorksu.org
+                  <i class="fa-solid fa-phone mr-2"></i>
+                  <a href="tel:+441904323724">01904 32 3724</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope mr-2"></i>
+                  <a href="mailto:reception@yorksu.org">reception@yorksu.org</a>
                 </li>
               </ul>
             </div>
@@ -82,7 +116,13 @@
             <li>Charity Company #10688097 | VAT #GB272458389</li>
             <li>
               © University of York Students' Union 2024 | All rights reserved |
-              Powered by SUMS
+              Powered by
+              <a
+                href="https://sums.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                >SUMS</a
+              >
             </li>
           </ul>
         </div>

@@ -15,7 +15,7 @@
   h4 {
     @apply text-lg font-bold;
   }
-  a {
+  p a {
     @apply underline text-blue-500;
   }
 }
