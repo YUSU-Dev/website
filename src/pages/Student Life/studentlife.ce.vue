@@ -36,6 +36,7 @@
   <Activities
     siteid="tZyLG9BX9f4hdTp2HLva5c"
     :selectedparents="selectedparents"
+    :title="componenttitle"
   />
   <Footer />
 </template>
@@ -45,7 +46,7 @@ import Activities from "../../components/activities/activities.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
 import Button from "../../components/button/button.ce.vue";
 export default {
-  props: ["title", "selectedparents"],
+  props: ["title", "componenttitle", "selectedparents"],
   components: {
     HeroHeader,
     Activities,

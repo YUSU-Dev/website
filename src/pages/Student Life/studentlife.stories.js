@@ -25,3 +25,11 @@ export const Volunteering = {
     selectedparents: "39",
   },
 };
+
+export const Multiple = {
+  args: {
+    title: "Multiple",
+    selectedparents: "2,24,39",
+    componenttitle: "Search for a Society, Sport Club or Volunteering Group",
+  },
+};

@@ -496,15 +496,11 @@
       </div>
     </div>
   </nav>
-  <!-- <link
-    rel="stylesheet"
-    href="https://assets.yorksu.org/components/components.css"
-  />
   <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
     crossorigin="anonymous"
-  /> -->
+  />
 </template>
 <script>
 export default {

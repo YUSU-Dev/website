@@ -1,5 +1,8 @@
 <template>
   <div class="container mx-auto py-10" id="societies-a-z">
+    <div v-if="title" class="px-2 lg:px-3 mb-4">
+      <h2>{{ title }}</h2>
+    </div>
     <div class="justify-center">
       <div class="input-group flex px-2 lg:px-3">
         <input
@@ -34,6 +37,30 @@
           >
             <div class="">
               <h3 class="sr-only">Filters</h3>
+              <div v-if="ParentCategories.length > 1">
+                <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
+                  <li
+                    v-for="Parent in ParentCategories"
+                    @click.prevent="
+                      SelectedParent = Parent;
+                      SelectedCategory = '';
+                      getGroups();
+                    "
+                    class=""
+                    :key="Parent.id"
+                  >
+                    <a
+                      v-bind:class="{
+                        '!bg-light-blue text-black font-semibold':
+                          SelectedParent.id === Parent.id,
+                      }"
+                      class="w-full h-full flex justify-center px-4 py-2 border-2 font-semibold border-none bg-mustard text-black hover:bg-light-blue hover:text-black text-xl"
+                    >
+                      <h3>{{ Parent.name }}</h3>
+                    </a>
+                  </li>
+                </ul>
+              </div>
               <ul class="flex flex-wrap mt-6 gap-2" v-if="SelectedParent">
                 <li
                   class=""
@@ -100,10 +127,6 @@
       />
     </div>
   </div>
-  <!-- <link
-    rel="stylesheet"
-    href="https://assets.yorksu.org/components/components.css"
-  /> -->
 </template>
 <script>
 import Tile from "../Tile/tile.ce.vue";
@@ -111,7 +134,7 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
 import "../../main.css";
 export default {
-  props: ["siteid", "selectedparents", "selectedcategory"],
+  props: ["siteid", "selectedparents", "selectedcategory", "title"],
   components: {
     Tile,
     Pagination,

@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <HeroBanner :title="title" :image="image" />
-  <Breadcrumb class="pt-4" />
+  <Breadcrumb />
 </template>
 <script>
 import Navbar from "../Navbar/navbar.ce.vue";
