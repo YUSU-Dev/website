@@ -7,7 +7,6 @@ export default {
 
 export const Default = {
   args: {
-    title: "Sports Clubs, Societies, and Volunteering: A-Z",
     selectedparents: "2,24,39",
   },
 };

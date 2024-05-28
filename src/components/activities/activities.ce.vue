@@ -1,5 +1,8 @@
 <template>
-  <div class="container mx-auto p-10" id="societies-a-z">
+  <div class="container mx-auto py-10" id="societies-a-z">
+    <div v-if="title" class="px-2 lg:px-3 mb-4">
+      <h2>{{ title }}</h2>
+    </div>
     <div class="justify-center">
       <div class="input-group flex px-2 lg:px-3">
         <input
@@ -21,7 +24,7 @@
           </button>
         </div>
       </div>
-      <div class="relative flex mt-12 px-2 lg:px-3 pb-4">
+      <div class="relative flex mt-6 px-2 lg:px-3 pb-4">
         <Transition>
           <div class="w-full" v-if="Search">
             <h3 class="text-center font-semibold text-3xl">Search Results</h3>
@@ -34,28 +37,30 @@
           >
             <div class="">
               <h3 class="sr-only">Filters</h3>
-              <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
-                <li
-                  v-for="Parent in ParentCategories"
-                  @click.prevent="
-                    SelectedParent = Parent;
-                    SelectedCategory = '';
-                    getGroups();
-                  "
-                  class=""
-                  :key="Parent.id"
-                >
-                  <a
-                    v-bind:class="{
-                      '!bg-light-blue text-black font-semibold':
-                        SelectedParent.id === Parent.id,
-                    }"
-                    class="w-full h-full flex justify-center px-4 py-2 border-2 font-semibold border-none bg-mustard text-black hover:bg-light-blue hover:text-black text-xl"
+              <div v-if="ParentCategories.length > 1">
+                <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
+                  <li
+                    v-for="Parent in ParentCategories"
+                    @click.prevent="
+                      SelectedParent = Parent;
+                      SelectedCategory = '';
+                      getGroups();
+                    "
+                    class=""
+                    :key="Parent.id"
                   >
-                    <h3>{{ Parent.name }}</h3>
-                  </a>
-                </li>
-              </ul>
+                    <a
+                      v-bind:class="{
+                        '!bg-light-blue text-black font-semibold':
+                          SelectedParent.id === Parent.id,
+                      }"
+                      class="w-full h-full flex justify-center px-4 py-2 border-2 font-semibold border-none bg-mustard text-black hover:bg-light-blue hover:text-black text-xl"
+                    >
+                      <h3>{{ Parent.name }}</h3>
+                    </a>
+                  </li>
+                </ul>
+              </div>
               <ul class="flex flex-wrap mt-6 gap-2" v-if="SelectedParent">
                 <li
                   class=""
@@ -103,7 +108,7 @@
         </Transition>
       </div>
       <div
-        class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mt-10"
+        class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 mt-10"
       >
         <Tile
           v-for="Group in Groups"
@@ -129,7 +134,7 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
 import "../../main.css";
 export default {
-  props: ["siteid", "selectedparents", "title", "selectedcategory"],
+  props: ["siteid", "selectedparents", "selectedcategory", "title"],
   components: {
     Tile,
     Pagination,
@@ -158,10 +163,6 @@ export default {
       self.CategoryIDs = self.selectedcategory;
     } else {
       self.SelectedParents = "2,24";
-    }
-
-    if (!self.title) {
-      self.title = "Clubs and Societies: A-Z";
     }
     //check if looking for a specific activity, search, etc...
     let urlParams = new URLSearchParams(window.location.search);
@@ -217,6 +218,9 @@ export default {
      */
     getGroups: function (append = false) {
       let self = this;
+      if (self.ParentCategories.length == 1) {
+        self.SelectedParent = self.ParentCategories[0];
+      }
       if (!append) {
         self.Page = 1;
         self.Pages = [1];
