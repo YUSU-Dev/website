@@ -122,10 +122,6 @@
       />
     </div>
   </div>
-  <link
-    rel="stylesheet"
-    href="https://assets.yorksu.org/components/components.css"
-  />
 </template>
 <script>
 import Tile from "../Tile/tile.ce.vue";
@@ -285,3 +281,8 @@ export default {
   },
 };
 </script>
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>

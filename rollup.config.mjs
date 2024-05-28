@@ -1,9 +1,10 @@
 //@ts-check
 import { globSync } from "glob";
-import vue from "rollup-plugin-vue";
+import vue from "@vitejs/plugin-vue";
 import replace from "@rollup/plugin-replace";
 import { minify } from "rollup-plugin-esbuild";
 import postcss from "rollup-plugin-postcss";
+import alias from "@rollup/plugin-alias";
 
 import postcssConfig from "./postcss.config.mjs";
 
@@ -17,11 +18,8 @@ export default {
   output: {
     dir: "dist",
     format: "es",
-    paths: {
-      vue: "https://unpkg.com/vue@3.4.21/dist/vue.runtime.esm-browser.prod.js",
-    },
   },
-  external: ["vue", /^https:\/\//],
+  external: [/^https:\/\//],
   plugins: [
     replace({
       "process.env.NODE_ENV": JSON.stringify(
@@ -30,11 +28,19 @@ export default {
       __VUE_OPTIONS_API__: "false",
       preventAssignment: true,
     }),
+    alias({
+      entries: [
+        {
+          find: /^vue$/,
+          replacement:
+            "https://unpkg.com/vue@3.4.21/dist/vue.runtime.esm-browser.prod.js",
+        },
+      ],
+    }),
     vue({}),
     minify(),
     postcss({
       ...postcssConfig,
-      extract: `components.css`,
     }),
   ],
 };

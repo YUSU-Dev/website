@@ -498,10 +498,6 @@
   </nav>
   <link
     rel="stylesheet"
-    href="https://assets.yorksu.org/components/components.css"
-  />
-  <link
-    rel="stylesheet"
     href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
     crossorigin="anonymous"
   />
@@ -530,3 +526,8 @@ export default {
   },
 };
 </script>
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</style>
