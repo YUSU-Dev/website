@@ -25,6 +25,18 @@
   body p a {
     @apply underline text-blue-500;
   }
+
+  body hr {
+    @apply py-2;
+  }
+
+  body ul {
+    @apply list-disc pl-5;
+  }
+
+  body ol {
+    @apply list-decimal pl-5;
+  }
 }
 
 /* COMPONENTS 
