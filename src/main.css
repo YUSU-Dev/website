@@ -22,23 +22,19 @@
     @apply mb-3 text-base leading-relaxed text-pretty;
   }
 
-  body p a {
+  main a {
     @apply underline text-blue-500;
   }
 
-  body hr {
+  main hr {
     @apply py-2;
   }
 
-  body ul a {
-    @apply text-blue-500 underline;
-  }
-
-  body ul {
+  main ul {
     @apply list-disc pl-10;
   }
 
-  body ol {
+  main ol {
     @apply list-decimal pl-10;
   }
 }
