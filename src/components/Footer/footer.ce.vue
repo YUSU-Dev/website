@@ -13,11 +13,13 @@
         >
           <div class="flex flex-col gap-y-6 lg:border-r-2 border-white pr-2">
             <div>
-              <img
-                src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-white-full.png"
-                alt="YorkSU Logo"
-                class="w-52"
-              />
+              <a href="/">
+                <img
+                  src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-white-full.png"
+                  alt="YorkSU Logo"
+                  class="w-52"
+                />
+              </a>
             </div>
             <div class="hidden lg:flex text-xs">
               <ul class="flex flex-col gap-y-1">
