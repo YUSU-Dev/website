@@ -34,28 +34,6 @@
           >
             <div class="">
               <h3 class="sr-only">Filters</h3>
-              <!-- <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
-                <li
-                  v-for="Parent in ParentCategories"
-                  @click.prevent="
-                    SelectedParent = Parent;
-                    SelectedCategory = '';
-                    getGroups();
-                  "
-                  class=""
-                  :key="Parent.id"
-                >
-                  <a
-                    v-bind:class="{
-                      '!bg-light-blue text-black font-semibold':
-                        SelectedParent.id === Parent.id,
-                    }"
-                    class="w-full h-full flex justify-center px-4 py-2 border-2 font-semibold border-none bg-mustard text-black hover:bg-light-blue hover:text-black text-xl"
-                  >
-                    <h3>{{ Parent.name }}</h3>
-                  </a>
-                </li>
-              </ul> -->
               <ul class="flex flex-wrap mt-6 gap-2" v-if="SelectedParent">
                 <li
                   class=""
