@@ -1,3 +1,6 @@
+/* BASE 
+   Edit with caution, this is the base layer and changes here will cascade to the whole site.
+*/
 @tailwind base;
 @layer base {
   body {
@@ -15,10 +18,18 @@
   body h4 {
     @apply text-lg font-bold;
   }
+  body p {
+    @apply mb-3 text-base leading-relaxed text-pretty;
+  }
+
   body p a {
     @apply underline text-blue-500;
   }
 }
+
+/* COMPONENTS 
+  The below CSS is used for adding custom classes to components.
+*/
 @tailwind components;
 @layer components {
   /* Select2 Classes */
