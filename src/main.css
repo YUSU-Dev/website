@@ -30,12 +30,16 @@
     @apply py-2;
   }
 
+  body ul a {
+    @apply text-blue-500 underline;
+  }
+
   body ul {
-    @apply list-disc pl-5;
+    @apply list-disc pl-10;
   }
 
   body ol {
-    @apply list-decimal pl-5;
+    @apply list-decimal pl-10;
   }
 }
 
