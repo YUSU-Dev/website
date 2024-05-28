@@ -15,6 +15,10 @@
   body h4 {
     @apply text-lg font-bold;
   }
+  body p {
+    @apply mb-3 text-base leading-relaxed text-pretty;
+  }
+
   body p a {
     @apply underline text-blue-500;
   }
