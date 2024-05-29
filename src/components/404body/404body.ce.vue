@@ -8,15 +8,9 @@ export default {
     Button,
     Searchbar,
   },
-  props: {
-    submitSearchCallback: {
-      type: Function,
-      required: true,
-    },
-  },
   methods: {
     doSearch(value) {
-      this.submitSearchCallback(value);
+      window.location.href = `/search?q=${value}`;
     },
   },
 };

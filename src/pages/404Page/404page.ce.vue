@@ -5,7 +5,7 @@
 </style>
 <template>
   <Navbar />
-  <Error404Body :submit-search-callback="doSearch" />
+  <Error404Body />
   <Footer />
 </template>
 <script>
@@ -17,11 +17,6 @@ export default {
     Footer,
     Navbar,
     Error404Body,
-  },
-  methods: {
-    doSearch(value) {
-      console.log("Search value: ", value);
-    },
   },
 };
 </script>
