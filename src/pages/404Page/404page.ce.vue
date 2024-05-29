@@ -4,9 +4,11 @@
 @tailwind utilities;
 </style>
 <template>
-  <Navbar />
-  <Error404Body />
-  <Footer />
+  <div class="flex flex-col min-h-screen">
+    <Navbar />
+    <Error404Body />
+    <Footer />
+  </div>
 </template>
 <script>
 import Error404Body from "../../components/404body/404body.ce.vue";
