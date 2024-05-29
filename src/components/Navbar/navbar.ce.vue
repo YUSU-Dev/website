@@ -230,12 +230,12 @@
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
             <li class="border-black border-b-2 pb-3">
-              <a href="/student-life/clubs-and-socs" class="hover:underline"
+              <a href="/student-life/sport" class="hover:underline"
                 >Sports A-Z</a
               >
             </li>
             <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/student-life/clubs-and-socs" class="hover:underline"
+              <a href="/student-life/societies" class="hover:underline"
                 >Societies A-Z</a
               >
             </li>
@@ -461,12 +461,12 @@
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
                 <li>
-                  <a href="/student-life/clubs-and-socs" class="hover:underline"
+                  <a href="/student-life/sport" class="hover:underline"
                     >Sports A-Z</a
                   >
                 </li>
                 <li>
-                  <a href="/student-life/clubs-and-socs" class="hover:underline"
+                  <a href="/student-life/societies" class="hover:underline"
                     >Societies A-Z</a
                   >
                 </li>
