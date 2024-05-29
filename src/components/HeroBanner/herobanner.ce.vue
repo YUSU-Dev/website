@@ -1,8 +1,8 @@
 <template>
   <div class="flex justify-center">
-    <div class="bg-repeat w-full h-[400px]">
+    <div class="bg-repeat w-full h-[400px] max-h-[40vh]">
       <div
-        class="flex justify-center items-center h-full bg-center"
+        class="flex justify-center items-center h-full bg-center bg-cover"
         :style="{ 'background-image': 'url(' + image + ')' }"
       >
         <div class="bg-white px-6 py-3 max-w-full mx-2">
