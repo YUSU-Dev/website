@@ -168,227 +168,43 @@
           id="mobileItems"
           class="flex flex-col md:hidden text-2xl"
           :class="{
-            hidden:
-              !activitiesClosed ||
-              !voiceClosed ||
-              !communitiesClosed ||
-              !resourcesClosed ||
-              !aboutClosed ||
-              !supportClosed,
+            hidden: menuData.sections
+              .map((section) => section.closed)
+              .some((closed) => !closed),
           }"
         >
           <button
-            @click="activitiesClosed = !activitiesClosed"
-            class="border-black border-b-2 pb-3 flex justify-between items-center"
+            v-for="(section, index) in menuData.sections"
+            :key="section.name"
+            @click="section.closed = !section.closed"
+            :class="`${index != menuData.sections.length - 1 && 'border-black border-b-2'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex justify-between items-center`"
           >
-            <p class="font-bold">Activities</p>
-            <i class="fa-solid fa-caret-right mr-2"></i>
-          </button>
-          <button
-            @click="voiceClosed = !voiceClosed"
-            class="border-black border-b-2 py-3 flex justify-between items-center"
-          >
-            <p class="font-bold">Student Voice</p>
-            <i class="fa-solid fa-caret-right mr-2"></i>
-          </button>
-          <button
-            @click="communitiesClosed = !communitiesClosed"
-            class="border-black border-b-2 py-3 flex justify-between items-center text-left"
-          >
-            <p class="font-bold">Communities & Leaders</p>
-            <i class="fa-solid fa-caret-right mr-2"></i>
-          </button>
-          <button
-            @click="resourcesClosed = !resourcesClosed"
-            class="border-black border-b-2 py-3 flex justify-between items-center"
-          >
-            <p class="font-bold">Resources</p>
-            <i class="fa-solid fa-caret-right mr-2"></i>
-          </button>
-          <button
-            @click="supportClosed = !supportClosed"
-            class="border-black border-b-2 py-3 flex justify-between items-center"
-          >
-            <p class="font-bold">Support</p>
-            <i class="fa-solid fa-caret-right mr-2"></i>
-          </button>
-          <button
-            @click="aboutClosed = !aboutClosed"
-            class="pt-3 flex justify-between items-center"
-          >
-            <p class="font-bold">About Us</p>
+            <p class="font-bold">{{ section.name }}</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
           </button>
         </div>
-        <div id="activities" :class="{ hidden: activitiesClosed }">
+        <div
+          v-for="section in menuData.sections"
+          :key="section.name"
+          :id="section.name"
+          :class="{ hidden: section.closed }"
+        >
           <button
-            @click="activitiesClosed = !activitiesClosed"
+            @click="section.closed = !section.closed"
             class="flex items-center"
           >
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
-            <p class="font-bold text-4xl">Activities</p>
+            <p class="font-bold text-4xl">{{ section.name }}</p>
           </button>
           <ul class="flex flex-col gap-2 text-lg mt-5">
-            <li class="border-black border-b-2 pb-3">
-              <a href="/student-life/sport" class="hover:underline"
-                >Sports A-Z</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/student-life/societies" class="hover:underline"
-                >Societies A-Z</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/student-life/adopt-an-activity" class="hover:underline"
-                >Adopt an Activity</a
-              >
-            </li>
-            <li class="pt-1">
-              <a href="/student-life/volunteering" class="hover:underline"
-                >Volunteering & Fundraising</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div id="voice" :class="{ hidden: voiceClosed }">
-          <button @click="voiceClosed = !voiceClosed" class="flex items-center">
-            <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
-            <p class="font-bold text-4xl">Student Voice</p>
-          </button>
-          <ul class="flex flex-col gap-2 text-lg mt-5">
-            <li class="border-black border-b-2 pb-3">
-              <a href="/elections" class="hover:underline">Elections</a>
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/suggestions" class="hover:underline">Suggestions</a>
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a
-                href="/your-voice/campaigns-and-projects"
-                class="hover:underline"
-                >Campaign & Projects</a
-              >
-            </li>
-            <li class="pt-1">
-              <a href="/your-voice/research-insight" class="hover:underline"
-                >Research & Insight</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div id="communities" :class="{ hidden: communitiesClosed }">
-          <button
-            @click="communitiesClosed = !communitiesClosed"
-            class="flex items-center"
-          >
-            <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
-            <p class="font-bold text-4xl">Communities & Leaders</p>
-          </button>
-          <ul class="flex flex-col gap-2 text-lg mt-5">
-            <li class="border-black border-b-2 pb-3">
-              <a href="/your-voice/academic-reps" class="hover:underline"
-                >Academic Reps</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/your-voice/officers" class="hover:underline"
-                >Officers and Representation</a
-              >
-            </li>
-            <li class="pt-1">
-              <a href="/student-life/colleges" class="hover:underline"
-                >Colleges</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div id="resources" :class="{ hidden: resourcesClosed }">
-          <button
-            @click="resourcesClosed = !resourcesClosed"
-            class="flex items-center"
-          >
-            <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
-            <p class="font-bold text-4xl">Resources</p>
-          </button>
-          <ul class="flex flex-col gap-2 text-lg mt-5">
-            <li class="border-black border-b-2 pb-3">
-              <a
-                href="https://resource-hub.yusu.org"
-                target="_blank"
-                class="hover:underline"
-                >Student Group Resource Hub</a
-              >
-            </li>
-            <li class="pt-1">
-              <a href="/events/book-event" class="hover:underline"
-                >Book an Event</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div id="support" :class="{ hidden: supportClosed }">
-          <button
-            @click="supportClosed = !supportClosed"
-            class="flex items-center"
-          >
-            <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
-            <p class="font-bold text-4xl">Support</p>
-          </button>
-          <ul class="flex flex-col gap-2 text-lg mt-5">
-            <li class="border-black border-b-2 pb-3">
-              <a href="/advice-support" class="hover:underline"
-                >The Advice & Support Centre</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/advice-support/support-a-z" class="hover:underline"
-                >Online Support Guides</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/student-life/cost-of-living" class="hover:underline"
-                >Cost of Living Support</a
-              >
-            </li>
-            <li class="pt-1">
-              <a href="/advice-support/complaints" class="hover:underline"
-                >Complaints</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div id="about" :class="{ hidden: aboutClosed }">
-          <button @click="aboutClosed = !aboutClosed" class="flex items-center">
-            <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
-            <p class="font-bold text-4xl">About Us</p>
-          </button>
-          <ul class="flex flex-col gap-2 text-lg mt-5">
-            <li class="border-black border-b-2 pb-3">
-              <a href="/about-us" class="hover:underline">About YorkSU</a>
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/about-us/documents" class="hover:underline"
-                >Policies and Documents</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a
-                href="https://apply.yusu.org"
-                target="_blank"
-                class="hover:underline"
-                >Jobs</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/about-us/contact-us" class="hover:underline"
-                >Contact Us</a
-              >
-            </li>
-            <li class="border-black border-b-2 pt-1 pb-3">
-              <a href="/sustainability" class="hover:underline"
-                >Sustainability at YorkSU</a
-              >
+            <li
+              v-for="(subheading, index) in section.links"
+              :key="subheading.name"
+              :class="`${index != section.links.length - 1 && 'border-black border-b-2 pb-3'} ${index != 0 && 'pt-3'}`"
+            >
+              <a :href="subheading.link" class="hover:underline">{{
+                subheading.name
+              }}</a>
             </li>
           </ul>
         </div>
@@ -452,182 +268,22 @@
         <div
           class="hidden md:grid md:grid-cols-3 lg:grid-cols-6 border-black border-b-2"
         >
-          <div class="flex flex-col">
+          <div
+            v-for="section in menuData.sections"
+            :key="section.name"
+            class="flex flex-col"
+          >
             <div
               class="border-black border-b-2 flex items-end pb-2 pr-10 w-full h-1/5"
             >
-              <p class="font-bold">Activities</p>
+              <p class="font-bold">{{ section.name }}</p>
             </div>
             <div class="h-4/5 pt-3 pb-7">
               <ul class="flex flex-col gap-2 text-sm">
-                <li>
-                  <a href="/student-life/sport" class="hover:underline"
-                    >Sports A-Z</a
-                  >
-                </li>
-                <li>
-                  <a href="/student-life/societies" class="hover:underline"
-                    >Societies A-Z</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="/student-life/adopt-an-activity"
-                    class="hover:underline"
-                    >Adopt an Activity</a
-                  >
-                </li>
-                <li>
-                  <a href="/student-life/volunteering" class="hover:underline"
-                    >Volunteering & Fundraising</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <div
-              class="border-black border-b-2 flex items-end pb-2 pr-10 w-full h-1/5"
-            >
-              <p class="font-bold">Student Voice</p>
-            </div>
-            <div class="h-4/5 pt-3 pb-7">
-              <ul class="flex flex-col gap-2 text-sm">
-                <li>
-                  <a href="/elections" class="hover:underline">Elections</a>
-                </li>
-                <li>
-                  <a href="/suggestions" class="hover:underline">Suggestions</a>
-                </li>
-                <li>
-                  <a
-                    href="/your-voice/campaigns-and-projects"
-                    class="hover:underline"
-                    >Campaign & Projects</a
-                  >
-                </li>
-                <li>
-                  <a href="/your-voice/research-insight" class="hover:underline"
-                    >Research & Insight</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <div
-              class="border-black border-b-2 flex items-end pb-2 pr-10 w-full h-1/5"
-            >
-              <p class="font-bold">Communities & Leaders</p>
-            </div>
-            <div class="h-4/5 pt-3 pb-7">
-              <ul class="flex flex-col gap-2 text-sm">
-                <li>
-                  <a href="/your-voice/academic-reps" class="hover:underline"
-                    >Academic Reps</a
-                  >
-                </li>
-                <li>
-                  <a href="/your-voice/officers" class="hover:underline"
-                    >Officers and Representation</a
-                  >
-                </li>
-                <li>
-                  <a href="/student-life/colleges" class="hover:underline"
-                    >Colleges</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <div
-              class="border-black border-b-2 flex items-end pb-2 pr-10 w-full h-1/5"
-            >
-              <p class="font-bold">Resources</p>
-            </div>
-            <div class="h-4/5 pt-3 pb-7">
-              <ul class="flex flex-col gap-2 text-sm">
-                <li>
-                  <a
-                    href="https://resource-hub.yusu.org"
-                    target="_blank"
-                    class="hover:underline"
-                    >Student Group Resource Hub</a
-                  >
-                </li>
-                <li>
-                  <a href="/events/book-event" class="hover:underline"
-                    >Book an Event</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <div
-              class="border-black border-b-2 flex items-end pb-2 pr-10 w-full h-1/5"
-            >
-              <p class="font-bold">Support</p>
-            </div>
-            <div class="h-4/5 pt-3 pb-7">
-              <ul class="flex flex-col gap-2 text-sm">
-                <li>
-                  <a href="/advice-support" class="hover:underline"
-                    >The Advice & Support Centre</a
-                  >
-                </li>
-                <li>
-                  <a href="/advice-support/support-a-z" class="hover:underline"
-                    >Online Support Guides</a
-                  >
-                </li>
-                <li>
-                  <a href="/student-life/cost-of-living" class="hover:underline"
-                    >Cost of Living Support</a
-                  >
-                </li>
-                <li>
-                  <a href="/advice-support/complaints" class="hover:underline"
-                    >Complaints</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <div
-              class="border-black border-b-2 flex items-end pb-2 pr-10 w-full h-1/5"
-            >
-              <p class="font-bold">About Us</p>
-            </div>
-            <div class="h-4/5 pt-3 pb-7">
-              <ul class="flex flex-col gap-2 text-sm">
-                <li>
-                  <a href="/about-us" class="hover:underline">About YorkSU</a>
-                </li>
-                <li>
-                  <a href="/about-us/documents" class="hover:underline"
-                    >Policies and Documents</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://apply.yusu.org"
-                    target="_blank"
-                    class="hover:underline"
-                    >Jobs</a
-                  >
-                </li>
-                <li>
-                  <a href="/about-us/contact-us" class="hover:underline"
-                    >Contact Us</a
-                  >
-                </li>
-                <li>
-                  <a href="/sustainability" class="hover:underline"
-                    >Sustainability at YorkSU</a
-                  >
+                <li v-for="subheading in section.links" :key="subheading.name">
+                  <a :href="subheading.link" class="hover:underline">{{
+                    subheading.name
+                  }}</a>
                 </li>
               </ul>
             </div>
@@ -636,38 +292,21 @@
         <div class="flex flex-wrap justify-between mt-9 gap-y-2">
           <div class="flex flex-wrap gap-5 mb-5 text-2xl md:text-base">
             <a
+              v-for="mainButton in menuData.mainButtons"
+              :key="mainButton.name"
               class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
-              href="/events"
-              >Events</a
-            >
-            <a
-              class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
-              href="/venues"
-              >Venues</a
-            >
-            <a
-              class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
-              href="/shop"
-              >Shop</a
-            >
-            <a
-              class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
-              href="/news"
-              >News</a
+              :href="mainButton.link"
+              >{{ mainButton.name }}</a
             >
           </div>
           <div class="flex gap-3">
-            <a href="https://facebook.com/yorkunisu" target="_blank"
-              ><i class="fa-brands fa-facebook text-2xl"></i
-            ></a>
-            <a href="https://instagram.com/yorkunisu" target="_blank"
-              ><i class="fa-brands fa-instagram text-2xl"></i
-            ></a>
-            <a href="https://tiktok.com/@yorkunisu" target="_blank"
-              ><i class="fa-brands fa-tiktok text-2xl"></i
-            ></a>
-            <a href="https://x.com/yorkunisu" target="_blank"
-              ><i class="fa-brands fa-x-twitter text-2xl"></i
+            <a
+              v-for="socialPlatform in menuData.socials"
+              :key="socialPlatform.name"
+              :aria-label="socialPlatform.name"
+              :href="socialPlatform.link"
+              target="_blank"
+              ><i :class="`fa-brands text-2xl ${socialPlatform.icon}`"></i
             ></a>
           </div>
         </div>
@@ -702,6 +341,174 @@ export default {
       resourcesClosed: true,
       supportClosed: true,
       aboutClosed: true,
+      menuData: {
+        sections: [
+          {
+            name: "Activities",
+            closed: true,
+            links: [
+              {
+                name: "Sports A-Z",
+                link: "/student-life/sport",
+              },
+              {
+                name: "Societies A-Z",
+                link: "/student-life/societies",
+              },
+              {
+                name: "Adopt an Activity",
+                link: "/student-life/adopt-an-activity",
+              },
+              {
+                name: "Volunteering & Fundraising",
+                link: "/student-life/volunteering",
+              },
+            ],
+          },
+          {
+            name: "Student Voice",
+            closed: true,
+            links: [
+              {
+                name: "Elections",
+                link: "/elections",
+              },
+              {
+                name: "Suggestions",
+                link: "/suggestions",
+              },
+              {
+                name: "Campaign & Projects",
+                link: "/your-voice/campaigns-and-projects",
+              },
+              {
+                name: "Research & Insight",
+                link: "/your-voice/research-insight",
+              },
+            ],
+          },
+          {
+            name: "Communities & Leaders",
+            closed: true,
+            links: [
+              {
+                name: "Academic Reps",
+                link: "/your-voice/academic-reps",
+              },
+              {
+                name: "Officers and Representation",
+                link: "/your-voice/officers",
+              },
+              {
+                name: "Colleges",
+                link: "/student-life/colleges",
+              },
+            ],
+          },
+          {
+            name: "Resources",
+            closed: true,
+            links: [
+              {
+                name: "Student Group Resource Hub",
+                link: "https://resource-hub.yusu.org",
+              },
+              {
+                name: "Book an Event",
+                link: "/events/book-event",
+              },
+            ],
+          },
+          {
+            name: "Support",
+            closed: true,
+            links: [
+              {
+                name: "The Advice & Support Centre",
+                link: "/advice-support",
+              },
+              {
+                name: "Online Support Guides",
+                link: "/advice-support/support-a-z",
+              },
+              {
+                name: "Cost of Living Support",
+                link: "/student-life/cost-of-living",
+              },
+              {
+                name: "Complaints",
+                link: "/advice-support/complaints",
+              },
+            ],
+          },
+          {
+            name: "About Us",
+            closed: true,
+            links: [
+              {
+                name: "About YorkSU",
+                link: "/about-us",
+              },
+              {
+                name: "Policies and Documents",
+                link: "/about-us/documents",
+              },
+              {
+                name: "Jobs",
+                link: "https://apply.yusu.org",
+              },
+              {
+                name: "Contact Us",
+                link: "/about-us/contact-us",
+              },
+              {
+                name: "Sustainability at YorkSU",
+                link: "/sustainability",
+              },
+            ],
+          },
+        ],
+        mainButtons: [
+          {
+            name: "Events",
+            link: "/events",
+          },
+          {
+            name: "Venues",
+            link: "/venues",
+          },
+          {
+            name: "Shop",
+            link: "/shop",
+          },
+          {
+            name: "News",
+            link: "/news",
+          },
+        ],
+        socials: [
+          {
+            name: "Facebook",
+            link: "https://facebook.com/yorkunisu",
+            icon: "fa-facebook",
+          },
+          {
+            name: "Instagram",
+            link: "https://instagram.com/yorkunisu",
+            icon: "fa-instagram",
+          },
+          {
+            name: "TikTok",
+            link: "https://tiktok.com/@yorkunisu",
+            icon: "fa-tiktok",
+          },
+          {
+            name: "Twitter",
+            link: "https://x.com/yorkunisu",
+            icon: "fa-x-twitter",
+          },
+        ],
+      },
     };
   },
 };
