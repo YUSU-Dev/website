@@ -9,25 +9,11 @@
               <label for="search">
                 <h2 class="font-semibold text-xl mb-2">Search</h2>
               </label>
-              <div class="input-group flex border-black border-[1px]">
-                <input
-                  id="search"
-                  name="search"
-                  placeholder="Search..."
-                  class="search form-control w-full p-2"
-                  @keyup.enter="submitSearch"
-                />
-                <div class="input-group-append">
-                  <button
-                    type="submit"
-                    aria-label="Submit"
-                    class="btn btn-block btn-secondary bg-black w-full h-full px-1"
-                    @click="submitSearch"
-                  >
-                    <i class="fas fa-search text-white p-2"></i>
-                  </button>
-                </div>
-              </div>
+              <Searchbar
+                :submit-search-callback="submitSearch"
+                :initial-search-value="filterSearch"
+                placeholder="Search articles..."
+              />
             </div>
             <div class="font-semibold text-xl mb-2">
               <label for="categories-small">
@@ -103,8 +89,10 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
 import Tile from "../Tile/tile.ce.vue";
 import "../../main.css";
+import Searchbar from "../searchbar/searchbar.ce.vue";
 export default {
   components: {
+    Searchbar,
     Pagination,
     Tile,
   },
@@ -121,7 +109,6 @@ export default {
       filterCategories: [],
       filterSearch: null,
       formCategoriesElement: null,
-      formSearchElement: null,
       awaitMountPromise: null,
       currentURLAccessibilityHelper: null,
       images: [
@@ -160,10 +147,8 @@ export default {
     await self.awaitMountPromise;
 
     self.formCategoriesElement = $(".categories-small").select2();
-    self.formSearchElement = $(".search");
 
     // set the initial values of the form elements
-    self.formSearchElement.val(self.filterSearch);
     self.formCategoriesElement.val(self.filterCategories).trigger("change");
 
     // set the event handlers for the form elements
@@ -264,11 +249,8 @@ export default {
       }
       self.loading = false;
     },
-    submitSearch() {
-      this.filterSearch =
-        this.formSearchElement.val() == ""
-          ? null
-          : this.formSearchElement.val();
+    submitSearch(searchValue) {
+      this.filterSearch = searchValue;
       this.changeFilteringParameters();
     },
     submitCategories() {
