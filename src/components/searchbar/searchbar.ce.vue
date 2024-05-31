@@ -1,4 +1,5 @@
 <script>
+import "../../main.css";
 export default {
   props: {
     submitSearchCallback: {
