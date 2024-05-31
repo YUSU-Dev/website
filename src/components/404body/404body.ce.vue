@@ -57,8 +57,3 @@ export default {
     </div>
   </main>
 </template>
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
