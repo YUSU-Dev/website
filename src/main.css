@@ -30,7 +30,7 @@
     @apply mb-3;
   }
 
-  main a {
+  main article a {
     @apply underline text-blue-500;
   }
 
