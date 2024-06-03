@@ -9,27 +9,27 @@
       <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
         <!--- Below is an example -->
         <!-- {sections} -->
-        <li class="flex justify-center text-wrap">
+        <li class="flex justify-center break-words">
           <a class="w-full h-full btn btn-student-life" href="{section_url}">
             {section_name}
           </a>
         </li>
-        <li class="flex justify-center">
+        <li class="flex justify-center break-words">
           <a class="w-full h-full btn btn-student-life" href="{section_url}">
             {section_name}
           </a>
         </li>
-        <li class="flex justify-center">
+        <li class="flex justify-center break-words">
           <a class="w-full h-full btn btn-student-life" href="{section_url}">
             {section_name}
           </a>
         </li>
-        <li class="flex justify-center">
+        <li class="flex justify-center break-words">
           <a class="w-full h-full btn btn-student-life" href="{section_url}">
             {section_name}
           </a>
         </li>
-        <li class="flex justify-center">
+        <li class="flex justify-center break-words">
           <a class="w-full h-full btn btn-student-life" href="{section_url}">
             {section_name}
           </a>
@@ -44,7 +44,7 @@
             class="btn btn-secondary px-10 text-center w-full"
             href="{item_link}"
           >
-            {item_text}
+            {item_text} nfenjfewkmlefmklfeml;fmmafsdkmsakl;mdsal;km
           </a>
         </li>
         <li class="">
