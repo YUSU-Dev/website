@@ -30,8 +30,8 @@
     @apply mb-3;
   }
 
-  main a {
-    @apply underline text-blue-500;
+  main article a {
+    @apply underline text-blue-800;
   }
 
   main hr {

@@ -1,4 +1,5 @@
 <script>
+import "../../main.css";
 export default {
   components: {},
   data() {
@@ -43,7 +44,6 @@ export default {
   },
 };
 </script>
-
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
     <a
