@@ -116,7 +116,11 @@
             @change="updateCategory($event)"
           >
             <option value="">All</option>
-            <option v-for="category in Categories" :value="category.id">
+            <option
+              v-for="category in Categories"
+              :value="category.id"
+              :key="category.id"
+            >
               {{ category.name }}
             </option>
           </select>
@@ -132,7 +136,11 @@
             @change="updateGroup($event)"
           >
             <option value="">All</option>
-            <option v-for="activity in Groups" :value="activity.id">
+            <option
+              v-for="activity in Groups"
+              :value="activity.id"
+              :key="activity.id"
+            >
               {{ activity.name }}
             </option>
           </select>
