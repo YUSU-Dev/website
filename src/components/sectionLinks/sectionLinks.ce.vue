@@ -2,30 +2,95 @@
   <!-- Section Links -->
   <!-- {exp:su_sections:GetSidebarMenu sectionKey="{embed:section_id}" } -->
   <!-- {if has_sections} -->
-  <div class="grid grid-rows-2 gap-4">
-    <!--- Below is an example -->
-    <div class="grid md:grid-cols-4 gap-2">
+  <div class="container mx-auto py-10 justify-center">
+    <div
+      class="relative flex flex-col mt-6 px-2 lg:px-3 pb-4 text-center w-full max-w-4xl"
+    >
+      <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
+        <!--- Below is an example -->
+        <!-- {sections} -->
+        <li class="flex justify-center text-wrap">
+          <a class="w-full h-full btn btn-student-life" href="{section_url}">
+            {section_name}
+          </a>
+        </li>
+        <li class="flex justify-center">
+          <a class="w-full h-full btn btn-student-life" href="{section_url}">
+            {section_name}
+          </a>
+        </li>
+        <li class="flex justify-center">
+          <a class="w-full h-full btn btn-student-life" href="{section_url}">
+            {section_name}
+          </a>
+        </li>
+        <li class="flex justify-center">
+          <a class="w-full h-full btn btn-student-life" href="{section_url}">
+            {section_name}
+          </a>
+        </li>
+        <li class="flex justify-center">
+          <a class="w-full h-full btn btn-student-life" href="{section_url}">
+            {section_name}
+          </a>
+        </li>
+        <!-- {/sections} -->
+      </ul>
       <!-- {sections} -->
-      <div class="btn btn-student-life px-10 text-center" href="{section_url}">
-        {section_name}
-      </div>
-      <div class="btn btn-student-life px-10 text-center" href="{section_url}">
-        {section_name}
-      </div>
-      <div class="btn btn-student-life px-10 text-center" href="{section_url}">
-        {section_name}
-      </div>
+      <!-- {if section_has_items AND item_is_active} -->
+      <ul class="flex flex-wrap mt-6 gap-3">
+        <li class="">
+          <a
+            class="btn btn-secondary px-10 text-center w-full"
+            href="{item_link}"
+          >
+            {item_text}
+          </a>
+        </li>
+        <li class="">
+          <a
+            class="btn btn-secondary px-10 text-center w-full"
+            href="{item_link}"
+          >
+            {item_text}
+          </a>
+        </li>
+        <li class="">
+          <a
+            class="btn btn-secondary px-10 text-center w-full"
+            href="{item_link}"
+          >
+            {item_text}
+          </a>
+        </li>
+        <li class="">
+          <a
+            class="btn btn-secondary px-10 text-center w-full"
+            href="{item_link}"
+          >
+            {item_text}
+          </a>
+        </li>
+        <li class="">
+          <a
+            class="btn btn-secondary px-10 text-center w-full"
+            href="{item_link}"
+          >
+            {item_text}
+          </a>
+        </li>
+        <li class="">
+          <a
+            class="btn btn-secondary px-10 text-center w-full"
+            href="{item_link}"
+          >
+            {item_text}
+          </a>
+        </li>
+      </ul>
+      <!-- {/if} -->
       <!-- {/sections} -->
     </div>
-    <!-- {sections} -->
-    <!-- {if section_has_items AND item_is_active} -->
-    <div class="grid md:grid-cols-8">
-      <div class="btn btn-student-life px-10 text-center" href="{item_link}">
-        {item_text}
-      </div>
-    </div>
-    <!-- {/if} -->
-    <!-- {/sections} -->
   </div>
   <!-- {/if} -->
   <!-- {/exp:su_sections:GetSidebarMenu} -->
