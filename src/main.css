@@ -55,7 +55,7 @@
   /* Select2 Classes */
 
   #events-a-z .select2-container--default .select2-selection--single {
-    @apply bg-black text-white;
+    @apply bg-black text-white rounded-none !important;
   }
 
   #events-a-z .select2-container .select2-selection--single {
@@ -85,6 +85,31 @@
     .select2-selection--multiple
     .select2-selection__choice__display {
     @apply text-balance text-base font-normal px-2;
+  }
+
+  .select2-selection__arrow {
+    @apply h-[95%] !important;
+  }
+
+  .select2-selection__arrow b {
+    border-color: #ffffff transparent transparent transparent !important;
+  }
+
+  .select2-container--default.select2-container--open
+    .select2-selection--single
+    .select2-selection__arrow
+    b {
+    border-color: transparent transparent #ffffff transparent !important;
+  }
+
+  .select2-selection__placeholder {
+    @apply text-white !important;
+  }
+
+  .select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    @apply text-white !important;
   }
 
   /* Button Classes */

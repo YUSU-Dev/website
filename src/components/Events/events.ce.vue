@@ -147,10 +147,10 @@
         </div>
         <div class="flex flex-col">
           <label for="event-search">Search</label>
-          <div class="input-group flex border-[1px] border-black">
+          <div class="input-group flex border-[1px] border-black h-full">
             <input
               id="event-search"
-              class="form-control w-full"
+              class="form-control w-full h-full"
               aria-label="Search"
               type="text"
               name="search"
@@ -159,7 +159,7 @@
             <div class="input-group-append">
               <button
                 type="submit"
-                class="btn btn-block btn-secondary"
+                class="btn btn-block btn-secondary h-full"
                 aria-label="Submit"
               >
                 <i class="fas fa-search"></i>
@@ -167,8 +167,13 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-end items-center">
-          <Button title="Reset" @click="reset" isStudentLife="true" />
+        <div class="flex justify-end items-end">
+          <Button
+            title="Reset"
+            @click="reset"
+            isStudentLife="true"
+            class="h-[38px] flex items-center"
+          />
         </div>
       </div>
       <div
@@ -198,6 +203,7 @@
   />
 </template>
 <script>
+import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
@@ -379,6 +385,7 @@ export default {
     },
     //update various fields to change events data
     updateCategory(event) {
+      console.log("here");
       this.SelectedType = event.target.value;
       this.getEvents();
     },
@@ -443,11 +450,37 @@ export default {
 /* Select2 */
 .select2-container--default .select2-selection--single {
   background-color: black !important;
+  border-radius: 0px !important;
 }
 
 .select2-container .select2-selection--single {
   height: inherit;
   padding-top: 4px;
   padding-bottom: 4px;
+}
+
+.select2-selection__arrow {
+  height: 95% !important;
+}
+
+.select2-selection__arrow b {
+  color: white !important;
+}
+
+.select2-container--default.select2-container--open
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
+  color: white !important;
+}
+
+.select2-selection__placeholder {
+  color: white !important;
+}
+
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  color: white !important;
 }
 </style>
