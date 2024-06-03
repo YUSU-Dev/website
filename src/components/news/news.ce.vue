@@ -154,11 +154,11 @@ export default {
 
     // self.formCategoriesElement = $(".categories-small").select2();
 
-    // set the initial values of the form elements
-    self.formCategoriesElement.val(self.filterCategories).trigger("change");
+    // // set the initial values of the form elements
+    // self.formCategoriesElement.val(self.filterCategories).trigger("change");
 
-    // set the event handlers for the form elements
-    self.formCategoriesElement.on("change", self.submitCategories);
+    // // set the event handlers for the form elements
+    // self.formCategoriesElement.on("change", self.submitCategories);
 
     self.currentURLAccessibilityHelper = window.location.href;
 
