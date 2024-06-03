@@ -91,6 +91,7 @@
 import axios from "../../_common/axios.mjs";
 import Pagination from "../Pagination/pagination.ce.vue";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
+import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
 import "../../main.css";
 import Searchbar from "../searchbar/searchbar.ce.vue";
@@ -150,15 +151,13 @@ export default {
     const self = this;
     await self.awaitMountPromise;
 
-    // TODO Fix the below line:
+    self.formCategoriesElement = $(".categories-small").select2();
 
-    // self.formCategoriesElement = $(".categories-small").select2();
+    // set the initial values of the form elements
+    self.formCategoriesElement.val(self.filterCategories).trigger("change");
 
-    // // set the initial values of the form elements
-    // self.formCategoriesElement.val(self.filterCategories).trigger("change");
-
-    // // set the event handlers for the form elements
-    // self.formCategoriesElement.on("change", self.submitCategories);
+    // set the event handlers for the form elements
+    self.formCategoriesElement.on("change", self.submitCategories);
 
     self.currentURLAccessibilityHelper = window.location.href;
 
