@@ -435,3 +435,19 @@ export default {
 //     }
 // })
 </script>
+<style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Select2 */
+.select2-container--default .select2-selection--single {
+  background-color: black !important;
+}
+
+.select2-container .select2-selection--single {
+  height: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+</style>

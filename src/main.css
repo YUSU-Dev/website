@@ -53,6 +53,14 @@
 @tailwind components;
 @layer components {
   /* Select2 Classes */
+
+  #events-a-z .select2-container--default .select2-selection--single {
+    @apply bg-black text-white;
+  }
+
+  #events-a-z .select2-container .select2-selection--single {
+    @apply pt-1 pb-1 h-auto;
+  }
   .select2 {
     @apply min-w-full;
   }
@@ -77,14 +85,6 @@
     .select2-selection--multiple
     .select2-selection__choice__display {
     @apply text-balance text-base font-normal px-2;
-  }
-
-  #events-a-z .select2-container--default .select2-selection--single {
-    @apply bg-black;
-  }
-
-  #events-a-z .select2-container .select2-selection--single {
-    @apply pt-1 pb-1 h-auto;
   }
 
   /* Button Classes */
