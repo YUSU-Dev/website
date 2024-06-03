@@ -79,6 +79,14 @@
     @apply text-balance text-base font-normal px-2;
   }
 
+  #events-a-z .select2-container--default .select2-selection--single {
+    @apply bg-black;
+  }
+
+  #events-a-z .select2-container .select2-selection--single {
+    @apply pt-1 pb-1 h-auto;
+  }
+
   /* Button Classes */
   .btn {
     @apply no-underline py-3 px-3 text-black hover:text-black;
