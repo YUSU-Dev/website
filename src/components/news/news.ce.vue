@@ -46,7 +46,11 @@
           No Articles Found
         </h2>
       </div>
-      <div v-if="loading" class="flex justify-center mt-16 spinner">
+      <div
+        v-if="loading"
+        class="flex justify-center mt-16 spinner"
+        aria-label="Loading"
+      >
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
