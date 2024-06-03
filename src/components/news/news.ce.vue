@@ -152,6 +152,7 @@ export default {
     await self.awaitMountPromise;
 
     // self.formCategoriesElement = $(".categories-small").select2();
+    self.formCategoriesElement = $(".categories-small");
 
     // // set the initial values of the form elements
     // self.formCategoriesElement.val(self.filterCategories).trigger("change");
