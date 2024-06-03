@@ -80,7 +80,6 @@
     href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
     crossorigin="anonymous"
   />
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </template>
 <style>
 @tailwind base;
@@ -151,7 +150,9 @@ export default {
     const self = this;
     await self.awaitMountPromise;
 
-    self.formCategoriesElement = $(".categories-small").select2();
+    // TODO Fix the below line:
+
+    // self.formCategoriesElement = $(".categories-small").select2();
 
     // set the initial values of the form elements
     self.formCategoriesElement.val(self.filterCategories).trigger("change");
