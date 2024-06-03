@@ -2,7 +2,7 @@ import Searchbar from "./searchbar.ce.vue";
 import { fn } from "@storybook/test";
 
 export default {
-  title: "Components/Searchbar",
+  title: "Elements/Searchbar",
   component: Searchbar,
   parameters: {},
 };
