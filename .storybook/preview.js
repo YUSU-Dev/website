@@ -1,3 +1,5 @@
+import DocsTemplate from "../src/docs/DocsTemplate.mdx";
+
 /** @type { import('@storybook/vue3').Preview } */
 const preview = {
   parameters: {
@@ -8,6 +10,9 @@ const preview = {
       },
     },
     layout: "fullscreen",
+    docs: {
+      page: DocsTemplate,
+    },
   },
   tags: ["autodocs"],
 };

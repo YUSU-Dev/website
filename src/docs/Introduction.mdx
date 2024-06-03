@@ -1,0 +1,117 @@
+import {
+  Meta,
+  ColorPalette,
+  ColorItem,
+  Typeset,
+  Markdown,
+} from "@storybook/blocks";
+import Readme from "../../README.md?raw";
+
+export const typography = {
+  type: {
+    sans: '"soleil", sans-serif',
+    serif: '"rooney-web", "serif"',
+  },
+  weight: {
+    regular: "400",
+    bold: "700",
+  },
+  size: {
+    h1: "36",
+    h2: "32",
+    h3: "24",
+    h4: "20",
+    sh1: "24",
+    sh2: "16",
+  },
+};
+
+export const SampleText =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+<Meta title="Introduction" /># Introduction Welcome to YorkSU's Storybook! This
+contains all of our components and styles for the website.
+
+# Style Guide
+
+## Colours Palette
+
+<ColorPalette>
+<ColorItem
+    title="Primary Brand"
+    colors={{ 
+            'mustard': '#F2CB50', 
+            'light-pink': '#FFBBBE', 
+            'primary-blue': '#307CBF', 
+            'primary-red': '#E74C3C', 
+            'beige': '#F4E9E1', 
+            'black': '#231F20' 
+        }}
+  />
+  <ColorItem
+    title="Sub Brand"
+    subtitle="Student Life"
+    colors={{ 
+            'mustard': '#F2CB50', 
+            'light-pink': '#FFBBBE', 
+            'light-blue': '#D3E6EF', 
+            'beige': '#F4E9E1', 
+            'black': '#231F20' 
+        }}
+  />
+  <ColorItem
+    title="Sub Brand"
+    subtitle="Student Voice"
+    colors={{ 
+            'primary-red': '#E74C3C', 
+            'voice-orange': '#F2682F', 
+            'light-pink': '#FFBBBE', 
+            'beige': '#F4E9E1', 
+            'black': '#231F20' 
+        }}
+  />
+  <ColorItem
+    title="Sub Brand"
+    subtitle="Advice & Support"
+    colors={{ 
+            'primary-blue': '#307CBF', 
+            'advice-green': '#00A463', 
+            'light-blue': '#D3E6EF', 
+            'beige': '#F4E9E1', 
+            'black': '#231F20' 
+        }}
+  />
+
+  </ColorPalette>
+## Typography
+
+### Soleil
+
+**Weights:** 400(regular), 700(bold)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.h1),
+    Number(typography.size.h2),
+    Number(typography.size.h3),
+    Number(typography.size.h4),
+  ]}
+  fontWeight={typography.weight.bold}
+  sampleText={SampleText}
+  fontFamily={typography.type.sans}
+/>
+
+### Rooney
+
+**Weights:** 400(regular)
+
+<Typeset
+  fontSizes={[Number(typography.size.sh1), Number(typography.size.sh2)]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.serif}
+/>
+
+# README
+
+<Markdown>{ReadMe}</Markdown>
