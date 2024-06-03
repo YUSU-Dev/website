@@ -91,6 +91,7 @@
 import axios from "../../_common/axios.mjs";
 import Pagination from "../Pagination/pagination.ce.vue";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
+import select2 from "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
 import "../../main.css";
 import Searchbar from "../searchbar/searchbar.ce.vue";
