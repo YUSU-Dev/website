@@ -82,10 +82,10 @@
   />
 </template>
 <style>
+@import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
 </style>
 <script>
 import axios from "../../_common/axios.mjs";
