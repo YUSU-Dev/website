@@ -15,6 +15,7 @@
         <div class="p-6 h-[136px] flex flex-col justify-between">
           <h3 class="text-xl mb-2 font-semibold line-clamp-2">{{ title }}</h3>
           <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
+          <p v-if="shopGroupName" class="font-semibold">{{ shopGroupName }}</p>
           <p v-if="text" class="font-semibold">{{ text }}</p>
           <div v-if="!date && !text">
             <p class="font-semibold">
@@ -23,6 +24,13 @@
                 class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-4 transition"
               ></i>
             </p>
+          </div>
+          <div v-if="productId">
+            <a class="btn btn-secondary mt-2" href="#">
+              <span class="font-semibold" @click="addToBasket(productId)">
+                Add to basket
+              </span>
+            </a>
           </div>
         </div>
       </a>
@@ -67,6 +75,9 @@ export default {
     "image",
     "date",
     "text",
+    "addToBasket",
+    "productId",
+    "shopGroupName",
     "categories",
     "Brand",
     "appendCategory",

@@ -1,23 +1,31 @@
 <template>
-  <div class="w-100">
-    <div v-bind:class="{ 'sidebar-coloured': featuredshop }" class="pt-3">
+  <div class="w-full">
+    <div class="pt-3">
       <div class="container">
         <h2 v-if="title" class="text-center pb-2">{{ title }}</h2>
         <div v-if="!hidefilter">
-          <h2 class="h6">Shop Filters</h2>
+          <h2 class="text-3xl">Shop Filters</h2>
           <div class="row">
-            <div class="col-lg-6 form-group">
-              <label for="shop-search">Search</label>
-              <div class="input-group mb-3">
+            <div class="justify-center">
+              <div class="input-group flex px-2 lg:px-3">
                 <input
-                  id="shop-search"
-                  class="form-control"
-                  aria-label="Search"
+                  class="border-[1px] border-black search form-control w-full p-2"
                   type="text"
+                  aria-label="search for an activity"
                   name="search"
                   placeholder="Search..."
                   v-on:keyup="search($event)"
                 />
+                <div class="input-group-append">
+                  <button
+                    type="submit"
+                    aria-label="Submit"
+                    class="btn btn-block btn-secondary bg-black w-full h-full px-1"
+                    @click="submitSearch"
+                  >
+                    <i class="fas fa-search text-white p-2"></i>
+                  </button>
+                </div>
               </div>
             </div>
             <div class="col-lg-3 form-group">
@@ -60,12 +68,35 @@
         </div>
       </div>
     </div>
-    <div class="pt-4 text-center">
+    <div class="relative flex mt-6 px-2 lg:px-3 pb-4">
       <div class="container">
         <div class="m-4 text-center" v-if="!Products.length">
           <h3>No products found</h3>
         </div>
-        <div class="row justify-content-center">
+        <div
+          class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 mt-10"
+        >
+          <Tile
+            v-for="product in Products"
+            :key="product.id"
+            :url="'/shop/product/' + product.id + '-' + product.url_name"
+            :title="product.name"
+            :image="product.image"
+            :addToBasket="addToBasket"
+            :text="toCurrency(product.price)"
+            :productId="product.id"
+            :shopGroupName="product.group_name"
+          />
+        </div>
+        <Pagination
+          :Array="Products"
+          :loadPage="loadPage"
+          :Page="Page"
+          :MoreResults="moreProducts"
+          :PreviousResults="PreviousResults"
+        />
+      </div>
+      <!-- <div class="row justify-content-center">
           <div
             v-bind:class="{
               'col-md-3': Products.length > 3,
@@ -128,16 +159,38 @@
           >
             Load More <i class="fa fa-chevron-down"></i>
           </button>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
     </div>
   </div>
+  <Modal
+    :signedIn="signedIn"
+    :modalClosed="ModalClosed"
+    :title="'Basket Error!'"
+    :errorDescription="ErrorDescription"
+  />
 </template>
 
 <script>
+import Tile from "../Tile/tile.ce.vue";
+import Pagination from "../Pagination/pagination.ce.vue";
+import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
+import "../../main.css";
 export default {
-  props: ["siteid", "title", "featuredshop", "hidefilter", "selectedgroup"],
+  props: [
+    "siteid",
+    "title",
+    "featuredshop",
+    "hidefilter",
+    "selectedgroup",
+    "signedIn",
+  ],
+  components: {
+    Tile,
+    Pagination,
+    Modal,
+  },
   data() {
     return {
       Products: [],
@@ -147,8 +200,12 @@ export default {
       SelectedGroup: "",
       SelectedCategory: "",
       Page: 1,
+      Pages: [],
       MoreResults: false,
+      PreviousResults: false,
       ShopOnly: true,
+      ModalClosed: false,
+      ErrorDescription: "",
     };
   },
   created() {
@@ -192,10 +249,6 @@ export default {
     //get Products
     self.getProducts();
   },
-  mounted() {
-    //allow scrolling functionality
-    this.onScroll();
-  },
   methods: {
     /**
      * Fetch products from API
@@ -205,6 +258,7 @@ export default {
       var self = this;
       if (!append) {
         self.Page = 1;
+        self.Pages = [1];
       }
       let parameters = "sortBy=name&perPage=12&hasStock=1&page=" + self.Page;
       if (self.featuredshop) {
@@ -227,18 +281,17 @@ export default {
           },
         })
         .then(function (response) {
-          //if we want more events (append = true), add to array
-          if (append) {
-            self.Products = [...self.Products, ...response.data.data];
-          } else {
-            //otherwise replace current events
-            self.Products = response.data.data;
-          }
+          self.Products = response.data.data;
           //If the API says there are more results (ie another page), update the template accordingly
           if (response.data.next_page_url) {
             self.MoreResults = true;
           } else {
             self.MoreResults = false;
+          }
+          if (response.data.prev_page_url) {
+            self.PreviousResults = true;
+          } else {
+            self.PreviousResults = false;
           }
         });
     },
@@ -270,36 +323,66 @@ export default {
       this.Page++;
       this.getProducts(true);
     },
-    /**
-     * Track when the user scrolls down the page
-     */
-    onScroll() {
-      window.onscroll = () => {
-        let bottomOfWindow =
-          Math.max(
-            window.pageYOffset,
-            document.documentElement.scrollTop,
-            document.body.scrollTop,
-          ) +
-            window.innerHeight +
-            10 >=
-          document.documentElement.offsetHeight;
-
-        //automatically get more results if at bottom of page
-        if (bottomOfWindow) {
-          this.moreProducts();
-        }
-      };
+    loadPage(pageNumber = null) {
+      if (pageNumber) {
+        this.Page = pageNumber;
+      } else {
+        this.Page++;
+      }
+      this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
+      this.getProducts(true);
     },
     toCurrency(value) {
       if (typeof value !== "number") {
         return value;
+      }
+      if (value === 0) {
+        return "Free";
       }
       var formatter = new Intl.NumberFormat("en-GB", {
         style: "currency",
         currency: "GBP",
       });
       return formatter.format(value);
+    },
+    addToBasket(productId) {
+      axios
+        .post(
+          "shop/ajax",
+          {
+            c: "ab",
+            pid: productId,
+          },
+          {
+            headers: {
+              "X-Site-Id": this.siteid,
+            },
+          },
+        )
+        .then(function (response) {
+          if (!response["success"]) {
+            var data = response.error_message;
+            this.ErrorDescription = data;
+            this.ModalClosed = false;
+            return;
+          }
+          if (typeof response.fields != "undefined") {
+            window.location.replace("/shop/fields/" + productID);
+          } else {
+            // refreshBasketAdd();
+          }
+        })
+        .catch(function (response) {
+          if (response.error_message != "undefined") {
+            console.log(
+              "There was an error adding the product to the basket: " +
+                response.error_message,
+            );
+            this.ModalClosed = false;
+          } else {
+            console.log("Undefined error adding product to basket");
+          }
+        });
     },
   },
 };
