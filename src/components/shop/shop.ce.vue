@@ -367,7 +367,7 @@ export default {
             return;
           }
           if (typeof response.fields != "undefined") {
-            window.location.replace("/shop/fields/" + productID);
+            window.location.replace("/shop/fields/" + productId);
           } else {
             // refreshBasketAdd();
           }
