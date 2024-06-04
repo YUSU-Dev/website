@@ -154,13 +154,7 @@ export default {
     const self = this;
     await self.awaitMountPromise;
 
-    // self.formCategoriesElement = $(".categories-small").select2();
-    self.formCategoriesElement = $(".categories-small");
-
-    // enable select2 (dropdown with search functionality)
-    self.formCategoriesElement.select2({
-      placeholder: "Select categories",
-    });
+    self.formCategoriesElement = $(".categories-small").select2();
 
     // set the initial values of the form elements
     self.formCategoriesElement.val(self.filterCategories).trigger("change");
