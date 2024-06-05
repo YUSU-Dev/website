@@ -33,8 +33,5 @@ export default {
     arrow: Boolean,
     isTertiary: Boolean,
   },
-  mounted() {
-    console.log(this.isPrimary);
-  },
 };
 </script>
