@@ -49,7 +49,8 @@
       <div
         v-if="loading"
         class="spinner mt-16 flex justify-center"
-        aria-label="Loading"
+        role="alert"
+        aria-busy="true"
       >
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
