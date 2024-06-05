@@ -4,7 +4,7 @@
     <div
       v-show="!modalClosed"
       id="error-modal"
-      class="modal"
+      class="modal flex items-start"
       aria-label="Error Modal"
       tabindex="-1"
       role="dialog"

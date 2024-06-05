@@ -347,6 +347,7 @@ export default {
       return formatter.format(value);
     },
     addToBasket(productId) {
+      let self = this;
       axios
         .post(
           "shop/ajax",
@@ -356,15 +357,15 @@ export default {
           },
           {
             headers: {
-              "X-Site-Id": this.siteid,
+              "X-Site-Id": self.siteid,
             },
           },
         )
         .then(function (response) {
           if (!response["success"]) {
             var data = response.error_message;
-            this.ErrorDescription = data;
-            this.ModalClosed = false;
+            self.ErrorDescription = data;
+            self.ModalClosed = false;
             return;
           }
           if (typeof response.fields != "undefined") {
@@ -379,7 +380,7 @@ export default {
               "There was an error adding the product to the basket: " +
                 response.error_message,
             );
-            this.ModalClosed = false;
+            self.ModalClosed = false;
           } else {
             console.log("Undefined error adding product to basket");
           }
