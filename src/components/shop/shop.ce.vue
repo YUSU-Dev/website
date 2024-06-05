@@ -288,20 +288,17 @@ export default {
     },
     addToBasket(productId) {
       let self = this;
-      axios
-        .post(
-          "shop/ajax",
-          qs.stringify({
-            c: "ab",
-            pid: productId,
-          }),
-          {
-            headers: {
-              "Content-Type":
-                "application/x-www-form-urlencoded; charset=UTF-8",
-            },
-          },
-        )
+      axios({
+        method: "post",
+        url: "shop/ajax",
+        data: qs.stringify({
+          c: "ab",
+          pid: productId,
+        }),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
+      })
         .then(function (response) {
           if (!response.data["success"]) {
             var data = response.data.error_message;
