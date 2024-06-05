@@ -205,7 +205,7 @@ export default {
       MoreResults: false,
       PreviousResults: false,
       ShopOnly: true,
-      ModalClosed: false,
+      ModalClosed: true,
       ErrorDescription: "",
     };
   },
