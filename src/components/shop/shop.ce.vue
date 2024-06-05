@@ -165,9 +165,10 @@
   </div>
   <Modal
     :signedIn="signedIn"
-    :modalClosed="ModalClosed"
     :title="'Basket Error!'"
     :errorDescription="ErrorDescription"
+    :modalClosed="ModalClosed"
+    @close="ModalClosed = true"
   />
 </template>
 
