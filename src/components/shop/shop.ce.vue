@@ -288,10 +288,18 @@ export default {
     addToBasket(productId) {
       let self = this;
       axios
-        .post("shop/ajax", {
-          c: ab,
-          pid: productId,
-        })
+        .post(
+          "shop/ajax",
+          {
+            c: "ab",
+            pid: productId,
+          },
+          {
+            headers: {
+              "Content-Type": "text/plain",
+            },
+          },
+        )
         .then(function (response) {
           if (!response["success"]) {
             var data = response.error_message;
