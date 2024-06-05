@@ -1,8 +1,8 @@
-import StudentLife from "./studentlife.ce.vue";
+import "./studentlife.component.js";
 
 export default {
   title: "Pages/StudentLife",
-  component: StudentLife,
+  component: "studentlife",
 };
 
 export const Sports = {

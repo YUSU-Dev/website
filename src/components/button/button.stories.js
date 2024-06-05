@@ -1,8 +1,8 @@
-import Button from "./button.ce.vue";
+import "./button.component.js";
 
 export default {
   title: "Elements/Button",
-  component: Button,
+  component: "button",
 };
 
 export const PrimaryButton = {

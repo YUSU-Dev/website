@@ -1,9 +1,9 @@
-import Error404Body from "./404body.ce.vue";
+import "./404body.component.js";
 import { fn } from "@storybook/test";
 
 export default {
   title: "PageContent/404Body",
-  component: Error404Body,
+  component: "404body",
   parameters: {},
 };
 

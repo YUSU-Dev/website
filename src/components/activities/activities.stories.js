@@ -1,8 +1,8 @@
-import Activities from "./activities.ce.vue";
+import "./activities.component.js";
 
 export default {
   title: "Components/Activities",
-  component: Activities,
+  component: "activities",
 };
 
 export const Default = {

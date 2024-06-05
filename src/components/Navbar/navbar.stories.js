@@ -1,8 +1,8 @@
-import Navbar from "./navbar.ce.vue";
+import "./navbar.component.js";
 
 export default {
   title: "Components/Navbar",
-  component: Navbar,
+  component: "navbar",
 };
 
 export const Default = {
