@@ -2,7 +2,7 @@
   <div class="w-100">
     <div v-bind:class="{ 'sidebar-coloured': featuredshop }" class="pt-3">
       <div class="container">
-        <h2 v-if="title" class="text-center pb-2">{{ title }}</h2>
+        <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
         <div v-if="!hidefilter">
           <h2 class="h6">Shop Filters</h2>
           <div class="row">
@@ -71,7 +71,7 @@
               'col-md-3': Products.length > 3,
               'col-md-4': Products.length < 4,
             }"
-            class="col-9 my-3 d-flex align-items-stretch"
+            class="col-9 d-flex align-items-stretch my-3"
             v-for="product in Products"
             :key="product.id"
           >
@@ -91,7 +91,7 @@
                 src="https://assets-cdn.sums.su/YU/IMG/Website/500x500_Placeholder.webp"
                 alt=""
               />
-              <div class="card-body d-flex flex-column text-center text-dark">
+              <div class="card-body d-flex flex-column text-dark text-center">
                 <h3 class="h5 card-title">{{ product.name }}</h3>
                 <p class="card-text mt-auto" v-if="product.group_name">
                   {{ product.group_name }}

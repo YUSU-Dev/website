@@ -1,6 +1,6 @@
 <template>
-  <div class="mb-4 px-2 lg:px-3 pb-2 lg:pb-3">
-    <div class="transition hover:scale-105 relative shadow h-full">
+  <div class="mb-4 px-2 pb-2 lg:px-3 lg:pb-3">
+    <div class="relative h-full shadow transition hover:scale-105">
       <a class="group text-black no-underline" :href="url">
         <div
           v-if="image"
@@ -12,15 +12,15 @@
           class="aspect-square bg-cover bg-center"
           :style="{ 'background-image': randomImage() }"
         ></div>
-        <div class="p-6 h-[136px] flex flex-col justify-between">
-          <h3 class="text-xl mb-2 font-semibold line-clamp-2">{{ title }}</h3>
+        <div class="flex h-[136px] flex-col justify-between p-6">
+          <h3 class="mb-2 line-clamp-2 text-xl font-semibold">{{ title }}</h3>
           <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
           <p v-if="text" class="font-semibold">{{ text }}</p>
           <div v-if="!date && !text">
             <p class="font-semibold">
               Discover
               <i
-                class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-4 transition"
+                class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-4"
               ></i>
             </p>
           </div>
@@ -30,17 +30,17 @@
       <div v-if="categories">
         <div
           v-if="categories.length"
-          class="rounded flex flex-col absolute bg-[#40454d] top-2.5 ml-2 mr-3 max-w-full max-h-[232.33px] overflow-y-auto group"
+          class="group absolute top-2.5 ml-2 mr-3 flex max-h-[232.33px] max-w-full flex-col overflow-y-auto rounded bg-[#40454d]"
         >
           <div class="flex">
             <i class="fa-solid fa-tag p-2 text-white"></i>
-            <p class="m-0 pr-2 flex items-center text-white">
+            <p class="m-0 flex items-center pr-2 text-white">
               {{ categories.length }}
             </p>
           </div>
           <div class="hidden group-hover:flex">
-            <div class="pl-1 pr-5 pb-4 text-white">
-              <ul class="ps-[10px] mb-0 list-none">
+            <div class="pb-4 pl-1 pr-5 text-white">
+              <ul class="mb-0 list-none ps-[10px]">
                 <li v-for="category in categories" :key="category.id">
                   <span
                     @click="appendCategory(category.id)"

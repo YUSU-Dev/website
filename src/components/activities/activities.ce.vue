@@ -1,12 +1,12 @@
 <template>
   <div class="container mx-auto py-10" id="societies-a-z">
-    <div v-if="title" class="px-2 lg:px-3 mb-4">
+    <div v-if="title" class="mb-4 px-2 lg:px-3">
       <h2>{{ title }}</h2>
     </div>
     <div class="justify-center">
       <div class="input-group flex px-2 lg:px-3">
         <input
-          class="border-[1px] border-black search form-control w-full p-2"
+          class="search form-control w-full border-[1px] border-black p-2"
           type="text"
           aria-label="search for an activity"
           name="search"
@@ -17,28 +17,28 @@
           <button
             type="submit"
             aria-label="Submit"
-            class="btn btn-block btn-secondary bg-black w-full h-full px-1"
+            class="btn btn-block btn-secondary h-full w-full bg-black px-1"
             @click="submitSearch"
           >
-            <i class="fas fa-search text-white p-2"></i>
+            <i class="fas fa-search p-2 text-white"></i>
           </button>
         </div>
       </div>
-      <div class="relative flex mt-6 px-2 lg:px-3 pb-4">
+      <div class="relative mt-6 flex px-2 pb-4 lg:px-3">
         <Transition>
           <div class="w-full" v-if="Search">
-            <h3 class="text-center font-semibold text-3xl">Search Results</h3>
+            <h3 class="text-center text-3xl font-semibold">Search Results</h3>
           </div>
         </Transition>
         <Transition>
           <div
-            class="text-center w-full max-w-4xl"
+            class="w-full max-w-4xl text-center"
             v-if="!Search && ParentCategories.length > 0"
           >
             <div class="">
               <h3 class="sr-only">Filters</h3>
               <div v-if="ParentCategories.length > 1">
-                <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
+                <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
                   <li
                     v-for="Parent in ParentCategories"
                     @click.prevent="
@@ -51,17 +51,17 @@
                   >
                     <a
                       v-bind:class="{
-                        '!bg-light-blue text-black font-semibold':
+                        '!bg-light-blue font-semibold text-black':
                           SelectedParent.id === Parent.id,
                       }"
-                      class="w-full h-full flex justify-center px-4 py-2 border-2 font-semibold border-none bg-mustard text-black hover:bg-light-blue hover:text-black text-xl"
+                      class="flex h-full w-full justify-center border-2 border-none bg-mustard px-4 py-2 text-xl font-semibold text-black hover:bg-light-blue hover:text-black"
                     >
                       <h3>{{ Parent.name }}</h3>
                     </a>
                   </li>
                 </ul>
               </div>
-              <ul class="flex flex-wrap mt-6 gap-2" v-if="SelectedParent">
+              <ul class="mt-6 flex flex-wrap gap-2" v-if="SelectedParent">
                 <li
                   class=""
                   @click.prevent="
@@ -71,11 +71,11 @@
                 >
                   <a
                     v-bind:class="{
-                      '!bg-light-blue text-black font-semibold':
+                      '!bg-light-blue font-semibold text-black':
                         SelectedCategory === '',
                     }"
                     href="#"
-                    class="flex justify-center px-4 py-2 bg-mustard text-black hover:bg-light-blue hover:text-black text-lg"
+                    class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
                   >
                     <h4>All</h4>
                   </a>
@@ -91,10 +91,10 @@
                 >
                   <a
                     v-bind:class="{
-                      '!bg-light-blue text-black font-semibold':
+                      '!bg-light-blue font-semibold text-black':
                         SelectedCategory.id === Category.id,
                     }"
-                    class="flex justify-center px-4 py-2 bg-mustard text-black hover:bg-light-blue hover:text-black text-lg"
+                    class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
                     :href="
                       '/student-life/clubs-and-socs?category=' + Category.id
                     "
@@ -108,7 +108,7 @@
         </Transition>
       </div>
       <div
-        class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 mt-10"
+        class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
       >
         <Tile
           v-for="Group in Groups"
