@@ -116,6 +116,7 @@ import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
+import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
 import "../../main.css";
 export default {
   props: [
@@ -290,10 +291,10 @@ export default {
       axios
         .post(
           "shop/ajax",
-          {
+          qs.stringify({
             c: "ab",
             pid: productId,
-          },
+          }),
           {
             headers: {
               "Content-Type":
@@ -302,25 +303,26 @@ export default {
           },
         )
         .then(function (response) {
-          if (!response["success"]) {
-            var data = response.error_message;
+          if (!response.data["success"]) {
+            var data = response.data.error_message;
             self.ErrorDescription = data;
             self.ModalClosed = false;
             return;
           }
-          if (typeof response.fields != "undefined") {
+          if (typeof response.data.fields != "undefined") {
             window.location.replace("/shop/fields/" + productId);
           } else {
             // refreshBasketAdd();
           }
         })
         .catch(function (response) {
-          if (response.error_message != "undefined") {
+          if (response.data.error_message != "undefined") {
             console.log(
               "There was an error adding the product to the basket: " +
-                response.error_message,
+                response.data.error_message,
             );
             self.ModalClosed = false;
+            self.ErrorDescription = response.data.error_message;
           } else {
             console.log("Undefined error adding product to basket");
           }
