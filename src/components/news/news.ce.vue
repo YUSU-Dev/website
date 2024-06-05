@@ -1,13 +1,13 @@
 <template>
   <div id="newsTop" class=""></div>
-  <div class="grid grid-cols-5 container mx-auto">
-    <div class="col-span-5 xl:col-span-1 order-1 xl:order-2 mb-5 xl:pl-4">
-      <div class="sticky top-4 p-6 border-black border-[1px]">
+  <div class="container mx-auto grid grid-cols-5">
+    <div class="order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
+      <div class="sticky top-4 border-[1px] border-black p-6">
         <div class="">
           <div class="">
             <div class="mb-5">
               <label for="search">
-                <h2 class="font-semibold text-xl mb-2">Search</h2>
+                <h2 class="mb-2 text-xl font-semibold">Search</h2>
               </label>
               <Searchbar
                 :submit-search-callback="submitSearch"
@@ -15,7 +15,7 @@
                 placeholder="Search articles..."
               />
             </div>
-            <div class="font-semibold text-xl mb-2">
+            <div class="mb-2 text-xl font-semibold">
               <label for="categories-small">
                 <h2 class="mb-2">Categories</h2>
               </label>
@@ -40,20 +40,20 @@
       </div>
     </div>
 
-    <div class="col-span-5 xl:col-span-4 order-1 xl:order-1 xl:pr-4 mx-md-0">
+    <div class="mx-md-0 order-1 col-span-5 xl:order-1 xl:col-span-4 xl:pr-4">
       <div v-if="News.length == 0" class="container mx-auto">
-        <h2 class="mb-4 text-center text-2xl font-semibold mt-16">
+        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
           No Articles Found
         </h2>
       </div>
       <div
         v-if="loading"
-        class="flex justify-center mt-16 spinner"
+        class="spinner mt-16 flex justify-center"
         aria-label="Loading"
       >
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
+      <div class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <Tile
           v-for="article in News"
           :key="article.id"

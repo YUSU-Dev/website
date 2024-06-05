@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!loading && Array.length" class="flex pl-3 gap-3">
+  <div v-if="!loading && Array.length" class="flex gap-3 pl-3">
     <button
       @click="loadPage(this.Page - 1)"
       v-if="PreviousResults"
