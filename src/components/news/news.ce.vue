@@ -83,9 +83,6 @@
 </template>
 <style>
 @import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 </style>
 <script>
 import axios from "../../_common/axios.mjs";
@@ -94,7 +91,6 @@ import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
 import $ from "https://cdn.jsdelivr.net/npm/jquery/+esm";
 import select2 from "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
-import "../../main.css";
 import Searchbar from "../searchbar/searchbar.ce.vue";
 
 export default {

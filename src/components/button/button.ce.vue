@@ -19,7 +19,6 @@
   </a>
 </template>
 <script>
-import "../../main.css";
 export default {
   props: [
     "title",

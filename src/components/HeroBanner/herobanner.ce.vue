@@ -17,7 +17,6 @@
   </div>
 </template>
 <script>
-import "../../main.css";
 export default {
   props: ["title", "image"],
   data() {

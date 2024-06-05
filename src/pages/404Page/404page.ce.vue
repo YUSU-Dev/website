@@ -1,8 +1,3 @@
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
 <template>
   <div class="flex min-h-screen flex-col">
     <Navbar />

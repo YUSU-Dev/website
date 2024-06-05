@@ -12,6 +12,4 @@ const preview = {
   tags: ["autodocs"],
 };
 
-import "../src/main.css";
-
 export default preview;
