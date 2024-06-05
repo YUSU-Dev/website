@@ -1,149 +1,24 @@
 <template>
   <div class="container mx-auto py-10" id="events-a-z">
     <div class="justify-center">
-      <!-- <div class="input-group flex px-2 lg:px-3">
-          <input
-            class="border-[1px] border-black search form-control w-full p-2"
-            type="text"
-            aria-label="search for an activity"
-            name="search"
-            placeholder="Search..."
-            v-on:keyup="search($event)"
-          />
-          <div class="input-group-append">
-            <button
-              type="submit"
-              aria-label="Submit"
-              class="btn btn-block btn-secondary bg-black w-full h-full px-1"
-              @click="submitSearch"
-            >
-              <i class="fas fa-search text-white p-2"></i>
-            </button>
-          </div>
-        </div> -->
-      <!-- <div class="relative flex mt-6 px-2 lg:px-3 pb-4">
-          <Transition>
-            <div class="w-full" v-if="Search">
-              <h3 class="text-center font-semibold text-3xl">Search Results</h3>
-            </div>
-          </Transition>
-          <Transition>
-            <div
-              class="text-center w-full max-w-4xl"
-              v-if="!Search && ParentCategories.length > 0"
-            >
-              <div class="">
-                <h3 class="sr-only">Filters</h3>
-                <div v-if="ParentCategories.length > 1">
-                  <ul class="grid gap-4 grid-cols-1 md:grid-cols-3">
-                    <li
-                      v-for="Parent in ParentCategories"
-                      @click.prevent="
-                        SelectedParent = Parent;
-                        SelectedCategory = '';
-                        getGroups();
-                      "
-                      class=""
-                      :key="Parent.id"
-                    >
-                      <a
-                        v-bind:class="{
-                          '!bg-light-blue text-black font-semibold':
-                            SelectedParent.id === Parent.id,
-                        }"
-                        class="w-full h-full flex justify-center px-4 py-2 border-2 font-semibold border-none bg-mustard text-black hover:bg-light-blue hover:text-black text-xl"
-                      >
-                        <h3>{{ Parent.name }}</h3>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <ul class="flex flex-wrap mt-6 gap-2" v-if="SelectedParent">
-                  <li
-                    class=""
-                    @click.prevent="
-                      SelectedCategory = '';
-                      getGroups();
-                    "
-                  >
-                    <a
-                      v-bind:class="{
-                        '!bg-light-blue text-black font-semibold':
-                          SelectedCategory === '',
-                      }"
-                      href="#"
-                      class="flex justify-center px-4 py-2 bg-mustard text-black hover:bg-light-blue hover:text-black text-lg"
-                    >
-                      <h4>All</h4>
-                    </a>
-                  </li>
-                  <li
-                    v-for="Category in filteredCategories"
-                    @click.prevent="
-                      SelectedCategory = Category;
-                      getGroups();
-                    "
-                    class=""
-                    :key="Category.id"
-                  >
-                    <a
-                      v-bind:class="{
-                        '!bg-light-blue text-black font-semibold':
-                          SelectedCategory.id === Category.id,
-                      }"
-                      class="flex justify-center px-4 py-2 bg-mustard text-black hover:bg-light-blue hover:text-black text-lg"
-                      :href="
-                        '/student-life/clubs-and-socs?category=' + Category.id
-                      "
-                    >
-                      <h4>{{ Category.name }}</h4>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </Transition>
-        </div> -->
-      <div class="grid grid-cols-4 gap-x-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 px-2 lg:px-3">
         <div class="event-filter">
-          <label for="event-category">Category</label>
-          <select
-            id="event-category"
-            class="form-control event-category"
-            data-placeholder="All"
-            data-open-icon="fa fa-angle-down"
-            data-close-icon="fa fa-angle-up"
-            @change="updateCategory($event)"
-          >
-            <option value="">All</option>
-            <option
-              v-for="category in Categories"
-              :value="category.id"
-              :key="category.id"
-            >
-              {{ category.name }}
-            </option>
-          </select>
+          <label>Category</label>
+          <v-select
+            label="name"
+            :options="Categories"
+            @update:modelValue="updateCategory"
+            placeholder="All"
+          ></v-select>
         </div>
         <div>
-          <label for="event-activity">Activity</label>
-          <select
-            id="event-activity"
-            class="form-control"
-            data-placeholder="All"
-            data-open-icon="fa fa-angle-down"
-            data-close-icon="fa fa-angle-up"
-            @change="updateGroup($event)"
-          >
-            <option value="">All</option>
-            <option
-              v-for="activity in Groups"
-              :value="activity.id"
-              :key="activity.id"
-            >
-              {{ activity.name }}
-            </option>
-          </select>
+          <label>Activity</label>
+          <v-select
+            label="name"
+            :options="Groups"
+            @update:modelValue="updateGroup"
+            placeholder="All"
+          ></v-select>
         </div>
         <div class="flex flex-col">
           <label for="event-search">Search</label>
@@ -167,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-end items-end">
+        <div class="flex justify-start md:justify-end items-end">
           <Button
             title="Reset"
             @click="reset"
@@ -176,9 +51,7 @@
           />
         </div>
       </div>
-      <div
-        class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 mt-10"
-      >
+      <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 mt-10">
         <Tile
           v-for="event in Events"
           :key="event.id"
@@ -209,6 +82,8 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
 import "../../main.css";
 import Button from "../../components/button/button.ce.vue";
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
 export default {
   props: [
     "siteid",
@@ -223,6 +98,7 @@ export default {
     Tile,
     Pagination,
     Button,
+    "v-select": vSelect,
   },
   data() {
     return {
@@ -239,6 +115,7 @@ export default {
       ShortView: false,
       MoreResults: false,
       PreviousResults: false,
+      Placeholder: "Select an option",
     };
   },
   created() {
@@ -317,6 +194,7 @@ export default {
       let self = this;
       if (!append) {
         self.Page = 1;
+        self.Pages = [1];
       }
       let parameters = "sortBy=start_date&futureOrOngoing=1&page=" + this.Page;
       //add relevant parameters to the event search
@@ -347,18 +225,17 @@ export default {
           },
         })
         .then(function (response) {
-          //if we want more events (append = true), add to array
-          if (append) {
-            self.Events = [...self.Events, ...response.data.data];
-          } else {
-            //otherwise replace current events
-            self.Events = response.data.data;
-          }
+          self.Events = response.data.data;
           //If the API says there are more results (ie another page), update the template accordingly
           if (response.data.next_page_url != null) {
             self.MoreResults = true;
           } else {
             self.MoreResults = false;
+          }
+          if (response.data.prev_page_url) {
+            self.PreviousResults = true;
+          } else {
+            self.PreviousResults = false;
           }
         });
     },
@@ -384,13 +261,20 @@ export default {
       };
     },
     //update various fields to change events data
-    updateCategory(event) {
-      console.log("here");
-      this.SelectedType = event.target.value;
+    updateCategory(value) {
+      if (value) {
+        this.SelectedType = value.id;
+      } else {
+        this.SelectedType = "";
+      }
       this.getEvents();
     },
-    updateGroup(event) {
-      this.SelectedGroup = event.target.value;
+    updateGroup(value) {
+      if (value) {
+        this.SelectedGroup = value.id;
+      } else {
+        this.SelectedGroup = "";
+      }
       this.getEvents();
     },
     search(event) {
@@ -401,8 +285,13 @@ export default {
       //easy way to refresh the page
       window.location = window.location.href.split("?")[0];
     },
-    moreEvents() {
-      this.Page++;
+    loadPage(pageNumber = null) {
+      if (pageNumber) {
+        this.Page = pageNumber;
+      } else {
+        this.Page++;
+      }
+      this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
       this.getEvents(true);
     },
   },
@@ -417,30 +306,6 @@ export default {
     },
   },
 };
-//Various filters to formate dates and time for template
-// Vue.filter('getDate', function(value) {
-//     if (value) {
-//         return moment(String(value)).format('DD MMMM')
-//     }
-// });
-
-// Vue.filter('getDay', function(value) {
-//     if (value) {
-//         return moment(String(value)).format('DD')
-//     }
-// });
-
-// Vue.filter('getMonthYear', function(value) {
-//     if (value) {
-//         return moment(String(value)).format('MMMM YYYY')
-//     }
-// });
-
-// Vue.filter('getTime', function(value) {
-//     if (value) {
-//         return moment(String(value)).format('hh:mm a')
-//     }
-// })
 </script>
 <style>
 @tailwind base;
@@ -448,6 +313,25 @@ export default {
 @tailwind utilities;
 
 /* Select2 */
+/* .vs__dropdown-toggle {
+  border-radius: none !important;
+} */
+
+.v-select .vs--single .vs--searchable {
+  color: white !important;
+}
+
+.vs__open-indicator {
+  fill: white !important;
+}
+
+.vs__search,
+.vs__search:focus,
+.vs__selected {
+  opacity: 1 !important;
+  color: white !important;
+}
+
 .select2-container--default .select2-selection--single {
   background-color: black !important;
   border-radius: 0px !important;
