@@ -45,19 +45,19 @@ export default {
 };
 </script>
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+  <div class="grid grid-cols-1 gap-8 text-left sm:grid-cols-2 lg:grid-cols-3">
     <a
       v-for="(link, index) in LinksList"
       :key="index"
       :href="link.href"
-      class="flex py-2 group min-h-24"
+      class="group flex min-h-24 py-2"
     >
       <div
-        :class="`bg-mustard group-hover:bg-primary-pink h-14 w-14 flex-shrink-0 flex items-center justify-center ${link.SVGPadding ?? 'p-2'} *:w-fit *:h-fit`"
+        :class="`flex h-14 w-14 flex-shrink-0 items-center justify-center bg-mustard group-hover:bg-primary-pink ${link.SVGPadding ?? 'p-2'} *:h-fit *:w-fit`"
         v-html="link.icon"
       />
-      <div class="flex flex-col justify-between px-5 max-w-72">
-        <h2 class="text-2xl mb-3 group-hover:underline">{{ link.title }}</h2>
+      <div class="flex max-w-72 flex-col justify-between px-5">
+        <h2 class="mb-3 text-2xl group-hover:underline">{{ link.title }}</h2>
         <p class="text-base font-bold group-hover:underline">
           {{ link.subtitle ?? "Discover"
           }}<i class="fa-solid fa-arrow-right fa-lg ml-3 translate-y-[1px]"></i>

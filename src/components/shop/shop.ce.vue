@@ -2,14 +2,14 @@
   <div class="w-full">
     <div class="pt-3">
       <div class="container">
-        <h2 v-if="title" class="text-center pb-2">{{ title }}</h2>
+        <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
         <div v-if="!hidefilter">
           <h2 class="text-3xl">Shop Filters</h2>
           <div class="row">
             <div class="justify-center">
               <div class="input-group flex px-2 lg:px-3">
                 <input
-                  class="border-[1px] border-black search form-control w-full p-2"
+                  class="search form-control w-full border-[1px] border-black p-2"
                   type="text"
                   aria-label="search for an activity"
                   name="search"
@@ -20,10 +20,10 @@
                   <button
                     type="submit"
                     aria-label="Submit"
-                    class="btn btn-block btn-secondary bg-black w-full h-full px-1"
+                    class="btn btn-block btn-secondary h-full w-full bg-black px-1"
                     @click="submitSearch"
                   >
-                    <i class="fas fa-search text-white p-2"></i>
+                    <i class="fas fa-search p-2 text-white"></i>
                   </button>
                 </div>
               </div>
@@ -68,13 +68,13 @@
         </div>
       </div>
     </div>
-    <div class="relative flex mt-6 px-2 lg:px-3 pb-4">
+    <div class="relative mt-6 flex px-2 pb-4 lg:px-3">
       <div class="container">
         <div class="m-4 text-center" v-if="!Products.length">
           <h3>No products found</h3>
         </div>
         <div
-          class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 mt-10"
+          class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
         >
           <Tile
             v-for="product in Products"
@@ -102,7 +102,7 @@
               'col-md-3': Products.length > 3,
               'col-md-4': Products.length < 4,
             }"
-            class="col-9 my-3 d-flex align-items-stretch"
+            class="col-9 d-flex align-items-stretch my-3"
             v-for="product in Products"
             :key="product.id"
           >
@@ -122,7 +122,7 @@
                 src="https://assets-cdn.sums.su/YU/IMG/Website/500x500_Placeholder.webp"
                 alt=""
               />
-              <div class="card-body d-flex flex-column text-center text-dark">
+              <div class="card-body d-flex flex-column text-dark text-center">
                 <h3 class="h5 card-title">{{ product.name }}</h3>
                 <p class="card-text mt-auto" v-if="product.group_name">
                   {{ product.group_name }}
