@@ -8,7 +8,13 @@
     Toggle modal
   </button>
   <!-- main Modal-->
-  <div id="error-modal" class="modal" tabindex="-1" role="dialog">
+  <div
+    id="error-modal"
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    aria-label="Error Modal"
+  >
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

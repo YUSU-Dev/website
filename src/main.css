@@ -97,10 +97,10 @@
     @apply bg-mustard hover:bg-light-blue;
   }
   .btn-student-voice {
-    @apply bg-voice-orange text-white hover:bg-light-pink;
+    @apply bg-voice-orange hover:bg-light-pink;
   }
   .btn-advice-support {
-    @apply bg-advice-green text-white hover:bg-light-blue;
+    @apply bg-advice-green hover:bg-light-blue;
   }
 
   /* Skip to Main Content */
