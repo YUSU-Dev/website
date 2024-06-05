@@ -7,10 +7,32 @@ import postcss from "rollup-plugin-postcss";
 import alias from "@rollup/plugin-alias";
 
 import postcssConfig from "./postcss.config.mjs";
+import path from "node:path";
 
 const entrypoints = globSync("*/**/*.component.js", {
   ignore: ["dist/**"],
 });
+
+function inlineCSSPlugin() {
+  return {
+    name: "inline-css",
+    resolveId(source, importer) {
+      if (source.includes("?inline")) {
+        // return source.replace('?inline', '');
+        const importerDir = path.dirname(importer);
+        const cssPath = source.split("?")[0]; // Remove ?inline part
+        return path.resolve(importerDir, cssPath);
+      }
+      return null;
+    },
+    load(id) {
+      if (id.endsWith(".css")) {
+        return null; // let the postcss plugin handle the CSS file
+      }
+      return null;
+    },
+  };
+}
 
 /** @type {import("rollup").RollupOptions} */
 export default {
@@ -39,6 +61,7 @@ export default {
     }),
     vue({}),
     minify(),
+    inlineCSSPlugin(),
     postcss({
       ...postcssConfig,
     }),
