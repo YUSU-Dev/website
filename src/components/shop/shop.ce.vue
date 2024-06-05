@@ -349,18 +349,10 @@ export default {
     addToBasket(productId) {
       let self = this;
       axios
-        .post(
-          "shop/ajax",
-          {
-            c: "ab",
-            pid: productId,
-          },
-          {
-            headers: {
-              "X-Site-Id": self.siteid,
-            },
-          },
-        )
+        .post("shop/ajax", {
+          c: "ab",
+          pid: productId,
+        })
         .then(function (response) {
           if (!response["success"]) {
             var data = response.error_message;
