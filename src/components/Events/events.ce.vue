@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto py-10" id="events-a-z">
     <div class="justify-center">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 px-2 lg:px-3">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 px-2 lg:px-3">
         <div class="event-filter">
           <label>Category</label>
           <v-select
