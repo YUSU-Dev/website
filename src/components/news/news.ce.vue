@@ -96,7 +96,6 @@ import select2 from "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
 import "../../main.css";
 import Searchbar from "../searchbar/searchbar.ce.vue";
-select2($);
 
 export default {
   components: {
@@ -126,7 +125,7 @@ export default {
     };
   },
   async created() {
-    var self = this;
+    const self = this;
 
     // set any initial filtering parameters
     let url = new URL(window.location.href);
@@ -153,6 +152,7 @@ export default {
     // wait for the signal that created has finished loading data
     const self = this;
     await self.awaitMountPromise;
+    select2($);
 
     self.formCategoriesElement = $(".categories-small").select2();
 
