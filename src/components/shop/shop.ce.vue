@@ -289,7 +289,7 @@ export default {
       let self = this;
       axios
         .post("shop/ajax", {
-          c: "ab",
+          c: ab,
           pid: productId,
         })
         .then(function (response) {
