@@ -2,19 +2,24 @@
   <div class="mb-4 px-2 pb-2 lg:px-3 lg:pb-3">
     <div class="relative h-full shadow transition hover:scale-105">
       <a class="group text-black no-underline" :href="url">
-        <div
+        <img
           v-if="image"
-          class="aspect-square bg-cover bg-center"
-          :style="{ 'background-image': 'url(' + wrapURL(image) + ')' }"
-        ></div>
-        <div
+          class="aspect-square bg-cover bg-center object-contain"
+          :src="image"
+          alt=""
+          loading="lazy"
+        />
+        <img
           v-else
           class="aspect-square bg-cover bg-center"
-          :style="{ 'background-image': randomImage() }"
-        ></div>
+          :src="randomImage()"
+          alt=""
+          loading="lazy"
+        />
         <div class="flex h-[136px] flex-col justify-between p-6">
           <h3 class="mb-2 line-clamp-2 text-xl font-semibold">{{ title }}</h3>
           <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
+          <p v-if="shopGroupName" class="font-semibold">{{ shopGroupName }}</p>
           <p v-if="text" class="font-semibold">{{ text }}</p>
           <div v-if="!date && !text">
             <p class="font-semibold">
@@ -23,6 +28,13 @@
                 class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-4"
               ></i>
             </p>
+          </div>
+          <div v-if="productId">
+            <a class="btn btn-secondary mt-2" href="#">
+              <span class="font-semibold" @click="addToBasket(productId)">
+                Add to basket
+              </span>
+            </a>
           </div>
         </div>
       </a>
@@ -66,6 +78,9 @@ export default {
     "image",
     "date",
     "text",
+    "addToBasket",
+    "productId",
+    "shopGroupName",
     "categories",
     "Brand",
     "appendCategory",
@@ -80,9 +95,7 @@ export default {
   },
   methods: {
     randomImage() {
-      return `url("${
-        this.images[Math.floor(Math.random() * this.images.length)]
-      }")`;
+      return this.images[Math.floor(Math.random() * this.images.length)];
     },
     formatDate(date) {
       return moment(date).format("DD MMMM YYYY");

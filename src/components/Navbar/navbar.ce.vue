@@ -2,13 +2,13 @@
   <nav class="sticky left-0 top-0 z-[1] w-full bg-beige">
     <div class="3xl:px-0 container mx-auto flex justify-between px-4">
       <div class="my-7">
-        <a href="/">
+        <a href="/" aria-label="Homepage">
           <img
             class="block h-[77px] sm:hidden"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
             alt="University of York Students' Union"
         /></a>
-        <a href="/">
+        <a href="/" aria-label="Homepage">
           <img
             class="hidden h-[77px] sm:block"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"

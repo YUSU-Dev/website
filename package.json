@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build-css": "tailwindcss -i ./src/main.css -o ./dist/components.css --minify",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test-storybook": "test-storybook"
   },
   "keywords": [],
   "author": "University of York Students' Union Digital Team <it@yorksu.org>",
@@ -26,6 +27,7 @@
     "@storybook/builder-vite": "^8.1.5",
     "@storybook/manager-api": "^8.1.5",
     "@storybook/test": "^8.1.5",
+    "@storybook/test-runner": "^0.18.2",
     "@storybook/theming": "^8.1.5",
     "@storybook/vue3": "^8.1.5",
     "@storybook/vue3-vite": "^8.1.5",
