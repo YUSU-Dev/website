@@ -10,8 +10,14 @@ const preview = {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
+  decorators: [
+    (storyFn, context) => {
+      if (typeof context.component === "string") {
+        context.component = `yorksu-${context.component}`;
+      }
+      return storyFn();
+    },
+  ],
 };
-
-import "../src/main.css";
 
 export default preview;

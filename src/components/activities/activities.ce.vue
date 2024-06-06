@@ -137,7 +137,6 @@
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
-import "../../main.css";
 export default {
   props: ["siteid", "selectedparents", "selectedcategory", "title"],
   components: {
@@ -290,8 +289,3 @@ export default {
   },
 };
 </script>
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>

@@ -1,8 +1,3 @@
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
 <template>
   <HeroHeader
     :title="title"

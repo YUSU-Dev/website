@@ -1,8 +1,8 @@
-import Footer from "./footer.ce.vue";
+import "./footer.component.js";
 
 export default {
   title: "Components/Footer",
-  component: Footer,
+  component: "footer",
 };
 
 export const Default = {

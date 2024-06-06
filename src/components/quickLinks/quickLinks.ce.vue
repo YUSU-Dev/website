@@ -1,5 +1,4 @@
 <script>
-import "../../main.css";
 export default {
   components: {},
   data() {

@@ -1,8 +1,8 @@
-import Pagination from "./pagination.ce.vue";
+import "./pagination.component.js";
 
 export default {
   title: "Elements/Pagination",
-  component: Pagination,
+  component: "pagination",
   parameters: {
     layout: "centered",
   },

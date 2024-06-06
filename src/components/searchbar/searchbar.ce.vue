@@ -1,5 +1,4 @@
 <script>
-import "../../main.css";
 export default {
   props: {
     submitSearchCallback: {
@@ -59,4 +58,9 @@ export default {
       </button>
     </div>
   </div>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
+    crossorigin="anonymous"
+  />
 </template>

@@ -1,8 +1,8 @@
-import Modal from "./modal.ce.vue";
+import "./modal.component.js";
 
 export default {
   title: "Elements/Modal",
-  component: Modal,
+  component: "modal",
 };
 
 export const Default = {

@@ -1,8 +1,8 @@
-import News from "./news.ce.vue";
+import "./news.component.js";
 
 export default {
   title: "Components/News",
-  component: News,
+  component: "news",
 };
 
 export const Default = {};

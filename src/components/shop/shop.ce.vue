@@ -106,11 +106,6 @@
     @close="ModalClosed = true"
   />
 </template>
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
 <script>
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";

@@ -1,8 +1,8 @@
-import Shop from "./shop.ce.vue";
+import "./shop.component.js";
 
 export default {
   title: "Components/Shop",
-  component: Shop,
+  component: "shop",
 };
 
 export const Default = {

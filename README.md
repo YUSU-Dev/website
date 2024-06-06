@@ -8,15 +8,15 @@ To get started, clone this repo and run `npm ci`.
 
 ## Storybook
 
-You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in.
+You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in. We are using web components within storybook to ensure that there is good compatibility between components and the website. As such to include a vue file in a story you'll need to do the below.
 If you have a component in a file called `foo.vue`, create a file called `foo.stories.js` that looks something like this:
 
 ```js
-import Foo from "./foo.vue";
+import "./foo.component.js";
 
 export default {
   title: "Foo",
-  component: Foo,
+  component: "foo",
 };
 
 export const Default = {

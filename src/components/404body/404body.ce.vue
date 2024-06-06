@@ -2,7 +2,6 @@
 import Searchbar from "../searchbar/searchbar.ce.vue";
 import Button from "../button/button.ce.vue";
 import QuickLinks from "../quickLinks/quickLinks.ce.vue";
-import "../../main.css";
 export default {
   components: {
     QuickLinks,
@@ -16,11 +15,6 @@ export default {
   },
 };
 </script>
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
 <template>
   <main
     class="m-auto flex min-h-96 flex-col items-center justify-center gap-12 px-4 py-14 text-center"
