@@ -26,9 +26,6 @@ function inlineCSSPlugin() {
       return null;
     },
     load(id) {
-      if (id.endsWith(".css")) {
-        return null; // let the postcss plugin handle the CSS file
-      }
       return null;
     },
   };
