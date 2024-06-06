@@ -25,7 +25,7 @@ function inlineCSSPlugin() {
       }
       return null;
     },
-    load(id) {
+    load() {
       return null;
     },
   };
