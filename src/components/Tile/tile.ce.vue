@@ -4,7 +4,7 @@
       <a class="group text-black no-underline" :href="url">
         <img
           v-if="image"
-          class="aspect-square bg-cover bg-center object-contain"
+          class="aspect-square bg-cover bg-center object-cover"
           :src="image"
           alt=""
           loading="lazy"
