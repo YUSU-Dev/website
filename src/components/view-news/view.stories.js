@@ -5,4 +5,8 @@ export default {
   component: "view",
 };
 
-export const Default = {};
+export const Default = {
+  args: {
+    articleId: "2102",
+  },
+};
