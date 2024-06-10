@@ -23,7 +23,10 @@
                     class="btn btn-block btn-secondary h-full w-full bg-black px-1"
                     @click="submitSearch"
                   >
-                    <i class="fas fa-search p-2 text-white"></i>
+                    <FontAwesomeIcon
+                      icon="fas fa-search"
+                      class="mx-1 h-4 w-4 text-white"
+                    />
                   </button>
                 </div>
               </div>
@@ -112,7 +115,12 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
 import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
-import "../../main.css";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faSearch);
+
 export default {
   props: [
     "siteid",
@@ -126,6 +134,7 @@ export default {
     Tile,
     Pagination,
     Modal,
+    FontAwesomeIcon,
   },
   data() {
     return {

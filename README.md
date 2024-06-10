@@ -78,6 +78,38 @@ export default {
 </script>
 ```
 
+### Icons
+
+We use Font Awesome using the SVG-based method, using the `@fortawesome/vue-fontawesome` helper library. To use an icon in a component, do this:
+
+```vue
+<script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowLeft, faArrowRight, /* any other icons */ } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faTag, faArrowLeft, /* any other icons */);
+
+export default {
+  components: {
+    FontAwesomeIcon,
+    // ...
+  }
+};
+</script>
+<template>
+<div>
+  <!-- Don't forget to give it an explicit size, otherwise it might not be visible! -->
+  <FontAwesomeIcon icon="fas fa-tag" class="w-8 h-8" />
+</div>
+</template>
+```
+
+> [!WARNING]
+>
+> For reasons unknown, Font Awesome's CSS helpers (e.g. `fa-spin`) don't work.
+> Use the respective Tailwind utilities (e.g. `animate-spin`) instead.
+
 ### Using Third-Party Libraries
 
 You can use third-party libraries using standard JavaScript `import` syntax, as long as

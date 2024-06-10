@@ -67,13 +67,19 @@
             class="hidden lg:flex"
             href="/search#gsc.tab=0"
             aria-label="Search the website"
-            ><i class="fa-solid fa-magnifying-glass text-3xl"></i
+            ><FontAwesomeIcon
+              icon="fa-solid fa-magnifying-glass"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
           ></a>
           <a
             class="hidden lg:flex"
             href="/shop/basket"
             aria-label="View your basket"
-            ><i class="fa-solid fa-basket-shopping ml-6 text-3xl"></i
+            ><FontAwesomeIcon
+              icon="fa-solid fa-basket-shopping"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
           ></a>
           <button
             class="ml-12 text-4xl"
@@ -82,7 +88,10 @@
             title="Toggle the website navigation bar"
             type="button"
           >
-            <i class="fa-sharp fa-solid fa-bars"></i>
+            <FontAwesomeIcon
+              icon="fa-solid fa-bars"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </button>
         </div>
       </div>
@@ -96,10 +105,16 @@
       >
         <div v-if="icons" class="mb-8 mt-4 flex flex-wrap gap-4 md:hidden">
           <a class="" href="/search#gsc.tab=0" aria-label="Search the website">
-            <i class="fa-solid fa-magnifying-glass text-4xl"></i
+            <FontAwesomeIcon
+              icon="fa-solid fa-magnifying-glass"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
           ></a>
           <a class="" href="/shop/basket" aria-label="view your basket">
-            <i class="fa-solid fa-basket-shopping text-4xl"></i
+            <FontAwesomeIcon
+              icon="fa-solid fa-basket-shopping"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
           ></a>
           <a
             class=""
@@ -108,11 +123,17 @@
             onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
             href="/"
           >
-            <i class="fa-solid fa-universal-access text-4xl"></i>
+            <FontAwesomeIcon
+              icon="fa-solid fa-universal-access"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </a>
           <!-- {if logged_in} -->
           <a class="" onClick="getBearerToken()" href="#" aria-label="Login">
-            <i class="fa-solid fa-circle-user text-4xl"></i>
+            <FontAwesomeIcon
+              icon="fa-solid fa-circle-user"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </a>
           <!-- {/if} -->
         </div>
@@ -168,10 +189,17 @@
               href="/search#gsc.tab=0"
               aria-label="Search the website"
             >
-              <i class="fa-solid fa-magnifying-glass text-4xl"></i
-            ></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-magnifying-glass"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+              >></a
+            >
             <a class="" href="/shop/basket" aria-label="View your basket">
-              <i class="fa-solid fa-basket-shopping text-4xl"></i
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
             ></a>
           </div>
         </div>
@@ -191,7 +219,10 @@
             :class="`${index != menuData.sections.length - 1 && 'border-b-2 border-black'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex items-center justify-between`"
           >
             <p class="font-bold">{{ section.name }}</p>
-            <i class="fa-solid fa-caret-right mr-2"></i>
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-right"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </button>
         </div>
         <div
@@ -204,7 +235,10 @@
             @click="section.closed = !section.closed"
             class="flex items-center"
           >
-            <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-left"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
             <p class="text-4xl font-bold">{{ section.name }}</p>
           </button>
           <ul class="mt-5 flex flex-col gap-2 text-lg">
@@ -226,14 +260,20 @@
               href="/search#gsc.tab=0"
               aria-label="Search the website"
             >
-              <i class="fa-solid fa-magnifying-glass text-2xl"></i
+              <FontAwesomeIcon
+                icon="fa-solid fa-magnifying-glass"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
             ></a>
             <a
               class="flex items-center"
               href="/shop/basket"
               aria-label="View your basket"
             >
-              <i class="fa-solid fa-basket-shopping text-2xl"></i
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
             ></a>
             <button
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
@@ -262,14 +302,21 @@
               href="/search#gsc.tab=0"
               aria-label="Search the website"
             >
-              <i class="fa-solid fa-magnifying-glass text-2xl"></i
-            ></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-magnifying-glass"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+              >></a
+            >
             <a
               class="flex items-center"
               href="/shop/basket"
               aria-label="View your basket"
             >
-              <i class="fa-solid fa-basket-shopping text-2xl"></i
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
             ></a>
             <button
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
@@ -333,20 +380,49 @@
               :aria-label="socialPlatform.name"
               :href="socialPlatform.link"
               target="_blank"
-              ><i :class="`fa-brands text-2xl ${socialPlatform.icon}`"></i
-            ></a>
+              ><FontAwesomeIcon
+                :icon="`fa-brands ${socialPlatform.icon}`"
+                class="h-8 w-8"
+            /></a>
           </div>
         </div>
       </div>
     </div>
   </nav>
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
-    crossorigin="anonymous"
-  />
 </template>
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faMagnifyingGlass,
+  faBasketShopping,
+  faBars,
+  faCaretRight,
+  faCaretLeft,
+  faUniversalAccess,
+  faCircleUser,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faTiktok,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+
+library.add(
+  faFacebook,
+  faInstagram,
+  faTiktok,
+  faXTwitter,
+  faMagnifyingGlass,
+  faBasketShopping,
+  faBars,
+  faCaretLeft,
+  faCaretRight,
+  faUniversalAccess,
+  faCircleUser,
+);
+
 export default {
   name: "Navbar",
   props: {
@@ -358,6 +434,9 @@ export default {
       type: Boolean,
       default: false,
     },
+  },
+  components: {
+    FontAwesomeIcon,
   },
   data() {
     return {

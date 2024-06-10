@@ -20,7 +20,10 @@
             class="btn btn-block btn-secondary h-full w-full bg-black px-1"
             @click="submitSearch"
           >
-            <i class="fas fa-search p-2 text-white"></i>
+            <FontAwesomeIcon
+              icon="fa-solid fa-search"
+              class="h-8 w-8 p-2 text-white"
+            />
           </button>
         </div>
       </div>
@@ -127,21 +130,23 @@
       />
     </div>
   </div>
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
-    crossorigin="anonymous"
-  />
 </template>
 <script>
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faSearch);
+
 export default {
   props: ["siteid", "selectedparents", "selectedcategory", "title"],
   components: {
     Tile,
     Pagination,
+    FontAwesomeIcon,
   },
   data() {
     return {

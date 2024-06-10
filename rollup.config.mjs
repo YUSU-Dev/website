@@ -5,6 +5,7 @@ import replace from "@rollup/plugin-replace";
 import { minify } from "rollup-plugin-esbuild";
 import postcss from "rollup-plugin-postcss";
 import alias from "@rollup/plugin-alias";
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 import postcssConfig from "./postcss.config.mjs";
 import path from "node:path";
@@ -56,6 +57,7 @@ export default {
         },
       ],
     }),
+    nodeResolve(),
     vue({}),
     minify(),
     inlineCSSPlugin(),

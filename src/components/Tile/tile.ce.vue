@@ -24,9 +24,10 @@
           <div v-if="!date && !text">
             <p class="font-semibold">
               Discover
-              <i
-                class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-4"
-              ></i>
+              <FontAwesomeIcon
+                icon="fas fa-arrow-right"
+                class="ml-2 transition group-hover:translate-x-4"
+              />
             </p>
           </div>
           <div v-if="productId">
@@ -44,8 +45,8 @@
           v-if="categories.length"
           class="group absolute top-2.5 ml-2 mr-3 flex max-h-[232.33px] max-w-full flex-col overflow-y-auto rounded bg-[#40454d]"
         >
-          <div class="flex">
-            <i class="fa-solid fa-tag p-2 text-white"></i>
+          <div class="flex items-center">
+            <FontAwesomeIcon icon="fas fa-tag" class="h-8 w-8 p-2 text-white" />
             <p class="m-0 flex items-center pr-2 text-white">
               {{ categories.length }}
             </p>
@@ -71,7 +72,18 @@
 </template>
 <script>
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faTag,
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faTag, faArrowLeft, faArrowRight);
+
 export default {
+  components: { FontAwesomeIcon },
   props: [
     "url",
     "title",

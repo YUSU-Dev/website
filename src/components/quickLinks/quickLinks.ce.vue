@@ -1,6 +1,14 @@
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faArrowRight);
+
 export default {
-  components: {},
+  components: {
+    FontAwesomeIcon,
+  },
   data() {
     return {
       LinksList: [
@@ -59,14 +67,12 @@ export default {
         <h2 class="mb-3 text-2xl group-hover:underline">{{ link.title }}</h2>
         <p class="text-base font-bold group-hover:underline">
           {{ link.subtitle ?? "Discover"
-          }}<i class="fa-solid fa-arrow-right fa-lg ml-3 translate-y-[1px]"></i>
+          }}<FontAwesomeIcon
+            icon="fas fa-arrow-right"
+            class="inline h-4 w-4 pl-1"
+          />
         </p>
       </div>
     </a>
   </div>
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
-    crossorigin="anonymous"
-  />
 </template>
