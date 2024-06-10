@@ -1,6 +1,6 @@
 <template>
   <a
-    class="btn group"
+    class="btn group flex w-fit"
     :class="{
       'btn-primary': isPrimary,
       'btn-secondary': isSecondary,
@@ -9,7 +9,9 @@
       'btn-advice-support': isAdviceAndSupport,
     }"
   >
-    <i v-if="arrow" class="fa-solid fa-arrow-left mr-2"></i>
+    <div v-if="arrow" class="mr-2">
+      <i class="fa-solid fa-arrow-left"></i>
+    </div>
     {{ title }}
     <i
       v-if="isTertiary"
