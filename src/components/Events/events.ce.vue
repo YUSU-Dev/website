@@ -2,7 +2,7 @@
   <div class="container mx-auto py-10" id="events-a-z">
     <div class="justify-center">
       <div
-        class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-4 px-2 lg:px-3"
+        class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"
       >
         <div class="event-filter">
           <label>Category</label>
@@ -24,10 +24,10 @@
         </div>
         <div class="flex flex-col">
           <label for="event-search">Search</label>
-          <div class="input-group flex border-[1px] border-black h-full">
+          <div class="input-group flex h-full border-[1px] border-black">
             <input
               id="event-search"
-              class="form-control w-full h-full"
+              class="form-control h-full w-full"
               aria-label="Search"
               type="text"
               name="search"
@@ -44,16 +44,16 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-start md:justify-end items-end">
+        <div class="flex items-end justify-start md:justify-end">
           <Button
             title="Reset"
             @click="reset"
             isStudentLife="true"
-            class="h-[38px] flex items-center"
+            class="flex h-[38px] items-center"
           />
         </div>
       </div>
-      <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 mt-10">
+      <div class="mt-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4">
         <Tile
           v-for="event in Events"
           :key="event.id"

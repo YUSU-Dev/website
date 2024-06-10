@@ -19,17 +19,19 @@
   </a>
 </template>
 <script>
-import "../../main.css";
 export default {
-  props: [
-    "title",
-    "isPrimary",
-    "isStudentLife",
-    "isStudentVoice",
-    "isAdviceAndSupport",
-    "isSecondary",
-    "arrow",
-    "isTertiary",
-  ],
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+    isPrimary: Boolean,
+    isStudentLife: Boolean,
+    isStudentVoice: Boolean,
+    isAdviceAndSupport: Boolean,
+    isSecondary: Boolean,
+    arrow: Boolean,
+    isTertiary: Boolean,
+  },
 };
 </script>

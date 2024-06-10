@@ -1,6 +1,6 @@
 <template>
   <!-- Breadcrumb Navigation -->
-  <div class="font-serif text-sm container mx-auto pb-8 pt-12">
+  <div class="container mx-auto pb-8 pt-12 font-serif text-sm">
     <!-- {exp:su_sections:generateBreadcrumbNew title="{embed:title}"} -->
     <p>
       <!-- {breadcrumbs} -->
@@ -18,6 +18,5 @@
   <!-- End Breadcrumb Navigation -->
 </template>
 <script>
-import "../../main.css";
 export default {};
 </script>

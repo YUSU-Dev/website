@@ -1,17 +1,12 @@
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
 <template>
   <footer id="footer">
     <div class="w-full bg-black">
-      <div class="container mx-auto pt-6 pb-12 px-6 sm:px8 lg:px-6">
+      <div class="sm:px8 container mx-auto px-6 pb-12 pt-6 lg:px-6">
         <h1 class="sr-only">Footer</h1>
         <div
-          class="flex flex-col gap-y-12 lg:gap-y-0 lg:grid lg:grid-cols-2 text-white py-4 lg:gap-x-10 xl:gap-x-12"
+          class="flex flex-col gap-y-12 py-4 text-white lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-0 xl:gap-x-12"
         >
-          <div class="flex flex-col gap-y-6 lg:border-r-2 border-white pr-2">
+          <div class="flex flex-col gap-y-6 border-white pr-2 lg:border-r-2">
             <div>
               <a href="/">
                 <img
@@ -21,7 +16,7 @@
                 />
               </a>
             </div>
-            <div class="hidden lg:flex text-xs">
+            <div class="hidden text-xs lg:flex">
               <ul class="flex flex-col gap-y-1">
                 <li>
                   Registered in England and Wales | Charity Registration
@@ -43,13 +38,13 @@
           </div>
 
           <div
-            class="flex flex-col border-b-[1px] pb-16 lg:pb-0 border-white lg:border-none gap-y-10 lg:gap-y-0 lg:flex-row lg:gap-x-4 xl:gap-x-6"
+            class="flex flex-col gap-y-10 border-b-[1px] border-white pb-16 lg:flex-row lg:gap-x-4 lg:gap-y-0 lg:border-none lg:pb-0 xl:gap-x-6"
           >
             <div class="flex flex-col gap-y-4">
               <div>
                 <h2 class="text-xl">Useful Links</h2>
               </div>
-              <div class="flex text-sm gap-x-6">
+              <div class="flex gap-x-6 text-sm">
                 <div>
                   <ul class="flex flex-col gap-y-1">
                     <li>
@@ -118,7 +113,7 @@
             </div>
           </div>
 
-          <div class="flex lg:hidden text-xs">
+          <div class="flex text-xs lg:hidden">
             <ul class="flex flex-col gap-y-3">
               <li>
                 Registered in England and Wales | Charity Registration #1173404

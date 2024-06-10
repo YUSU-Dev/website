@@ -1,27 +1,27 @@
 <template>
-  <nav class="w-full bg-beige sticky left-0 top-0 z-[1]">
-    <div class="container mx-auto flex justify-between px-4 3xl:px-0">
+  <nav class="sticky left-0 top-0 z-[1] w-full bg-beige">
+    <div class="3xl:px-0 container mx-auto flex justify-between px-4">
       <div class="my-7">
-        <a href="/">
+        <a href="/" aria-label="Homepage">
           <img
-            class="h-[77px] block sm:hidden"
+            class="block h-[77px] sm:hidden"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
             alt="University of York Students' Union"
         /></a>
-        <a href="/">
+        <a href="/" aria-label="Homepage">
           <img
-            class="h-[77px] hidden sm:block"
+            class="hidden h-[77px] sm:block"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
             alt="University of York Students' Union"
           />
         </a>
       </div>
-      <div class="flex flex-col my-5 justify-center">
-        <div v-if="signedIn" class="mb-4 text-sm hidden lg:flex">
+      <div class="my-5 flex flex-col justify-center">
+        <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <button
             id="__ba_panel"
             onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
-            class="bg-black hover:bg-white text-white hover:text-black px-4 py-1"
+            class="bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             aria-label="Listen with the ReachDeck Toolbar"
             title="Listen with the ReachDeck Toolbar"
             type="button"
@@ -30,20 +30,20 @@
           </button>
           <!-- {if logged_in} -->
           <a
-            class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             onClick="getBearerToken()"
             >Student Dashboard</a
           >
           <a
-            class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             href="/sign-out"
             >Sign Out</a
           >
         </div>
         <!-- {if:else} -->
-        <div v-else class="mb-4 text-sm hidden lg:flex">
+        <div v-else class="mb-4 hidden text-sm lg:flex">
           <button
-            class="bg-black hover:bg-white text-white hover:text-black px-4 py-1"
+            class="bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             aria-label="Listen with the ReachDeck Toolbar"
             title="Listen with the ReachDeck Toolbar"
             type="button"
@@ -51,18 +51,18 @@
             Accessibility Tools
           </button>
           <a
-            class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             href="/sign-in"
             >Associate Sign In</a
           >
           <a
-            class="bg-black hover:bg-white text-white hover:text-black ml-3 px-4 py-1"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             href="/sign-in/sso"
             >Student Sign In</a
           >
           <!-- {/if} -->
         </div>
-        <div class="flex justify-end items-center">
+        <div class="flex items-center justify-end">
           <a
             class="hidden lg:flex"
             href="/search#gsc.tab=0"
@@ -73,7 +73,7 @@
             class="hidden lg:flex"
             href="/shop/basket"
             aria-label="View your basket"
-            ><i class="fa-solid fa-basket-shopping text-3xl ml-6"></i
+            ><i class="fa-solid fa-basket-shopping ml-6 text-3xl"></i
           ></a>
           <button
             class="ml-12 text-4xl"
@@ -88,13 +88,13 @@
       </div>
     </div>
     <div
-      class="absolute w-full bg-beige left-0 top-[133px] max-h-[calc(100vh-133px)] overflow-y-auto"
+      class="absolute left-0 top-[133px] max-h-[calc(100vh-133px)] w-full overflow-y-auto bg-beige"
     >
       <div
         :class="{ hidden: navClosed }"
-        class="navbar container mx-auto px-4 3xl:px-0 pb-12"
+        class="navbar 3xl:px-0 container mx-auto px-4 pb-12"
       >
-        <div v-if="icons" class="flex flex-wrap md:hidden mt-4 mb-8 gap-4">
+        <div v-if="icons" class="mb-8 mt-4 flex flex-wrap gap-4 md:hidden">
           <a class="" href="/search#gsc.tab=0" aria-label="Search the website">
             <i class="fa-solid fa-magnifying-glass text-4xl"></i
           ></a>
@@ -116,12 +116,12 @@
           </a>
           <!-- {/if} -->
         </div>
-        <div v-else class="flex md:hidden gap-6 mb-4">
+        <div v-else class="mb-4 flex gap-6 md:hidden">
           <div v-if="signedIn" class="flex flex-col justify-center gap-y-3">
             <button
               id="__ba_panel"
               onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -130,12 +130,12 @@
             </button>
             <!-- {if logged_in} -->
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               onClick="getBearerToken()"
               >Member Dashboard</a
             >
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               href="/sign-out"
               >Sign Out</a
             >
@@ -143,7 +143,7 @@
           <!-- {if:else} -->
           <div v-else class="flex flex-col justify-center gap-y-3">
             <button
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -151,18 +151,18 @@
               Accessibility Tools
             </button>
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               href="/sign-in"
               >Associate Sign In</a
             >
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 text-center"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               href="/sign-in/sso"
               >Student Sign In</a
             >
           </div>
           <!-- {/if} -->
-          <div class="flex flex-col justify-center items-center gap-4">
+          <div class="flex flex-col items-center justify-center gap-4">
             <a
               class=""
               href="/search#gsc.tab=0"
@@ -177,7 +177,7 @@
         </div>
         <div
           id="mobileItems"
-          class="flex flex-col md:hidden text-2xl"
+          class="flex flex-col text-2xl md:hidden"
           :class="{
             hidden: menuData.sections
               .map((section) => section.closed)
@@ -188,7 +188,7 @@
             v-for="(section, index) in menuData.sections"
             :key="section.name"
             @click="section.closed = !section.closed"
-            :class="`${index != menuData.sections.length - 1 && 'border-black border-b-2'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex justify-between items-center`"
+            :class="`${index != menuData.sections.length - 1 && 'border-b-2 border-black'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex items-center justify-between`"
           >
             <p class="font-bold">{{ section.name }}</p>
             <i class="fa-solid fa-caret-right mr-2"></i>
@@ -205,13 +205,13 @@
             class="flex items-center"
           >
             <i class="fa-solid fa-caret-left mr-2 text-3xl"></i>
-            <p class="font-bold text-4xl">{{ section.name }}</p>
+            <p class="text-4xl font-bold">{{ section.name }}</p>
           </button>
-          <ul class="flex flex-col gap-2 text-lg mt-5">
+          <ul class="mt-5 flex flex-col gap-2 text-lg">
             <li
               v-for="(subheading, index) in section.links"
               :key="subheading.name"
-              :class="`${index != section.links.length - 1 && 'border-black border-b-2 pb-3'} ${index != 0 && 'pt-3'}`"
+              :class="`${index != section.links.length - 1 && 'border-b-2 border-black pb-3'} ${index != 0 && 'pt-3'}`"
             >
               <a :href="subheading.link" class="hover:underline">{{
                 subheading.name
@@ -219,8 +219,8 @@
             </li>
           </ul>
         </div>
-        <div class="hidden md:flex lg:hidden justify-end mb-8">
-          <div v-if="signedIn" class="flex text-sm gap-3">
+        <div class="mb-8 hidden justify-end md:flex lg:hidden">
+          <div v-if="signedIn" class="flex gap-3 text-sm">
             <a
               class="flex items-center"
               href="/search#gsc.tab=0"
@@ -236,7 +236,7 @@
               <i class="fa-solid fa-basket-shopping text-2xl"></i
             ></a>
             <button
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -245,18 +245,18 @@
             </button>
             <!-- {if logged_in} -->
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               onClick="getBearerToken()"
               >Member Dashboard</a
             >
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               href="/sign-out"
               >Sign Out</a
             >
           </div>
           <!-- {if:else} -->
-          <div v-else class="flex text-sm gap-3">
+          <div v-else class="flex gap-3 text-sm">
             <a
               class="flex items-center"
               href="/search#gsc.tab=0"
@@ -272,7 +272,7 @@
               <i class="fa-solid fa-basket-shopping text-2xl"></i
             ></a>
             <button
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -280,12 +280,12 @@
               Accessibility Tools
             </button>
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               href="/sign-in"
               >Associate Sign In</a
             >
             <a
-              class="bg-black hover:bg-white text-white hover:text-black px-4 py-1 flex items-center"
+              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               href="/sign-in/sso"
               >Student Sign In</a
             >
@@ -293,7 +293,7 @@
           <!-- {/if} -->
         </div>
         <div
-          class="hidden md:grid md:grid-cols-3 lg:grid-cols-6 border-black border-b-2"
+          class="hidden border-b-2 border-black md:grid md:grid-cols-3 lg:grid-cols-6"
         >
           <div
             v-for="section in menuData.sections"
@@ -301,11 +301,11 @@
             class="flex flex-col"
           >
             <div
-              class="border-black border-b-2 flex items-end pb-2 pr-10 w-full h-1/5"
+              class="flex h-1/5 w-full items-end border-b-2 border-black pb-2 pr-10"
             >
               <p class="font-bold">{{ section.name }}</p>
             </div>
-            <div class="h-4/5 pt-3 pb-7">
+            <div class="h-4/5 pb-7 pt-3">
               <ul class="flex flex-col gap-2 text-sm">
                 <li v-for="subheading in section.links" :key="subheading.name">
                   <a :href="subheading.link" class="hover:underline">{{
@@ -316,12 +316,12 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-wrap justify-between mt-9 gap-y-2">
-          <div class="flex flex-wrap gap-5 mb-5 text-2xl md:text-base">
+        <div class="mt-9 flex flex-wrap justify-between gap-y-2">
+          <div class="mb-5 flex flex-wrap gap-5 text-2xl md:text-base">
             <a
               v-for="mainButton in menuData.mainButtons"
               :key="mainButton.name"
-              class="bg-black hover:bg-[#f2cb50] font-bold text-white hover:text-black px-4 py-1 rounded-[60px] w-36 text-center"
+              class="w-36 rounded-[60px] bg-black px-4 py-1 text-center font-bold text-white hover:bg-[#f2cb50] hover:text-black"
               :href="mainButton.link"
               >{{ mainButton.name }}</a
             >
@@ -540,8 +540,3 @@ export default {
   },
 };
 </script>
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>

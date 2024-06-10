@@ -25,7 +25,7 @@
   }
 
   body p {
-    @apply text-base leading-relaxed text-pretty;
+    @apply text-pretty text-base leading-relaxed;
   }
 
   main h1,
@@ -37,7 +37,7 @@
   }
 
   main article a {
-    @apply underline text-blue-800;
+    @apply text-blue-800 underline;
   }
 
   main hr {
@@ -80,11 +80,11 @@
   }
 
   #events-a-z .select2-container--default .select2-selection--single {
-    @apply bg-black text-white rounded-none !important;
+    @apply rounded-none bg-black text-white !important;
   }
 
   #events-a-z .select2-container .select2-selection--single {
-    @apply pt-1 pb-1 h-auto;
+    @apply h-auto pb-1 pt-1;
   }
 
   .select2 {
@@ -92,7 +92,7 @@
   }
 
   .select2-container--default .select2-selection--multiple {
-    @apply bg-neutral-100 border-none border-r-0;
+    @apply border-r-0 border-none bg-neutral-100;
   }
 
   .select2-container--default
@@ -110,7 +110,7 @@
   .select2-container--default
     .select2-selection--multiple
     .select2-selection__choice__display {
-    @apply text-balance text-base font-normal px-2;
+    @apply text-balance px-2 text-base font-normal;
   }
 
   .select2-selection__arrow {
@@ -140,7 +140,7 @@
 
   /* Button Classes */
   .btn {
-    @apply no-underline py-3 px-3 text-black hover:text-black;
+    @apply px-3 py-3 text-black no-underline hover:text-black;
   }
 
   .btn-primary {
@@ -148,11 +148,11 @@
   }
 
   .btn-secondary {
-    @apply bg-black hover:bg-primary-pink text-white px-2 py-1 font-thin;
+    @apply bg-black px-2 py-1 font-thin text-white hover:bg-primary-pink;
   }
 
   .btn-tertiary {
-    @apply group-hover:translate-x-4 transition;
+    @apply transition group-hover:translate-x-4;
   }
 
   .btn-student-life {
@@ -160,45 +160,45 @@
   }
 
   .btn-student-voice {
-    @apply bg-voice-orange hover:bg-light-pink text-white;
+    @apply bg-voice-orange hover:bg-light-pink;
   }
 
   .btn-advice-support {
-    @apply bg-advice-green hover:bg-light-blue text-white;
+    @apply bg-advice-green hover:bg-light-blue;
   }
 
   /* Skip to Main Content */
   #skiptocontent a {
-    @apply absolute -top-40 left-0 text-black bg-white;
+    @apply absolute -top-40 left-0 bg-white text-black;
   }
 
   #skiptocontent a:focus {
-    @apply absolute top-5 left-5;
+    @apply absolute left-5 top-5;
   }
 
   /* Modals */
   .modal {
-    @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full;
+    @apply fixed left-0 right-0 top-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0;
   }
 
   .modal-body {
-    @apply p-4 md:p-5 space-y-4;
+    @apply space-y-4 p-4 md:p-5;
   }
 
   .modal-body p {
-    @apply text-base leading-relaxed text-gray-500 dark:text-gray-400;
+    @apply text-base leading-relaxed text-black dark:text-gray-400;
   }
 
   .modal-dialog {
-    @apply relative p-4 w-full max-w-2xl max-h-full;
+    @apply relative max-h-full w-full max-w-2xl p-4;
   }
 
   .modal-content {
-    @apply relative bg-white rounded-lg shadow dark:bg-gray-700;
+    @apply relative rounded-lg bg-white shadow dark:bg-gray-700;
   }
 
   .modal-header {
-    @apply flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600;
+    @apply flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600;
   }
 
   .modal-title {
@@ -206,7 +206,7 @@
   }
 
   .modal-footer {
-    @apply flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-3;
+    @apply flex items-center gap-3 rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600;
   }
 }
 

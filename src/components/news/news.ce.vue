@@ -1,13 +1,13 @@
 <template>
   <div id="newsTop" class=""></div>
-  <div class="grid grid-cols-5 container mx-auto">
-    <div class="col-span-5 xl:col-span-1 order-1 xl:order-2 mb-5 xl:pl-4">
-      <div class="sticky top-4 p-6 border-black border-[1px]">
+  <div class="container mx-auto grid grid-cols-5">
+    <div class="order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
+      <div class="sticky top-4 border-[1px] border-black p-6">
         <div class="">
           <div class="">
             <div class="mb-5">
               <label for="search">
-                <h2 class="font-semibold text-xl mb-2">Search</h2>
+                <h2 class="mb-2 text-xl font-semibold">Search</h2>
               </label>
               <Searchbar
                 :submit-search-callback="submitSearch"
@@ -15,7 +15,7 @@
                 placeholder="Search articles..."
               />
             </div>
-            <div class="font-semibold text-xl mb-2">
+            <div class="mb-2 text-xl font-semibold">
               <label for="categories-small">
                 <h2 class="mb-2">Categories</h2>
               </label>
@@ -40,20 +40,21 @@
       </div>
     </div>
 
-    <div class="col-span-5 xl:col-span-4 order-1 xl:order-1 xl:pr-4 mx-md-0">
+    <div class="mx-md-0 order-1 col-span-5 xl:order-1 xl:col-span-4 xl:pr-4">
       <div v-if="News.length == 0" class="container mx-auto">
-        <h2 class="mb-4 text-center text-2xl font-semibold mt-16">
+        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
           No Articles Found
         </h2>
       </div>
       <div
         v-if="loading"
-        class="flex justify-center mt-16 spinner"
-        aria-label="Loading"
+        class="spinner mt-16 flex justify-center"
+        role="alert"
+        aria-busy="true"
       >
         <i class="fas fa-spinner fa-spin text-5xl"></i>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 news-row">
+      <div class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <Tile
           v-for="article in News"
           :key="article.id"
@@ -82,18 +83,17 @@
   />
 </template>
 <style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
 </style>
 <script>
-/* global $ */
 import axios from "../../_common/axios.mjs";
 import Pagination from "../Pagination/pagination.ce.vue";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
+import $ from "https://cdn.jsdelivr.net/npm/jquery/+esm";
+import select2 from "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
-import "../../main.css";
 import Searchbar from "../searchbar/searchbar.ce.vue";
+
 export default {
   components: {
     Searchbar,
@@ -122,7 +122,7 @@ export default {
     };
   },
   async created() {
-    var self = this;
+    const self = this;
 
     // set any initial filtering parameters
     let url = new URL(window.location.href);
@@ -149,6 +149,7 @@ export default {
     // wait for the signal that created has finished loading data
     const self = this;
     await self.awaitMountPromise;
+    select2($);
 
     self.formCategoriesElement = $(".categories-small").select2();
 

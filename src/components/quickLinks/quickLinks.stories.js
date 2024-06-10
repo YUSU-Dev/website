@@ -1,8 +1,8 @@
-import QuickLinks from "./quickLinks.ce.vue";
+import "./quickLinks.component.js";
 
 export default {
-  title: "Components/QuickLinks",
-  component: QuickLinks,
+  title: "Elements/QuickLinks",
+  component: "quick-links",
   parameters: {},
 };
 

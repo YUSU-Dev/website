@@ -3,3 +3,5 @@ dist/
 .dev/
 storybook-static/
 .eslintcache
+
+build-storybook.log

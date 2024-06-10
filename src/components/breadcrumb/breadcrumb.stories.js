@@ -1,8 +1,8 @@
-import Breadcrumb from "./breadcrumb.ce.vue";
+import "./breadcrumb.component.js";
 
 export default {
   title: "Elements/Breadcrumb",
-  component: Breadcrumb,
+  component: "breadcrumb",
 };
 
 export const Default = {
