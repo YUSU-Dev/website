@@ -1,13 +1,13 @@
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
 
 export default {
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
   },
   props: {
     submitSearchCallback: {
@@ -63,7 +63,10 @@ export default {
         class="btn btn-block btn-secondary h-full w-full bg-black px-1"
         @click="submitSearch"
       >
-        <FontAwesomeIcon icon="fas fa-search" class="w-4 h-4 mx-1 py-0.5 text-white" />
+        <FontAwesomeIcon
+          icon="fas fa-search"
+          class="mx-1 h-4 w-4 py-0.5 text-white"
+        />
       </button>
     </div>
   </div>

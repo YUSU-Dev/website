@@ -1,7 +1,7 @@
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faArrowRight);
 
@@ -67,7 +67,10 @@ export default {
         <h2 class="mb-3 text-2xl group-hover:underline">{{ link.title }}</h2>
         <p class="text-base font-bold group-hover:underline">
           {{ link.subtitle ?? "Discover"
-          }}<FontAwesomeIcon icon="fas fa-arrow-right" class="w-4 h-4 inline pl-1" />
+          }}<FontAwesomeIcon
+            icon="fas fa-arrow-right"
+            class="inline h-4 w-4 pl-1"
+          />
         </p>
       </div>
     </a>

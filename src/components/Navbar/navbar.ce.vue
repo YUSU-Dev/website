@@ -67,12 +67,20 @@
             class="hidden lg:flex"
             href="/search#gsc.tab=0"
             aria-label="Search the website"
-            ><FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="w-8 h-8"></FontAwesomeIcon></a>
+            ><FontAwesomeIcon
+              icon="fa-solid fa-magnifying-glass"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
+          ></a>
           <a
             class="hidden lg:flex"
             href="/shop/basket"
             aria-label="View your basket"
-            ><FontAwesomeIcon icon="fa-solid fa-basket-shopping" class="w-8 h-8"></FontAwesomeIcon></a>
+            ><FontAwesomeIcon
+              icon="fa-solid fa-basket-shopping"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
+          ></a>
           <button
             class="ml-12 text-4xl"
             @click="navClosed = !navClosed"
@@ -80,7 +88,10 @@
             title="Toggle the website navigation bar"
             type="button"
           >
-            <FontAwesomeIcon icon="fa-solid fa-bars" class="w-8 h-8"></FontAwesomeIcon>
+            <FontAwesomeIcon
+              icon="fa-solid fa-bars"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </button>
         </div>
       </div>
@@ -94,9 +105,17 @@
       >
         <div v-if="icons" class="mb-8 mt-4 flex flex-wrap gap-4 md:hidden">
           <a class="" href="/search#gsc.tab=0" aria-label="Search the website">
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="w-8 h-8"></FontAwesomeIcon></a>
+            <FontAwesomeIcon
+              icon="fa-solid fa-magnifying-glass"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
+          ></a>
           <a class="" href="/shop/basket" aria-label="view your basket">
-            <FontAwesomeIcon icon="fa-solid fa-basket-shopping" class="w-8 h-8"></FontAwesomeIcon></a>
+            <FontAwesomeIcon
+              icon="fa-solid fa-basket-shopping"
+              class="h-8 w-8"
+            ></FontAwesomeIcon
+          ></a>
           <a
             class=""
             id="__ba_panel"
@@ -104,11 +123,17 @@
             onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
             href="/"
           >
-            <FontAwesomeIcon icon="fa-solid fa-universal-access" class="w-8 h-8"></FontAwesomeIcon>
+            <FontAwesomeIcon
+              icon="fa-solid fa-universal-access"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </a>
           <!-- {if logged_in} -->
           <a class="" onClick="getBearerToken()" href="#" aria-label="Login">
-            <FontAwesomeIcon icon="fa-solid fa-circle-user" class="w-8 h-8"></FontAwesomeIcon>
+            <FontAwesomeIcon
+              icon="fa-solid fa-circle-user"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </a>
           <!-- {/if} -->
         </div>
@@ -164,9 +189,18 @@
               href="/search#gsc.tab=0"
               aria-label="Search the website"
             >
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="w-8 h-8"></FontAwesomeIcon>></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-magnifying-glass"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+              >></a
+            >
             <a class="" href="/shop/basket" aria-label="View your basket">
-              <FontAwesomeIcon icon="fa-solid fa-basket-shopping" class="w-8 h-8"></FontAwesomeIcon></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+            ></a>
           </div>
         </div>
         <div
@@ -185,7 +219,10 @@
             :class="`${index != menuData.sections.length - 1 && 'border-b-2 border-black'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex items-center justify-between`"
           >
             <p class="font-bold">{{ section.name }}</p>
-            <FontAwesomeIcon icon="fa-solid fa-caret-right" class="w-8 h-8"></FontAwesomeIcon>
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-right"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
           </button>
         </div>
         <div
@@ -198,7 +235,10 @@
             @click="section.closed = !section.closed"
             class="flex items-center"
           >
-          <FontAwesomeIcon icon="fa-solid fa-caret-left" class="w-8 h-8"></FontAwesomeIcon>
+            <FontAwesomeIcon
+              icon="fa-solid fa-caret-left"
+              class="h-8 w-8"
+            ></FontAwesomeIcon>
             <p class="text-4xl font-bold">{{ section.name }}</p>
           </button>
           <ul class="mt-5 flex flex-col gap-2 text-lg">
@@ -220,13 +260,21 @@
               href="/search#gsc.tab=0"
               aria-label="Search the website"
             >
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="w-8 h-8"></FontAwesomeIcon></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-magnifying-glass"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+            ></a>
             <a
               class="flex items-center"
               href="/shop/basket"
               aria-label="View your basket"
             >
-            <FontAwesomeIcon icon="fa-solid fa-basket-shopping" class="w-8 h-8"></FontAwesomeIcon></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+            ></a>
             <button
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
@@ -254,13 +302,22 @@
               href="/search#gsc.tab=0"
               aria-label="Search the website"
             >
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="w-8 h-8"></FontAwesomeIcon>></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-magnifying-glass"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+              >></a
+            >
             <a
               class="flex items-center"
               href="/shop/basket"
               aria-label="View your basket"
             >
-            <FontAwesomeIcon icon="fa-solid fa-basket-shopping" class="w-8 h-8"></FontAwesomeIcon></a>
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-8 w-8"
+              ></FontAwesomeIcon
+            ></a>
             <button
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
@@ -323,7 +380,10 @@
               :aria-label="socialPlatform.name"
               :href="socialPlatform.link"
               target="_blank"
-              ><FontAwesomeIcon :icon="`fa-brands ${socialPlatform.icon}`" class="h-8 w-8" /></a>
+              ><FontAwesomeIcon
+                :icon="`fa-brands ${socialPlatform.icon}`"
+                class="h-8 w-8"
+            /></a>
           </div>
         </div>
       </div>
@@ -331,12 +391,37 @@
   </nav>
 </template>
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMagnifyingGlass, faBasketShopping, faBars, faCaretRight, faCaretLeft, faUniversalAccess, faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faInstagram, faTiktok, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faMagnifyingGlass,
+  faBasketShopping,
+  faBars,
+  faCaretRight,
+  faCaretLeft,
+  faUniversalAccess,
+  faCircleUser,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faTiktok,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
-library.add(faFacebook, faInstagram, faTiktok, faXTwitter, faMagnifyingGlass, faBasketShopping, faBars, faCaretLeft, faCaretRight, faUniversalAccess, faCircleUser);
+library.add(
+  faFacebook,
+  faInstagram,
+  faTiktok,
+  faXTwitter,
+  faMagnifyingGlass,
+  faBasketShopping,
+  faBars,
+  faCaretLeft,
+  faCaretRight,
+  faUniversalAccess,
+  faCircleUser,
+);
 
 export default {
   name: "Navbar",

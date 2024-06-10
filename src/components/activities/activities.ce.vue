@@ -20,7 +20,10 @@
             class="btn btn-block btn-secondary h-full w-full bg-black px-1"
             @click="submitSearch"
           >
-            <FontAwesomeIcon icon="fa-solid fa-search" class="p-2 text-white w-8 h-8" />
+            <FontAwesomeIcon
+              icon="fa-solid fa-search"
+              class="h-8 w-8 p-2 text-white"
+            />
           </button>
         </div>
       </div>
@@ -132,8 +135,8 @@
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);

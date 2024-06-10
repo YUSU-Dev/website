@@ -10,15 +10,20 @@
     }"
   >
     <div v-if="arrow" class="mr-2">
-      <FontAwesomeIcon icon="fa-solid fa-arrow-left" class="w-4 h-4" />
+      <FontAwesomeIcon icon="fa-solid fa-arrow-left" class="h-4 w-4" />
     </div>
     {{ title }}
-    <FontAwesomeIcon v-if="isTertiary" icon="fa-solid fa-arrow-right" class="ml-2 w-4 h-4" :class="{ 'btn-tertiary': isTertiary }" />
+    <FontAwesomeIcon
+      v-if="isTertiary"
+      icon="fa-solid fa-arrow-right"
+      class="ml-2 h-4 w-4"
+      :class="{ 'btn-tertiary': isTertiary }"
+    />
   </a>
 </template>
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faArrowLeft, faArrowRight);

@@ -52,7 +52,10 @@
         role="alert"
         aria-busy="true"
       >
-        <FontAwesomeIcon icon="fa-solid fa-spinner" class="h-8 w-8 animate-spin"></FontAwesomeIcon>
+        <FontAwesomeIcon
+          icon="fa-solid fa-spinner"
+          class="h-8 w-8 animate-spin"
+        ></FontAwesomeIcon>
       </div>
       <div class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <Tile
@@ -86,8 +89,8 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
 import $ from "https://cdn.jsdelivr.net/npm/jquery/+esm";
 import select2 from "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Tile from "../Tile/tile.ce.vue";
 import Searchbar from "../searchbar/searchbar.ce.vue";

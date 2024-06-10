@@ -23,7 +23,10 @@
                     class="btn btn-block btn-secondary h-full w-full bg-black px-1"
                     @click="submitSearch"
                   >
-                    <FontAwesomeIcon icon="fas fa-search" class="w-4 h-4 mx-1 text-white" />
+                    <FontAwesomeIcon
+                      icon="fas fa-search"
+                      class="mx-1 h-4 w-4 text-white"
+                    />
                   </button>
                 </div>
               </div>
@@ -117,7 +120,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
-
 
 export default {
   props: [

@@ -99,11 +99,17 @@
               <div class="text-sm">
                 <ul class="flex flex-col gap-y-1">
                   <li>
-                    <FontAwesomeIcon icon="fas fa-phone" class="mr-2 h-4 w-4 inline" />
+                    <FontAwesomeIcon
+                      icon="fas fa-phone"
+                      class="mr-2 inline h-4 w-4"
+                    />
                     <a href="tel:+441904323724">01904 32 3724</a>
                   </li>
                   <li>
-                    <FontAwesomeIcon icon="fas fa-envelope" class="mr-2 h-4 w-4 inline" />
+                    <FontAwesomeIcon
+                      icon="fas fa-envelope"
+                      class="mr-2 inline h-4 w-4"
+                    />
                     <a href="mailto:reception@yorksu.org"
                       >reception@yorksu.org</a
                     >
@@ -137,9 +143,9 @@
   </footer>
 </template>
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faPhone, faEnvelope);
 
@@ -148,7 +154,7 @@ export default {
   props: {},
   methods: {},
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
   },
 };
 </script>

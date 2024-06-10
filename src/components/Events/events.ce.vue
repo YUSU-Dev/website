@@ -39,7 +39,10 @@
                 class="btn btn-block btn-secondary h-full"
                 aria-label="Submit"
               >
-                <FontAwesomeIcon icon="fas fa-search" className="w-8 h-8 text-white"></FontAwesomeIcon>
+                <FontAwesomeIcon
+                  icon="fas fa-search"
+                  className="w-8 h-8 text-white"
+                ></FontAwesomeIcon>
               </button>
             </div>
           </div>
@@ -80,8 +83,8 @@ import axios from "../../_common/axios.mjs";
 import Button from "../../components/button/button.ce.vue";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
