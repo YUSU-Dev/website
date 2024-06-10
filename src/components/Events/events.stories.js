@@ -1,8 +1,8 @@
-import Events from "./events.ce.vue";
+import "./events.component.js";
 
 export default {
   title: "Components/Events",
-  component: Events,
+  component: "events",
 };
 
 export const Default = {
