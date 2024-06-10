@@ -10,10 +10,13 @@ const config = {
     "@storybook/addon-themes",
   ],
   framework: {
-    name: "@storybook/vue3-vite",
+    name: "@storybook/web-components-vite",
     options: {
       docgen: "vue-component-meta",
     },
+  },
+  core: {
+    builder: "@storybook/builder-vite",
   },
   docs: {},
   async viteFinal(config) {

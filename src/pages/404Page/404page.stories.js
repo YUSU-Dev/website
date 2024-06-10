@@ -1,8 +1,8 @@
-import Error404Page from "./404page.ce.vue";
+import "./404page.component.js";
 
 export default {
   title: "Pages/404Page",
-  component: Error404Page,
+  component: "404page",
   parameters: {},
 };
 

@@ -1,5 +1,6 @@
 # Website
- [![Build and Upload to R2](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml)
+
+[![Build and Upload to R2](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml)
 
 A UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
 
@@ -7,15 +8,15 @@ To get started, clone this repo and run `npm ci`.
 
 ## Storybook
 
-You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in.
+You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in. We are using web components within storybook to ensure that there is good compatibility between components and the website. As such to include a vue file in a story you'll need to do the below.
 If you have a component in a file called `foo.vue`, create a file called `foo.stories.js` that looks something like this:
 
 ```js
-import Foo from "./foo.vue";
+import "./foo.component.js";
 
 export default {
   title: "Foo",
-  component: Foo,
+  component: "foo",
 };
 
 export const Default = {
@@ -85,17 +86,25 @@ You can use third-party libraries using standard JavaScript `import` syntax, as 
 - you import from a CDN using the full https:// URL
   The built file will contain an `import`, so you don't need to add it as a separate script tag.
 
-Some good options for CDNs are unpkg.com and esm.sh.
+We use JSDelivr (https://jsdelivr.com) as our CDN of choice (because it's allow-listed in the Content-Security-Policy at the SUMS level), so use that in preference to other CDNs.
+You can request that it [bundle a library as ESM](https://www.jsdelivr.com/esm) by adding `+esm` to the URL.
 
-For example, if you wanted to use dayjs in your component:
+> [!TIP]
+> The JSDelivr website suggests you use https://esm.run URLs for ES Modules.
+> Because of our Content-Security-Policy this won't work.
+> However, an esm.run URL just redirects to a JSDelivr URL, so you can visit it once to find out what the real URL is.
+>
+> For example, if I go to `https://esm.run/moment` it redirects me to `https://cdn.jsdelivr.net/npm/moment/+esm`.
+
+For example, if you wanted to use Moment.js in your component:
 
 ```vue
 <script>
-import dayjs from "https://esm.sh/dayjs@1.11.11";
+import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
 export default {
   data() {
     return {
-      time: dayjs().format("HH:mm"),
+      time: moment().format("HH:mm"),
     };
   },
 };

@@ -1,5 +1,4 @@
 <script>
-import "../../main.css";
 export default {
   props: {
     submitSearchCallback: {
@@ -39,7 +38,7 @@ export default {
 </script>
 
 <template>
-  <div class="input-group flex border-black border-[1px]">
+  <div class="input-group flex border-[1px] border-black">
     <input
       ref="search"
       name="search"
@@ -52,11 +51,16 @@ export default {
       <button
         type="submit"
         aria-label="Submit"
-        class="btn btn-block btn-secondary bg-black w-full h-full px-1"
+        class="btn btn-block btn-secondary h-full w-full bg-black px-1"
         @click="submitSearch"
       >
-        <i class="fas fa-search text-white p-2"></i>
+        <i class="fas fa-search p-2 text-white"></i>
       </button>
     </div>
   </div>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
+    crossorigin="anonymous"
+  />
 </template>

@@ -1,8 +1,8 @@
-import Tile from "./tile.ce.vue";
+import "./tile.component.js";
 
 export default {
   title: "Elements/Tile",
-  component: Tile,
+  component: "tile",
   parameters: {
     layout: "centered",
   },

@@ -1,7 +1,10 @@
 import { defineCustomElement } from "vue"; // gets resolved in rollup.config.mjs
+import * as MainCSS from "../main.css?inline";
 
-export function register(name, component) {
+export function register(name, component, forceExcludeMainCSS = false) {
+  if (!forceExcludeMainCSS) {
+    component.styles = [...(component.styles ?? []), MainCSS.default];
+  }
   const el = defineCustomElement(component);
-  console.log(component.styles);
   customElements.define(`yorksu-${name}`, el);
 }
