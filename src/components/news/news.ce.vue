@@ -61,7 +61,7 @@
           :title="article.title"
           :date="article.date"
           :categories="article.categories"
-          :url="'/news/article/' + article.url_title"
+          :url="'/news/article/' + article.entry_id"
           :image="article.thumbnail"
           :appendCategory="appendCategory"
         />
