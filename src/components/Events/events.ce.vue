@@ -182,10 +182,6 @@ export default {
     if (!this.limit) {
       this.onScroll();
     }
-    //Add Select2 Search dropdowns to the selects - if not present is ignored
-    try {
-      $("#event-category, #event-activity").select2();
-    } catch {}
   },
   methods: {
     /**
