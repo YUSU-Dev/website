@@ -99,11 +99,11 @@
               <div class="text-sm">
                 <ul class="flex flex-col gap-y-1">
                   <li>
-                    <i class="fa-solid fa-phone mr-2"></i>
+                    <FontAwesomeIcon icon="fas fa-phone" class="mr-2 h-4 w-4 inline" />
                     <a href="tel:+441904323724">01904 32 3724</a>
                   </li>
                   <li>
-                    <i class="fa-solid fa-envelope mr-2"></i>
+                    <FontAwesomeIcon icon="fas fa-envelope" class="mr-2 h-4 w-4 inline" />
                     <a href="mailto:reception@yorksu.org"
                       >reception@yorksu.org</a
                     >
@@ -137,9 +137,18 @@
   </footer>
 </template>
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPhone, faEnvelope);
+
 export default {
   name: "Footer",
   props: {},
   methods: {},
+  components: {
+    FontAwesomeIcon
+  },
 };
 </script>

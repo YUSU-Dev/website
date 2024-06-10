@@ -1,5 +1,14 @@
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSearch);
+
 export default {
+  components: {
+    FontAwesomeIcon
+  },
   props: {
     submitSearchCallback: {
       type: Function,
@@ -54,13 +63,8 @@ export default {
         class="btn btn-block btn-secondary h-full w-full bg-black px-1"
         @click="submitSearch"
       >
-        <i class="fas fa-search p-2 text-white"></i>
+        <FontAwesomeIcon icon="fas fa-search" class="w-4 h-4 mx-1 py-0.5 text-white" />
       </button>
     </div>
   </div>
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
-    crossorigin="anonymous"
-  />
 </template>
