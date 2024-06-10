@@ -1,4 +1,4 @@
-import "./view.component.js";
+import "./view-news.component.js";
 
 export default {
   title: "Components/View News",
