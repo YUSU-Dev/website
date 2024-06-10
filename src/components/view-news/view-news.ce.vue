@@ -22,7 +22,7 @@ export default {
   components: {
     Button,
   },
-  props: ["siteid", "articleId"],
+  props: ["siteid", "articleid"],
   data() {
     return {
       Article: {},
@@ -33,7 +33,7 @@ export default {
     var self = this;
     self.loading = true;
     axios
-      .get("https://pluto.sums.su/api/news/" + self.articleId, {
+      .get("https://pluto.sums.su/api/news/" + self.articleid, {
         headers: {
           "X-Site-Id": self.siteid,
         },
