@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-4 px-2 pb-2 lg:px-3 lg:pb-3">
+  <div class="mb-4 bg-white px-2 pb-2 lg:px-3 lg:pb-3">
     <div class="relative h-full shadow transition hover:scale-105">
       <a class="group text-black no-underline" :href="url">
         <img
@@ -22,11 +22,11 @@
           <p v-if="shopGroupName" class="font-semibold">{{ shopGroupName }}</p>
           <p v-if="text" class="font-semibold">{{ text }}</p>
           <div v-if="!date && !text">
-            <p class="font-semibold">
+            <p class="flex items-center font-semibold">
               Discover
               <FontAwesomeIcon
                 icon="fas fa-arrow-right"
-                class="ml-2 transition group-hover:translate-x-4"
+                class="ml-2 h-4 w-4 transition group-hover:translate-x-4"
               />
             </p>
           </div>
