@@ -28,7 +28,6 @@
           >
             Accessibility Tools
           </button>
-          <!-- {if logged_in} -->
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             onClick="getBearerToken()"
@@ -40,7 +39,6 @@
             >Sign Out</a
           >
         </div>
-        <!-- {if:else} -->
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <button
             class="bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
@@ -60,7 +58,6 @@
             href="/sign-in/sso"
             >Student Sign In</a
           >
-          <!-- {/if} -->
         </div>
         <div class="flex items-center justify-end">
           <a
@@ -73,7 +70,7 @@
             ></FontAwesomeIcon
           ></a>
           <a
-            class="hidden lg:flex"
+            class="ml-7 hidden lg:flex"
             href="/shop/basket"
             aria-label="View your basket"
             ><FontAwesomeIcon
@@ -128,14 +125,12 @@
               class="h-8 w-8"
             ></FontAwesomeIcon>
           </a>
-          <!-- {if logged_in} -->
           <a class="" onClick="getBearerToken()" href="#" aria-label="Login">
             <FontAwesomeIcon
               icon="fa-solid fa-circle-user"
               class="h-8 w-8"
             ></FontAwesomeIcon>
           </a>
-          <!-- {/if} -->
         </div>
         <div v-else class="mb-4 flex gap-6 md:hidden">
           <div v-if="signedIn" class="flex flex-col justify-center gap-y-3">
@@ -149,7 +144,6 @@
             >
               Accessibility Tools
             </button>
-            <!-- {if logged_in} -->
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               onClick="getBearerToken()"
@@ -161,7 +155,6 @@
               >Sign Out</a
             >
           </div>
-          <!-- {if:else} -->
           <div v-else class="flex flex-col justify-center gap-y-3">
             <button
               class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
@@ -182,7 +175,6 @@
               >Student Sign In</a
             >
           </div>
-          <!-- {/if} -->
           <div class="flex flex-col items-center justify-center gap-4">
             <a
               class=""
@@ -193,8 +185,7 @@
                 icon="fa-solid fa-magnifying-glass"
                 class="h-8 w-8"
               ></FontAwesomeIcon
-              >></a
-            >
+            ></a>
             <a class="" href="/shop/basket" aria-label="View your basket">
               <FontAwesomeIcon
                 icon="fa-solid fa-basket-shopping"
@@ -266,7 +257,7 @@
               ></FontAwesomeIcon
             ></a>
             <a
-              class="flex items-center"
+              class="ml-7 flex items-center"
               href="/shop/basket"
               aria-label="View your basket"
             >
@@ -283,7 +274,6 @@
             >
               Accessibility Tools
             </button>
-            <!-- {if logged_in} -->
             <a
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               onClick="getBearerToken()"
@@ -295,7 +285,6 @@
               >Sign Out</a
             >
           </div>
-          <!-- {if:else} -->
           <div v-else class="flex gap-3 text-sm">
             <a
               class="flex items-center"
@@ -306,10 +295,9 @@
                 icon="fa-solid fa-magnifying-glass"
                 class="h-8 w-8"
               ></FontAwesomeIcon
-              >></a
-            >
+            ></a>
             <a
-              class="flex items-center"
+              class="ml-7 flex items-center"
               href="/shop/basket"
               aria-label="View your basket"
             >
@@ -337,7 +325,6 @@
               >Student Sign In</a
             >
           </div>
-          <!-- {/if} -->
         </div>
         <div
           class="hidden border-b-2 border-black md:grid md:grid-cols-3 lg:grid-cols-6"
