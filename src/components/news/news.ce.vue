@@ -1,6 +1,28 @@
 <template>
   <div id="newsTop" class=""></div>
-  <div class="container mx-auto grid grid-cols-5">
+  <div v-if="embedded" class="container mx-auto">
+    <div class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
+      <Tile
+        v-for="article in News"
+        :key="article.id"
+        :title="article.title"
+        :date="article.date"
+        :categories="article.categories"
+        :url="'/news/article/' + article.entry_id"
+        :image="article.thumbnail"
+        :appendCategory="appendCategory"
+      />
+    </div>
+    <Pagination
+      :loading="loading"
+      :Array="News"
+      :loadPage="loadPage"
+      :Page="Page"
+      :MoreResults="MoreResults"
+      :PreviousResults="PreviousResults"
+    />
+  </div>
+  <div v-else class="container mx-auto grid grid-cols-5">
     <div class="order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
       <div class="sticky top-4 border-[1px] border-black p-6">
         <div class="">
@@ -105,7 +127,16 @@ export default {
     Tile,
     FontAwesomeIcon,
   },
-  props: ["siteid"],
+  props: {
+    embedded: {
+      type: Boolean,
+      default: false,
+    },
+    selectedCategories: {
+      type: String,
+      default: null,
+    },
+  },
   data() {
     return {
       News: [],
@@ -124,6 +155,7 @@ export default {
         "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg",
         "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
       ],
+      perPage: 10,
     };
   },
   async created() {
@@ -225,12 +257,21 @@ export default {
         self.Page = 1;
         self.Pages = [1];
       }
-      let parameters = "sortBy=name&perPage=10&page=" + self.Page;
+
+      if (self.embedded) {
+        self.perPage = 4;
+      }
+
+      let parameters =
+        "sortBy=name&perPage=" + self.perPage + "&page=" + self.Page;
       if (search) {
         parameters += "&searchTerm=" + search;
       }
       if (categories && categories.length > 0) {
         parameters += "&categoryIds=" + categories.join(",");
+      }
+      if (self.selectedCategories) {
+        parameters += "&categoryIds=" + self.selectedCategories;
       }
       let response = await axios.get(
         "https://pluto.sums.su/api/news?" + parameters,
