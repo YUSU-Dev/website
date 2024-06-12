@@ -17,7 +17,7 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["soleil", "sans-serif"],
+      sans: ["soleil", "inter", "sans-serif"],
       serif: ["rooney-web", "serif"],
     },
   },
