@@ -110,17 +110,26 @@
           </div>
         </Transition>
       </div>
-      <div
-        class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-      >
-        <Tile
-          v-for="Group in Groups"
-          :key="Group.id"
-          :url="'/activities/view/' + Group.url_name"
-          :title="Group.name"
-          :image="Group.thumbnail_url"
-        />
-      </div>
+      <Transition>
+        <div
+          class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+          v-if="!loading"
+        >
+          <Tile
+            v-for="Group in Groups"
+            :key="Group.id"
+            :url="'/activities/view/' + Group.url_name"
+            :title="Group.name"
+            :image="Group.thumbnail_url"
+          />
+        </div>
+        <div
+          class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+          v-else
+        >
+          <Tile v-for="Item in PerPage" :key="Item" :loading="true" />
+        </div>
+      </Transition>
       <Pagination
         :Array="Groups"
         :loadPage="loadPage"
@@ -159,13 +168,16 @@ export default {
       SelectedParents: [],
       Search: "",
       Page: 1,
+      PerPage: 20,
       Pages: [],
       MoreResults: false,
       PreviousResults: false,
+      loading: true,
     };
   },
   created() {
     var self = this;
+    self.loading = true;
     if (self.selectedparents) {
       self.SelectedParents = self.selectedparents.split(",");
     } else if (self.selectedcategory) {
@@ -234,7 +246,8 @@ export default {
         self.Page = 1;
         self.Pages = [1];
       }
-      let parameters = "sortBy=name&perPage=20&page=" + self.Page;
+      let parameters =
+        "sortBy=name&perPage=" + self.PerPage + "&page=" + self.Page;
       //add relevant parameters to the group search
       if (self.CategoryIDs) {
         parameters += "&categoryIds=" + self.CategoryIDs;
@@ -266,6 +279,7 @@ export default {
           } else {
             self.PreviousResults = false;
           }
+          self.loading = false;
         });
     },
     loadPage(pageNumber = null) {
