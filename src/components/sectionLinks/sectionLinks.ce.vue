@@ -7,7 +7,7 @@
       class="relative mt-6 flex w-full max-w-4xl flex-col px-2 pb-4 text-center lg:px-3"
     >
       <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
-        {sections}
+        <!-- {sections} -->
         <!-- {if section_is_active}
         <li class="flex justify-center break-words">
           <a class="w-full h-full btn bg-light-blue" href="{section_url}">
@@ -36,7 +36,7 @@
             {item_text}
           </a>
         </li> -->
-        {if:else}
+        <!-- {if:else} -->
         <li class="">
           <a
             class="btn btn-secondary w-full px-10 text-center"
