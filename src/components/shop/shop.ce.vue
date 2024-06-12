@@ -261,7 +261,7 @@ export default {
      * Choose Group
      * @param event - event from select box
      */
-    updateGroup(event) {
+    updateGroup(value) {
       self.Loading = true;
       if (value === null) {
         this.SelectedGroup = "";
