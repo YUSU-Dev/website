@@ -78,12 +78,12 @@
             <div class="pb-4 pl-1 pr-5 text-white">
               <ul class="mb-0 list-none ps-[10px]">
                 <li v-for="category in categories" :key="category.id">
-                  <span
+                  <!-- <span
                     @click="appendCategory(category.id)"
                     style="cursor: pointer"
-                  >
-                    &#x2022; <span class="underline">{{ category.name }}</span>
-                  </span>
+                  > -->
+                  <span>{{ category.name }}</span>
+                  <!-- </span> -->
                 </li>
               </ul>
             </div>
