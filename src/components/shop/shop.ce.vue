@@ -62,6 +62,7 @@
         </div>
         <div
           class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+          v-if="!Loading"
         >
           <Tile
             v-for="product in Products"
@@ -74,6 +75,12 @@
             :productId="product.id"
             :shopGroupName="product.group_name"
           />
+        </div>
+        <div
+          class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+          v-else
+        >
+          <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination
           :Array="Products"
@@ -140,10 +147,13 @@ export default {
       ShopOnly: true,
       ModalClosed: true,
       ErrorDescription: "",
+      Loading: true,
+      ProductsPerPage: 12,
     };
   },
   created() {
     var self = this;
+    self.Loading = true;
     //check if looking for a specific activity, search, etc...
     let urlParams = new URLSearchParams(window.location.search);
     if (!self.featuredshop && !self.hidefilter) {
@@ -194,7 +204,11 @@ export default {
         self.Page = 1;
         self.Pages = [1];
       }
-      let parameters = "sortBy=name&perPage=12&hasStock=1&page=" + self.Page;
+      let parameters =
+        "sortBy=name&perPage=" +
+        self.ProductsPerPage +
+        "&hasStock=1&page=" +
+        self.Page;
       if (self.featuredshop) {
         parameters += "&shopItems=1";
       }
@@ -227,6 +241,7 @@ export default {
           } else {
             self.PreviousResults = false;
           }
+          self.Loading = false;
         });
     },
     /**
@@ -234,6 +249,7 @@ export default {
      * @param event - event from select box
      */
     updateCategory(value) {
+      self.Loading = true;
       if (value === null) {
         this.SelectedCategory = "";
       } else {
@@ -245,7 +261,8 @@ export default {
      * Choose Group
      * @param event - event from select box
      */
-    updateGroup(value) {
+    updateGroup(event) {
+      self.Loading = true;
       if (value === null) {
         this.SelectedGroup = "";
       } else {
@@ -262,10 +279,12 @@ export default {
       this.getProducts();
     },
     moreProducts() {
+      self.Loading = true;
       this.Page++;
       this.getProducts(true);
     },
     loadPage(pageNumber = null) {
+      self.Loading = true;
       if (pageNumber) {
         this.Page = pageNumber;
       } else {
