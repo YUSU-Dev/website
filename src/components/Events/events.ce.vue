@@ -75,6 +75,9 @@
     </div>
   </div>
 </template>
+<style>
+@import "https://cdn.jsdelivr.net/npm/vue-select@3.16.0/dist/vue-select.css";
+</style>
 <script>
 import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
@@ -82,7 +85,6 @@ import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
 import Button from "../../components/button/button.ce.vue";
 import vSelect from "vue-select";
-import "vue-select/dist/vue-select.css";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";

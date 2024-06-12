@@ -23,7 +23,7 @@
     />
   </div>
   <div v-else class="container mx-auto grid grid-cols-5">
-    <div class="order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
+    <div class="z-10 order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
       <div class="sticky top-4 border-[1px] border-black p-6">
         <div class="">
           <div class="">
@@ -41,20 +41,16 @@
               <label for="categories-small">
                 <h2 class="mb-2">Categories</h2>
               </label>
-              <div class="flex">
-                <select
-                  id="categories-small"
-                  class="categories-small w-100"
-                  multiple="multiple"
+              <div class="">
+                <v-select
+                  label="name"
+                  :options="NewsCategories"
+                  @update:modelValue="submitCategories"
+                  placeholder="All"
+                  multiple
+                  :reduce="(article) => article.id"
                 >
-                  <option
-                    v-for="(category, categoryID) in NewsCategories"
-                    :value="categoryID"
-                    :key="categoryID"
-                  >
-                    {{ category.name }}
-                  </option>
-                </select>
+                </v-select>
               </div>
             </div>
           </div>
@@ -103,20 +99,20 @@
   </div>
 </template>
 <style>
-@import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
+@import "https://cdn.jsdelivr.net/npm/vue-select@3.16.0/dist/vue-select.css";
 </style>
 <script>
 import axios from "../../_common/axios.mjs";
 import Pagination from "../Pagination/pagination.ce.vue";
 import moment from "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm";
-import $ from "https://cdn.jsdelivr.net/npm/jquery/+esm";
-import select2 from "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Tile from "../Tile/tile.ce.vue";
 import Searchbar from "../searchbar/searchbar.ce.vue";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import vSelect from "vue-select";
+// import "vue-select/dist/vue-select.css";
 
 library.add(faSpinner);
 
@@ -126,6 +122,7 @@ export default {
     Pagination,
     Tile,
     FontAwesomeIcon,
+    "v-select": vSelect,
   },
   props: {
     embedded: {
@@ -145,7 +142,8 @@ export default {
       MoreResults: false,
       PreviousResults: false,
       loading: false,
-      NewsCategories: {},
+      NewsCategories: [],
+      categoriesDictionary: [],
       filterCategories: [],
       filterSearch: null,
       formCategoriesElement: null,
@@ -186,15 +184,6 @@ export default {
     // wait for the signal that created has finished loading data
     const self = this;
     await self.awaitMountPromise;
-    select2($);
-
-    self.formCategoriesElement = $(".categories-small").select2();
-
-    // set the initial values of the form elements
-    self.formCategoriesElement.val(self.filterCategories).trigger("change");
-
-    // set the event handlers for the form elements
-    self.formCategoriesElement.on("change", self.submitCategories);
 
     self.currentURLAccessibilityHelper = window.location.href;
 
@@ -218,7 +207,7 @@ export default {
     getNewsCategories: async function () {
       let self = this;
       self.loading = true;
-      let categoriesDictionary = {};
+      // let categoriesDictionary = [];
       var foundAllCategories = false;
       var categoriesPage = 1;
       while (!foundAllCategories) {
@@ -231,9 +220,8 @@ export default {
             },
           },
         );
-
         page.data.data.forEach((element) => {
-          categoriesDictionary[element.id] = {
+          self.categoriesDictionary[element.id] = {
             id: element.id,
             parent_id: element.parent_id,
             name: element.name,
@@ -247,7 +235,9 @@ export default {
           foundAllCategories = true;
         }
       }
-      self.NewsCategories = categoriesDictionary;
+      self.NewsCategories = self.categoriesDictionary.filter(
+        (value) => Object.keys(value).length !== 0,
+      );
     },
     getNews: async function (append = false, search = null, categories = null) {
       let self = this;
@@ -281,10 +271,9 @@ export default {
           },
         },
       );
-
       response.data.data.forEach((article) => {
         article.categories = article.categories.map(
-          (category_id) => self.NewsCategories[category_id],
+          (category_id) => self.categoriesDictionary[category_id],
         );
       });
       self.News = response.data.data;
@@ -304,8 +293,8 @@ export default {
       this.filterSearch = searchValue;
       this.changeFilteringParameters();
     },
-    submitCategories() {
-      this.filterCategories = this.formCategoriesElement.val();
+    submitCategories(value) {
+      this.filterCategories = value;
       this.changeFilteringParameters();
     },
     changeFilteringParameters() {
