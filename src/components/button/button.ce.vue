@@ -8,6 +8,7 @@
       'btn-student-voice': isStudentVoice,
       'btn-advice-support': isAdviceAndSupport,
     }"
+    :href="url"
   >
     <div v-if="arrow" class="mr-2">
       <FontAwesomeIcon icon="fa-solid fa-arrow-left" class="h-4 w-4" />
@@ -41,6 +42,10 @@ export default {
     isSecondary: Boolean,
     arrow: Boolean,
     isTertiary: Boolean,
+    url: {
+      type: String,
+      default: "#",
+    },
   },
   components: {
     FontAwesomeIcon,

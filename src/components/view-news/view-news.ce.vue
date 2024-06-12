@@ -1,9 +1,9 @@
 <template>
   <body>
     <main class="container mx-auto my-7">
-      <Button title="Back to News" isPrimary="true" arrow="true" />
+      <Button title="Back to News" isPrimary="true" arrow="true" url="/news" />
       <h2 class="mb-5 mt-10 text-3xl font-bold">
-        {{ Article.title ?? "News" }}
+        {{ Article.title }}
       </h2>
       <p v-if="Article.snippet" class="mb-3">{{ Article.snippet }}</p>
       <p v-if="Article.date" class="mb-5">{{ Article.date }}</p>
@@ -41,6 +41,9 @@ export default {
       .then(function (response) {
         self.Article = response.data;
         self.loading = false;
+      })
+      .catch(function (response) {
+        window.location.href = "/news";
       });
   },
 };
