@@ -517,7 +517,7 @@ export default {
             closed: true,
             links: [
               {
-                name: "The Advice & Support Centre",
+                name: "Advice & Support",
                 link: "/advice-support",
               },
               {
