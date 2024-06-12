@@ -1,6 +1,6 @@
 <template>
   <a
-    class="btn group flex w-fit"
+    class="btn group flex w-fit items-center"
     :class="{
       'btn-primary': isPrimary,
       'btn-secondary': isSecondary,
@@ -10,17 +10,24 @@
     }"
   >
     <div v-if="arrow" class="mr-2">
-      <i class="fa-solid fa-arrow-left"></i>
+      <FontAwesomeIcon icon="fa-solid fa-arrow-left" class="h-4 w-4" />
     </div>
     {{ title }}
-    <i
+    <FontAwesomeIcon
       v-if="isTertiary"
-      class="fa-solid fa-arrow-right ml-2"
+      icon="fa-solid fa-arrow-right"
+      class="ml-2 h-4 w-4"
       :class="{ 'btn-tertiary': isTertiary }"
-    ></i>
+    />
   </a>
 </template>
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faArrowLeft, faArrowRight);
+
 export default {
   props: {
     title: {
@@ -34,6 +41,9 @@ export default {
     isSecondary: Boolean,
     arrow: Boolean,
     isTertiary: Boolean,
+  },
+  components: {
+    FontAwesomeIcon,
   },
 };
 </script>

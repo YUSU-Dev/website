@@ -39,7 +39,10 @@
                 class="btn btn-block btn-secondary h-full"
                 aria-label="Submit"
               >
-                <i class="fas fa-search"></i>
+                <FontAwesomeIcon
+                  icon="fas fa-search"
+                  className="w-8 h-8 text-white"
+                ></FontAwesomeIcon>
               </button>
             </div>
           </div>
@@ -71,21 +74,23 @@
       />
     </div>
   </div>
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"
-    crossorigin="anonymous"
-  />
 </template>
+<style>
+@import "https://cdn.jsdelivr.net/npm/vue-select@3.16.0/dist/vue-select.css";
+</style>
 <script>
 import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import axios from "../../_common/axios.mjs";
-import "../../main.css";
 import Button from "../../components/button/button.ce.vue";
 import vSelect from "vue-select";
-import "vue-select/dist/vue-select.css";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faSearch);
+
 export default {
   props: [
     "siteid",
@@ -101,6 +106,7 @@ export default {
     Pagination,
     Button,
     "v-select": vSelect,
+    FontAwesomeIcon,
   },
   data() {
     return {

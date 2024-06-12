@@ -1,4 +1,4 @@
-import "./view.component.js";
+import "./view-news.component.js";
 
 export default {
   title: "Components/View News",
@@ -7,6 +7,6 @@ export default {
 
 export const Default = {
   args: {
-    articleId: "2102",
+    articleid: "2102",
   },
 };

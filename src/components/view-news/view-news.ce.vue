@@ -22,32 +22,26 @@ export default {
   components: {
     Button,
   },
-  props: ["siteid", "articleId"],
+  props: ["siteid", "articleid"],
   data() {
     return {
       Article: {},
       loading: false,
     };
   },
-  async mounted() {
-    this.getArticle();
-  },
-  updated() {},
-  methods: {
-    getArticle: async function () {
-      let self = this;
-      self.loading = true;
-      let response = await axios.get(
-        "https://pluto.sums.su/api/news/" + self.articleId,
-        {
-          headers: {
-            "X-Site-Id": self.siteid,
-          },
+  created() {
+    var self = this;
+    self.loading = true;
+    axios
+      .get("https://pluto.sums.su/api/news/" + self.articleid, {
+        headers: {
+          "X-Site-Id": self.siteid,
         },
-      );
-      self.Article = response.data;
-      self.loading = false;
-    },
+      })
+      .then(function (response) {
+        self.Article = response.data;
+        self.loading = false;
+      });
   },
 };
 </script>

@@ -73,8 +73,6 @@
   </Teleport>
 </template>
 <script>
-import "../../main.css";
-
 export default {
   props: {
     signedIn: {
