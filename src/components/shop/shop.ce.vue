@@ -33,39 +33,23 @@
             </div>
             <div class="col-lg-3 form-group">
               <label for="shop-categories">Categories</label>
-              <select
-                id="shop-categories"
-                class="form-control"
-                v-model="SelectedCategory"
-                @change="updateCategory($event)"
+              <v-select
+                label="name"
+                :options="Categories"
+                placeholder="All"
+                @update:modelValue="updateCategory"
               >
-                <option value="">All</option>
-                <option
-                  v-for="category in Categories"
-                  :value="category.id"
-                  :key="category.id"
-                >
-                  {{ category.name }}
-                </option>
-              </select>
+              </v-select>
             </div>
             <div class="col-lg-3 form-group">
               <label for="shop-group">Activities</label>
-              <select
-                id="shop-group"
-                class="form-control"
-                v-model="SelectedGroup"
-                @change="updateGroup($event)"
+              <v-select
+                label="name"
+                :options="Groups"
+                placeholder="All"
+                @update:modelValue="updateGroup"
               >
-                <option value="">All</option>
-                <option
-                  v-for="activity in Groups"
-                  :value="activity.id"
-                  :key="activity.id"
-                >
-                  {{ activity.name }}
-                </option>
-              </select>
+              </v-select>
             </div>
           </div>
         </div>
@@ -109,6 +93,9 @@
     @close="ModalClosed = true"
   />
 </template>
+<style>
+@import "https://cdn.jsdelivr.net/npm/vue-select@3.16.0/dist/vue-select.css";
+</style>
 <script>
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
@@ -118,6 +105,7 @@ import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import vSelect from "vue-select";
 
 library.add(faSearch);
 
@@ -135,6 +123,7 @@ export default {
     Pagination,
     Modal,
     FontAwesomeIcon,
+    "v-select": vSelect,
   },
   data() {
     return {
@@ -244,16 +233,16 @@ export default {
      * choose category
      * @param event - event from select box
      */
-    updateCategory(event) {
-      this.SelectedCategory = event.target.value;
+    updateCategory(value) {
+      this.SelectedCategory = value.id;
       this.getProducts();
     },
     /**
      * Choose Group
      * @param event - event from select box
      */
-    updateGroup(event) {
-      this.SelectedGroup = event.target.value;
+    updateGroup(value) {
+      this.SelectedGroup = value.id;
       this.getProducts();
     },
     /**

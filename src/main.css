@@ -61,7 +61,7 @@
 @layer components {
   /* Select2 Classes */
 
-  .vs__dropdown-toggle {
+  /* .vs__dropdown-toggle {
     @apply rounded-none border-black bg-black text-white !important;
   }
 
@@ -136,7 +136,7 @@
     .select2-selection--single
     .select2-selection__rendered {
     @apply text-white !important;
-  }
+  } */
 
   /* Button Classes */
   .btn {
