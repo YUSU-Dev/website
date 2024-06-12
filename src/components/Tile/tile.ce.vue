@@ -50,6 +50,7 @@
         </div>
         <div v-else class="h-[136px]">
           <div class="flex-1 space-y-6 px-5 py-5">
+            <div class="sr-only">Loading</div>
             <div class="h-2 rounded bg-slate-200"></div>
             <div class="space-y-3">
               <div class="grid grid-cols-3 gap-4">
