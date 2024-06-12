@@ -41,3 +41,27 @@ export const Default = {
     ],
   },
 };
+
+export const Shop = {
+  args: {
+    url: "/",
+    title: "Product",
+    text: "£5.99",
+    shopGroupName: "Shop Group",
+  },
+};
+
+export const Activities = {
+  args: {
+    url: "/",
+    title: "Group Name",
+  },
+};
+
+export const Loading = {
+  args: {
+    url: "/",
+    title: "Group Name",
+    loading: "true",
+  },
+};

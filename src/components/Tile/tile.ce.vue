@@ -1,6 +1,9 @@
 <template>
   <div class="mb-4 bg-white px-2 pb-2 lg:px-3 lg:pb-3">
-    <div class="relative h-full shadow transition hover:scale-105">
+    <div
+      class="relative h-full shadow transition hover:scale-105"
+      :class="{ 'animate-pulse': loading }"
+    >
       <a class="group text-black no-underline" :href="url">
         <img
           v-if="image"
@@ -9,6 +12,10 @@
           alt=""
           loading="lazy"
         />
+        <div
+          v-else-if="loading"
+          class="aspect-square bg-slate-200 bg-cover bg-center"
+        ></div>
         <img
           v-else
           class="aspect-square bg-cover bg-center"
@@ -16,7 +23,10 @@
           alt=""
           loading="lazy"
         />
-        <div class="flex h-[136px] flex-col justify-between p-6">
+        <div
+          v-if="!loading"
+          class="flex h-[136px] flex-col justify-between p-6"
+        >
           <h3 class="mb-2 line-clamp-2 text-xl font-semibold">{{ title }}</h3>
           <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
           <p v-if="shopGroupName" class="font-semibold">{{ shopGroupName }}</p>
@@ -36,6 +46,19 @@
                 Add to basket
               </span>
             </a>
+          </div>
+        </div>
+        <div v-else class="h-[136px]">
+          <div class="flex-1 space-y-6 px-5 py-5">
+            <div class="sr-only">Loading</div>
+            <div class="h-2 rounded bg-slate-200"></div>
+            <div class="space-y-3">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="col-span-2 h-2 rounded bg-slate-200"></div>
+                <div class="col-span-1 h-2 rounded bg-slate-200"></div>
+              </div>
+              <div class="h-2 rounded bg-slate-200"></div>
+            </div>
           </div>
         </div>
       </a>
@@ -96,6 +119,7 @@ export default {
     "categories",
     "Brand",
     "appendCategory",
+    "loading",
   ],
   data() {
     return {
