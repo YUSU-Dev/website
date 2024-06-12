@@ -55,7 +55,7 @@ export default {
         self.Article = response.data;
         self.loading = false;
       })
-      .catch(function (response) {
+      .catch(function () {
         window.location.href = "/news";
       });
   },
