@@ -1,8 +1,8 @@
-import SectionLinks from "./sectionLinks.ce.vue";
+import "./sectionLinks.component.js";
 
 export default {
   title: "Elements/SectionLinks",
-  component: SectionLinks,
+  component: "section-links",
 };
 
 export const Default = {
