@@ -45,13 +45,14 @@ export default {
         If you're not sure where to go next, you can always return to our
         homepage:
       </h2>
-      <a href="/" class="inline-flex">
+      <div class="inline-flex">
         <Button
           title="Return Home"
           isPrimary="True"
           class="px-10 text-center"
+          url="/"
         />
-      </a>
+      </div>
     </div>
   </main>
 </template>
