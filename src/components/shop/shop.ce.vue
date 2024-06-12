@@ -234,7 +234,11 @@ export default {
      * @param event - event from select box
      */
     updateCategory(value) {
-      this.SelectedCategory = value.id;
+      if (value === null) {
+        this.SelectedCategory = "";
+      } else {
+        this.SelectedCategory = value.id;
+      }
       this.getProducts();
     },
     /**
@@ -242,7 +246,11 @@ export default {
      * @param event - event from select box
      */
     updateGroup(value) {
-      this.SelectedGroup = value.id;
+      if (value === null) {
+        this.SelectedGroup = "";
+      } else {
+        this.SelectedGroup = value.id;
+      }
       this.getProducts();
     },
     /**
