@@ -79,7 +79,7 @@
           :Array="Products"
           :loadPage="loadPage"
           :Page="Page"
-          :MoreResults="moreProducts"
+          :MoreResults="MoreResults"
           :PreviousResults="PreviousResults"
         />
       </div>
