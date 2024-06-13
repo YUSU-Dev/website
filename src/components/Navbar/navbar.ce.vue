@@ -425,6 +425,15 @@ export default {
   components: {
     FontAwesomeIcon,
   },
+  mounted() {
+    const script = document.createElement("script");
+    script.src = "https://www.browsealoud.com/plus/scripts/3.1.0/ba.js";
+    script.crossOrigin = "anonymous";
+    script.integrity =
+      "sha256-VCrJcQdV3IbbIVjmUyF7DnCqBbWD1BcZ/1sda2KWeFc= sha384-k2OQFn+wNFrKjU9HiaHAcHlEvLbfsVfvOnpmKBGWVBrpmGaIleDNHnnCJO4z2Y2H sha512-gxDfysgvGhVPSHDTieJ/8AlcIEjFbF3MdUgZZL2M5GXXDdIXCcX0CpH7Dh6jsHLOLOjRzTFdXASWZtxO+eMgyQ==";
+    script.async = true;
+    document.head.appendChild(script);
+  },
   data() {
     return {
       navClosed: true,
