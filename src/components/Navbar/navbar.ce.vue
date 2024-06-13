@@ -41,6 +41,7 @@
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <button
+            id="__ba_panel"
             class="bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             aria-label="Listen with the ReachDeck Toolbar"
             title="Listen with the ReachDeck Toolbar"
@@ -157,6 +158,7 @@
           </div>
           <div v-else class="flex flex-col justify-center gap-y-3">
             <button
+              id="__ba_panel"
               class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
@@ -267,6 +269,7 @@
               ></FontAwesomeIcon
             ></a>
             <button
+              id="__ba_panel"
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
@@ -307,6 +310,7 @@
               ></FontAwesomeIcon
             ></a>
             <button
+              id="__ba_panel"
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
