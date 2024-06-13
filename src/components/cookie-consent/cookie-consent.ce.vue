@@ -3,7 +3,7 @@
   <Teleport to="body">
     <div
       id="error-modal"
-      class="align-end fixed bottom-0 left-0 flex justify-start overflow-y-auto overflow-x-hidden md:inset-0"
+      class="align-end fixed bottom-0 left-0 flex justify-start overflow-y-auto overflow-x-hidden"
       aria-label="Cookie Consent Modal"
       role="dialog"
       v-if="displayCookieConsent"
