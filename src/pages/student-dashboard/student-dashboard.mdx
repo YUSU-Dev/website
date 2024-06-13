@@ -1,0 +1,25 @@
+import { Canvas, Meta } from "@storybook/blocks";
+
+import * as StudentDashboardStories from "./student-dashboard.stories.js";
+
+<Meta of={StudentDashboardStories} />
+
+# Student Dashboard Redirect
+
+This page is used to redirect students to the student dashboard and is not a web component on the site.
+
+This html is used at the bottom of the page. Any changes made to this file will need to be manually updated in the `student-dashboard` page.
+
+```html
+{if logged_in}
+<body onload="dashRedirect()">
+  <script src="/student-dashboard/dash-redirect.js"></script>
+  {if:else}
+  <body onload="sso()">
+    <script src="/student-dashboard/sso.js"></script>
+    {/if}
+  </body>
+</body>
+```
+
+<Canvas of={StudentDashboardStories.Default} />
