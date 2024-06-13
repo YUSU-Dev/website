@@ -1,7 +1,10 @@
 <template>
   <div id="newsTop" class=""></div>
   <div v-if="embedded" class="container mx-auto">
-    <div class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
+    <div
+      v-if="!firstLoad"
+      class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4"
+    >
       <Tile
         v-for="article in News"
         :key="article.id"
@@ -13,6 +16,10 @@
         :appendCategory="appendCategory"
       />
     </div>
+    <div v-else class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
+      <Tile v-for="item in embeddedPerPage" :key="item" :loading="true" />
+    </div>
+
     <Pagination
       :loading="loading"
       :Array="News"
@@ -59,7 +66,10 @@
     </div>
 
     <div class="mx-md-0 order-1 col-span-5 xl:order-1 xl:col-span-4 xl:pr-4">
-      <div v-if="News.length == 0" class="container mx-auto">
+      <div
+        v-if="News.length == 0 && !loading && !firstLoad"
+        class="container mx-auto"
+      >
         <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
           No Articles Found
         </h2>
@@ -75,7 +85,10 @@
           class="h-8 w-8 animate-spin"
         ></FontAwesomeIcon>
       </div>
-      <div class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <div
+        v-if="!firstLoad"
+        class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+      >
         <Tile
           v-for="article in News"
           :key="article.id"
@@ -86,6 +99,12 @@
           :image="article.thumbnail"
           :appendCategory="appendCategory"
         />
+      </div>
+      <div
+        v-else
+        class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+      >
+        <Tile v-for="item in perPage" :key="item" :loading="true" />
       </div>
       <Pagination
         :loading="loading"
@@ -142,6 +161,7 @@ export default {
       MoreResults: false,
       PreviousResults: false,
       loading: false,
+      firstLoad: true,
       NewsCategories: [],
       categoriesDictionary: [],
       filterCategories: [],
@@ -153,11 +173,13 @@ export default {
         "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg",
         "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
       ],
-      perPage: 10,
+      perPage: 12,
+      embeddedPerPage: 4,
     };
   },
   async created() {
     const self = this;
+    self.firstLoad = true;
 
     // set any initial filtering parameters
     let url = new URL(window.location.href);
@@ -184,6 +206,7 @@ export default {
     // wait for the signal that created has finished loading data
     const self = this;
     await self.awaitMountPromise;
+    self.firstLoad = false;
 
     self.currentURLAccessibilityHelper = window.location.href;
 
@@ -206,7 +229,9 @@ export default {
   methods: {
     getNewsCategories: async function () {
       let self = this;
-      self.loading = true;
+      if (self.firstLoad != true) {
+        self.loading = true;
+      }
       // let categoriesDictionary = [];
       var foundAllCategories = false;
       var categoriesPage = 1;
@@ -241,7 +266,9 @@ export default {
     },
     getNews: async function (append = false, search = null, categories = null) {
       let self = this;
-      self.loading = true;
+      if (self.firstLoad != true) {
+        self.loading = true;
+      }
 
       if (!append) {
         self.Page = 1;
@@ -249,7 +276,7 @@ export default {
       }
 
       if (self.embedded) {
-        self.perPage = 4;
+        self.perPage = self.embeddedPerPage;
       }
 
       let parameters =
