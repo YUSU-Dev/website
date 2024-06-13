@@ -46,7 +46,7 @@
                 get in touch with
                 <a
                   href="mailto:it@yorksu.org"
-                  class="text-blue-800 hover:underline"
+                  class="text-blue-800 hover:underline dark:text-blue-400"
                   >YorkSU IT Support</a
                 >.
               </p>
