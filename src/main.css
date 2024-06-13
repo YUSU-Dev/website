@@ -215,18 +215,23 @@
   Enter and leave animations can use different
   durations and timing functions.
 */
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+.fade-enter-active {
+  @apply delay-300 duration-300 ease-out;
 }
-
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+.fade-enter-from {
+  @apply transform opacity-0;
 }
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
+.fade-enter-to {
+  @apply opacity-100;
+}
+.fade-leave-active {
+  @apply transform duration-200 ease-in;
+}
+.fade-leave-from {
+  @apply opacity-100;
+}
+.fade-leave-to {
+  @apply opacity-0;
 }
 
 @tailwind utilities;

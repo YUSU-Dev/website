@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center">
-    <div class="max:container">
-      <transition-group name="slide-fade" tag="div">
+    <div class="relative h-[400px] max:container">
+      <transition-group name="fade" tag="div">
         <div v-for="i in [currentIndex]" :key="i">
           <a :href="banners[currentIndex].url">
             <img
