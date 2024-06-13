@@ -56,7 +56,10 @@
           />
         </div>
       </div>
-      <div class="mt-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4">
+      <div
+        v-if="!Loading"
+        class="mt-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4"
+      >
         <Tile
           v-for="event in Events"
           :key="event.id"
@@ -65,8 +68,12 @@
           :image="event.thumbnail_url"
         />
       </div>
+      <div v-else class="mt-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4">
+        <Tile v-for="item in PerPage" :key="item" :loading="true" />
+      </div>
       <Pagination
         :Array="Groups"
+        :loading="Loading"
         :loadPage="loadPage"
         :Page="Page"
         :MoreResults="MoreResults"
@@ -119,15 +126,18 @@ export default {
       Search: "",
       Page: 1,
       Pages: [],
+      PerPage: 12,
       Premium: false,
       ShortView: false,
       MoreResults: false,
       PreviousResults: false,
       Placeholder: "Select an option",
+      Loading: true,
     };
   },
   created() {
     var self = this;
+    self.Loading = true;
     //Only show "premium" tagged events
     if (self.premium) {
       self.Premium = true;
@@ -183,12 +193,7 @@ export default {
     //get Events
     self.getEvents();
   },
-  mounted() {
-    //allow scrolling functionality
-    if (!this.limit) {
-      this.onScroll();
-    }
-  },
+  mounted() {},
   methods: {
     /**
      * Fetch events from API
@@ -205,7 +210,7 @@ export default {
       if (this.limit) {
         parameters += "&perPage=" + this.limit;
       } else {
-        parameters += "&perPage=12";
+        parameters += "&perPage=" + this.PerPage;
       }
       if (this.SelectedType) {
         parameters += "&typeId=" + this.SelectedType;
@@ -241,28 +246,8 @@ export default {
           } else {
             self.PreviousResults = false;
           }
+          self.Loading = false;
         });
-    },
-    /**
-     * Track when the user scrolls down the page
-     */
-    onScroll() {
-      window.onscroll = () => {
-        let bottomOfWindow =
-          Math.max(
-            window.pageYOffset,
-            document.documentElement.scrollTop,
-            document.body.scrollTop,
-          ) +
-            window.innerHeight +
-            10 >=
-          document.documentElement.offsetHeight;
-
-        //automatically get more results if at bottom of page
-        if (bottomOfWindow && self.MoreResults) {
-          this.moreEvents();
-        }
-      };
     },
     //update various fields to change events data
     updateCategory(value) {
