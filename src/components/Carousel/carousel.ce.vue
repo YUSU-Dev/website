@@ -106,7 +106,6 @@ export default {
     },
     stopSlide: function () {
       clearInterval(this.timer);
-      console.log(this.timer);
       this.playing = false;
     },
     next: function () {
