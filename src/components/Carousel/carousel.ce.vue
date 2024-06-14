@@ -21,22 +21,22 @@
   <div class="bg-[#f7f7f7]">
     <div class="container mx-auto">
       <div class="flex justify-center gap-x-4 py-2">
-        <button @click="prev()">
+        <button @click="prev()" aria-label="Previous slide">
           <FontAwesomeIcon
             icon="fas fa-arrow-left"
             class="h-6 w-6"
           ></FontAwesomeIcon>
         </button>
-        <button v-if="playing" @click="stopSlide()">
+        <button v-if="playing" aria-label="Stop slide" @click="stopSlide()">
           <FontAwesomeIcon
             icon="fas fa-pause"
             class="h-6 w-6"
           ></FontAwesomeIcon>
         </button>
-        <button v-else @click="startSlide()">
+        <button v-else @click="startSlide()" aria-label="Start Slide">
           <FontAwesomeIcon icon="fas fa-play" class="h-6 w-6"></FontAwesomeIcon>
         </button>
-        <button @click="next()">
+        <button @click="next()" aria-label="Next slide">
           <FontAwesomeIcon
             icon="fas fa-arrow-right"
             class="h-6 w-6"
@@ -67,8 +67,8 @@ export default {
       default: 5000,
     },
     defaultBanner: {
-      type: Array,
-      default(rawProps) {
+      type: Object,
+      default() {
         return {
           url: "https://www.youtube.com/watch?v=c_hUsm0W7eg&t=5s",
           img: "https://assets-cdn.sums.su/YU/IMG/Freshers2022/welcome.png",
@@ -96,11 +96,9 @@ export default {
   updated() {},
   methods: {
     getBanners: function () {
-      axios
-        .get("https://yusu.org/api/banners/homepage-carousel")
-        .then(function (response) {
-          this.banners.push(...response.data);
-        });
+      axios.get("/api/banners/homepage-carousel").then(function (response) {
+        this.banners.push(...response.data);
+      });
     },
     startSlide: function () {
       this.timer = setInterval(this.next, this.interval);
@@ -108,7 +106,6 @@ export default {
     },
     stopSlide: function () {
       clearInterval(this.timer);
-      console.log(this.timer);
       this.playing = false;
     },
     next: function () {
