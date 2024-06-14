@@ -1,0 +1,19 @@
+import { Canvas, Meta } from "@storybook/blocks";
+
+import * as CarouselStories from "./carousel.stories.js";
+
+<Meta of={CarouselStories} />
+
+# Carousel
+
+The Carousel component is used to display a series of images or other content in a rotating fashion. This component is used on the homepage of the site. It depends on a custom webpage created in Expression Engine because there is no API provided by SUMS.
+
+```html
+{if segment_3 != ""} {exp:su_banners:banners short_name="{segment_3}"} [
+{banners} {"url": "{url}", "img": "{file_url}", "alt": "{alt}"}, {/banners} ]
+{/exp:su_banners:banners} {/if}
+```
+
+This file is placed under a template group called API, then a template called banners and returns the banners based on the short name in `segment_3` of the URL. Eg. `/api/banners/whats-on` would be used for the what's on carousel.
+
+<Canvas of={CarouselStories.Default} />
