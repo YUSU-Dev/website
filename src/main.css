@@ -210,4 +210,66 @@
   }
 }
 
+/* Banners */
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.fade-enter-active {
+  @apply delay-300 duration-300 ease-out;
+}
+.fade-enter-from {
+  @apply transform opacity-0;
+}
+.fade-enter-to {
+  @apply opacity-100;
+}
+.fade-leave-active {
+  @apply transform duration-200 ease-in;
+}
+.fade-leave-from {
+  @apply opacity-100;
+}
+.fade-leave-to {
+  @apply opacity-0;
+}
+
+.slide-prev-enter-active {
+  @apply duration-[1000ms] ease-linear;
+}
+.slide-prev-enter-from {
+  @apply translate-x-[-100%] transform opacity-0;
+}
+.slide-prev-enter-to {
+  @apply opacity-100;
+}
+.slide-prev-leave-active {
+  @apply translate-x-[100%] transform duration-[1000ms] ease-linear;
+}
+.slide-prev-leave-from {
+  @apply opacity-100;
+}
+.slide-prev-leave-to {
+  @apply opacity-0;
+}
+
+.slide-next-enter-active {
+  @apply duration-[1000ms] ease-linear;
+}
+.slide-next-enter-from {
+  @apply translate-x-[100%] transform opacity-0;
+}
+.slide-next-enter-to {
+  @apply opacity-100;
+}
+.slide-next-leave-active {
+  @apply translate-x-[-100%] transform duration-[1000ms] ease-linear;
+}
+.slide-next-leave-from {
+  @apply opacity-100;
+}
+.slide-next-leave-to {
+  @apply opacity-0;
+}
+
 @tailwind utilities;

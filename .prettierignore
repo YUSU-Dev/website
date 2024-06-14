@@ -1,3 +1,5 @@
 **/.gitkeep
 .gitignore
 .prettierignore
+
+*.mdx
