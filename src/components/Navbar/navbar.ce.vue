@@ -7,12 +7,14 @@
             class="block h-[77px] sm:hidden"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
             alt="University of York Students' Union"
+            loading="lazy"
         /></a>
         <a href="/" aria-label="Homepage">
           <img
             class="hidden h-[77px] sm:block"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
             alt="University of York Students' Union"
+            loading="lazy"
           />
         </a>
       </div>
@@ -41,6 +43,7 @@
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <button
+            id="__ba_panel"
             class="bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
             aria-label="Listen with the ReachDeck Toolbar"
             title="Listen with the ReachDeck Toolbar"
@@ -157,6 +160,7 @@
           </div>
           <div v-else class="flex flex-col justify-center gap-y-3">
             <button
+              id="__ba_panel"
               class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
@@ -267,6 +271,7 @@
               ></FontAwesomeIcon
             ></a>
             <button
+              id="__ba_panel"
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
@@ -307,6 +312,7 @@
               ></FontAwesomeIcon
             ></a>
             <button
+              id="__ba_panel"
               class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
@@ -424,6 +430,15 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+  },
+  mounted() {
+    const script = document.createElement("script");
+    script.src = "https://www.browsealoud.com/plus/scripts/3.1.0/ba.js";
+    script.crossOrigin = "anonymous";
+    script.integrity =
+      "sha256-VCrJcQdV3IbbIVjmUyF7DnCqBbWD1BcZ/1sda2KWeFc= sha384-k2OQFn+wNFrKjU9HiaHAcHlEvLbfsVfvOnpmKBGWVBrpmGaIleDNHnnCJO4z2Y2H sha512-gxDfysgvGhVPSHDTieJ/8AlcIEjFbF3MdUgZZL2M5GXXDdIXCcX0CpH7Dh6jsHLOLOjRzTFdXASWZtxO+eMgyQ==";
+    script.async = true;
+    document.head.appendChild(script);
   },
   data() {
     return {

@@ -1,14 +1,27 @@
 <template>
   <body>
     <main class="container mx-auto my-7">
-      <Button title="Back to News" isPrimary="true" arrow="true" />
+      <Button title="Back to News" isPrimary="true" arrow="true" url="/news" />
       <h2 class="mb-5 mt-10 text-3xl font-bold">
-        {{ Article.title ?? "News" }}
+        {{ Article.title ?? "Article not Found" }}
       </h2>
       <p v-if="Article.snippet" class="mb-3">{{ Article.snippet }}</p>
       <p v-if="Article.date" class="mb-5">{{ Article.date }}</p>
       <hr />
       <article id="news-article" v-html="Article.body" class="my-5"></article>
+      <div v-if="loading" class="animate-pulse">
+        <div class="flex-1 space-y-6 px-5 py-5">
+          <div class="sr-only">Loading</div>
+          <div class="h-2 rounded bg-slate-200"></div>
+          <div class="space-y-3">
+            <div class="grid grid-cols-3 gap-4">
+              <div class="col-span-2 h-2 rounded bg-slate-200"></div>
+              <div class="col-span-1 h-2 rounded bg-slate-200"></div>
+            </div>
+            <div class="h-2 rounded bg-slate-200"></div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </template>
@@ -26,7 +39,7 @@ export default {
   data() {
     return {
       Article: {},
-      loading: false,
+      loading: true,
     };
   },
   created() {
@@ -41,6 +54,9 @@ export default {
       .then(function (response) {
         self.Article = response.data;
         self.loading = false;
+      })
+      .catch(function () {
+        // window.location.href = "/news";
       });
   },
 };
