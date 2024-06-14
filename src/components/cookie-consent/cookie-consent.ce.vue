@@ -20,7 +20,7 @@
               our
               <a
                 href="/about-us/organisational-policies/cookie-policy"
-                class="text-blue-800 hover:underline dark:text-blue-400"
+                class="text-blue-800 underline dark:text-blue-400"
                 >Cookie Policy</a
               >.
             </p>
