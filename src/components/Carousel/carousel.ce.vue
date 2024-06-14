@@ -68,13 +68,13 @@ export default {
     },
     defaultBanner: {
       type: Array,
-      default: [
-        {
+      default(rawProps) {
+        return {
           url: "https://www.youtube.com/watch?v=c_hUsm0W7eg&t=5s",
           img: "https://assets-cdn.sums.su/YU/IMG/Freshers2022/welcome.png",
           alt: "Welcome! We're your Students' Union - here to make sure you love your time at York",
-        },
-      ],
+        };
+      },
     },
   },
   data() {
@@ -87,8 +87,7 @@ export default {
     };
   },
   async created() {
-    this.banners = this.defaultBanner;
-    console.log(this.banners);
+    this.banners.push(this.defaultBanner);
     this.getBanners();
   },
   async mounted() {
@@ -97,9 +96,11 @@ export default {
   updated() {},
   methods: {
     getBanners: function () {
-      axios.get("/api/banners/homepage-carousel").then(function (response) {
-        this.banners.push(...response.data);
-      });
+      axios
+        .get("https://yusu.org/api/banners/homepage-carousel")
+        .then(function (response) {
+          this.banners.push(...response.data);
+        });
     },
     startSlide: function () {
       this.timer = setInterval(this.next, this.interval);
@@ -107,6 +108,7 @@ export default {
     },
     stopSlide: function () {
       clearInterval(this.timer);
+      console.log(this.timer);
       this.playing = false;
     },
     next: function () {
@@ -124,11 +126,6 @@ export default {
       } else {
         this.currentIndex -= 1;
       }
-    },
-  },
-  computed: {
-    currentImg: function () {
-      return this.banners[Math.abs(this.currentIndex) % this.banners.length];
     },
   },
 };
