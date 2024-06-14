@@ -186,7 +186,7 @@
   }
 
   .modal-body p {
-    @apply text-base leading-relaxed text-black dark:text-gray-400;
+    @apply text-base leading-relaxed text-black dark:text-gray-200;
   }
 
   .modal-dialog {
