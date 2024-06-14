@@ -66,7 +66,7 @@ export default {
       type: Number,
       default: 5000,
     },
-    banners: {
+    defaultBanner: {
       type: Array,
       default: [
         {
@@ -83,9 +83,12 @@ export default {
       timer: null,
       transition: "slide-next",
       playing: true,
+      banners: [],
     };
   },
   async created() {
+    this.banners = this.defaultBanner;
+    console.log(this.banners);
     this.getBanners();
   },
   async mounted() {
@@ -94,11 +97,9 @@ export default {
   updated() {},
   methods: {
     getBanners: function () {
-      axios
-        .get("/api/banners/homepage-carousel")
-        .then(function (response) {
-          this.banners.push(...response.data);
-        });
+      axios.get("/api/banners/homepage-carousel").then(function (response) {
+        this.banners.push(...response.data);
+      });
     },
     startSlide: function () {
       this.timer = setInterval(this.next, this.interval);
