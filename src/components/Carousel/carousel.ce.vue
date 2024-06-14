@@ -95,7 +95,7 @@ export default {
   methods: {
     getBanners: function () {
       axios
-        .get("https://yusu.org/api/banners/homepage-carousel")
+        .get("/api/banners/homepage-carousel")
         .then(function (response) {
           this.banners.push(...response.data);
         });
