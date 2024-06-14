@@ -56,7 +56,7 @@ export default {
         self.loading = false;
       })
       .catch(function () {
-        window.location.href = "/news";
+        // window.location.href = "/news";
       });
   },
 };
