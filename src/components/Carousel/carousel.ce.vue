@@ -98,8 +98,13 @@ export default {
     getBanners: function () {
       axios
         .get("https://yu-development.sums.su/api/banners/homepage-carousel")
-        .then(function (response) {
-          this.banners.push(...response.data);
+        .then((response) => {
+          var jsonData = JSON.parse(
+            "[" +
+              response.data.substring(0, response.data.lastIndexOf(",")) +
+              "]",
+          );
+          this.banners.push(...jsonData);
         });
     },
     startSlide: function () {
