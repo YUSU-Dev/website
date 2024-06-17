@@ -27,7 +27,9 @@
           v-if="!loading"
           class="flex h-[136px] flex-col justify-between p-6"
         >
-          <h3 class="mb-2 line-clamp-2 text-xl font-semibold">{{ title }}</h3>
+          <h3 v-if="title" class="mb-2 line-clamp-2 text-xl font-semibold">
+            {{ title }}
+          </h3>
           <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
           <p v-if="shopGroupName" class="font-semibold">{{ shopGroupName }}</p>
           <p v-if="text" class="font-semibold">{{ text }}</p>
