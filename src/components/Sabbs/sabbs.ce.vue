@@ -13,6 +13,7 @@
     >
       <SabbTile
         v-for="sabb in SabbsList"
+        :key="sabb.name"
         :name="sabb.name"
         :position="sabb.position"
         :url="sabb.url"
