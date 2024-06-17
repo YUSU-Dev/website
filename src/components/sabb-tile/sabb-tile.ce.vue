@@ -1,30 +1,35 @@
 <template>
   <a class="group flex w-fit" :href="url">
     <div class="relative w-fit text-white">
-      <div
-        class="aspect-[141/161] w-full bg-cover md:h-[322px] md:w-[282px]"
-        :alt="name + ', ' + position"
-        :style="{
-          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%), url('${img}')`,
-        }"
-      ></div>
-      <h4
-        class="absolute bottom-12 left-4 text-xl transition group-hover:-translate-y-7"
-      >
-        {{ name }}
-      </h4>
-      <h5
-        class="invisible absolute bottom-12 left-4 opacity-0 transition group-hover:visible group-hover:opacity-100"
-      >
-        {{ position }}
-      </h5>
-      <div class="absolute bottom-4 left-4 mt-2 flex items-center">
-        <p class="text-base">View Profile</p>
-        <FontAwesomeIcon
-          icon="fas fa-arrow-right"
-          class="ml-2 h-4 w-4 text-white transition group-hover:translate-x-4"
-        >
-        </FontAwesomeIcon>
+      <div class="aspect-[141/161] w-full bg-cover md:h-[322px] md:w-[282px]">
+        <img
+          :src="img"
+          :alt="name + ', ' + position"
+          class="h-full w-full object-cover"
+        />
+        <div
+          class="absolute inset-0"
+          :style="{
+            backgroundImage:
+              'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 60%)',
+          }"
+        ></div>
+      </div>
+      <div class="absolute bottom-4 w-full px-4">
+        <h4 class="mb-2 text-lg md:text-xl">
+          {{ name }}
+        </h4>
+        <h5 class="text-sm md:text-base">
+          {{ position }}
+        </h5>
+        <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
+          <p class="">View Profile</p>
+          <FontAwesomeIcon
+            icon="fas fa-arrow-right"
+            class="ml-2 h-4 w-4 text-white transition group-hover:translate-x-4"
+          >
+          </FontAwesomeIcon>
+        </div>
       </div>
     </div>
   </a>
