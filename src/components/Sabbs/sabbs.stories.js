@@ -53,3 +53,6 @@ export const Default = {
     ],
   },
 };
+export const WithoutProps = {
+  args: {},
+};
