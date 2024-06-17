@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto py-10" id="societies-a-z">
     <div v-if="title" class="mb-4 px-2 lg:px-3">
-      <h2>{{ title }}</h2>
+      <h2 class="text-3xl font-bold">{{ title }}</h2>
     </div>
     <div class="justify-center">
       <div class="input-group flex px-2 lg:px-3">
