@@ -15,6 +15,10 @@ axios.interceptors.request.use(function (config) {
         "https://pluto.sums.su/",
         "/__pluto_proxy__/",
       );
+      config.url = config.url.replace(
+        "https://yu-development.sums.su/",
+        "/__development_proxy__/",
+      );
     }
   }
 
