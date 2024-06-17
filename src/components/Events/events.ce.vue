@@ -41,7 +41,7 @@
               >
                 <FontAwesomeIcon
                   icon="fas fa-search"
-                  className="w-8 h-8 text-white"
+                  class="h-8 w-8 text-white"
                 ></FontAwesomeIcon>
               </button>
             </div>
