@@ -96,9 +96,11 @@ export default {
   updated() {},
   methods: {
     getBanners: function () {
-      axios.get("/api/banners/homepage-carousel").then(function (response) {
-        this.banners.push(...response.data);
-      });
+      axios
+        .get("https://yu-development.sums.su/api/banners/homepage-carousel")
+        .then(function (response) {
+          this.banners.push(...response.data);
+        });
     },
     startSlide: function () {
       this.timer = setInterval(this.next, this.interval);
