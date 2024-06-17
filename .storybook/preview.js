@@ -1,3 +1,8 @@
+import {
+  INITIAL_VIEWPORTS,
+  MINIMAL_VIEWPORTS,
+} from "@storybook/addon-viewport";
+
 /** @type { import('@storybook/vue3').Preview } */
 const preview = {
   parameters: {
@@ -8,6 +13,13 @@ const preview = {
       },
     },
     layout: "fullscreen",
+    viewport: {
+      viewports: {
+        ...INITIAL_VIEWPORTS,
+        ...MINIMAL_VIEWPORTS,
+      },
+      defaultViewport: "iphone14",
+    },
   },
   tags: ["autodocs"],
   decorators: [
