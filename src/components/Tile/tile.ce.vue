@@ -43,12 +43,11 @@
             </p>
           </div>
           <div v-if="productId">
-            <div
-              class="btn btn-secondary mt-2 font-semibold"
-              @click="addToBasket(productId)"
-            >
-              Add to basket
-            </div>
+            <a class="btn btn-secondary mt-2" href="javascript:;">
+              <span class="font-semibold" @click="addToBasket(productId)">
+                Add to basket
+              </span>
+            </a>
           </div>
         </div>
         <div v-else class="h-[136px]">
