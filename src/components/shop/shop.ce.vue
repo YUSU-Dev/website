@@ -108,7 +108,8 @@ import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
-import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
+// import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
+import { addToBasketHandler } from "https://yu-development.sums.su/shop/shop.basket.js";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -307,8 +308,7 @@ export default {
     },
     addToBasket(productId) {
       let self = this;
-      document
-        .addToBasketHandler(productId)
+      addToBasketHandler(productId)
         .then(function (response) {
           if (!response.data["success"]) {
             var data = response.data.error_message;
