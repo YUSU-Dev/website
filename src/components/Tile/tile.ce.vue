@@ -23,15 +23,14 @@
           alt=""
           loading="lazy"
         />
-        <div
-          v-if="!loading"
-          class="flex h-[136px] flex-col justify-between p-6"
-        >
-          <h3 v-if="title" class="mb-2 line-clamp-2 text-xl font-semibold">
+        <div v-if="!loading" class="flex flex-col justify-between p-6">
+          <p v-if="shopGroupName" class="text-xs font-semibold text-gray-800">
+            {{ shopGroupName }}
+          </p>
+          <h3 v-if="title" class="mb-2 line-clamp-2 font-semibold lg:text-xl">
             {{ title }}
           </h3>
           <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
-          <p v-if="shopGroupName" class="font-semibold">{{ shopGroupName }}</p>
           <p v-if="text" class="font-semibold">{{ text }}</p>
           <div v-if="!date && !text">
             <p class="flex items-center font-semibold">
@@ -41,13 +40,6 @@
                 class="ml-2 h-4 w-4 transition group-hover:translate-x-4"
               />
             </p>
-          </div>
-          <div v-if="productId">
-            <a class="btn btn-secondary mt-2" href="javascript:;">
-              <span class="font-semibold" @click="addToBasket(productId)">
-                Add to basket
-              </span>
-            </a>
           </div>
         </div>
         <div v-else class="h-[136px]">
@@ -115,7 +107,6 @@ export default {
     "image",
     "date",
     "text",
-    "addToBasket",
     "productId",
     "shopGroupName",
     "categories",
