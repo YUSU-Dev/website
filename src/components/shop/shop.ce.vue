@@ -310,22 +310,20 @@ export default {
       let self = this;
       try {
         const response = await addToBasketHandler(productId);
-        if (!response.data["success"]) {
+        console.log(response);
+        if (!response["success"]) {
           var data = response.data.error_message;
           self.ErrorDescription = data;
           self.ModalClosed = false;
           return;
         }
-        if (typeof response.data.fields != "undefined") {
+        if (typeof response.fields != "undefined") {
           window.location.replace("/shop/fields/" + productId);
         } else {
           // refreshBasketAdd();
         }
       } catch (error) {
-        if (
-          error.response &&
-          error.response.data.error_message != "undefined"
-        ) {
+        if (error.response && error.response.error_message != "undefined") {
           // Handle error
         }
       }
