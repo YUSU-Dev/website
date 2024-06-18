@@ -309,7 +309,7 @@ export default {
     addToBasket(productId) {
       let self = this;
 
-      basketCookie = getCookie("su_basket");
+      var basketCookie = getCookie("su_basket");
       axios({
         method: "post",
         url: "shop/ajax",
