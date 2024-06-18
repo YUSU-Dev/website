@@ -319,9 +319,9 @@ export default {
         }),
         headers: {
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "X-Requested-With": "XmlHttpRequest",
           Cookie: "su_basket=" + basketCookie,
         },
+        credentials: "same-origin",
       })
         .then(function (response) {
           if (!response.data["success"]) {
