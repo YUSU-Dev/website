@@ -326,7 +326,7 @@ export default {
             self.ModalClosed = false;
             self.ErrorDescription = response.error_message;
           } else {
-            // refreshBasketAdd();
+            window.location.replace("/shop/basket");
           }
         })
         .catch(function (response) {
