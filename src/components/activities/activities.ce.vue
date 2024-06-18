@@ -1,10 +1,10 @@
 <template>
   <div class="container mx-auto py-10" id="societies-a-z">
     <div v-if="title" class="mb-4 px-2 lg:px-3">
-      <h2>{{ title }}</h2>
+      <h2 class="text-3xl font-bold">{{ title }}</h2>
     </div>
     <div class="justify-center">
-      <div class="input-group flex px-2 lg:px-3">
+      <div v-if="!selectedcategory" class="input-group flex px-2 lg:px-3">
         <input
           class="search form-control w-full border-[1px] border-black p-2"
           type="text"
@@ -131,11 +131,13 @@
         </div>
       </Transition>
       <Pagination
+        v-if="Page != 1 || MoreResults"
         :Array="Groups"
         :loadPage="loadPage"
         :Page="Page"
         :MoreResults="MoreResults"
         :PreviousResults="PreviousResults"
+        :Loading="loading"
       />
     </div>
   </div>
