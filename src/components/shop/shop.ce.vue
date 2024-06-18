@@ -57,7 +57,7 @@
         </div>
       </div>
     </div>
-    <div class="relative flex px-2 pb-4 lg:px-3">
+    <div class="relative flex">
       <div class="container">
         <div class="m-4 text-center" v-if="!Products.length && !Loading">
           <h3>No products found</h3>
