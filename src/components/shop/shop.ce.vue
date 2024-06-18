@@ -317,14 +317,6 @@ export default {
           }
           if (typeof response.fields != "undefined") {
             window.location.replace("/shop/fields/" + productId);
-          }
-          if (response.error_message != "undefined") {
-            console.log(
-              "There was an error adding the product to the basket: " +
-                response.error_message,
-            );
-            self.ModalClosed = false;
-            self.ErrorDescription = response.error_message;
           } else {
             window.location.replace("/shop/basket");
           }
