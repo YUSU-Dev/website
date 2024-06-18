@@ -108,7 +108,7 @@ import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
-// import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
+import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -308,15 +308,15 @@ export default {
     },
     addToBasket(productId) {
       let self = this;
-      var data = new FormData();
-      data.append("c", "ab");
-      data.append("pid", productId);
-      console.log(data);
-
-      axios({
-        method: "post",
-        url: "shop/ajax",
-        data: data,
+      fetch("shop/ajax", {
+        method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
+        referrerPolicy: "strict-origin-when-cross-origin",
+        body: qs.stringify({
+          c: "ab",
+          pid: productId,
+        }),
         headers: {
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
           "X-Requested-With": "XmlHttpRequest",
