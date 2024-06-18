@@ -1,15 +1,17 @@
 <template>
-  <div class="w-full">
-    <div class="pt-3">
-      <div class="container">
+  <div class="container mx-auto py-10">
+    <div class="justify-center">
+      <div>
         <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
         <div v-if="!hidefilter">
-          <h2 class="text-3xl">Shop Filters</h2>
-          <div class="row">
-            <div class="justify-center">
-              <div class="input-group flex px-2 lg:px-3">
+          <div
+            class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"
+          >
+            <div class="flex flex-col">
+              <label for="event-search">Search</label>
+              <div class="input-group flex h-full border-[1px] border-black">
                 <input
-                  class="search form-control w-full border-[1px] border-black p-2"
+                  class="form-control h-full w-full"
                   type="text"
                   aria-label="search for an activity"
                   name="search"
@@ -20,7 +22,7 @@
                   <button
                     type="submit"
                     aria-label="Submit"
-                    class="btn btn-block btn-secondary h-full w-full bg-black px-1"
+                    class="btn btn-block btn-secondary h-full"
                     @click="submitSearch"
                   >
                     <FontAwesomeIcon
@@ -31,7 +33,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 form-group">
+            <div>
               <label for="shop-categories">Categories</label>
               <v-select
                 label="name"
@@ -41,7 +43,7 @@
               >
               </v-select>
             </div>
-            <div class="col-lg-3 form-group">
+            <div>
               <label for="shop-group">Activities</label>
               <v-select
                 label="name"
@@ -55,13 +57,13 @@
         </div>
       </div>
     </div>
-    <div class="relative mt-6 flex px-2 pb-4 lg:px-3">
+    <div class="relative flex px-2 pb-4 lg:px-3">
       <div class="container">
-        <div class="m-4 text-center" v-if="!Products.length">
+        <div class="m-4 text-center" v-if="!Products.length && !Loading">
           <h3>No products found</h3>
         </div>
         <div
-          class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+          class="mt-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6"
           v-if="!Loading"
         >
           <Tile
@@ -70,24 +72,25 @@
             :url="'/shop/product/' + product.id + '-' + product.url_name"
             :title="product.name"
             :image="product.image"
-            :addToBasket="addToBasket"
             :text="toCurrency(product.price)"
             :productId="product.id"
             :shopGroupName="product.group_name"
           />
         </div>
         <div
-          class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+          class="mt-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6"
           v-else
         >
           <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination
+          v-if="Page != 1 || MoreResults"
           :Array="Products"
           :loadPage="loadPage"
           :Page="Page"
           :MoreResults="MoreResults"
           :PreviousResults="PreviousResults"
+          :loading="Loading"
         />
       </div>
     </div>
