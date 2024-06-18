@@ -11,17 +11,7 @@ export function addToBasketHandler(productID) {
       },
     })
       .done(function (response) {
-        if (!response["success"]) {
-          console.log(response);
-          resolve(response); // Resolve the promise with the response
-        } else {
-          if (typeof response.fields != "undefined") {
-            window.location.replace("/shop/fields/" + productID);
-          } else {
-            // refreshBasketAdd();
-          }
-          resolve(response); // Resolve the promise with the response
-        }
+        resolve(response); // Resolve the promise with the response
       })
       .fail(function (response) {
         console.log(

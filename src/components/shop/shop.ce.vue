@@ -335,8 +335,6 @@ export default {
               "There was an error adding the product to the basket: " +
                 response.error_message,
             );
-            self.ModalClosed = false;
-            self.ErrorDescription = response.error_message;
           } else {
             console.log("Undefined error adding product to basket");
           }
