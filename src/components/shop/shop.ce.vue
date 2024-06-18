@@ -113,7 +113,6 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import vSelect from "vue-select";
-import { getCookie } from "https://cdn.jsdelivr.net/npm/tiny-cookie@2.5.1/+esm";
 library.add(faSearch);
 
 export default {
@@ -308,21 +307,8 @@ export default {
     },
     addToBasket(productId) {
       let self = this;
-
-      var basketCookie = getCookie("su_basket");
-      axios({
-        method: "post",
-        url: "shop/ajax",
-        data: qs.stringify({
-          c: "ab",
-          pid: productId,
-        }),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          Cookie: "su_basket=" + basketCookie,
-        },
-        credentials: "same-origin",
-      })
+      document
+        .addToBasketHandler(productId)
         .then(function (response) {
           if (!response.data["success"]) {
             var data = response.data.error_message;
