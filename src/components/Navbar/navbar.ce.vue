@@ -97,7 +97,7 @@
       </div>
     </div>
     <div
-      class="absolute left-0 top-[133px] max-h-[calc(100vh-133px)] w-full overflow-y-auto bg-beige"
+      class="absolute left-0 top-[133px] max-h-[calc(100vh-133px)] w-full overflow-y-auto bg-beige md:overflow-y-visible"
     >
       <div
         :class="{ hidden: navClosed }"
@@ -200,7 +200,7 @@
         </div>
         <div
           id="mobileItems"
-          class="flex flex-col text-2xl md:hidden"
+          class="mt-6 flex flex-col text-2xl md:hidden"
           :class="{
             hidden: menuData.sections
               .map((section) => section.closed)
@@ -343,7 +343,7 @@
             <div
               class="flex h-1/5 w-full items-end border-b-2 border-black pb-2 pr-10"
             >
-              <p class="font-bold">{{ section.name }}</p>
+              <p class="text-start font-bold">{{ section.name }}</p>
             </div>
             <div class="h-4/5 pb-7 pt-3">
               <ul class="flex flex-col gap-2 text-sm">

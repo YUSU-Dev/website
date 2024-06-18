@@ -1,7 +1,7 @@
 <template>
-  <div class="mb-4 bg-white px-2 pb-2 lg:px-3 lg:pb-3">
+  <div class="mb-4 px-2 pb-2 lg:px-3 lg:pb-3">
     <div
-      class="relative h-full shadow transition hover:scale-105"
+      class="relative h-full bg-white shadow transition hover:scale-105"
       :class="{ 'animate-pulse': loading }"
     >
       <a class="group text-black no-underline" :href="url">

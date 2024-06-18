@@ -52,7 +52,9 @@ export default {
 };
 </script>
 <template>
-  <div class="grid grid-cols-1 gap-8 text-left sm:grid-cols-2 lg:grid-cols-3">
+  <div
+    class="container mx-auto grid grid-cols-1 gap-8 text-left sm:grid-cols-2 lg:grid-cols-3"
+  >
     <a
       v-for="(link, index) in LinksList"
       :key="index"

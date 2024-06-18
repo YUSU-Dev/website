@@ -1,18 +1,32 @@
 <template>
   <Navbar />
-  <HeroBanner :title="title" :image="image" />
+  <Carousel v-if="homepage" />
+  <HeroBanner v-else :title="title" :image="image" />
   <Breadcrumb />
 </template>
 <script>
 import Navbar from "../Navbar/navbar.ce.vue";
 import HeroBanner from "../HeroBanner/herobanner.ce.vue";
 import Breadcrumb from "../breadcrumb/breadcrumb.ce.vue";
+import Carousel from "../Carousel/carousel.ce.vue";
 export default {
-  props: ["title", "image"],
+  props: {
+    homepage: {
+      type: Boolean,
+      default: false,
+    },
+    title: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
+  },
   components: {
     Navbar,
     HeroBanner,
     Breadcrumb,
+    Carousel,
   },
   data() {
     return {};

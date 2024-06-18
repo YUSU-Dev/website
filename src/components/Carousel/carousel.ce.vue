@@ -122,6 +122,8 @@ export default {
       } else {
         this.currentIndex += 1;
       }
+      clearInterval(this.timer);
+      this.startSlide();
     },
     prev: function () {
       this.transition = "slide-prev";
@@ -130,6 +132,8 @@ export default {
       } else {
         this.currentIndex -= 1;
       }
+      clearInterval(this.timer);
+      this.startSlide();
     },
   },
 };
