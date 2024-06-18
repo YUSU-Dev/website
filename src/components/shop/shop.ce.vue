@@ -306,35 +306,59 @@ export default {
       });
       return formatter.format(value);
     },
-    addToBasket(productId) {
+    async addToBasket(productId) {
       let self = this;
-      addToBasketHandler(productId)
-        .then(function (response) {
-          if (!response.data["success"]) {
-            var data = response.data.error_message;
-            self.ErrorDescription = data;
-            self.ModalClosed = false;
-            return;
-          }
-          if (typeof response.data.fields != "undefined") {
-            window.location.replace("/shop/fields/" + productId);
-          } else {
-            // refreshBasketAdd();
-          }
-        })
-        .catch(function (response) {
-          if (response.data.error_message != "undefined") {
-            console.log(
-              "There was an error adding the product to the basket: " +
-                response.data.error_message,
-            );
-            self.ModalClosed = false;
-            self.ErrorDescription = response.data.error_message;
-          } else {
-            console.log("Undefined error adding product to basket");
-          }
-        });
+      try {
+        const response = await addToBasketHandler(productId);
+        if (!response.data["success"]) {
+          var data = response.data.error_message;
+          self.ErrorDescription = data;
+          self.ModalClosed = false;
+          return;
+        }
+        if (typeof response.data.fields != "undefined") {
+          window.location.replace("/shop/fields/" + productId);
+        } else {
+          // refreshBasketAdd();
+        }
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.data.error_message != "undefined"
+        ) {
+          // Handle error
+        }
+      }
     },
+    // addToBasket(productId) {
+    //   let self = this;
+    //   addToBasketHandler(productId)
+    //     .then(function (response) {
+    //       if (!response.data["success"]) {
+    //         var data = response.data.error_message;
+    //         self.ErrorDescription = data;
+    //         self.ModalClosed = false;
+    //         return;
+    //       }
+    //       if (typeof response.data.fields != "undefined") {
+    //         window.location.replace("/shop/fields/" + productId);
+    //       } else {
+    //         // refreshBasketAdd();
+    //       }
+    //     })
+    //     .catch(function (response) {
+    //       if (response.data.error_message != "undefined") {
+    //         console.log(
+    //           "There was an error adding the product to the basket: " +
+    //             response.data.error_message,
+    //         );
+    //         self.ModalClosed = false;
+    //         self.ErrorDescription = response.data.error_message;
+    //       } else {
+    //         console.log("Undefined error adding product to basket");
+    //       }
+    //     });
+    // },
   },
 };
 </script>
