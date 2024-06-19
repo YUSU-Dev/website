@@ -1,11 +1,11 @@
 <template>
-  <div class="container mx-auto py-10">
+  <div class="py-10">
     <div class="justify-center">
       <div>
         <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
         <div v-if="!hidefilter">
           <div
-            class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"
+            class="grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
           >
             <div class="flex flex-col">
               <label for="event-search">Search</label>
@@ -58,14 +58,11 @@
       </div>
     </div>
     <div class="relative flex">
-      <div class="container">
+      <div class="">
         <div class="m-4 text-center" v-if="!Products.length && !Loading">
           <h3>No products found</h3>
         </div>
-        <div
-          class="mt-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6"
-          v-if="!Loading"
-        >
+        <div class="a-z-wrap mt-10" v-if="!Loading">
           <Tile
             v-for="product in Products"
             :key="product.id"
@@ -77,10 +74,7 @@
             :shopGroupName="product.group_name"
           />
         </div>
-        <div
-          class="mt-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6"
-          v-else
-        >
+        <div class="a-z-wrap mt-10" v-else>
           <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination
