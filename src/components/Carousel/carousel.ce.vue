@@ -117,19 +117,23 @@ export default {
     },
     next: function () {
       this.transition = "slide-next";
+      this.stopSlide();
       if (this.currentIndex === this.banners.length - 1) {
         this.currentIndex = 0;
       } else {
         this.currentIndex += 1;
       }
+      this.startSlide();
     },
     prev: function () {
       this.transition = "slide-prev";
+      this.stopSlide();
       if (this.currentIndex === 0) {
         this.currentIndex = this.banners.length - 1;
       } else {
         this.currentIndex -= 1;
       }
+      this.startSlide();
     },
   },
 };
