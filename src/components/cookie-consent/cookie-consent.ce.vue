@@ -1,10 +1,11 @@
 <template>
   <div
     id="error-modal"
-    class="align-end fixed bottom-0 left-0 flex justify-start overflow-y-auto overflow-x-hidden"
+    class="align-end fixed bottom-0 left-0 z-50 flex justify-start overflow-y-auto overflow-x-hidden"
     aria-label="Cookie Consent Modal"
     role="dialog"
     v-if="displayCookieConsent"
+    tabindex="1"
   >
     <div class="modal-dialog" role="document">
       <div class="modal-content">
