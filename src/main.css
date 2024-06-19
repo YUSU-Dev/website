@@ -169,11 +169,7 @@
 
   /* Skip to Main Content */
   #skiptocontent a {
-    @apply absolute -top-40 left-0 bg-white text-black;
-  }
-
-  #skiptocontent a:focus {
-    @apply absolute left-5 top-5;
+    @apply absolute left-0 top-0 z-50 -translate-y-full transform bg-mustard px-4 py-2 text-black transition hover:bg-light-blue focus:translate-y-0;
   }
 
   /* Modals */
@@ -270,6 +266,15 @@
 }
 .slide-next-leave-to {
   @apply opacity-0;
+}
+
+/* embedded tile wrapping */
+.tile-wrap {
+  @apply mx-2 grid grid-cols-2 justify-center gap-x-2 gap-y-2 md:mx-0 md:flex md:flex-wrap md:gap-x-4 md:gap-y-4 lg:gap-x-8 lg:gap-y-8;
+}
+
+.a-z-wrap {
+  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
 }
 
 @tailwind utilities;

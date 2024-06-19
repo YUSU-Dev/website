@@ -12,7 +12,8 @@ export default {
         "advice-green": "#00A463",
       },
       screens: {
-        // This is just to allow 1 more breakpoint than the default, can be changed to something else as long as its equal or smaller than 576px
+        // This is just to allow more breakpoints smaller than the default, can be changed to something else
+        xxs: "320px",
         xs: "476px",
         max: "1900px",
       },
@@ -20,6 +21,14 @@ export default {
     fontFamily: {
       sans: ["soleil", "inter", "sans-serif"],
       serif: ["rooney-web", "serif"],
+    },
+    container: {
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "5rem",
+      },
     },
   },
   plugins: [],

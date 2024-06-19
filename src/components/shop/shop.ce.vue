@@ -1,15 +1,17 @@
 <template>
-  <div class="w-full">
-    <div class="pt-3">
-      <div class="container">
+  <div class="py-10">
+    <div class="justify-center">
+      <div>
         <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
         <div v-if="!hidefilter">
-          <h2 class="text-3xl">Shop Filters</h2>
-          <div class="row">
-            <div class="justify-center">
-              <div class="input-group flex px-2 lg:px-3">
+          <div
+            class="grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
+          >
+            <div class="flex flex-col">
+              <label for="event-search">Search</label>
+              <div class="input-group flex h-full border-[1px] border-black">
                 <input
-                  class="search form-control w-full border-[1px] border-black p-2"
+                  class="form-control h-full w-full"
                   type="text"
                   aria-label="search for an activity"
                   name="search"
@@ -20,7 +22,7 @@
                   <button
                     type="submit"
                     aria-label="Submit"
-                    class="btn btn-block btn-secondary h-full w-full bg-black px-1"
+                    class="btn btn-block btn-secondary h-full"
                     @click="submitSearch"
                   >
                     <FontAwesomeIcon
@@ -31,7 +33,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 form-group">
+            <div>
               <label for="shop-categories">Categories</label>
               <v-select
                 label="name"
@@ -41,7 +43,7 @@
               >
               </v-select>
             </div>
-            <div class="col-lg-3 form-group">
+            <div>
               <label for="shop-group">Activities</label>
               <v-select
                 label="name"
@@ -55,39 +57,34 @@
         </div>
       </div>
     </div>
-    <div class="relative mt-6 flex px-2 pb-4 lg:px-3">
-      <div class="container">
-        <div class="m-4 text-center" v-if="!Products.length">
+    <div class="relative flex">
+      <div class="">
+        <div class="m-4 text-center" v-if="!Products.length && !Loading">
           <h3>No products found</h3>
         </div>
-        <div
-          class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-          v-if="!Loading"
-        >
+        <div class="a-z-wrap mt-10" v-if="!Loading">
           <Tile
             v-for="product in Products"
             :key="product.id"
             :url="'/shop/product/' + product.id + '-' + product.url_name"
             :title="product.name"
             :image="product.image"
-            :add-to-basket="addToBasket"
             :text="toCurrency(product.price)"
             :product-id="product.id"
             :shop-group-name="product.group_name"
           />
         </div>
-        <div
-          class="mt-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-          v-else
-        >
+        <div class="a-z-wrap mt-10" v-else>
           <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination
+          v-if="Page != 1 || MoreResults"
           :Array="Products"
           :load-page="loadPage"
           :Page="Page"
           :MoreResults="MoreResults"
           :PreviousResults="PreviousResults"
+          :loading="Loading"
         />
       </div>
     </div>
@@ -108,12 +105,11 @@ import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
-import qs from "https://cdn.jsdelivr.net/npm/qs@6.12.1/+esm";
+import { addToBasketHandler } from "../shop/shop.basket.js";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import vSelect from "vue-select";
-
 library.add(faSearch);
 
 export default {
@@ -308,38 +304,26 @@ export default {
     },
     addToBasket(productId) {
       let self = this;
-      axios({
-        method: "post",
-        url: "shop/ajax",
-        data: qs.stringify({
-          c: "ab",
-          pid: productId,
-        }),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        },
-      })
+      addToBasketHandler(productId)
         .then(function (response) {
-          if (!response.data["success"]) {
-            var data = response.data.error_message;
+          if (!response["success"]) {
+            var data = response.error_message;
             self.ErrorDescription = data;
             self.ModalClosed = false;
             return;
           }
-          if (typeof response.data.fields != "undefined") {
+          if (typeof response.fields != "undefined") {
             window.location.replace("/shop/fields/" + productId);
           } else {
-            // refreshBasketAdd();
+            window.location.replace("/shop/basket");
           }
         })
         .catch(function (response) {
-          if (response.data.error_message != "undefined") {
+          if (response.error_message != "undefined") {
             console.log(
               "There was an error adding the product to the basket: " +
-                response.data.error_message,
+                response.error_message,
             );
-            self.ModalClosed = false;
-            self.ErrorDescription = response.data.error_message;
           } else {
             console.log("Undefined error adding product to basket");
           }

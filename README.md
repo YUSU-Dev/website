@@ -1,6 +1,8 @@
 # Website
 
 [![Build and Upload to R2](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml)
+[![pages-build-deployment](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/pages/pages-build-deployment)
+[![Storybook Tests](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/storybook-tests.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/storybook-tests.yml)
 
 A UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
 
@@ -86,22 +88,25 @@ We use Font Awesome using the SVG-based method, using the `@fortawesome/vue-font
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowLeft, faArrowRight, /* any other icons */ } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowRight /* any other icons */,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faTag, faArrowLeft, /* any other icons */);
+library.add(faTag, faArrowLeft /* any other icons */);
 
 export default {
   components: {
     FontAwesomeIcon,
     // ...
-  }
+  },
 };
 </script>
 <template>
-<div>
-  <!-- Don't forget to give it an explicit size, otherwise it might not be visible! -->
-  <FontAwesomeIcon icon="fas fa-tag" class="w-8 h-8" />
-</div>
+  <div>
+    <!-- Don't forget to give it an explicit size, otherwise it might not be visible! -->
+    <FontAwesomeIcon icon="fas fa-tag" class="h-8 w-8" />
+  </div>
 </template>
 ```
 

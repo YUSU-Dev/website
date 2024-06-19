@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center">
+  <div class="flex justify-center overflow-x-hidden bg-beige">
     <div class="w-full max:container">
       <transition-group
         :name="transition"
@@ -96,9 +96,16 @@ export default {
   updated() {},
   methods: {
     getBanners: function () {
-      axios.get("/api/banners/homepage-carousel").then(function (response) {
-        this.banners.push(...response.data);
-      });
+      axios
+        .get("https://yu-development.sums.su/api/banners/homepage-carousel")
+        .then((response) => {
+          var jsonData = JSON.parse(
+            "[" +
+              response.data.substring(0, response.data.lastIndexOf(",")) +
+              "]",
+          );
+          this.banners.push(...jsonData);
+        });
     },
     startSlide: function () {
       this.timer = setInterval(this.next, this.interval);
@@ -110,19 +117,23 @@ export default {
     },
     next: function () {
       this.transition = "slide-next";
+      this.stopSlide();
       if (this.currentIndex === this.banners.length - 1) {
         this.currentIndex = 0;
       } else {
         this.currentIndex += 1;
       }
+      this.startSlide();
     },
     prev: function () {
       this.transition = "slide-prev";
+      this.stopSlide();
       if (this.currentIndex === 0) {
         this.currentIndex = this.banners.length - 1;
       } else {
         this.currentIndex -= 1;
       }
+      this.startSlide();
     },
   },
 };
