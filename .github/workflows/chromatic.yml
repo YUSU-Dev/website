@@ -20,6 +20,7 @@ jobs:
         # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
         run: npm ci
       - name: Run Chromatic
+        id: chromatic
         uses: chromaui/action@latest
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
@@ -29,3 +30,10 @@ jobs:
           exitOnceUploaded: true
           onlyChanged: true
           skip: "@(renovate/**|dependabot/**)"
+      - name: Publish Storybook Link in the comments
+        uses: dannyhw/storybook-chromatic-link-comment@v0.10
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          review-url: ${{ steps.chromatic.outputs.url }}
+          build-url: ${{ steps.chromatic.outputs.buildUrl }}
+          storybook-url: ${{ steps.chromatic.outputs.storybookUrl }}
