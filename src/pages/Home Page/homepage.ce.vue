@@ -3,11 +3,14 @@
     :homepage="true"
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
   />
-  <div class="py-20">
+  <div class="flex flex-col items-center justify-center py-20">
+    <div class="flex justify-center text-center">
+      <h2 class="pb-16 text-3xl font-bold">How can we help today?</h2>
+    </div>
     <QuickLinks />
   </div>
   <div class="bg-beige py-20">
-    <News embedded="true" />
+    <News :embedded="true" :homepage="true" />
   </div>
   <div class="py-20">
     <Sabbs />

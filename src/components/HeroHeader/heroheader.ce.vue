@@ -2,7 +2,7 @@
   <Navbar />
   <Carousel v-if="homepage" />
   <HeroBanner v-else :title="title" :image="image" />
-  <Breadcrumb />
+  <Breadcrumb v-if="!homepage" />
 </template>
 <script>
 import Navbar from "../Navbar/navbar.ce.vue";
