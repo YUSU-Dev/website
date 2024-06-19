@@ -1,9 +1,11 @@
 <template>
+  <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
   <HeroHeader
     :homepage="true"
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
   />
   <div
+    id="maincontent"
     class="container mx-auto flex flex-col items-center justify-center py-20"
   >
     <div class="flex justify-center text-center">
