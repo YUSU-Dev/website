@@ -8,11 +8,7 @@
           class="h-full w-full object-cover"
         />
         <div
-          class="absolute inset-0"
-          :style="{
-            backgroundImage:
-              'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 60%)',
-          }"
+          class="absolute inset-0 bg-gradient-to-t from-black to-transparent to-60%"
         ></div>
       </div>
       <div class="absolute bottom-4 w-full px-4">

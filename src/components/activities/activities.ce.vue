@@ -1,10 +1,10 @@
 <template>
-  <div class="container mx-auto py-10" id="societies-a-z">
-    <div v-if="title" class="mb-4 px-2 lg:px-3">
+  <div class="py-10" id="societies-a-z">
+    <div v-if="title" class="mb-4">
       <h2 class="text-3xl font-bold">{{ title }}</h2>
     </div>
     <div class="justify-center">
-      <div v-if="!selectedcategory" class="input-group flex px-2 lg:px-3">
+      <div v-if="!selectedcategory" class="input-group flex">
         <input
           class="search form-control w-full border-[1px] border-black p-2"
           type="text"
@@ -27,7 +27,7 @@
           </button>
         </div>
       </div>
-      <div class="relative mt-6 flex px-2 pb-4 lg:px-3">
+      <div class="relative mt-6 flex pb-4">
         <Transition>
           <div class="w-full" v-if="Search">
             <h3 class="text-center text-3xl font-semibold">Search Results</h3>
@@ -111,10 +111,7 @@
         </Transition>
       </div>
       <Transition>
-        <div
-          class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-          v-if="!loading"
-        >
+        <div class="a-z-wrap mt-10" v-if="!loading">
           <Tile
             v-for="Group in Groups"
             :key="Group.id"
@@ -123,10 +120,7 @@
             :image="Group.thumbnail_url"
           />
         </div>
-        <div
-          class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-          v-else
-        >
+        <div class="a-z-wrap mt-10" v-else>
           <Tile v-for="Item in PerPage" :key="Item" :loading="true" />
         </div>
       </Transition>

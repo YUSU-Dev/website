@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-10" id="events-a-z">
+  <div class="py-10" id="events-a-z">
     <div class="justify-center">
       <div
         class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"
@@ -56,10 +56,7 @@
           />
         </div>
       </div>
-      <div
-        v-if="!Loading"
-        class="mt-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4"
-      >
+      <div v-if="!Loading" class="a-z-wrap mt-10">
         <Tile
           v-for="event in Events"
           :key="event.id"
@@ -68,7 +65,7 @@
           :image="event.thumbnail_url"
         />
       </div>
-      <div v-else class="mt-10 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4">
+      <div v-else class="a-z-wrap mt-10">
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
       </div>
       <Pagination

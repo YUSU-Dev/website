@@ -1,11 +1,9 @@
 <template>
-  <div class="container mx-auto my-10">
+  <div class="my-10">
     <div class="mx-2 mb-10 flex justify-center text-center">
       <h2 class="text-3xl font-bold">What's on this week</h2>
     </div>
-    <div
-      class="mx-2 grid grid-cols-2 justify-center gap-x-1 gap-y-1 md:mx-0 md:flex md:flex-wrap"
-    >
+    <div class="tile-wrap">
       <Tile
         class="w-full bg-cover md:w-[282px]"
         v-for="banner in banners"
