@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center overflow-x-hidden">
+  <div class="flex justify-center overflow-x-hidden bg-beige">
     <div class="w-full max:container">
       <transition-group
         :name="transition"
