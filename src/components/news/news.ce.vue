@@ -1,10 +1,7 @@
 <template>
   <div id="newsTop" class=""></div>
   <div v-if="embedded" class="container mx-auto">
-    <div
-      v-if="!firstLoad"
-      class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4"
-    >
+    <div v-if="!firstLoad" class="news-row tile-wrap">
       <Tile
         v-for="article in News"
         :key="article.id"
@@ -19,8 +16,11 @@
     <div v-else class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
       <Tile v-for="item in embeddedPerPage" :key="item" :loading="true" />
     </div>
-
+    <div v-if="homepage" class="flex justify-center">
+      <a class="btn btn-primary mt-8" href="/news"> View All News </a>
+    </div>
     <Pagination
+      v-else
       :loading="loading"
       :Array="News"
       :loadPage="loadPage"
@@ -85,10 +85,7 @@
           class="h-8 w-8 animate-spin"
         ></FontAwesomeIcon>
       </div>
-      <div
-        v-if="!firstLoad"
-        class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-      >
+      <div v-if="!firstLoad" class="news-row a-z-wrap">
         <Tile
           v-for="article in News"
           :key="article.id"
@@ -100,10 +97,7 @@
           :appendCategory="appendCategory"
         />
       </div>
-      <div
-        v-else
-        class="news-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-      >
+      <div v-else class="news-row a-z-wrap">
         <Tile v-for="item in perPage" :key="item" :loading="true" />
       </div>
       <Pagination
@@ -151,6 +145,10 @@ export default {
     selectedCategories: {
       type: String,
       default: null,
+    },
+    homepage: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -203,6 +201,7 @@ export default {
       );
   },
   async mounted() {
+    console.log(this.homepage);
     // wait for the signal that created has finished loading data
     const self = this;
     await self.awaitMountPromise;

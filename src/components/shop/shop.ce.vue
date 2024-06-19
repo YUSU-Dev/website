@@ -62,10 +62,7 @@
         <div class="m-4 text-center" v-if="!Products.length && !Loading">
           <h3>No products found</h3>
         </div>
-        <div
-          class="mt-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6"
-          v-if="!Loading"
-        >
+        <div class="a-z-wrap mt-10" v-if="!Loading">
           <Tile
             v-for="product in Products"
             :key="product.id"
@@ -77,10 +74,7 @@
             :shopGroupName="product.group_name"
           />
         </div>
-        <div
-          class="mt-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6"
-          v-else
-        >
+        <div class="a-z-wrap mt-10" v-else>
           <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination

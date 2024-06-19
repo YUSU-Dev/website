@@ -272,4 +272,13 @@
   @apply opacity-0;
 }
 
+/* embedded tile wrapping */
+.tile-wrap {
+  @apply mx-2 grid grid-cols-2 justify-center gap-x-2 gap-y-2 md:mx-0 md:flex md:flex-wrap md:gap-x-4 md:gap-y-4 lg:gap-x-8 lg:gap-y-8;
+}
+
+.a-z-wrap {
+  @apply grid grid-cols-2 gap-x-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+}
+
 @tailwind utilities;
