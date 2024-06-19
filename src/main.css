@@ -169,11 +169,7 @@
 
   /* Skip to Main Content */
   #skiptocontent a {
-    @apply absolute -top-40 left-0 bg-white text-black;
-  }
-
-  #skiptocontent a:focus {
-    @apply absolute left-5 top-5;
+    @apply absolute left-0 top-0 z-50 -translate-y-full transform bg-mustard px-4 py-2 text-black transition hover:bg-light-blue focus:translate-y-0;
   }
 
   /* Modals */
