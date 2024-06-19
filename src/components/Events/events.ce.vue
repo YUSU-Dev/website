@@ -63,6 +63,9 @@
           :url="'/events/id/' + event.event_id + '-' + event.url_name"
           :title="event.event_date_title"
           :image="event.thumbnail_url"
+          :date="event.start_date"
+          :group="event.group"
+          :location="event.venue"
         />
       </div>
       <div v-else class="a-z-wrap mt-10">

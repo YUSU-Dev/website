@@ -16,6 +16,14 @@
             loading="lazy"
           />
         </div>
+        <img
+          v-else-if="group && group.thumbnail_url"
+          class="aspect-square bg-cover bg-center object-cover"
+          :src="group.thumbnail_url"
+          alt=""
+          loading="lazy"
+        />
+
         <div
           v-else-if="loading"
           class="aspect-square bg-slate-200 bg-cover bg-center"
@@ -31,10 +39,14 @@
           <p v-if="shopGroupName" class="text-xs font-semibold text-gray-800">
             {{ shopGroupName }}
           </p>
+          <p v-if="group" class="text-sm font-semibold text-gray-800">
+            {{ group.name }}
+          </p>
           <h3 v-if="title" class="mb-2 line-clamp-2 font-semibold lg:text-xl">
             {{ title }}
           </h3>
           <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
+          <p v-if="location" class="font-semibold">{{ location.name }}</p>
           <p v-if="text" class="font-semibold">{{ text }}</p>
           <div v-if="!date && !text">
             <p class="flex items-center font-semibold">
@@ -109,8 +121,11 @@ export default {
     "url",
     "title",
     "image",
+    "groupimage",
     "date",
     "text",
+    "location",
+    "group",
     "productId",
     "shopGroupName",
     "categories",
