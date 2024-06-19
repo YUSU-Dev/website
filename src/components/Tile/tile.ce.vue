@@ -5,13 +5,17 @@
       :class="{ 'animate-pulse': loading }"
     >
       <a class="group text-black no-underline" :href="url">
-        <img
+        <div
           v-if="image"
-          class="aspect-square bg-cover bg-center object-cover"
-          :src="image"
-          alt=""
-          loading="lazy"
-        />
+          class="flex aspect-square items-center justify-center"
+        >
+          <img
+            class="aspect-square bg-cover bg-center object-cover"
+            :src="image"
+            alt=""
+            loading="lazy"
+          />
+        </div>
         <div
           v-else-if="loading"
           class="aspect-square bg-slate-200 bg-cover bg-center"
