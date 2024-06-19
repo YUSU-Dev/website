@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-10" id="societies-a-z">
+  <div class="py-10" id="societies-a-z">
     <div v-if="title" class="mb-4">
       <h2 class="text-3xl font-bold">{{ title }}</h2>
     </div>

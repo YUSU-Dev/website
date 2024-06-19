@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-10" id="events-a-z">
+  <div class="py-10" id="events-a-z">
     <div class="justify-center">
       <div
         class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"

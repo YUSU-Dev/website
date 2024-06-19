@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto my-10">
+  <div class="my-10">
     <div
       class="mx-2 mb-10 flex flex-col items-center justify-center gap-y-4 text-center"
     >

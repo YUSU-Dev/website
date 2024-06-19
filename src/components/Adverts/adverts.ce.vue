@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto my-10">
+  <div class="my-10">
     <div class="mx-2 mb-10 flex justify-center text-center">
       <h2 class="text-3xl font-bold">What's on this week</h2>
     </div>

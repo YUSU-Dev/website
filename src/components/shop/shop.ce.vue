@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-10">
+  <div class="py-10">
     <div class="justify-center">
       <div>
         <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="relative flex">
-      <div class="container px-0">
+      <div class="">
         <div class="m-4 text-center" v-if="!Products.length && !Loading">
           <h3>No products found</h3>
         </div>

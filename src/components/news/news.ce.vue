@@ -1,6 +1,6 @@
 <template>
   <div id="newsTop" class=""></div>
-  <div v-if="embedded" class="container mx-auto">
+  <div v-if="embedded" class="">
     <div v-if="!firstLoad" class="news-row tile-wrap">
       <Tile
         v-for="article in News"
@@ -29,7 +29,7 @@
       :PreviousResults="PreviousResults"
     />
   </div>
-  <div v-else class="container mx-auto grid grid-cols-5">
+  <div v-else class="grid grid-cols-5">
     <div class="z-10 order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
       <div class="sticky top-4 border-[1px] border-black p-6">
         <div class="">
@@ -66,10 +66,7 @@
     </div>
 
     <div class="mx-md-0 order-1 col-span-5 xl:order-1 xl:col-span-4 xl:pr-4">
-      <div
-        v-if="News.length == 0 && !loading && !firstLoad"
-        class="container mx-auto"
-      >
+      <div v-if="News.length == 0 && !loading && !firstLoad" class="">
         <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
           No Articles Found
         </h2>
