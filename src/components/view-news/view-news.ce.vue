@@ -1,7 +1,7 @@
 <template>
   <body>
     <main class="container mx-auto my-7">
-      <Button title="Back to News" isPrimary="true" arrow="true" url="/news" />
+      <Button title="Back to News" is-primary="true" arrow="true" url="/news" />
       <h2 class="mb-5 mt-10 text-3xl font-bold">
         {{ Article.title ?? "Article not Found" }}
       </h2>

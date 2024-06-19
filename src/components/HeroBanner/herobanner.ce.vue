@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-  props: ["title", "image"],
+  props: ["society", "image"],
   data() {
     return {};
   },

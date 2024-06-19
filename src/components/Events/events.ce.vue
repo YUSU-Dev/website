@@ -9,7 +9,7 @@
           <v-select
             label="name"
             :options="Categories"
-            @update:modelValue="updateCategory"
+            @update:model-value="updateCategory"
             placeholder="All"
           ></v-select>
         </div>
@@ -18,7 +18,7 @@
           <v-select
             label="name"
             :options="Groups"
-            @update:modelValue="updateGroup"
+            @update:model-value="updateGroup"
             placeholder="All"
           ></v-select>
         </div>
@@ -41,7 +41,7 @@
               >
                 <FontAwesomeIcon
                   icon="fas fa-search"
-                  className="w-8 h-8 text-white"
+                  class-name="w-8 h-8 text-white"
                 ></FontAwesomeIcon>
               </button>
             </div>
@@ -51,7 +51,7 @@
           <Button
             title="Reset"
             @click="reset"
-            isStudentLife="true"
+            is-student-life="true"
             class="flex h-[38px] items-center"
           />
         </div>
@@ -74,7 +74,7 @@
       <Pagination
         :Array="Groups"
         :loading="Loading"
-        :loadPage="loadPage"
+        :load-page="loadPage"
         :Page="Page"
         :MoreResults="MoreResults"
         :PreviousResults="PreviousResults"

@@ -5,31 +5,10 @@ export default {
   component: "activities-view",
 };
 
-export const Sports = {
+export const testymctestsoc = {
   args: {
-    title: "Sports",
+    society: "TestyMcTestSoc",
+    logo: "huge test",
     selectedparents: "24",
-  },
-};
-
-export const Societies = {
-  args: {
-    title: "Societies",
-    selectedparents: "2",
-  },
-};
-
-export const Volunteering = {
-  args: {
-    title: "Volunteering",
-    selectedparents: "39",
-  },
-};
-
-export const Multiple = {
-  args: {
-    title: "Multiple",
-    selectedparents: "2,24,39",
-    componenttitle: "Search for a Society, Sport Club or Volunteering Group",
   },
 };
