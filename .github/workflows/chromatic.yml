@@ -30,10 +30,5 @@ jobs:
           exitOnceUploaded: true
           onlyChanged: true
           skip: "@(renovate/**|dependabot/**)"
-      - name: Publish Storybook Link in the comments
-        uses: dannyhw/storybook-chromatic-link-comment@v0.10
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          review-url: ${{ steps.chromatic.outputs.url }}
-          build-url: ${{ steps.chromatic.outputs.buildUrl }}
-          storybook-url: ${{ steps.chromatic.outputs.storybookUrl }}
+      - name: Publish Summary
+        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
