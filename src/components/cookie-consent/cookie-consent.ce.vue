@@ -5,7 +5,6 @@
     aria-label="Cookie Consent Modal"
     role="dialog"
     v-if="displayCookieConsent"
-    tabindex="1"
   >
     <div class="modal-dialog" role="document">
       <div class="modal-content">

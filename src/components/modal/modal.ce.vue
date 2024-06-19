@@ -4,7 +4,7 @@
     id="error-modal"
     class="modal z-50 flex items-start"
     aria-label="Error Modal"
-    tabindex="1"
+    tabindex="-1"
     role="dialog"
   >
     <div class="modal-dialog" role="document">
