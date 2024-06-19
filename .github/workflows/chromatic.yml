@@ -2,7 +2,10 @@
 
 name: "Chromatic"
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   chromatic:
