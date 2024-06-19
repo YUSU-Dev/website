@@ -5,7 +5,7 @@
         <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
         <div v-if="!hidefilter">
           <div
-            class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"
+            class="grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
           >
             <div class="flex flex-col">
               <label for="event-search">Search</label>
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="relative flex">
-      <div class="container">
+      <div class="container px-0">
         <div class="m-4 text-center" v-if="!Products.length && !Loading">
           <h3>No products found</h3>
         </div>
