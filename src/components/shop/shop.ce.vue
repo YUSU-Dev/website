@@ -78,11 +78,11 @@
           <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination
-          :Array="Products"
+          :array="Products"
           :load-page="loadPage"
-          :Page="Page"
-          :MoreResults="MoreResults"
-          :PreviousResults="PreviousResults"
+          :page="Page"
+          :more-results="MoreResults"
+          :previous-results="PreviousResults"
           :loading="Loading"
         />
       </div>
@@ -112,14 +112,14 @@ import vSelect from "vue-select";
 library.add(faSearch);
 
 export default {
-  props: [
-    "siteid",
-    "title",
-    "featuredshop",
-    "hidefilter",
-    "selectedgroup",
-    "signedIn",
-  ],
+  props: {
+    siteid: { type: String, default: "" },
+    title: { type: String, default: "" },
+    featuredshop: Boolean,
+    hidefilter: Boolean,
+    selectedgroup: { type: String, default: "" },
+    signedIn: Boolean,
+  },
   components: {
     Tile,
     Pagination,

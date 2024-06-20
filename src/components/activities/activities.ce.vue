@@ -125,12 +125,12 @@
         </div>
       </Transition>
       <Pagination
-        :Array="Groups"
+        :array="Groups"
         :load-page="loadPage"
-        :Page="Page"
-        :MoreResults="MoreResults"
-        :PreviousResults="PreviousResults"
-        :Loading="loading"
+        :page="Page"
+        :more-results="MoreResults"
+        :previous-results="PreviousResults"
+        :loading="loading"
       />
     </div>
   </div>
@@ -146,7 +146,24 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
 
 export default {
-  props: ["siteid", "selectedparents", "selectedcategory", "title"],
+  props: {
+    siteid: {
+      type: String,
+      default: null,
+    },
+    selectedparents: {
+      type: Number,
+      default: null,
+    },
+    selectedcategory: {
+      type: Number,
+      default: null,
+    },
+    title: {
+      type: String,
+      default: null,
+    },
+  },
   components: {
     Tile,
     Pagination,

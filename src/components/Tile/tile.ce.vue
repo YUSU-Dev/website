@@ -131,22 +131,64 @@ library.add(faTag, faArrowLeft, faArrowRight);
 
 export default {
   components: { FontAwesomeIcon },
-  props: [
-    "url",
-    "title",
-    "image",
-    "groupimage",
-    "date",
-    "text",
-    "location",
-    "group",
-    "productId",
-    "shopGroupName",
-    "categories",
-    "Brand",
-    "appendCategory",
-    "loading",
-  ],
+  props: {
+    url: {
+      type: String,
+      default: null,
+    },
+    title: {
+      type: String,
+      default: null,
+    },
+    image: {
+      type: String,
+      default: null,
+    },
+    groupimage: {
+      type: String,
+      default: null,
+    },
+    date: {
+      type: String,
+      default: null,
+    },
+    text: {
+      type: String,
+      default: null,
+    },
+    location: {
+      type: String,
+      default: null,
+    },
+    group: {
+      type: String,
+      default: null,
+    },
+    productId: {
+      type: String,
+      default: null,
+    },
+    shopGroupName: {
+      type: String,
+      default: null,
+    },
+    categories: {
+      type: String,
+      default: null,
+    },
+    brand: {
+      type: String,
+      default: null,
+    },
+    appendCategory: {
+      type: String,
+      default: null,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       images: [

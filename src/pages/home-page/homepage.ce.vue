@@ -36,7 +36,11 @@ import News from "../../components/news/news.ce.vue";
 import Sabbs from "../../components/Sabbs/sabbs.ce.vue";
 import Adverts from "../../components/Adverts/adverts.ce.vue";
 export default {
-  props: ["title", "componenttitle", "selectedparents"],
+  props: {
+    title: { type: String, default: "" },
+    componenttitle: { type: String, default: "" },
+    selectedparents: { type: String, default: "" },
+  },
   components: {
     HeroHeader,
     Footer,

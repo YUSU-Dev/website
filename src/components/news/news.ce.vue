@@ -22,11 +22,11 @@
     <Pagination
       v-else
       :loading="loading"
-      :Array="News"
+      :array="News"
       :load-page="loadPage"
-      :Page="Page"
-      :MoreResults="MoreResults"
-      :PreviousResults="PreviousResults"
+      :page="Page"
+      :more-results="MoreResults"
+      :previous-results="PreviousResults"
     />
   </div>
   <div v-else class="grid grid-cols-5">
@@ -99,11 +99,11 @@
       </div>
       <Pagination
         :loading="loading"
-        :Array="News"
+        :array="News"
         :load-page="loadPage"
-        :Page="Page"
-        :MoreResults="MoreResults"
-        :PreviousResults="PreviousResults"
+        :page="Page"
+        :more-results="MoreResults"
+        :previous-results="PreviousResults"
       />
     </div>
   </div>

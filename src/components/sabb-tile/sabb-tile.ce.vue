@@ -38,7 +38,12 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 library.add(faArrowRight);
 
 export default {
-  props: ["img", "name", "position", "url"],
+  props: {
+    img: { type: String, default: "" },
+    name: { type: String, default: "" },
+    position: { type: String, default: "" },
+    url: { type: String, default: "" },
+  },
   components: {
     FontAwesomeIcon,
   },
