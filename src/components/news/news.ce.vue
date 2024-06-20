@@ -92,6 +92,7 @@
           :url="'/news/article/' + article.entry_id"
           :image="article.thumbnail"
           :appendCategory="appendCategory"
+          :news="true"
         />
       </div>
       <div v-else class="news-row a-z-wrap">
