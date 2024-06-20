@@ -165,9 +165,6 @@ export default {
     wrapURL(URL) {
       return "'" + URL + "'";
     },
-    getStartTime(date) {
-      return moment(String(value)).format("hh:mm a");
-    },
   },
   computed: {
     startTime() {
