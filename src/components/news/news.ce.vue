@@ -13,7 +13,7 @@
         :appendCategory="appendCategory"
       />
     </div>
-    <div v-else class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
+    <div v-else class="news-row tile-wrap">
       <Tile v-for="item in embeddedPerPage" :key="item" :loading="true" />
     </div>
     <div v-if="homepage" class="flex justify-center">

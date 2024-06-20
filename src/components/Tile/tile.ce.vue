@@ -1,7 +1,7 @@
 <template>
   <div class="mb-4 flex justify-center pb-2 lg:pb-3">
     <div
-      class="relative h-full bg-white shadow transition hover:scale-105 md:w-[282px]"
+      class="relative h-full w-full bg-white shadow transition hover:scale-105 md:w-[282px]"
       :class="{ 'animate-pulse': loading }"
     >
       <a class="group flex h-full flex-col text-black no-underline" :href="url">

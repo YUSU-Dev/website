@@ -78,7 +78,6 @@
           <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination
-          v-if="Page != 1 || MoreResults"
           :Array="Products"
           :loadPage="loadPage"
           :Page="Page"
