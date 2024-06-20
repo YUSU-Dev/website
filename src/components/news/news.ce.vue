@@ -33,7 +33,7 @@
     <div class="z-10 order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
       <div class="sticky top-4 border-[1px] border-black p-6">
         <div class="">
-          <div class="">
+          <div class="news-filters">
             <div class="mb-5">
               <label for="search">
                 <h2 class="mb-2 text-xl font-semibold">Search</h2>

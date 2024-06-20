@@ -78,6 +78,20 @@
       @apply !flex-nowrap;
     }
   }
+  /* News Filters */
+  .news-filters {
+    .vs__dropdown-toggle {
+      @apply h-full rounded-none bg-[#f7f7f7];
+    }
+
+    .vs__selected {
+      @apply rounded-none bg-light-pink;
+    }
+
+    .vs__deselect {
+      @apply ml-2 fill-black;
+    }
+  }
 
   /* Button Classes */
   .btn {
