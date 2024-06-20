@@ -125,7 +125,6 @@
         </div>
       </Transition>
       <Pagination
-        v-if="Page != 1 || MoreResults"
         :Array="Groups"
         :loadPage="loadPage"
         :Page="Page"
