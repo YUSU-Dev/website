@@ -164,7 +164,7 @@ export default {
       SelectedParents: [],
       Search: "",
       Page: 1,
-      PerPage: 20,
+      PerPage: 24,
       Pages: [],
       MoreResults: false,
       PreviousResults: false,

@@ -198,7 +198,6 @@ export default {
       );
   },
   async mounted() {
-    console.log(this.homepage);
     // wait for the signal that created has finished loading data
     const self = this;
     await self.awaitMountPromise;

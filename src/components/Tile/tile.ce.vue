@@ -57,7 +57,9 @@
             </p>
             <div class="flex flex-wrap gap-x-2">
               <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
-              <p v-if="startTime" class="font-semibold">{{ startTime }}</p>
+              <p v-if="date && startTime" class="font-semibold">
+                {{ startTime }}
+              </p>
             </div>
           </div>
           <div v-if="!date && !text">
@@ -152,9 +154,6 @@ export default {
         "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
       ],
     };
-  },
-  mounted() {
-    console.log(moment(String(this.date)).format("hh:mm a"));
   },
   methods: {
     randomImage() {
