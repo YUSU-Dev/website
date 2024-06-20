@@ -2,14 +2,13 @@
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
   <HeroHeader
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
+    title="News"
   />
   <div
     id="maincontent"
     class="container mx-auto flex flex-col items-center justify-center py-20"
   >
-    <div class="">
-      <News />
-    </div>
+    <News />
   </div>
   <Footer />
 </template>
