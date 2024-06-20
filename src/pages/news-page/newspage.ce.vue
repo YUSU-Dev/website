@@ -17,7 +17,11 @@ import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
 import News from "../../components/news/news.ce.vue";
 export default {
-  props: ["title", "componenttitle", "selectedparents"],
+  props: {
+    title: { type: String, default: "" },
+    componenttitle: { type: String, default: "" },
+    selectedparents: { type: String, default: "" },
+  },
   components: {
     HeroHeader,
     Footer,

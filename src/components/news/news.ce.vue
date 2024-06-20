@@ -10,7 +10,7 @@
         :categories="article.categories"
         :url="'/news/article/' + article.entry_id"
         :image="article.thumbnail"
-        :appendCategory="appendCategory"
+        :append-category="appendCategory"
       />
     </div>
     <div v-else class="news-row tile-wrap">
@@ -23,7 +23,7 @@
       v-else
       :loading="loading"
       :Array="News"
-      :loadPage="loadPage"
+      :load-page="loadPage"
       :Page="Page"
       :MoreResults="MoreResults"
       :PreviousResults="PreviousResults"
@@ -52,7 +52,7 @@
                 <v-select
                   label="name"
                   :options="NewsCategories"
-                  @update:modelValue="submitCategories"
+                  @update:model-value="submitCategories"
                   placeholder="All"
                   multiple
                   :reduce="(article) => article.id"
@@ -91,7 +91,7 @@
           :categories="article.categories"
           :url="'/news/article/' + article.entry_id"
           :image="article.thumbnail"
-          :appendCategory="appendCategory"
+          :append-category="appendCategory"
         />
       </div>
       <div v-else class="news-row a-z-wrap">
@@ -100,7 +100,7 @@
       <Pagination
         :loading="loading"
         :Array="News"
-        :loadPage="loadPage"
+        :load-page="loadPage"
         :Page="Page"
         :MoreResults="MoreResults"
         :PreviousResults="PreviousResults"

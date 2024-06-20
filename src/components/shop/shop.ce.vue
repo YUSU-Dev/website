@@ -16,7 +16,7 @@
                   aria-label="search for an activity"
                   name="search"
                   placeholder="Search..."
-                  v-on:keyup="search($event)"
+                  @keyup="search($event)"
                 />
                 <div class="input-group-append">
                   <button
@@ -39,7 +39,7 @@
                 label="name"
                 :options="Categories"
                 placeholder="All"
-                @update:modelValue="updateCategory"
+                @update:model-value="updateCategory"
               >
               </v-select>
             </div>
@@ -49,7 +49,7 @@
                 label="name"
                 :options="Groups"
                 placeholder="All"
-                @update:modelValue="updateGroup"
+                @update:model-value="updateGroup"
               >
               </v-select>
             </div>
@@ -70,8 +70,8 @@
             :title="product.name"
             :image="product.image"
             :text="toCurrency(product.price)"
-            :productId="product.id"
-            :shopGroupName="product.group_name"
+            :product-id="product.id"
+            :shop-group-name="product.group_name"
           />
         </div>
         <div class="a-z-wrap mt-10" v-else>
@@ -79,7 +79,7 @@
         </div>
         <Pagination
           :Array="Products"
-          :loadPage="loadPage"
+          :load-page="loadPage"
           :Page="Page"
           :MoreResults="MoreResults"
           :PreviousResults="PreviousResults"
@@ -89,10 +89,10 @@
     </div>
   </div>
   <Modal
-    :signedIn="signedIn"
+    :signed-in="signedIn"
     :title="'Basket Error!'"
-    :errorDescription="ErrorDescription"
-    :modalClosed="ModalClosed"
+    :error-description="ErrorDescription"
+    :modal-closed="ModalClosed"
     @close="ModalClosed = true"
   />
 </template>

@@ -11,7 +11,7 @@
           aria-label="search for an activity"
           name="search"
           placeholder="Search..."
-          v-on:keyup="search($event)"
+          @keyup="search($event)"
         />
         <div class="input-group-append">
           <button
@@ -53,7 +53,7 @@
                     :key="Parent.id"
                   >
                     <a
-                      v-bind:class="{
+                      :class="{
                         '!bg-light-blue font-semibold text-black':
                           SelectedParent.id === Parent.id,
                       }"
@@ -73,7 +73,7 @@
                   "
                 >
                   <a
-                    v-bind:class="{
+                    :class="{
                       '!bg-light-blue font-semibold text-black':
                         SelectedCategory === '',
                     }"
@@ -93,7 +93,7 @@
                   :key="Category.id"
                 >
                   <a
-                    v-bind:class="{
+                    :class="{
                       '!bg-light-blue font-semibold text-black':
                         SelectedCategory.id === Category.id,
                     }"
@@ -126,7 +126,7 @@
       </Transition>
       <Pagination
         :Array="Groups"
-        :loadPage="loadPage"
+        :load-page="loadPage"
         :Page="Page"
         :MoreResults="MoreResults"
         :PreviousResults="PreviousResults"

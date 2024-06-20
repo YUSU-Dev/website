@@ -10,21 +10,21 @@
       ><Button
         :class="{ 'bg-light-blue': title == 'Sports' }"
         title="Sports"
-        isStudentLife="True"
+        is-student-life="True"
         class="px-10 text-center"
     /></a>
     <a href="/"
       ><Button
         :class="{ 'bg-light-blue': title == 'Societies' }"
         title="Societies"
-        isStudentLife="True"
+        is-student-life="True"
         class="px-8 text-center"
     /></a>
     <a href="/"
       ><Button
         :class="{ 'bg-light-blue': title == 'Volunteering' }"
         title="Volunteering"
-        isStudentLife="True"
+        is-student-life="True"
         class="px-8 text-center"
     /></a>
   </div>
@@ -41,7 +41,11 @@ import Activities from "../../components/activities/activities.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
 import Button from "../../components/button/button.ce.vue";
 export default {
-  props: ["title", "componenttitle", "selectedparents"],
+  props: {
+    title: { type: String, default: "" },
+    componenttitle: { type: String, default: "" },
+    selectedparents: { type: String, default: "" },
+  },
   components: {
     HeroHeader,
     Activities,
