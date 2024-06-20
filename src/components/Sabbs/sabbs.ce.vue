@@ -10,7 +10,7 @@
     </div>
     <div class="tile-wrap">
       <SabbTile
-        v-for="sabb in SabbsList"
+        v-for="sabb in sabbsList"
         :key="sabb.name"
         :name="sabb.name"
         :position="sabb.position"
@@ -24,7 +24,7 @@
 import SabbTile from "../sabb-tile/sabb-tile.ce.vue";
 export default {
   props: {
-    SabbsList: {
+    sabbsList: {
       type: Array,
       required: true,
       default: () => [

@@ -16,7 +16,7 @@
                   aria-label="search for an activity"
                   name="search"
                   placeholder="Search..."
-                  v-on:keyup="search($event)"
+                  @keyup="search($event)"
                 />
                 <div class="input-group-append">
                   <button
@@ -39,7 +39,7 @@
                 label="name"
                 :options="Categories"
                 placeholder="All"
-                @update:modelValue="updateCategory"
+                @update:model-value="updateCategory"
               >
               </v-select>
             </div>
@@ -49,7 +49,7 @@
                 label="name"
                 :options="Groups"
                 placeholder="All"
-                @update:modelValue="updateGroup"
+                @update:model-value="updateGroup"
               >
               </v-select>
             </div>
@@ -70,29 +70,29 @@
             :title="product.name"
             :image="product.image"
             :text="toCurrency(product.price)"
-            :productId="product.id"
-            :shopGroupName="product.group_name"
+            :product-id="product.id"
+            :shop-group-name="product.group_name"
           />
         </div>
         <div class="a-z-wrap mt-10" v-else>
           <Tile v-for="Item in ProductsPerPage" :key="Item" :loading="true" />
         </div>
         <Pagination
-          :Array="Products"
-          :loadPage="loadPage"
-          :Page="Page"
-          :MoreResults="MoreResults"
-          :PreviousResults="PreviousResults"
+          :array="Products"
+          :load-page="loadPage"
+          :page="Page"
+          :more-results="MoreResults"
+          :previous-results="PreviousResults"
           :loading="Loading"
         />
       </div>
     </div>
   </div>
   <Modal
-    :signedIn="signedIn"
+    :signed-in="signedIn"
     :title="'Basket Error!'"
-    :errorDescription="ErrorDescription"
-    :modalClosed="ModalClosed"
+    :error-description="ErrorDescription"
+    :modal-closed="ModalClosed"
     @close="ModalClosed = true"
   />
 </template>
@@ -112,14 +112,14 @@ import vSelect from "vue-select";
 library.add(faSearch);
 
 export default {
-  props: [
-    "siteid",
-    "title",
-    "featuredshop",
-    "hidefilter",
-    "selectedgroup",
-    "signedIn",
-  ],
+  props: {
+    siteid: { type: String, default: "" },
+    title: { type: String, default: "" },
+    featuredshop: Boolean,
+    hidefilter: Boolean,
+    selectedgroup: { type: String, default: "" },
+    signedIn: Boolean,
+  },
   components: {
     Tile,
     Pagination,

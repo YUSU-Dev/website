@@ -9,7 +9,7 @@
           <v-select
             label="name"
             :options="Categories"
-            @update:modelValue="updateCategory"
+            @update:model-value="updateCategory"
             placeholder="All"
             class="h-full"
           ></v-select>
@@ -19,7 +19,7 @@
           <v-select
             label="name"
             :options="Groups"
-            @update:modelValue="updateGroup"
+            @update:model-value="updateGroup"
             placeholder="All"
             class="h-full"
           ></v-select>
@@ -53,7 +53,7 @@
           <Button
             title="Reset"
             @click="reset"
-            isStudentLife="true"
+            is-student-life="true"
             class="flex h-[38px] items-center"
           />
         </div>
@@ -74,12 +74,12 @@
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
       </div>
       <Pagination
-        :Array="Groups"
+        :array="Groups"
         :loading="Loading"
-        :loadPage="loadPage"
-        :Page="Page"
-        :MoreResults="MoreResults"
-        :PreviousResults="PreviousResults"
+        :load-page="loadPage"
+        :page="Page"
+        :more-results="MoreResults"
+        :previous-results="PreviousResults"
       />
     </div>
   </div>
@@ -101,15 +101,15 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
 
 export default {
-  props: [
-    "siteid",
-    "groupid",
-    "typeid",
-    "venueid",
-    "smallcard",
-    "limit",
-    "premium",
-  ],
+  props: {
+    siteid: { type: String, default: "" },
+    groupid: { type: String, default: "" },
+    typeid: { type: String, default: "" },
+    venueid: { type: String, default: "" },
+    smallcard: Boolean,
+    limit: { type: Number, default: 12 },
+    premium: Boolean,
+  },
   components: {
     Tile,
     Pagination,
