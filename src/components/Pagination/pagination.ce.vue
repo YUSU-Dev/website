@@ -53,7 +53,7 @@ export default {
     },
     page: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     moreResults: Boolean,
     previousResults: Boolean,
