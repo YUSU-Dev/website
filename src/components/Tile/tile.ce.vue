@@ -57,7 +57,7 @@
             </p>
             <div class="flex flex-wrap gap-x-2">
               <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
-              <p v-if="date && startTime && !event" class="font-semibold">
+              <p v-if="date && startTime && !news" class="font-semibold">
                 {{ startTime }}
               </p>
             </div>
@@ -185,6 +185,10 @@ export default {
       default: null,
     },
     loading: {
+      type: Boolean,
+      default: false,
+    },
+    news: {
       type: Boolean,
       default: false,
     },

@@ -11,6 +11,7 @@
         :url="'/news/article/' + article.entry_id"
         :image="article.thumbnail"
         :append-category="appendCategory"
+        :news="true"
       />
     </div>
     <div v-else class="news-row tile-wrap">
@@ -92,6 +93,7 @@
           :url="'/news/article/' + article.entry_id"
           :image="article.thumbnail"
           :append-category="appendCategory"
+          :news="true"
         />
       </div>
       <div v-else class="news-row a-z-wrap">
