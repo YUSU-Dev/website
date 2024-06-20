@@ -2,24 +2,26 @@
   <div class="py-10" id="events-a-z">
     <div class="justify-center">
       <div
-        class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"
+        class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
       >
-        <div class="event-filter">
+        <div class="flex flex-col">
           <label>Category</label>
           <v-select
             label="name"
             :options="Categories"
             @update:modelValue="updateCategory"
             placeholder="All"
+            class="h-full"
           ></v-select>
         </div>
-        <div>
+        <div class="flex flex-col">
           <label>Activity</label>
           <v-select
             label="name"
             :options="Groups"
             @update:modelValue="updateGroup"
             placeholder="All"
+            class="h-full"
           ></v-select>
         </div>
         <div class="flex flex-col">
@@ -27,7 +29,7 @@
           <div class="input-group flex h-full border-[1px] border-black">
             <input
               id="event-search"
-              class="form-control h-full w-full"
+              class="form-control h-full w-full p-2 active:rounded-none"
               aria-label="Search"
               type="text"
               name="search"
@@ -41,7 +43,7 @@
               >
                 <FontAwesomeIcon
                   icon="fas fa-search"
-                  class="h-8 w-8 text-white"
+                  class="h-6 w-4 text-white"
                 ></FontAwesomeIcon>
               </button>
             </div>
@@ -301,12 +303,16 @@ export default {
 @tailwind components;
 @tailwind utilities;
 
+.vs__selected-options {
+  flex-wrap: nowrap !important;
+}
+
 /* Select2 */
 /* .vs__dropdown-toggle {
   border-radius: none !important;
 } */
 
-.v-select .vs--single .vs--searchable {
+/* .v-select .vs--single .vs--searchable {
   color: white !important;
 }
 
@@ -319,41 +325,5 @@ export default {
 .vs__selected {
   opacity: 1 !important;
   color: white !important;
-}
-
-.select2-container--default .select2-selection--single {
-  background-color: black !important;
-  border-radius: 0px !important;
-}
-
-.select2-container .select2-selection--single {
-  height: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.select2-selection__arrow {
-  height: 95% !important;
-}
-
-.select2-selection__arrow b {
-  color: white !important;
-}
-
-.select2-container--default.select2-container--open
-  .select2-selection--single
-  .select2-selection__arrow
-  b {
-  color: white !important;
-}
-
-.select2-selection__placeholder {
-  color: white !important;
-}
-
-.select2-container--default
-  .select2-selection--single
-  .select2-selection__rendered {
-  color: white !important;
-}
+} */
 </style>
