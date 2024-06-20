@@ -18,7 +18,10 @@
 </template>
 <script>
 export default {
-  props: ["title", "image"],
+  props: {
+    title: { type: String, default: "" },
+    image: { type: String, default: "" },
+  },
   data() {
     return {};
   },

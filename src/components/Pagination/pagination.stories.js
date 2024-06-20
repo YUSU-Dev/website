@@ -12,8 +12,8 @@ export const Default = {
   args: {
     loading: false,
     Array: [1, 2, 3, 4, 5],
-    Page: 1,
-    MoreResults: true,
-    PreviousResults: false,
+    Page: 3,
+    moreResults: true,
+    previousResults: false,
   },
 };

@@ -17,9 +17,11 @@ export default {
     },
     title: {
       type: String,
+      default: "",
     },
     image: {
       type: String,
+      default: "",
     },
   },
   components: {

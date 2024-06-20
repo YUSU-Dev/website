@@ -11,7 +11,7 @@
           aria-label="search for an activity"
           name="search"
           placeholder="Search..."
-          v-on:keyup="search($event)"
+          @keyup="search($event)"
         />
         <div class="input-group-append">
           <button
@@ -53,7 +53,7 @@
                     :key="Parent.id"
                   >
                     <a
-                      v-bind:class="{
+                      :class="{
                         '!bg-light-blue font-semibold text-black':
                           SelectedParent.id === Parent.id,
                       }"
@@ -73,7 +73,7 @@
                   "
                 >
                   <a
-                    v-bind:class="{
+                    :class="{
                       '!bg-light-blue font-semibold text-black':
                         SelectedCategory === '',
                     }"
@@ -93,7 +93,7 @@
                   :key="Category.id"
                 >
                   <a
-                    v-bind:class="{
+                    :class="{
                       '!bg-light-blue font-semibold text-black':
                         SelectedCategory.id === Category.id,
                     }"
@@ -125,12 +125,12 @@
         </div>
       </Transition>
       <Pagination
-        :Array="Groups"
-        :loadPage="loadPage"
-        :Page="Page"
-        :MoreResults="MoreResults"
-        :PreviousResults="PreviousResults"
-        :Loading="loading"
+        :array="Groups"
+        :load-page="loadPage"
+        :page="Page"
+        :more-results="MoreResults"
+        :previous-results="PreviousResults"
+        :loading="loading"
       />
     </div>
   </div>
@@ -146,7 +146,24 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
 
 export default {
-  props: ["siteid", "selectedparents", "selectedcategory", "title"],
+  props: {
+    siteid: {
+      type: String,
+      default: null,
+    },
+    selectedparents: {
+      type: Number,
+      default: null,
+    },
+    selectedcategory: {
+      type: Number,
+      default: null,
+    },
+    title: {
+      type: String,
+      default: null,
+    },
+  },
   components: {
     Tile,
     Pagination,
