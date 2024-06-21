@@ -161,7 +161,7 @@ export default {
       default: null,
     },
     group: {
-      type: String,
+      type: Object,
       default: null,
     },
     productId: {
