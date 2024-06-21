@@ -35,12 +35,12 @@
       </div>
     </div>
   </a>
-  <a :href="'https://www.youtube.com/' + youtube">
+  <a :href="'https://www.youtube.com/channel/' + youtube">
     <div v-if="youtube" class="flex p-2">
       <FontAwesomeIcon icon="fa-brands fa-youtube" class="h-16 w-16 p-1" />
       <div>
         <p class="text-3xl font-bold">Youtube</p>
-        <p class="text-2xl">{{ youtube }}</p>
+        <p class="text-2xl">{{ name }}</p>
       </div>
     </div>
   </a>
@@ -49,7 +49,7 @@
       <FontAwesomeIcon icon="fa-brands fa-discord" class="h-16 w-16 p-1" />
       <div>
         <p class="text-3xl font-bold">Discord</p>
-        <p class="text-2xl">{{ discord }}</p>
+        <p class="text-2xl">{{ name }}</p>
       </div>
     </div>
   </a>
@@ -86,6 +86,7 @@ library.add(
 );
 export default {
   props: [
+    "name",
     "facebook",
     "instagram",
     "twitter",

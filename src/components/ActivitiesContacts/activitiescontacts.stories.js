@@ -8,6 +8,7 @@ export default {
 
 export const Default = {
   args: {
+    name: "Bio soc",
     facebook: "BioSocUoY",
     instagram: "uoybiosoc",
     twitter: "",

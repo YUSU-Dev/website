@@ -5,10 +5,14 @@ export default {
   component: "activities-view",
 };
 
-export const testymctestsoc = {
+export const cybersoc = {
   args: {
-    society: "TestyMcTestSoc",
-    logo: "huge test",
-    selectedparents: "24",
+    activityid: 7,
+  },
+};
+
+export const ury = {
+  args: {
+    activityid: 134,
   },
 };
