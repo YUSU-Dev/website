@@ -14,7 +14,7 @@
             class="h-full"
           ></v-select>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col" data-testid="activity-select">
           <label>Activity</label>
           <v-select
             label="name"
@@ -102,13 +102,13 @@ library.add(faSearch);
 
 export default {
   props: {
-    siteid: { type: String, default: "" },
-    groupid: { type: String, default: "" },
-    typeid: { type: String, default: "" },
-    venueid: { type: String, default: "" },
-    smallcard: Boolean,
+    siteid: { type: String, default: null },
+    groupid: { type: String, default: null },
+    typeid: { type: String, default: null },
+    venueid: { type: String, default: null },
+    smallcard: { type: Boolean, default: false },
     limit: { type: Number, default: 12 },
-    premium: Boolean,
+    premium: { type: Boolean, default: false },
   },
   components: {
     Tile,
@@ -171,27 +171,27 @@ export default {
       if (urlParams.has("category")) {
         self.SelectedType = urlParams.get("category");
       }
-      //Get Categories
-      axios
-        .get("https://pluto.sums.su/api/events/types?sortBy=name", {
-          headers: {
-            "X-Site-Id": self.siteid,
-          },
-        })
-        .then(function (response) {
-          self.Categories = response.data;
-        });
-      //get Activities
-      axios
-        .get("https://pluto.sums.su/api/groups?sortBy=name&selectList=1", {
-          headers: {
-            "X-Site-Id": self.siteid,
-          },
-        })
-        .then(function (response) {
-          self.Groups = response.data;
-        });
     }
+    //Get Categories
+    axios
+      .get("https://pluto.sums.su/api/events/types?sortBy=name", {
+        headers: {
+          "X-Site-Id": self.siteid,
+        },
+      })
+      .then(function (response) {
+        self.Categories = response.data;
+      });
+    //get Activities
+    axios
+      .get("https://pluto.sums.su/api/groups?sortBy=name&selectList=1", {
+        headers: {
+          "X-Site-Id": self.siteid,
+        },
+      })
+      .then(function (response) {
+        self.Groups = response.data;
+      });
     //get Events
     self.getEvents();
   },
