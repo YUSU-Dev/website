@@ -225,7 +225,15 @@
 
 /* embedded tile wrapping */
 .tile-wrap {
-  @apply mx-2 grid grid-cols-2 justify-center gap-x-2 gap-y-2 md:mx-0 md:flex md:flex-wrap md:gap-x-4 md:gap-y-4 lg:gap-x-8 lg:gap-y-8;
+  @apply mx-2 flex flex-wrap justify-center gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4;
+}
+
+.sabb-tile {
+  @apply aspect-[141/161] w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
+}
+
+.tile-wrap .tile {
+  @apply w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
 }
 
 .a-z-wrap {

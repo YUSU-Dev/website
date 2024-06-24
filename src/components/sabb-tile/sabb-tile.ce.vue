@@ -1,7 +1,7 @@
 <template>
-  <a class="group flex w-fit" :href="url">
-    <div class="relative w-fit text-white">
-      <div class="aspect-[141/161] w-full bg-cover md:h-[322px] md:w-[282px]">
+  <a class="sabb-tile group flex" :href="url">
+    <div class="relative text-white">
+      <div class="aspect-[141/161] bg-cover md:h-[322px]">
         <img
           :src="img"
           :alt="name + ', ' + position"
