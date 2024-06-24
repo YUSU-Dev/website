@@ -5,7 +5,7 @@
   >
     <button
       @click="loadPage(this.page - 1)"
-      v-show="PreviousResults"
+      v-show="previousResults"
       aria-label="Previous page"
     >
       <FontAwesomeIcon icon="fas fa-chevron-left" class="h-4 w-4" />
