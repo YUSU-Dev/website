@@ -75,8 +75,7 @@
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
       </div>
       <Pagination
-       
-        :Array="Groups"
+        :array="Groups"
         :loading="Loading"
         :load-page="loadPage"
         :page="Page"
