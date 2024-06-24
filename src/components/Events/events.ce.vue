@@ -2,6 +2,7 @@
   <div class="py-10" id="events-a-z">
     <div class="justify-center">
       <div
+        v-if="!SelectedType"
         class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
       >
         <div class="flex flex-col">
