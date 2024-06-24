@@ -35,6 +35,7 @@
               type="text"
               name="search"
               :value="Search"
+              @keyup="search($event)"
             />
             <div class="input-group-append">
               <button
@@ -58,6 +59,11 @@
             class="flex h-[38px] items-center"
           />
         </div>
+      </div>
+      <div v-if="Events.length == 0 && !loading" class="">
+        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
+          No events found
+        </h2>
       </div>
       <div v-if="!Loading" class="a-z-wrap mt-10">
         <Tile
@@ -307,24 +313,4 @@ export default {
 .vs__selected-options {
   flex-wrap: nowrap !important;
 }
-
-/* Select2 */
-/* .vs__dropdown-toggle {
-  border-radius: none !important;
-} */
-
-/* .v-select .vs--single .vs--searchable {
-  color: white !important;
-}
-
-.vs__open-indicator {
-  fill: white !important;
-}
-
-.vs__search,
-.vs__search:focus,
-.vs__selected {
-  opacity: 1 !important;
-  color: white !important;
-} */
 </style>

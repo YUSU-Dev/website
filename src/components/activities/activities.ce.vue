@@ -28,102 +28,99 @@
         </div>
       </div>
       <div class="relative mt-6 flex pb-4">
-        <Transition>
-          <div class="w-full" v-if="Search">
-            <h3 class="text-center text-3xl font-semibold">Search Results</h3>
-          </div>
-        </Transition>
-        <Transition>
-          <div
-            class="w-full max-w-4xl text-center"
-            v-if="!Search && ParentCategories.length > 0"
-          >
-            <div class="">
-              <h3 class="sr-only">Filters</h3>
-              <div v-if="ParentCategories.length > 1">
-                <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
-                  <li
-                    v-for="Parent in ParentCategories"
-                    @click.prevent="
-                      SelectedParent = Parent;
-                      SelectedCategory = '';
-                      getGroups();
-                    "
-                    class=""
-                    :key="Parent.id"
-                  >
-                    <a
-                      :class="{
-                        '!bg-light-blue font-semibold text-black':
-                          SelectedParent.id === Parent.id,
-                      }"
-                      class="flex h-full w-full justify-center border-2 border-none bg-mustard px-4 py-2 text-xl font-semibold text-black hover:bg-light-blue hover:text-black"
-                    >
-                      <h3>{{ Parent.name }}</h3>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <ul class="mt-6 flex flex-wrap gap-2" v-if="SelectedParent">
+        <div class="w-full" v-if="Search">
+          <h3 class="text-center text-3xl font-semibold">Search Results</h3>
+        </div>
+        <div
+          class="w-full max-w-4xl text-center"
+          v-if="!Search && ParentCategories.length > 0"
+        >
+          <div class="">
+            <h3 class="sr-only">Filters</h3>
+            <div v-if="ParentCategories.length > 1">
+              <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <li
-                  class=""
+                  v-for="Parent in ParentCategories"
                   @click.prevent="
+                    SelectedParent = Parent;
                     SelectedCategory = '';
                     getGroups();
                   "
-                >
-                  <a
-                    :class="{
-                      '!bg-light-blue font-semibold text-black':
-                        SelectedCategory === '',
-                    }"
-                    href="#"
-                    class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
-                  >
-                    <h4>All</h4>
-                  </a>
-                </li>
-                <li
-                  v-for="Category in filteredCategories"
-                  @click.prevent="
-                    SelectedCategory = Category;
-                    getGroups();
-                  "
                   class=""
-                  :key="Category.id"
+                  :key="Parent.id"
                 >
                   <a
                     :class="{
                       '!bg-light-blue font-semibold text-black':
-                        SelectedCategory.id === Category.id,
+                        SelectedParent.id === Parent.id,
                     }"
-                    class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
-                    :href="
-                      '/student-life/clubs-and-socs?category=' + Category.id
-                    "
+                    class="flex h-full w-full justify-center border-2 border-none bg-mustard px-4 py-2 text-xl font-semibold text-black hover:bg-light-blue hover:text-black"
                   >
-                    <h4>{{ Category.name }}</h4>
+                    <h3>{{ Parent.name }}</h3>
                   </a>
                 </li>
               </ul>
             </div>
+            <ul class="mt-6 flex flex-wrap gap-2" v-if="SelectedParent">
+              <li
+                class=""
+                @click.prevent="
+                  SelectedCategory = '';
+                  getGroups();
+                "
+              >
+                <a
+                  :class="{
+                    '!bg-light-blue font-semibold text-black':
+                      SelectedCategory === '',
+                  }"
+                  href="#"
+                  class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
+                >
+                  <h4>All</h4>
+                </a>
+              </li>
+              <li
+                v-for="Category in filteredCategories"
+                @click.prevent="
+                  SelectedCategory = Category;
+                  getGroups();
+                "
+                class=""
+                :key="Category.id"
+              >
+                <a
+                  :class="{
+                    '!bg-light-blue font-semibold text-black':
+                      SelectedCategory.id === Category.id,
+                  }"
+                  class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
+                  :href="'/student-life/clubs-and-socs?category=' + Category.id"
+                >
+                  <h4>{{ Category.name }}</h4>
+                </a>
+              </li>
+            </ul>
           </div>
-        </Transition>
+        </div>
       </div>
-      <Transition>
-        <div class="a-z-wrap mt-10" v-if="!loading">
-          <Tile
-            v-for="Group in Groups"
-            :key="Group.id"
-            :url="'/activities/view/' + Group.url_name"
-            :title="Group.name"
-            :image="Group.thumbnail_url"
-          />
-        </div>
-        <div class="a-z-wrap mt-10" v-else>
-          <Tile v-for="Item in PerPage" :key="Item" :loading="true" />
-        </div>
-      </Transition>
+      <div v-if="Groups.length == 0 && !loading" class="">
+        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
+          No groups found
+        </h2>
+      </div>
+      <div class="a-z-wrap mt-10" v-if="!loading">
+        <Tile
+          v-for="Group in Groups"
+          :key="Group.id"
+          :url="'/activities/view/' + Group.url_name"
+          :title="Group.name"
+          :image="Group.thumbnail_url"
+        />
+      </div>
+      <div class="a-z-wrap mt-10" v-else>
+        <Tile v-for="Item in PerPage" :key="Item" :loading="true" />
+      </div>
       <Pagination
         :array="Groups"
         :load-page="loadPage"
