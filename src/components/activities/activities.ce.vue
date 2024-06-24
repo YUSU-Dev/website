@@ -152,7 +152,7 @@ export default {
       default: null,
     },
     selectedparents: {
-      type: Number,
+      type: String,
       default: null,
     },
     selectedcategory: {
