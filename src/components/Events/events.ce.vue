@@ -75,7 +75,7 @@
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
       </div>
       <Pagination
-        v-if="Page != 1 || MoreResults"
+       
         :Array="Groups"
         :loading="Loading"
         :load-page="loadPage"
