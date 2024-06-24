@@ -18,3 +18,9 @@ export const EventFiltering = {
     await userEvent.click(canvas.getByShadowTestId("activity-select"));
   },
 };
+
+export const ShortView = {
+  args: {
+    typeid: "19",
+  },
+};
