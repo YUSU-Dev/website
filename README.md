@@ -8,6 +8,12 @@ A UI testing and development environment for York SU website. This repo has two 
 
 To get started, clone this repo and run `npm ci`.
 
+## Opinionated conventions used
+
+- For naming of directories or files we should use kebab-case.
+- Vue files should end `.ce.vue`
+-
+
 ## Storybook
 
 You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in. We are using web components within storybook to ensure that there is good compatibility between components and the website. As such to include a vue file in a story you'll need to do the below.
@@ -88,22 +94,25 @@ We use Font Awesome using the SVG-based method, using the `@fortawesome/vue-font
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowLeft, faArrowRight, /* any other icons */ } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowRight /* any other icons */,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faTag, faArrowLeft, /* any other icons */);
+library.add(faTag, faArrowLeft /* any other icons */);
 
 export default {
   components: {
     FontAwesomeIcon,
     // ...
-  }
+  },
 };
 </script>
 <template>
-<div>
-  <!-- Don't forget to give it an explicit size, otherwise it might not be visible! -->
-  <FontAwesomeIcon icon="fas fa-tag" class="w-8 h-8" />
-</div>
+  <div>
+    <!-- Don't forget to give it an explicit size, otherwise it might not be visible! -->
+    <FontAwesomeIcon icon="fas fa-tag" class="h-8 w-8" />
+  </div>
 </template>
 ```
 
