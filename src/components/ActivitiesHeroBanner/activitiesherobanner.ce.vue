@@ -6,17 +6,23 @@
         :style="{ 'background-image': 'url(' + image + ')' }"
       >
         <div class="flex-col items-center justify-center">
-          <div class="grid place-items-center">
+          <div class="grid place-items-center gap-y-2">
             <br />
-            <img :src="logo" class="h-48 w-48 object-contain" />
-            <div class="mx-2 w-fit max-w-full bg-white px-6 py-3">
+            <img v-if="logo" :src="logo" class="h-48 w-48 object-contain" />
+            <div
+              v-if="group"
+              class="mx-2 w-fit max-w-full gap-y-2 bg-white px-6 py-3"
+            >
               <h1
                 class="w-full break-words text-center text-2xl font-bold sm:text-3xl"
               >
-                {{ society }}
+                {{ group }}
               </h1>
             </div>
-            <div class="mx-2 w-fit max-w-full bg-white px-6 py-3">
+            <div
+              v-if="category"
+              class="mx-2 w-fit max-w-full bg-white px-6 py-3"
+            >
               <h1
                 class="w-full break-words text-center text-2xl font-bold sm:text-2xl"
               >
@@ -46,7 +52,28 @@
 </template>
 <script>
 export default {
-  props: ["society", "image", "logo", "category", "id"],
+  props: {
+    group: {
+      type: String,
+      default: null,
+    },
+    image: {
+      type: String,
+      default: null,
+    },
+    logo: {
+      type: String,
+      default: null,
+    },
+    category: {
+      type: String,
+      default: null,
+    },
+    id: {
+      type: Number,
+      default: null,
+    },
+  },
   components: {},
   data() {
     return {};
