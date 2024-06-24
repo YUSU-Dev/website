@@ -12,7 +12,6 @@ To get started, clone this repo and run `npm ci`.
 
 - For naming of directories or files we should use kebab-case.
 - Vue files should end `.ce.vue`
--
 
 ## Storybook
 
