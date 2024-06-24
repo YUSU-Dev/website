@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center">
+  <div class="flex">
     <div class="w-full bg-repeat">
       <div
         class="flex h-full items-center justify-center bg-cover bg-center bg-repeat-y"
@@ -8,7 +8,11 @@
         <div class="flex-col items-center justify-center">
           <div class="grid place-items-center gap-y-2">
             <br />
-            <img v-if="logo" :src="logo" class="h-48 w-48 object-contain" />
+            <img
+              v-if="logo"
+              :src="logo"
+              class="h-48 w-48 items-center object-contain"
+            />
             <div
               v-if="group"
               class="mx-2 w-fit max-w-full gap-y-2 bg-white px-6 py-3"

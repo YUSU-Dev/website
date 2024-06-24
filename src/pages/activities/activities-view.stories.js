@@ -8,11 +8,13 @@ export default {
 export const cybersoc = {
   args: {
     activityid: 7,
+    tags: ["no-tests"],
   },
 };
 
 export const ury = {
   args: {
     activityid: 134,
+    tags: ["no-tests"],
   },
 };

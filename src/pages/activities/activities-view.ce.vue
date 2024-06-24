@@ -8,34 +8,36 @@
     :category="Activity.category"
   />
   <Breadcrumb />
-  <div class="flex flex-wrap md:flex-row">
-    <div class="w-1/12"><br /></div>
-    <div class="p-6 md:w-7/12">
-      <h2 class="mb-5 mt-10 text-3xl font-bold">About</h2>
-      <span v-html="Activity.description"></span>
+  <main>
+    <div class="flex flex-wrap md:flex-row">
+      <div class="w-1/12"><br /></div>
+      <div class="p-6 md:w-7/12">
+        <h2 class="mb-5 mt-10 text-3xl font-bold">About</h2>
+        <article v-html="Activity.description"></article>
+      </div>
+      <div class="flex flex-col p-6 md:w-3/12">
+        <a :href="'/shop?activity_id=' + Activity.id"
+          ><Button
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="Join"
+            is-student-life="True"
+            class="px-10 text-center"
+        /></a>
+        <hr class="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+        <h2 class="mb-5 text-3xl font-bold">Contact</h2>
+        <ActivitiesContacts
+          :name="Activity.name"
+          :email="Activity.email_address"
+          :facebook="Activity.facebook"
+          :instagram="Activity.instagram"
+          :twitter="Activity.twitter"
+          :youtube="Activity.youtube"
+          :discord="Activity.discord"
+          :tiktok="Activity.tiktok"
+        />
+      </div>
     </div>
-    <div class="flex flex-col p-6 md:w-3/12">
-      <a :href="'/shop?activity_id=' + Activity.id"
-        ><Button
-          :class="{ 'bg-light-blue': title == 'join' }"
-          title="Join"
-          is-student-life="True"
-          class="px-10 text-center"
-      /></a>
-      <hr class="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
-      <h2 class="mb-5 text-3xl font-bold">Contact</h2>
-      <ActivitiesContacts
-        :name="Activity.name"
-        :email="Activity.email_address"
-        :facebook="Activity.facebook"
-        :instagram="Activity.instagram"
-        :twitter="Activity.twitter"
-        :youtube="Activity.youtube"
-        :discord="Activity.discord"
-        :tiktok="Activity.tiktok"
-      />
-    </div>
-  </div>
+  </main>
   <Footer />
 </template>
 <script>
