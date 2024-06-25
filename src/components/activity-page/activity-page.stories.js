@@ -3,8 +3,6 @@ import "./activity-page.component.js";
 export default {
   title: "PageContent/Activity View Page",
   component: "activity-page",
-  parameters: {},
-  tags: ["no-tests"], // Because this is user submitted content it will fail A11y tests.
 };
 
 export const Default = {
@@ -29,5 +27,9 @@ export const Default = {
       category: "Academic and Educational",
     },
   },
-  tags: ["no-tests"],
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
 };
