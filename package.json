@@ -11,7 +11,8 @@
     "build-storybook": "storybook build",
     "build-css": "tailwindcss -i ./src/main.css -o ./dist/components.css --minify",
     "prepare": "husky install",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "new": "node utils/component-cli.cjs"
   },
   "keywords": [],
   "author": "University of York Students' Union Digital Team <it@yorksu.org>",
@@ -73,6 +74,7 @@
     "@storybook/addon-docs": "^8.1.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "axios": "^1.7.0",
+    "commander": "^12.1.0",
     "http-proxy-middleware": "^3.0.0",
     "vue-component-meta": "^2.0.7",
     "vue-select": "^4.0.0-beta.6"
