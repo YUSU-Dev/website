@@ -104,7 +104,6 @@ import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
-import { addToBasketHandler } from "../shop/shop.basket.js";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -300,33 +299,6 @@ export default {
         currency: "GBP",
       });
       return formatter.format(value);
-    },
-    addToBasket(productId) {
-      let self = this;
-      addToBasketHandler(productId)
-        .then(function (response) {
-          if (!response["success"]) {
-            var data = response.error_message;
-            self.ErrorDescription = data;
-            self.ModalClosed = false;
-            return;
-          }
-          if (typeof response.fields != "undefined") {
-            window.location.replace("/shop/fields/" + productId);
-          } else {
-            window.location.replace("/shop/basket");
-          }
-        })
-        .catch(function (response) {
-          if (response.error_message != "undefined") {
-            console.log(
-              "There was an error adding the product to the basket: " +
-                response.error_message,
-            );
-          } else {
-            console.log("Undefined error adding product to basket");
-          }
-        });
     },
   },
 };

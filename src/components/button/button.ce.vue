@@ -45,7 +45,7 @@ export default {
     isTertiary: Boolean,
     url: {
       type: String,
-      default: "#",
+      default: "javascript:;",
     },
   },
   components: {
