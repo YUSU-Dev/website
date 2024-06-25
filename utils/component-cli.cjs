@@ -18,17 +18,16 @@ const options = program.opts();
 if (options.component) {
   console.log("Creating component:", options.component);
 
-  const PascalCaseComponentName = options.component
-    .split("-")
-    .map((word) => {
-      return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
-    })
-    .join("");
+  const ComponentName = options.component.split("-").map((word) => {
+    return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
+  });
+  const PascalCaseComponentName = ComponentName.join("");
+
   const storiesContent =
     "import './" +
     options.component +
     ".component.js';\n\nexport default {\n  title: 'Components/" +
-    options.component +
+    ComponentName +
     "',\n  component: '" +
     options.component +
     "',\n};\n\nexport const Default = {};\n";
@@ -75,17 +74,16 @@ if (options.component) {
   console.log("Component created successfully!");
 } else if (options.page) {
   console.log("Creating page:", options.page);
-  const PascalCaseComponentName = options.page
-    .split("-")
-    .map((word) => {
-      return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
-    })
-    .join("");
+  const ComponentName = options.page.split("-").map((word) => {
+    return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
+  });
+  const PascalCaseComponentName = ComponentName.join("");
+
   const storiesContent =
     "import './" +
     options.page +
     ".component.js';\n\nexport default {\n  title: 'Pages/" +
-    options.page +
+    ComponentName +
     "',\n  component: '" +
     options.page +
     "',\n};\n\nexport const Default = {};\n";
