@@ -1,7 +1,7 @@
 import "./activitiescontacts.component.js";
 
 export default {
-  title: "Components/ActivitiesContacts",
+  title: "Components/Activities/Activities Contacts",
   component: "activitiescontacts",
   parameters: {},
 };

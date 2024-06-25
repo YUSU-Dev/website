@@ -1,6 +1,6 @@
 <template>
-  <a :href="'mailto:' + email">
-    <div v-if="email" class="flex p-2">
+  <a v-if="email" :href="'mailto:' + email">
+    <div class="flex p-2">
       <div class="w-2/12">
         <FontAwesomeIcon icon="fa-core fa-envelope" class="h-8 w-8 p-1" />
       </div>
@@ -10,8 +10,8 @@
       </div>
     </div>
   </a>
-  <a :href="'https://facebook.com/' + facebook">
-    <div v-if="facebook" class="flex p-2">
+  <a v-if="facebook" :href="'https://facebook.com/' + facebook">
+    <div class="flex p-2">
       <div class="w-2/12">
         <FontAwesomeIcon icon="fa-brands fa-facebook" class="h-8 w-8 p-1" />
       </div>
@@ -21,8 +21,8 @@
       </div>
     </div>
   </a>
-  <a :href="'https://www.instagram.com/' + instagram">
-    <div v-if="instagram" class="flex p-2">
+  <a v-if="instagram" :href="'https://www.instagram.com/' + instagram">
+    <div class="flex p-2">
       <div class="w-2/12">
         <FontAwesomeIcon icon="fa-brands fa-instagram" class="h-8 w-8 p-1" />
       </div>
@@ -32,8 +32,8 @@
       </div>
     </div>
   </a>
-  <a :href="'https://www.x.com/' + twitter">
-    <div v-if="twitter" class="flex p-2">
+  <a v-if="twitter" :href="'https://www.x.com/' + twitter">
+    <div class="flex p-2">
       <div class="w-2/12">
         <FontAwesomeIcon icon="fa-brands fa-x-twitter" class="h-8 w-8 p-1" />
       </div>
@@ -43,8 +43,8 @@
       </div>
     </div>
   </a>
-  <a :href="'https://www.youtube.com/channel/' + youtube">
-    <div v-if="youtube" class="flex p-2">
+  <a v-if="youtube" :href="'https://www.youtube.com/channel/' + youtube">
+    <div class="flex p-2">
       <div class="w-2/12">
         <FontAwesomeIcon icon="fa-brands fa-youtube" class="h-8 w-8 p-1" />
       </div>
@@ -54,8 +54,8 @@
       </div>
     </div>
   </a>
-  <a :href="'https://www.discord.gg/' + discord">
-    <div v-if="discord" class="flex p-2">
+  <a v-if="discord" :href="'https://www.discord.gg/' + discord">
+    <div class="flex p-2">
       <div class="w-2/12">
         <FontAwesomeIcon icon="fa-brands fa-discord" class="h-8 w-8 p-1" />
       </div>
@@ -65,8 +65,8 @@
       </div>
     </div>
   </a>
-  <a :href="'https://www.tiktok.com/' + tiktok">
-    <div v-if="tiktok" class="flex p-2">
+  <a v-if="tiktok" :href="'https://www.tiktok.com/' + tiktok">
+    <div class="flex p-2">
       <div class="w-2/12">
         <FontAwesomeIcon icon="fa-brands fa-tiktok" class="h-8 w-8 p-1" />
       </div>
