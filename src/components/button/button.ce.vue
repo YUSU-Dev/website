@@ -39,6 +39,7 @@ export default {
     isStudentLife: Boolean,
     isStudentVoice: Boolean,
     isAdviceAndSupport: Boolean,
+    isActivitiesView: Boolean,
     isSecondary: Boolean,
     arrow: Boolean,
     isTertiary: Boolean,

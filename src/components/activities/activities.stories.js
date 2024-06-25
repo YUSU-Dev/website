@@ -1,7 +1,7 @@
 import "./activities.component.js";
 
 export default {
-  title: "Components/Activities",
+  title: "Components/Activities/Activities Index",
   component: "activities",
 };
 
