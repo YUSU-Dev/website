@@ -179,6 +179,7 @@ export default {
         self.SelectedType = urlParams.get("category");
       }
     }
+    console.log(self.ShortView);
     //Get Categories
     axios
       .get("https://pluto.sums.su/api/events/types?sortBy=name", {
