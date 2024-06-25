@@ -8,6 +8,10 @@ A UI testing and development environment for York SU website. This repo has two 
 
 To get started, clone this repo and run `npm ci`.
 
+## Creating a new component or page quickly
+
+Run `npm run new -- -c component-name` or `npm run new -- -p page-name` for a component or page respectivly. This generates all the basic stuff you'll need to make a new component or page. Full details are in the [utils/component-cli.cjs](./utils/component-cli.cjs) file.
+
 ## Opinionated conventions used
 
 - For naming of directories or files we should use kebab-case.
