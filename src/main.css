@@ -59,84 +59,39 @@
 @tailwind components;
 
 @layer components {
-  /* Select2 Classes */
+  /* v-select Classes */
+  /* Events Filters */
+  .events-filters {
+    .vs__dropdown-toggle {
+      @apply h-full rounded-none bg-black text-white;
+    }
 
-  /* .vs__dropdown-toggle {
-    @apply rounded-none border-black bg-black text-white !important;
+    .vs__open-indicator {
+      @apply fill-white;
+    }
+
+    .vs__selected {
+      @apply text-white;
+    }
+
+    .vs__selected-options {
+      @apply !flex-nowrap;
+    }
   }
+  /* News Filters */
+  .news-filters {
+    .vs__dropdown-toggle {
+      @apply h-full rounded-none bg-[#f7f7f7];
+    }
 
-  .vs__open-indicator {
-    @apply fill-white !important;
+    .vs__selected {
+      @apply rounded-none bg-light-pink;
+    }
+
+    .vs__deselect {
+      @apply ml-2 fill-black;
+    }
   }
-
-  .vs__search,
-  .vs__search:focus,
-  .vs__selected {
-    @apply text-white opacity-100 !important;
-  }
-
-  .vs__dropdown-menu {
-    @apply bg-black text-white !important;
-  }
-
-  #events-a-z .select2-container--default .select2-selection--single {
-    @apply rounded-none bg-black text-white !important;
-  }
-
-  #events-a-z .select2-container .select2-selection--single {
-    @apply h-auto pb-1 pt-1;
-  }
-
-  .select2 {
-    @apply min-w-full;
-  }
-
-  .select2-container--default .select2-selection--multiple {
-    @apply border-r-0 border-none bg-neutral-100;
-  }
-
-  .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice {
-    @apply bg-light-pink;
-  }
-
-  .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice__remove:hover {
-    @apply bg-light-pink;
-  }
-
-  .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice__display {
-    @apply text-balance px-2 text-base font-normal;
-  }
-
-  .select2-selection__arrow {
-    @apply h-[95%] !important;
-  }
-
-  .select2-selection__arrow b {
-    border-color: #ffffff transparent transparent transparent !important;
-  }
-
-  .select2-container--default.select2-container--open
-    .select2-selection--single
-    .select2-selection__arrow
-    b {
-    border-color: transparent transparent #ffffff transparent !important;
-  }
-
-  .select2-selection__placeholder {
-    @apply text-white !important;
-  }
-
-  .select2-container--default
-    .select2-selection--single
-    .select2-selection__rendered {
-    @apply text-white !important;
-  } */
 
   /* Button Classes */
   .btn {
@@ -270,11 +225,19 @@
 
 /* embedded tile wrapping */
 .tile-wrap {
-  @apply mx-2 grid grid-cols-2 justify-center gap-x-2 gap-y-2 md:mx-0 md:flex md:flex-wrap md:gap-x-4 md:gap-y-4 lg:gap-x-8 lg:gap-y-8;
+  @apply mx-2 flex flex-wrap justify-center gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4;
+}
+
+.sabb-tile {
+  @apply aspect-[141/161] w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
+}
+
+.tile-wrap .tile {
+  @apply w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
 }
 
 .a-z-wrap {
-  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6;
 }
 
 @tailwind utilities;

@@ -1,7 +1,7 @@
 import "./news.component.js";
 
 export default {
-  title: "Components/News",
+  title: "Components/News/Index",
   component: "news",
 };
 

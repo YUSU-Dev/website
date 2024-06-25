@@ -16,6 +16,14 @@ export const ParentWithTitle = {
     title: "Societies, Sports Clubs, and Volunteering",
   },
 };
+
+export const SelectedSingleParent = {
+  args: {
+    selectedparents: "24",
+    title: "Societies, Sports Clubs, and Volunteering",
+  },
+};
+
 export const ShortView = {
   args: {
     selectedcategory: "23",

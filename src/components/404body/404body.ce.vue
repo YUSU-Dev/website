@@ -48,7 +48,7 @@ export default {
       <div class="inline-flex">
         <Button
           title="Return Home"
-          isPrimary="True"
+          is-primary="True"
           class="px-10 text-center"
           url="/"
         />

@@ -35,7 +35,10 @@ export default {
   components: {
     Button,
   },
-  props: ["siteid", "articleid"],
+  props: {
+    siteid: { type: String, default: "" },
+    articleid: { type: Number, default: 0 },
+  },
   data() {
     return {
       Article: {},

@@ -1,10 +1,10 @@
 <template>
-  <div class="mb-4 flex justify-center pb-2 lg:pb-3">
+  <div class="tile mb-4 flex justify-center pb-2 lg:pb-3">
     <div
-      class="relative h-full bg-white shadow transition hover:scale-105 md:w-[282px]"
+      class="relative h-full w-full bg-white shadow transition hover:scale-105 md:w-[282px]"
       :class="{ 'animate-pulse': loading }"
     >
-      <a class="group text-black no-underline" :href="url">
+      <a class="group flex h-full flex-col text-black no-underline" :href="url">
         <div
           v-if="image"
           class="flex aspect-square items-center justify-center"
@@ -16,6 +16,14 @@
             loading="lazy"
           />
         </div>
+        <img
+          v-else-if="group && group.thumbnail_url"
+          class="aspect-square bg-cover bg-center object-cover"
+          :src="group.thumbnail_url"
+          alt=""
+          loading="lazy"
+        />
+
         <div
           v-else-if="loading"
           class="aspect-square bg-slate-200 bg-cover bg-center"
@@ -27,15 +35,33 @@
           alt=""
           loading="lazy"
         />
-        <div v-if="!loading" class="flex flex-col justify-between p-6">
-          <p v-if="shopGroupName" class="text-xs font-semibold text-gray-800">
-            {{ shopGroupName }}
-          </p>
-          <h3 v-if="title" class="mb-2 line-clamp-2 font-semibold lg:text-xl">
-            {{ title }}
-          </h3>
-          <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
+        <div v-if="!loading" class="flex h-full flex-col justify-between p-6">
+          <div class="flex flex-col">
+            <p v-if="shopGroupName" class="text-xs font-semibold text-gray-800">
+              {{ shopGroupName }}
+            </p>
+            <p
+              v-if="group && group.name"
+              class="text-sm font-semibold text-gray-800"
+            >
+              {{ group.name }}
+            </p>
+            <h3 v-if="title" class="mb-2 line-clamp-2 font-semibold lg:text-xl">
+              {{ title }}
+            </h3>
+          </div>
           <p v-if="text" class="font-semibold">{{ text }}</p>
+          <div class="flex flex-col gap-y-1">
+            <p v-if="location" class="text-sm font-semibold text-gray-800">
+              {{ location.name }}
+            </p>
+            <div class="flex flex-wrap gap-x-2">
+              <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
+              <p v-if="date && startTime && !news" class="font-semibold">
+                {{ startTime }}
+              </p>
+            </div>
+          </div>
           <div v-if="!date && !text">
             <p class="flex items-center font-semibold">
               Discover
@@ -105,19 +131,68 @@ library.add(faTag, faArrowLeft, faArrowRight);
 
 export default {
   components: { FontAwesomeIcon },
-  props: [
-    "url",
-    "title",
-    "image",
-    "date",
-    "text",
-    "productId",
-    "shopGroupName",
-    "categories",
-    "Brand",
-    "appendCategory",
-    "loading",
-  ],
+  props: {
+    url: {
+      type: String,
+      default: null,
+    },
+    title: {
+      type: String,
+      default: null,
+    },
+    image: {
+      type: String,
+      default: null,
+    },
+    groupimage: {
+      type: String,
+      default: null,
+    },
+    date: {
+      type: String,
+      default: null,
+    },
+    text: {
+      type: String,
+      default: null,
+    },
+    location: {
+      type: String,
+      default: null,
+    },
+    group: {
+      type: Object,
+      default: null,
+    },
+    productId: {
+      type: String,
+      default: null,
+    },
+    shopGroupName: {
+      type: String,
+      default: null,
+    },
+    categories: {
+      type: String,
+      default: null,
+    },
+    brand: {
+      type: String,
+      default: null,
+    },
+    appendCategory: {
+      type: String,
+      default: null,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    news: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       images: [
@@ -135,6 +210,11 @@ export default {
     },
     wrapURL(URL) {
       return "'" + URL + "'";
+    },
+  },
+  computed: {
+    startTime() {
+      return moment(String(this.date)).format("hh:mm a");
     },
   },
 };

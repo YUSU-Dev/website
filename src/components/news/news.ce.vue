@@ -11,9 +11,10 @@
         :url="'/news/article/' + article.entry_id"
         :image="article.thumbnail"
         :append-category="appendCategory"
+        :news="true"
       />
     </div>
-    <div v-else class="news-row grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4">
+    <div v-else class="news-row tile-wrap">
       <Tile v-for="item in embeddedPerPage" :key="item" :loading="true" />
     </div>
     <div v-if="homepage" class="flex justify-center">
@@ -22,18 +23,18 @@
     <Pagination
       v-else
       :loading="loading"
-      :Array="News"
+      :array="News"
       :load-page="loadPage"
-      :Page="Page"
-      :MoreResults="MoreResults"
-      :PreviousResults="PreviousResults"
+      :page="Page"
+      :more-results="MoreResults"
+      :previous-results="PreviousResults"
     />
   </div>
   <div v-else class="grid grid-cols-5">
-    <div class="z-10 order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
+    <div class="z-[1] order-1 col-span-5 mb-5 xl:order-2 xl:col-span-1 xl:pl-4">
       <div class="sticky top-4 border-[1px] border-black p-6">
         <div class="">
-          <div class="">
+          <div class="news-filters">
             <div class="mb-5">
               <label for="search">
                 <h2 class="mb-2 text-xl font-semibold">Search</h2>
@@ -92,6 +93,7 @@
           :url="'/news/article/' + article.entry_id"
           :image="article.thumbnail"
           :append-category="appendCategory"
+          :news="true"
         />
       </div>
       <div v-else class="news-row a-z-wrap">
@@ -99,11 +101,11 @@
       </div>
       <Pagination
         :loading="loading"
-        :Array="News"
+        :array="News"
         :load-page="loadPage"
-        :Page="Page"
-        :MoreResults="MoreResults"
-        :PreviousResults="PreviousResults"
+        :page="Page"
+        :more-results="MoreResults"
+        :previous-results="PreviousResults"
       />
     </div>
   </div>
@@ -198,7 +200,6 @@ export default {
       );
   },
   async mounted() {
-    console.log(this.homepage);
     // wait for the signal that created has finished loading data
     const self = this;
     await self.awaitMountPromise;

@@ -8,6 +8,11 @@ A UI testing and development environment for York SU website. This repo has two 
 
 To get started, clone this repo and run `npm ci`.
 
+## Opinionated conventions used
+
+- For naming of directories or files we should use kebab-case.
+- Vue files should end `.ce.vue`
+
 ## Storybook
 
 You can use [Storybook](https://storybook.js.org/) to give you an environment to develop your component in. We are using web components within storybook to ensure that there is good compatibility between components and the website. As such to include a vue file in a story you'll need to do the below.

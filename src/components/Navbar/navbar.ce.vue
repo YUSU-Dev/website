@@ -1,5 +1,5 @@
 <template>
-  <nav class="sticky left-0 top-0 z-[1] w-full bg-beige shadow">
+  <nav class="sticky left-0 top-0 z-10 w-full bg-beige shadow">
     <div class="3xl:px-0 container mx-auto flex justify-between px-4">
       <div class="my-7">
         <a href="/" aria-label="Homepage">

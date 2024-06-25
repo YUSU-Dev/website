@@ -2,24 +2,27 @@
   <div class="py-10" id="events-a-z">
     <div class="justify-center">
       <div
-        class="grid grid-cols-1 gap-x-4 gap-y-4 px-2 xs:grid-cols-2 lg:grid-cols-4 lg:px-3"
+        v-if="!SelectedType"
+        class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
       >
-        <div class="event-filter">
+        <div class="flex flex-col">
           <label>Category</label>
           <v-select
             label="name"
             :options="Categories"
             @update:model-value="updateCategory"
             placeholder="All"
+            class="h-full"
           ></v-select>
         </div>
-        <div>
+        <div class="flex flex-col" data-testid="activity-select">
           <label>Activity</label>
           <v-select
             label="name"
             :options="Groups"
             @update:model-value="updateGroup"
             placeholder="All"
+            class="h-full"
           ></v-select>
         </div>
         <div class="flex flex-col">
@@ -27,11 +30,12 @@
           <div class="input-group flex h-full border-[1px] border-black">
             <input
               id="event-search"
-              class="form-control h-full w-full"
+              class="form-control h-full w-full p-2 active:rounded-none"
               aria-label="Search"
               type="text"
               name="search"
               :value="Search"
+              @keyup="search($event)"
             />
             <div class="input-group-append">
               <button
@@ -41,7 +45,7 @@
               >
                 <FontAwesomeIcon
                   icon="fas fa-search"
-                  class="h-8 w-8 text-white"
+                  class="h-6 w-4 text-white"
                 ></FontAwesomeIcon>
               </button>
             </div>
@@ -56,6 +60,11 @@
           />
         </div>
       </div>
+      <div v-if="Events.length == 0 && !loading" class="">
+        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
+          No events found
+        </h2>
+      </div>
       <div v-if="!Loading" class="a-z-wrap mt-10">
         <Tile
           v-for="event in Events"
@@ -63,18 +72,21 @@
           :url="'/events/id/' + event.event_id + '-' + event.url_name"
           :title="event.event_date_title"
           :image="event.thumbnail_url"
+          :date="event.start_date"
+          :group="event.group"
+          :location="event.venue"
         />
       </div>
       <div v-else class="a-z-wrap mt-10">
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
       </div>
       <Pagination
-        :Array="Groups"
+        :array="Groups"
         :loading="Loading"
         :load-page="loadPage"
-        :Page="Page"
-        :MoreResults="MoreResults"
-        :PreviousResults="PreviousResults"
+        :page="Page"
+        :more-results="MoreResults"
+        :previous-results="PreviousResults"
       />
     </div>
   </div>
@@ -96,15 +108,15 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
 
 export default {
-  props: [
-    "siteid",
-    "groupid",
-    "typeid",
-    "venueid",
-    "smallcard",
-    "limit",
-    "premium",
-  ],
+  props: {
+    siteid: { type: String, default: null },
+    groupid: { type: String, default: null },
+    typeid: { type: String, default: null },
+    venueid: { type: String, default: null },
+    smallcard: { type: Boolean, default: false },
+    limit: { type: Number, default: 12 },
+    premium: { type: Boolean, default: false },
+  },
   components: {
     Tile,
     Pagination,
@@ -166,27 +178,27 @@ export default {
       if (urlParams.has("category")) {
         self.SelectedType = urlParams.get("category");
       }
-      //Get Categories
-      axios
-        .get("https://pluto.sums.su/api/events/types?sortBy=name", {
-          headers: {
-            "X-Site-Id": self.siteid,
-          },
-        })
-        .then(function (response) {
-          self.Categories = response.data;
-        });
-      //get Activities
-      axios
-        .get("https://pluto.sums.su/api/groups?sortBy=name&selectList=1", {
-          headers: {
-            "X-Site-Id": self.siteid,
-          },
-        })
-        .then(function (response) {
-          self.Groups = response.data;
-        });
     }
+    //Get Categories
+    axios
+      .get("https://pluto.sums.su/api/events/types?sortBy=name", {
+        headers: {
+          "X-Site-Id": self.siteid,
+        },
+      })
+      .then(function (response) {
+        self.Categories = response.data;
+      });
+    //get Activities
+    axios
+      .get("https://pluto.sums.su/api/groups?sortBy=name&selectList=1", {
+        headers: {
+          "X-Site-Id": self.siteid,
+        },
+      })
+      .then(function (response) {
+        self.Groups = response.data;
+      });
     //get Events
     self.getEvents();
   },
@@ -298,59 +310,7 @@ export default {
 @tailwind components;
 @tailwind utilities;
 
-/* Select2 */
-/* .vs__dropdown-toggle {
-  border-radius: none !important;
-} */
-
-.v-select .vs--single .vs--searchable {
-  color: white !important;
-}
-
-.vs__open-indicator {
-  fill: white !important;
-}
-
-.vs__search,
-.vs__search:focus,
-.vs__selected {
-  opacity: 1 !important;
-  color: white !important;
-}
-
-.select2-container--default .select2-selection--single {
-  background-color: black !important;
-  border-radius: 0px !important;
-}
-
-.select2-container .select2-selection--single {
-  height: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.select2-selection__arrow {
-  height: 95% !important;
-}
-
-.select2-selection__arrow b {
-  color: white !important;
-}
-
-.select2-container--default.select2-container--open
-  .select2-selection--single
-  .select2-selection__arrow
-  b {
-  color: white !important;
-}
-
-.select2-selection__placeholder {
-  color: white !important;
-}
-
-.select2-container--default
-  .select2-selection--single
-  .select2-selection__rendered {
-  color: white !important;
+.vs__selected-options {
+  flex-wrap: nowrap !important;
 }
 </style>
