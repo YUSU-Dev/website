@@ -1,34 +1,35 @@
 <template>
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
   <Navbar />
-  <div
-    id="maincontent"
-    class="container mx-auto flex flex-col items-center justify-center pb-20"
-  >
-    <div class="">
-      <div class="my-4">
-        <Button
-          :is-student-life="true"
-          title="Back to Shop"
-          arrow
-          :url="'/shop'"
-        />
-      </div>
-      <div class="flex flex-wrap md:flex-row">
-        <div class="md:w-1/2">
-          <img class="object-cover" :alt="title" :src="image" />
+  <main id="maincontent">
+    <div
+      class="container mx-auto flex flex-col items-center justify-center pb-20"
+    >
+      <div class="">
+        <div class="my-4">
+          <Button
+            :is-primary="true"
+            title="Back to Shop"
+            arrow
+            :url="'/shop'"
+          />
         </div>
-        <div class="ml-4 flex flex-col gap-2 md:w-5/12">
-          <h1 class="text-2xl font-bold">{{ title }}</h1>
-          <h2 class="text-xl">{{ price }}</h2>
-          <AddToBasket :product-id="9788" :signed-in="true" />
-          <div class="mt-2">
-            <p>{{ description }}</p>
+        <div class="flex flex-wrap md:flex-row">
+          <div class="md:w-1/2">
+            <img class="object-cover" :alt="title" :src="image" />
+          </div>
+          <div class="ml-4 flex flex-col gap-2 md:w-5/12">
+            <h1 class="text-2xl font-bold">{{ title }}</h1>
+            <h2 class="text-xl">{{ price }}</h2>
+            <AddToBasket :product-id="productId" :signed-in="true" />
+            <article class="mt-2">
+              <p>{{ description }}</p>
+            </article>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
   <Footer />
 </template>
 
