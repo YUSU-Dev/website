@@ -3,7 +3,7 @@
     <div class="flex flex-wrap md:flex-row">
       <div class="w-1/12"><br /></div>
       <div class="p-6 md:w-7/12">
-        <h2 class="mb-5 mt-10 text-3xl font-bold">About</h2>
+        <h2 class="mb-5 text-3xl font-bold">About</h2>
         <article v-html="activity.description"></article>
       </div>
       <div class="flex flex-col p-6 md:w-3/12">
