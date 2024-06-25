@@ -12,6 +12,7 @@
               v-if="logo"
               :src="logo"
               class="h-48 w-48 items-center object-contain"
+              alt=""
             />
             <div
               v-if="group"

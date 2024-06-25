@@ -48,17 +48,37 @@ import Footer from "../../components/Footer/footer.ce.vue";
 import Button from "../../components/button/button.ce.vue";
 import ActivitiesContacts from "../../components/ActivitiesContacts/activitiescontacts.ce.vue";
 import axios from "../../_common/axios.mjs";
-import { Controls } from "@storybook/blocks";
 export default {
-  props: [
-    "society",
-    "image",
-    "componenttitle",
-    "selectedparents",
-    "logo",
-    "activityid",
-    "siteid",
-  ],
+  props: {
+    society: {
+      type: String,
+      default: null,
+    },
+    image: {
+      type: String,
+      default: null,
+    },
+    componenttitle: {
+      type: String,
+      default: null,
+    },
+    selectedparents: {
+      type: String,
+      default: null,
+    },
+    logo: {
+      type: String,
+      default: null,
+    },
+    activityid: {
+      type: Number,
+      default: null,
+    },
+    siteid: {
+      type: String,
+      default: null,
+    },
+  },
   components: {
     Navbar,
     ActivitiesHeroBanner,
