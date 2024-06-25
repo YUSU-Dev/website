@@ -8,7 +8,7 @@
     :category="Activity.category"
   />
   <Breadcrumb />
-  <ActivityPage :activity="Activity" />
+  <ActivityPage :activity="Activity" :group-id="activityid" />
   <Footer />
 </template>
 <script>
@@ -82,7 +82,6 @@ export default {
       .then(
         axios.spread((response1, response2) => {
           self.Activity = response1.data;
-          console.log(response1.data);
           self.loading = false;
           self.Activity.category = response2.data.find(
             (item) => item.id === self.Activity.activity_category_id,

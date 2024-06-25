@@ -2,7 +2,7 @@
   <div class="py-10" id="events-a-z">
     <div class="justify-center">
       <div
-        v-if="!SelectedType"
+        v-if="!SelectedType || !ShortView"
         class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
       >
         <div class="flex flex-col">
@@ -136,10 +136,10 @@ export default {
       Page: 1,
       Pages: [],
       PerPage: 12,
-      Premium: false,
-      ShortView: false,
-      MoreResults: false,
-      PreviousResults: false,
+      Premium: { type: Boolean, default: false },
+      ShortView: { type: Boolean, default: false },
+      MoreResults: { type: Boolean, default: false },
+      PreviousResults: { type: Boolean, default: false },
       Placeholder: "Select an option",
       Loading: true,
     };
