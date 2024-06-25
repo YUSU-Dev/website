@@ -29,4 +29,5 @@ export const Default = {
       category: "Academic and Educational",
     },
   },
+  tags: ["no-tests"],
 };
