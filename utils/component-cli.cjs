@@ -18,10 +18,13 @@ const options = program.opts();
 if (options.component) {
   console.log("Creating component:", options.component);
 
-  const ComponentName = options.component.split("-").map((word) => {
-    return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
-  });
-  const PascalCaseComponentName = ComponentName.join("");
+  const ComponentName = options.component
+    .split("-")
+    .map((word) => {
+      return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
+  const PascalCaseComponentName = ComponentName.split(" ").join("");
 
   const storiesContent =
     "import './" +
@@ -74,10 +77,13 @@ if (options.component) {
   console.log("Component created successfully!");
 } else if (options.page) {
   console.log("Creating page:", options.page);
-  const ComponentName = options.page.split("-").map((word) => {
-    return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
-  });
-  const PascalCaseComponentName = ComponentName.join("");
+  const ComponentName = options.page
+    .split("-")
+    .map((word) => {
+      return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
+  const PascalCaseComponentName = ComponentName.split(" ").join("");
 
   const storiesContent =
     "import './" +
