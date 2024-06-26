@@ -161,7 +161,6 @@ export default {
   methods: {
     addToBasket(productId) {
       let self = this;
-      console.log(self.formData);
       addToBasketHandler(productId)
         .then(function (response) {
           if (!response["success"]) {
@@ -176,10 +175,10 @@ export default {
               url: "/shop/fields/" + productId,
               data: self.formData,
             }).then(function () {
-              window.location.replace("/shop/basket");
+              window.location.assign("/shop/basket");
             });
           } else {
-            window.location.replace("/shop/basket");
+            window.location.assign("/shop/basket");
           }
         })
         .catch(function (response) {

@@ -59,9 +59,9 @@ export default {
             return;
           }
           if (typeof response.fields != "undefined") {
-            window.location.replace("/shop/fields/" + productId);
+            window.location.assign("/shop/fields/" + productId);
           } else {
-            window.location.replace("/shop/basket");
+            window.location.assign("/shop/basket");
           }
         })
         .catch(function (response) {
