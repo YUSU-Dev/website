@@ -6,6 +6,7 @@
     "bradlc.vscode-tailwindcss",
     "github.vscode-github-actions",
     "vue.volar",
-    "unifiedjs.vscode-mdx"
+    "unifiedjs.vscode-mdx",
+    "streetsidesoftware.code-spell-checker"
   ]
 }
