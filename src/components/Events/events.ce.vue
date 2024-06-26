@@ -2,7 +2,7 @@
   <div class="py-10" id="events-a-z">
     <div class="justify-center">
       <div
-        v-if="!SelectedType"
+        v-if="!ShortView"
         class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
       >
         <div class="flex flex-col">
@@ -60,9 +60,19 @@
           />
         </div>
       </div>
-      <div v-if="Events.length == 0 && !loading" class="">
+      <div v-else-if="title">
+        <h1 class="flex items-center pb-2 text-3xl font-bold">
+          {{ title }}
+          <FontAwesomeIcon
+            v-if="icon"
+            icon="fas fa-calendar"
+            class="mx-1 h-8 w-8"
+          />
+        </h1>
+      </div>
+      <div v-if="Events.length == 0 && !Loading" class="">
         <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
-          No events found
+          There are currently no events!
         </h2>
       </div>
       <div v-if="!Loading" class="a-z-wrap mt-10">
@@ -103,9 +113,10 @@ import Button from "../../components/button/button.ce.vue";
 import vSelect from "vue-select";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
+library.add(faCalendar);
 
 export default {
   props: {
@@ -114,8 +125,10 @@ export default {
     typeid: { type: String, default: null },
     venueid: { type: String, default: null },
     smallcard: { type: Boolean, default: false },
-    limit: { type: Number, default: 12 },
+    limit: { type: Number, default: null },
     premium: { type: Boolean, default: false },
+    title: { type: String, default: null },
+    icon: { type: Boolean, default: false },
   },
   components: {
     Tile,
@@ -136,10 +149,10 @@ export default {
       Page: 1,
       Pages: [],
       PerPage: 12,
-      Premium: false,
-      ShortView: false,
-      MoreResults: false,
-      PreviousResults: false,
+      Premium: { type: Boolean, default: false },
+      ShortView: { type: Boolean, default: false },
+      MoreResults: { type: Boolean, default: false },
+      PreviousResults: { type: Boolean, default: false },
       Placeholder: "Select an option",
       Loading: true,
     };
@@ -164,6 +177,7 @@ export default {
     } else if (self.limit) {
       self.ShortView = true;
     } else {
+      self.ShortView = false;
       //check if looking for a specific activity, search, etc...
       let urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has("activity_id")) {
@@ -214,26 +228,26 @@ export default {
         self.Page = 1;
         self.Pages = [1];
       }
-      let parameters = "sortBy=start_date&futureOrOngoing=1&page=" + this.Page;
+      let parameters = "sortBy=start_date&futureOrOngoing=1&page=" + self.Page;
       //add relevant parameters to the event search
-      if (this.limit) {
-        parameters += "&perPage=" + this.limit;
+      if (self.limit) {
+        parameters += "&perPage=" + self.limit;
       } else {
-        parameters += "&perPage=" + this.PerPage;
+        parameters += "&perPage=" + self.PerPage;
       }
-      if (this.SelectedType) {
-        parameters += "&typeId=" + this.SelectedType;
+      if (self.SelectedType) {
+        parameters += "&typeId=" + self.SelectedType;
       }
-      if (this.SelectedGroup) {
-        parameters += "&groupId=" + this.SelectedGroup;
+      if (self.SelectedGroup) {
+        parameters += "&groupId=" + self.SelectedGroup;
       }
-      if (this.SelectedVenue) {
-        parameters += "&venueId=" + this.SelectedVenue;
+      if (self.SelectedVenue) {
+        parameters += "&venueId=" + self.SelectedVenue;
       }
-      if (this.Search) {
-        parameters += "&searchTerm=" + this.Search;
+      if (self.Search) {
+        parameters += "&searchTerm=" + self.Search;
       }
-      if (this.Premium) {
+      if (self.Premium) {
         parameters += "&onlyPremium=1";
       }
       axios

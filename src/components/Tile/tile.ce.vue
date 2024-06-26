@@ -165,7 +165,7 @@ export default {
       default: null,
     },
     productId: {
-      type: String,
+      type: Number,
       default: null,
     },
     shopGroupName: {

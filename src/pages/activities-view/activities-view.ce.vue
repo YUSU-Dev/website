@@ -8,7 +8,7 @@
     :category="Activity.category"
   />
   <Breadcrumb />
-  <ActivityPage :activity="Activity" />
+  <ActivityPage :activity="Activity" :group-id="activityid" />
   <Footer />
 </template>
 <script>
@@ -21,26 +21,6 @@ import ActivityPage from "../../components/activity-page/activity-page.ce.vue";
 import axios from "../../_common/axios.mjs";
 export default {
   props: {
-    society: {
-      type: String,
-      default: null,
-    },
-    image: {
-      type: String,
-      default: null,
-    },
-    componenttitle: {
-      type: String,
-      default: null,
-    },
-    selectedparents: {
-      type: String,
-      default: null,
-    },
-    logo: {
-      type: String,
-      default: null,
-    },
     activityid: {
       type: Number,
       default: null,
@@ -82,7 +62,6 @@ export default {
       .then(
         axios.spread((response1, response2) => {
           self.Activity = response1.data;
-          console.log(response1.data);
           self.loading = false;
           self.Activity.category = response2.data.find(
             (item) => item.id === self.Activity.activity_category_id,

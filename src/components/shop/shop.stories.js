@@ -28,3 +28,12 @@ export const FeatureShop = {
     selectedgroup: "",
   },
 };
+
+export const FeatureShopWithIcon = {
+  args: {
+    title: "Feature Shop",
+    featuredshop: "true",
+    selectedgroup: "",
+    icon: true,
+  },
+};

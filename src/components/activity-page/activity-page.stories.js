@@ -26,6 +26,7 @@ export const Default = {
       badges: [],
       category: "Academic and Educational",
     },
+    groupId: "7",
   },
   parameters: {
     a11y: {

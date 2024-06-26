@@ -5,13 +5,15 @@
       <div class="p-6 md:w-7/12">
         <h2 class="mb-5 text-3xl font-bold">About</h2>
         <article v-html="activity.description"></article>
+        <Events :groupid="groupId" title="Events" icon />
+        <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
       </div>
       <div class="flex flex-col p-6 md:w-3/12">
         <a :href="'/shop?activity_id=' + activity.id"
           ><Button
             :class="{ 'bg-light-blue': title == 'join' }"
             title="Join"
-            is-student-life="True"
+            is-student-life
             class="px-10 text-center"
         /></a>
         <hr class="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
@@ -32,6 +34,8 @@
 </template>
 <script>
 import Button from "../../components/button/button.ce.vue";
+import Events from "../../components/Events/events.ce.vue";
+import Shop from "../../components/shop/shop.ce.vue";
 import ActivitiesContacts from "../../components/ActivitiesContacts/activitiescontacts.ce.vue";
 export default {
   props: {
@@ -39,10 +43,13 @@ export default {
       type: Object,
       default: null,
     },
+    groupId: { type: String, default: null },
   },
   components: {
     Button,
     ActivitiesContacts,
+    Events,
+    Shop,
   },
 };
 </script>
