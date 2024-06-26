@@ -60,7 +60,7 @@
           />
         </div>
       </div>
-      <div v-else>
+      <div v-else-if="title">
         <h1 class="flex items-center pb-2 text-3xl font-bold">
           {{ title }}
           <FontAwesomeIcon
