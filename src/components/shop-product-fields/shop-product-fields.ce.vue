@@ -150,9 +150,9 @@ export default {
     const fields = this.fields;
     for (let i = 0; i < fields.length; i++) {
       if (fields[i].type == "D") {
-        this.formData[fields[i].id] = fields[i].values[0].id;
+        this.formData["field[" + fields[i].id + "]"] = fields[i].values[0].id;
       } else {
-        this.formData[fields[i].id] = "";
+        this.formData["field[" + fields[i].id + "]"] = "";
       }
       this.formData.do = "post";
     }
