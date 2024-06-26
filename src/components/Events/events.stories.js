@@ -3,7 +3,7 @@ import { userEvent } from "@storybook/test";
 import { within as shadowWithin } from "shadow-dom-testing-library";
 
 export default {
-  title: "Components/Events",
+  title: "Components/Events/Index",
   component: "events",
 };
 
