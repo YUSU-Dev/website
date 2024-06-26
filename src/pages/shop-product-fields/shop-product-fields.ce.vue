@@ -2,9 +2,7 @@
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
   <Navbar />
   <main id="maincontent">
-    <div
-      class="container mx-auto flex flex-col pt-4 justify-center pb-20"
-    >
+    <div class="container mx-auto flex flex-col justify-center pb-20 pt-4">
       <!-- {if pre_error != ""} -->
       <div>
         <div class="my-5 text-center">
