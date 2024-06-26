@@ -108,8 +108,7 @@
 import AddToBasket from "../../components/add-to-basket/add-to-basket.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import Button from "../button/button.ce.vue";
-import axios from "../../_common/axios.mjs";
-import { addToBasketHandler } from "../shop/shop.basket.js";
+import { addToBasketHandler, addFieldsToBasket } from "../shop/shop.basket.js";
 
 export default {
   name: "ShopProductFields",
@@ -170,11 +169,7 @@ export default {
             return;
           }
           if (typeof response.fields != "undefined") {
-            axios({
-              method: "POST",
-              url: "/shop/fields/" + productId,
-              data: self.formData,
-            }).then(function () {
+            addFieldsToBasket(productId).then(function () {
               window.location.assign("/shop/basket");
             });
           } else {

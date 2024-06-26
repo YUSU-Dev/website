@@ -22,3 +22,23 @@ export function addToBasketHandler(productID) {
       });
   });
 }
+
+export function addFieldsToBasket(productId, formData) {
+  return new Promise((resolve) => {
+    $.ajax({
+      url: "/shop/fields/" + productId,
+      method: "POST",
+      data: formData,
+    })
+      .done(function (response) {
+        resolve(response); // Resolve the promise with the response
+      })
+      .fail(function (response) {
+        console.log(
+          "There was an error adding the product to the basket: " +
+            response.error_message,
+        );
+        resolve(response);
+      });
+  });
+}
