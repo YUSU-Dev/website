@@ -1,7 +1,7 @@
 <template>
   <div v-if="hasStock">
     <h2 class="text-xl font-bold">Additional Information</h2>
-    <form method="POST" :action="'/shop/fields/' + productId" class="py-4">
+    <form class="py-4">
       <input type="hidden" name="do" value="post" />
       <div v-for="field in fields" :key="field.id">
         <div
@@ -84,10 +84,10 @@
         </div>
       </div>
       <div class="mt-2">
-        <input
-          type="submit"
-          class="btn btn-primary flex w-fit items-center"
-          value="Add to Basket"
+        <Button
+          :is-primary="true"
+          @click="addToBasket(productId)"
+          title="Add to Basket"
         />
       </div>
     </form>
@@ -95,12 +95,29 @@
   <div v-else>
     <AddToBasket :has-stock="false" :product-id="productId" :signed-in="true" />
   </div>
+  <Modal
+    :signed-in="signedIn"
+    :title="'Basket Error!'"
+    :error-description="ErrorDescription"
+    :modal-closed="ModalClosed"
+    @close="ModalClosed = true"
+  />
 </template>
 
 <script>
+import AddToBasket from "../../components/add-to-basket/add-to-basket.ce.vue";
+import Modal from "../modal/modal.ce.vue";
+import Button from "../button/button.ce.vue";
+import axios from "../../_common/axios.mjs";
+import { addToBasketHandler } from "../shop/shop.basket.js";
+
 export default {
   name: "ShopProductFields",
-  components: {},
+  components: {
+    AddToBasket,
+    Modal,
+    Button,
+  },
   props: {
     fields: {
       type: Array,
@@ -121,6 +138,51 @@ export default {
     signedIn: {
       type: Boolean,
       default: true,
+    },
+  },
+  data() {
+    return {
+      ModalClosed: true,
+      ErrorDescription: "",
+    };
+  },
+  methods: {
+    addToBasket(productId) {
+      let self = this;
+      addToBasketHandler(productId)
+        .then(function (response) {
+          if (!response["success"]) {
+            var data = response.error_message;
+            self.ErrorDescription = data;
+            self.ModalClosed = false;
+            return;
+          }
+          if (typeof response.fields != "undefined") {
+            axios({
+              method: "POST",
+              url: "/shop/fields/" + productId,
+              data: response.fields,
+            }).then(function () {
+              window.location.replace("/shop/basket");
+            });
+          } else {
+            window.location.replace("/shop/basket");
+          }
+        })
+        .catch(function (response) {
+          if (response.error_message != "undefined") {
+            console.log(
+              "There was an error adding the product to the basket: " +
+                response.error_message,
+            );
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          } else {
+            console.log("Undefined error adding product to basket");
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          }
+        });
     },
   },
 };
