@@ -169,7 +169,7 @@ export default {
             return;
           }
           if (typeof response.fields != "undefined") {
-            addFieldsToBasket(productId).then(function () {
+            addFieldsToBasket(productId, self.formData).then(function () {
               window.location.assign("/shop/basket");
             });
           } else {
