@@ -10,6 +10,8 @@ export default {
         "primary-pink": "#FFBBBE",
         "voice-orange": "#F2682F",
         "advice-green": "#00A463",
+        "primary-blue": "#307CBF",
+        "primary-red": "#E74C3C",
       },
       screens: {
         // This is just to allow more breakpoints smaller than the default, can be changed to something else
