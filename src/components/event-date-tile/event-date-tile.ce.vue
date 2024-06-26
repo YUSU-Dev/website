@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/prop-name-casing -->
 <template>
   <div
     class="grid w-full grid-cols-1 justify-between gap-y-4 border-[0.5px] p-4 shadow xxs:grid-cols-4 sm:grid-cols-3 md:flex 3xl:grid-cols-1"
@@ -23,7 +24,7 @@
     >
       <Button
         class="h-min"
-        :isPrimary="true"
+        :is-primary="true"
         title="Buy Tickets"
         :href="'/events/products/' + date_id"
       />
@@ -33,7 +34,7 @@
       class="order-3 flex items-center justify-center xxs:col-span-2 sm:col-span-1"
     >
       <Button
-        :isPrimary="true"
+        :is-primary="true"
         title="Find Tickets"
         :href="'/events/external/' + date_id"
       />
