@@ -5,7 +5,7 @@
 
 @layer base {
   body {
-    @apply font-sans;
+    @apply font-sans h-[100vh];
   }
 
   body h1 {
