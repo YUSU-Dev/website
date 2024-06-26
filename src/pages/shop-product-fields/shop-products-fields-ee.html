@@ -1,32 +1,35 @@
-<template>
-  <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
-  <Navbar />
-  <main id="maincontent">
-    <div
-      class="container mx-auto flex flex-col pt-4 justify-center pb-20"
+<div
+      class="container mx-auto flex flex-col pt-2 justify-center pb-20"
     >
-      <!-- {if pre_error != ""} -->
+      {if pre_error != ""}
       <div>
         <div class="my-5 text-center">
           <p>{pre_error}</p>
         </div>
-        <Button :is-primary="true" title="View Basket" :url="'/shop/basket'" />
+        <yorksu-button
+          is-primary="True"
+          title="View Basket"
+          arrow="True"
+          url="/shop/basket"
+        >
+          <div class="btn flex w-fit items-center btn-primary">View Basket</div>
+        </yorksu-button>
       </div>
-      <!-- {if:else} -->
+      {if:else}
       <div>
         <h1 class="text-2xl font-bold">Additional Information</h1>
         <h2 class="text-xl font-bold">{product_name}</h2>
 
-        <!-- {if field_error != ""} -->
+        {if field_error != ""}
         <div class="g-mt-20 border-l-4 border-red-400 bg-red-100 p-2">
           {field_error}
         </div>
-        <!-- {/if} -->
+        {/if}
 
         <form method="POST" class="g-brd-around g-brd-gray-light-v4 py-4">
           <input type="hidden" name="do" value="post" />
-          <!-- {fields} -->
-          <!-- {if field_id == 10} -->
+          {fields}
+          {if field_id == 10}
           <div
             class="flex items-center text-wrap bg-light-blue p-2 text-sm md:text-base"
           >
@@ -42,34 +45,34 @@
             This is your University of York Student ID / Enrolment Number and
             not your UCAS number.
           </div>
-          <!-- {/if} -->
+          {/if}
           <div class="mb-2">
             <label
               >{field_name}
-              <!-- {if field_required}  -->
+              {if field_required} 
               <span class="text-red-600">* Required</span>
-              <!-- {/if} -->
+              {/if}
             </label>
-            <!-- {if field_type == "A" || field_type == "S" || field_type == "Y"} -->
+            {if field_type == "A" || field_type == "S" || field_type == "Y"}
             <textarea
               class="form-input"
               name="field[{field_id}]"
               type="text"
               value="{field_value}"
             ></textarea>
-            <!-- {if field_type == "S"} -->
+            {if field_type == "S"}
             <small class="mt-4 font-thin"
               >Only characters a-z, A-Z and spaces are permitted.</small
             >
-            <!-- {/if} -->
-            <!-- {if:elseif field_type == "E"} -->
+            {/if}
+            {if:elseif field_type == "E"}
             <input
               class="form-input"
               name="field[{field_id}]"
               type="email"
               value="{field_value}"
             />
-            <!-- {if:elseif field_type == "N"} -->
+            {if:elseif field_type == "N"}
             <input
               class="form-input"
               name="field[{field_id}]"
@@ -81,21 +84,21 @@
             <small class="mt-4 font-thin"
               >A number between {field_min} and {field_max}.</small
             >
-            <!-- {if:elseif field_type == "D"} -->
+            {if:elseif field_type == "D"}
             <div>
               <select
                 name="field[{field_id}]"
                 class="form-select"
                 aria-label="{field_name}"
               >
-                <!-- {field_options} -->
-                <option value="{option_id}">{option_value}</option>
-                <!-- {/field_options} -->
+                {field_options}
+                <option value="{option_id}" {if field_value == option_id}selected{/if}>{option_value}</option>
+                {/field_options}
               </select>
-              <!-- {/if} -->
+              {/if}
             </div>
           </div>
-          <!-- {/fields} -->
+          {/fields}
           <div class="mt-2">
             <input
               type="submit"
@@ -105,45 +108,5 @@
           </div>
         </form>
       </div>
-      <!-- {/if} -->
+      {/if}
     </div>
-  </main>
-  <Footer />
-</template>
-
-<script>
-import Button from "../../components/button/button.ce.vue";
-import Navbar from "../../components/Navbar/navbar.ce.vue";
-import Footer from "../../components/Footer/footer.ce.vue";
-
-export default {
-  name: "ShopProductFields",
-  components: {
-    Navbar,
-    Footer,
-    Button,
-  },
-  props: {
-    image: {
-      type: String,
-      default: "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
-    },
-    title: {
-      type: String,
-      default: null,
-    },
-    price: {
-      type: String,
-      default: null,
-    },
-    description: {
-      type: String,
-      default: null,
-    },
-    productId: {
-      type: Number,
-      default: null,
-    },
-  },
-};
-</script>
