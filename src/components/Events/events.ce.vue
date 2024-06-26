@@ -193,7 +193,6 @@ export default {
         self.SelectedType = urlParams.get("category");
       }
     }
-    console.log(self.ShortView);
     //Get Categories
     axios
       .get("https://pluto.sums.su/api/events/types?sortBy=name", {
@@ -251,7 +250,6 @@ export default {
       if (self.Premium) {
         parameters += "&onlyPremium=1";
       }
-      console.log(parameters);
       axios
         .get("https://pluto.sums.su/api/events?" + parameters, {
           headers: {
