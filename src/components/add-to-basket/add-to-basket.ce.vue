@@ -2,8 +2,10 @@
   <Button
     :is-primary="true"
     @click="addToBasket(productId)"
-    :title="'Add to Basket'"
+    title="Add to Basket"
+    v-if="hasStock"
   />
+  <Button class="bg-gray-300" title="Sold out" v-else disabled="true" />
   <Modal
     :signed-in="signedIn"
     :title="'Basket Error!'"
@@ -29,6 +31,10 @@ export default {
     signedIn: {
       type: Boolean,
       default: false,
+    },
+    hasStock: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {

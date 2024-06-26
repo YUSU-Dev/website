@@ -115,7 +115,7 @@ import Navbar from "../../components/Navbar/navbar.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
 
 export default {
-  name: "ShopProductFields",
+  name: "ShopOldFields",
   components: {
     Navbar,
     Footer,

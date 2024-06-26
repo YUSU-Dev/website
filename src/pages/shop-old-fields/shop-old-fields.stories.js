@@ -1,8 +1,8 @@
-import "./shop-product-fields.component.js";
+import "./shop-old-fields.component.js";
 
 export default {
-  title: "Pages/Shop Product Fields",
-  component: "shop-product-fields",
+  title: "Pages/Shop Old Fields",
+  component: "shop-old-fields",
 };
 
 export const Default = {
