@@ -159,6 +159,16 @@
   .modal-footer {
     @apply flex items-center gap-3 rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600;
   }
+
+  .form-group {
+    @apply w-full appearance-none rounded border bg-white px-3 py-2 leading-tight hover:border-gray-500;
+  }
+  .form-input {
+    @apply form-group text-gray-700;
+  }
+  .form-select {
+    @apply form-group block pr-8;
+  }
 }
 
 /* Banners */
