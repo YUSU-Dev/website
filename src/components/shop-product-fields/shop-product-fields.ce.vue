@@ -2,7 +2,6 @@
   <div v-if="hasStock">
     <h2 class="text-xl font-bold">Additional Information</h2>
     <form class="py-4">
-      <input type="hidden" name="do" value="post" />
       <div v-for="field in fields" :key="field.id">
         <div
           class="flex items-center text-wrap bg-light-blue p-2 text-sm md:text-base"
@@ -26,13 +25,13 @@
             <span v-if="field.required" class="text-red-600">* Required</span>
           </label>
           <textarea
+            v-model="formData[field.id]"
             :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
             type="text"
             :min="field.min"
             :max="field.nax"
-            value=""
             v-if="field.type == 'A' || field.type == 'S' || field.type == 'Y'"
             :required="field.required"
           ></textarea>
@@ -40,6 +39,7 @@
             >Only characters a-z, A-Z and spaces are permitted.</small
           >
           <input
+            v-model="formData[field.id]"
             v-if="field.type == 'E'"
             :id="field.id"
             class="form-input"
@@ -47,18 +47,17 @@
             type="email"
             :min="field.min"
             :max="field.nax"
-            value=""
             :required="field.required"
           />
           <input
             v-if="field.type == 'N'"
+            v-model="formData[field.id]"
             :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
             type="number"
             :min="field.min"
             :max="field.nax"
-            value=""
             :required="field.required"
           />
           <small class="mt-4 font-thin" v-if="field.type == 'N'"
@@ -67,6 +66,7 @@
           <div v-if="field.type == 'D'">
             <select
               :id="field.id"
+              v-model="formData[field.id]"
               :name="'field[' + field.id + ']'"
               class="form-select"
               :aria-label="field.name"
@@ -144,11 +144,24 @@ export default {
     return {
       ModalClosed: true,
       ErrorDescription: "",
+      formData: {},
     };
+  },
+  created() {
+    const fields = this.fields;
+    for (let i = 0; i < fields.length; i++) {
+      if (fields[i].type == "D") {
+        this.formData[fields[i].id] = fields[i].values[0].id;
+      } else {
+        this.formData[fields[i].id] = "";
+      }
+      this.formData.do = "post";
+    }
   },
   methods: {
     addToBasket(productId) {
       let self = this;
+      console.log(self.formData);
       addToBasketHandler(productId)
         .then(function (response) {
           if (!response["success"]) {
@@ -161,7 +174,7 @@ export default {
             axios({
               method: "POST",
               url: "/shop/fields/" + productId,
-              data: response.fields,
+              data: self.formData,
             }).then(function () {
               window.location.replace("/shop/basket");
             });
