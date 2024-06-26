@@ -39,12 +39,13 @@ export default {
     isStudentLife: Boolean,
     isStudentVoice: Boolean,
     isAdviceAndSupport: Boolean,
+    isActivitiesView: Boolean,
     isSecondary: Boolean,
     arrow: Boolean,
     isTertiary: Boolean,
     url: {
       type: String,
-      default: "#",
+      default: "javascript:;",
     },
   },
   components: {
