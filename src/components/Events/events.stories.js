@@ -1,7 +1,7 @@
 import "./events.component.js";
 
 export default {
-  title: "Components/Events",
+  title: "Components/Events/Index",
   component: "events",
 };
 

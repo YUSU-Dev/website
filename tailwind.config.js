@@ -17,6 +17,7 @@ export default {
         // This is just to allow more breakpoints smaller than the default, can be changed to something else
         xxs: "320px",
         xs: "476px",
+        "3xl": "1650px",
         max: "1900px",
       },
     },

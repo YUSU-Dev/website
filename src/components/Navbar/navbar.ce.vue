@@ -1,6 +1,6 @@
 <template>
   <nav class="sticky left-0 top-0 z-10 w-full bg-beige shadow">
-    <div class="3xl:px-0 container mx-auto flex justify-between px-4">
+    <div class="container mx-auto flex justify-between px-4 3xl:px-0">
       <div class="my-7">
         <a href="/" aria-label="Homepage">
           <img
@@ -101,7 +101,7 @@
     >
       <div
         :class="{ hidden: navClosed }"
-        class="navbar 3xl:px-0 container mx-auto px-4 pb-12"
+        class="navbar container mx-auto px-4 pb-12 3xl:px-0"
       >
         <div v-if="icons" class="mb-8 mt-4 flex flex-wrap gap-4 md:hidden">
           <a class="" href="/search#gsc.tab=0" aria-label="Search the website">
