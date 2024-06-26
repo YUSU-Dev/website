@@ -25,7 +25,7 @@
             <span v-if="field.required" class="text-red-600">* Required</span>
           </label>
           <textarea
-            v-model="formData[field.id]"
+            :v-model="'field[' + field.id + ']'"
             :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
@@ -39,7 +39,7 @@
             >Only characters a-z, A-Z and spaces are permitted.</small
           >
           <input
-            v-model="formData[field.id]"
+            :v-model="'field[' + field.id + ']'"
             v-if="field.type == 'E'"
             :id="field.id"
             class="form-input"
@@ -51,7 +51,7 @@
           />
           <input
             v-if="field.type == 'N'"
-            v-model="formData[field.id]"
+            :v-model="'field[' + field.id + ']'"
             :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
@@ -66,7 +66,7 @@
           <div v-if="field.type == 'D'">
             <select
               :id="field.id"
-              v-model="formData[field.id]"
+              :v-model="'field[' + field.id + ']'"
               :name="'field[' + field.id + ']'"
               class="form-select"
               :aria-label="field.name"
