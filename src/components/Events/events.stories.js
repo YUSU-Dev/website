@@ -24,3 +24,17 @@ export const ShortView = {
     typeid: "19",
   },
 };
+
+export const GroupView = {
+  args: {
+    groupid: "23",
+  },
+};
+
+export const GroupViewNoResults = {
+  args: {
+    groupid: "1",
+    title: "Events",
+    icon: true,
+  },
+};

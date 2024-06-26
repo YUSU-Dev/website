@@ -2,7 +2,14 @@
   <div class="py-10">
     <div class="justify-center">
       <div>
-        <h2 v-if="title" class="pb-2 text-center">{{ title }}</h2>
+        <h2 v-if="title" class="flex items-center pb-2 text-3xl font-bold">
+          {{ title }}
+          <FontAwesomeIcon
+            v-if="icon"
+            icon="fas fa-basket-shopping"
+            class="mx-1 h-8 w-8"
+          />
+        </h2>
         <div v-if="!hidefilter">
           <div
             class="grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
@@ -106,9 +113,10 @@ import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import vSelect from "vue-select";
 library.add(faSearch);
+library.add(faBasketShopping);
 
 export default {
   props: {
@@ -118,6 +126,7 @@ export default {
     hidefilter: Boolean,
     selectedgroup: { type: String, default: "" },
     signedIn: Boolean,
+    icon: { type: Boolean, default: false },
   },
   components: {
     Tile,

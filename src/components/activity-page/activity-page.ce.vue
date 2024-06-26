@@ -5,10 +5,8 @@
       <div class="p-6 md:w-7/12">
         <h2 class="mb-5 text-3xl font-bold">About</h2>
         <article v-html="activity.description"></article>
-        <h2 class="text-3xl font-bold">Events</h2>
-        <Events :groupid="groupId" />
-        <h2 class="text-3xl font-bold">Products</h2>
-        <Shop :selectedgroup="groupId" hidefilter />
+        <Events :groupid="groupId" title="Events" icon />
+        <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
       </div>
       <div class="flex flex-col p-6 md:w-3/12">
         <a :href="'/shop?activity_id=' + activity.id"
