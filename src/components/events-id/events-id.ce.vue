@@ -41,6 +41,7 @@
     </div>
   </div>
 </template>
+<!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Button from "../../components/button/button.ce.vue";
 import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";

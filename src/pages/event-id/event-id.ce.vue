@@ -29,6 +29,7 @@
   </div>
   <Footer />
 </template>
+<!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Navbar from "../../components/Navbar/navbar.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";

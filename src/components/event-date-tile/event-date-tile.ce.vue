@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/prop-name-casing -->
 <template>
   <div
     class="grid w-full grid-cols-1 justify-between gap-y-4 border-[0.5px] p-4 shadow xxs:grid-cols-4 sm:grid-cols-3 md:flex 3xl:grid-cols-1"
@@ -41,7 +40,7 @@
     </div>
   </div>
 </template>
-
+<!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Button from "../../components/button/button.ce.vue";
 export default {
