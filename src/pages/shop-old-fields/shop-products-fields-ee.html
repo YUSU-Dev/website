@@ -21,12 +21,12 @@
         <h2 class="text-xl font-bold">{product_name}</h2>
 
         {if field_error != ""}
-        <div class="g-mt-20 border-l-4 border-red-400 bg-red-100 p-2">
+        <div class="border-l-4 border-red-400 bg-red-100 p-2">
           {field_error}
         </div>
         {/if}
 
-        <form method="POST" class="g-brd-around g-brd-gray-light-v4 py-4">
+        <form method="POST" class="">
           <input type="hidden" name="do" value="post" />
           {fields}
           {if field_id == 10}

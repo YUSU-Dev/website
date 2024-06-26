@@ -24,8 +24,8 @@
         class="order-1 col-span-5 mb-5 flex flex-col gap-y-4 md:order-2 md:col-span-1 md:mb-0"
       >
         <Button
-          :arrow="true"
-          :isPrimary="true"
+          arrow
+          is-primary
           title="Back to events"
           href="/events"
           class=""

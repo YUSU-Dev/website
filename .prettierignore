@@ -3,4 +3,4 @@
 .prettierignore
 
 *.mdx
-src/pages/shop-product-fields/shop-products-fields-ee.html
+src/pages/shop-old-fields/shop-products-fields-ee.html
