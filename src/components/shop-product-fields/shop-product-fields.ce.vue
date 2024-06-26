@@ -21,11 +21,12 @@
           your UCAS number.
         </div>
         <div class="mb-2">
-          <label
+          <label :for="field.id"
             >{{ field.name }}
             <span v-if="field.required" class="text-red-600">* Required</span>
           </label>
           <textarea
+            :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
             type="text"
@@ -40,6 +41,7 @@
           >
           <input
             v-if="field.type == 'E'"
+            :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
             type="email"
@@ -50,6 +52,7 @@
           />
           <input
             v-if="field.type == 'N'"
+            :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
             type="number"
@@ -63,6 +66,7 @@
           >
           <div v-if="field.type == 'D'">
             <select
+              :id="field.id"
               :name="'field[' + field.id + ']'"
               class="form-select"
               :aria-label="field.name"

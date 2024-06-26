@@ -58,8 +58,8 @@ export default {
   },
   data() {
     return {
-      title: "",
-      price: "",
+      title: "Product not Found",
+      price: "Not found",
       description: "",
       fields: [],
       hasStock: true,
