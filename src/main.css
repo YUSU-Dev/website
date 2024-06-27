@@ -59,9 +59,6 @@
 @tailwind components;
 
 @layer components {
-  .container-main {
-    @apply container mx-auto;
-  }
   /* v-select Classes */
   /* Events Filters */
   .events-filters {
