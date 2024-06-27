@@ -34,6 +34,7 @@
             :max="field.nax"
             v-if="field.type == 'A' || field.type == 'S' || field.type == 'Y'"
             :required="field.required"
+            :placeholder="field.name"
           ></textarea>
           <small class="mt-4 font-thin" v-if="field.type == 'S'"
             >Only characters a-z, A-Z and spaces are permitted.</small
@@ -46,6 +47,7 @@
             :name="'field[' + field.id + ']'"
             type="email"
             :min="field.min"
+            :placeholder="field.name + '@york.ac.uk'"
             :max="field.nax"
             :required="field.required"
           />
