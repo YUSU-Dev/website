@@ -4,6 +4,10 @@
     :title="sectionName"
     :type="type"
     :url="sectionUrl"
+    :class="{
+      'w-full px-10 text-center': isSectionItem,
+      'h-full w-full': !isSectionItem,
+    }"
   />
 </template>
 
