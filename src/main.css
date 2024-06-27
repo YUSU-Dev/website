@@ -51,6 +51,9 @@
   main ol {
     @apply list-decimal pl-10;
   }
+  .container-main {
+    @apply container mx-auto;
+  }
 }
 
 /* COMPONENTS 
