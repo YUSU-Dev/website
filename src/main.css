@@ -51,9 +51,6 @@
   main ol {
     @apply list-decimal pl-10;
   }
-  .container-main {
-    @apply container mx-auto;
-  }
 }
 
 /* COMPONENTS 
@@ -62,6 +59,9 @@
 @tailwind components;
 
 @layer components {
+  .container-main {
+    @apply container mx-auto;
+  }
   /* v-select Classes */
   /* Events Filters */
   .events-filters {
