@@ -1,10 +1,15 @@
 import "./sectionLinks.component.js";
 
 export default {
-  title: "Elements/SectionLinks",
+  title: "Components/SectionLinks/Full Example",
   component: "section-links",
 };
 
 export const Default = {
-  args: {},
+  args: {
+    section_is_active: true,
+    item_is_active: true,
+    item_text: "text",
+    item_url: "#",
+  },
 };

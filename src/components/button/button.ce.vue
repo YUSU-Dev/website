@@ -2,11 +2,11 @@
   <a
     class="btn group flex w-fit items-center"
     :class="{
-      'btn-primary': isPrimary,
-      'btn-secondary': isSecondary,
-      'btn-student-life': isStudentLife,
-      'btn-student-voice': isStudentVoice,
-      'btn-advice-support': isAdviceAndSupport,
+      'btn-primary': primaryButton,
+      'btn-secondary': secondaryButton,
+      'btn-student-life': studentLifeButton,
+      'btn-student-voice': studentVoiceButton,
+      'btn-advice-support': adviceAndSupportButton,
     }"
     :href="url"
   >
@@ -47,9 +47,35 @@ export default {
       type: String,
       default: "javascript:;",
     },
+    type: {
+      type: String,
+      default: null,
+    },
+  },
+  data() {
+    return {
+      primaryButton: false,
+      studentLifeButton: false,
+      adviceAndSupportButton: false,
+      studentVoiceButton: false,
+      secondaryButton: false,
+    };
   },
   components: {
     FontAwesomeIcon,
+  },
+  mounted() {
+    if (this.isPrimary || this.type === "primary") {
+      this.primaryButton = true;
+    } else if (this.isStudentLife || this.type === "student-life") {
+      this.studentLifeButton = true;
+    } else if (this.isAdviceAndSupport || this.type === "advice-support") {
+      this.adviceAndSupportButton = true;
+    } else if (this.isStudentVoice || this.type === "student-voice") {
+      this.studentVoiceButton = true;
+    } else if (this.isSecondary || this.type === "secondary") {
+      this.secondaryButton = true;
+    }
   },
 };
 </script>
