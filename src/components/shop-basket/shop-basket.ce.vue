@@ -13,23 +13,33 @@
               :key="index"
               class="my-2 flex gap-4"
             >
-              <div class="w-2/12">
+              <div class="flex w-2/12 items-center justify-center">
                 <img
                   class="object-cover"
                   :alt="item.title"
                   :src="productImages[item.product_id]"
                 />
               </div>
-              <div class="flex w-3/4 flex-col gap-2">
-                <h2 class="text-xl">{{ item.product_name }}</h2>
-                <div class="gap-2">
-                  <p>Item Price: £{{ item.price_total }}</p>
-                  <p>Quantity: {{ item.quantity }}</p>
-                  <p>
-                    Total Price:{{
-                      formatPrice(item.quantity * item.price_total)
-                    }}
-                  </p>
+              <div class="grid w-3/4 grid-cols-5 gap-2">
+                <div class="col-span-3">
+                  <h2 class="text-xl">{{ item.product_name }}</h2>
+                  <div class="gap-2">
+                    <p>Item Price: £{{ item.price_total }}</p>
+                    <div class="flex items-center gap-2">
+                      <p>Quantity:</p>
+                      <FontAwesomeIcon icon="fas fa-minus" class="h-3 w-3" />
+                      <p class="text-lg">{{ item.quantity }}</p>
+                      <FontAwesomeIcon icon="fas fa-plus" class="h-3 w-3" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-2 grid grid-cols-subgrid">
+                  <div class="mb-2 flex items-end justify-end">
+                    <p class="text-xl">Total:&nbsp;</p>
+                    <p class="text-xl">
+                      {{ formatPrice(item.quantity * item.price_total) }}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -73,11 +83,24 @@
 <script>
 import Button from "../button/button.ce.vue";
 import axios from "../../_common/axios.mjs";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faPlus,
+  faMinus,
+  faTrashCan,
+  faX,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faPlus);
+library.add(faMinus);
+library.add(faTrashCan);
+library.add(faX);
 
 export default {
   name: "ShopBasket",
   components: {
     Button,
+    FontAwesomeIcon,
   },
   props: {
     errorMessage: {
