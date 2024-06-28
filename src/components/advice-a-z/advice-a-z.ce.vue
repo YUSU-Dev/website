@@ -29,6 +29,7 @@
       <div class="flex flex-col gap-x-2 gap-y-2 md:flex-row">
         <Button
           v-for="category in Categories"
+          :key="category"
           :title="category"
           is-advice-and-support
           class="px-8 text-center"
