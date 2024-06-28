@@ -1,51 +1,69 @@
 <template>
   <div class="container">
-    <div class="row pb-3">
-      <div class="col">
-        <label for="topic-search">Search for a topic</label>
-        <div class="input-group">
+    <div class="py-2 pb-3">
+      <label for="topic-search">Search for a topic</label>
+      <div class="flex items-center py-2">
+        <div class="input-group flex w-full border-[1px] border-black">
           <input
             id="topic-search"
-            class="form-control"
-            aria-label="Search"
+            class="search form-control w-full gap-6 p-2"
             type="text"
             name="search"
             placeholder="Search..."
-            aria-describedby="topic-search"
             v-model="Search"
           />
           <div class="input-group-append">
             <button
               type="submit"
-              class="btn btn-outline-secondary"
               aria-label="Submit"
+              class="btn btn-block btn-secondary h-full w-full bg-black px-1"
             >
-              <i class="fas fa-search"></i>
+              <FontAwesomeIcon
+                icon="fas fa-search"
+                class="mx-1 h-4 w-4 py-0.5 text-white"
+              />
             </button>
           </div>
         </div>
       </div>
-    </div>
-    <hr class="m-0" />
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-4 my-3" v-for="item in FilteredMenu">
-        <div class="card h-100 text-center" v-if="item.name">
-          <a :href="item.url">
-            <h3 class="h6 card-header">{{ item.name }}</h3>
-            <div class="card-body">
-              <p>{{ item.category }}</p>
-              <i class="fas fa-cross" v-if="item.icon" />
-            </div>
-          </a>
-        </div>
+      <div class="flex flex-col gap-x-2 gap-y-2 md:flex-row">
+        <Button
+          v-for="category in Categories"
+          :title="category"
+          is-advice-and-support
+          class="px-8 text-center"
+          @click="updateCategory(category)"
+        />
       </div>
+    </div>
+    <hr class="my-0" />
+    <div class="a-z-wrap mt-10 mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <Tile
+        v-for="item in FilteredMenu"
+        :key="item.name"
+        :url="item.url"
+        :title="item.name"
+        :image="getTileImage(item.category)"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import axios from "../../_common/axios.mjs";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Tile from "../Tile/tile.ce.vue";
+import Button from "../../components/button/button.ce.vue";
+
+library.add(faSearch);
+
 export default {
+  components: {
+    FontAwesomeIcon,
+    Tile,
+    Button,
+  },
   props: {
     apiurl: {
       type: String,
@@ -65,7 +83,6 @@ export default {
     };
   },
   created() {
-    console.log("cool");
     var self = this;
     let data = self.apitext;
     self.Menu = data.sort(self.compare);
@@ -101,8 +118,19 @@ export default {
       }
       return 0;
     },
-    updateCategory(event) {
-      this.selectedCategory = event.target.value;
+    getTileImage: function (category) {
+      if (category == "Academic Issues & University Processes") {
+        return "https://upload.wikimedia.org/wikipedia/commons/b/b6/Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg";
+      } else
+        return "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG";
+    },
+    updateCategory: function (category) {
+      if (this.selectedCategory != category) {
+        this.selectedCategory = category;
+      } else {
+        this.selectedCategory = null;
+      }
+      return true;
     },
   },
   computed: {
