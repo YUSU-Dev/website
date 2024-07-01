@@ -196,8 +196,8 @@ export default {
   data() {
     return {
       images: [
-        "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg",
-        "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
+        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp",
+        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Blue.webp",
       ],
     };
   },
