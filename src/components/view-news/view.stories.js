@@ -10,3 +10,9 @@ export const Default = {
     articleid: "2102",
   },
 };
+
+export const NoImage = {
+  args: {
+    articleid: "2104",
+  },
+};
