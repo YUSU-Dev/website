@@ -26,7 +26,8 @@ export default {
   props: {
     image: {
       type: String,
-      default: "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
+      default:
+        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Blue.webp",
     },
     productId: {
       type: Number,
