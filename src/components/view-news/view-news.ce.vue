@@ -3,12 +3,23 @@
     <main class="container mx-auto my-7">
       <Button title="Back to News" is-primary="true" arrow="true" url="/news" />
       <h2 class="mb-5 mt-10 text-3xl font-bold">
-        {{ Article.title ?? "Article not Found" }}
+        {{ Article.title ?? "Loading..." }}
       </h2>
-      <p v-if="Article.snippet" class="mb-3">{{ Article.snippet }}</p>
-      <p v-if="Article.date" class="mb-5">{{ Article.date }}</p>
+      <div class="mb-4">
+        <div class="gap-4 md:flex">
+          <img
+            :src="Article.thumbnail ?? randomImage()"
+            alt=""
+            class="h-[200px]"
+          />
+          <div>
+            <p v-if="Article.snippet" class="mb-3">{{ Article.snippet }}</p>
+            <p v-if="Article.date" class="mb-5">{{ Article.date }}</p>
+          </div>
+        </div>
+      </div>
       <hr />
-      <article id="news-article" v-html="Article.body" class="my-5"></article>
+      <article id="news-article" v-html="Article.body" class="mb-5"></article>
       <div v-if="loading" class="animate-pulse">
         <div class="flex-1 space-y-6 px-5 py-5">
           <div class="sr-only">Loading</div>
@@ -43,7 +54,16 @@ export default {
     return {
       Article: {},
       loading: true,
+      images: [
+        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp",
+        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Blue.webp",
+      ],
     };
+  },
+  methods: {
+    randomImage() {
+      return this.images[Math.floor(Math.random() * this.images.length)];
+    },
   },
   created() {
     var self = this;
@@ -56,6 +76,7 @@ export default {
       })
       .then(function (response) {
         self.Article = response.data;
+        console.log(self.Article);
         self.loading = false;
       })
       .catch(function () {
