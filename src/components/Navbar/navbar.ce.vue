@@ -1,6 +1,6 @@
 <template>
   <nav class="sticky left-0 top-0 z-10 w-full bg-beige shadow">
-    <div class="container mx-auto flex justify-between px-4 3xl:px-0">
+    <div class="container mx-auto flex justify-between">
       <div class="my-7">
         <a href="/" aria-label="Homepage">
           <img
@@ -67,20 +67,22 @@
             class="hidden lg:flex"
             href="/search#gsc.tab=0"
             aria-label="Search the website"
-            ><FontAwesomeIcon
+          >
+            <FontAwesomeIcon
               icon="fa-solid fa-magnifying-glass"
               class="h-8 w-8"
-            ></FontAwesomeIcon
-          ></a>
+            ></FontAwesomeIcon>
+          </a>
           <a
             class="ml-7 hidden lg:flex"
             href="/shop/basket"
             aria-label="View your basket"
-            ><FontAwesomeIcon
+          >
+            <FontAwesomeIcon
               icon="fa-solid fa-basket-shopping"
               class="h-8 w-8"
-            ></FontAwesomeIcon
-          ></a>
+            ></FontAwesomeIcon>
+          </a>
           <button
             class="ml-12 text-4xl"
             @click="navClosed = !navClosed"
@@ -97,50 +99,21 @@
       </div>
     </div>
     <div
-      class="absolute left-0 top-[133px] max-h-[calc(100vh-133px)] w-full overflow-y-auto bg-beige md:overflow-y-visible"
+      :class="{ hidden: navClosed }"
+      class="max-h-[calc(100vh-133px)] overflow-y-auto overscroll-contain bg-[#f5f5f5]"
     >
       <div
-        :class="{ hidden: navClosed }"
-        class="navbar container mx-auto px-4 pb-12 3xl:px-0"
+        class="container mx-auto flex flex-col pb-8 pt-6 lg:grid lg:grid-cols-5"
       >
-        <div v-if="icons" class="mb-8 mt-4 flex flex-wrap gap-4 md:hidden">
-          <a class="" href="/search#gsc.tab=0" aria-label="Search the website">
-            <FontAwesomeIcon
-              icon="fa-solid fa-magnifying-glass"
-              class="h-8 w-8"
-            ></FontAwesomeIcon
-          ></a>
-          <a class="" href="/shop/basket" aria-label="view your basket">
-            <FontAwesomeIcon
-              icon="fa-solid fa-basket-shopping"
-              class="h-8 w-8"
-            ></FontAwesomeIcon
-          ></a>
-          <a
-            class=""
-            id="__ba_panel"
-            aria-label="Accessibility Tools"
-            onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
-            href="/"
+        <div class="order-2 lg:order-1 lg:col-span-4">
+          <div
+            v-if="signedIn"
+            class="flex flex-col justify-center gap-y-3 lg:hidden"
           >
-            <FontAwesomeIcon
-              icon="fa-solid fa-universal-access"
-              class="h-8 w-8"
-            ></FontAwesomeIcon>
-          </a>
-          <a class="" onClick="getBearerToken()" href="#" aria-label="Login">
-            <FontAwesomeIcon
-              icon="fa-solid fa-circle-user"
-              class="h-8 w-8"
-            ></FontAwesomeIcon>
-          </a>
-        </div>
-        <div v-else class="mb-4 flex gap-6 md:hidden">
-          <div v-if="signedIn" class="flex flex-col justify-center gap-y-3">
             <button
               id="__ba_panel"
               onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
-              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -148,20 +121,23 @@
               Accessibility Tools
             </button>
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
               onClick="getBearerToken()"
               >Member Dashboard</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
               href="/sign-out"
               >Sign Out</a
             >
           </div>
-          <div v-else class="flex flex-col justify-center gap-y-3">
+          <div
+            v-else
+            class="mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 xs:flex-row lg:hidden"
+          >
             <button
               id="__ba_panel"
-              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -169,214 +145,160 @@
               Accessibility Tools
             </button>
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
               href="/sign-in"
               >Associate Sign In</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-white hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
               href="/sign-in/sso"
               >Student Sign In</a
             >
           </div>
-          <div class="flex flex-col items-center justify-center gap-4">
-            <a
-              class=""
-              href="/search#gsc.tab=0"
-              aria-label="Search the website"
-            >
-              <FontAwesomeIcon
-                icon="fa-solid fa-magnifying-glass"
-                class="h-8 w-8"
-              ></FontAwesomeIcon
-            ></a>
-            <a class="" href="/shop/basket" aria-label="View your basket">
-              <FontAwesomeIcon
-                icon="fa-solid fa-basket-shopping"
-                class="h-8 w-8"
-              ></FontAwesomeIcon
-            ></a>
-          </div>
-        </div>
-        <div
-          id="mobileItems"
-          class="mt-6 flex flex-col text-2xl md:hidden"
-          :class="{
-            hidden: menuData.sections
-              .map((section) => section.closed)
-              .some((closed) => !closed),
-          }"
-        >
-          <button
-            v-for="(section, index) in menuData.sections"
-            :key="section.name"
-            @click="section.closed = !section.closed"
-            :class="`${index != menuData.sections.length - 1 && 'border-b-2 border-black'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex items-center justify-between`"
+
+          <!-- Mobile Nav -->
+          <div
+            id="mobileItems"
+            class="mt-6 flex flex-col text-xl sm:hidden"
+            :class="{
+              hidden: menuData.sections
+                .map((section) => section.closed)
+                .some((closed) => !closed),
+            }"
           >
-            <p class="font-bold">{{ section.name }}</p>
-            <FontAwesomeIcon
-              icon="fa-solid fa-caret-right"
-              class="h-8 w-8"
-            ></FontAwesomeIcon>
-          </button>
-        </div>
-        <div
-          v-for="section in menuData.sections"
-          :key="section.name"
-          :id="section.name"
-          :class="{ hidden: section.closed }"
-        >
-          <button
-            @click="section.closed = !section.closed"
-            class="flex items-center"
-          >
-            <FontAwesomeIcon
-              icon="fa-solid fa-caret-left"
-              class="h-8 w-8"
-            ></FontAwesomeIcon>
-            <p class="text-4xl font-bold">{{ section.name }}</p>
-          </button>
-          <ul class="mt-5 flex flex-col gap-2 text-lg">
-            <li
-              v-for="(subheading, index) in section.links"
-              :key="subheading.name"
-              :class="`${index != section.links.length - 1 && 'border-b-2 border-black pb-3'} ${index != 0 && 'pt-3'}`"
-            >
-              <a :href="subheading.link" class="hover:underline">{{
-                subheading.name
-              }}</a>
-            </li>
-          </ul>
-        </div>
-        <div class="mb-8 hidden justify-end md:flex lg:hidden">
-          <div v-if="signedIn" class="flex gap-3 text-sm">
-            <a
-              class="flex items-center"
-              href="/search#gsc.tab=0"
-              aria-label="Search the website"
-            >
-              <FontAwesomeIcon
-                icon="fa-solid fa-magnifying-glass"
-                class="h-8 w-8"
-              ></FontAwesomeIcon
-            ></a>
-            <a
-              class="ml-7 flex items-center"
-              href="/shop/basket"
-              aria-label="View your basket"
-            >
-              <FontAwesomeIcon
-                icon="fa-solid fa-basket-shopping"
-                class="h-8 w-8"
-              ></FontAwesomeIcon
-            ></a>
             <button
-              id="__ba_panel"
-              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
-              aria-label="Listen with the ReachDeck Toolbar"
-              title="Listen with the ReachDeck Toolbar"
-              type="button"
+              v-for="(section, index) in menuData.sections"
+              :key="section.name"
+              @click="section.closed = !section.closed"
+              :class="`${index != menuData.sections.length - 1 && 'border-b border-black'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex items-center justify-between`"
             >
-              Accessibility Tools
-            </button>
-            <a
-              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
-              onClick="getBearerToken()"
-              >Member Dashboard</a
-            >
-            <a
-              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
-              href="/sign-out"
-              >Sign Out</a
-            >
-          </div>
-          <div v-else class="flex gap-3 text-sm">
-            <a
-              class="flex items-center"
-              href="/search#gsc.tab=0"
-              aria-label="Search the website"
-            >
+              <p class="text-start font-bold">{{ section.name }}</p>
               <FontAwesomeIcon
-                icon="fa-solid fa-magnifying-glass"
+                icon="fa-solid fa-caret-right"
                 class="h-8 w-8"
-              ></FontAwesomeIcon
-            ></a>
-            <a
-              class="ml-7 flex items-center"
-              href="/shop/basket"
-              aria-label="View your basket"
-            >
-              <FontAwesomeIcon
-                icon="fa-solid fa-basket-shopping"
-                class="h-8 w-8"
-              ></FontAwesomeIcon
-            ></a>
-            <button
-              id="__ba_panel"
-              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
-              aria-label="Listen with the ReachDeck Toolbar"
-              title="Listen with the ReachDeck Toolbar"
-              type="button"
-            >
-              Accessibility Tools
+              ></FontAwesomeIcon>
             </button>
-            <a
-              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
-              href="/sign-in"
-              >Associate Sign In</a
-            >
-            <a
-              class="flex items-center bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
-              href="/sign-in/sso"
-              >Student Sign In</a
-            >
           </div>
-        </div>
-        <div
-          class="hidden border-b-2 border-black md:grid md:grid-cols-3 lg:grid-cols-6"
-        >
           <div
             v-for="section in menuData.sections"
             :key="section.name"
-            class="flex flex-col"
+            :id="section.name"
+            :class="{ hidden: section.closed }"
           >
-            <div
-              class="flex h-1/5 w-full items-end border-b-2 border-black pb-2 pr-10"
+            <button
+              @click="section.closed = !section.closed"
+              class="flex items-center"
             >
-              <p class="text-start font-bold">{{ section.name }}</p>
-            </div>
-            <div class="h-4/5 pb-7 pt-3">
-              <ul class="flex flex-col gap-2 text-sm">
-                <li v-for="subheading in section.links" :key="subheading.name">
-                  <a :href="subheading.link" class="hover:underline">{{
-                    subheading.name
-                  }}</a>
-                </li>
-              </ul>
+              <FontAwesomeIcon
+                icon="fa-solid fa-caret-left"
+                class="h-8 w-8"
+              ></FontAwesomeIcon>
+              <p class="text-start text-xl font-bold">{{ section.name }}</p>
+            </button>
+            <ul class="mt-5 flex flex-col gap-2 text-lg">
+              <li
+                v-for="(subheading, index) in section.links"
+                :key="subheading.name"
+                :class="`${index != section.links.length - 1 && 'border-b border-black pb-3'} ${index != 0 && 'pt-3'}`"
+              >
+                <a :href="subheading.link" class="hover:underline">{{
+                  subheading.name
+                }}</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Desktop Nav -->
+          <div class="hidden grid-cols-2 gap-x-8 sm:grid md:grid-cols-3">
+            <div
+              v-for="section in menuData.sections"
+              :key="section.name"
+              class="nav-section flex flex-col pb-6"
+            >
+              <div class="flex w-full items-end pb-2 pr-10">
+                <p class="text-start font-bold">{{ section.name }}</p>
+              </div>
+              <div class="pb-7 pt-3">
+                <ul class="flex flex-col gap-2 text-sm">
+                  <li
+                    v-for="subheading in section.links"
+                    :key="subheading.name"
+                  >
+                    <a :href="subheading.link" class="hover:underline">{{
+                      subheading.name
+                    }}</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div class="mt-9 flex flex-wrap justify-between gap-y-2">
-          <div class="mb-5 flex flex-wrap gap-5 text-2xl md:text-base">
+
+        <div
+          class="order-1 flex flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
+        >
+          <div
+            class="mb-6 grid w-full grid-cols-2 justify-center gap-y-4 xs:flex xs:justify-between lg:mb-0 lg:flex-col lg:gap-y-8"
+          >
             <a
-              v-for="mainButton in menuData.mainButtons"
-              :key="mainButton.name"
-              class="w-36 rounded-[60px] bg-black px-4 py-1 text-center font-bold text-white hover:bg-[#f2cb50] hover:text-black"
-              :href="mainButton.link"
-              >{{ mainButton.name }}</a
+              class="flex gap-x-2 border-r border-black text-start text-lg font-bold xs:border-none sm:gap-x-6"
             >
+              <FontAwesomeIcon
+                icon="fa-solid fa-calendar"
+                class="h-6 w-6"
+              ></FontAwesomeIcon>
+              Events
+            </a>
+            <div
+              class="hidden h-8 border-r border-black xs:block lg:hidden"
+            ></div>
+            <a
+              class="flex justify-end gap-x-2 text-start text-lg font-bold xs:justify-start sm:gap-x-6"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-book"
+                class="h-6 w-6"
+              ></FontAwesomeIcon>
+              News
+            </a>
+            <div
+              class="hidden h-8 border-r border-black xs:block lg:hidden"
+            ></div>
+            <a
+              class="flex gap-x-2 border-r border-black text-start text-lg font-bold xs:border-none sm:gap-x-6"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-mug-saucer"
+                class="h-6 w-6"
+              ></FontAwesomeIcon>
+              Venues
+            </a>
+            <div
+              class="hidden h-8 border-r border-black xs:block lg:hidden"
+            ></div>
+            <a
+              class="flex justify-end gap-x-2 text-start text-lg font-bold xs:justify-start sm:gap-x-6"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-6 w-6"
+              ></FontAwesomeIcon>
+              Shop
+            </a>
           </div>
-          <div class="flex gap-3">
+          <div class="hidden gap-3 pb-8 lg:flex">
             <a
               v-for="socialPlatform in menuData.socials"
               :key="socialPlatform.name"
               :aria-label="socialPlatform.name"
               :href="socialPlatform.link"
               target="_blank"
-              ><FontAwesomeIcon
+            >
+              <FontAwesomeIcon
                 :icon="`fa-brands ${socialPlatform.icon}`"
-                class="h-8 w-8"
-            /></a>
+                class="h-6 w-6"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -394,6 +316,9 @@ import {
   faCaretLeft,
   faUniversalAccess,
   faCircleUser,
+  faCalendar,
+  faBook,
+  faMugSaucer,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -414,6 +339,9 @@ library.add(
   faCaretRight,
   faUniversalAccess,
   faCircleUser,
+  faCalendar,
+  faBook,
+  faMugSaucer,
 );
 
 export default {

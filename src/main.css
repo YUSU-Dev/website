@@ -59,6 +59,16 @@
 @tailwind components;
 
 @layer components {
+  /* Navbar */
+  .nav-section {
+    @apply border-r border-black;
+  }
+  .nav-section:nth-child(2n) {
+    @apply border-r-0 md:border-r;
+  }
+  .nav-section:nth-child(3n) {
+    @apply md:border-r-0 lg:border-r;
+  }
   /* v-select Classes */
   /* Events Filters */
   .events-filters {
