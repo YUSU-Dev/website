@@ -118,7 +118,7 @@ export default {
     FilteredArticles() {
       let self = this;
       if (self.selectedCategory != 0) {
-        console.log(this.Articles);
+        
         return self.Articles.filter(function (article) {
           return article.categories.includes(self.selectedCategory);
         });
