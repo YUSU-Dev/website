@@ -118,6 +118,10 @@ export default {
     FilteredArticles() {
       let self = this;
       if (self.selectedCategory != 0) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f1809a6c158aefeb29de47b62cbc48e4d2e9c90
         return self.Articles.filter(function (article) {
           return article.categories.includes(self.selectedCategory);
         });
