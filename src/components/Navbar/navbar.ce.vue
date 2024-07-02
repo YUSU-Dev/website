@@ -23,7 +23,7 @@
           <button
             id="__ba_panel"
             onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
-            class="bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
+            class="bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             aria-label="Listen with the ReachDeck Toolbar"
             title="Listen with the ReachDeck Toolbar"
             type="button"
@@ -31,12 +31,12 @@
             Accessibility Tools
           </button>
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             onClick="getBearerToken()"
             >Student Dashboard</a
           >
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             href="/sign-out"
             >Sign Out</a
           >
@@ -44,7 +44,7 @@
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <button
             id="__ba_panel"
-            class="bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
+            class="bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             aria-label="Listen with the ReachDeck Toolbar"
             title="Listen with the ReachDeck Toolbar"
             type="button"
@@ -52,12 +52,12 @@
             Accessibility Tools
           </button>
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             href="/sign-in"
             >Associate Sign In</a
           >
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-white hover:text-black"
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             href="/sign-in/sso"
             >Student Sign In</a
           >
@@ -113,7 +113,7 @@
             <button
               id="__ba_panel"
               onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
-              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -121,12 +121,12 @@
               Accessibility Tools
             </button>
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               onClick="getBearerToken()"
               >Member Dashboard</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               href="/sign-out"
               >Sign Out</a
             >
@@ -137,7 +137,7 @@
           >
             <button
               id="__ba_panel"
-              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
               type="button"
@@ -145,12 +145,12 @@
               Accessibility Tools
             </button>
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               href="/sign-in"
               >Associate Sign In</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-beige hover:text-black"
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               href="/sign-in/sso"
               >Student Sign In</a
             >
