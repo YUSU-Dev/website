@@ -132,6 +132,10 @@
     @apply bg-advice-green hover:bg-light-blue;
   }
 
+  .btn-disabled {
+    @apply cursor-not-allowed bg-gray-300;
+  }
+
   /* Skip to Main Content */
   #skiptocontent a {
     @apply absolute left-0 top-0 z-50 -translate-y-full transform bg-mustard px-4 py-2 text-black transition hover:bg-light-blue focus:translate-y-0;
