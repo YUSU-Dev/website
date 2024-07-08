@@ -223,12 +223,14 @@ export default {
           .then((response) => {
             var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
             var jsonData = JSON.parse("[" + correctedJsonString + "]");
+            console.log(jsonData);
             this.shopFullBasket = [...jsonData];
           });
       } else {
         this.shopFullBasket = [...this.shopBasket];
       }
       items = this.shopFullBasket[0].items;
+      console.log(items);
       this.getProductImages();
       // add quantity to items
       let newItems = [];
