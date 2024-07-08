@@ -31,7 +31,7 @@
             :name="'field[' + field.id + ']'"
             type="text"
             :min="field.min"
-            :max="field.nax"
+            :max="field.max"
             v-if="field.type == 'A' || field.type == 'S' || field.type == 'Y'"
             :required="field.required"
             :placeholder="field.name"
@@ -48,7 +48,7 @@
             type="email"
             :min="field.min"
             :placeholder="field.name + '@york.ac.uk'"
-            :max="field.nax"
+            :max="field.max"
             :required="field.required"
           />
           <input
@@ -59,11 +59,11 @@
             :name="'field[' + field.id + ']'"
             type="number"
             :min="field.min"
-            :max="field.nax"
+            :max="field.max"
             :required="field.required"
           />
           <small class="mt-4 font-thin" v-if="field.type == 'N'"
-            >A number between {{ field.min }} and {{ field.nax }}.</small
+            >A number between {{ field.min }} and {{ field.max }}.</small
           >
           <div v-if="field.type == 'D'">
             <select
