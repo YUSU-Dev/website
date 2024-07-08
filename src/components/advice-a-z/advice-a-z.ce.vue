@@ -55,7 +55,6 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import Tile from "../Tile/tile.ce.vue";
 import Button from "../../components/button/button.ce.vue";
 import SupportTile from "../support-tile/support-tile.ce.vue";
 
@@ -64,7 +63,6 @@ library.add(faSearch);
 export default {
   components: {
     FontAwesomeIcon,
-    Tile,
     Button,
     SupportTile,
   },
