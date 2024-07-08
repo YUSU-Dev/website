@@ -76,18 +76,20 @@
           <h2 class="mb-2 text-2xl font-bold">Summary</h2>
           <div class="flex justify-between text-lg">
             <p>Subtotal</p>
-            <p>£{{ shopBasket[0].sub_total }}</p>
+            <p>£{{ shopFullBasket[0].sub_total }}</p>
           </div>
           <div class="flex justify-between text-lg">
             <p>Postage</p>
-            <p>£{{ shopBasket[0].delivery_fee }}</p>
+            <p>£{{ shopFullBasket[0].delivery_fee }}</p>
           </div>
           <div class="flex justify-between text-lg">
             <p>Booking Fee</p>
-            <p>£{{ shopBasket[0].booking_fee }}</p>
+            <p>£{{ shopFullBasket[0].booking_fee }}</p>
           </div>
           <div class="mt-2 flex justify-between text-lg">
-            <h3 class="text-xl font-bold">Total £{{ shopBasket[0].total }}</h3>
+            <h3 class="text-xl font-bold">
+              Total £{{ shopFullBasket[0].total }}
+            </h3>
           </div>
         </div>
         <Button @click="payNow()" title="Go to checkout" :is-primary="true" />
@@ -179,6 +181,10 @@ export default {
         type: Array,
         value: [],
       },
+      shopFullBasket: {
+        type: Array,
+        value: [],
+      },
       ModalClosed: true,
       ErrorDescription: "",
     };
@@ -190,7 +196,7 @@ export default {
   methods: {
     getProductImages() {
       let self = this;
-      let items = this.shopBasket[0].items;
+      let items = this.shopFullBasket[0].items;
       items.forEach((item) => {
         axios
           .get(`https://pluto.sums.su/api/products/` + item.product_id, {
@@ -217,11 +223,12 @@ export default {
           .then((response) => {
             var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
             var jsonData = JSON.parse("[" + correctedJsonString + "]");
-            this.items.push(...jsonData);
+            this.shopFullBasket.push(...jsonData);
           });
       } else {
-        items = this.shopBasket[0].items;
+        this.shopFullBasket.push(...this.shopBasket);
       }
+      items = this.shopFullBasket[0].items;
       this.getProductImages();
       // add quantity to items
       let newItems = [];
