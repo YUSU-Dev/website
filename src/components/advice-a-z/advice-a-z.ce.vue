@@ -33,18 +33,20 @@
           :title="category"
           is-advice-and-support
           class="px-8 text-center"
+          :class="{ 'bg-light-blue': selectedCategory == category }"
           @click="updateCategory(category)"
         />
       </div>
     </div>
     <hr class="my-0" />
-    <div class="a-z-wrap mt-10 mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-      <Tile
+    <div class="tile-wrap">
+      <SupportTile
         v-for="item in FilteredMenu"
         :key="item.name"
+        :name="item.name"
+        :category="category"
         :url="item.url"
-        :title="item.name"
-        :image="getTileImage(item.category)"
+        :img="getTileImage(item.category)"
       />
     </div>
   </div>
@@ -56,6 +58,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Tile from "../Tile/tile.ce.vue";
 import Button from "../../components/button/button.ce.vue";
+import SupportTile from "../support-tile/support-tile.ce.vue";
 
 library.add(faSearch);
 
@@ -64,6 +67,7 @@ export default {
     FontAwesomeIcon,
     Tile,
     Button,
+    SupportTile,
   },
   props: {
     apiurl: {
@@ -121,9 +125,12 @@ export default {
     },
     getTileImage: function (category) {
       if (category == "Academic Issues & University Processes") {
-        return "https://upload.wikimedia.org/wikipedia/commons/b/b6/Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg";
-      } else
-        return "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG";
+        return "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp";
+      } else if (category == "Health, Wellbeing & Support") {
+        return "https://assets-cdn.sums.su/YU/website/img/advice/advice-green.webp";
+      } else {
+        return "https://assets-cdn.sums.su/YU/website/img/advice/advice-beige.webp";
+      }
     },
     updateCategory: function (category) {
       if (this.selectedCategory != category) {
