@@ -9,7 +9,7 @@
           {{ name }}
         </h4>
         <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
-          <p class="">Discover</p>
+          <p class="">Learn more</p>
           <FontAwesomeIcon
             icon="fas fa-arrow-right"
             class="ml-2 h-4 w-4 text-white transition group-hover:translate-x-4"
