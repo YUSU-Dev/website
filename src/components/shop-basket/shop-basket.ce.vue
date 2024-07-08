@@ -27,7 +27,13 @@
                     <p>Item Price: £{{ item.price_total }}</p>
                     <div class="flex items-center gap-2">
                       <p>Quantity:</p>
-                      <a @click="removeItem(item.id)" href="javascript:;">
+                      <a
+                        @click="removeItem(item.id)"
+                        href="javascript:;"
+                        :aria-label="
+                          'Remove' + item.product_name + 'from basket'
+                        "
+                      >
                         <FontAwesomeIcon icon="fas fa-minus" class="h-3 w-3" />
                       </a>
                       <p class="text-lg">{{ item.quantity }}</p>
@@ -38,7 +44,9 @@
                           '-' +
                           item.url_name
                         "
-                        aria-label=""
+                        :aria-label="
+                          'Add another' + item.product_name + 'to basket'
+                        "
                       >
                         <FontAwesomeIcon icon="fas fa-plus" class="h-3 w-3" />
                       </a>
