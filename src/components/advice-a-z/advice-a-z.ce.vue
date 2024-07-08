@@ -44,7 +44,6 @@
         v-for="item in FilteredMenu"
         :key="item.name"
         :name="item.name"
-        :category="category"
         :url="item.url"
         :img="getTileImage(item.category)"
       />

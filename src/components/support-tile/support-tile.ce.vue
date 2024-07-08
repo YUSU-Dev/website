@@ -31,7 +31,6 @@ export default {
   props: {
     img: { type: String, default: "" },
     name: { type: String, default: "" },
-    category: { type: String, default: "" },
     url: { type: String, default: "" },
   },
   components: {
