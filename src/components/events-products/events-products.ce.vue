@@ -4,7 +4,7 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
   />
   <div
-    class="container mx-auto flex flex-col items-center justify-center pt-20"
+    class="container mx-auto flex flex-col items-center justify-center py-20"
   >
     <div class="grid grid-cols-5 gap-x-4">
       <div
@@ -12,11 +12,50 @@
       >
         <div class="flex flex-col gap-y-4 border-b border-black pb-6">
           <h2 class="text-3xl font-bold">
-            {{ event_name }}
-            <span v-if="activity_name"> : {{ activity_name }}</span>
+            {{ day }} {{ date }} {{ month }} {{ year }}, {{ time }}
           </h2>
           <div v-if="event_description">
             <p>{{ event_description }}</p>
+          </div>
+        </div>
+
+        <!-- If not signed in -->
+        <div v-if="!signed_in" class="flex flex-col gap-y-4">
+          <p class="text-2xl font-bold">Are you a...</p>
+          <div class="flex gap-x-4 xs:gap-x-6">
+            <Button is-primary title="Student" class="px-6 font-semibold" />
+            <Button is-primary title="Public" class="px-8 font-semibold" />
+          </div>
+        </div>
+        <!-- If not signed in -->
+
+        <div v-else>
+          <div
+            v-if="no_products"
+            class="flex w-fit flex-col items-center justify-center gap-x-4 gap-y-2 bg-yellow-400 px-6 py-4 text-center sm:flex-row sm:gap-y-0 sm:text-start"
+          >
+            <FontAwesomeIcon
+              icon="fa-solid fa-circle-exclamation"
+              class="h-6 w-6"
+            ></FontAwesomeIcon>
+            <p class="text-lg font-bold">
+              Sorry! There are currently no products available for purchase.
+            </p>
+          </div>
+
+          <div v-if="show_products" class="flex flex-col gap-y-4">
+            <h3 class="text-2xl font-bold">Tickets</h3>
+
+            <div
+              v-if="event_error"
+              class="flex w-fit flex-col items-center justify-center gap-x-4 gap-y-2 bg-yellow-400 px-6 py-4 text-center sm:flex-row sm:gap-y-0 sm:text-start"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-circle-exclamation"
+                class="h-6 w-6"
+              ></FontAwesomeIcon>
+              <p class="text-lg font-bold">Oops! {{ event_error }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -26,16 +65,28 @@
         <Button
           arrow
           is-primary
-          title="Back to events"
-          href="/events"
+          title="Back to event"
+          :href="'/events/id/' + date_id + '-' + event_url"
           class=""
         />
         <div v-if="u_next_on" class="flex flex-col">
           <h2 class="mb-4 border-b border-black pb-4 text-2xl font-bold">
-            Next On
+            Important
           </h2>
-          <p class="text-xl font-semibold">{{ date }} {{ month }} {{ year }}</p>
-          <p class="text-lg">{{ time }}</p>
+          <div>
+            <ul class="flex list-inside list-disc flex-col gap-y-1">
+              <li class="text-sm">
+                Your selected tickets will not be reserved until the next step.
+              </li>
+              <li class="text-sm">
+                You will be required to provide identification on entry to the
+                venue.
+              </li>
+              <li class="text-sm">
+                Event tickets are non-refundable and non-transferable.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -45,9 +96,15 @@
 <script>
 import Button from "../../components/button/button.ce.vue";
 import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+library.add(faCircleExclamation);
 export default {
   props: {
+    signed_in: { type: Boolean, default: false },
     event_id: { type: String, default: "" },
+    date_id: { type: String, default: "" },
     event_name: { type: String, default: "" },
     event_description: { type: String, default: "" },
     event_url: { type: String, default: "" },
@@ -58,10 +115,14 @@ export default {
     next_on: { type: String, default: "" },
     u_next_on: { type: String, default: "" },
     u_next_on_all_day: { type: Boolean, default: false },
+    no_products: { type: Boolean, default: false },
+    show_products: { type: Boolean, default: false },
+    event_error: { type: String, default: "" },
   },
   components: {
     Button,
     HeroBanner,
+    FontAwesomeIcon,
   },
   data() {
     return {};
@@ -69,6 +130,11 @@ export default {
   computed: {
     date() {
       return new Date(this.u_next_on * 1000).getDate();
+    },
+    day() {
+      return new Date(this.u_next_on * 1000).toLocaleString("default", {
+        weekday: "long",
+      });
     },
     month() {
       return new Date(this.u_next_on * 1000).toLocaleString("default", {
