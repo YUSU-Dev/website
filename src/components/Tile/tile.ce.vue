@@ -1,7 +1,7 @@
 <template>
   <div class="tile mb-4 flex justify-center pb-2 lg:pb-3">
     <div
-      class="relative h-full w-full bg-white shadow transition hover:scale-105 md:w-[282px]"
+      class="relative h-full w-full bg-white shadow transition hover:scale-105 md:max-w-[282px]"
       :class="{ 'animate-pulse': loading }"
     >
       <a class="group flex h-full flex-col text-black no-underline" :href="url">
@@ -16,25 +16,29 @@
             loading="lazy"
           />
         </div>
-        <img
+        <div
           v-else-if="group && group.thumbnail_url"
-          class="aspect-square bg-cover bg-center object-cover"
-          :src="group.thumbnail_url"
-          alt=""
-          loading="lazy"
-        />
-
+          class="flex aspect-square items-center justify-center"
+        >
+          <img
+            class="aspect-square bg-cover bg-center object-cover"
+            :src="group.thumbnail_url"
+            alt=""
+            loading="lazy"
+          />
+        </div>
         <div
           v-else-if="loading"
           class="aspect-square bg-slate-200 bg-cover bg-center"
         ></div>
-        <img
-          v-else
-          class="aspect-square bg-cover bg-center"
-          :src="randomImage()"
-          alt=""
-          loading="lazy"
-        />
+        <div v-else class="flex aspect-square items-center justify-center">
+          <img
+            class="aspect-square bg-cover bg-center"
+            :src="randomImage()"
+            alt=""
+            loading="lazy"
+          />
+        </div>
         <div v-if="!loading" class="flex h-full flex-col justify-between p-6">
           <div class="flex flex-col">
             <p v-if="shopGroupName" class="text-xs font-semibold text-gray-800">
