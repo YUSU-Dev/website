@@ -34,7 +34,7 @@
         <div v-else class="flex aspect-square items-center justify-center">
           <img
             class="aspect-square bg-cover bg-center"
-            :src="randomImage()"
+            :src="randomImage(section)"
             alt=""
             loading="lazy"
           />
@@ -130,6 +130,7 @@ import {
   faArrowRight,
   faTag,
 } from "@fortawesome/free-solid-svg-icons";
+import { randomImageUrl } from "../../_common/randomImage.mjs";
 
 library.add(faTag, faArrowLeft, faArrowRight);
 
@@ -184,6 +185,10 @@ export default {
       type: String,
       default: null,
     },
+    section: {
+      type: String,
+      default: "primary",
+    },
     appendCategory: {
       type: String,
       default: null,
@@ -198,16 +203,11 @@ export default {
     },
   },
   data() {
-    return {
-      images: [
-        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp",
-        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Blue.webp",
-      ],
-    };
+    return {};
   },
   methods: {
-    randomImage() {
-      return this.images[Math.floor(Math.random() * this.images.length)];
+    randomImage(section) {
+      return randomImageUrl(section);
     },
     formatDate(date) {
       return moment(date).format("DD MMMM YYYY");
