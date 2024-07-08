@@ -148,7 +148,9 @@ export default {
     },
     shopBasket: {
       type: Array,
-      required: true,
+      default() {
+        return [];
+      },
     },
   },
   data() {
@@ -181,13 +183,9 @@ export default {
       ErrorDescription: "",
     };
   },
-  created() {
-    console.log(this.shopBasket[0].total);
-  },
+  created() {},
   mounted() {
     this.getBasketItems();
-    console.log(this.items);
-    console.log(this.productImages);
   },
   methods: {
     getProductImages() {
@@ -212,7 +210,21 @@ export default {
       });
     },
     getBasketItems() {
-      let items = this.shopBasket[0].items;
+      let items = [];
+      if (this.shopBasket.length === 0) {
+        axios
+          .get("https://yu-development.sums.su/shop/basket-api")
+          .then((response) => {
+            var jsonData = JSON.parse(
+              "[" +
+                response.data.substring(0, response.data.lastIndexOf(",")) +
+                "]",
+            );
+            this.items.push(...jsonData);
+          });
+      } else {
+        items = this.shopBasket[0].items;
+      }
       this.getProductImages();
       // add quantity to items
       let newItems = [];
