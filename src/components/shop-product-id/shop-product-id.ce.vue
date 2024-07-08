@@ -7,7 +7,7 @@
       <div class="md:w-1/2">
         <img class="object-cover" :alt="title" :src="image" />
       </div>
-      <div class="ml-4 flex flex-col gap-2 md:w-5/12">
+      <div class="flex flex-col gap-2 md:ml-4 md:w-5/12">
         <h1 class="text-2xl font-bold">{{ title }}</h1>
         <h2 class="text-xl">{{ price }}</h2>
         <AddToBasket
