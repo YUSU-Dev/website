@@ -1,4 +1,4 @@
-import "./shop-basket.component.js";
+import "../shop-basket/shop-basket.component.js";
 
 export default {
   title: "Components/Shop Basket",

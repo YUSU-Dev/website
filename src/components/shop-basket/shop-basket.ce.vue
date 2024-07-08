@@ -4,7 +4,7 @@
       <Button :is-primary="true" title="Back to Shop" arrow :url="'/shop'" />
     </div>
     <div class="flex flex-wrap md:flex-row">
-      <div class="md:w-2/3">
+      <div class="mb-2 md:w-2/3">
         <div>
           <h1 class="text-2xl font-bold">Basket</h1>
           <div>
@@ -16,20 +16,32 @@
               <div class="flex w-2/12 items-center justify-center">
                 <img
                   class="object-cover"
-                  :alt="item.title"
+                  alt=""
                   :src="productImages[item.product_id]"
                 />
               </div>
-              <div class="grid w-3/4 grid-cols-5 gap-2">
+              <div class="w-3/4 grid-cols-5 gap-2 md:grid">
                 <div class="col-span-3">
                   <h2 class="text-xl">{{ item.product_name }}</h2>
                   <div class="gap-2">
                     <p>Item Price: £{{ item.price_total }}</p>
                     <div class="flex items-center gap-2">
                       <p>Quantity:</p>
-                      <FontAwesomeIcon icon="fas fa-minus" class="h-3 w-3" />
+                      <a @click="removeItem(item.id)" href="javascript:;">
+                        <FontAwesomeIcon icon="fas fa-minus" class="h-3 w-3" />
+                      </a>
                       <p class="text-lg">{{ item.quantity }}</p>
-                      <FontAwesomeIcon icon="fas fa-plus" class="h-3 w-3" />
+                      <a
+                        :href="
+                          '/shop/product/' +
+                          item.product_id +
+                          '-' +
+                          item.url_name
+                        "
+                        aria-label=""
+                      >
+                        <FontAwesomeIcon icon="fas fa-plus" class="h-3 w-3" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -45,7 +57,11 @@
             </div>
           </div>
         </div>
-        <Button title="Empty basket" :is-primary="true" />
+        <Button
+          @click="emptyBasket()"
+          title="Empty basket"
+          :is-primary="true"
+        />
       </div>
       <div class="flex flex-col gap-2 md:ml-4 md:w-2/12">
         <div class="bg-gray-200 p-4">
@@ -66,7 +82,7 @@
             <h3 class="text-xl font-bold">Total £{{ shopBasket[0].total }}</h3>
           </div>
         </div>
-        <Button title="Go to checkout" :is-primary="true" />
+        <Button @click="payNow()" title="Go to checkout" :is-primary="true" />
         <p class="mt-2">
           All events tickets are non-refundable. If you do require help with
           your order after purchasing please contact
@@ -78,11 +94,25 @@
       </div>
     </div>
   </div>
+  <Modal
+    signed-in
+    :title="'Basket Error!'"
+    :error-description="ErrorDescription"
+    :modal-closed="ModalClosed"
+    @close="ModalClosed = true"
+  />
 </template>
 
 <script>
 import Button from "../button/button.ce.vue";
+import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
+import { randomImageUrl } from "../../_common/randomImage.mjs";
+import {
+  removeItemHandler,
+  emptyBasketHandler,
+  payNowHandler,
+} from "../shop/shop.gateway.js";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -101,6 +131,7 @@ export default {
   components: {
     Button,
     FontAwesomeIcon,
+    Modal,
   },
   props: {
     errorMessage: {
@@ -138,6 +169,8 @@ export default {
         type: Array,
         value: [],
       },
+      ModalClosed: true,
+      ErrorDescription: "",
     };
   },
   created() {
@@ -161,8 +194,9 @@ export default {
           })
           .then((response) => {
             self.productImages[item.product_id] =
-              response.data.title ??
-              "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg";
+              response.data.image != ""
+                ? response.data.image
+                : randomImageUrl("primary");
           })
           .catch((error) => {
             console.error(error);
@@ -192,6 +226,90 @@ export default {
         style: "currency",
         currency: "GBP",
       });
+    },
+    removeItem(itemId) {
+      let self = this;
+      removeItemHandler(itemId)
+        .then(function (response) {
+          if (!response["success"]) {
+            var data = response.error_message;
+            self.ErrorDescription = data;
+            self.ModalClosed = false;
+            return;
+          } else {
+            self.getBasketItems();
+          }
+        })
+        .catch(function (response) {
+          if (response.error_message != "undefined") {
+            console.log(
+              "There was an error adding the product to the basket: " +
+                response.error_message,
+            );
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          } else {
+            console.log("Undefined error adding product to basket");
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          }
+        });
+    },
+    emptyBasket() {
+      let self = this;
+      emptyBasketHandler()
+        .then(function (response) {
+          if (!response["success"]) {
+            var data = response.error_message;
+            self.ErrorDescription = data;
+            self.ModalClosed = false;
+            return;
+          } else {
+            self.getBasketItems();
+          }
+        })
+        .catch(function (response) {
+          if (response.error_message != "undefined") {
+            console.log(
+              "There was an error clearing the basket: " +
+                response.error_message,
+            );
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          } else {
+            console.log("Undefined error clearing the basket");
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          }
+        });
+    },
+    payNow() {
+      let self = this;
+      payNowHandler()
+        .then(function (response) {
+          if (!response["success"]) {
+            var data = response.error_message;
+            self.ErrorDescription = data;
+            self.ModalClosed = false;
+            return;
+          } else {
+            location.href = response.url;
+          }
+        })
+        .catch(function (response) {
+          if (response.error_message != "undefined") {
+            console.log(
+              "There was an error clearing the basket: " +
+                response.error_message,
+            );
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          } else {
+            console.log("Undefined error clearing the basket");
+            self.ErrorDescription = response.error_message;
+            self.ModalClosed = false;
+          }
+        });
     },
   },
 };
