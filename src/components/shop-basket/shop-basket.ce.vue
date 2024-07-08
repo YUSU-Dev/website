@@ -189,10 +189,10 @@ export default {
       ErrorDescription: "",
     };
   },
-  created() {},
-  mounted() {
+  created() {
     this.getBasketItems();
   },
+  mounted() {},
   methods: {
     getProductImages() {
       let self = this;
@@ -223,10 +223,10 @@ export default {
           .then((response) => {
             var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
             var jsonData = JSON.parse("[" + correctedJsonString + "]");
-            this.shopFullBasket.push(...jsonData);
+            this.shopFullBasket = [...jsonData];
           });
       } else {
-        this.shopFullBasket.push(...this.shopBasket);
+        this.shopFullBasket = [...this.shopBasket];
       }
       items = this.shopFullBasket[0].items;
       this.getProductImages();
