@@ -116,6 +116,7 @@
           :url="'/activities/view/' + Group.url_name"
           :title="Group.name"
           :image="Group.thumbnail_url"
+          section="student-life"
         />
       </div>
       <div class="a-z-wrap mt-10" v-else>
