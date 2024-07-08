@@ -215,11 +215,8 @@ export default {
         axios
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
-            var jsonData = JSON.parse(
-              "[" +
-                response.data.substring(0, response.data.lastIndexOf(",")) +
-                "]",
-            );
+            var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
+            var jsonData = JSON.parse("[" + correctedJsonString + "]");
             this.items.push(...jsonData);
           });
       } else {
