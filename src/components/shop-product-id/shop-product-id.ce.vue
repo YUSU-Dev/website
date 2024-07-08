@@ -43,11 +43,6 @@ export default {
     ShopProductFields,
   },
   props: {
-    image: {
-      type: String,
-      default:
-        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Blue.webp",
-    },
     productId: {
       type: Number,
       default: null,
@@ -64,6 +59,7 @@ export default {
       description: "",
       fields: [],
       hasStock: true,
+      image: "",
     };
   },
   created() {
@@ -83,6 +79,12 @@ export default {
         }
         self.description = response.data.description;
         self.fields = response.data.fields;
+        if (response.data.image) {
+          self.image = response.data.image;
+        } else {
+          self.image =
+            "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp";
+        }
       })
       .catch((error) => {
         console.error(error);
