@@ -7,7 +7,7 @@
       <div class="md:w-1/2">
         <img class="object-cover" :alt="title" :src="image" />
       </div>
-      <div class="ml-4 flex flex-col gap-2 md:w-5/12">
+      <div class="flex flex-col gap-2 md:ml-4 md:w-5/12">
         <h1 class="text-2xl font-bold">{{ title }}</h1>
         <h2 class="text-xl">{{ price }}</h2>
         <AddToBasket
@@ -43,10 +43,6 @@ export default {
     ShopProductFields,
   },
   props: {
-    image: {
-      type: String,
-      default: "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
-    },
     productId: {
       type: Number,
       default: null,
@@ -63,6 +59,7 @@ export default {
       description: "",
       fields: [],
       hasStock: true,
+      image: "",
     };
   },
   created() {
@@ -82,6 +79,12 @@ export default {
         }
         self.description = response.data.description;
         self.fields = response.data.fields;
+        if (response.data.image) {
+          self.image = response.data.image;
+        } else {
+          self.image =
+            "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp";
+        }
       })
       .catch((error) => {
         console.error(error);

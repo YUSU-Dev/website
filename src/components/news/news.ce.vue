@@ -166,10 +166,6 @@ export default {
       formCategoriesElement: null,
       awaitMountPromise: null,
       currentURLAccessibilityHelper: null,
-      images: [
-        "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Red.jpg",
-        "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
-      ],
       perPage: 12,
       embeddedPerPage: 4,
     };
@@ -371,11 +367,6 @@ export default {
     formatDate(date) {
       var formattedDate = moment(date).format("DD MMMM YYYY");
       return formattedDate;
-    },
-    randomImage() {
-      return `url("${
-        this.images[Math.floor(Math.random() * this.images.length)]
-      }")`;
     },
   },
 };
