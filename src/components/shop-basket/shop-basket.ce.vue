@@ -232,7 +232,8 @@ export default {
               console.log(jsonData);
               this.shopFullBasket = [...jsonData];
             } else {
-              this.shopFullBasket = [...JSON.parse(response.data)];
+              console.log(response.data);
+              this.shopFullBasket = [...response.data];
             }
           });
       } else {
