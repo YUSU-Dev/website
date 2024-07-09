@@ -228,7 +228,7 @@ export default {
               .replace(/,\s*(\])/g, "$1")
               .replace(/\r?\n/g, "");
             console.log(correctedJsonString);
-            var jsonData = JSON.parse("[" + correctedJsonString + "]");
+            var jsonData = JSON.parse("[" + response.data + "]");
             console.log(jsonData);
             this.shopFullBasket = [...jsonData];
           });
