@@ -281,7 +281,7 @@
             ></div>
             <a
               class="flex justify-end gap-x-2 text-start text-lg font-bold xs:justify-start sm:gap-x-6"
-              href="/shop/basket"
+              href="/shop"
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-basket-shopping"
