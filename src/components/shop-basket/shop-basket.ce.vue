@@ -225,8 +225,16 @@ export default {
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
             var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
-            console.log(correctedJsonString);
-            var jsonData = JSON.parse("[" + correctedJsonString + "]");
+            // Regex to find "product_name" and its value, capturing the value for manipulation
+            let productNameCorrected = correctedJsonString.replace(
+              /("product_name"\s*:\s*")([^"]*)(")/g,
+              function (match, p1, p2, p3) {
+                // Escape " inside the product_name value
+                let correctedValue = p2.replace(/"/g, '\\"');
+                return p1 + correctedValue + p3;
+              },
+            );
+            var jsonData = JSON.parse("[" + productNameCorrected + "]");
             console.log(jsonData);
             this.shopFullBasket = [...jsonData];
           });
