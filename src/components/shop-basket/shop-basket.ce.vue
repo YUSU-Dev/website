@@ -3,7 +3,7 @@
     <div class="my-4">
       <Button :is-primary="true" title="Back to Shop" arrow :url="'/shop'" />
     </div>
-    <div v-if="!items">
+    <div v-if="items.length === 0">
       <p>No items</p>
     </div>
     <div v-else class="flex flex-wrap md:flex-row">
@@ -225,9 +225,11 @@ export default {
         await axios
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
-            var correctedJsonString = self.jsonFormatter(response.data);
-            var jsonData = JSON.parse(correctedJsonString);
-            console.log(jsonData);
+            if (response.data.basket_items != "0") {
+              var correctedJsonString = self.jsonFormatter(response.data);
+              var jsonData = JSON.parse(correctedJsonString);
+              console.log(jsonData);
+            }
             this.shopFullBasket = [...jsonData];
           });
       } else {
