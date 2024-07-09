@@ -219,22 +219,14 @@ export default {
       });
     },
     async getBasketItems() {
+      let self = this;
       let tempItems = [];
       if (this.shopBasket.length === 0) {
         await axios
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
-            var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
-            // Regex to find "product_name" and its value, capturing the value for manipulation
-            let productNameCorrected = correctedJsonString.replace(
-              /("product_name"\s*:\s*")([^"]*)(")/g,
-              function (match, p1, p2, p3) {
-                // Escape " inside the product_name value
-                let correctedValue = p2.replace(/"/g, '\\"');
-                return p1 + correctedValue + p3;
-              },
-            );
-            var jsonData = JSON.parse("[" + productNameCorrected + "]");
+            var correctedJsonString = self.jsonFormatter(response.data);
+            var jsonData = JSON.parse(correctedJsonString);
             console.log(jsonData);
             this.shopFullBasket = [...jsonData];
           });
@@ -257,6 +249,22 @@ export default {
         }
       });
       this.items = newItems;
+    },
+    jsonFormatter(jsonString) {
+      // Remove trailing commas from the JSON string
+      let fixedJsonString = jsonString
+        .replace(/,\s*]/g, "]")
+        .replace(/,\s*}/g, "}");
+      // Escape double quotes inside string values
+      fixedJsonString = fixedJsonString.replace(
+        /"([^"]*?)":\s*"([^"]*?)"([^"]*?)"/g,
+        (match, p1, p2, p3) => {
+          // Escape double quotes in the second capturing group
+          const escapedValue = p2.replace(/"/g, '\\"');
+          return `"${p1}": "${escapedValue}"${p3}"`;
+        },
+      );
+      return fixedJsonString;
     },
     formatPrice(price) {
       return price.toLocaleString("en-GB", {
