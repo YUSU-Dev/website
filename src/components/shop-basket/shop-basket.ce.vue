@@ -359,6 +359,7 @@ export default {
             self.ModalClosed = false;
             return;
           } else {
+            self.getBasketItems();
             location.href = response.url;
           }
         })
