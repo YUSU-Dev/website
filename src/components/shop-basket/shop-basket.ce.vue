@@ -3,14 +3,11 @@
     <div class="my-4">
       <Button :is-primary="true" title="Back to Shop" arrow :url="'/shop'" />
     </div>
-    <div v-if="items.length === 0">
-      <p>No items</p>
-    </div>
-    <div v-else class="flex flex-wrap md:flex-row">
+    <div class="flex flex-wrap md:flex-row">
       <div class="mb-2 md:w-2/3">
         <div>
           <h1 class="text-2xl font-bold">Basket</h1>
-          <div>
+          <div v-if="items">
             <div
               v-for="(item, index) in items"
               :key="index"
@@ -67,11 +64,15 @@
               </div>
             </div>
           </div>
+          <div v-else>
+            <p>No items in your basket. Why not check out our shop?</p>
+          </div>
         </div>
         <Button
           @click="emptyBasket()"
           title="Empty basket"
           :is-primary="true"
+          v-if="items"
         />
       </div>
       <div class="flex flex-col gap-2 md:ml-4 md:w-2/12">
@@ -232,7 +233,6 @@ export default {
               console.log(jsonData);
               this.shopFullBasket = [...jsonData];
             } else {
-              console.log(response.data);
               this.shopFullBasket = [...response.data];
             }
           });
