@@ -108,7 +108,7 @@
         <div class="order-2 lg:order-1 lg:col-span-4">
           <div
             v-if="signedIn"
-            class="flex flex-col justify-center gap-y-3 lg:hidden"
+            class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
           >
             <button
               id="__ba_panel"
@@ -242,6 +242,7 @@
           >
             <a
               class="flex gap-x-2 border-r border-black text-start text-lg font-bold xs:border-none sm:gap-x-6"
+              href="/events"
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-calendar"
@@ -254,6 +255,7 @@
             ></div>
             <a
               class="flex justify-end gap-x-2 text-start text-lg font-bold xs:justify-start sm:gap-x-6"
+              href="/news"
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-book"
@@ -266,6 +268,7 @@
             ></div>
             <a
               class="flex gap-x-2 border-r border-black text-start text-lg font-bold xs:border-none sm:gap-x-6"
+              href="/venues"
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-mug-saucer"
@@ -278,6 +281,7 @@
             ></div>
             <a
               class="flex justify-end gap-x-2 text-start text-lg font-bold xs:justify-start sm:gap-x-6"
+              href="/shop"
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-basket-shopping"
