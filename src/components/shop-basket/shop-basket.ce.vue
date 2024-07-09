@@ -230,8 +230,10 @@ export default {
               var correctedJsonString = self.jsonFormatter(response.data);
               var jsonData = JSON.parse(correctedJsonString);
               console.log(jsonData);
+              this.shopFullBasket = [...jsonData];
+            } else {
+              this.shopFullBasket = [...JSON.parse(response.data)];
             }
-            this.shopFullBasket = [...jsonData];
           });
       } else {
         this.shopFullBasket = [...this.shopBasket];
