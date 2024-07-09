@@ -215,16 +215,17 @@ export default {
           });
       });
     },
-    getBasketItems() {
+    async getBasketItems() {
       let tempItems = [];
       if (this.shopBasket.length === 0) {
-        axios
+        await axios
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
             var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
             var jsonData = JSON.parse("[" + correctedJsonString + "]");
             console.log(jsonData);
             this.shopFullBasket = [...jsonData];
+            console.log(this.shopFullBasket);
           });
       } else {
         this.shopFullBasket = [...this.shopBasket];
