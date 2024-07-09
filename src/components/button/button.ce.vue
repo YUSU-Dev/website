@@ -7,7 +7,6 @@
       'btn-student-life': studentLifeButton,
       'btn-student-voice': studentVoiceButton,
       'btn-advice-support': adviceAndSupportButton,
-      'btn-disabled': disabled,
     }"
     :href="url"
   >
@@ -44,10 +43,6 @@ export default {
     isSecondary: Boolean,
     arrow: Boolean,
     isTertiary: Boolean,
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
     url: {
       type: String,
       default: "javascript:;",

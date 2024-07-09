@@ -18,8 +18,8 @@
     >
       <Button
         v-if="product_inventory == 0"
-        class="h-min"
-        :disabled="true"
+        class="h-min bg-gray-300"
+        disabled="true"
         title="Sold Out"
       />
       <Button v-else class="h-min" :is-primary="true" title="Add to basket" />

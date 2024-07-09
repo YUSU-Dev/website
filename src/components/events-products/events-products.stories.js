@@ -39,6 +39,11 @@ export const signedIn = {
     from_price: "£1.00",
     external_tickets: false,
     event_url: "test-society-trip-to-big-tesco",
+    show_products: true,
+    event_products: true,
+    product_name: "Test Product",
+    product_price: "0",
+    product_inventory: 10,
   },
 };
 

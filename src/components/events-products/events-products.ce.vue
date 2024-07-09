@@ -56,6 +56,17 @@
               ></FontAwesomeIcon>
               <p class="text-lg font-bold">Oops! {{ event_error }}</p>
             </div>
+
+            <div
+              v-if="event_products"
+              class="flex w-full flex-col gap-y-4 pb-20 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
+            >
+              <EventProductTile
+                :product_name="product_name"
+                :product_price="product_price"
+                :product_inventory="product_inventory"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -99,6 +110,7 @@ import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import EventProductTile from "../../components/event-product-tile/event-product-tile.ce.vue";
 library.add(faCircleExclamation);
 export default {
   props: {
@@ -118,11 +130,18 @@ export default {
     no_products: { type: Boolean, default: false },
     show_products: { type: Boolean, default: false },
     event_error: { type: String, default: "" },
+    //This will need changing to an array of objects I think?
+    event_products: { type: Boolean, default: false },
+    //
+    product_name: { type: String, default: "" },
+    product_price: { type: String, default: "" },
+    product_inventory: { type: String, default: "" },
   },
   components: {
     Button,
     HeroBanner,
     FontAwesomeIcon,
+    EventProductTile,
   },
   data() {
     return {};
