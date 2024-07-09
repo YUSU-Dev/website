@@ -256,10 +256,15 @@ export default {
         const jsonObject = JSON.parse(jsonString);
         return JSON.stringify(jsonObject);
       } catch {
+        jsonString = jsonString.replace(
+          /'([^']*)'/g,
+          (match, p1) => `"${p1.replace(/"/g, '\\"')}"`,
+        );
         // If parsing fails, attempt to fix trailing commas
         let fixedJsonString = jsonString
           .replace(/,\s*]/g, "]")
           .replace(/,\s*}/g, "}");
+
         // Attempt to parse and stringify again to ensure valid JSON and proper escaping
         try {
           const jsonObject = JSON.parse(fixedJsonString);
