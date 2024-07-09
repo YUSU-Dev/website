@@ -7,7 +7,7 @@
       <div class="mb-2 md:w-2/3">
         <div>
           <h1 class="text-2xl font-bold">Basket</h1>
-          <div v-if="items">
+          <div v-if="items.length > 0">
             <div
               v-for="(item, index) in items"
               :key="index"
@@ -64,15 +64,17 @@
               </div>
             </div>
           </div>
-          <div v-else>
-            <p>No items in your basket. Why not check out our shop?</p>
+          <div v-else class="my-4 text-center text-lg">
+            <p>
+              There are no items in your basket. Why not check out our shop?
+            </p>
           </div>
         </div>
         <Button
           @click="emptyBasket()"
           title="Empty basket"
           :is-primary="true"
-          v-if="items"
+          v-if="items.length > 0"
         />
       </div>
       <div class="flex flex-col gap-2 md:ml-4 md:w-2/12">

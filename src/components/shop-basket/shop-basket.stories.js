@@ -74,3 +74,18 @@ export const Default = {
     ],
   },
 };
+
+export const EmptyBasket = {
+  args: {
+    shopBasket: [
+      {
+        basket_items: "0",
+        sub_total: "0",
+        booking_fee: "0.00",
+        delivery_fee: "0.00",
+        total: "0",
+        items: [],
+      },
+    ],
+  },
+};
