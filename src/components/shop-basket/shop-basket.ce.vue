@@ -3,7 +3,10 @@
     <div class="my-4">
       <Button :is-primary="true" title="Back to Shop" arrow :url="'/shop'" />
     </div>
-    <div class="flex flex-wrap md:flex-row">
+    <div v-if="!items">
+      <p>No items</p>
+    </div>
+    <div v-else class="flex flex-wrap md:flex-row">
       <div class="mb-2 md:w-2/3">
         <div>
           <h1 class="text-2xl font-bold">Basket</h1>
@@ -222,17 +225,15 @@ export default {
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
             var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
-            var jsonData = JSON.parse("[" + correctedJsonString + "]");
+            console.log(correctedJsonString);
+            var jsonData = JSON.parse(correctedJsonString);
             console.log(jsonData);
             this.shopFullBasket = [...jsonData];
-            console.log(this.shopFullBasket);
           });
       } else {
         this.shopFullBasket = [...this.shopBasket];
       }
-      console.log(this.shopFullBasket);
       tempItems = this.shopFullBasket[0].items;
-      console.log(tempItems);
       this.getProductImages();
       // add quantity to items
       let newItems = [];
@@ -248,7 +249,6 @@ export default {
         }
       });
       this.items = newItems;
-      console.log(this.items);
     },
     formatPrice(price) {
       return price.toLocaleString("en-GB", {
