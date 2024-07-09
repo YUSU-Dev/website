@@ -255,15 +255,18 @@ export default {
       let fixedJsonString = jsonString
         .replace(/,\s*]/g, "]")
         .replace(/,\s*}/g, "}");
+      console.log(fixedJsonString);
       // Escape double quotes inside string values
       fixedJsonString = fixedJsonString.replace(
         /"([^"]*?)":\s*"([^"]*?)"([^"]*?)"/g,
         (match, p1, p2, p3) => {
           // Escape double quotes in the second capturing group
           const escapedValue = p2.replace(/"/g, '\\"');
+          console.log(escapedValue);
           return `"${p1}": "${escapedValue}"${p3}"`;
         },
       );
+      console.log(fixedJsonString);
       return fixedJsonString;
     },
     formatPrice(price) {
