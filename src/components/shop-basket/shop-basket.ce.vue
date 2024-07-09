@@ -225,8 +225,8 @@ export default {
         await axios
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
-            console.log(response.data);
-            if (response.data.basket_items != "0") {
+            console.log(response.data[0]);
+            if (response.data[0].basket_items != "0") {
               var correctedJsonString = self.jsonFormatter(response.data);
               var jsonData = JSON.parse(correctedJsonString);
               console.log(jsonData);
