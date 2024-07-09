@@ -224,9 +224,11 @@ export default {
         await axios
           .get("https://yu-development.sums.su/shop/basket-api")
           .then((response) => {
-            var correctedJsonString = response.data.replace(/,\s*(\])/g, "$1");
+            var correctedJsonString = response.data
+              .replace(/,\s*(\])/g, "$1")
+              .replace(/\r?\n/g, "");
             console.log(correctedJsonString);
-            var jsonData = JSON.parse(correctedJsonString);
+            var jsonData = JSON.parse("[" + correctedJsonString + "]");
             console.log(jsonData);
             this.shopFullBasket = [...jsonData];
           });
