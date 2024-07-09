@@ -216,7 +216,7 @@ export default {
       });
     },
     getBasketItems() {
-      let items = [];
+      let tempItems = [];
       if (this.shopBasket.length === 0) {
         axios
           .get("https://yu-development.sums.su/shop/basket-api")
@@ -229,12 +229,13 @@ export default {
       } else {
         this.shopFullBasket = [...this.shopBasket];
       }
-      items = this.shopFullBasket[0].items;
-      console.log(items);
+      console.log(this.shopFullBasket);
+      tempItems = this.shopFullBasket[0].items;
+      console.log(tempItems);
       this.getProductImages();
       // add quantity to items
       let newItems = [];
-      items.forEach((item) => {
+      tempItems.forEach((item) => {
         let index = newItems.findIndex(
           (newItem) => newItem.product_id === item.product_id,
         );
@@ -246,6 +247,7 @@ export default {
         }
       });
       this.items = newItems;
+      console.log(this.items);
     },
     formatPrice(price) {
       return price.toLocaleString("en-GB", {
