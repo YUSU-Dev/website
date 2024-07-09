@@ -251,23 +251,28 @@ export default {
       this.items = newItems;
     },
     jsonFormatter(jsonString) {
-      // Remove trailing commas from the JSON string
-      let fixedJsonString = jsonString
-        .replace(/,\s*]/g, "]")
-        .replace(/,\s*}/g, "}");
-      console.log(fixedJsonString);
-      // Escape double quotes inside string values
-      fixedJsonString = fixedJsonString.replace(
-        /"([^"]*?)":\s*"([^"]*?)"([^"]*?)"/g,
-        (match, p1, p2, p3) => {
-          // Escape double quotes in the second capturing group
-          const escapedValue = p2.replace(/"/g, '\\"');
-          console.log(escapedValue);
-          return `"${p1}": "${escapedValue}"${p3}"`;
-        },
-      );
-      console.log(fixedJsonString);
-      return fixedJsonString;
+      // First, try to directly parse the JSON to see if it's valid
+      try {
+        const jsonObject = JSON.parse(jsonString);
+        return JSON.stringify(jsonObject);
+      } catch {
+        // If parsing fails, attempt to fix trailing commas
+        let fixedJsonString = jsonString
+          .replace(/,\s*]/g, "]")
+          .replace(/,\s*}/g, "}");
+        // Attempt to parse and stringify again to ensure valid JSON and proper escaping
+        try {
+          const jsonObject = JSON.parse(fixedJsonString);
+          return JSON.stringify(jsonObject);
+        } catch (error) {
+          console.error(
+            "JSON is still malformed after attempts to fix:",
+            error,
+          );
+          // Return the original string or further handling could be implemented here
+          return jsonString;
+        }
+      }
     },
     formatPrice(price) {
       return price.toLocaleString("en-GB", {
