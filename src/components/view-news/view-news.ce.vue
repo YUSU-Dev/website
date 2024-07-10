@@ -76,7 +76,6 @@ export default {
       })
       .then(function (response) {
         self.Article = response.data;
-        console.log(self.Article);
         self.loading = false;
       })
       .catch(function () {
