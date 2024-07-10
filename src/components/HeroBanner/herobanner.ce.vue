@@ -5,7 +5,7 @@
         class="flex h-full items-center justify-center bg-cover bg-center"
         :style="{ 'background-image': 'url(' + image + ')' }"
       >
-        <div class="mx-2 max-w-full bg-white px-6 py-3">
+        <div v-if="title" class="mx-2 max-w-full bg-white px-6 py-3">
           <h1
             class="w-full break-words text-center text-2xl font-bold sm:text-3xl"
           >
