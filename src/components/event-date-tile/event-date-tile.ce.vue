@@ -12,9 +12,12 @@
       class="order-1 flex flex-col items-center justify-center text-center xxs:col-span-4 sm:order-2 sm:col-span-1"
     >
       <p class="text-3xl">{{ date_name }}</p>
-      <p class="text-lg" v-if="u_all_day">All day, {{ date_venue }}</p>
+      <p class="text-lg" v-if="u_all_day">
+        All day<span v-if="date_venue">, {{ date_venue }}</span>
+      </p>
       <p class="text-lg" v-else>
-        Start times from {{ time }}, {{ date_venue }}
+        Start times from {{ time
+        }}<span v-if="date_venue">, {{ date_venue }}</span>
       </p>
     </div>
     <div
