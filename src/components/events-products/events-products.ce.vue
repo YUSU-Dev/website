@@ -12,7 +12,7 @@
       >
         <div class="flex flex-col gap-y-4 border-b border-black pb-6">
           <h2 class="text-3xl font-bold">
-            {{ day }} {{ date }} {{ month }} {{ year }}, {{ time }}
+            {{ event_start }} - {{ event_name }}
           </h2>
           <div v-if="event_description">
             <p>{{ event_description }}</p>
@@ -86,31 +86,6 @@ export default {
   },
   data() {
     return {};
-  },
-  computed: {
-    date() {
-      return new Date(this.event_start * 1000).getDate();
-    },
-    day() {
-      return new Date(this.event_start * 1000).toLocaleString("default", {
-        weekday: "long",
-      });
-    },
-    month() {
-      return new Date(this.event_start * 1000).toLocaleString("default", {
-        month: "long",
-      });
-    },
-    year() {
-      return new Date(this.event_start * 1000).getFullYear();
-    },
-    time() {
-      return new Date(this.event_start * 1000).toLocaleString("default", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      });
-    },
   },
 };
 </script>
