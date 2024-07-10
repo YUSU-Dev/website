@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center overflow-x-hidden bg-beige">
-    <div class="w-full max:container">
+    <div class="max:banner-container w-full">
       <transition-group
         :name="transition"
         tag="div"
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="bg-[#f7f7f7]">
-    <div class="container mx-auto">
+    <div class="banner-container mx-auto">
       <div class="flex justify-center gap-x-4 py-2">
         <button @click="prev()" aria-label="Previous slide">
           <FontAwesomeIcon
