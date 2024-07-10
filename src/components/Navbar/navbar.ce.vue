@@ -137,6 +137,7 @@
           >
             <button
               id="__ba_panel"
+              onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               aria-label="Listen with the ReachDeck Toolbar"
               title="Listen with the ReachDeck Toolbar"
