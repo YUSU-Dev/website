@@ -26,7 +26,7 @@
           arrow
           is-primary
           title="Back to event"
-          :href="'/events/id/' + date_id + '-' + event_url"
+          :href="'/events/id/' + event_id + '-' + event_url"
           class=""
         />
         <div v-if="u_next_on" class="flex flex-col">
@@ -63,14 +63,13 @@ export default {
     date_id: { type: String, default: "" },
     event_name: { type: String, default: "" },
     event_description: { type: String, default: "" },
+    event_start: { type: String, default: "" },
     event_url: { type: String, default: "" },
     event_thumbnail: { type: String, default: "" },
     event_image: { type: String, default: "" },
+    event_type: { type: String, default: "" },
     age_restriction: { type: String, default: "" },
     activity_name: { type: String, default: "" },
-    next_on: { type: String, default: "" },
-    u_next_on: { type: String, default: "" },
-    u_next_on_all_day: { type: Boolean, default: false },
     no_products: { type: Boolean, default: false },
     show_products: { type: Boolean, default: false },
     event_error: { type: String, default: "" },
@@ -90,23 +89,23 @@ export default {
   },
   computed: {
     date() {
-      return new Date(this.u_next_on * 1000).getDate();
+      return new Date(this.event_start * 1000).getDate();
     },
     day() {
-      return new Date(this.u_next_on * 1000).toLocaleString("default", {
+      return new Date(this.event_start * 1000).toLocaleString("default", {
         weekday: "long",
       });
     },
     month() {
-      return new Date(this.u_next_on * 1000).toLocaleString("default", {
+      return new Date(this.event_start * 1000).toLocaleString("default", {
         month: "long",
       });
     },
     year() {
-      return new Date(this.u_next_on * 1000).getFullYear();
+      return new Date(this.event_start * 1000).getFullYear();
     },
     time() {
-      return new Date(this.u_next_on * 1000).toLocaleString("default", {
+      return new Date(this.event_start * 1000).toLocaleString("default", {
         hour: "numeric",
         minute: "numeric",
         hour12: true,
