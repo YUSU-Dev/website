@@ -4,9 +4,9 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
   />
   <div
-    class="container mx-auto flex flex-col items-center justify-center py-20"
+    class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
   >
-    <div class="grid grid-cols-5 gap-x-4">
+    <div class="grid w-full grid-cols-5 gap-x-4">
       <div
         class="order-2 col-span-5 flex flex-col gap-y-6 border-black md:order-1 md:col-span-4 md:border-r md:pr-6"
       >
@@ -16,58 +16,6 @@
           </h2>
           <div v-if="event_description">
             <p>{{ event_description }}</p>
-          </div>
-        </div>
-
-        <!-- If not signed in -->
-        <div v-if="!signed_in" class="flex flex-col gap-y-4">
-          <p class="text-2xl font-bold">Are you a...</p>
-          <div class="flex gap-x-4 xs:gap-x-6">
-            <Button is-primary title="Student" class="px-6 font-semibold" />
-            <Button is-primary title="Public" class="px-8 font-semibold" />
-          </div>
-        </div>
-        <!-- If not signed in -->
-
-        <div v-else>
-          <div
-            v-if="no_products"
-            class="flex w-fit flex-col items-center justify-center gap-x-4 gap-y-2 bg-yellow-400 px-6 py-4 text-center sm:flex-row sm:gap-y-0 sm:text-start"
-          >
-            <FontAwesomeIcon
-              icon="fa-solid fa-circle-exclamation"
-              class="h-6 w-6"
-            ></FontAwesomeIcon>
-            <p class="text-lg font-bold">
-              Sorry! There are currently no products available for purchase.
-            </p>
-          </div>
-
-          <div v-if="show_products" class="flex flex-col gap-y-4">
-            <h3 class="text-2xl font-bold">Tickets</h3>
-
-            <div
-              v-if="event_error"
-              class="flex w-fit flex-col items-center justify-center gap-x-4 gap-y-2 bg-yellow-400 px-6 py-4 text-center sm:flex-row sm:gap-y-0 sm:text-start"
-            >
-              <FontAwesomeIcon
-                icon="fa-solid fa-circle-exclamation"
-                class="h-6 w-6"
-              ></FontAwesomeIcon>
-              <p class="text-lg font-bold">Oops! {{ event_error }}</p>
-            </div>
-
-            <div
-              v-if="event_products"
-              class="flex w-full flex-col gap-y-4 pb-20 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
-            >
-              <EventProductTile
-                :product_name="product_name"
-                :product_price="product_price"
-                :product_inventory="product_inventory"
-                :product_id="1"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -108,11 +56,6 @@
 <script>
 import Button from "../../components/button/button.ce.vue";
 import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
-import EventProductTile from "../../components/event-product-tile/event-product-tile.ce.vue";
-library.add(faCircleExclamation);
 export default {
   props: {
     signed_in: { type: Boolean, default: false },
@@ -141,8 +84,6 @@ export default {
   components: {
     Button,
     HeroBanner,
-    FontAwesomeIcon,
-    EventProductTile,
   },
   data() {
     return {};

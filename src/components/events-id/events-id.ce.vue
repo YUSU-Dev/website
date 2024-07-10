@@ -4,7 +4,7 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
   />
   <div
-    class="container mx-auto flex flex-col items-center justify-center pt-20"
+    class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
   >
     <div class="grid grid-cols-5 gap-x-4">
       <div
@@ -39,31 +39,12 @@
         </div>
       </div>
     </div>
-    <div
-      class="flex w-full flex-col gap-y-4 pb-20 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
-    >
-      <EventsDateTile
-        :date_id="date_id"
-        :date_start="date_start"
-        :u_start_date="u_start_date"
-        :u_end_date="u_end_date"
-        :u_all_day="u_all_day"
-        :date_name="date_name"
-        :date_venue="date_venue"
-        :date_unix="date_unix"
-        :from_price="from_price"
-        :external_tickets="external_tickets"
-        :sale_start_date="sale_start_date"
-        :sale_end_date="sale_end_date"
-      />
-    </div>
   </div>
 </template>
 <!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Button from "../../components/button/button.ce.vue";
 import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
-import EventsDateTile from "../../components/event-date-tile/event-date-tile.ce.vue";
 export default {
   props: {
     event_id: { type: String, default: "" },
@@ -93,7 +74,6 @@ export default {
   components: {
     Button,
     HeroBanner,
-    EventsDateTile,
   },
   data() {
     return {};
