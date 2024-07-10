@@ -16,28 +16,27 @@
     <div
       class="order-3 flex items-center justify-center xxs:col-span-2 sm:col-span-1"
     >
-      <Button
-        v-if="product_inventory == 0"
-        class="h-min bg-gray-300"
-        disabled="true"
-        title="Sold Out"
+      <add-to-basket
+        :product-id="product_id"
+        :signed-in="signed_in"
+        :has-stock="product_inventory > 0"
       />
-      <Button v-else class="h-min" :is-primary="true" title="Add to basket" />
     </div>
   </div>
 </template>
 <!-- eslint-disable vue/prop-name-casing -->
 <script>
-import Button from "../../components/button/button.ce.vue";
+import AddToBasket from "../../components/add-to-basket/add-to-basket.ce.vue";
 export default {
   name: "EventDateTile",
   props: {
     product_name: { type: String, default: "" },
     product_price: { type: String, default: "" },
     product_inventory: { type: String, default: "" },
+    product_id: { type: Number, default: 0 },
   },
   components: {
-    Button,
+    AddToBasket,
   },
   computed: {
     date() {

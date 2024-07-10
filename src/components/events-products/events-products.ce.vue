@@ -65,6 +65,7 @@
                 :product_name="product_name"
                 :product_price="product_price"
                 :product_inventory="product_inventory"
+                :product_id="1"
               />
             </div>
           </div>
