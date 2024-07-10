@@ -1,12 +1,13 @@
-import "./events-id.component.js";
+import "./event-products.component.js";
 
 export default {
-  title: "Components/Events/ID",
-  component: "events-id",
+  title: "Pages/Events/Event Products",
+  component: "event-products",
 };
 
 export const Default = {
   args: {
+    signed_in: true,
     event_name: "Test Name",
     activity_name: "Test Activity",
     event_description:
@@ -19,5 +20,13 @@ export const Default = {
     date_id: "4564",
     from_price: "£1.00",
     external_tickets: false,
+    event_url: "test-society-trip-to-big-tesco",
+    show_products: true,
+    event_products: true,
+    product_name: "Test Product",
+    product_price: "0",
+    product_inventory: 10,
+    product_description:
+      "Lorem dadawdawdawd awd Asefsgnisuhgahg iaygfuGF UYFYAWF JegfyifuhEF RKDGJOS HORT HLAJHOIRSTJHLAEJIJ uhdguaogjearogj, diur hgiuarghk agh aghgajgaerjgioadfjg aj i",
   },
 };

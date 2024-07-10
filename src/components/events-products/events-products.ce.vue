@@ -6,14 +6,13 @@
   <div
     class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
   >
-    <div class="grid grid-cols-5 gap-x-4">
+    <div class="grid w-full grid-cols-5 gap-x-4">
       <div
         class="order-2 col-span-5 flex flex-col gap-y-6 border-black md:order-1 md:col-span-4 md:border-r md:pr-6"
       >
         <div class="flex flex-col gap-y-4 border-b border-black pb-6">
           <h2 class="text-3xl font-bold">
-            {{ event_name }}
-            <span v-if="activity_name"> : {{ activity_name }}</span>
+            {{ day }} {{ date }} {{ month }} {{ year }}, {{ time }}
           </h2>
           <div v-if="event_description">
             <p>{{ event_description }}</p>
@@ -26,16 +25,28 @@
         <Button
           arrow
           is-primary
-          title="Back to events"
-          href="/events"
+          title="Back to event"
+          :href="'/events/id/' + date_id + '-' + event_url"
           class=""
         />
         <div v-if="u_next_on" class="flex flex-col">
           <h2 class="mb-4 border-b border-black pb-4 text-2xl font-bold">
-            Next On
+            Important
           </h2>
-          <p class="text-xl font-semibold">{{ date }} {{ month }} {{ year }}</p>
-          <p class="text-lg">{{ time }}</p>
+          <div>
+            <ul class="flex list-inside list-disc flex-col gap-y-1">
+              <li class="text-sm">
+                Your selected tickets will not be reserved until the next step.
+              </li>
+              <li class="text-sm">
+                You will be required to provide identification on entry to the
+                venue.
+              </li>
+              <li class="text-sm">
+                Event tickets are non-refundable and non-transferable.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -47,7 +58,9 @@ import Button from "../../components/button/button.ce.vue";
 import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
 export default {
   props: {
+    signed_in: { type: Boolean, default: false },
     event_id: { type: String, default: "" },
+    date_id: { type: String, default: "" },
     event_name: { type: String, default: "" },
     event_description: { type: String, default: "" },
     event_url: { type: String, default: "" },
@@ -58,18 +71,15 @@ export default {
     next_on: { type: String, default: "" },
     u_next_on: { type: String, default: "" },
     u_next_on_all_day: { type: Boolean, default: false },
-    date_id: { type: String, default: "" },
-    date_start: { type: String, default: "" },
-    u_start_date: { type: String, default: "" },
-    u_end_date: { type: String, default: "" },
-    u_all_day: { type: Boolean, default: false },
-    date_name: { type: String, default: "" },
-    date_venue: { type: String, default: "" },
-    date_unix: { type: String, default: "" },
-    from_price: { type: String, default: "" },
-    external_tickets: { type: Boolean, default: false },
-    sale_start_date: { type: String, default: "" },
-    sale_end_date: { type: String, default: "" },
+    no_products: { type: Boolean, default: false },
+    show_products: { type: Boolean, default: false },
+    event_error: { type: String, default: "" },
+    //This will need changing to an array of objects I think?
+    event_products: { type: Boolean, default: false },
+    //
+    product_name: { type: String, default: "" },
+    product_price: { type: String, default: "" },
+    product_inventory: { type: String, default: "" },
   },
   components: {
     Button,
@@ -81,6 +91,11 @@ export default {
   computed: {
     date() {
       return new Date(this.u_next_on * 1000).getDate();
+    },
+    day() {
+      return new Date(this.u_next_on * 1000).toLocaleString("default", {
+        weekday: "long",
+      });
     },
     month() {
       return new Date(this.u_next_on * 1000).toLocaleString("default", {

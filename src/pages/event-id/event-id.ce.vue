@@ -7,24 +7,38 @@
       :activity_name="activity_name"
       :event_description="event_description"
       :u_next_on="u_next_on"
+      :date_id="date_id"
+      :date_start="date_start"
+      :u_start_date="u_start_date"
+      :u_end_date="u_end_date"
+      :u_all_day="u_all_day"
+      :date_name="date_name"
+      :date_venue="date_venue"
+      :date_unix="date_unix"
+      :from_price="from_price"
+      :external_tickets="external_tickets"
+      :sale_start_date="sale_start_date"
+      :sale_end_date="sale_end_date"
     />
-    <div
-      class="container mx-auto flex w-full flex-col gap-y-4 pb-20 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
-    >
-      <EventsDateTile
-        :date_id="date_id"
-        :date_start="date_start"
-        :u_start_date="u_start_date"
-        :u_end_date="u_end_date"
-        :u_all_day="u_all_day"
-        :date_name="date_name"
-        :date_venue="date_venue"
-        :date_unix="date_unix"
-        :from_price="from_price"
-        :external_tickets="external_tickets"
-        :sale_start_date="sale_start_date"
-        :sale_end_date="sale_end_date"
-      />
+    <div class="container mx-auto">
+      <div
+        class="flex w-full flex-col gap-y-4 pb-20 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
+      >
+        <EventsDateTile
+          :date_id="date_id"
+          :date_start="date_start"
+          :u_start_date="u_start_date"
+          :u_end_date="u_end_date"
+          :u_all_day="u_all_day"
+          :date_name="date_name"
+          :date_venue="date_venue"
+          :date_unix="date_unix"
+          :from_price="from_price"
+          :external_tickets="external_tickets"
+          :sale_start_date="sale_start_date"
+          :sale_end_date="sale_end_date"
+        />
+      </div>
     </div>
   </div>
   <Footer />
