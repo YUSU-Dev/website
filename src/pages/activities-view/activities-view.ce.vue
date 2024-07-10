@@ -8,7 +8,7 @@
     :category="Activity.category"
   />
   <Breadcrumb />
-  <ActivityPage :activity="Activity" :group-id="activityid" />
+  <ActivityPage :group-id="activityid" />
   <Footer />
 </template>
 <script>

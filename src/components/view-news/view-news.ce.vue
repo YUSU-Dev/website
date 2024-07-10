@@ -41,7 +41,9 @@
 </style>
 <script>
 import axios from "../../_common/axios.mjs";
+import { randomImageUrl } from "../../_common/randomImage.mjs";
 import Button from "../button/button.ce.vue";
+
 export default {
   components: {
     Button,
@@ -62,7 +64,7 @@ export default {
   },
   methods: {
     randomImage() {
-      return this.images[Math.floor(Math.random() * this.images.length)];
+      return randomImageUrl("primary");
     },
   },
   created() {
