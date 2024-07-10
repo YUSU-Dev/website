@@ -58,14 +58,12 @@
             <p class="text-lg font-bold">Oops! {{ event_error }}</p>
           </div>
 
-          <div
-            v-if="event_products"
-            class="flex w-full flex-col gap-y-4 pb-20 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
-          >
+          <div v-if="event_products" class="flex flex-wrap gap-4">
             <EventsProductTile
               :product_name="product_name"
               :product_price="product_price"
               :product_inventory="product_inventory"
+              :product_description="product_description"
               :product_id="1"
             />
           </div>
@@ -102,10 +100,10 @@ export default {
     event_error: { type: String, default: "" },
     //This will need changing to an array of objects I think?
     event_products: { type: Boolean, default: false },
-    //
     product_name: { type: String, default: "" },
     product_price: { type: String, default: "" },
     product_inventory: { type: String, default: "" },
+    product_description: { type: String, default: "" },
   },
   components: {
     Navbar,

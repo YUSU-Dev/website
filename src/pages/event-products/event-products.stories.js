@@ -26,5 +26,7 @@ export const Default = {
     product_name: "Test Product",
     product_price: "0",
     product_inventory: 10,
+    product_description:
+      "Lorem dadawdawdawd awd Asefsgnisuhgahg iaygfuGF UYFYAWF JegfyifuhEF RKDGJOS HORT HLAJHOIRSTJHLAEJIJ uhdguaogjearogj, diur hgiuarghk agh aghgajgaerjgioadfjg aj i",
   },
 };
