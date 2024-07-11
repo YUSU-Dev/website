@@ -26,7 +26,10 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-x-2 gap-y-2 md:flex-row">
+      <div
+        v-if="Categories.length > 1"
+        class="flex flex-col gap-x-2 gap-y-2 md:flex-row"
+      >
         <Button
           v-for="category in Categories"
           :key="category"
@@ -38,7 +41,7 @@
         />
       </div>
     </div>
-    <hr class="my-0" />
+    <hr class="mb-2 mt-0" />
     <div class="tile-wrap">
       <SupportTile
         v-for="item in FilteredMenu"
@@ -57,6 +60,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../components/button/button.ce.vue";
 import SupportTile from "../support-tile/support-tile.ce.vue";
+import axios from "../../_common/axios.mjs";
+import { randomAdviceImageUrl } from "../../_common/randomImage.mjs";
 
 library.add(faSearch);
 
@@ -86,29 +91,29 @@ export default {
   },
   created() {
     var self = this;
-    let data = self.apitext;
-    self.Menu = data.sort(self.compare);
-    self.Menu.forEach((menuElement) => {
-      if (!self.Categories.includes(menuElement.category)) {
-        self.Categories.push(menuElement.category);
-      }
-    });
-    /*
-    if(self.apiurl){
-      axios.get(self.apiurl,{})
-      .then(
-        function(response){
-          let data=JSON.parse('['+response.data.substring(0,response.data.lastIndexOf(','))+']');
-          self.Menu=data.sort(self.compare);
-          self.Menu.forEach(menuElement=>{
-            if(!(self.Categories.includes(menuElement.category))){
-              self.Categories.push(menuElement.category);
-            }
-          }
+    if (self.apiurl) {
+      axios.get(self.apiurl, {}).then(function (response) {
+        let data = JSON.parse(
+          "[" +
+            response.data.substring(0, response.data.lastIndexOf(",")) +
+            "]",
         );
+        self.Menu = data.sort(self.compare);
+        self.Menu.forEach((menuElement) => {
+          if (!self.Categories.includes(menuElement.category)) {
+            self.Categories.push(menuElement.category);
+          }
+        });
+      });
+    } else {
+      let data = self.apitext;
+      self.Menu = data.sort(self.compare);
+      self.Menu.forEach((menuElement) => {
+        if (!self.Categories.includes(menuElement.category)) {
+          self.Categories.push(menuElement.category);
+        }
       });
     }
-      */
   },
   methods: {
     compare: function (a, b) {
@@ -120,14 +125,8 @@ export default {
       }
       return 0;
     },
-    getTileImage: function (category) {
-      if (category == "Academic Issues & University Processes") {
-        return "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp";
-      } else if (category == "Health, Wellbeing & Support") {
-        return "https://assets-cdn.sums.su/YU/website/img/advice/advice-green.webp";
-      } else {
-        return "https://assets-cdn.sums.su/YU/website/img/advice/advice-beige.webp";
-      }
+    getTileImage: function () {
+      return randomAdviceImageUrl();
     },
     updateCategory: function (category) {
       if (this.selectedCategory != category) {
