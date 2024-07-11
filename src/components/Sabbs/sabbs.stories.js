@@ -7,7 +7,7 @@ export default {
 
 export const Default = {
   args: {
-    SabbsList: [
+    sabbsList: [
       {
         name: "Stare",
         position: "Union Affairs Officer",
