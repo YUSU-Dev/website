@@ -412,11 +412,11 @@ export default {
               },
               {
                 name: "Campaign & Projects",
-                link: "/your-voice/campaigns-and-projects",
+                link: "/campaigns",
               },
               {
                 name: "Research & Insight",
-                link: "/your-voice/research-insight",
+                link: "/research-insight",
               },
             ],
           },
@@ -426,15 +426,15 @@ export default {
             links: [
               {
                 name: "Academic Reps",
-                link: "/your-voice/academic-reps",
+                link: "/academic-reps",
               },
               {
                 name: "Officers and Representation",
-                link: "/your-voice/officers",
+                link: "/officers",
               },
               {
                 name: "Colleges",
-                link: "/student-life/colleges",
+                link: "/colleges",
               },
             ],
           },
@@ -466,11 +466,11 @@ export default {
               },
               {
                 name: "Cost of Living Support",
-                link: "/student-life/cost-of-living",
+                link: "/cost-of-living",
               },
               {
                 name: "Complaints",
-                link: "/advice-support/complaints",
+                link: "/complaints",
               },
             ],
           },
@@ -484,15 +484,15 @@ export default {
               },
               {
                 name: "Policies and Documents",
-                link: "/about-us/documents",
+                link: "/documents",
               },
               {
                 name: "Jobs",
-                link: "https://apply.yusu.org",
+                link: "https://apply.yorksu.org",
               },
               {
                 name: "Contact Us",
-                link: "/about-us/contact-us",
+                link: "/contact-us",
               },
               {
                 name: "Sustainability at YorkSU",
