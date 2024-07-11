@@ -448,7 +448,7 @@ export default {
               },
               {
                 name: "Book an Event",
-                link: "/book-event",
+                link: "/events/book-event",
               },
             ],
           },
