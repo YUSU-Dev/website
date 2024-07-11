@@ -59,6 +59,7 @@
         :key="article.id"
         :title="article.title"
         :date="article.date"
+        section="student-voice"
         :url="'/news/article/' + article.entry_id"
         :image="article.thumbnail"
         :news="true"
