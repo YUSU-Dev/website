@@ -78,27 +78,19 @@ export default {
   mounted() {
     if (this.isPrimary || this.type === "primary") {
       this.primaryButton = true;
+      this.primarySelected = this.selected;
     } else if (this.isStudentLife || this.type === "student-life") {
       this.studentLifeButton = true;
+      this.studentLifeSelected = this.selected;
     } else if (this.isAdviceAndSupport || this.type === "advice-support") {
       this.adviceAndSupportButton = true;
+      this.adviceAndSupportSelected = this.selected;
     } else if (this.isStudentVoice || this.type === "student-voice") {
       this.studentVoiceButton = true;
+      this.studentVoiceSelected = this.selected;
     } else if (this.isSecondary || this.type === "secondary") {
       this.secondaryButton = true;
-    }
-    if (this.selected) {
-      if (this.isPrimary || this.type === "primary") {
-        this.primarySelected = true;
-      } else if (this.isStudentLife || this.type === "student-life") {
-        this.studentLifeSelected = true;
-      } else if (this.isAdviceAndSupport || this.type === "advice-support") {
-        this.adviceAndSupportSelected = true;
-      } else if (this.isStudentVoice || this.type === "student-voice") {
-        this.studentVoiceSelected = true;
-      } else if (this.isSecondary || this.type === "secondary") {
-        this.secondarySelected = true;
-      }
+      this.secondarySelected = this.selected;
     }
   },
 };
