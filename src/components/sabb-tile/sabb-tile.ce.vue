@@ -15,7 +15,7 @@
         <h4 class="text-lg md:text-xl">
           {{ name }}
         </h4>
-        <h5 class="hidden text-sm md:flex md:text-base">
+        <h5 v-if="pronouns" class="hidden text-sm md:flex md:text-base">
           {{ pronouns }}
         </h5>
         <h5 class="text-sm md:text-base">
