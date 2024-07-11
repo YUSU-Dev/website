@@ -314,7 +314,6 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import "https://www.browsealoud.com/plus/scripts/3.1.0/ba.js";
 import {
   faMagnifyingGlass,
   faBasketShopping,
