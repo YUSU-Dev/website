@@ -16,6 +16,7 @@
         :position="sabb.position"
         :url="sabb.url"
         :img="sabb.img"
+        :pronouns="sabb.pronouns"
       />
     </div>
   </div>
@@ -29,46 +30,53 @@ export default {
       required: true,
       default: () => [
         {
-          name: "Stare",
+          name: "Lewis Parrey",
           position: "Union Affairs Officer",
-          img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot.jpg",
-          url: "/your-voice/president",
+          pronouns: "He/Him",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-affairs.webp",
+          url: "/your-voice/union-affairs",
         },
         {
-          name: "Fridge Chonk",
+          name: "Gen Andrews",
+          pronouns: "She/Her",
           position: "Union Development Officer",
-          img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot-2.jpg",
-          url: "/your-voice/president",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-development.webp",
+          url: "/your-voice/union-development",
         },
         {
-          name: "Spilled",
-          position: "Union Purrfection officer",
-          img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot-3.jpg",
-          url: "/your-voice/president",
+          name: "Fenella Johnson",
+          position: "Academic Officer",
+          pronouns: "She/Her",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-academic.webp",
+          url: "/your-voice/academic",
         },
         {
-          name: "Christopher Charles Nethercott",
-          position: "Meowster of Ceremony",
-          img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot-4.jpg",
-          url: "/your-voice/president",
+          name: "Ezreal Xie",
+          pronouns: "He/Him",
+          position: "Equality and Inclusion Officer",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-equality.webp",
+          url: "/your-voice/equality",
         },
         {
-          name: "Noice",
-          position: "Cat",
-          img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot-5.jpg",
-          url: "/your-voice/president",
+          name: "Freddy Russell",
+          pronouns: "He/Him",
+          position: "Community & Wellbeing Officer",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-community.webp",
+          url: "/your-voice/community",
         },
         {
-          name: "One Smiley Boi",
-          position: "You’ve cat to be kitten me",
-          img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot-6.jpg",
-          url: "/your-voice/president",
+          name: "Kaitlyn Beattie-Zarb",
+          pronouns: "She/Her",
+          position: "Activities Officer",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-activities.webp",
+          url: "/your-voice/activities",
         },
         {
-          name: "Anger",
-          position: "Purr-plexed",
-          img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot.jpg",
-          url: "/your-voice/president",
+          name: "Tanisha Jain (TJ)",
+          pronouns: "She/Her",
+          position: "Sports Officer",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-sports.webp",
+          url: "/your-voice/sport",
         },
       ],
     },

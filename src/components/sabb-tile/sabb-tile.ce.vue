@@ -12,20 +12,15 @@
         ></div>
       </div>
       <div class="absolute bottom-4 w-full px-4">
-        <h4 class="mb-2 text-lg md:text-xl">
+        <h4 class="text-lg md:text-xl">
           {{ name }}
         </h4>
+        <h5 class="hidden text-sm md:flex md:text-base">
+          {{ pronouns }}
+        </h5>
         <h5 class="text-sm md:text-base">
           {{ position }}
         </h5>
-        <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
-          <p class="">View Profile</p>
-          <FontAwesomeIcon
-            icon="fas fa-arrow-right"
-            class="ml-2 h-4 w-4 text-white transition group-hover:translate-x-4"
-          >
-          </FontAwesomeIcon>
-        </div>
       </div>
     </div>
   </a>
@@ -43,6 +38,7 @@ export default {
     name: { type: String, default: "" },
     position: { type: String, default: "" },
     url: { type: String, default: "" },
+    pronouns: { type: String, default: "" },
   },
   components: {
     FontAwesomeIcon,
