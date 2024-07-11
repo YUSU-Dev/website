@@ -30,3 +30,11 @@ export function randomImageUrl(section) {
 
   return images[Math.floor(Math.random() * images.length)];
 }
+
+export function randomAdviceImageUrl() {
+  let images = [
+    "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp",
+    "https://assets-cdn.sums.su/YU/website/img/advice/advice-green.webp",
+  ];
+  return images[Math.floor(Math.random() * images.length)];
+}
