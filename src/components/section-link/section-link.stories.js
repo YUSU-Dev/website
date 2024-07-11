@@ -9,7 +9,7 @@ export const Default = {
   args: {
     sectionName: "Section Name",
     sectionUrl: "#",
-    sectionIsActive: true,
+    sectionIsActive: false,
   },
 };
 
@@ -17,7 +17,7 @@ export const Advice = {
   args: {
     sectionName: "Section Name",
     sectionUrl: "#",
-    sectionIsActive: true,
+    sectionIsActive: false,
     sectionArea: "advice-support",
   },
 };
@@ -26,7 +26,7 @@ export const SectionItem = {
   args: {
     sectionName: "Section Name",
     sectionUrl: "#",
-    sectionIsActive: true,
-    isSectionItem: true,
+    sectionIsActive: false,
+    isSectionItem: false,
   },
 };

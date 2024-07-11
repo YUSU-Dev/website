@@ -139,6 +139,19 @@
     @apply bg-advice-green hover:bg-light-blue;
   }
 
+  .btn-primary-active,
+  .btn-secondary-active {
+    @apply bg-primary-pink text-black;
+  }
+  .btn-advice-support-active,
+  .btn-student-life-active {
+    @apply bg-light-blue;
+  }
+
+  .btn-student-voice-active {
+    @apply bg-light-pink;
+  }
+
   /* Skip to Main Content */
   #skiptocontent a {
     @apply absolute left-0 top-0 z-50 -translate-y-full transform bg-mustard px-4 py-2 text-black transition hover:bg-light-blue focus:translate-y-0;

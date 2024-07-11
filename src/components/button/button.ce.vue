@@ -7,6 +7,11 @@
       'btn-student-life': studentLifeButton,
       'btn-student-voice': studentVoiceButton,
       'btn-advice-support': adviceAndSupportButton,
+      'btn-primary-active': primarySelected,
+      'btn-secondary-active': secondarySelected,
+      'btn-student-life-active': studentLifeSelected,
+      'btn-student-voice-active': studentVoiceSelected,
+      'btn-advice-support-active': adviceAndSupportSelected,
     }"
     :href="url"
   >
@@ -43,6 +48,7 @@ export default {
     isSecondary: Boolean,
     arrow: Boolean,
     isTertiary: Boolean,
+    selected: Boolean,
     url: {
       type: String,
       default: "javascript:;",
@@ -59,6 +65,11 @@ export default {
       adviceAndSupportButton: false,
       studentVoiceButton: false,
       secondaryButton: false,
+      primarySelected: false,
+      studentLifeSelected: false,
+      adviceAndSupportSelected: false,
+      studentVoiceSelected: false,
+      secondarySelected: false,
     };
   },
   components: {
@@ -75,6 +86,19 @@ export default {
       this.studentVoiceButton = true;
     } else if (this.isSecondary || this.type === "secondary") {
       this.secondaryButton = true;
+    }
+    if (this.selected) {
+      if (this.isPrimary || this.type === "primary") {
+        this.primarySelected = true;
+      } else if (this.isStudentLife || this.type === "student-life") {
+        this.studentLifeSelected = true;
+      } else if (this.isAdviceAndSupport || this.type === "advice-support") {
+        this.adviceAndSupportSelected = true;
+      } else if (this.isStudentVoice || this.type === "student-voice") {
+        this.studentVoiceSelected = true;
+      } else if (this.isSecondary || this.type === "secondary") {
+        this.secondarySelected = true;
+      }
     }
   },
 };
