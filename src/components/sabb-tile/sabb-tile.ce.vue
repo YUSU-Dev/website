@@ -1,6 +1,6 @@
 <template>
   <a class="sabb-tile group flex" :href="url">
-    <div class="relative text-white">
+    <div class="relative text-white shadow transition hover:scale-105">
       <div class="aspect-[141/161] bg-cover md:h-[322px]">
         <img
           :src="img"
