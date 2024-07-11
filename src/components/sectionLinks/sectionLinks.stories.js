@@ -7,8 +7,8 @@ export default {
 
 export const Default = {
   args: {
-    section_is_active: true,
-    item_is_active: true,
+    section_is_active: false,
+    item_is_active: false,
     item_text: "text",
     item_url: "#",
   },

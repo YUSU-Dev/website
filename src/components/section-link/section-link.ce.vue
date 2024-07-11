@@ -1,9 +1,9 @@
 <template>
   <Button
-    v-if="sectionIsActive"
     :title="sectionName"
     :type="type"
     :url="sectionUrl"
+    :selected="sectionIsActive"
     :class="{
       'w-full px-8 text-center': isSectionItem,
       'h-full w-full px-6': !isSectionItem,
@@ -26,7 +26,7 @@ export default {
     },
     sectionIsActive: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     isSectionItem: {
       type: Boolean,
