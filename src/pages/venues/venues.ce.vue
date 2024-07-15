@@ -5,6 +5,9 @@
   />
   <div id="maincontent" class="container mx-auto flex flex-col pb-20">
     <!-- Section links would go here -->
+    <div class="mb-10 flex justify-center">
+      <img :src="page_key_image" :alt="title + ' logo'" />
+    </div>
     <main>
       <article v-html="page_content"></article>
     </main>
@@ -13,7 +16,7 @@
   </div>
   <Footer />
 </template>
-
+<!-- eslint-disable vue/prop-name-casing -->
 <script>
 import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";

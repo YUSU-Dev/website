@@ -61,14 +61,14 @@
         </div>
       </div>
       <div v-else-if="title">
-        <h1 class="flex items-center gap-x-3 pb-2 text-3xl font-bold">
+        <h2 class="flex items-center pb-2 text-3xl font-bold">
           {{ title }}
           <FontAwesomeIcon
             v-if="icon"
             icon="fas fa-calendar"
             class="mx-1 h-8 w-8"
           />
-        </h1>
+        </h2>
       </div>
       <div v-if="Events.length == 0 && !Loading" class="">
         <h3 class="mb-4 mt-16 text-xl font-semibold text-[#555]">
