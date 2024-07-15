@@ -79,6 +79,7 @@ export default {
         this.firstSegmentUrl = "/volunteering";
       } else if (
         this.categoryName == "College Sport (Groups)" ||
+        this.categoryName == "College Sport" ||
         this.categoryId == "30" ||
         this.categoryId == "31" ||
         this.categoryId == "32" ||
