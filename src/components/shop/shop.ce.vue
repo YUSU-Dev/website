@@ -2,7 +2,10 @@
   <div class="py-10">
     <div class="justify-center">
       <div>
-        <h2 v-if="title" class="flex items-center pb-2 text-3xl font-bold">
+        <h2
+          v-if="title"
+          class="flex items-center gap-x-3 pb-2 text-3xl font-bold"
+        >
           {{ title }}
           <FontAwesomeIcon
             v-if="icon"
@@ -66,8 +69,10 @@
     </div>
     <div class="relative flex">
       <div class="">
-        <div class="m-4 text-center" v-if="!Products.length && !Loading">
-          <h3>No products found</h3>
+        <div class="" v-if="!Products.length && !Loading">
+          <h3 class="mb-4 mt-16 text-xl font-semibold text-[#555]">
+            No products found
+          </h3>
         </div>
         <div class="a-z-wrap mt-10" v-if="!Loading">
           <Tile

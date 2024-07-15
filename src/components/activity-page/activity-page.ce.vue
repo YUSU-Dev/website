@@ -1,34 +1,94 @@
 <template>
   <main>
-    <div class="flex flex-wrap md:flex-row">
-      <div class="w-1/12"><br /></div>
-      <div class="p-6 md:w-7/12">
-        <h2 class="mb-5 text-3xl font-bold">About</h2>
-        <article v-html="pageActivity.description"></article>
-        <Events :groupid="groupId" title="Events" icon />
-        <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
+    <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
+      <div class="flex flex-col gap-y-6">
+        <div class="flex gap-x-4 sm:hidden">
+          <!-- {if category_name != "College Sport (Groups)"} -->
+          <a :href="'/shop?activity_id=' + pageActivity.id"
+            ><Button
+              :class="{ 'bg-light-blue': title == 'join' }"
+              title="Join"
+              is-student-life
+              class="px-10 text-center"
+          /></a>
+          <!-- {exp:su_activities:getGroupInterest activity_id="{activity_id}"}
+          {if signed_in}
+          {if is_interested}
+          <a href=""
+            ><Button
+              @click="unregisterInterest()"
+              :class="{ 'bg-light-blue': title == 'join' }"
+              title="Interested?"
+              is-student-life
+              class="px-10 text-center"
+          /></a>
+          {if:else}
+          <a href=""
+            ><Button
+              @click="registerInterest()"
+              :class="{ 'bg-light-blue': title == 'join' }"
+              title="Interested?"
+              is-student-life
+              class="px-10 text-center"
+          /></a>
+          {/if}
+          {/if}
+          {/exp:su_activities:getGroupInterest} {/if}
+          {/if} -->
+        </div>
+        <div v-if="pageActivity.description" class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">About</h2>
+          <article v-html="pageActivity.description"></article>
+        </div>
+        <div v-else class="flex flex-col gap-y-6">
+          <div class="flex flex-col">
+            <h3 class="text-xl font-semibold">Meeting times</h3>
+            <p>Please get in touch via email to find out our meeting times.</p>
+          </div>
+          <div class="flex flex-col">
+            <h3 class="text-xl font-semibold">Get Involved</h3>
+            <p>
+              We are open to all students, and encourage those from all
+              backgrounds to come along!
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="flex flex-col p-6 md:w-3/12">
-        <a :href="'/shop?activity_id=' + pageActivity.id"
-          ><Button
-            :class="{ 'bg-light-blue': title == 'join' }"
-            title="Join"
-            is-student-life
-            class="px-10 text-center"
-        /></a>
-        <hr class="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
-        <h2 class="mb-5 text-3xl font-bold">Contact</h2>
-        <ActivitiesContacts
-          :name="pageActivity.name"
-          :email="pageActivity.email_address"
-          :facebook="pageActivity.facebook"
-          :instagram="pageActivity.instagram"
-          :twitter="pageActivity.twitter"
-          :youtube="pageActivity.youtube"
-          :discord="pageActivity.discord"
-          :tiktok="pageActivity.tiktok"
-        />
+      <div class="flex flex-col gap-y-8">
+        <div class="hidden flex-col gap-y-4 sm:flex">
+          <a :href="'/shop?activity_id=' + pageActivity.id"
+            ><Button
+              :class="{ 'bg-light-blue': title == 'join' }"
+              title="Join"
+              is-student-life
+              class="px-10 text-center"
+          /></a>
+          <!-- <a href=""
+            ><Button
+              :class="{ 'bg-light-blue': title == 'join' }"
+              title="Interested?"
+              is-student-life
+              class="px-10 text-center"
+          /></a> -->
+        </div>
+        <div class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">Contact</h2>
+          <ActivitiesContacts
+            :name="pageActivity.name"
+            :email="pageActivity.email_address"
+            :facebook="pageActivity.facebook"
+            :instagram="pageActivity.instagram"
+            :twitter="pageActivity.twitter"
+            :youtube="pageActivity.youtube"
+            :discord="pageActivity.discord"
+            :tiktok="pageActivity.tiktok"
+          />
+        </div>
       </div>
+    </div>
+    <div class="flex flex-col">
+      <Events :groupid="groupId" title="Events" icon />
+      <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
     </div>
   </main>
 </template>

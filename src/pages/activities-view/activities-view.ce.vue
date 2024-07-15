@@ -8,7 +8,9 @@
     :category="Activity.category"
   />
   <Breadcrumb />
-  <ActivityPage :group-id="activityid" />
+  <div class="container mx-auto pb-20">
+    <ActivityPage :group-id="activityid" />
+  </div>
   <Footer />
 </template>
 <script>
