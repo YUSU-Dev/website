@@ -101,34 +101,26 @@ export default {
       }
     },
     getSecondSegment() {
+      this.secondSegmentName = this.categoryName;
       if (this.categoryName == "James College Sports") {
-        this.secondSegmentName = "James Sport";
         this.secondSegmentUrl = "/activities/view/James-Sport";
       } else if (this.categoryName == "Alcuin College Sports") {
-        this.secondSegmentName = "Alcuin Sport";
         this.secondSegmentUrl = "/activities/view/Alcuin-Sport";
       } else if (this.categoryName == "Vanburgh College Sports") {
-        this.secondSegmentName = "Vanburgh Sport";
         this.secondSegmentUrl = "/activities/view/vanbrugh_sport";
       } else if (this.categoryName == "Constantine College Sports") {
-        this.secondSegmentName = "Constantine Sport";
         this.secondSegmentUrl = "/activities/view/Constantine-Sport";
       } else if (this.categoryName == "Derwent College Sports") {
-        this.secondSegmentName = "Derwent Sport";
         this.secondSegmentUrl = "/activities/view/derwent-sport";
       } else if (this.categoryName == "Goodricke College Sports") {
-        this.secondSegmentName = "Goodricke Sport";
         this.secondSegmentUrl = "/activities/view/goodricke-sport";
       } else if (this.categoryName == "Halifax College Sports") {
-        this.secondSegmentName = "Halifax Sport";
         this.secondSegmentUrl = "/activities/view/halifax-sport";
       } else if (this.categoryName == "Langwith College Sports") {
-        this.secondSegmentName = "Langwith Sport";
         this.secondSegmentUrl = "/activities/view/langwith-sport";
       } else if (
         this.categoryName == "Anne Lister & David Kato College Sports"
       ) {
-        this.secondSegmentName = "Anne Lister and Kato Sport";
         this.secondSegmentUrl = "/activities/view/lister_kato_sport";
       }
     },
