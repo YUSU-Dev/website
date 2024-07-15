@@ -2,45 +2,33 @@
   <div class="flex flex-col">
     <div
       class="flex-1 bg-green-500 py-4 text-center"
-      @click="open('completed')"
+      :class="{
+        'bg-yellow-500': label == 'In Progress',
+        'bg-red-500': label == 'Blocked',
+      }"
+      @click="openTab = !openTab"
     >
-      <h2>Completed</h2>
+      <h2>{{ label }}</h2>
     </div>
-    <div v-if="openTab == 'completed'">
+    <div v-if="openTab">
       <slot>All clear!</slot>
     </div>
-
-    <div
-      class="flex-1 bg-yellow-500 py-4 text-center"
-      @click="open('progress')"
-    >
-      <h2>In Progress</h2>
-    </div>
-    <div v-if="openTab == 'progress'"></div>
-
-    <div class="flex-1 bg-red-500 py-4 text-center" @click="open('blocked')">
-      <h2>Blocked</h2>
-    </div>
-    <div v-if="openTab == 'blocked'"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "SabbAccordion",
+  props: {
+    label: {
+      type: String,
+      default: "Completed",
+    },
+  },
   data() {
     return {
-      openTab: "",
+      openTab: false,
     };
-  },
-  methods: {
-    open(tab) {
-      if (this.openTab != tab) {
-        this.openTab = tab;
-      } else {
-        this.openTab = "";
-      }
-    },
   },
 };
 </script>
