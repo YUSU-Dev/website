@@ -12,5 +12,6 @@ export const Default = {
     image:
       "https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg",
     logo: "https://placeholder.com/500x500",
+    category: "Example Category",
   },
 };
