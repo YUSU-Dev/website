@@ -7,7 +7,7 @@
       <h2>Completed</h2>
     </div>
     <div v-if="openTab == 'completed'">
-      <slot name="completed">All clear!</slot>
+      <slot>All clear!</slot>
     </div>
 
     <div
@@ -16,16 +16,12 @@
     >
       <h2>In Progress</h2>
     </div>
-    <div v-if="openTab == 'progress'">
-      <slot name="progress">All clear!</slot>
-    </div>
+    <div v-if="openTab == 'progress'"></div>
 
     <div class="flex-1 bg-red-500 py-4 text-center" @click="open('blocked')">
       <h2>Blocked</h2>
     </div>
-    <div v-if="openTab == 'blocked'">
-      <slot name="blocked">All clear!</slot>
-    </div>
+    <div v-if="openTab == 'blocked'"></div>
   </div>
 </template>
 
