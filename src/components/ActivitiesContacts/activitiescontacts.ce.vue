@@ -4,7 +4,7 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
           <FontAwesomeIcon icon="fa-core fa-envelope" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">Email:</h3>
+          <h3 class="mb-0 text-lg font-bold">Email</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ email }}</p>
@@ -15,7 +15,7 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
           <FontAwesomeIcon icon="fa-brands fa-facebook" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">Facebook:</h3>
+          <h3 class="mb-0 text-lg font-bold">Facebook</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ facebook }}</p>
@@ -26,7 +26,7 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
           <FontAwesomeIcon icon="fa-brands fa-instagram" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">Instagram:</h3>
+          <h3 class="mb-0 text-lg font-bold">Instagram</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ instagram }}</p>
@@ -37,7 +37,7 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
           <FontAwesomeIcon icon="fa-brands fa-x-twitter" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">X:</h3>
+          <h3 class="mb-0 text-lg font-bold">X</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ twitter }}</p>
@@ -48,7 +48,7 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
           <FontAwesomeIcon icon="fa-brands fa-youtube" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">Youtube:</h3>
+          <h3 class="mb-0 text-lg font-bold">Youtube</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ name }}</p>
@@ -59,7 +59,7 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
           <FontAwesomeIcon icon="fa-brands fa-discord" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">Discord:</h3>
+          <h3 class="mb-0 text-lg font-bold">Discord</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ name }}</p>
@@ -70,7 +70,7 @@
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
           <FontAwesomeIcon icon="fa-brands fa-tiktok" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">Tiktok:</h3>
+          <h3 class="mb-0 text-lg font-bold">Tiktok</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ tiktok }}</p>
