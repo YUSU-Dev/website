@@ -101,7 +101,6 @@ export default {
       }
     },
     getSecondSegment() {
-      this.secondSegmentName = this.categoryName;
       if (this.categoryName == "James College Sports") {
         this.secondSegmentUrl = "/activities/view/James-Sport";
       } else if (this.categoryName == "Alcuin College Sports") {
@@ -122,6 +121,10 @@ export default {
         this.categoryName == "Anne Lister & David Kato College Sports"
       ) {
         this.secondSegmentUrl = "/activities/view/lister_kato_sport";
+      }
+
+      if (this.secondSegmentUrl) {
+        this.secondSegmentName = this.categoryName;
       }
     },
   },
