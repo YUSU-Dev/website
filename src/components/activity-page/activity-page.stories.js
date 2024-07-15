@@ -15,3 +15,14 @@ export const Default = {
     },
   },
 };
+
+export const CollegeSport = {
+  args: {
+    groupId: "267",
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
+};

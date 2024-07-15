@@ -89,6 +89,11 @@
     <div class="flex flex-col">
       <Events :groupid="groupId" title="Events" icon />
       <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
+      <Activities
+        v-if="subgroupCategoryId"
+        :selectedcategory="subgroupCategoryId"
+        :title="subgroupCategoryName"
+      />
     </div>
   </main>
 </template>
@@ -96,6 +101,7 @@
 import Button from "../../components/button/button.ce.vue";
 import Events from "../../components/Events/events.ce.vue";
 import Shop from "../../components/shop/shop.ce.vue";
+import Activities from "../../components/activities/activities.ce.vue";
 import ActivitiesContacts from "../../components/ActivitiesContacts/activitiescontacts.ce.vue";
 import axios from "../../_common/axios.mjs";
 
@@ -106,6 +112,8 @@ export default {
   data() {
     return {
       pageActivity: {},
+      subgroupCategoryId: null,
+      subgroupCategoryName: null,
     };
   },
   components: {
@@ -113,6 +121,7 @@ export default {
     ActivitiesContacts,
     Events,
     Shop,
+    Activities,
   },
   created() {
     var self = this;
@@ -139,10 +148,41 @@ export default {
           ).name;
         }),
       );
+    this.getSubgroupCategoryId();
   },
   methods: {
     wrapURL(URL) {
       return "'" + URL + "'";
+    },
+    getSubgroupCategoryId() {
+      if (this.groupId == "267") {
+        this.subgroupCategoryId = 31;
+        this.subgroupCategoryName = "Alcuin College Sports";
+      } else if (this.groupId == "269") {
+        this.subgroupCategoryId = 30;
+        this.subgroupCategoryName = "James College Sports";
+      } else if (this.groupId == "309") {
+        this.subgroupCategoryId = 32;
+        this.subgroupCategoryName = "Vanbrugh College Sports";
+      } else if (this.groupId == "320") {
+        this.subgroupCategoryId = 33;
+        this.subgroupCategoryName = "Constantine College Sports";
+      } else if (this.groupId == "395") {
+        this.subgroupCategoryId = 34;
+        this.subgroupCategoryName = "Derwent College Sports";
+      } else if (this.groupId == "396") {
+        this.subgroupCategoryId = 35;
+        this.subgroupCategoryName = "Goodricke College Sports";
+      } else if (this.groupId == "397") {
+        this.subgroupCategoryId = 36;
+        this.subgroupCategoryName = "Halifax College Sports";
+      } else if (this.groupId == "553") {
+        this.subgroupCategoryId = 30;
+        this.subgroupCategoryName = "Anne Lister & David Kato College Sports";
+      } else if (this.groupId == "398") {
+        this.subgroupCategoryId = 37;
+        this.subgroupCategoryName = "Langwith College Sports";
+      }
     },
   },
 };
