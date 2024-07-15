@@ -36,9 +36,22 @@
           {/exp:su_activities:getGroupInterest} {/if}
           {/if} -->
         </div>
-        <div class="flex flex-col">
+        <div v-if="pageActivity.description" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">About</h2>
           <article v-html="pageActivity.description"></article>
+        </div>
+        <div v-else class="flex flex-col gap-y-6">
+          <div class="flex flex-col">
+            <h3 class="text-xl font-semibold">Meeting times</h3>
+            <p>Please get in touch via email to find out our meeting times.</p>
+          </div>
+          <div class="flex flex-col">
+            <h3 class="text-xl font-semibold">Get Involved</h3>
+            <p>
+              We are open to all students, and encourage those from all
+              backgrounds to come along!
+            </p>
+          </div>
         </div>
       </div>
       <div class="flex flex-col gap-y-8">
