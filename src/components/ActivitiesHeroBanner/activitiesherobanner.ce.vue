@@ -9,8 +9,8 @@
           <div class="grid place-items-center gap-y-2">
             <br />
             <img
-              v-if="logo"
-              :src="logo"
+              v-if="groupLogo"
+              :src="groupLogo"
               class="h-48 w-48 items-center object-contain"
               alt=""
             />
@@ -56,6 +56,7 @@
   </div>
 </template>
 <script>
+import { randomImageUrl } from "../../_common/randomImage.mjs";
 export default {
   props: {
     group: {
@@ -81,11 +82,24 @@ export default {
   },
   components: {},
   data() {
-    return {};
+    return {
+      groupLogo: {
+        type: String,
+      },
+    };
+  },
+  mounted() {
+    this.getGroupLogo();
   },
   methods: {
     wrapURL(URL) {
       return "'" + URL + "'";
+    },
+    getGroupLogo() {
+      if (!this.logo) {
+        return (this.groupLogo = randomImageUrl("student-life"));
+      }
+      return (this.groupLogo = this.logo);
     },
   },
 };
