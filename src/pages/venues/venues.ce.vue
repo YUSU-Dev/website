@@ -5,8 +5,10 @@
   />
   <div id="maincontent" class="container mx-auto flex flex-col pb-20">
     <!-- Section links would go here -->
-    <article v-html="page_content"></article>
-    <Events :venueid="page_class" title="Events" icon class="pb-20" />
+    <main>
+      <article v-html="page_content"></article>
+    </main>
+    <Events :venueid="page_class" title="Events" icon class="" />
     <article v-html="additional_page_content"></article>
   </div>
   <Footer />
