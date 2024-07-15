@@ -80,20 +80,20 @@ export default {
       } else if (
         this.categoryName == "College Sport (Groups)" ||
         this.categoryName == "College Sport" ||
-        this.categoryId == "30" ||
-        this.categoryId == "31" ||
-        this.categoryId == "32" ||
-        this.categoryId == "33" ||
-        this.categoryId == "34" ||
-        this.categoryId == "35" ||
-        this.categoryId == "36" ||
-        this.categoryId == "37" ||
-        this.categoryId == "38"
+        this.categoryName == "James College Sports" ||
+        this.categoryName == "Alcuin College Sports" ||
+        this.categoryName == "Vanbrugh College Sports" ||
+        this.categoryName == "Constantine College Sports" ||
+        this.categoryName == "Derwent College Sports" ||
+        this.categoryName == "Goodricke College Sports" ||
+        this.categoryName == "Halifax College Sports" ||
+        this.categoryName == "Langwith College Sports" ||
+        this.categoryName == "Anne Lister & David Kato College Sports"
       ) {
         this.firstSegmentName = "College Sport";
         this.firstSegmentUrl = "/sport/college-sport";
       } else if (this.categoryId == "1") {
-        this.firstSegmentName = "Sport";
+        this.firstSegmentName = "Sports";
         this.firstSegmentUrl = "/sport";
       } else {
         this.firstSegmentName = "Societies";
