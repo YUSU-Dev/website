@@ -3,6 +3,7 @@
     <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
       <div class="flex flex-col gap-y-6">
         <div class="flex gap-x-4 sm:hidden">
+          <!-- {if category_name != "College Sport (Groups)"} -->
           <a :href="'/shop?activity_id=' + pageActivity.id"
             ><Button
               :class="{ 'bg-light-blue': title == 'join' }"
@@ -10,13 +11,30 @@
               is-student-life
               class="px-10 text-center"
           /></a>
-          <!-- <a href=""
+          <!-- {exp:su_activities:getGroupInterest activity_id="{activity_id}"}
+          {if signed_in}
+          {if is_interested}
+          <a href=""
             ><Button
+              @click="unregisterInterest()"
               :class="{ 'bg-light-blue': title == 'join' }"
               title="Interested?"
               is-student-life
               class="px-10 text-center"
-          /></a> -->
+          /></a>
+          {if:else}
+          <a href=""
+            ><Button
+              @click="registerInterest()"
+              :class="{ 'bg-light-blue': title == 'join' }"
+              title="Interested?"
+              is-student-life
+              class="px-10 text-center"
+          /></a>
+          {/if}
+          {/if}
+          {/exp:su_activities:getGroupInterest} {/if}
+          {/if} -->
         </div>
         <div class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">About</h2>
