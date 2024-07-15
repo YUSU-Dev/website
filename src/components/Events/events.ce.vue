@@ -61,7 +61,7 @@
         </div>
       </div>
       <div v-else-if="title">
-        <h1 class="flex items-center pb-2 text-3xl font-bold">
+        <h1 class="flex items-center gap-x-3 pb-2 text-3xl font-bold">
           {{ title }}
           <FontAwesomeIcon
             v-if="icon"
@@ -71,9 +71,9 @@
         </h1>
       </div>
       <div v-if="Events.length == 0 && !Loading" class="">
-        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
-          There are currently no events!
-        </h2>
+        <h3 class="mb-4 mt-16 text-xl font-semibold text-[#555]">
+          There are currently no events
+        </h3>
       </div>
       <div v-if="!Loading" class="a-z-wrap mt-10">
         <Tile
