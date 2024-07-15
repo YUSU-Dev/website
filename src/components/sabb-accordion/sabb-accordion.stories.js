@@ -5,4 +5,8 @@ export default {
   component: "sabb-accordion",
 };
 
-export const Default = {};
+export const Default = {
+  args: {
+    label: "In Progress",
+  },
+};
