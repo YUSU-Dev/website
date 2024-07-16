@@ -7,7 +7,7 @@ export default {
 
 export const Default = {
   args: {
-    title: "College Sports",
+    title: "College Sport",
     selectedparents: "23",
   },
 };
