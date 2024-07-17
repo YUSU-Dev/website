@@ -390,7 +390,7 @@ export default {
               },
               {
                 name: "Adopt an Activity",
-                link: "adopt-an-activity",
+                link: "/adopt-an-activity",
               },
               {
                 name: "Volunteering & Fundraising",
