@@ -382,19 +382,19 @@ export default {
             links: [
               {
                 name: "Sports A-Z",
-                link: "/student-life/sport",
+                link: "/sport",
               },
               {
                 name: "Societies A-Z",
-                link: "/student-life/societies",
+                link: "/societies",
               },
               {
                 name: "Adopt an Activity",
-                link: "/student-life/adopt-an-activity",
+                link: "/adopt-an-activity",
               },
               {
                 name: "Volunteering & Fundraising",
-                link: "/student-life/volunteering",
+                link: "/volunteering",
               },
             ],
           },
