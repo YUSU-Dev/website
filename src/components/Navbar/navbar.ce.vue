@@ -394,7 +394,7 @@ export default {
               },
               {
                 name: "Volunteering & Fundraising",
-                link: "volunteering",
+                link: "/volunteering",
               },
             ],
           },
