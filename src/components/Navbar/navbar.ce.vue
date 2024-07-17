@@ -386,7 +386,7 @@ export default {
               },
               {
                 name: "Societies A-Z",
-                link: "societies",
+                link: "/societies",
               },
               {
                 name: "Adopt an Activity",
