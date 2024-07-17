@@ -382,7 +382,7 @@ export default {
             links: [
               {
                 name: "Sports A-Z",
-                link: "sport",
+                link: "/sport",
               },
               {
                 name: "Societies A-Z",
