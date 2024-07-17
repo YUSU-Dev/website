@@ -319,12 +319,3 @@ export default {
   },
 };
 </script>
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.vs__selected-options {
-  flex-wrap: nowrap !important;
-}
-</style>
