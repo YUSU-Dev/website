@@ -402,14 +402,14 @@ export default {
             name: "Student Voice",
             closed: true,
             links: [
-              {
-                name: "Elections",
-                link: "/elections",
-              },
-              {
-                name: "Suggestions",
-                link: "/suggestions",
-              },
+              // {
+              //   name: "Elections",
+              //   link: "/elections",
+              // },
+              // {
+              //   name: "Suggestions",
+              //   link: "/suggestions",
+              // },
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
