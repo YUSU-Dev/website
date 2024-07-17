@@ -48,18 +48,17 @@
                 <div>
                   <ul class="flex flex-col gap-y-1">
                     <li>
-                      <a
-                        href="/about-us/organisational-policies/web-accessibility-statement"
+                      <a href="/documents/web-accessibility-statement"
                         >Accessibility Statement</a
                       >
                     </li>
                     <li><a href="/advertise-with-us">Advertise With Us</a></li>
-                    <li>
+                    <!-- <li>
                       <a
                         href="/about-us/organisational-policies/environmental-impact"
                         >Environment Impact</a
                       >
-                    </li>
+                    </li> -->
                     <li>
                       <a href="https://apply.yorksu.org" target="_blank"
                         >Jobs</a
@@ -69,23 +68,17 @@
                 </div>
                 <div>
                   <ul class="flex flex-col gap-y-1">
-                    <li><a href="/about-us/staff">Our Staff</a></li>
+                    <!-- <li><a href="/about-us/staff">Our Staff</a></li> -->
                     <li>
-                      <a href="/about-us/organisational-policies/refund-policy"
-                        >Refund Policy</a
-                      >
+                      <a href="/documents/refund-policy">Refund Policy</a>
                     </li>
                     <li>
-                      <a
-                        href="/about-us/organisational-policies/terms-conditions"
+                      <a href="/documents/term-and-conditions"
                         >Terms & Conditions</a
                       >
                     </li>
                     <li>
-                      <a
-                        href="/about-us/organisational-policies/data-protection"
-                        >Your Privacy</a
-                      >
+                      <a href="/documents/privacy">Your Privacy</a>
                     </li>
                   </ul>
                 </div>
