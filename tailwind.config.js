@@ -1,5 +1,29 @@
 export default {
   content: ["./src/**/*.{html,js,vue}"],
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        ".container": {
+          maxWidth: "100%",
+          "@screen sm": {
+            maxWidth: "36rem",
+          },
+          "@screen md": {
+            maxWidth: "48rem",
+          },
+          "@screen lg": {
+            maxWidth: "64rem",
+          },
+          "@screen xl": {
+            maxWidth: "72rem",
+          },
+          "@screen 2xl": {
+            maxWidth: "80rem",
+          },
+        },
+      });
+    },
+  ],
   theme: {
     extend: {
       colors: {
