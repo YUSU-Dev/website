@@ -19,8 +19,8 @@
     </div>
   </div>
   <div class="bg-[#f7f7f7]">
-    <div class="banner-container mx-auto">
-      <div class="flex justify-center gap-x-4 py-2">
+    <div class="banner-container mx-auto h-10">
+      <div v-if="banners.length > 1" class="flex justify-center gap-x-4 py-2">
         <button @click="prev()" aria-label="Previous slide">
           <FontAwesomeIcon
             icon="fas fa-arrow-left"
