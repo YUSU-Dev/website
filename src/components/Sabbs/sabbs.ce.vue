@@ -1,6 +1,7 @@
 <template>
   <div class="my-10">
     <div
+      v-if="!noTitle"
       class="mx-2 mb-10 flex flex-col items-center justify-center gap-y-4 text-center"
     >
       <h2 class="text-3xl font-bold">Introducing your Sabbatical Officers</h2>
@@ -79,6 +80,10 @@ export default {
           url: "/your-voice/sport",
         },
       ],
+    },
+    noTitle: {
+      type: Boolean,
+      default: false,
     },
   },
   components: {

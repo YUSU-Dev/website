@@ -56,3 +56,9 @@ export const Default = {
 export const WithoutProps = {
   args: {},
 };
+
+export const WithoutPropsNoTitle = {
+  args: {
+    noTitle: true,
+  },
+};
