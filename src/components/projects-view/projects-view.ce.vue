@@ -103,7 +103,6 @@ export default {
     };
   },
   created() {
-    this.selectedCategory = 31;
     axios
       .get("https://pluto.sums.su/api/news?categoryIds=19,33,30,31,34", {
         headers: {

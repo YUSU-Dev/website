@@ -4,13 +4,13 @@
       <div class="flex flex-col gap-y-6">
         <div class="flex gap-x-4 sm:hidden">
           <!-- {if category_name != "College Sport (Groups)"} -->
-          <a :href="'/shop?activity_id=' + pageActivity.id"
-            ><Button
-              :class="{ 'bg-light-blue': title == 'join' }"
-              title="Join"
-              is-student-life
-              class="px-10 text-center"
-          /></a>
+          ><Button
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="Join"
+            is-student-life
+            class="px-10 text-center"
+            :url="'/shop?activity_id=' + pageActivity.id"
+          />
           <!-- {exp:su_activities:getGroupInterest activity_id="{activity_id}"}
           {if signed_in}
           {if is_interested}
@@ -56,13 +56,13 @@
       </div>
       <div class="flex flex-col gap-y-8">
         <div class="hidden flex-col gap-y-4 sm:flex">
-          <a :href="'/shop?activity_id=' + pageActivity.id"
-            ><Button
-              :class="{ 'bg-light-blue': title == 'join' }"
-              title="Join"
-              is-student-life
-              class="px-10 text-center"
-          /></a>
+          <Button
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="Join"
+            is-student-life
+            class="px-10 text-center"
+            :url="'/shop?activity_id=' + pageActivity.id"
+          />
           <!-- <a href=""
             ><Button
               :class="{ 'bg-light-blue': title == 'join' }"
