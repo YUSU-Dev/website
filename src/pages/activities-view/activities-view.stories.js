@@ -26,3 +26,25 @@ export const ury = {
     },
   },
 };
+
+export const ArchaelogyRep = {
+  args: {
+    activityid: 623,
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
+};
+
+export const MemeSoc = {
+  args: {
+    activityid: 179,
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
+};

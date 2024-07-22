@@ -4,13 +4,22 @@
       <div class="flex flex-col gap-y-6">
         <div class="flex gap-x-4 sm:hidden">
           <!-- {if category_name != "College Sport (Groups)"} -->
-          <a :href="'/shop?activity_id=' + pageActivity.id"
-            ><Button
-              :class="{ 'bg-light-blue': title == 'join' }"
-              title="Join"
-              is-student-life
-              class="px-10 text-center"
-          /></a>
+          <Button
+            v-if="isActivity"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="Join"
+            is-student-life
+            class="px-10 text-center"
+            :url="'/shop?activity_id=' + pageActivity.id"
+          />
+          <Button
+            v-if="isAdoptable"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="How to Adopt"
+            is-student-life
+            class="px-10 text-center"
+            url="/adopt-an-activity"
+          />
           <!-- {exp:su_activities:getGroupInterest activity_id="{activity_id}"}
           {if signed_in}
           {if is_interested}
@@ -56,13 +65,22 @@
       </div>
       <div class="flex flex-col gap-y-8">
         <div class="hidden flex-col gap-y-4 sm:flex">
-          <a :href="'/shop?activity_id=' + pageActivity.id"
-            ><Button
-              :class="{ 'bg-light-blue': title == 'join' }"
-              title="Join"
-              is-student-life
-              class="px-10 text-center"
-          /></a>
+          <Button
+            v-if="isActivity"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="Join"
+            is-student-life
+            class="px-10 text-center"
+            :url="'/shop?activity_id=' + pageActivity.id"
+          />
+          <Button
+            v-if="isAdoptable"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="How to Adopt"
+            is-student-life
+            class="px-10 text-center"
+            url="/adopt-an-activity"
+          />
           <!-- <a href=""
             ><Button
               :class="{ 'bg-light-blue': title == 'join' }"
@@ -114,6 +132,9 @@ export default {
       pageActivity: {},
       subgroupCategoryId: null,
       subgroupCategoryName: null,
+      isAdoptable: false,
+      isAcademicRep: false,
+      isActivity: true,
     };
   },
   components: {
@@ -146,6 +167,11 @@ export default {
           self.pageActivity.category = response2.data.find(
             (item) => item.id === self.pageActivity.activity_category_id,
           ).name;
+          this.isAdoptable = this.pageActivity.activity_category_id == 26;
+          this.isAcademicRep = [40, 41, 42, 43, 44].includes(
+            this.pageActivity.activity_category_id,
+          );
+          this.isActivity = !this.isAdoptable && !this.isAcademicRep;
         }),
       );
     this.getSubgroupCategoryId();
