@@ -457,21 +457,21 @@ export default {
             closed: true,
             links: [
               {
-                name: "Advice & Support",
+                name: "York SU Advice & Support",
                 link: "/advice-support",
               },
               {
-                name: "Online Support Guides",
+                name: "Support A-Z",
                 link: "/advice-support/support-a-z",
               },
               {
                 name: "Cost of Living Support",
                 link: "/cost-of-living",
               },
-              {
-                name: "Complaints",
-                link: "/complaints",
-              },
+              // {
+              //   name: "Complaints",
+              //   link: "/complaints",
+              // },
             ],
           },
           {
@@ -494,10 +494,10 @@ export default {
                 name: "Contact Us",
                 link: "/contact-us",
               },
-              {
-                name: "Sustainability at YorkSU",
-                link: "/sustainability",
-              },
+              // {
+              //   name: "Sustainability at YorkSU",
+              //   link: "/sustainability",
+              // },
             ],
           },
         ],
