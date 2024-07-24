@@ -13,3 +13,10 @@ export const Default = {
       "https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg",
   },
 };
+
+export const Homepage = {
+  args: {
+    homepage: true,
+    title: "Placeholder",
+  },
+};

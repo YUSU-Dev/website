@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center overflow-x-hidden bg-beige">
+  <div class="flex justify-center overflow-x-hidden bg-mustard">
     <div class="max:banner-container w-full">
       <transition-group
         :name="transition"
@@ -71,7 +71,7 @@ export default {
       default() {
         return {
           url: "https://www.youtube.com/watch?v=c_hUsm0W7eg&t=5s",
-          img: "https://assets-cdn.sums.su/YU/IMG/Freshers2022/welcome.png",
+          img: "https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_banners_Homepage_Default.jpg",
           alt: "Welcome! We're your Students' Union - here to make sure you love your time at York",
         };
       },

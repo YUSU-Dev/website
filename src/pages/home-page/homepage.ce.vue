@@ -1,9 +1,6 @@
 <template>
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
-  <HeroHeader
-    :homepage="true"
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
-  />
+  <HeroHeader :homepage="true" />
   <div
     id="maincontent"
     class="container mx-auto flex flex-col items-center justify-center py-20"
@@ -23,7 +20,7 @@
   </div>
   <div class="bg-beige">
     <div class="container mx-auto bg-beige py-20">
-      <Adverts />
+      <!-- <Adverts /> -->
     </div>
   </div>
   <Footer />
@@ -34,7 +31,7 @@ import Footer from "../../components/Footer/footer.ce.vue";
 import QuickLinks from "../../components/quickLinks/quickLinks.ce.vue";
 import News from "../../components/news/news.ce.vue";
 import Sabbs from "../../components/Sabbs/sabbs.ce.vue";
-import Adverts from "../../components/Adverts/adverts.ce.vue";
+// import Adverts from "../../components/Adverts/adverts.ce.vue";
 export default {
   props: {
     title: { type: String, default: "" },
@@ -47,7 +44,7 @@ export default {
     QuickLinks,
     News,
     Sabbs,
-    Adverts,
+    // Adverts,
   },
   methods: {},
 };
