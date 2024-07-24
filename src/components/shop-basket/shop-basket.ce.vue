@@ -1,121 +1,10 @@
 <template>
-  <!-- <div class="">
-    <div class="my-4">
-      <Button :is-primary="true" title="Back to Shop" arrow :url="'/shop'" />
-    </div>
-    <div class="flex flex-wrap md:flex-row">
-      <div class="mb-2 md:w-2/3">
-        <div>
-          <h1 class="text-2xl font-bold">Basket</h1>
-          <div v-if="items.length > 0">
-            <div
-              v-for="(item, index) in items"
-              :key="index"
-              class="my-2 flex gap-4"
-            >
-              <div class="flex w-2/12 items-center justify-center">
-                <img
-                  class="object-cover"
-                  alt=""
-                  :src="productImages[item.product_id]"
-                />
-              </div>
-              <div class="w-3/4 grid-cols-5 gap-2 md:grid">
-                <div class="col-span-3">
-                  <h2 class="text-xl">{{ item.product_name }}</h2>
-                  <div class="gap-2">
-                    <p>Item Price: £{{ item.price_total }}</p>
-                    <div class="flex items-center gap-2">
-                      <p>Quantity:</p>
-                      <a
-                        @click="removeItem(item.id)"
-                        href="javascript:;"
-                        :aria-label="
-                          'Remove' + item.product_name + 'from basket'
-                        "
-                      >
-                        <FontAwesomeIcon icon="fas fa-minus" class="h-3 w-3" />
-                      </a>
-                      <p class="text-lg">{{ item.quantity }}</p>
-                      <a
-                        :href="
-                          '/shop/product/' +
-                          item.product_id +
-                          '-' +
-                          item.url_name
-                        "
-                        :aria-label="
-                          'Add another' + item.product_name + 'to basket'
-                        "
-                      >
-                        <FontAwesomeIcon icon="fas fa-plus" class="h-3 w-3" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-span-2 grid grid-cols-subgrid">
-                  <div class="mb-2 flex items-end justify-end">
-                    <p class="text-xl">Total:&nbsp;</p>
-                    <p class="text-xl">
-                      {{ formatPrice(item.quantity * item.price_total) }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div v-else class="my-4 text-center text-lg">
-            <p>
-              There are no items in your basket. Why not check out our shop?
-            </p>
-          </div>
-        </div>
-        <Button
-          @click="emptyBasket()"
-          title="Empty basket"
-          :is-primary="true"
-          v-if="items.length > 0"
-        />
-      </div>
-      <div class="flex flex-col gap-2 md:ml-4 md:w-2/12">
-        <div class="bg-gray-200 p-4">
-          <h2 class="mb-2 text-2xl font-bold">Summary</h2>
-          <div class="flex justify-between text-lg">
-            <p>Subtotal</p>
-            <p>£{{ shopFullBasket[0].sub_total }}</p>
-          </div>
-          <div class="flex justify-between text-lg">
-            <p>Postage</p>
-            <p>£{{ shopFullBasket[0].delivery_fee }}</p>
-          </div>
-          <div class="flex justify-between text-lg">
-            <p>Booking Fee</p>
-            <p>£{{ shopFullBasket[0].booking_fee }}</p>
-          </div>
-          <div class="mt-2 flex justify-between text-lg">
-            <h3 class="text-xl font-bold">
-              Total £{{ shopFullBasket[0].total }}
-            </h3>
-          </div>
-        </div>
-        <Button @click="payNow()" title="Go to checkout" :is-primary="true" />
-        <p class="mt-2">
-          All events tickets are non-refundable. If you do require help with
-          your order after purchasing please contact
-          <a class="text-blue-800 underline" href="mailto:finance@yorksu.org"
-            >finance@yorksu.org</a
-          >
-          or the student group running the event.
-        </p>
-      </div>
-    </div>
-  </div> -->
   <div class="container mx-auto">
     <div class="my-4">
       <Button :is-primary="true" title="Back to Shop" arrow :url="'/shop'" />
     </div>
     <h1 class="mb-2 text-2xl font-bold">Basket</h1>
-    <div class="flex grid-cols-4 flex-col md:grid">
+    <div class="flex grid-cols-4 flex-col gap-y-6 md:grid">
       <div class="col-span-3 mb-2">
         <!-- <div> -->
         <div v-if="items.length > 0" class="mb-6 flex flex-col gap-y-4">
@@ -124,13 +13,6 @@
             :key="index"
             class="grid grid-cols-4 gap-x-3 lg:gap-x-10"
           >
-            <!-- <div class="flex w-2/12 items-center justify-center">
-              <img
-                class="object-cover"
-                alt=""
-                :src="productImages[item.product_id]"
-              />
-            </div> -->
             <div class="col-span-1 flex items-center justify-center">
               <img
                 class="object-cover"
@@ -138,60 +20,17 @@
                 :src="productImages[item.product_id]"
               />
             </div>
-            <!-- <div class="w-3/4 grid-cols-5 gap-2 md:grid">
-              <div class="col-span-3">
-                <h2 class="text-xl">{{ item.product_name }}</h2>
-                <div class="gap-2">
-                  <p>Item Price: £{{ item.price_total }}</p>
-                  <div class="flex items-center gap-2">
-                    <p>Quantity:</p>
-                    <a
-                      @click="removeItem(item.id)"
-                      href="javascript:;"
-                      :aria-label="'Remove' + item.product_name + 'from basket'"
-                    >
-                      <FontAwesomeIcon icon="fas fa-minus" class="h-3 w-3" />
-                    </a>
-                    <p class="text-lg">{{ item.quantity }}</p>
-                    <a
-                      :href="
-                        '/shop/product/' + item.product_id + '-' + item.url_name
-                      "
-                      :aria-label="
-                        'Add another' + item.product_name + 'to basket'
-                      "
-                    >
-                      <FontAwesomeIcon icon="fas fa-plus" class="h-3 w-3" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-2 grid grid-cols-subgrid">
-                <div class="mb-2 flex items-end justify-end">
-                  <p class="text-xl">Total:&nbsp;</p>
-                  <p class="text-xl">
-                    {{ formatPrice(item.quantity * item.price_total) }}
-                  </p>
-                </div>
-              </div>
-            </div> -->
             <div class="col-span-3">
               <div class="flex h-full flex-col justify-between">
-                <h2 class="text-xl">{{ item.product_name }}</h2>
+                <h2 class="text-xl font-bold">{{ item.product_name }}</h2>
 
-                <!-- <div class="flex">
-                  <p>Item Price:</p>
-                  <p class="ml-2">£{{ item.price_total }}</p>
-                </div> -->
-
-                <div class="flex gap-x-6">
-                  <div class="flex flex-col justify-between gap-y-2 md:gap-y-4">
+                <div class="flex flex-col gap-y-1 xs:gap-y-2 md:gap-y-3">
+                  <div class="grid grid-cols-2 items-center md:grid-cols-3">
                     <p>Item Price:</p>
-                    <p>Quantity:</p>
-                    <p>Total:&nbsp;</p>
-                  </div>
-                  <div class="flex flex-col justify-between gap-y-2 md:gap-y-4">
                     <p>£{{ item.price_total }}</p>
+                  </div>
+                  <div class="grid grid-cols-2 items-center md:grid-cols-3">
+                    <p>Quantity:</p>
                     <div class="flex items-center">
                       <a
                         @click="removeItem(item.id)"
@@ -221,6 +60,11 @@
                         <FontAwesomeIcon icon="fas fa-plus" class="h-3 w-3" />
                       </a>
                     </div>
+                  </div>
+                  <div
+                    class="grid grid-cols-2 items-center font-semibold md:grid-cols-3"
+                  >
+                    <p>Total:</p>
                     <p>{{ formatPrice(item.quantity * item.price_total) }}</p>
                   </div>
                 </div>
@@ -240,7 +84,7 @@
         />
       </div>
 
-      <div class="col-span-1">
+      <div class="col-span-1 mb-4">
         <div class="flex max-w-96 flex-col gap-2 md:ml-4">
           <div class="bg-gray-200 p-4">
             <h2 class="mb-2 text-2xl font-bold">Summary</h2>
