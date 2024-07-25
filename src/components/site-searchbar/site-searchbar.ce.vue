@@ -17,12 +17,25 @@ export default {
       window.location.href = `/search?q=${value}`;
     },
   },
+  mounted() {
+    if (this.value) {
+      this.initialSearchValue = this.value;
+    } else {
+      const params = new URLSearchParams(window.location.search);
+      this.initialSearchValue = params.get("q");
+    }
+  },
   props: {
-    initialSearchValue: {
+    value: {
       type: String,
       default: null,
       required: false,
     },
+  },
+  data() {
+    return {
+      initialSearchValue: null,
+    };
   },
 };
 </script>
