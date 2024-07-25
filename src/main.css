@@ -141,15 +141,15 @@
 
   .btn-primary-active,
   .btn-secondary-active {
-    @apply bg-primary-pink text-black;
+    @apply bg-primary-pink font-bold text-black;
   }
   .btn-advice-support-active,
   .btn-student-life-active {
-    @apply bg-light-blue;
+    @apply bg-light-blue font-bold;
   }
 
   .btn-student-voice-active {
-    @apply bg-light-pink;
+    @apply bg-light-pink font-bold;
   }
 
   /* Skip to Main Content */

@@ -1,5 +1,5 @@
 <template>
-  <div class="font-serif text-sm">
+  <div class="container mx-auto pb-2 pt-12 font-serif text-sm">
     <p>
       <a class="text-black no-underline hover:underline" href="/">Home</a>
       <span v-if="firstSegmentName">
@@ -92,9 +92,18 @@ export default {
       ) {
         this.firstSegmentName = "College Sport";
         this.firstSegmentUrl = "/sport/college-sport";
-      } else if (this.categoryId == "1") {
-        this.firstSegmentName = "Sports";
+      } else if (this.categoryName == "Sports") {
         this.firstSegmentUrl = "/sport";
+      } else if (this.categoryName == "Adopt an Activity") {
+        this.firstSegmentUrl = "/adopt-an-activity";
+      } else if (
+        this.categoryName == "Departments" ||
+        this.categoryName == "Arts and Humanities Faculty" ||
+        this.categoryName == "Sciences Faculty" ||
+        this.categoryName == "Social Sciences Faculty"
+      ) {
+        this.firstSegmentName = "Academic Reps";
+        this.firstSegmentUrl = "/academic-reps";
       } else {
         this.firstSegmentName = "Societies";
         this.firstSegmentUrl = "/societies";
