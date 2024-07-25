@@ -75,7 +75,11 @@ export default {
       this.firstSegmentName = this.categoryName;
       if (this.categoryName == "Colleges") {
         this.firstSegmentUrl = "/colleges";
-      } else if (this.categoryName == "Volunteering") {
+      } else if (
+        this.categoryName == "Volunteering" ||
+        this.categoryName == "Volunteering Groups"
+      ) {
+        this.firstSegmentName = "Volunteering";
         this.firstSegmentUrl = "/volunteering";
       } else if (
         this.categoryName == "College Sport (Groups)" ||
