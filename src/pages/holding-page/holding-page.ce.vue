@@ -4,7 +4,7 @@
       <img
         class="my-4 w-10/12 md:w-6/12"
         src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
-        alt="YorkSU logo"
+        alt="University of York Students' Union"
         loading="lazy"
       />
       <h1 class="my-4 text-xl">
