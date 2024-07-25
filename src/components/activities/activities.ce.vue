@@ -51,10 +51,10 @@
                 >
                   <a
                     :class="{
-                      '!bg-light-blue font-semibold text-black':
+                      'btn-student-life-active !btn-student-life':
                         SelectedParent.id === Parent.id,
                     }"
-                    class="flex h-full w-full justify-center border-2 border-none bg-mustard px-4 py-2 text-xl font-semibold text-black hover:bg-light-blue hover:text-black"
+                    class="btn-student-life flex h-full w-full justify-center border-2 border-none px-4 py-2"
                   >
                     <h3>{{ Parent.name }}</h3>
                   </a>
@@ -71,11 +71,11 @@
               >
                 <a
                   :class="{
-                    '!bg-light-blue font-semibold text-black':
+                    'btn-student-life-active !btn-student-life':
                       SelectedCategory === '',
                   }"
                   href="#"
-                  class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
+                  class="btn-student-life flex justify-center px-4 py-2"
                 >
                   <h4>All</h4>
                 </a>
@@ -91,10 +91,10 @@
               >
                 <a
                   :class="{
-                    '!bg-light-blue font-semibold text-black':
+                    'btn-student-life-active !btn-student-life':
                       SelectedCategory.id === Category.id,
                   }"
-                  class="flex justify-center bg-mustard px-4 py-2 text-lg text-black hover:bg-light-blue hover:text-black"
+                  class="btn-student-life flex justify-center px-4 py-2"
                   :href="'/student-life/clubs-and-socs?category=' + Category.id"
                 >
                   <h4>{{ Category.name }}</h4>
