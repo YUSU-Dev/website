@@ -101,7 +101,7 @@
     </div>
     <div
       :class="{ hidden: navClosed }"
-      class="max-h-[calc(100vh-133px)] overflow-y-auto overscroll-contain bg-[#f5f5f5]"
+      class="max-h-[calc(100vh-133px)] overflow-y-auto bg-[#f5f5f5]"
     >
       <div
         class="container mx-auto flex flex-col pb-8 pt-6 lg:grid lg:grid-cols-5"
