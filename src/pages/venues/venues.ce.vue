@@ -5,14 +5,14 @@
   />
   <div id="maincontent" class="container mx-auto flex flex-col pb-20">
     <!-- Section links would go here -->
-    <div class="mb-10 flex justify-center">
-      <img :src="page_key_image" :alt="title + ' logo'" />
-    </div>
-    <main>
-      <article v-html="page_content"></article>
-    </main>
-    <Events :venueid="page_class" title="Events" icon class="" />
-    <article v-html="additional_page_content"></article>
+    <VenuePage
+      :additional_page_content="additional_page_content"
+      :page_class="page_class"
+      :title="title"
+      :page_content="page_content"
+      :page_key_image="page_key_image"
+    >
+    </VenuePage>
   </div>
   <Footer />
 </template>
@@ -20,7 +20,7 @@
 <script>
 import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
-import Events from "../../components/Events/events.ce.vue";
+import VenuePage from "../../components/venue-page/venue-page.ce.vue";
 export default {
   name: "Venues",
   props: {
@@ -48,7 +48,7 @@ export default {
   components: {
     HeroHeader,
     Footer,
-    Events,
+    VenuePage,
   },
 };
 </script>
