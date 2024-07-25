@@ -243,7 +243,7 @@
             class="mb-6 grid w-full grid-cols-2 justify-center gap-y-4 xs:flex xs:justify-between lg:mb-0 lg:flex-col lg:gap-y-8"
           >
             <a
-              class="flex gap-x-2 border-r border-black text-start text-lg font-bold xs:border-none sm:gap-x-6"
+              class="flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline xs:border-none sm:gap-x-6"
               href="/events"
             >
               <FontAwesomeIcon
@@ -256,7 +256,7 @@
               class="hidden h-8 border-r border-black xs:block lg:hidden"
             ></div>
             <a
-              class="flex justify-end gap-x-2 text-start text-lg font-bold xs:justify-start sm:gap-x-6"
+              class="flex justify-end gap-x-2 text-start text-lg font-bold hover:underline xs:justify-start sm:gap-x-6"
               href="/news"
             >
               <FontAwesomeIcon
@@ -269,7 +269,7 @@
               class="hidden h-8 border-r border-black xs:block lg:hidden"
             ></div>
             <a
-              class="flex gap-x-2 border-r border-black text-start text-lg font-bold xs:border-none sm:gap-x-6"
+              class="flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline xs:border-none sm:gap-x-6"
               href="/venues"
             >
               <FontAwesomeIcon
@@ -282,7 +282,7 @@
               class="hidden h-8 border-r border-black xs:block lg:hidden"
             ></div>
             <a
-              class="flex justify-end gap-x-2 text-start text-lg font-bold xs:justify-start sm:gap-x-6"
+              class="flex justify-end gap-x-2 text-start text-lg font-bold hover:underline xs:justify-start sm:gap-x-6"
               href="/shop"
             >
               <FontAwesomeIcon
