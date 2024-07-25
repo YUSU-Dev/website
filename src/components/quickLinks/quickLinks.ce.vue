@@ -27,7 +27,7 @@ export default {
         {
           title: "View our latest job vacancies",
           href: "https://apply.yusu.org",
-          icon: '<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 0C8.95344 0 0 8.95344 0 20C0 31.0466 8.95344 40 20 40C31.0466 40 40 31.0466 40 20C40 8.95344 31.0466 0 20 0ZM22.698 16.3709V20.2626H18.5515V26.0008H26.4226V29.9244H12.2961V26.0008H14.047V20.2626H12.2961V16.3709H14.047V15.4318C14.047 11.1182 16.9996 8.01433 21.0824 8.01433C22.8969 8.01433 24.9423 8.56347 26.6216 9.56626L24.8388 13.068C23.8679 12.2881 22.6661 11.8981 21.5997 11.8981C19.7214 11.8981 18.5515 13.2909 18.5515 15.7899V16.3709H22.698Z" fill="#231F20"></svg>',
+          icon: '<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 0C8.95344 0 0 8.95344 0 20C0 31.0466 8.95344 40 20 40C31.0466 40 40 31.0466 40 20C40 8.95344 31.0466 0 20 0ZM22.698 16.3709V20.2626H18.5515V26.0008H26.4226V29.9244H12.2961V26.0008H14.047V20.2626H12.2961V16.3709H14.047V15.4318C14.047 11.1182 16.9996 8.01433 21.0824 8.01433C22.8969 8.01433 24.9423 8.56347 26.6216 9.56626L24.8388 13.068C23.8679 12.2881 22.6661 11.8981 21.5997 11.8981C19.7214 11.8981 18.5515 13.2909 18.5515 15.7899V16.3709H22.698Z" fill="#231F20"/></svg>',
         },
         {
           title: "Cost of living resources",
@@ -63,7 +63,6 @@ export default {
         :class="`flex h-14 w-14 flex-shrink-0 items-center justify-center bg-mustard group-hover:bg-primary-pink ${link.SVGPadding ?? 'p-2'} `"
         v-html="link.icon"
       />
-      <div v-html="link.icon" />
       <div class="flex max-w-72 flex-col justify-between px-5">
         <h2 class="mb-3 text-2xl group-hover:underline">{{ link.title }}</h2>
         <p class="text-base font-bold group-hover:underline">
