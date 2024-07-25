@@ -25,7 +25,7 @@
           </div>
           {/if} {if success}
           <div class="border-l-4 border-green-400 bg-green-100 p-2">
-            <h2 class="text-xl">Success</h2>
+            <h2 class="text-xl">Success!</h2>
             <p>
               Your submission has been received! A member of staff will now
               review it and be in contact with the login information if
