@@ -92,9 +92,17 @@ export default {
       ) {
         this.firstSegmentName = "College Sport";
         this.firstSegmentUrl = "/sport/college-sport";
-      } else if (this.categoryId == "1") {
+      } else if (this.categoryName == "Sports") {
         this.firstSegmentName = "Sports";
         this.firstSegmentUrl = "/sport";
+      } else if (
+        this.categoryName == "Departments" ||
+        this.categoryName == "Arts and Humanities Faculty" ||
+        this.categoryName == "Sciences Faculty" ||
+        this.categoryName == "Social Sciences Faculty"
+      ) {
+        this.firstSegmentName = "Academic Reps";
+        this.firstSegmentUrl = "/academic-reps";
       } else {
         this.firstSegmentName = "Societies";
         this.firstSegmentUrl = "/societies";
