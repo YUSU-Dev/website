@@ -93,8 +93,9 @@ export default {
         this.firstSegmentName = "College Sport";
         this.firstSegmentUrl = "/sport/college-sport";
       } else if (this.categoryName == "Sports") {
-        this.firstSegmentName = "Sports";
         this.firstSegmentUrl = "/sport";
+      } else if (this.categoryName == "Adopt an Activity") {
+        this.firstSegmentUrl = "/adopt-an-activity";
       } else if (
         this.categoryName == "Departments" ||
         this.categoryName == "Arts and Humanities Faculty" ||
