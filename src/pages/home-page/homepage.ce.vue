@@ -20,7 +20,7 @@
   </div>
   <div class="bg-beige">
     <div class="container mx-auto bg-beige py-20">
-      <!-- <Adverts /> -->
+      <Adverts />
     </div>
   </div>
   <Footer />
@@ -31,7 +31,7 @@ import Footer from "../../components/Footer/footer.ce.vue";
 import QuickLinks from "../../components/quickLinks/quickLinks.ce.vue";
 import News from "../../components/news/news.ce.vue";
 import Sabbs from "../../components/Sabbs/sabbs.ce.vue";
-// import Adverts from "../../components/Adverts/adverts.ce.vue";
+import Adverts from "../../components/Adverts/adverts.ce.vue";
 export default {
   props: {
     title: { type: String, default: "" },
@@ -44,7 +44,7 @@ export default {
     QuickLinks,
     News,
     Sabbs,
-    // Adverts,
+    Adverts,
   },
   methods: {},
 };
