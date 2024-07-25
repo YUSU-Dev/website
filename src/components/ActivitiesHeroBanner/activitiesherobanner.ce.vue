@@ -37,6 +37,7 @@
           </div>
           <br />
           <div
+            v-if="showButtons"
             class="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 p-4 md:flex-none"
           >
             <a
@@ -86,9 +87,25 @@ export default {
       groupLogo: {
         type: String,
       },
+      showButtons: {
+        type: Boolean,
+        default: true,
+      },
     };
   },
   mounted() {
+    if (
+      [
+        "Departments",
+        "Arts and Humanities Faculty",
+        "Sciences Faculty",
+        "Social Sciences Faculty",
+        "Faculties",
+        "Adopt an Activity",
+      ].includes(this.category)
+    ) {
+      this.showButtons = false;
+    }
     this.getGroupLogo();
   },
   methods: {
