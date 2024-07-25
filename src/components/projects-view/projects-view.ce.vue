@@ -1,48 +1,54 @@
 <template>
   <div>
     <div class="grid grid-cols-3 md:grid-cols-6">
-      <div
+      <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
+        href="javascript:;"
         :class="{ 'bg-light-pink': selectedCategory == 0 }"
         @click="selectedCategory = 0"
       >
         <FontAwesomeIcon icon="fa-core fa-hand-fist" class="h-8 w-8 p-1" />
         <p class="text-wrap text-center">All</p>
-      </div>
-      <div
+      </a>
+      <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
+        href="javascript:;"
         :class="{ 'bg-light-pink': selectedCategory == 29 }"
         @click="selectedCategory = 29"
       >
         <FontAwesomeIcon icon="fa-core fa-graduation-cap" class="h-8 w-8 p-1" />
         <p class="text-wrap text-center">Academic</p>
-      </div>
-      <div
+      </a>
+      <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
+        href="javascript:;"
         :class="{ 'bg-light-pink': selectedCategory == 31 }"
         @click="selectedCategory = 31"
       >
         <FontAwesomeIcon icon="fa-core fa-earth-europe" class="h-8 w-8 p-1" />
         <p class="text-wrap text-center">Community and Environmental</p>
-      </div>
-      <div
+      </a>
+      <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
+        href="javascript:;"
         :class="{ 'bg-light-pink': selectedCategory == 33 }"
         @click="selectedCategory = 33"
       >
         <FontAwesomeIcon icon="fa-core fa-bullhorn" class="h-8 w-8 p-1" />
         <p class="text-wrap text-center">Liberation and Diversity</p>
-      </div>
-      <div
+      </a>
+      <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
+        href="javascript:;"
         :class="{ 'bg-light-pink': selectedCategory == 30 }"
         @click="selectedCategory = 30"
       >
         <FontAwesomeIcon icon="fa-core fa-parachute-box" class="h-8 w-8 p-1" />
         <p class="text-wrap text-center">Student Activities</p>
-      </div>
-      <div
+      </a>
+      <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
+        href="javascript:;"
         :class="{ 'bg-light-pink': selectedCategory == 34 }"
         @click="selectedCategory = 34"
       >
@@ -51,7 +57,7 @@
           class="h-8 w-8 p-1"
         />
         <p class="text-wrap text-center">Welfare</p>
-      </div>
+      </a>
     </div>
     <div class="mt-6 grid grid-cols-1 md:grid-cols-3">
       <Tile
