@@ -1,8 +1,8 @@
-import "./account.component.js";
+import "./account-page.component.js";
 
 export default {
-  title: "Components/Account",
-  component: "account",
+  title: "Pages/Account Page",
+  component: "account-page",
 };
 
 export const Default = {
