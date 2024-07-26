@@ -70,7 +70,7 @@ export default {
       type: Object,
       default() {
         return {
-          url: "https://www.youtube.com/watch?v=c_hUsm0W7eg&t=5s",
+          url: "/",
           img: "https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_banners_Homepage_Default.jpg",
           alt: "Welcome! We're your Students' Union - here to make sure you love your time at York",
         };
