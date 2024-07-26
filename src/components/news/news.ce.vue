@@ -51,6 +51,7 @@
               </label>
               <div class="">
                 <v-select
+                  class="text-l xl:text-sm"
                   label="name"
                   :options="NewsCategories"
                   @update:model-value="submitCategories"
@@ -83,7 +84,7 @@
           class="h-8 w-8 animate-spin"
         ></FontAwesomeIcon>
       </div>
-      <div v-if="!firstLoad" class="news-row a-z-wrap">
+      <div v-if="!firstLoad" class="tile-wrap">
         <Tile
           v-for="article in News"
           :key="article.id"
@@ -96,7 +97,7 @@
           :news="true"
         />
       </div>
-      <div v-else class="news-row a-z-wrap">
+      <div v-else class="news-row tile-wrap">
         <Tile v-for="item in perPage" :key="item" :loading="true" />
       </div>
       <Pagination
