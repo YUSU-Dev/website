@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-col gap-y-2 sm:flex sm:gap-y-0">
+  <div class="flex-col gap-y-2 sm:gap-y-0">
     <a v-if="email" :href="'mailto:' + email">
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
