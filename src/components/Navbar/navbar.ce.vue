@@ -20,7 +20,7 @@
       </div>
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
-          <button
+          <!-- <button
             id="__ba_panel"
             onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
             class="bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
@@ -29,7 +29,7 @@
             type="button"
           >
             Accessibility Tools
-          </button>
+          </button> -->
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             @click="getBearerToken()"
@@ -43,7 +43,7 @@
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
-          <button
+          <!-- <button
             id="__ba_panel"
             onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
             class="bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
@@ -52,7 +52,7 @@
             type="button"
           >
             Accessibility Tools
-          </button>
+          </button> -->
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             href="/sign-in"
@@ -109,7 +109,7 @@
       >
         <div class="order-2 lg:order-1 lg:col-span-4">
           <div v-if="signedIn" class="">
-            <button
+            <!-- <button
               id="__ba_panel"
               onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
@@ -118,7 +118,7 @@
               type="button"
             >
               Accessibility Tools
-            </button>
+            </button> -->
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               @click="getBearerToken()"
@@ -135,7 +135,7 @@
             v-else
             class="mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 xs:flex-row lg:hidden"
           >
-            <button
+            <!-- <button
               id="__ba_panel"
               onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
@@ -144,7 +144,7 @@
               type="button"
             >
               Accessibility Tools
-            </button>
+            </button> -->
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               href="/sign-in"
