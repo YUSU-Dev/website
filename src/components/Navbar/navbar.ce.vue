@@ -32,7 +32,7 @@
           </button>
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
-            onClick="getBearerToken()"
+            @click="getBearerToken()"
             >Student Dashboard</a
           >
           <a
@@ -123,7 +123,7 @@
             </button>
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
-              onClick="getBearerToken()"
+              @click="getBearerToken()"
               >Member Dashboard</a
             >
             <a
@@ -332,6 +332,7 @@ import {
   faTiktok,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { getBearerToken } from "../Navbar/bearer.js";
 
 library.add(
   faFacebook,
@@ -364,6 +365,9 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+  },
+  methods: {
+    getBearerToken,
   },
   data() {
     return {
