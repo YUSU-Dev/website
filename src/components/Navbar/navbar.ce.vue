@@ -33,6 +33,7 @@
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             @click="getBearerToken()"
+            href="javascript:;"
             >Student Dashboard</a
           >
           <a
@@ -124,6 +125,7 @@
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               @click="getBearerToken()"
+              href="javascript:;"
               >Member Dashboard</a
             >
             <a
