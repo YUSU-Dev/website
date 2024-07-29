@@ -108,10 +108,7 @@
         class="container mx-auto flex flex-col pb-8 pt-6 lg:grid lg:grid-cols-5"
       >
         <div class="order-2 lg:order-1 lg:col-span-4">
-          <div
-            v-if="signedIn"
-            class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
-          >
+          <div v-if="signedIn" class="">
             <button
               id="__ba_panel"
               onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
@@ -370,6 +367,14 @@ export default {
   },
   methods: {
     getBearerToken,
+  },
+  mounted() {
+    const script = document.createElement("script");
+    script.src = "https://www.browsealoud.com/plus/scripts/3.1.0/ba.js";
+    script.integrity =
+      "sha256-VCrJcQdV3IbbIVjmUyF7DnCqBbWD1BcZ/1sda2KWeFc= sha384-k2OQFn+wNFrKjU9HiaHAcHlEvLbfsVfvOnpmKBGWVBrpmGaIleDNHnnCJO4z2Y2H sha512-gxDfysgvGhVPSHDTieJ/8AlcIEjFbF3MdUgZZL2M5GXXDdIXCcX0CpH7Dh6jsHLOLOjRzTFdXASWZtxO+eMgyQ=="; // Replace with the actual integrity hash
+    script.crossOrigin = "anonymous";
+    document.head.appendChild(script);
   },
   data() {
     return {
