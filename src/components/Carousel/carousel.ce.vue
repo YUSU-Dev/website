@@ -99,12 +99,14 @@ export default {
       axios
         .get("https://yorksu.org/api/banners/homepage-carousel")
         .then((response) => {
-          var jsonData = JSON.parse(
-            "[" +
-              response.data.substring(0, response.data.lastIndexOf(",")) +
-              "]",
-          );
-          this.banners.push(...jsonData);
+          if (response.data.length) {
+            var cleanedData = response.data
+              .replace("{banners}", "[")
+              .replace("{/banners}", "]")
+              .replace(/,\s*]/, "]");
+            var jsonData = JSON.parse(cleanedData);
+            this.banners.push(...jsonData);
+          }
         });
     },
     startSlide: function () {
