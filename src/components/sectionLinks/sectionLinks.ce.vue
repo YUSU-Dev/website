@@ -3,7 +3,7 @@
   <!-- {exp:su_sections:GetSidebarMenu sectionKey="{embed:section_id}" }
   {if has_sections} -->
   <div class="container mx-auto justify-center">
-    <div class="relative mt-6 flex w-full max-w-4xl flex-col pb-4 text-center">
+    <div class="relative mt-6 flex w-full flex-col pb-4 text-center">
       <ul class="flex flex-wrap gap-3 pl-0">
         <!-- {sections} -->
         <li class="flex justify-center break-words">
