@@ -99,7 +99,6 @@ export default {
       axios
         .get("https://yorksu.org/api/banners/homepage-carousel")
         .then((response) => {
-          console.log(response.data.length);
           if (response.data.length) {
             var cleanedData = response.data
               .replace("{banners}", "[")
