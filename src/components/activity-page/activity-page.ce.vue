@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
-      <div class="flex flex-col gap-y-6">
+      <div class="flex flex-grow flex-col gap-y-6">
         <div class="flex gap-x-4 sm:hidden">
           <!-- {if category_name != "College Sport (Groups)"} -->
           <Button
