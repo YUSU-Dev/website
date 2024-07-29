@@ -1,10 +1,8 @@
 name: Build and Upload to R2
 
 on:
-  # TODO: Only done on push for testing. Replace with `release`
-  # when we're ready.
-  push:
-    branches: [main]
+  release:
+    types: [published]
 
 jobs:
   build-and-publish:
@@ -27,3 +25,11 @@ jobs:
           endpoint: https://253071de7d6a98119d35de03b25422a8.r2.cloudflarestorage.com
           source_dir: dist
           destination_dir: components
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_MAINSITE_PROJECT }}
+        with:
+          environment: production
