@@ -108,7 +108,10 @@
         class="container mx-auto flex flex-col pb-8 pt-6 lg:grid lg:grid-cols-5"
       >
         <div class="order-2 lg:order-1 lg:col-span-4">
-          <div v-if="signedIn" class="">
+          <div
+            v-if="signedIn"
+            class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
+          >
             <!-- <button
               id="__ba_panel"
               onclick="alert('Please disable any ad-blockers and refresh the page to use the accessibility tools.')"
