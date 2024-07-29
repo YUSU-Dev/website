@@ -235,7 +235,7 @@ export default {
       let tempItems = [];
       if (this.shopBasket.length === 0) {
         await axios
-          .get("https://yu-development.sums.su/shop/basket-api")
+          .get("https://yorksu.org/shop/basket-api")
           .then((response) => {
             if (response.data[0].basket_items != "0") {
               var correctedJsonString = self.jsonFormatter(response.data);

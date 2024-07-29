@@ -97,7 +97,7 @@ export default {
   methods: {
     getBanners: function () {
       axios
-        .get("https://yu-development.sums.su/api/banners/homepage-carousel")
+        .get("https://yorksu.org/api/banners/homepage-carousel")
         .then((response) => {
           var jsonData = JSON.parse(
             "[" +

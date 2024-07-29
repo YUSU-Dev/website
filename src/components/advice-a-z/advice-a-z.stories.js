@@ -195,6 +195,6 @@ export const Default = {
 
 export const withURL = {
   args: {
-    apiurl: "https://yu-development.sums.su/advice-support/support-api",
+    apiurl: "https://yorksu.org/advice-support/support-api",
   },
 };

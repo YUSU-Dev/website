@@ -34,7 +34,7 @@ export default {
   methods: {
     getBanners: function () {
       axios
-        .get("https://yu-development.sums.su/api/banners/homepage-whats-on")
+        .get("https://yorksu.org/api/banners/homepage-whats-on")
         .then((response) => {
           var jsonData = JSON.parse(
             "[" +

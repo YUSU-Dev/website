@@ -15,7 +15,7 @@ module.exports = function expressMiddleware(router) {
   router.use(
     "/__development_proxy__",
     createProxyMiddleware({
-      target: "https://yu-development.sums.su",
+      target: "https://yorksu.org",
       changeOrigin: true,
     }),
   );

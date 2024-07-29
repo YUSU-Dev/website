@@ -16,7 +16,7 @@ axios.interceptors.request.use(function (config) {
         "/__pluto_proxy__/",
       );
       config.url = config.url.replace(
-        "https://yu-development.sums.su/",
+        "https://yorksu.org/",
         "/__development_proxy__/",
       );
     }
