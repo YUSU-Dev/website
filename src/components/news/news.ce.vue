@@ -8,7 +8,7 @@
         :title="article.title"
         :date="article.date"
         :categories="article.categories"
-        :url="'/news/article/' + article.entry_id"
+        :url="'/news/article/' + article.url_title"
         :image="article.thumbnail"
         :append-category="appendCategory"
         :news="true"
