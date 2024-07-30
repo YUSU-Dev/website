@@ -58,7 +58,6 @@
 </template>
 <script>
 import { randomImageUrl } from "../../_common/randomImage.mjs";
-import axios from "../../_common/axios.mjs";
 
 export default {
   props: {
@@ -74,6 +73,14 @@ export default {
       type: Number,
       default: null,
     },
+    group: {
+      type: String,
+      default: "",
+    },
+    logo: {
+      type: String,
+      default: null,
+    },
   },
   components: {},
   data() {
@@ -84,14 +91,6 @@ export default {
       showButtons: {
         type: Boolean,
         default: true,
-      },
-      group: {
-        type: String,
-        default: "",
-      },
-      logo: {
-        type: String,
-        default: null,
       },
     };
   },
@@ -109,22 +108,6 @@ export default {
       this.showButtons = false;
     }
     this.getGroupLogo();
-  },
-  created() {
-    var self = this;
-    self.loading = true;
-    axios
-      .get("https://pluto.sums.su/api/groups/" + self.id, {
-        headers: {
-          "X-Site-Id": self.siteid,
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-        self.group = response.data.name;
-        self.logo = response.data.thumbnail_url;
-        self.getGroupLogo();
-      });
   },
   methods: {
     wrapURL(URL) {
