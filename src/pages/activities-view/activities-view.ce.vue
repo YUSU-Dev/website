@@ -1,10 +1,8 @@
 <template>
   <Navbar />
   <ActivitiesHeroBanner
-    :group="Activity.name"
-    :id="Activity.id"
+    :id="activityid"
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
-    :logo="Activity.thumbnail_url"
     :category="Activity.category"
   />
   <Breadcrumb />
