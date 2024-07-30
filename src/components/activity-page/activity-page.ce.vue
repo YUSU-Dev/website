@@ -191,13 +191,13 @@ export default {
         this.subgroupCategoryId = 32;
         this.subgroupCategoryName = "Vanbrugh College Sports";
       } else if (this.groupId == "320") {
-        this.subgroupCategoryId = 33;
+        this.subgroupCategoryId = "33,45";
         this.subgroupCategoryName = "Constantine College Sports";
       } else if (this.groupId == "395") {
         this.subgroupCategoryId = 34;
         this.subgroupCategoryName = "Derwent College Sports";
       } else if (this.groupId == "396") {
-        this.subgroupCategoryId = 35;
+        this.subgroupCategoryId = "35,45";
         this.subgroupCategoryName = "Goodricke College Sports";
       } else if (this.groupId == "397") {
         this.subgroupCategoryId = 36;
@@ -206,7 +206,7 @@ export default {
         this.subgroupCategoryId = 30;
         this.subgroupCategoryName = "Anne Lister & David Kato College Sports";
       } else if (this.groupId == "398") {
-        this.subgroupCategoryId = 37;
+        this.subgroupCategoryId = "37,45";
         this.subgroupCategoryName = "Langwith College Sports";
       }
     },

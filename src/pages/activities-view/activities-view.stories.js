@@ -59,3 +59,14 @@ export const HalifaxWomensFootball = {
     },
   },
 };
+
+export const ConstantineSport = {
+  args: {
+    activityid: 320,
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
+};
