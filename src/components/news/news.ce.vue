@@ -84,7 +84,7 @@
           class="h-8 w-8 animate-spin"
         ></FontAwesomeIcon>
       </div>
-      <div v-if="!firstLoad" class="tile-wrap">
+      <div v-if="!firstLoad" class="a-z-wrap">
         <Tile
           v-for="article in News"
           :key="article.id"
@@ -97,7 +97,7 @@
           :news="true"
         />
       </div>
-      <div v-else class="news-row tile-wrap">
+      <div v-else class="a-z-wrap">
         <Tile v-for="item in perPage" :key="item" :loading="true" />
       </div>
       <Pagination

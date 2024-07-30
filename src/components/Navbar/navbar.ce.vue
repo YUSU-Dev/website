@@ -335,7 +335,6 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { getBearerToken } from "../Navbar/bearer.js";
-import "https://www.browsealoud.com/plus/scripts/3.1.0/ba.js";
 
 library.add(
   faFacebook,
