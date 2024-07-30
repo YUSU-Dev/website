@@ -12,6 +12,7 @@
   </div>
   <Footer />
 </template>
+<!-- eslint-disable vue/prop-name-casing -->
 <script>
 import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
