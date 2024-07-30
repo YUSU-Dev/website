@@ -28,11 +28,13 @@
         class="px-8 text-center"
     /></a>
   </div>
-  <Activities
-    siteid="tZyLG9BX9f4hdTp2HLva5c"
-    :selectedparents="selectedparents"
-    :title="componenttitle"
-  />
+  <div class="container mx-auto">
+    <Activities
+      siteid="tZyLG9BX9f4hdTp2HLva5c"
+      :selectedparents="selectedparents"
+      :title="componenttitle"
+    />
+  </div>
   <Footer />
 </template>
 <script>
