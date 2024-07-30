@@ -92,7 +92,8 @@ export default {
         this.categoryName == "Goodricke College Sports" ||
         this.categoryName == "Halifax College Sports" ||
         this.categoryName == "Langwith College Sports" ||
-        this.categoryName == "Anne Lister & David Kato College Sports"
+        this.categoryName == "Anne Lister & David Kato College Sports" ||
+        this.categoryName == "Hes East College Sports"
       ) {
         this.firstSegmentName = "College Sport";
         this.firstSegmentUrl = "/sport/college-sport";
