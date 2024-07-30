@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <div class="py-2 pb-3">
       <label for="topic-search">Search for a topic</label>
       <div class="flex items-center py-2">
@@ -35,14 +35,16 @@
           :key="category"
           :title="category"
           is-advice-and-support
-          class="px-8 text-center"
+          class="px-8 text-start"
           :class="{ 'bg-light-blue': selectedCategory == category }"
           @click="updateCategory(category)"
         />
       </div>
     </div>
     <hr class="mb-2 mt-0" />
-    <div class="tile-wrap">
+    <div
+      class="grid gap-x-4 gap-y-4 xxs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+    >
       <SupportTile
         v-for="item in FilteredMenu"
         :key="item.name"

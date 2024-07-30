@@ -1,11 +1,11 @@
 <template>
-  <a class="sabb-tile group flex" :href="url">
+  <a class="group flex" :href="url">
     <div class="relative text-white">
-      <div class="aspect-[141/161] bg-cover md:h-[322px]">
+      <div class="aspect-square w-full bg-cover md:max-w-[282px]">
         <img :src="img" :alt="name" class="h-full w-full object-cover" />
       </div>
       <div class="absolute inset-0 flex w-full flex-col justify-center px-4">
-        <h4 class="mb-2 text-sm md:text-xl">
+        <h4 class="mb-2 xxs:text-sm xs:text-lg md:text-xl">
           {{ name }}
         </h4>
         <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
