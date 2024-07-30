@@ -51,7 +51,7 @@
               </label>
               <div class="">
                 <v-select
-                  class="text-l xl:text-sm"
+                  class=""
                   label="name"
                   :options="NewsCategories"
                   @update:model-value="submitCategories"

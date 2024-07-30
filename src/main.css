@@ -108,6 +108,14 @@
     .vs__deselect {
       @apply ml-2 fill-black;
     }
+
+    .vs__dropdown-menu {
+      @apply flex flex-col gap-y-1 overflow-x-hidden;
+    }
+
+    .vs__dropdown-option {
+      @apply text-pretty px-2 text-sm;
+    }
   }
 
   /* Button Classes */
