@@ -59,7 +59,7 @@
                       >
                     </li>
                     <li>
-                      <a href="/brand-hub" target="_blank">Brand Hub</a>
+                      <a href="/brand-hub">Brand Hub</a>
                     </li>
                   </ul>
                 </div>
