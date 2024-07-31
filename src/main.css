@@ -4,8 +4,7 @@
 @tailwind base;
 
 @layer base {
-  body,
-  .body-style {
+  body {
     @apply h-[100vh] font-sans;
   }
 
