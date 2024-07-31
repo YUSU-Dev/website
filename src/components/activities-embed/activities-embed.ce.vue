@@ -44,7 +44,6 @@ export default {
         })
         .then(function (response) {
           if (response.data.id) {
-            console.log(response.data);
             self.Groups.push(response.data);
           }
         });
