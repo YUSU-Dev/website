@@ -7,6 +7,6 @@ export default {
 
 export const Default = {
   args: {
-    groupIds: [12, 13, 14],
+    ids: "500000,22,43",
   },
 };

@@ -17,8 +17,8 @@ import axios from "../../_common/axios.mjs";
 export default {
   name: "ActivitiesEmbed",
   props: {
-    groupIds: {
-      type: Array,
+    ids: {
+      type: String,
       default: null,
     },
   },
@@ -34,15 +34,18 @@ export default {
   created() {
     var self = this;
     self.loading = true;
-    for (let i in this.groupIds) {
+    var groupIds = self.ids.split(",");
+    for (let i in groupIds) {
       axios
-        .get("https://pluto.sums.su/api/groups/" + self.groupIds[i], {
+        .get("https://pluto.sums.su/api/groups/" + groupIds[i], {
           headers: {
             "X-Site-Id": self.siteid,
           },
         })
         .then(function (response) {
-          self.Groups.push(response.data);
+          if (response.data.id) {
+            self.Groups.push(response.data);
+          }
         });
     }
     self.loading = false;
