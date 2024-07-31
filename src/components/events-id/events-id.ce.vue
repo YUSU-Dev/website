@@ -15,9 +15,14 @@
             {{ event_name }}
             <span v-if="activity_name"> : {{ activity_name }}</span>
           </h2>
-          <div v-if="event_description">
-            <p>{{ event_description }}</p>
-          </div>
+
+          <body>
+            <main>
+              <article>
+                <slot></slot>
+              </article>
+            </main>
+          </body>
         </div>
       </div>
       <div
