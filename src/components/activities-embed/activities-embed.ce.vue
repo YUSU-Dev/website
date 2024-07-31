@@ -35,7 +35,6 @@ export default {
     var self = this;
     self.loading = true;
     for (let i in this.groupIds) {
-      console.log(this.groupIds[i]);
       axios
         .get("https://pluto.sums.su/api/groups/" + self.groupIds[i], {
           headers: {
@@ -43,7 +42,6 @@ export default {
           },
         })
         .then(function (response) {
-          console.log(response.data);
           self.Groups.push(response.data);
         });
     }
