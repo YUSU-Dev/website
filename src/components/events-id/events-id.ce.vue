@@ -15,14 +15,11 @@
             {{ event_name }}
             <span v-if="activity_name"> : {{ activity_name }}</span>
           </h2>
-
-          <body>
-            <main>
-              <article>
-                <slot></slot>
-              </article>
-            </main>
-          </body>
+          <main class="body-style">
+            <article>
+              <slot></slot>
+            </article>
+          </main>
         </div>
       </div>
       <div

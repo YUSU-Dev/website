@@ -4,27 +4,33 @@
 @tailwind base;
 
 @layer base {
-  body {
+  body,
+  .body-style {
     @apply h-[100vh] font-sans;
   }
 
-  body h1 {
+  body h1,
+  .body-style h1 {
     @apply text-3xl font-bold;
   }
 
-  body h2 {
+  body h2,
+  .body-style h2 {
     @apply text-2xl font-bold;
   }
 
-  body h3 {
+  body h3,
+  .body-style h3 {
     @apply text-xl font-bold;
   }
 
-  body h4 {
+  body h4,
+  .body-style h4 {
     @apply text-lg font-bold;
   }
 
-  body p {
+  body p,
+  .body-style p {
     @apply text-pretty text-base leading-relaxed;
   }
 
