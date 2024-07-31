@@ -53,16 +53,13 @@
                       >
                     </li>
                     <li><a href="/advertise-with-us">Advertise With Us</a></li>
-                    <!-- <li>
-                      <a
-                        href="/about-us/organisational-policies/environmental-impact"
-                        >Environment Impact</a
-                      >
-                    </li> -->
                     <li>
                       <a href="https://apply.yorksu.org" target="_blank"
                         >Jobs</a
                       >
+                    </li>
+                    <li>
+                      <a href="/brand-hub">Brand Hub</a>
                     </li>
                   </ul>
                 </div>
