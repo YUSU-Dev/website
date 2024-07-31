@@ -66,7 +66,7 @@
         :title="article.title"
         :date="article.date"
         section="student-voice"
-        :url="'/news/article/' + article.entry_id"
+        :url="'/news/article/' + article.url_title"
         :image="article.thumbnail"
         :news="true"
       />
