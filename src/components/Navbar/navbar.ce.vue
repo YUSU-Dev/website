@@ -34,7 +34,7 @@
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
-          <slot name="reachdeck"></slot>
+          <slot name="reachdeck-mobile"></slot>
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             href="/sign-in"
@@ -111,7 +111,7 @@
             v-else
             class="mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 xs:flex-row lg:hidden"
           >
-            <slot name="reachdeck"></slot>
+            <slot name="reachdeck-mobile"></slot>
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               href="/sign-in"
