@@ -20,7 +20,7 @@
       </div>
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
-          <slot name="reachdeck-mobile"></slot>
+          <slot name="reachdeck"></slot>
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             @click="getBearerToken()"
@@ -94,7 +94,7 @@
             v-if="signedIn"
             class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
           >
-            <slot name="reachdeck-mobile"></slot>
+            <slot name="reachdeck"></slot>
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               @click="getBearerToken()"
