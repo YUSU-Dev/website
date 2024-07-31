@@ -1,26 +1,24 @@
 <template>
-  <main class="mb-7">
-    <Button title="Back to News" is-primary="true" arrow="true" url="/news" />
-    <h2 class="mb-5 mt-10 text-3xl font-bold">
-      {{ Article.title ?? "Loading..." }}
-    </h2>
-    <div class="mb-4">
-      <div class="gap-4 md:flex">
-        <img
-          :src="Article.thumbnail ?? randomImage()"
-          alt=""
-          class="h-[200px]"
-        />
-        <div>
-          <p v-if="Article.snippet" class="mb-3">{{ Article.snippet }}</p>
-          <p v-if="Article.date" class="mb-5">{{ Article.date }}</p>
+  <body>
+    <main class="mb-7">
+      <Button title="Back to News" is-primary="true" arrow="true" url="/news" />
+      <h2 class="mb-5 mt-10 text-3xl font-bold">
+        {{ Article.title ?? "Loading..." }}
+      </h2>
+      <div class="mb-4">
+        <div class="gap-4 md:flex">
+          <img :src="image" alt="" class="h-[200px]" />
+          <div>
+            <p v-if="Article.snippet" class="mb-3">{{ Article.snippet }}</p>
+            <p v-if="Article.date" class="mb-5">{{ Article.date }}</p>
+          </div>
         </div>
       </div>
-    </div>
-    <hr />
-    <article id="news-article" v-html="Article.body" class="mb-5"></article>
-    <Loading :loading="loading" text></Loading>
-  </main>
+      <hr />
+      <article id="news-article" v-html="Article.body" class="mb-5"></article>
+      <Loading :loading="loading" text></Loading>
+    </main>
+  </body>
 </template>
 <style>
 @import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css";
@@ -44,10 +42,7 @@ export default {
     return {
       Article: {},
       loading: true,
-      images: [
-        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp",
-        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Blue.webp",
-      ],
+      image: "",
     };
   },
   methods: {
@@ -57,6 +52,7 @@ export default {
   },
   mounted() {
     var self = this;
+    self.image = self.randomImage();
     self.loading = true;
     axios
       .get("https://pluto.sums.su/api/news/" + self.articleid, {
@@ -66,6 +62,9 @@ export default {
       })
       .then(function (response) {
         self.Article = response.data;
+        if (self.Article.thumbnail) {
+          self.image = self.Article.thumbnail;
+        }
         self.loading = false;
       })
       .catch(function () {
