@@ -43,7 +43,10 @@ export default {
           },
         })
         .then(function (response) {
-          self.Groups.push(response.data);
+          if (response.data.id) {
+            console.log(response.data);
+            self.Groups.push(response.data);
+          }
         });
     }
     self.loading = false;

@@ -7,6 +7,6 @@ export default {
 
 export const Default = {
   args: {
-    ids: "58,11,63,175,200,190,506,69",
+    ids: "500000,22,43",
   },
 };
