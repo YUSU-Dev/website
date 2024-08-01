@@ -238,8 +238,8 @@ export default {
           .get("https://yorksu.org/shop/basket-api")
           .then((response) => {
             if (response.data[0].basket_items != "0") {
-              var correctedJsonString = self.jsonFormatter(response.data);
-              var jsonData = JSON.parse(correctedJsonString);
+              // var correctedJsonString = self.jsonFormatter(response.data);
+              var jsonData = JSON.parse(response.data);
               this.shopFullBasket = [...jsonData];
             } else {
               this.shopFullBasket = [...response.data];
