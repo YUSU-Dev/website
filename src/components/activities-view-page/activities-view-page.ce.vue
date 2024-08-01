@@ -76,7 +76,6 @@ export default {
             (item) => item.id === self.Activity.activity_category_id,
           ).name;
           self.loading = false;
-          console.log(self.Activity.thumbnail_url);
         }),
       );
   },
