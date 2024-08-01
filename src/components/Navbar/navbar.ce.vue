@@ -464,10 +464,10 @@ export default {
                 name: "Contact Us",
                 link: "/contact-us",
               },
-              // {
-              //   name: "Sustainability at YorkSU",
-              //   link: "/sustainability",
-              // },
+              {
+                name: "Sustainability at YorkSU",
+                link: "/sustainability",
+              },
             ],
           },
         ],
