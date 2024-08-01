@@ -1,5 +1,14 @@
 <template>
   <ActivitiesHeroBanner
+    v-if="loading"
+    :group="Activity.name"
+    :id="Activity.id"
+    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    :logo="Activity.thumbnail_url"
+    :category="Activity.category"
+  />
+  <ActivitiesHeroBanner
+    v-if="!loading"
     :group="Activity.name"
     :id="Activity.id"
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
@@ -67,6 +76,7 @@ export default {
             (item) => item.id === self.Activity.activity_category_id,
           ).name;
           self.loading = false;
+          console.log(self.Activity.thumbnail_url);
         }),
       );
   },
