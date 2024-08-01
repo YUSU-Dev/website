@@ -37,7 +37,7 @@
           <slot name="reachdeck"></slot>
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
-            href="/sign-in"
+            href="/associate-member"
             >Associate Sign In</a
           >
           <a
@@ -114,7 +114,7 @@
             <slot name="reachdeck-mobile"></slot>
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
-              href="/sign-in"
+              href="/associate-member"
               >Associate Sign In</a
             >
             <a
