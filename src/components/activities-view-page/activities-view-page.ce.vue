@@ -1,5 +1,14 @@
 <template>
   <ActivitiesHeroBanner
+    v-if="loading"
+    :group="Activity.name"
+    :id="Activity.id"
+    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    :logo="Activity.thumbnail_url"
+    :category="Activity.category"
+  />
+  <ActivitiesHeroBanner
+    v-if="!loading"
     :group="Activity.name"
     :id="Activity.id"
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
