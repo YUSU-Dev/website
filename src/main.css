@@ -99,6 +99,10 @@
     .vs__selected-options {
       @apply !flex-nowrap;
     }
+
+    .vs__clear {
+      @apply ml-2 fill-white;
+    }
   }
   /* News Filters */
   .news-filters {

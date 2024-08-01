@@ -22,7 +22,7 @@
             :options="Groups"
             @update:model-value="updateGroup"
             placeholder="All"
-            class="h-full"
+            class="h-full bg-white"
           ></v-select>
         </div>
         <div class="flex flex-col">
