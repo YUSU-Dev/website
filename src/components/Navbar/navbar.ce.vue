@@ -482,7 +482,7 @@ export default {
           },
           {
             name: "Shop",
-            link: "/shop",
+            link: "/shop?category=8",
           },
           {
             name: "News",
