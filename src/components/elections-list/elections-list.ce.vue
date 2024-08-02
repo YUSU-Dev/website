@@ -167,7 +167,10 @@
     </div>
     <div class="flex flex-col gap-y-4">
       <h2 class="text-2xl font-bold">Voting FAQs</h2>
-      <div id="accordion">
+      <Accordion v-for="faq in faqs" :key="faq.question" :label="faq.question">
+        <div v-html="faq.answer"></div>
+      </Accordion>
+      <!-- <div id="accordion">
         <div v-for="faq in faqs" :key="faq.question">
           <div class="relative z-10 bg-gray-200 px-3 py-2">
             <button
@@ -184,8 +187,8 @@
               class="flex flex-col gap-y-2 px-3 py-2"
             ></div>
           </Transition>
-        </div>
-        <!-- <div id="heading1" class="bg-gray-200 px-3 py-2 relative z-10">
+        </div> -->
+      <!-- <div id="heading1" class="bg-gray-200 px-3 py-2 relative z-10">
           <button class="h-full w-full text-start" @click="accordionControl('collapse1')">
             <h3>We use Single Transferable Voting (STV). What is STV?</h3>
           </button>
@@ -233,7 +236,7 @@
           </p>
         </div>
       </Transition> -->
-      </div>
+      <!-- </div> -->
     </div>
     <!-- Page content -->
   </div>
@@ -243,6 +246,7 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import Accordion from "../accordion/accordion.ce.vue";
 library.add(faCheck);
 export default {
   name: "ElectionsList",
@@ -271,6 +275,7 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+    Accordion,
   },
   methods: {
     accordionControl(id) {
