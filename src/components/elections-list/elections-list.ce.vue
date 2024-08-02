@@ -39,28 +39,6 @@
         </p>
       </div>
       <div v-else>
-        <!-- <table class="w-full table-fixed">
-          <thead>
-            <tr>
-              <th class="text-start">Election</th>
-              <th class="hidden text-start sm:block">Nominations Close</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="election in nominations" :key="election.election_id">
-              <td>{{ election.election_name }}</td>
-              <td class="hidden sm:block">{{ election.nominations_close }}</td>
-              <td v-if="election.activity_id">
-                <a href="/elections/nominate/{election_id}/{activity_id}"
-                  >Nominate</a
-                >
-              </td>
-              <td v-else>
-                <a href="/elections/nominate/{election_id}">Nominate</a>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
         <div class="flex flex-col gap-y-2">
           <div
             class="grid grid-cols-2 bg-gray-200 px-3 py-1 text-lg font-semibold sm:grid-cols-3"
@@ -75,12 +53,6 @@
           >
             <p>{{ election.election_name }}</p>
             <p class="hidden sm:block">{{ election.nominations_close }}</p>
-            <!-- <a
-              v-if="election.activity_id"
-              href="/elections/nominate/{election_id}/{activity_id}"
-              >Nominate</a
-            >
-            <a v-else href="/elections/nominate/{election_id}">Nominate</a> -->
             <div v-if="election.activity_id" class="flex justify-end">
               <a
                 href="/elections/nominate/{election_id}/{activity_id}"
@@ -113,24 +85,6 @@
         </p>
       </div>
       <div v-else>
-        <!-- <table class="w-full table-fixed">
-          <thead>
-            <tr>
-              <th class="text-start">Election</th>
-              <th class="hidden text-start sm:block">Voting Close</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="election in voting" :key="election.election_id">
-              <td>{{ election.election_name }}</td>
-              <td class="hidden sm:block">{{ election.voting_close }}</td>
-              <td v-if="election.has_voted">Voted</td>
-              <td v-else>
-                <a href="/elections/vote/{election_id}">Vote Now</a>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
         <div class="flex flex-col gap-y-2">
           <div
             class="grid grid-cols-2 bg-gray-200 px-3 py-1 text-lg font-semibold sm:grid-cols-3"
@@ -167,76 +121,15 @@
     </div>
     <div class="flex flex-col gap-y-4">
       <h2 class="text-2xl font-bold">Voting FAQs</h2>
-      <Accordion v-for="faq in faqs" :key="faq.question" :label="faq.question">
-        <div v-html="faq.answer"></div>
-      </Accordion>
-      <!-- <div id="accordion">
-        <div v-for="faq in faqs" :key="faq.question">
-          <div class="relative z-10 bg-gray-200 px-3 py-2">
-            <button
-              class="h-full w-full text-start"
-              @click="faq.open = !faq.open"
-            >
-              <h3>{{ faq.question }}</h3>
-            </button>
-          </div>
-          <Transition :name="accordionTransition(faq.question)">
-            <div
-              v-if="faq.open"
-              v-html="faq.answer"
-              class="flex flex-col gap-y-2 px-3 py-2"
-            ></div>
-          </Transition>
-        </div> -->
-      <!-- <div id="heading1" class="bg-gray-200 px-3 py-2 relative z-10">
-          <button class="h-full w-full text-start" @click="accordionControl('collapse1')">
-            <h3>We use Single Transferable Voting (STV). What is STV?</h3>
-          </button>
-        </div>
-        <Transition name="slide-top" >
-        <div v-if="active === 'collapse1'" id="collapse1" class="px-3 py-2">
-          <p>
-            STV is a voting system that uses ranked-choice ballots. This gives
-            you the option to ‘rank’ your preferred candidates. This means that
-            when the candidate with the least votes is removed from the
-            leadership contest, the votes given to them move to people’s second
-            preferences and so on, until one candidate is the winner!
-          </p>
-        </div>
-      </Transition>
-      <div id="heading2" class="bg-gray-200 px-3 py-2 relative z-10">
-          <button class="h-full w-full text-start" @click="accordionControl('collapse2')">
-            <h3>We use Single Transferable Voting (STV). What is STV?</h3>
-          </button>
-        </div>
-        <Transition name="slide-top" >
-        <div v-if="active === 'collapse2'" id="collapse2" class="px-3 py-2">
-          <p>
-            STV is a voting system that uses ranked-choice ballots. This gives
-            you the option to ‘rank’ your preferred candidates. This means that
-            when the candidate with the least votes is removed from the
-            leadership contest, the votes given to them move to people’s second
-            preferences and so on, until one candidate is the winner!
-          </p>
-        </div>
-      </Transition>
-      <div id="heading3" class="bg-gray-200 px-3 py-2 relative z-10">
-          <button class="h-full w-full text-start" @click="accordionControl('collapse3')">
-            <h3>We use Single Transferable Voting (STV). What is STV?</h3>
-          </button>
-        </div>
-        <Transition name="slide-top" >
-        <div v-if="active === 'collapse3'" id="collapse3" class="px-3 py-2">
-          <p>
-            STV is a voting system that uses ranked-choice ballots. This gives
-            you the option to ‘rank’ your preferred candidates. This means that
-            when the candidate with the least votes is removed from the
-            leadership contest, the votes given to them move to people’s second
-            preferences and so on, until one candidate is the winner!
-          </p>
-        </div>
-      </Transition> -->
-      <!-- </div> -->
+      <div>
+        <Accordion
+          v-for="faq in faqs"
+          :key="faq.question"
+          :label="faq.question"
+        >
+          <div v-html="faq.answer" class="p-3"></div>
+        </Accordion>
+      </div>
     </div>
     <!-- Page content -->
   </div>
@@ -250,11 +143,6 @@ import Accordion from "../accordion/accordion.ce.vue";
 library.add(faCheck);
 export default {
   name: "ElectionsList",
-  data() {
-    return {
-      active: null,
-    };
-  },
   props: {
     openNominationCount: {
       type: Number,
@@ -276,25 +164,6 @@ export default {
   components: {
     FontAwesomeIcon,
     Accordion,
-  },
-  methods: {
-    accordionControl(id) {
-      console.log(id);
-      if (this.active == id) {
-        this.active = null;
-      } else {
-        this.active = id;
-      }
-    },
-    accordionTransition(id) {
-      if (this.active == id) {
-        console.log("slide-top");
-        return "slide-top";
-      } else {
-        console.log("slide-bottom");
-        return "slide-bottom";
-      }
-    },
   },
 };
 </script>

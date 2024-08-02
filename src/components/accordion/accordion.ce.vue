@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
-    <div
-      class="flex-1 py-4 text-center hover:bg-primary-pink"
+    <button
+      class="flex-1 px-2 py-4 text-center hover:bg-primary-pink"
       :class="{
         'bg-primary-pink': openTab == true,
         'bg-mustard': openTab == false,
@@ -9,7 +9,7 @@
       @click="openTab = !openTab"
     >
       <h2>{{ label }}</h2>
-    </div>
+    </button>
     <div v-if="openTab">
       <slot></slot>
     </div>
