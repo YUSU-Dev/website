@@ -231,15 +231,15 @@ export default {
       });
     },
     async getBasketItems() {
-      let self = this;
+      // let self = this;
       let tempItems = [];
       if (this.shopBasket.length === 0) {
         await axios
           .get("https://yorksu.org/shop/basket-api")
           .then((response) => {
             if (response.data[0].basket_items != "0") {
-              var correctedJsonString = self.jsonFormatter(response.data);
-              var jsonData = JSON.parse(correctedJsonString);
+              // var correctedJsonString = self.jsonFormatter(response.data);
+              var jsonData = JSON.parse(response.data);
               this.shopFullBasket = [...jsonData];
             } else {
               this.shopFullBasket = [...response.data];
@@ -265,35 +265,35 @@ export default {
       });
       this.items = newItems;
     },
-    jsonFormatter(jsonString) {
-      // First, try to directly parse the JSON to see if it's valid
-      try {
-        const jsonObject = JSON.parse(jsonString);
-        return JSON.stringify(jsonObject);
-      } catch {
-        jsonString = jsonString.replace(
-          /'([^']*)'/g,
-          (match, p1) => `"${p1.replace(/"/g, '\\"')}"`,
-        );
-        // If parsing fails, attempt to fix trailing commas
-        let fixedJsonString = jsonString
-          .replace(/,\s*]/g, "]")
-          .replace(/,\s*}/g, "}");
+    // jsonFormatter(jsonString) {
+    //   // First, try to directly parse the JSON to see if it's valid
+    //   try {
+    //     const jsonObject = JSON.parse(jsonString);
+    //     return JSON.stringify(jsonObject);
+    //   } catch {
+    //     jsonString = jsonString.replace(
+    //       /'([^']*)'/g,
+    //       (match, p1) => `"${p1.replace(/"/g, '\\"')}"`,
+    //     );
+    //     // If parsing fails, attempt to fix trailing commas
+    //     let fixedJsonString = jsonString
+    //       .replace(/,\s*]/g, "]")
+    //       .replace(/,\s*}/g, "}");
 
-        // Attempt to parse and stringify again to ensure valid JSON and proper escaping
-        try {
-          const jsonObject = JSON.parse(fixedJsonString);
-          return JSON.stringify(jsonObject);
-        } catch (error) {
-          console.error(
-            "JSON is still malformed after attempts to fix:",
-            error,
-          );
-          // Return the original string or further handling could be implemented here
-          return jsonString;
-        }
-      }
-    },
+    //     // Attempt to parse and stringify again to ensure valid JSON and proper escaping
+    //     try {
+    //       const jsonObject = JSON.parse(fixedJsonString);
+    //       return JSON.stringify(jsonObject);
+    //     } catch (error) {
+    //       console.error(
+    //         "JSON is still malformed after attempts to fix:",
+    //         error,
+    //       );
+    //       // Return the original string or further handling could be implemented here
+    //       return jsonString;
+    //     }
+    //   }
+    // },
     formatPrice(price) {
       return price.toLocaleString("en-GB", {
         style: "currency",
