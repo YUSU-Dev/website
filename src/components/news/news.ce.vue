@@ -54,6 +54,7 @@
                   class=""
                   label="name"
                   :options="NewsCategories"
+                  :model-value="displayCategory"
                   @update:model-value="submitCategories"
                   placeholder="All"
                   multiple
@@ -368,6 +369,13 @@ export default {
     formatDate(date) {
       var formattedDate = moment(date).format("DD MMMM YYYY");
       return formattedDate;
+    },
+  },
+  computed: {
+    displayCategory() {
+      return this.Categories.find((category) => {
+        return category.id == this.SelectedCategory;
+      });
     },
   },
 };
