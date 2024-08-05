@@ -26,6 +26,7 @@
                   aria-label="search for an activity"
                   name="search"
                   placeholder="Search..."
+                  :value="Search"
                   @keyup="search($event)"
                 />
                 <div class="input-group-append">
@@ -49,6 +50,7 @@
                 label="name"
                 :options="Categories"
                 placeholder="All"
+                :model-value="SelectedCategory"
                 @update:model-value="updateCategory"
               >
               </v-select>
@@ -59,6 +61,7 @@
                 label="name"
                 :options="Groups"
                 placeholder="All"
+                :model-value="SelectedGroup"
                 @update:model-value="updateGroup"
               >
               </v-select>
