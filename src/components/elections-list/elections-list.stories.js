@@ -7,12 +7,90 @@ export default {
 
 export const Default = {
   args: {
+    page_content: `
+    <p>
+          The Students’ Union is here to ensure that every single student at
+          York feels like their voice is heard meaning you collectively decide
+          who is going to represent your interests and improve the lives of
+          students where it matters most. We are always searching for students
+          who are passionate about making positive change; whether it’s tackling
+          the cost of living, fighting for a more inclusive campus or ensuring
+          that students have the best possible academic experience at
+          University.
+        </p>
+        <p>
+          If you care about your University and the students in it, it’s time to
+          make a difference.
+        </p>
+        <p>
+          You can get in touch with
+          <a href="mailto:elections@yusu.org">elections@yusu.org</a> if you have
+          any questions.
+        </p>
+    `,
+    nomination_page_content: `
+    <p>
+          Nominating yourself means that you want to advocate for the interests
+          of your fellow students and ensure their University experience is the
+          best it can be. Before you nominate, make sure you know what you’ll
+          need for your nomination. You can find all that information on
+          yusu.org/elections or get in touch with
+          <a href="mailto:elections@yusu.org">elections@yusu.org</a> if you have
+          any questions.
+        </p>
+    `,
+    voting_page_content: `
+    <p>
+          Vote below for any current YUSU elections. Please note that certain
+          elections such as Course Reps and College Officers can only be seen by
+          members of the relevant faculties/colleges.
+        </p>
+    `,
     openNominationCount: 0,
   },
 };
 
 export const WithElections = {
   args: {
+    page_content: `
+    <p>
+          The Students’ Union is here to ensure that every single student at
+          York feels like their voice is heard meaning you collectively decide
+          who is going to represent your interests and improve the lives of
+          students where it matters most. We are always searching for students
+          who are passionate about making positive change; whether it’s tackling
+          the cost of living, fighting for a more inclusive campus or ensuring
+          that students have the best possible academic experience at
+          University.
+        </p>
+        <p>
+          If you care about your University and the students in it, it’s time to
+          make a difference.
+        </p>
+        <p>
+          You can get in touch with
+          <a href="mailto:elections@yusu.org">elections@yusu.org</a> if you have
+          any questions.
+        </p>
+    `,
+    nomination_page_content: `
+    <p>
+          Nominating yourself means that you want to advocate for the interests
+          of your fellow students and ensure their University experience is the
+          best it can be. Before you nominate, make sure you know what you’ll
+          need for your nomination. You can find all that information on
+          yusu.org/elections or get in touch with
+          <a href="mailto:elections@yusu.org">elections@yusu.org</a> if you have
+          any questions.
+        </p>
+    `,
+    voting_page_content: `
+    <p>
+          Vote below for any current YUSU elections. Please note that certain
+          elections such as Course Reps and College Officers can only be seen by
+          members of the relevant faculties/colleges.
+        </p>
+    `,
     openNominationCount: 2,
     nominations: [
       {
@@ -111,8 +189,8 @@ export const WithElections = {
         question: "Who is R.O.N.?",
         answer: `
         <p>R.O.N isn't a candidate, but instead stands for ‘Re-Open Nominations’. You are able to vote for only R.O.N, or if you have voted for your preferred candidates and feel that the remaining candidates listed are not suitable for the position. Once you’ve voted for R.O.N, you may continue to rank candidates if you still would like to state your opinion about who gets elected. If R.O.N is elected to a position, then we will re-open nominations and hold another election for that position at a later date.</p>
-        `
-      }
+        `,
+      },
     ],
   },
 };

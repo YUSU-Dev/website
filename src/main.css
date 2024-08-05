@@ -335,4 +335,9 @@
   @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
 }
 
+/* Elections */
+.terminology p {
+  @apply mb-0;
+}
+
 @tailwind utilities;
