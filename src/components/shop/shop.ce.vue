@@ -26,6 +26,7 @@
                   aria-label="search for an activity"
                   name="search"
                   placeholder="Search..."
+                  :value="Search"
                   @keyup="search($event)"
                 />
                 <div class="input-group-append">
@@ -49,6 +50,7 @@
                 label="name"
                 :options="Categories"
                 placeholder="All"
+                :model-value="displayCategory"
                 @update:model-value="updateCategory"
               >
               </v-select>
@@ -59,6 +61,7 @@
                 label="name"
                 :options="Groups"
                 placeholder="All"
+                :model-value="displayActivity"
                 @update:model-value="updateGroup"
               >
               </v-select>
@@ -313,6 +316,18 @@ export default {
         currency: "GBP",
       });
       return formatter.format(value);
+    },
+  },
+  computed: {
+    displayCategory() {
+      return this.Categories.find((category) => {
+        return category.id == this.SelectedCategory;
+      });
+    },
+    displayActivity() {
+      return this.Groups.find((group) => {
+        return group.id == this.SelectedGroup;
+      });
     },
   },
 };
