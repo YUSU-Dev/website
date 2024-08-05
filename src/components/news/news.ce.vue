@@ -373,8 +373,11 @@ export default {
   },
   computed: {
     displayCategory() {
-      return this.Categories.find((category) => {
-        return category.id == this.SelectedCategory;
+      if (this.filterCategories === null) {
+        return null;
+      }
+      return this.NewsCategories.filter((category) => {
+        return this.filterCategories.includes(category.id);
       });
     },
   },

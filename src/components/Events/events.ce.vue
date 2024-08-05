@@ -320,7 +320,7 @@ export default {
     },
     displayCategory() {
       return this.Categories.find((category) => {
-        return category.id == this.SelectedCategory;
+        return category.id == this.SelectedType;
       });
     },
     displayActivity() {
