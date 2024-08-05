@@ -1,4 +1,4 @@
-import { register } from '../../_common/registerComponent';
-import ElectionsResources from './elections-resources.ce.vue';
+import { register } from "../../_common/registerComponent";
+import ElectionsResources from "./elections-resources.ce.vue";
 
- register('elections-resources',ElectionsResources);
+register("elections-resources", ElectionsResources);

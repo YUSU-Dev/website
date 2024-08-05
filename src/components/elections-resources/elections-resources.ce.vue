@@ -1,6 +1,6 @@
 <template>
   <main class="">
-    <article class="container mx-auto flex flex-col gap-y-6 py-20">
+    <article class="flex flex-col gap-y-6 py-20">
       <!-- Page content -->
       <article
         v-html="page_content"
