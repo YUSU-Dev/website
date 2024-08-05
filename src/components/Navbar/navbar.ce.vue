@@ -249,7 +249,7 @@
             ></div>
             <a
               class="flex justify-end gap-x-2 text-start text-lg font-bold hover:underline xs:justify-start sm:gap-x-6"
-              href="/shop"
+              href="/shop?category=8"
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-basket-shopping"
@@ -471,24 +471,24 @@ export default {
             ],
           },
         ],
-        mainButtons: [
-          {
-            name: "Events",
-            link: "/events",
-          },
-          {
-            name: "Venues",
-            link: "/venues",
-          },
-          {
-            name: "Shop",
-            link: "/shop?category=8",
-          },
-          {
-            name: "News",
-            link: "/news",
-          },
-        ],
+        // mainButtons: [
+        //   {
+        //     name: "Events",
+        //     link: "/events",
+        //   },
+        //   {
+        //     name: "Venues",
+        //     link: "/venues",
+        //   },
+        //   {
+        //     name: "Shop",
+        //     link: "/shop?category=8",
+        //   },
+        //   {
+        //     name: "News",
+        //     link: "/news",
+        //   },
+        // ],
         socials: [
           {
             name: "Facebook",
