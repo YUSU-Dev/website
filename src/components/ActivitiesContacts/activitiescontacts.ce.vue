@@ -77,6 +77,20 @@
         </div>
       </div>
     </a>
+    <a
+      v-if="name == 'University Radio York (URY)'"
+      href="https://https://ury.slack.com/"
+    >
+      <div class="flex flex-col">
+        <div class="flex items-center gap-x-2">
+          <FontAwesomeIcon icon="fa-brands fa-slack" class="h-4 w-4" />
+          <h3 class="mb-0 text-lg font-bold">Slack</h3>
+        </div>
+        <div class="text-lg">
+          <p class="">{{ name }}</p>
+        </div>
+      </div>
+    </a>
   </div>
 </template>
 <script>
@@ -90,6 +104,7 @@ import {
   faYoutube,
   faDiscord,
   faTiktok,
+  faSlack,
 } from "@fortawesome/free-brands-svg-icons";
 library.add(
   faFacebook,
@@ -99,6 +114,7 @@ library.add(
   faDiscord,
   faTiktok,
   faEnvelope,
+  faSlack,
 );
 export default {
   props: {
@@ -163,7 +179,10 @@ export default {
       if (this.facebook) {
         if (this.facebook.includes("facebook.com")) {
           this.facebookDisplay = this.name;
-          this.faFacebookURL = this.facebook;
+          this.facebookURL = this.facebook;
+          if (!this.facebookURL.startsWith("https://")) {
+            this.facebookURL = "https://" + this.facebookURL;
+          }
         } else {
           this.facebookDisplay = this.facebook;
           this.facebookURL = "https://facebook.com/" + this.facebook;
@@ -173,6 +192,9 @@ export default {
         if (this.instagram.includes("instagram.com")) {
           this.instagramDisplay = this.name;
           this.instagramURL = this.instagram;
+          if (!this.instagramURL.startsWith("https://")) {
+            this.instagramURL = "https://" + this.instagramURL;
+          }
         } else {
           this.instagramDisplay = this.instagram;
           this.instagramURL = "https://www.instagram.com/" + this.instagram;
@@ -185,6 +207,9 @@ export default {
         ) {
           this.twitterDisplay = this.name;
           this.twitterURL = this.twitter;
+          if (!this.twitterURL.startsWith("https://")) {
+            this.twitterURL = "https://" + this.twitterURL;
+          }
         } else {
           this.twitterDisplay = this.twitter;
           this.twitterURL = "https://www.x.com/" + this.twitter;
@@ -194,6 +219,9 @@ export default {
         this.youtubeDisplay = this.name;
         if (this.youtube.includes("youtube.com")) {
           this.youtubeURL = this.youtube;
+          if (!this.youtubeURL.startsWith("https://")) {
+            this.youtubeURL = "https://" + this.youtubeURL;
+          }
         } else {
           this.youtubeURL = "https://www.youtube.com/channel/" + this.youtube;
         }
@@ -202,6 +230,9 @@ export default {
         this.discordDisplay = this.name;
         if (this.discord.includes("discord.gg")) {
           this.discordURL = this.discord;
+          if (!this.discordURL.startsWith("https://")) {
+            this.discordURL = "https://" + this.discordURL;
+          }
         } else {
           this.discordURL = "https://www.discord.gg/" + this.discord;
         }
@@ -210,6 +241,9 @@ export default {
         if (this.tiktok.includes("tiktok.com")) {
           this.tiktokDisplay = this.name;
           this.tiktokURL = this.tiktok;
+          if (!this.tiktokURL.startsWith("https://")) {
+            this.tiktokURL = "https://" + this.tiktokURL;
+          }
         } else {
           this.tiktokDisplay = this.tiktok;
           this.tiktokURL = "https://www.tiktok.com/" + this.tiktok;
