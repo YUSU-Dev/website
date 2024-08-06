@@ -11,7 +11,7 @@
           aria-label="search for an activity"
           name="search"
           placeholder="Search..."
-          @keyup="search($event)"
+          @input="search($event)"
         />
         <div class="input-group-append">
           <button
