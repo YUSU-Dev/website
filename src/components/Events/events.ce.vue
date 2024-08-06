@@ -37,7 +37,7 @@
               type="text"
               name="search"
               :value="Search"
-              @keyup="search($event)"
+              @input="search($event)"
             />
             <div class="input-group-append">
               <button

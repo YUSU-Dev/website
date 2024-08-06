@@ -27,7 +27,7 @@
                   name="search"
                   placeholder="Search..."
                   :value="Search"
-                  @keyup="search($event)"
+                  @input="search($event)"
                 />
                 <div class="input-group-append">
                   <button
