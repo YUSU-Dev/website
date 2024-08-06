@@ -54,6 +54,7 @@
                   class=""
                   label="name"
                   :options="NewsCategories"
+                  :model-value="displayCategory"
                   @update:model-value="submitCategories"
                   placeholder="All"
                   multiple
@@ -368,6 +369,16 @@ export default {
     formatDate(date) {
       var formattedDate = moment(date).format("DD MMMM YYYY");
       return formattedDate;
+    },
+  },
+  computed: {
+    displayCategory() {
+      if (this.filterCategories === null) {
+        return null;
+      }
+      return this.NewsCategories.filter((category) => {
+        return this.filterCategories.includes(category.id);
+      });
     },
   },
 };

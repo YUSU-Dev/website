@@ -10,6 +10,7 @@
           <v-select
             label="name"
             :options="Categories"
+            :model-value="displayCategory"
             @update:model-value="updateCategory"
             placeholder="All"
             class="h-full"
@@ -20,6 +21,7 @@
           <v-select
             label="name"
             :options="Groups"
+            :model-value="displayActivity"
             @update:model-value="updateGroup"
             placeholder="All"
             class="h-full"
@@ -314,6 +316,16 @@ export default {
         if (self.SelectedParent) {
           return category.parent_id == self.SelectedParent.id;
         }
+      });
+    },
+    displayCategory() {
+      return this.Categories.find((category) => {
+        return category.id == this.SelectedType;
+      });
+    },
+    displayActivity() {
+      return this.Groups.find((group) => {
+        return group.id == this.SelectedGroup;
       });
     },
   },
