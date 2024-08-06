@@ -92,6 +92,7 @@
         <div class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">Contact</h2>
           <ActivitiesContacts
+            v-if="!loading"
             :name="pageActivity.name"
             :email="pageActivity.email_address"
             :facebook="pageActivity.facebook"
