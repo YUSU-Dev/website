@@ -372,10 +372,10 @@ export default {
             name: "Student Voice",
             closed: true,
             links: [
-              // {
-              //   name: "Elections",
-              //   link: "/elections",
-              // },
+              {
+                name: "Elections",
+                link: "/elections",
+              },
               // {
               //   name: "Suggestions",
               //   link: "/suggestions",

@@ -302,10 +302,10 @@ export const Default = {
       },
       {
         terminology: "Vote",
-        explanation: "A formal indication of your candidate choice(s)",
+        explanation: "<p>A formal indication of your candidate choice(s)</p>",
       },
       {
-        terminology: "YUSU",
+        terminology: "Yorksu",
         explanation:
           "<p>University of York Students’ Union! We’re here for all students and are led by your elected officers to represent your voice. Whilst we work closely with the University on many projects, we are a separate, charitable organisation</p>",
       },
