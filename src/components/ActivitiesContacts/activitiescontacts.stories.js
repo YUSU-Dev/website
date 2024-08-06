@@ -13,7 +13,7 @@ export const Default = {
     instagram: "uoybiosoc",
     twitter: "",
     youtube: "",
-    discord: "",
+    discord: "ury.slack.com",
     tiktok: "",
     email: "",
   },

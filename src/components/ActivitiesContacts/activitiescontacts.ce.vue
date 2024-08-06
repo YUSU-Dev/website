@@ -57,18 +57,13 @@
     </a>
     <a v-if="discord" :href="discordURL">
       <div class="flex flex-col">
-        <div class="flex items-center gap-x-2">
-          <FontAwesomeIcon
-            icon="fa-brands fa-discord"
-            class="h-4 w-4"
-            v-if="!isSlack"
-          />
-          <FontAwesomeIcon
-            icon="fa-brands fa-slack"
-            class="h-4 w-4"
-            v-if="isSlack"
-          />
+        <div class="flex items-center gap-x-2" v-if="!isSlack">
+          <FontAwesomeIcon icon="fa-brands fa-discord" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">Discord</h3>
+        </div>
+        <div class="flex items-center gap-x-2" v-if="isSlack">
+          <FontAwesomeIcon icon="fa-brands fa-slack" class="h-4 w-4" />
+          <h3 class="mb-0 text-lg font-bold">Slack</h3>
         </div>
         <div class="text-lg">
           <p class="">{{ discordDisplay }}</p>
