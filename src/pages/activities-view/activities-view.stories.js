@@ -38,6 +38,17 @@ export const ArchaelogyRep = {
   },
 };
 
+export const AllShouldEat = {
+  args: {
+    activityid: 487,
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
+};
+
 export const MemeSoc = {
   args: {
     activityid: 179,
