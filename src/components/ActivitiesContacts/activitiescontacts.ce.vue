@@ -58,7 +58,16 @@
     <a v-if="discord" :href="discordURL">
       <div class="flex flex-col">
         <div class="flex items-center gap-x-2">
-          <FontAwesomeIcon icon="fa-brands fa-discord" class="h-4 w-4" />
+          <FontAwesomeIcon
+            icon="fa-brands fa-discord"
+            class="h-4 w-4"
+            v-if="!isSlack"
+          />
+          <FontAwesomeIcon
+            icon="fa-brands fa-slack"
+            class="h-4 w-4"
+            v-if="isSlack"
+          />
           <h3 class="mb-0 text-lg font-bold">Discord</h3>
         </div>
         <div class="text-lg">
@@ -74,20 +83,6 @@
         </div>
         <div class="text-lg">
           <p class="">{{ tiktokDisplay }}</p>
-        </div>
-      </div>
-    </a>
-    <a
-      v-if="name == 'University Radio York (URY)'"
-      href="https://https://ury.slack.com/"
-    >
-      <div class="flex flex-col">
-        <div class="flex items-center gap-x-2">
-          <FontAwesomeIcon icon="fa-brands fa-slack" class="h-4 w-4" />
-          <h3 class="mb-0 text-lg font-bold">Slack</h3>
-        </div>
-        <div class="text-lg">
-          <p class="">{{ name }}</p>
         </div>
       </div>
     </a>
@@ -168,6 +163,7 @@ export default {
       discordURL: "",
       tiktokDisplay: "",
       tiktokURL: "",
+      isSlack: false,
       loading: true,
     };
   },
@@ -228,7 +224,10 @@ export default {
       }
       if (this.discord) {
         this.discordDisplay = this.name;
-        if (this.discord.includes("discord.gg")) {
+        if (this.discord.includes("slack.com")) {
+          this.isSlack = true;
+        }
+        if (this.discord.includes("discord.gg") || this.isSlack) {
           this.discordURL = this.discord;
           if (!this.discordURL.startsWith("https://")) {
             this.discordURL = "https://" + this.discordURL;
