@@ -10,6 +10,7 @@ export const Default = {};
 export const ury = {
   args: {
     activityid: 134,
+    constitution: "https://placeholder.com/500x500",
   },
   parameters: {
     a11y: {

@@ -14,6 +14,7 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
     :logo="Activity.thumbnail_url"
     :category="Activity.category"
+    :constitution="constitution"
   />
   <ActivityBreadcrumb
     v-if="!loading"
@@ -38,6 +39,10 @@ export default {
       default: null,
     },
     siteid: {
+      type: String,
+      default: null,
+    },
+    constitution: {
       type: String,
       default: null,
     },
