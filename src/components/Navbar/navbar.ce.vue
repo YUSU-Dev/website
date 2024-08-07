@@ -1,6 +1,6 @@
 <template>
   <nav class="sticky left-0 top-0 z-10 w-full bg-beige shadow">
-    <div class="container mx-auto flex justify-between">
+    <div class="container mx-auto flex justify-between py-0">
       <div class="my-7">
         <a href="/" aria-label="Homepage">
           <img
@@ -87,7 +87,7 @@
       class="max-h-[calc(100vh-133px)] overflow-y-auto bg-[#f5f5f5]"
     >
       <div
-        class="container mx-auto flex flex-col pb-8 pt-6 lg:grid lg:grid-cols-5"
+        class="container mx-auto flex flex-col py-0 pb-8 pt-6 lg:grid lg:grid-cols-5"
       >
         <div class="order-2 lg:order-1 lg:col-span-4">
           <div
