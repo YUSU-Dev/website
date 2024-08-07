@@ -48,7 +48,7 @@
         </div>
         <div class="flex items-center justify-end">
           <a
-            class="hidden lg:flex"
+            class="hidden xs:flex"
             href="/search#gsc.tab=0"
             aria-label="Search the website"
           >
@@ -58,7 +58,7 @@
             ></FontAwesomeIcon>
           </a>
           <a
-            class="ml-7 hidden lg:flex"
+            class="ml-7 hidden xs:flex"
             href="/shop/basket"
             aria-label="View your basket"
           >
@@ -209,6 +209,26 @@
             class="mb-6 grid w-full grid-cols-2 justify-center gap-y-4 xs:flex xs:justify-between lg:mb-0 lg:flex-col lg:gap-y-8"
           >
             <a
+              class="flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline xs:hidden xs:border-none sm:gap-x-6"
+              href="/search#gsc.tab=0"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-magnifying-glass"
+                class="h-6 w-6"
+              ></FontAwesomeIcon>
+              Search
+            </a>
+            <a
+              class="flex justify-end gap-x-2 text-start text-lg font-bold hover:underline xs:hidden xs:justify-start sm:gap-x-6"
+              href="/shop/basket"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-basket-shopping"
+                class="h-6 w-6"
+              ></FontAwesomeIcon>
+              Basket
+            </a>
+            <a
               class="flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline xs:border-none sm:gap-x-6"
               href="/events"
             >
@@ -252,7 +272,7 @@
               href="/shop?category=8"
             >
               <FontAwesomeIcon
-                icon="fa-solid fa-basket-shopping"
+                icon="fa-solid fa-cart-shopping"
                 class="h-6 w-6"
               ></FontAwesomeIcon>
               Shop
@@ -291,6 +311,7 @@ import {
   faCalendar,
   faBook,
   faMugSaucer,
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -315,6 +336,7 @@ library.add(
   faCalendar,
   faBook,
   faMugSaucer,
+  faCartShopping,
 );
 
 export default {
