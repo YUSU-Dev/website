@@ -23,7 +23,7 @@
     :group-name="Activity.name"
     :group-url="Activity.url_name"
   />
-  <div class="container mx-auto pb-20">
+  <div class="container mx-auto">
     <ActivityPage :group-id="activityid" />
   </div>
 </template>

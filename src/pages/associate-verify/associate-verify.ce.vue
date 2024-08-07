@@ -3,7 +3,7 @@
   <Navbar />
   <main id="maincontent">
     <section class="my-4 py-4">
-      <div class="container mx-auto flex flex-col justify-center pb-20 pt-4">
+      <div class="container mx-auto flex flex-col justify-center pt-4">
         {if link_error}
         <div class="border-l-4 border-red-400 bg-red-100 p-2">
           <h2 class="text-xl">Sorry!</h2>

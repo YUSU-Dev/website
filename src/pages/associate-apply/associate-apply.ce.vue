@@ -4,7 +4,7 @@
   <main id="maincontent">
     {if type_count == 0}
     <section class="my-4 py-4">
-      <div class="container mx-auto flex flex-col justify-center pb-20 pt-4">
+      <div class="container mx-auto flex flex-col justify-center pt-4">
         <div class="border-l-4 border-red-400 bg-red-100 p-2">
           <h2 class="text-xl">Sorry!</h2>
           <p>This service isn't currently enabled. Please try again later.</p>
@@ -13,7 +13,7 @@
     </section>
     {if:else}
     <section class="my-4 py-4">
-      <div class="container mx-auto flex flex-col justify-center pb-20 pt-4">
+      <div class="container mx-auto flex flex-col justify-center pt-4">
         <form id="associate-login" method="post" class="">
           <div>
             <h1 class="text-2xl font-bold">Associate Member Registration</h1>

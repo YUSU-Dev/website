@@ -6,7 +6,7 @@
   />
   <div
     id="maincontent"
-    class="container mx-auto flex flex-col items-center justify-center py-20"
+    class="container mx-auto flex flex-col items-center justify-center"
   >
     <Account :sub_groups="sub_groups" />
   </div>

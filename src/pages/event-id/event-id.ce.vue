@@ -22,7 +22,7 @@
     />
     <div class="container mx-auto">
       <div
-        class="flex w-full flex-col gap-y-4 pb-20 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
+        class="flex w-full flex-col gap-y-4 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
       >
         <EventsDateTile
           :date_id="date_id"

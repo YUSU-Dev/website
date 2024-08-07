@@ -19,7 +19,7 @@
 {embed="core-components/.section-links" section_id="{page_section_id}" section-area="primary"} -->
   <HeroHeader />
   <section>
-    <div id="main" class="container mx-auto pb-20">
+    <div id="main" class="container mx-auto">
       <!-- Main content -->
       <div class="{page_class}">
         <!-- Main Content -->
