@@ -4,7 +4,7 @@
   >
     <div class="flex flex-col gap-y-4">
       <p class="text-xl font-bold">{{ product_name }}</p>
-      <p class="break-words">{{ product_description }}</p>
+      <div class="break-words" v-html="product_description"></div>
     </div>
     <div class="flex items-center justify-between">
       <p v-if="product_price > 0" class="text-xl font-semibold">
