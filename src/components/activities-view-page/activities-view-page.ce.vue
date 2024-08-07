@@ -14,7 +14,7 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
     :logo="Activity.thumbnail_url"
     :category="Activity.category"
-    :consitution="constitution"
+    :constitution="constitution"
   />
   <ActivityBreadcrumb
     v-if="!loading"
