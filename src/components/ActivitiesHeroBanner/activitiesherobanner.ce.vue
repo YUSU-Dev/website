@@ -54,6 +54,7 @@
               v-if="constitution"
               :href="constitution"
               class="btn group flex w-fit items-center bg-white hover:bg-light-blue"
+              target="_blank"
               >Constitution</a
             >
           </div>
