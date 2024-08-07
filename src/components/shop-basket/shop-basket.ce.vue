@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="">
     <div class="my-4">
       <Button :is-primary="true" title="Back to Shop" arrow :url="'/shop'" />
     </div>
