@@ -3,7 +3,7 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
     :title="title"
   />
-  <div id="maincontent" class="container mx-auto flex flex-col pb-20">
+  <div id="maincontent" class="container mx-auto flex flex-col">
     <!-- Section links would go here -->
     <VenuePage
       :additional_page_content="additional_page_content"

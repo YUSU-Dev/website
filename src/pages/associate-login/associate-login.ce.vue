@@ -3,7 +3,7 @@
   <Navbar />
   <main id="maincontent">
     <section class="my-4 py-4">
-      <div class="container mx-auto flex flex-col justify-center pb-20 pt-4">
+      <div class="container mx-auto flex flex-col justify-center pt-4">
         <form id="associate-login" method="post" class="">
           <div>
             <h1 class="text-2xl font-bold">Associate Member Login</h1>

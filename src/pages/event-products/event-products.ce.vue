@@ -20,7 +20,7 @@
       :sale_start_date="sale_start_date"
       :sale_end_date="sale_end_date"
     />
-    <div class="container mx-auto pb-20">
+    <div class="container mx-auto">
       <!-- If not signed in -->
       <div v-if="!signed_in" class="flex flex-col gap-y-4">
         <p class="text-2xl font-bold">Are you a...</p>

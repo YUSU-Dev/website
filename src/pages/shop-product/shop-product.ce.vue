@@ -2,9 +2,7 @@
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
   <Navbar />
   <main id="maincontent">
-    <div
-      class="container mx-auto flex flex-col items-center justify-center pb-20"
-    >
+    <div class="container mx-auto flex flex-col items-center justify-center">
       <ShopProductId :image="image" :product-id="productId" />
     </div>
   </main>

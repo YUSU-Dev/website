@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-10 flex justify-center">
+  <div class="flex justify-center">
     <img :src="page_key_image" :alt="title + ' logo'" />
   </div>
   <main>
