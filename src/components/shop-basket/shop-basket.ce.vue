@@ -115,6 +115,14 @@
             >
             or the student group running the event.
           </p>
+          <p class="mt-2">
+            For memberships you can view how we use your data on our
+            <a
+              class="text-blue-800 underline"
+              href="https://yorksu.org/documents/student-privacy-policy"
+              >Privacy Statement</a
+            >.
+          </p>
         </div>
       </div>
     </div>
