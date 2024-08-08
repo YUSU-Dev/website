@@ -119,7 +119,7 @@
             For memberships you can view how we use your data on our
             <a
               class="text-blue-800 underline"
-              href="https://yorksu.org/documents/student-privacy-policy"
+              href="/documents/student-privacy-policy"
               >Privacy Statement</a
             >.
           </p>
