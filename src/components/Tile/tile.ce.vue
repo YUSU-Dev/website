@@ -100,7 +100,9 @@
                     @click="appendCategory(category.id)"
                     style="cursor: pointer"
                   > -->
-                  <span>{{ category.name }}</span>
+                  <a :href="'/news?categories=' + category.id"
+                    ><span>{{ category.name }}</span></a
+                  >
                   <!-- </span> -->
                 </li>
               </ul>
