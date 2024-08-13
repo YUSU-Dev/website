@@ -219,3 +219,14 @@ You will also need to add the stylesheet - there's one shared across all the com
   href="https://assets.yorksu.org/components/components.css"
 />
 ```
+
+Copyright (C) 2024  University of York Students' Union
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the [License](LICENSE).
