@@ -204,7 +204,7 @@ export default {
         this.subgroupCategoryId = 36;
         this.subgroupCategoryName = "Halifax College Sports";
       } else if (this.groupId == "553") {
-        this.subgroupCategoryId = 30;
+        this.subgroupCategoryId = 38;
         this.subgroupCategoryName = "Anne Lister & David Kato College Sports";
       } else if (this.groupId == "398") {
         this.subgroupCategoryId = "37,45";
