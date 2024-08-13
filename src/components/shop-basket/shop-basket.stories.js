@@ -27,8 +27,6 @@ export const Default = {
           {
             id: "112998",
             product_id: "9788",
-            url_name: "bobble-beanie",
-            product_name: "LONG BOI BOBBLE BEANIE",
             price_single: "15.95",
             price_total: "15.95",
             item_remove: "1",

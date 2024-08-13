@@ -217,26 +217,38 @@ export default {
   },
   mounted() {},
   methods: {
-    getProductImages() {
+    async getProductImages() {
       let self = this;
       let items = this.shopFullBasket[0].items;
-      items.forEach((item) => {
-        axios
+      let products = [];
+      items.forEach(async (item) => {
+        await axios
           .get(`https://pluto.sums.su/api/products/` + item.product_id, {
             headers: {
               "X-Site-Id": self.siteid,
             },
           })
           .then((response) => {
-            self.productImages[item.product_id] =
+            let product = {};
+            product.image =
               response.data.image != ""
                 ? response.data.image
                 : randomImageUrl("primary");
+            product.url_name = response.data.url_name;
+            product.product_name = response.data.name;
+            product.items_remove = item.item_remove;
+            product.price_total = item.price_total;
+            product.price_single = item.price_single;
+            product.id = item.id;
+            product.product_id = item.product_id;
+            products.push(product);
           })
           .catch((error) => {
             console.error(error);
           });
       });
+      console.log(products);
+      return products;
     },
     async getBasketItems() {
       let self = this;
@@ -256,11 +268,12 @@ export default {
       } else {
         this.shopFullBasket = [...this.shopBasket];
       }
-      tempItems = this.shopFullBasket[0].items;
-      this.getProductImages();
+      tempItems = (await this.getProductImages()) || [];
+      console.log(tempItems);
       // add quantity to items
       let newItems = [];
       tempItems.forEach((item) => {
+        console.log(item);
         let index = newItems.findIndex(
           (newItem) => newItem.product_id === item.product_id,
         );
