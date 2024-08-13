@@ -50,7 +50,7 @@
             >
               {{ group.name }}
             </p>
-            <h3 v-if="title" class="mb-2 line-clamp-2 font-semibold lg:text-xl">
+            <h3 v-if="title" class="mb-2 line-clamp-3 font-semibold lg:text-lg">
               {{ title }}
             </h3>
           </div>
@@ -60,8 +60,13 @@
               {{ location.name }}
             </p>
             <div class="flex flex-wrap gap-x-2">
-              <p v-if="date" class="font-semibold">{{ formatDate(date) }}</p>
-              <p v-if="date && startTime && !news" class="font-semibold">
+              <p v-if="date" class="text-sm font-semibold">
+                {{ formatDate(date) }}
+              </p>
+              <p
+                v-if="date && startTime && !news"
+                class="text-sm font-semibold"
+              >
                 {{ startTime }}
               </p>
             </div>
