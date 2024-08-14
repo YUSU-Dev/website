@@ -340,4 +340,61 @@
   @apply mb-0;
 }
 
+/* Text Outline */
+.outline-1 {
+  -webkit-text-stroke: 1px black;
+}
+
+/* Animations */
+
+.animated {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+[data-animation]:not(.u-in-viewport) {
+  visibility: visible !important;
+}
+
+.animate-delay {
+  animation-delay: 0.5s;
+}
+
+.animate-second {
+  animation-duration: 2s !important;
+  animation-timing-function: linear;
+}
+
+.animate-third {
+  animation-delay: 0.75s;
+}
+
+.animate-fourth {
+  animation-delay: 1s;
+}
+
+.animate-fifth {
+  animation-delay: 1.25s;
+}
+
+.animate-sixth {
+  animation-delay: 1.5s;
+}
+
+.animate-seventh {
+  animation-delay: 1.75s;
+}
+
+.animate-eigth {
+  animation-delay: 2s;
+}
+
 @tailwind utilities;
