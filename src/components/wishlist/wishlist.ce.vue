@@ -13,7 +13,7 @@
           class="tile mb-4 flex justify-center pb-2 lg:pb-3"
         >
           <div
-            class="relative h-full w-full bg-white shadow transition md:max-w-[282px]"
+            class="relative flex h-full w-full flex-col bg-white shadow transition md:max-w-[282px]"
           >
             <div
               v-if="activity.thumbnail_url"
@@ -34,14 +34,15 @@
                 loading="lazy"
               />
             </div>
-            <div class="flex h-full flex-col justify-between p-6">
+            <div class="flex h-full flex-col justify-between gap-y-2 p-6">
+              <!-- <div class="flex h-full flex-col justify-between"> -->
+              <h3
+                v-if="activity.activity_name"
+                class="mb-2 line-clamp-3 font-semibold lg:text-lg"
+              >
+                {{ activity.activity_name }}
+              </h3>
               <div class="flex flex-col gap-y-2">
-                <h3
-                  v-if="activity.activity_name"
-                  class="mb-2 line-clamp-3 font-semibold lg:text-lg"
-                >
-                  {{ activity.activity_name }}
-                </h3>
                 <Button
                   title="Go to activity"
                   class="flex w-full justify-center text-center"
@@ -62,6 +63,7 @@
                   @click="unregisterInterest(activity_id)"
                 />
               </div>
+              <!-- </div> -->
             </div>
           </div>
         </div>
