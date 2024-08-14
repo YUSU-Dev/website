@@ -6,7 +6,7 @@
   <div
     class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
   >
-    <div class="grid grid-cols-5 gap-x-4">
+    <div class="grid w-full grid-cols-5 gap-x-4">
       <div
         class="order-2 col-span-5 flex flex-col gap-y-6 border-black md:order-1 md:col-span-4 md:border-r md:pr-6"
       >
