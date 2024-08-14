@@ -1,12 +1,10 @@
 <template>
   <main class="w-full">
     <div class="container mx-auto">
-      <div class="flex flex-col gap-y-16">
+      <div class="flex flex-col gap-y-12">
         <div class="flex flex-col gap-y-4" data-animation="fadeIn">
-          <h2
-            class="text-5xl font-bold text-mustard outline-1 sm:text-6xl md:text-7xl xl:text-8xl"
-          >
-            <span class="text-white">OUR</span> STRATEGY
+          <h2 class="text-5xl font-bold sm:text-6xl md:text-7xl xl:text-8xl">
+            OUR STRATEGY
           </h2>
           <p>
             We are the University of York Students’ Union. We exist to make sure
@@ -18,23 +16,24 @@
           </p>
         </div>
         <!-- <div> -->
-        <div class="tile-wrap">
-          <SabbTile
-            v-for="sabb in sabbsList"
-            :key="sabb.name"
-            :name="sabb.name"
-            :position="sabb.position"
-            :url="sabb.url"
-            :img="sabb.img"
-            :pronouns="sabb.pronouns"
-          />
+        <div class="flex flex-col gap-y-4">
+          <h3 class="text-center text-2xl font-semibold">Our Sabbs</h3>
+          <div class="tile-wrap">
+            <SabbTile
+              v-for="sabb in sabbsList"
+              :key="sabb.name"
+              :name="sabb.name"
+              :position="sabb.position"
+              :url="sabb.url"
+              :img="sabb.img"
+              :pronouns="sabb.pronouns"
+            />
+          </div>
         </div>
         <!-- </div> -->
         <div class="mx-auto h-6 w-10/12 bg-mustard"></div>
         <div class="flex flex-col gap-y-12">
-          <h2 class="text-end text-4xl font-bold text-mustard outline-1">
-            OUR MISSION
-          </h2>
+          <h2 class="text-end text-4xl font-bold">OUR MISSION</h2>
           <div class="flex justify-center">
             <p class="text-center text-3xl font-semibold md:w-8/12">
               "To <span class="text-primary-red">empower</span> students, create
@@ -72,9 +71,7 @@
           </div>
         </div>
         <div class="flex flex-col gap-y-8">
-          <h2 class="text-4xl font-bold text-mustard outline-1">
-            Our Goals (by 2025)
-          </h2>
+          <h2 class="text-4xl font-bold">Our Goals (by 2025)</h2>
           <div class="flex flex-col gap-y-8 border-l-2 border-black py-6">
             <div class="relative flex items-center pl-4">
               <div
@@ -110,9 +107,7 @@
         </div>
         <div class="mx-auto h-6 w-10/12 bg-mustard"></div>
         <div class="flex flex-col gap-y-8">
-          <h2 class="text-4xl font-bold text-mustard outline-1">
-            MAKING IT HAPPEN
-          </h2>
+          <h2 class="text-4xl font-bold">MAKING IT HAPPEN</h2>
           <h3 class="text-xl font-semibold">
             Our key ‘enablers’ (how we’ll achieve our goals)
           </h3>
@@ -165,7 +160,7 @@
         </div>
         <div class="mx-auto h-6 w-10/12 bg-mustard"></div>
         <div class="flex flex-col gap-y-8">
-          <h2 class="text-4xl font-bold text-mustard outline-1">
+          <h2 class="text-4xl font-bold">
             WHAT DOES THIS ALL MEAN FOR STUDENTS?
           </h2>
           <p>
@@ -380,9 +375,7 @@
     </div>
     <div class="container mx-auto py-12">
       <div class="flex flex-col gap-y-8">
-        <h2 class="text-4xl font-bold text-mustard outline-1">
-          OUR IMPACT REPORT
-        </h2>
+        <h2 class="text-4xl font-bold">OUR IMPACT REPORT</h2>
         <p>
           A great way of measuring both the impact of the Union and our students
           - and also a great practice in acknowledging the positive things that
