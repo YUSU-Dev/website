@@ -133,7 +133,7 @@ export default {
     featuredshop: Boolean,
     hidefilter: Boolean,
     selectedgroup: { type: String, default: "" },
-    signedIn: Boolean,
+    signedIn: { type: Boolean, default: false },
     icon: { type: Boolean, default: false },
   },
   components: {
