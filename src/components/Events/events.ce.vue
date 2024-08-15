@@ -151,7 +151,7 @@ export default {
       Page: 1,
       Pages: [],
       PerPage: 12,
-      Premium: { type: Boolean, default: false },
+      premiumResults: { type: Boolean, default: false },
       ShortView: { type: Boolean, default: false },
       MoreResults: { type: Boolean, default: false },
       PreviousResults: { type: Boolean, default: false },
@@ -163,9 +163,8 @@ export default {
     var self = this;
     self.Loading = true;
     //Only show "premium" tagged events
-    if (self.premium) {
-      self.Premium = true;
-    }
+    self.premiumResults = self.premium;
+
     //if we have a groupid, only list that group's events
     if (self.groupid) {
       self.SelectedGroup = self.groupid;
@@ -249,7 +248,7 @@ export default {
       if (self.Search) {
         parameters += "&searchTerm=" + self.Search;
       }
-      if (self.Premium) {
+      if (self.premiumResults) {
         parameters += "&onlyPremium=1";
       }
       axios
