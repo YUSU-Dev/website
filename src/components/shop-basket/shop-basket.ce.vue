@@ -14,11 +14,7 @@
             class="grid grid-cols-4 gap-x-3 lg:gap-x-10"
           >
             <div class="col-span-1 flex items-center justify-center">
-              <img
-                class="object-cover"
-                alt=""
-                :src="productImages[item.product_id]"
-              />
+              <img class="object-cover" alt="" :src="item.image" />
             </div>
             <div class="col-span-3">
               <div class="flex h-full flex-col justify-between">
@@ -71,6 +67,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div v-else-if="Loading">
+          <Loading :loading="Loading" text />
         </div>
         <div v-else class="my-4 text-center text-lg">
           <p>There are no items in your basket. Why not check out our shop?</p>
@@ -140,6 +139,7 @@
 import Button from "../button/button.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 import axios from "../../_common/axios.mjs";
+import Loading from "../loading/loading.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import {
   removeItemHandler,
@@ -165,6 +165,7 @@ export default {
     Button,
     FontAwesomeIcon,
     Modal,
+    Loading,
   },
   props: {
     errorMessage: {
@@ -210,6 +211,7 @@ export default {
       },
       ModalClosed: true,
       ErrorDescription: "",
+      Loading: true,
     };
   },
   created() {
@@ -217,90 +219,58 @@ export default {
   },
   mounted() {},
   methods: {
-    getProductImages() {
+    async getBasketItems() {
       let self = this;
-      let items = this.shopFullBasket[0].items;
-      items.forEach((item) => {
-        axios
+      self.Loading = true;
+      if (this.shopBasket.length === 0) {
+        await axios
+          .get("https://yorksu.org/shop/basket-api-v2")
+          .then((response) => {
+            this.shopFullBasket = [...response.data];
+          });
+      } else {
+        this.shopFullBasket = [...this.shopBasket];
+      }
+
+      let basketItems = this.shopFullBasket[0].items;
+      let products = [];
+      let product = {};
+      for (const item of basketItems) {
+        await axios
           .get(`https://pluto.sums.su/api/products/` + item.product_id, {
             headers: {
               "X-Site-Id": self.siteid,
             },
           })
           .then((response) => {
-            self.productImages[item.product_id] =
+            product = {};
+            product.image =
               response.data.image != ""
                 ? response.data.image
                 : randomImageUrl("primary");
+            product.url_name = response.data.url_name;
+            product.product_name = response.data.name;
+            product.items_remove = item.item_remove;
+            product.price_total = item.price_total;
+            product.price_single = item.price_single;
+            product.id = item.id;
+            product.product_id = item.product_id;
+            let index = products.findIndex(
+              (products) => products.product_id === product.product_id,
+            );
+            if (index === -1) {
+              products.push(product);
+              products[products.length - 1].quantity = 1;
+            } else {
+              products[index].quantity += 1;
+            }
           })
           .catch((error) => {
             console.error(error);
           });
-      });
-    },
-    async getBasketItems() {
-      let self = this;
-      let tempItems = [];
-      if (this.shopBasket.length === 0) {
-        await axios
-          .get("https://yorksu.org/shop/basket-api")
-          .then((response) => {
-            if (response.data[0].basket_items != "0") {
-              var correctedJsonString = self.jsonFormatter(response.data);
-              var jsonData = JSON.parse(correctedJsonString);
-              this.shopFullBasket = [...jsonData];
-            } else {
-              this.shopFullBasket = [...response.data];
-            }
-          });
-      } else {
-        this.shopFullBasket = [...this.shopBasket];
       }
-      tempItems = this.shopFullBasket[0].items;
-      this.getProductImages();
-      // add quantity to items
-      let newItems = [];
-      tempItems.forEach((item) => {
-        let index = newItems.findIndex(
-          (newItem) => newItem.product_id === item.product_id,
-        );
-        if (index === -1) {
-          newItems.push(item);
-          newItems[newItems.length - 1].quantity = 1;
-        } else {
-          newItems[index].quantity += 1;
-        }
-      });
-      this.items = newItems;
-    },
-    jsonFormatter(jsonString) {
-      // First, try to directly parse the JSON to see if it's valid
-      try {
-        const jsonObject = JSON.parse(jsonString);
-        return JSON.stringify(jsonObject);
-      } catch {
-        jsonString = jsonString.replace(
-          /'([^']*)'/g,
-          (match, p1) => `"${p1.replace(/"/g, '\\"')}"`,
-        );
-        // If parsing fails, attempt to fix trailing commas
-        let fixedJsonString = jsonString
-          .replace(/,\s*]/g, "]")
-          .replace(/,\s*}/g, "}");
-
-        // Attempt to parse and stringify again to ensure valid JSON and proper escaping
-        try {
-          const jsonObject = JSON.parse(fixedJsonString);
-          return JSON.stringify(jsonObject);
-        } catch (error) {
-          console.error(
-            "JSON is still malformed after attempts to fix:",
-            error,
-          );
-          // Return the original string or further handling could be implemented here
-          return jsonString;
-        }
-      }
+      self.items = products;
+      self.Loading = false;
     },
     formatPrice(price) {
       return price.toLocaleString("en-GB", {
