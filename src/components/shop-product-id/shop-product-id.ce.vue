@@ -49,7 +49,7 @@ export default {
     },
     signedIn: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   data() {

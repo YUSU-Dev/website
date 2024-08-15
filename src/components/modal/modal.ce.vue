@@ -52,9 +52,7 @@
         </div>
         <div class="modal-footer">
           <div v-if="!signedIn">
-            <a type="button" class="btn btn-primary" href="/sign-in/sso"
-              >Sign In</a
-            >
+            <a type="button" class="btn btn-primary" href="/sign-in">Sign In</a>
           </div>
           <button
             type="button"
