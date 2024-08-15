@@ -226,7 +226,8 @@ export default {
         await axios
           .get("https://yorksu.org/shop/basket-api-v2")
           .then((response) => {
-            var cleanedData = response.data.replace(/,\s*]/, "]");
+            var jsonString = JSON.stringify(response.data);
+            var cleanedData = jsonString.replace(/,\s*]/, "]");
             let jsonData = JSON.parse(cleanedData);
             this.shopFullBasket = [...jsonData];
           });
