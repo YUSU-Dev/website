@@ -89,19 +89,19 @@
             <h2 class="mb-2 text-2xl font-bold">Summary</h2>
             <div class="flex justify-between text-lg">
               <p>Subtotal</p>
-              <p>£{{ shopFullBasket[0].sub_total }}</p>
+              <p>£{{ shopFullBasket.sub_total }}</p>
             </div>
             <div class="flex justify-between text-lg">
               <p>Postage</p>
-              <p>£{{ shopFullBasket[0].delivery_fee }}</p>
+              <p>£{{ shopFullBasket.delivery_fee }}</p>
             </div>
             <div class="flex justify-between text-lg">
               <p>Booking Fee</p>
-              <p>£{{ shopFullBasket[0].booking_fee }}</p>
+              <p>£{{ shopFullBasket.booking_fee }}</p>
             </div>
             <div class="mt-2 flex justify-between text-lg">
               <h3 class="text-xl font-bold">
-                Total £{{ shopFullBasket[0].total }}
+                Total £{{ shopFullBasket.total }}
               </h3>
             </div>
           </div>
@@ -242,17 +242,17 @@ export default {
             let jsonData = JSON.parse(cleanedData);
             this.shopFullBasket = [...jsonData];
           });
-        console.log(this.shopFullBasket.items);
+        console.log(this.shopFullBasket);
       } else {
         this.shopFullBasket = [...this.shopBasket];
       }
 
-      if (this.shopFullBasket[0].items.length === 0) {
+      if (this.shopFullBasket.items.length === 0) {
         self.Loading = false;
         return;
       }
 
-      let basketItems = this.shopFullBasket[0].items;
+      let basketItems = this.shopFullBasket.items;
       let products = [];
       let product = {};
       for (const item of basketItems) {
