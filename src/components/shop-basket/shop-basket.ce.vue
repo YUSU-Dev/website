@@ -233,6 +233,7 @@ export default {
     async getBasketItems() {
       let self = this;
       self.Loading = true;
+      self.items = [];
       if (this.shopBasket.length === 0) {
         await axios
           .get("https://yorksu.org/shop/basket-api-v2")
@@ -251,9 +252,7 @@ export default {
       } else {
         this.shopFullBasket = this.shopBasket[0];
       }
-      console.log(this.shopFullBasket);
       let basketItems = this.shopFullBasket.items;
-      console.log(basketItems);
       if (basketItems.length === 0) {
         self.Loading = false;
         return;
