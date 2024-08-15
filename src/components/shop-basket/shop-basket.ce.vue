@@ -233,8 +233,6 @@ export default {
       }
 
       let basketItems = this.shopFullBasket[0].items;
-      console.log("items");
-      console.log(basketItems);
       let products = [];
       let product = {};
       for (const item of basketItems) {
@@ -261,9 +259,7 @@ export default {
               (products) => products.product_id === product.product_id,
             );
             if (index === -1) {
-              console.log(product);
               products.push(product);
-              console.log(products);
               products[products.length - 1].quantity = 1;
             } else {
               products[index].quantity += 1;
@@ -273,7 +269,6 @@ export default {
             console.error(error);
           });
       }
-      console.log(self.products);
       self.items = products;
       self.Loading = false;
     },
