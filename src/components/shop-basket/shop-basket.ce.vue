@@ -245,14 +245,14 @@ export default {
       } else {
         this.shopFullBasket = this.shopBasket[0];
       }
-
-      console.log(this.shopFullBasket.items);
-      if (this.shopFullBasket.items.length === 0) {
+      console.log(this.shopFullBasket);
+      let basketItems = this.shopFullBasket.items;
+      console.log(basketItems);
+      if (basketItems.length === 0) {
         self.Loading = false;
         return;
       }
 
-      let basketItems = this.shopFullBasket.items;
       let products = [];
       let product = {};
       for (const item of basketItems) {
