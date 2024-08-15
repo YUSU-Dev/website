@@ -16,7 +16,7 @@
             <span v-if="activity_name"> : {{ activity_name }}</span>
           </h2>
           <main class="body-style">
-            <article>
+            <article class="body-style">
               <slot></slot>
             </article>
           </main>
