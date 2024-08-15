@@ -226,8 +226,11 @@ export default {
         await axios
           .get("https://yorksu.org/shop/basket-api-v2")
           .then((response) => {
-            var cleanedData = response.data.replace(/,\s*]/, "]");
-            var jsonData = JSON.parse(cleanedData);
+            let jsonData = response.data;
+            if (response.data.items.length != 0) {
+              var cleanedData = response.data.replace(/,\s*]/, "]");
+              jsonData = JSON.parse(cleanedData);
+            }
             this.shopFullBasket = [...jsonData];
           });
       } else {
