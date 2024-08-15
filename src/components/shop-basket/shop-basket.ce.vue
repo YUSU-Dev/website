@@ -227,7 +227,7 @@ export default {
           .get("https://yorksu.org/shop/basket-api-v2")
           .then((response) => {
             let jsonData = response.data;
-            if (response.data.items.length != 0) {
+            if (response.data.basket_items != "0") {
               var cleanedData = response.data.replace(/,\s*]/, "]");
               jsonData = JSON.parse(cleanedData);
             }
