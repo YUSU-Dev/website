@@ -238,8 +238,10 @@ export default {
           .get("https://yorksu.org/shop/basket-api-v2")
           .then((response) => {
             var jsonString = JSON.stringify(response.data);
+            console.log(jsonString);
             var cleanedData = jsonString.replace(/,\s*]/, "]");
             let jsonData = JSON.parse(cleanedData);
+            console.log(jsonData);
             this.shopFullBasket = [...jsonData];
           });
       } else {
@@ -247,7 +249,7 @@ export default {
       }
       console.log(this.shopFullBasket[0].items);
 
-      if (this.shopFullBasket[0].items.length() === 0) {
+      if (this.shopFullBasket[0].items.length === 0) {
         self.Loading = false;
         return;
       }
