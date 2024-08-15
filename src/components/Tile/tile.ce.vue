@@ -96,14 +96,9 @@
             <div class="pb-4 pl-1 pr-5 text-white">
               <ul class="mb-0 list-none ps-[10px]">
                 <li v-for="category in categories" :key="category.id">
-                  <!-- <span
-                    @click="appendCategory(category.id)"
-                    style="cursor: pointer"
-                  > -->
                   <a :href="'/news?categories=' + category.id"
                     ><span>{{ category.name }}</span></a
                   >
-                  <!-- </span> -->
                 </li>
               </ul>
             </div>
