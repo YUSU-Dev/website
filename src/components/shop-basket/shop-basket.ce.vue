@@ -242,11 +242,11 @@ export default {
             let jsonData = JSON.parse(cleanedData);
             this.shopFullBasket = jsonData;
           });
-        console.log(this.shopFullBasket);
       } else {
         this.shopFullBasket = this.shopBasket[0];
       }
 
+      console.log(this.shopFullBasket.items);
       if (this.shopFullBasket.items.length === 0) {
         self.Loading = false;
         return;
