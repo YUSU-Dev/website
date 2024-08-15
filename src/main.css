@@ -331,12 +331,8 @@
   @apply w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
 }
 
-.news-a-z-wrap {
-  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4;
-}
-
 .a-z-wrap {
-  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4;
 }
 
 /* Elections */
