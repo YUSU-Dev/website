@@ -247,7 +247,7 @@ export default {
       }
       console.log(this.shopFullBasket[0].items);
 
-      if (this.shopFullBasket[0].items.length === 0) {
+      if (this.shopFullBasket[0].items.length() === 0) {
         self.Loading = false;
         return;
       }
