@@ -245,6 +245,7 @@ export default {
       } else {
         this.shopFullBasket = [...this.shopBasket];
       }
+      console.log(this.shopFullBasket[0].items);
 
       if (this.shopFullBasket[0].items.length === 0) {
         self.Loading = false;
