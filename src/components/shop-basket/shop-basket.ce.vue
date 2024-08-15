@@ -111,12 +111,6 @@
             :is-primary="true"
             :disabled="Loading"
           />
-          <Button
-            @click="emptyBasket()"
-            title="Empty basket"
-            :is-primary="true"
-            v-if="Loading"
-          />
           <p class="mt-2">
             All events tickets are non-refundable. If you do require help with
             your order after purchasing please contact
