@@ -150,7 +150,7 @@ export default {
       Search: "",
       Page: 1,
       Pages: [],
-      PerPage: 12,
+      PerPage: 24,
       premiumResults: { type: Boolean, default: false },
       ShortView: { type: Boolean, default: false },
       MoreResults: { type: Boolean, default: false },
