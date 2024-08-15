@@ -240,11 +240,11 @@ export default {
             var jsonString = JSON.stringify(response.data);
             var cleanedData = jsonString.replace(/,\s*]/, "]");
             let jsonData = JSON.parse(cleanedData);
-            this.shopFullBasket = [...jsonData];
+            this.shopFullBasket = jsonData;
           });
         console.log(this.shopFullBasket);
       } else {
-        this.shopFullBasket = [...this.shopBasket];
+        this.shopFullBasket = this.shopBasket[0];
       }
 
       if (this.shopFullBasket.items.length === 0) {
