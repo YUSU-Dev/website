@@ -68,4 +68,17 @@ export const Default = {
   },
 };
 
+export const withApi = {
+  args: {
+    interestedIds: [
+      {
+        interested_activity_id: 399,
+      },
+      {
+        interested_activity_id: 412,
+      },
+    ],
+  },
+};
+
 export const noInterests = {};
