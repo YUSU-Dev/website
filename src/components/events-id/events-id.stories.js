@@ -19,5 +19,14 @@ export const Default = {
     date_id: "4564",
     from_price: "£1.00",
     external_tickets: false,
+    accessibility: {
+      data: [
+        {
+          name: "Quiet Spaces",
+          information:
+            "There are dedicated Quiet Rooms available if you need a break from the fair. These are V/C/026&27, SLB/001 & J/P/001",
+        },
+      ],
+    },
   },
 };
