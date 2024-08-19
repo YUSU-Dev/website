@@ -109,7 +109,8 @@ export default {
     if (this.accessibility) {
       this.accessibilityOptions = this.accessibility.data;
     } else {
-      this.accessibilityOptions = this.getAccessibility().data;
+      this.accessibilityOptions = this.getAccessibility();
+      console.log(this.accessibilityOptions);
     }
   },
   computed: {
@@ -147,7 +148,6 @@ export default {
             var errorCleaned = jsonString.replace(/,\s*]/, "]");
             jsonData = JSON.parse(errorCleaned);
           }
-          console.log(jsonData.data);
           return jsonData.data;
         });
     },
