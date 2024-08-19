@@ -109,7 +109,7 @@ export default {
     if (this.accessibility) {
       this.accessibilityOptions = this.accessibility.data;
     } else {
-      this.accessibilityOptions = this.getAccessibility().data;
+      this.accessibilityOptions = this.getAccessibility();
       console.log(this.accessibilityOptions);
     }
   },
@@ -134,9 +134,10 @@ export default {
     },
   },
   methods: {
-    getAccessibility() {
+    async getAccessibility() {
       var self = this;
-      axios
+      var options = [];
+      await axios
         .get("https://yorksu.org/api/accessibility/" + self.event_id)
         .then(function (response) {
           let jsonData = {};
@@ -148,9 +149,9 @@ export default {
             var errorCleaned = jsonString.replace(/,\s*]/, "]");
             jsonData = JSON.parse(errorCleaned);
           }
-          console.log(jsonData);
-          return jsonData;
+          options = jsonData.data;
         });
+      return options;
     },
   },
 };
