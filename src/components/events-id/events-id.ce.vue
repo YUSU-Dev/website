@@ -105,7 +105,7 @@ export default {
       accessibilityOptions: [],
     };
   },
-  mounted() {
+  created() {
     if (this.accessibility) {
       this.accessibilityOptions = this.accessibility.data;
     } else {
