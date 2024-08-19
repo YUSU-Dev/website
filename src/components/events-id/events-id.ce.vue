@@ -45,7 +45,7 @@
             <div
               class="mt-2"
               v-for="option in accessibilityOptions"
-              :key="option.id"
+              :key="option.name"
             >
               <h3 class="text-xl">
                 {{ option.name }}
