@@ -34,22 +34,17 @@
                 <Button
                   title="Go to activity"
                   class="flex w-full justify-center text-center"
-                  isPrimary
+                  is-primary
                   :url="'/activities/view/' + activity.url_name"
                 />
                 <!-- Can we make this url go to their membership? -->
                 <Button
                   title="Join activity"
                   class="flex w-full justify-center text-center"
-                  isPrimary
+                  is-primary
                   :url="'/shop?activity_id=' + activity.id"
                 />
-                <Button
-                  title="Unregister interest"
-                  class="flex w-full justify-center text-center"
-                  isPrimary
-                  @click="unregisterInterest(activity.id)"
-                />
+                <interestButton :activity-id="activity.id" registered />
               </div>
             </div>
           </div>
@@ -69,10 +64,12 @@
 import Button from "../button/button.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import axios from "../../_common/axios.mjs";
+import interestButton from "../interest-button/interest-button.ce.vue";
 export default {
   name: "Wishlist",
   components: {
     Button,
+    interestButton,
   },
   props: {
     interestedIds: {
@@ -114,7 +111,6 @@ export default {
         await axios
           .get("https://yorksu.org/wishlist/wishlist-api")
           .then((response) => {
-            console.log(response.data);
             let jsonData = {};
             try {
               var cleanedData = response.data.replace(/,\s*]/, "]");
