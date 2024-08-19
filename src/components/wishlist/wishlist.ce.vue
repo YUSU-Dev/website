@@ -5,65 +5,52 @@
         <h2 class="mb-0 text-3xl font-semibold">Activity Wishlist</h2>
       </div>
       <!-- If they do have registered interests -->
-      <div v-if="interests" class="a-z-wrap">
+      <div v-if="activities.length" class="a-z-wrap">
         <!-- for each registered interest -->
         <div
-          v-for="activity in interests"
-          :key="activity.activity_name"
+          v-for="activity in activities"
+          :key="activity.id"
           class="tile mb-4 flex justify-center pb-2 lg:pb-3"
         >
           <div
             class="relative flex h-full w-full flex-col bg-white shadow transition md:max-w-[282px]"
           >
-            <div
-              v-if="activity.thumbnail_url"
-              class="flex aspect-square items-center justify-center"
-            >
+            <div class="flex aspect-square items-center justify-center">
               <img
                 class="aspect-square bg-cover bg-center object-cover"
-                :src="activity.thumbnail_url"
-                alt=""
-                loading="lazy"
-              />
-            </div>
-            <div v-else class="flex aspect-square items-center justify-center">
-              <img
-                class="aspect-square bg-cover bg-center"
-                :src="randomImage(activity.section)"
+                :src="activity.image"
                 alt=""
                 loading="lazy"
               />
             </div>
             <div class="flex h-full flex-col justify-between gap-y-2 p-6">
-              <!-- <div class="flex h-full flex-col justify-between"> -->
               <h3
-                v-if="activity.activity_name"
+                v-if="activity.name"
                 class="mb-2 line-clamp-3 font-semibold lg:text-lg"
               >
-                {{ activity.activity_name }}
+                {{ activity.name }}
               </h3>
               <div class="flex flex-col gap-y-2">
                 <Button
                   title="Go to activity"
                   class="flex w-full justify-center text-center"
                   isPrimary
-                  :url="activity.url_name"
+                  :url="'/activities/view/' + activity.url_name"
                 />
                 <!-- Can we make this url go to their membership? -->
                 <Button
                   title="Join activity"
                   class="flex w-full justify-center text-center"
                   isPrimary
-                  :url="activity.url_name"
+                  :url="'/shop?activity_id=' + activity.id"
                 />
                 <Button
                   title="Unregister interest"
                   class="flex w-full justify-center text-center"
                   isPrimary
-                  @click="unregisterInterest(activity_id)"
+                  @click="unregisterInterest(activity.id)"
                 />
               </div>
-              <!-- </div> -->
             </div>
           </div>
         </div>
@@ -81,37 +68,116 @@
 <script>
 import Button from "../button/button.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
+import axios from "../../_common/axios.mjs";
 export default {
   name: "Wishlist",
   components: {
     Button,
   },
   props: {
+    interestedIds: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
     interests: {
       type: Array,
       default: null,
     },
   },
+  data() {
+    return {
+      loading: true,
+      Ids: {
+        type: Array,
+        value: [],
+      },
+      activities: {
+        type: Array,
+        value: [],
+      },
+    };
+  },
+  created() {
+    this.getActivities();
+  },
   methods: {
     randomImage(section) {
       return randomImageUrl(section);
     },
-    //   unregisterInterest(activity_id) {
-    //   $.ajax({
-    //     url: "/activities/api",
-    //     type: "post",
-    //     data: {
-    //       method: "unregister-group-interest",
-    //       activity_id: {activity_id}
-    //     },
-    //     success: function (data) {
-    //       location.reload();
-    //     },
-    //     error: function (error) {
-    //       console.log(error);
-    //     },
-    //   });
-    // }
+    async getActivities() {
+      let self = this;
+      self.Loading = true;
+      self.items = [];
+      if (this.interestedIds.length === 0) {
+        await axios
+          .get("https://yorksu.org/wishlist/wishlist-api")
+          .then((response) => {
+            let jsonData = {};
+            try {
+              var cleanedData = response.data.replace(/,\s*]/, "]");
+              jsonData = JSON.parse(cleanedData);
+            } catch {
+              var jsonString = JSON.stringify(response.data);
+              var errorCleaned = jsonString.replace(/,\s*]/, "]");
+              jsonData = JSON.parse(errorCleaned);
+            }
+            this.Ids = jsonData;
+          });
+      } else {
+        this.Ids = this.interestedIds;
+      }
+      let activityIds = this.Ids;
+      if (activityIds.length === 0) {
+        self.Loading = false;
+        return;
+      }
+      let interestedActivities = [];
+      let activity = {};
+      for (const id of activityIds) {
+        await axios
+          .get(
+            `https://pluto.sums.su/api/groups/` + id.interested_activity_id,
+            {
+              headers: {
+                "X-Site-Id": self.siteid,
+              },
+            },
+          )
+          .then((response) => {
+            activity = {};
+            activity.image =
+              response.data.thumbnail_url != ""
+                ? response.data.thumbnail_url
+                : randomImageUrl("primary");
+            activity.url_name = response.data.url_name;
+            activity.name = response.data.name;
+            activity.id = response.data.id;
+            interestedActivities.push(activity);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+      self.activities = interestedActivities;
+      self.Loading = false;
+    },
+    async unregisterInterest(activity_id) {
+      let self = this;
+      console.log(activity_id);
+      await axios
+        .post("https://yorksu.org/activities/api", {
+          method: "unregister-group-interest",
+          activity_id: activity_id,
+        })
+        .then(function () {
+          self.getActivities();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
