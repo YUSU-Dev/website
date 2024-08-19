@@ -38,6 +38,21 @@
           </h2>
           <p class="text-xl font-semibold">{{ date }} {{ month }} {{ year }}</p>
           <p class="text-lg">{{ time }}</p>
+          <div v-if="accessibilityOptions.length">
+            <h2 class="my-4 border-b border-black pb-4 text-2xl font-bold">
+              Accessibility Information
+            </h2>
+            <div
+              class="mt-2"
+              v-for="option in accessibilityOptions"
+              :key="option.id"
+            >
+              <h3 class="text-xl">
+                {{ option.name }}
+              </h3>
+              <p>{{ option.information }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -47,6 +62,8 @@
 <script>
 import Button from "../../components/button/button.ce.vue";
 import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
+import axios from "../../_common/axios.mjs";
+
 export default {
   props: {
     event_id: { type: String, default: "" },
@@ -72,13 +89,28 @@ export default {
     external_tickets: { type: Boolean, default: false },
     sale_start_date: { type: String, default: "" },
     sale_end_date: { type: String, default: "" },
+    accessibility: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   components: {
     Button,
     HeroBanner,
   },
   data() {
-    return {};
+    return {
+      accessibilityOptions: [],
+    };
+  },
+  mounted() {
+    if (this.accessibility) {
+      this.accessibilityOptions = this.accessibility.data;
+    } else {
+      this.accessibilityOptions = this.getAccessibility();
+    }
   },
   computed: {
     date() {
@@ -98,6 +130,25 @@ export default {
         minute: "numeric",
         hour12: true,
       });
+    },
+  },
+  methods: {
+    getAccessibility() {
+      var self = this;
+      axios
+        .get("https://yorksu.org/api/accessibility" + self.event_id)
+        .then(function (response) {
+          let jsonData = {};
+          try {
+            var cleanedData = response.data.replace(/,\s*]/, "]");
+            jsonData = JSON.parse(cleanedData);
+          } catch {
+            var jsonString = JSON.stringify(response.data);
+            var errorCleaned = jsonString.replace(/,\s*]/, "]");
+            jsonData = JSON.parse(errorCleaned);
+          }
+          return jsonData.data;
+        });
     },
   },
 };
