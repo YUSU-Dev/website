@@ -44,7 +44,7 @@
                   is-primary
                   :url="'/shop?activity_id=' + activity.id"
                 />
-                <interestButton :activity-id="activity.id" registered />
+                <interestButton :activity-id="activity.id" />
               </div>
             </div>
           </div>
