@@ -109,7 +109,7 @@ export default {
     if (this.accessibility) {
       this.accessibilityOptions = this.accessibility.data;
     } else {
-      this.accessibilityOptions = this.getAccessibility();
+      this.accessibilityOptions = this.getAccessibility().data;
     }
   },
   computed: {
