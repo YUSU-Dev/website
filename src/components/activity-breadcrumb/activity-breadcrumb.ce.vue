@@ -109,6 +109,8 @@ export default {
       ) {
         this.firstSegmentName = "Academic Reps";
         this.firstSegmentUrl = "/academic-reps";
+      } else if (this.categoryName == "Networks") {
+        this.firstSegmentUrl = "/networks";
       } else {
         this.firstSegmentName = "Societies";
         this.firstSegmentUrl = "/societies";
