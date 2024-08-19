@@ -147,6 +147,7 @@ export default {
             var errorCleaned = jsonString.replace(/,\s*]/, "]");
             jsonData = JSON.parse(errorCleaned);
           }
+          console.log(jsonData.data);
           return jsonData.data;
         });
     },
