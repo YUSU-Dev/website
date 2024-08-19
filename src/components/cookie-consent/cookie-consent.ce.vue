@@ -19,7 +19,7 @@
               cookies to help us understand usage and how to improve it. View
               our
               <a
-                href="/about-us/organisational-policies/cookie-policy"
+                href="/documents/cookie-policy"
                 class="text-blue-800 underline dark:text-blue-400"
                 >Cookie Policy</a
               >.
