@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto">
+  <main class="">
     <div class="flex flex-col gap-y-6">
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="mb-0 text-3xl font-semibold">Activity Wishlist</h2>
@@ -34,22 +34,17 @@
                 <Button
                   title="Go to activity"
                   class="flex w-full justify-center text-center"
-                  isPrimary
+                  is-primary
                   :url="'/activities/view/' + activity.url_name"
                 />
                 <!-- Can we make this url go to their membership? -->
                 <Button
                   title="Join activity"
                   class="flex w-full justify-center text-center"
-                  isPrimary
+                  is-primary
                   :url="'/shop?activity_id=' + activity.id"
                 />
-                <Button
-                  title="Unregister interest"
-                  class="flex w-full justify-center text-center"
-                  isPrimary
-                  @click="unregisterInterest(activity.id)"
-                />
+                <interestButton :activity-id="activity.id" />
               </div>
             </div>
           </div>
@@ -69,10 +64,12 @@
 import Button from "../button/button.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import axios from "../../_common/axios.mjs";
+import interestButton from "../interest-button/interest-button.ce.vue";
 export default {
   name: "Wishlist",
   components: {
     Button,
+    interestButton,
   },
   props: {
     interestedIds: {

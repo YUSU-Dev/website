@@ -20,30 +20,7 @@
             class="px-10 text-center"
             url="/adopt-an-activity"
           />
-          <!-- {exp:su_activities:getGroupInterest activity_id="{activity_id}"}
-          {if signed_in}
-          {if is_interested}
-          <a href=""
-            ><Button
-              @click="unregisterInterest()"
-              :class="{ 'bg-light-blue': title == 'join' }"
-              title="Interested?"
-              is-student-life
-              class="px-10 text-center"
-          /></a>
-          {if:else}
-          <a href=""
-            ><Button
-              @click="registerInterest()"
-              :class="{ 'bg-light-blue': title == 'join' }"
-              title="Interested?"
-              is-student-life
-              class="px-10 text-center"
-          /></a>
-          {/if}
-          {/if}
-          {/exp:su_activities:getGroupInterest} {/if}
-          {/if} -->
+          <InterestButton :activity-id="pageActivity.id" />
         </div>
         <div v-if="pageActivity.description" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">About</h2>
@@ -81,13 +58,7 @@
             class="px-10 text-center"
             url="/adopt-an-activity"
           />
-          <!-- <a href=""
-            ><Button
-              :class="{ 'bg-light-blue': title == 'join' }"
-              title="Interested?"
-              is-student-life
-              class="px-10 text-center"
-          /></a> -->
+          <InterestButton :activity-id="pageActivity.id" />
         </div>
         <div class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">Contact</h2>
@@ -123,7 +94,7 @@ import Shop from "../../components/shop/shop.ce.vue";
 import Activities from "../../components/activities/activities.ce.vue";
 import ActivitiesContacts from "../../components/ActivitiesContacts/activitiescontacts.ce.vue";
 import axios from "../../_common/axios.mjs";
-
+import InterestButton from "../interest-button/interest-button.ce.vue";
 export default {
   props: {
     groupId: { type: String, default: null },
@@ -144,6 +115,7 @@ export default {
     Events,
     Shop,
     Activities,
+    InterestButton,
   },
   created() {
     var self = this;
