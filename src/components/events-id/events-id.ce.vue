@@ -92,7 +92,7 @@ export default {
     accessibility: {
       type: Object,
       default() {
-        return {};
+        return null;
       },
     },
   },
