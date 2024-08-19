@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto">
+  <main class="">
     <div class="flex flex-col gap-y-6">
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="mb-0 text-3xl font-semibold">Activity Wishlist</h2>
@@ -114,6 +114,7 @@ export default {
         await axios
           .get("https://yorksu.org/wishlist/wishlist-api")
           .then((response) => {
+            console.log(response.data);
             let jsonData = {};
             try {
               var cleanedData = response.data.replace(/,\s*]/, "]");
