@@ -20,7 +20,7 @@
             class="px-10 text-center"
             url="/adopt-an-activity"
           />
-          <InterestButton :activity-id="pageActivity.id" />
+          <InterestButton :activity-id="groupId" />
         </div>
         <div v-if="pageActivity.description" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">About</h2>
@@ -58,7 +58,7 @@
             class="px-10 text-center"
             url="/adopt-an-activity"
           />
-          <InterestButton :activity-id="pageActivity.id" />
+          <InterestButton :activity-id="groupId" />
         </div>
         <div class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">Contact</h2>
