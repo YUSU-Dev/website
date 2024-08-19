@@ -38,7 +38,7 @@
           </h2>
           <p class="text-xl font-semibold">{{ date }} {{ month }} {{ year }}</p>
           <p class="text-lg">{{ time }}</p>
-          <div v-if="accessibilityOptions">
+          <div v-if="accessibilityOptions.length">
             <h2 class="my-4 border-b border-black pb-4 text-2xl font-bold">
               Accessibility Information
             </h2>
