@@ -136,7 +136,7 @@ export default {
     getAccessibility() {
       var self = this;
       axios
-        .get("https://yorksu.org/api/accessibility" + self.event_id)
+        .get("https://yorksu.org/api/accessibility/" + self.event_id)
         .then(function (response) {
           let jsonData = {};
           try {
