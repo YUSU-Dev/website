@@ -428,6 +428,10 @@ export default {
                 name: "Colleges",
                 link: "/colleges",
               },
+              {
+                name: "Networks",
+                link: "/networks",
+              },
             ],
           },
           {
