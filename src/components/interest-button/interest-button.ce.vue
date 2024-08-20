@@ -108,10 +108,13 @@ export default {
     doToggleInterest(activityId) {
       if (this.interested) {
         this.doUnregisterInterest(activityId);
+        this.$emit("unregister", activityId);
       } else {
         this.doRegisterInterest(activityId);
+        this.$emit("register");
       }
     },
   },
+  emits: ["unregister", "register"],
 };
 </script>
