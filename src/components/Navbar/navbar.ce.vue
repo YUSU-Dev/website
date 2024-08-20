@@ -389,7 +389,7 @@ export default {
                 link: "/volunteering",
               },
               {
-                name: "Wishlist",
+                name: "Activity Wishlist",
                 link: "/wishlist",
               },
             ],
