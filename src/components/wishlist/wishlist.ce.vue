@@ -126,7 +126,6 @@ export default {
       }
       let interestedActivities = [];
       for (const id of activityIds) {
-        console.log(id);
         if (id.interested_activity_id != 0) {
           await axios
             .get(
@@ -154,7 +153,6 @@ export default {
         }
         self.activities = interestedActivities;
       }
-      console.log(self.activities);
       self.Loading = false;
     },
     unregisterInterest(activity_id) {
