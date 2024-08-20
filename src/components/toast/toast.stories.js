@@ -8,5 +8,6 @@ export default {
 export const Default = {
   args: {
     toastClosed: false,
+    dismissText: "Wishlist",
   },
 };
