@@ -84,13 +84,11 @@ export default {
   data() {
     return {
       loading: true,
-      wishlistIds: {
-        type: Array,
-        value: null,
-      },
       activities: {
         type: Array,
-        value: null,
+        default() {
+          return [];
+        },
       },
     };
   },
@@ -104,7 +102,9 @@ export default {
     async getActivities() {
       let self = this;
       self.Loading = true;
-      self.wishlistIds = [];
+
+      let wishlistIds = [];
+
       await axios
         .get("https://yorksu.org/wishlist/wishlist-api")
         .then((response) => {
@@ -117,19 +117,21 @@ export default {
             var errorCleaned = jsonString.replace(/,\s*]/, "]");
             jsonData = JSON.parse(errorCleaned);
           }
-          self.wishlistIds = jsonData;
+          wishlistIds = jsonData;
         });
-      let activityIds = self.wishlistIds;
-      if (activityIds.length === 0) {
+
+      if (wishlistIds.length === 0) {
         self.Loading = false;
         return;
       }
+
       let interestedActivities = [];
-      for (const id of activityIds) {
-        if (id.interested_activity_id != 0) {
+      let activity = {};
+      for (const item of wishlistIds) {
+        if (item.interested_activity_id != 0) {
           await axios
             .get(
-              `https://pluto.sums.su/api/groups/` + id.interested_activity_id,
+              `https://pluto.sums.su/api/groups/` + item.interested_activity_id,
               {
                 headers: {
                   "X-Site-Id": self.siteid,
@@ -137,7 +139,7 @@ export default {
               },
             )
             .then((response) => {
-              let activity = {};
+              activity = {};
               activity.image =
                 response.data.thumbnail_url != ""
                   ? response.data.thumbnail_url
@@ -151,8 +153,9 @@ export default {
               console.error(error);
             });
         }
-        self.activities = interestedActivities;
       }
+
+      self.activities = interestedActivities;
       self.Loading = false;
     },
     unregisterInterest(activity_id) {
