@@ -20,7 +20,7 @@
             class="px-10 text-center"
             url="/adopt-an-activity"
           />
-          <InterestButton :activity-id="groupId" />
+          <InterestButton v-if="!isAdoptable" :activity-id="groupId" />
         </div>
         <div v-if="pageActivity.description" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">About</h2>

@@ -388,6 +388,10 @@ export default {
                 name: "Volunteering & Fundraising",
                 link: "/volunteering",
               },
+              {
+                name: "Wishlist",
+                link: "/wishlist",
+              },
             ],
           },
           {
