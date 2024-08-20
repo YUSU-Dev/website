@@ -79,6 +79,17 @@
       </div>
       <div v-if="!Loading" class="a-z-wrap mt-10">
         <Tile
+          v-for="event in PremiumEvents"
+          :key="event.id"
+          :url="'/events/id/' + event.event_id + '-' + event.url_name"
+          :title="event.event_date_title"
+          :image="event.thumbnail_url"
+          :date="event.start_date"
+          :group="event.group"
+          :location="event.venue"
+          premium-event
+        />
+        <Tile
           v-for="event in Events"
           :key="event.id"
           :url="'/events/id/' + event.event_id + '-' + event.url_name"
@@ -144,6 +155,7 @@ export default {
       Categories: [],
       Groups: [],
       Events: [],
+      PremiumEvents: [],
       SelectedType: "",
       SelectedGroup: "",
       SelectedVenue: "",
@@ -157,6 +169,7 @@ export default {
       PreviousResults: { type: Boolean, default: false },
       Placeholder: "Select an option",
       Loading: true,
+      firstPagePremium: false,
     };
   },
   created() {
@@ -225,11 +238,15 @@ export default {
      */
     getEvents: function (append = false) {
       let self = this;
+      self.firstPagePremium = false;
+
       if (!append) {
         self.Page = 1;
         self.Pages = [1];
       }
+
       let parameters = "sortBy=start_date&futureOrOngoing=1&page=" + self.Page;
+
       //add relevant parameters to the event search
       if (self.limit) {
         parameters += "&perPage=" + self.limit;
@@ -251,6 +268,29 @@ export default {
       if (self.premiumResults) {
         parameters += "&onlyPremium=1";
       }
+      //if we're on the first page, get the premium events first
+      if (
+        parameters ==
+        "sortBy=start_date&futureOrOngoing=1&page=1" +
+          "&perPage=" +
+          self.PerPage
+      ) {
+        self.firstPagePremium = true;
+        axios
+          .get(
+            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=4&" +
+              parameters,
+            {
+              headers: {
+                "X-Site-Id": self.siteid,
+              },
+            },
+          )
+          .then(function (response) {
+            self.PremiumEvents = response.data.data;
+          });
+      }
+      //get the rest of the events
       axios
         .get("https://pluto.sums.su/api/events?" + parameters, {
           headers: {
@@ -258,7 +298,14 @@ export default {
           },
         })
         .then(function (response) {
-          self.Events = response.data.data;
+          if (self.firstPagePremium) {
+            self.Events = response.data.data.filter((event) => {
+              return event.type.id != 4 && event.premium == null;
+            });
+          } else {
+            self.PremiumEvents = [];
+            self.Events = response.data.data;
+          }
           //If the API says there are more results (ie another page), update the template accordingly
           if (response.data.next_page_url != null) {
             self.MoreResults = true;
