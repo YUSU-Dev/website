@@ -1,6 +1,6 @@
 <template>
   <a
-    class="btn group flex w-fit items-center"
+    class="btn group flex w-fit items-center justify-center"
     :class="{
       'btn-primary': primaryButton,
       'btn-secondary': secondaryButton,

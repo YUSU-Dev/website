@@ -2,14 +2,16 @@
   <main>
     <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
       <div class="flex flex-grow flex-col gap-y-6">
-        <div class="flex w-max flex-col gap-x-4 gap-y-4 xxs:flex-row sm:hidden">
+        <div
+          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row sm:hidden"
+        >
           <!-- {if category_name != "College Sport (Groups)"} -->
           <Button
             v-if="isActivity"
             :class="{ 'bg-light-blue': title == 'join' }"
             title="Join"
             is-student-life
-            class="px-10 text-center"
+            class="w-full px-10 text-center xxs:w-min"
             :url="'/shop?activity_id=' + pageActivity.id"
           />
           <Button
@@ -47,7 +49,7 @@
             :class="{ 'bg-light-blue': title == 'join' }"
             title="Join"
             is-student-life
-            class="px-10 text-center"
+            class="w-full px-10 text-center"
             :url="'/shop?activity_id=' + pageActivity.id"
           />
           <Button
@@ -55,7 +57,7 @@
             :class="{ 'bg-light-blue': title == 'join' }"
             title="How to Adopt"
             is-student-life
-            class="px-10 text-center"
+            class="w-full px-10 text-center"
             url="/adopt-an-activity"
           />
           <InterestButton :activity-id="groupId" />
