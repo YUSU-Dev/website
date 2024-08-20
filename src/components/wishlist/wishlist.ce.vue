@@ -76,10 +76,6 @@ export default {
     interestButton,
   },
   props: {
-    interestedIds: {
-      type: Array,
-      default: null,
-    },
     interests: {
       type: Array,
       default: null,
@@ -109,24 +105,20 @@ export default {
       let self = this;
       self.Loading = true;
       self.items = [];
-      if (this.interestedIds.length === 0) {
-        await axios
-          .get("https://yorksu.org/wishlist/wishlist-api")
-          .then((response) => {
-            let jsonData = {};
-            try {
-              var cleanedData = response.data.replace(/,\s*]/, "]");
-              jsonData = JSON.parse(cleanedData);
-            } catch {
-              var jsonString = JSON.stringify(response.data);
-              var errorCleaned = jsonString.replace(/,\s*]/, "]");
-              jsonData = JSON.parse(errorCleaned);
-            }
-            this.Ids = jsonData;
-          });
-      } else {
-        this.Ids = this.interestedIds;
-      }
+      await axios
+        .get("https://yorksu.org/wishlist/wishlist-api")
+        .then((response) => {
+          let jsonData = {};
+          try {
+            var cleanedData = response.data.replace(/,\s*]/, "]");
+            jsonData = JSON.parse(cleanedData);
+          } catch {
+            var jsonString = JSON.stringify(response.data);
+            var errorCleaned = jsonString.replace(/,\s*]/, "]");
+            jsonData = JSON.parse(errorCleaned);
+          }
+          this.Ids = jsonData;
+        });
       let activityIds = this.Ids;
       if (activityIds.length === 0) {
         self.Loading = false;
