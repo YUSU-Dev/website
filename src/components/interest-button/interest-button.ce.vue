@@ -20,6 +20,12 @@
     :modal-closed="ModalClosed"
     @close="ModalClosed = true"
   />
+  <Toast
+    :message="toastMessage"
+    :toast-closed="toastClosed"
+    @close="doClearToast()"
+    @undo="doRegisterInterest(activityId)"
+  />
 </template>
 
 <script>
@@ -30,11 +36,13 @@ import {
 } from "../interest-button/interested-members.js";
 import axios from "../../_common/axios.mjs";
 import Modal from "../modal/modal.ce.vue";
+import Toast from "../toast/toast.ce.vue";
 export default {
   name: "InterestButton",
   components: {
     Button,
     Modal,
+    Toast,
   },
   data() {
     return {
@@ -42,6 +50,9 @@ export default {
       signedIn: false,
       ErrorDescription: "Please sign in to register your interest.",
       ModalClosed: true,
+      toastClosed: true,
+      toastMessage: "",
+      timeout: { type: Function },
     };
   },
   props: {
@@ -54,6 +65,18 @@ export default {
     this.checkInterest();
   },
   methods: {
+    doLoadToast(message) {
+      var self = this;
+      this.toastMessage = message;
+      this.toastClosed = false;
+      this.timeout = setTimeout(() => {
+        self.toastClosed = true;
+      }, 5000);
+    },
+    doClearToast() {
+      clearTimeout(this.timeout);
+      this.toastClosed = true;
+    },
     async checkInterest() {
       var self = this;
       await axios
@@ -69,14 +92,21 @@ export default {
         });
     },
     doRegisterInterest(activityId) {
+      var self = this;
       if (this.signedIn) {
-        registerInterest(activityId);
+        registerInterest(activityId).then(() => {
+          self.interested = true;
+          self.doLoadToast("You have successfully registered interest.");
+        });
       } else {
         this.ModalClosed = false;
       }
     },
     doUnregisterInterest(activityId) {
-      unregisterInterest(activityId);
+      unregisterInterest(activityId).then(() => {
+        self.interested = false;
+        self.doLoadToast("You have successfully unregistered interest.");
+      });
     },
   },
 };
