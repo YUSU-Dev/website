@@ -103,6 +103,7 @@ export default {
       }
     },
     doUnregisterInterest(activityId) {
+      var self = this;
       unregisterInterest(activityId).then(() => {
         self.interested = false;
         self.doLoadToast("You have successfully unregistered interest.");
