@@ -5,7 +5,7 @@
         <h2 class="mb-0 text-3xl font-semibold">Activity Wishlist</h2>
       </div>
       <!-- If they do have registered interests -->
-      <div v-if="activities.length" class="a-z-wrap">
+      <div v-if="activities[0]" class="a-z-wrap">
         <!-- for each registered interest -->
         <div
           v-for="activity in activities"
@@ -44,7 +44,11 @@
                   is-primary
                   :url="'/shop?activity_id=' + activity.id"
                 />
-                <interestButton :activity-id="activity.id" />
+                <interestButton
+                  :activity-id="activity.id"
+                  @unregister="unregisterInterest()"
+                  @register="registerInterest()"
+                />
               </div>
             </div>
           </div>
@@ -54,7 +58,7 @@
       <div v-else class="flex flex-col gap-y-2 px-3">
         <h3 class="text-lg font-semibold">Nothing to show</h3>
         <p>You have not registered your interest in any activities.</p>
-        <Button title="Find an activity" isPrimary url="/sport" />
+        <Button title="Find an activity" is-primary url="/societies" />
       </div>
     </div>
   </main>
@@ -74,9 +78,7 @@ export default {
   props: {
     interestedIds: {
       type: Array,
-      default() {
-        return [];
-      },
+      default: null,
     },
     interests: {
       type: Array,
@@ -88,11 +90,11 @@ export default {
       loading: true,
       Ids: {
         type: Array,
-        value: [],
+        value: null,
       },
       activities: {
         type: Array,
-        value: [],
+        value: null,
       },
     };
   },
@@ -147,7 +149,7 @@ export default {
             activity.image =
               response.data.thumbnail_url != ""
                 ? response.data.thumbnail_url
-                : randomImageUrl("primary");
+                : randomImageUrl("student-life");
             activity.url_name = response.data.url_name;
             activity.name = response.data.name;
             activity.id = response.data.id;
@@ -160,20 +162,12 @@ export default {
       self.activities = interestedActivities;
       self.Loading = false;
     },
-    async unregisterInterest(activity_id) {
-      let self = this;
-      console.log(activity_id);
-      await axios
-        .post("https://yorksu.org/activities/api", {
-          method: "unregister-group-interest",
-          activity_id: activity_id,
-        })
-        .then(function () {
-          self.getActivities();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    unregisterInterest(activity_id) {
+      const activity = this.activities.indexOf(activity_id);
+      this.activities.splice(activity, 1);
+    },
+    registerInterest() {
+      this.getActivities();
     },
   },
 };
