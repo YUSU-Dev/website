@@ -1,17 +1,9 @@
 <template>
   <Button
-    v-if="interested"
-    title="Unregister interest"
+    :title="title"
     class="flex w-full justify-center text-center"
     is-primary
-    @click="doUnregisterInterest(activityId)"
-  />
-  <Button
-    v-else
-    title="Register interest"
-    class="flex w-full justify-center text-center"
-    is-primary
-    @click="doRegisterInterest(activityId)"
+    @click="doToggleInterest(activityId)"
   />
   <Modal
     :signed-in="signedIn"
@@ -24,7 +16,7 @@
     :message="toastMessage"
     :toast-closed="toastClosed"
     @close="doClearToast()"
-    @undo="doUnregisterInterest(activityId)"
+    @undo="doToggleInterest(activityId)"
   />
 </template>
 
@@ -46,6 +38,7 @@ export default {
   },
   data() {
     return {
+      title: "Register Interest",
       interested: false,
       signedIn: false,
       ErrorDescription: "Please sign in to register your interest.",
@@ -97,6 +90,7 @@ export default {
       if (this.signedIn) {
         registerInterest(activityId).then(() => {
           self.interested = true;
+          self.title = "Unregister Interest";
           self.doLoadToast("You have successfully registered interest.");
         });
       } else {
@@ -107,8 +101,16 @@ export default {
       var self = this;
       unregisterInterest(activityId).then(() => {
         self.interested = false;
+        self.title = "Register Interest";
         self.doLoadToast("You have successfully unregistered interest.");
       });
+    },
+    doToggleInterest(activityId) {
+      if (this.interested) {
+        this.doUnregisterInterest(activityId);
+      } else {
+        this.doRegisterInterest(activityId);
+      }
     },
   },
 };
