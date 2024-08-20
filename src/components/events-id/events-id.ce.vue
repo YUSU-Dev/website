@@ -1,7 +1,8 @@
 <template>
-  <HeroBanner
+  <EventsIdHeroBanner
     :title="event_name"
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    :event-thumbnail="event_thumbnail"
   />
   <div
     class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
@@ -59,7 +60,7 @@
 <!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Button from "../../components/button/button.ce.vue";
-import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
+import EventsIdHeroBanner from "../../components/events-id-herobanner/events-id-herobanner.ce.vue";
 import axios from "../../_common/axios.mjs";
 
 export default {
@@ -96,7 +97,7 @@ export default {
   },
   components: {
     Button,
-    HeroBanner,
+    EventsIdHeroBanner,
   },
   data() {
     return {
