@@ -68,12 +68,12 @@
 import Button from "../button/button.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import axios from "../../_common/axios.mjs";
-import interestButton from "../interest-button/interest-button.ce.vue";
+import InterestButton from "../interest-button/interest-button.ce.vue";
 export default {
   name: "Wishlist",
   components: {
     Button,
-    interestButton,
+    InterestButton,
   },
   props: {
     interests: {
@@ -129,6 +129,7 @@ export default {
       for (const id of activityIds) {
         console.log(id);
         if (id.interested_activity_id === 0) {
+          self.activities = [];
           continue;
         }
         await axios
