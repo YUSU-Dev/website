@@ -17,6 +17,8 @@
     :toast-closed="toastClosed"
     @close="doClearToast()"
     @undo="doToggleInterest(activityId)"
+    @dismiss="doDismiss()"
+    dismiss-text="Wishlist"
   />
 </template>
 
@@ -83,6 +85,9 @@ export default {
           jsonData = JSON.parse(jsonData);
           self.interested = jsonData.registered;
           self.signedIn = jsonData.signed_in;
+          self.title = self.interested
+            ? "Unregister Interest"
+            : "Register Interest";
         });
     },
     doRegisterInterest(activityId) {
@@ -113,6 +118,9 @@ export default {
         this.doRegisterInterest(activityId);
         this.$emit("register");
       }
+    },
+    doDismiss() {
+      window.location.href = "/wishlist";
     },
   },
   emits: ["unregister", "register"],

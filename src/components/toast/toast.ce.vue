@@ -24,7 +24,7 @@
               type="button"
               class="btn btn-primary w-full py-2"
               data-dismiss="modal"
-              @click="$emit('close')"
+              @click="$emit('dismiss')"
             >
               {{ dismissText }}
             </button>
@@ -100,6 +100,6 @@ export default {
       default: true,
     },
   },
-  emits: ["close", "undo"],
+  emits: ["close", "undo", "dismiss"],
 };
 </script>

@@ -160,6 +160,7 @@ export default {
           });
       }
       self.activities = interestedActivities;
+      console.log(self.activities);
       self.Loading = false;
     },
     unregisterInterest(activity_id) {
