@@ -125,38 +125,35 @@ export default {
         return;
       }
       let interestedActivities = [];
-      let activity = {};
       for (const id of activityIds) {
         console.log(id);
-        if (id.interested_activity_id === 0) {
-          self.activities = [];
-          continue;
-        }
-        await axios
-          .get(
-            `https://pluto.sums.su/api/groups/` + id.interested_activity_id,
-            {
-              headers: {
-                "X-Site-Id": self.siteid,
+        if (id.interested_activity_id != 0) {
+          await axios
+            .get(
+              `https://pluto.sums.su/api/groups/` + id.interested_activity_id,
+              {
+                headers: {
+                  "X-Site-Id": self.siteid,
+                },
               },
-            },
-          )
-          .then((response) => {
-            activity = {};
-            activity.image =
-              response.data.thumbnail_url != ""
-                ? response.data.thumbnail_url
-                : randomImageUrl("student-life");
-            activity.url_name = response.data.url_name;
-            activity.name = response.data.name;
-            activity.id = response.data.id;
-            interestedActivities.push(activity);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+            )
+            .then((response) => {
+              let activity = {};
+              activity.image =
+                response.data.thumbnail_url != ""
+                  ? response.data.thumbnail_url
+                  : randomImageUrl("student-life");
+              activity.url_name = response.data.url_name;
+              activity.name = response.data.name;
+              activity.id = response.data.id;
+              interestedActivities.push(activity);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
+        self.activities = interestedActivities;
       }
-      self.activities = interestedActivities;
       console.log(self.activities);
       self.Loading = false;
     },
