@@ -67,6 +67,7 @@ export default {
   methods: {
     doLoadToast(message) {
       var self = this;
+      this.doClearToast();
       this.toastMessage = message;
       this.toastClosed = false;
       this.timeout = setTimeout(() => {
