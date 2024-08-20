@@ -97,6 +97,7 @@ export default {
           self.interested = true;
           self.title = "Unregister Interest";
           self.doLoadToast("You have successfully registered interest.");
+          this.$emit("register");
         });
       } else {
         this.ModalClosed = false;
@@ -108,15 +109,14 @@ export default {
         self.interested = false;
         self.title = "Register Interest";
         self.doLoadToast("You have successfully unregistered interest.");
+        this.$emit("unregister", activityId);
       });
     },
     doToggleInterest(activityId) {
       if (this.interested) {
         this.doUnregisterInterest(activityId);
-        this.$emit("unregister", activityId);
       } else {
         this.doRegisterInterest(activityId);
-        this.$emit("register");
       }
     },
     doDismiss() {

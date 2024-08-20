@@ -44,7 +44,7 @@
                   is-primary
                   :url="'/shop?activity_id=' + activity.id"
                 />
-                <interestButton
+                <InterestButton
                   :activity-id="activity.id"
                   @unregister="unregisterInterest()"
                   @register="registerInterest()"
@@ -127,6 +127,9 @@ export default {
       let interestedActivities = [];
       let activity = {};
       for (const id of activityIds) {
+        if (id.interested_activity_id === 0) {
+          continue;
+        }
         await axios
           .get(
             `https://pluto.sums.su/api/groups/` + id.interested_activity_id,
