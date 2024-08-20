@@ -2,7 +2,7 @@
   <main>
     <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
       <div class="flex flex-grow flex-col gap-y-6">
-        <div class="flex gap-x-4 sm:hidden">
+        <div class="flex w-max flex-col gap-x-4 gap-y-4 xxs:flex-row sm:hidden">
           <!-- {if category_name != "College Sport (Groups)"} -->
           <Button
             v-if="isActivity"
@@ -20,7 +20,7 @@
             class="px-10 text-center"
             url="/adopt-an-activity"
           />
-          <InterestButton :activity-id="groupId" />
+          <InterestButton v-if="!isAdoptable" :activity-id="groupId" />
         </div>
         <div v-if="pageActivity.description" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">About</h2>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="flex flex-col gap-y-8">
-        <div class="hidden flex-col gap-y-4 sm:flex">
+        <div class="hidden w-max flex-col gap-y-4 sm:flex">
           <Button
             v-if="isActivity"
             :class="{ 'bg-light-blue': title == 'join' }"

@@ -26,3 +26,14 @@ export const CollegeSport = {
     },
   },
 };
+
+export const animalCrossing = {
+  args: {
+    groupId: "387",
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
+};
