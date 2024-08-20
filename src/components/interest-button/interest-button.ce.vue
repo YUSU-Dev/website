@@ -24,7 +24,7 @@
     :message="toastMessage"
     :toast-closed="toastClosed"
     @close="doClearToast()"
-    @undo="doRegisterInterest(activityId)"
+    @undo="doUnregisterInterest(activityId)"
   />
 </template>
 
