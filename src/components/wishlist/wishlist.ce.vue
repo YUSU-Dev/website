@@ -84,7 +84,7 @@ export default {
   data() {
     return {
       loading: true,
-      Ids: {
+      wishlistIds: {
         type: Array,
         value: null,
       },
@@ -104,7 +104,7 @@ export default {
     async getActivities() {
       let self = this;
       self.Loading = true;
-      self.items = [];
+      self.wishlistIds = [];
       await axios
         .get("https://yorksu.org/wishlist/wishlist-api")
         .then((response) => {
@@ -117,9 +117,9 @@ export default {
             var errorCleaned = jsonString.replace(/,\s*]/, "]");
             jsonData = JSON.parse(errorCleaned);
           }
-          this.Ids = jsonData;
+          self.wishlistIds = jsonData;
         });
-      let activityIds = this.Ids;
+      let activityIds = self.wishlistIds;
       if (activityIds.length === 0) {
         self.Loading = false;
         return;
@@ -127,6 +127,7 @@ export default {
       let interestedActivities = [];
       let activity = {};
       for (const id of activityIds) {
+        console.log(id);
         if (id.interested_activity_id === 0) {
           continue;
         }
