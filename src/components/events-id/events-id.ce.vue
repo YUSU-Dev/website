@@ -10,14 +10,27 @@
       <div
         class="order-2 col-span-5 flex flex-col gap-y-6 border-black md:order-1 md:col-span-4 md:border-r md:pr-6"
       >
-        <div class="flex flex-col gap-y-4 border-b border-black pb-6">
+        <div class="flex flex-col gap-y-4 pb-6">
           <h2 class="text-3xl font-bold">
             {{ event_name }}
             <span v-if="activity_name"> : {{ activity_name }}</span>
           </h2>
           <main class="body-style">
-            <article class="body-style">
+            <article class="body-style flex flex-col gap-y-4">
               <slot></slot>
+              <div v-if="accessibilityOptions[0]">
+                <h2 class="text-2xl font-bold">Accessibility Information</h2>
+                <div
+                  class="mt-2"
+                  v-for="option in accessibilityOptions"
+                  :key="option.name"
+                >
+                  <h3 class="text-xl">
+                    {{ option.name }}
+                  </h3>
+                  <p>{{ option.information }}</p>
+                </div>
+              </div>
             </article>
           </main>
         </div>
@@ -38,21 +51,6 @@
           </h2>
           <p class="text-xl font-semibold">{{ date }} {{ month }} {{ year }}</p>
           <p class="text-lg">{{ time }}</p>
-          <div v-if="accessibilityOptions[0]">
-            <h2 class="my-4 border-b border-black pb-4 text-2xl font-bold">
-              Accessibility Information
-            </h2>
-            <div
-              class="mt-2"
-              v-for="option in accessibilityOptions"
-              :key="option.name"
-            >
-              <h3 class="text-xl">
-                {{ option.name }}
-              </h3>
-              <p>{{ option.information }}</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

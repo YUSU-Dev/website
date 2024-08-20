@@ -20,7 +20,7 @@
       :sale_start_date="sale_start_date"
       :sale_end_date="sale_end_date"
     />
-    <div class="container mx-auto">
+    <div class="container mx-auto border-t border-black">
       <div
         class="flex w-full flex-col gap-y-4 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
       >
