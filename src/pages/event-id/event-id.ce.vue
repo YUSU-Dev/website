@@ -22,22 +22,9 @@
     />
     <div class="container mx-auto border-t border-black">
       <div
-        class="flex w-full flex-col gap-y-4 pt-6 xl:grid xl:grid-cols-2 xl:gap-x-4"
+        class="grid gap-x-4 pt-6 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       >
-        <EventsDateTile
-          :date_id="date_id"
-          :date_start="date_start"
-          :u_start_date="u_start_date"
-          :u_end_date="u_end_date"
-          :u_all_day="u_all_day"
-          :date_name="date_name"
-          :date_venue="date_venue"
-          :date_unix="date_unix"
-          :from_price="from_price"
-          :external_tickets="external_tickets"
-          :sale_start_date="sale_start_date"
-          :sale_end_date="sale_end_date"
-        />
+        <EventsDateTile :date_id="date_id" />
       </div>
     </div>
   </div>

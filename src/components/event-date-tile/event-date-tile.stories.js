@@ -16,3 +16,9 @@ export const Default = {
     external_tickets: false,
   },
 };
+
+export const testWelcome = {
+  args: {
+    date_id: "4702",
+  },
+};
