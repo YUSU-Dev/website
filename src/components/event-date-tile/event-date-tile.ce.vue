@@ -24,7 +24,7 @@
           <Button
             class="h-min w-full"
             :is-primary="true"
-            title="Get Tickets"
+            title="Tickets"
             :href="'/events/products/' + event.id"
           />
         </div>
