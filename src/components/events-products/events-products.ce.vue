@@ -1,22 +1,25 @@
 <template>
-  <HeroBanner
-    :title="event_name"
+  <EventsIdHeroBanner
+    :title="eventDate.event_date_title"
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    :event-thumbnail="eventDate.thumbnail_url"
   />
   <div
     class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
   >
-    <div class="grid w-full grid-cols-5 gap-x-4">
+    <Loading text :loading="loading" class="w-full" />
+    <div v-if="!loading" class="grid w-full grid-cols-5 gap-x-4">
       <div
         class="order-2 col-span-5 flex flex-col gap-y-6 border-black md:order-1 md:col-span-4 md:border-r md:pr-6"
       >
         <div class="flex flex-col gap-y-4 border-b border-black pb-6">
           <h2 class="text-3xl font-bold">
-            {{ event_start }} - {{ event_name }}
+            {{ eventDate.event_date_title }} - {{ startDate }}
           </h2>
-          <div v-if="event_description">
-            <p>{{ event_description }}</p>
-          </div>
+          <div
+            v-if="eventDate.description"
+            v-html="eventDate.description"
+          ></div>
         </div>
       </div>
       <div
@@ -26,10 +29,10 @@
           arrow
           is-primary
           title="Back to event"
-          :href="'/events/id/' + event_id + '-' + event_url"
+          :href="'/events/id/' + eventDate.event_id + '-' + eventDate.url_name"
           class=""
         />
-        <div v-if="u_next_on" class="flex flex-col">
+        <div v-if="eventDate.has_products" class="flex flex-col">
           <h2 class="mb-4 border-b border-black pb-4 text-2xl font-bold">
             Important
           </h2>
@@ -55,37 +58,53 @@
 <!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Button from "../../components/button/button.ce.vue";
-import HeroBanner from "../../components/HeroBanner/herobanner.ce.vue";
+import EventsIdHeroBanner from "../../components/events-id-herobanner/events-id-herobanner.ce.vue";
+import Loading from "../../components/loading/loading.ce.vue";
+import axios from "../../_common/axios.mjs";
 export default {
   props: {
     signed_in: { type: Boolean, default: false },
-    event_id: { type: String, default: "" },
     date_id: { type: String, default: "" },
-    event_name: { type: String, default: "" },
-    event_description: { type: String, default: "" },
-    event_start: { type: String, default: "" },
-    event_url: { type: String, default: "" },
-    event_thumbnail: { type: String, default: "" },
-    event_image: { type: String, default: "" },
-    event_type: { type: String, default: "" },
-    age_restriction: { type: String, default: "" },
-    activity_name: { type: String, default: "" },
-    no_products: { type: Boolean, default: false },
-    show_products: { type: Boolean, default: false },
-    event_error: { type: String, default: "" },
-    //This will need changing to an array of objects I think?
-    event_products: { type: Boolean, default: false },
-    //
-    product_name: { type: String, default: "" },
-    product_price: { type: String, default: "" },
-    product_inventory: { type: String, default: "" },
   },
   components: {
     Button,
-    HeroBanner,
+    EventsIdHeroBanner,
+    Loading,
   },
   data() {
-    return {};
+    return {
+      eventDate: {},
+      Loading: true,
+    };
+  },
+  created() {
+    this.getEventDate();
+    console.log(this.eventDate);
+  },
+  methods: {
+    async getEventDate() {
+      var self = this;
+      this.loading = true;
+      await axios
+        .get("https://pluto.sums.su/api/events/" + self.date_id, {
+          headers: {
+            "X-Site-Id": self.siteid,
+          },
+        })
+        .then(function (response) {
+          self.eventDate = response.data;
+          self.loading = false;
+        });
+    },
+  },
+  computed: {
+    startDate() {
+      return new Date(this.eventDate.start_date).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+    },
   },
 };
 </script>

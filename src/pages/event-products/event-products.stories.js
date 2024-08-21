@@ -17,7 +17,7 @@ export const Default = {
     date_venue: "Test Venue",
     u_start_date: "1719648000",
     u_all_day: false,
-    date_id: "4564",
+    date_id: "4702",
     from_price: "£1.00",
     external_tickets: false,
     event_url: "test-society-trip-to-big-tesco",
