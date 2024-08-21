@@ -299,8 +299,9 @@ export default {
         })
         .then(function (response) {
           if (self.firstPagePremium) {
+            const premiumEventIds = self.PremiumEvents.map((event) => event.id);
             self.Events = response.data.data.filter((event) => {
-              return event.type.id != 4 && event.premium == null;
+              return !premiumEventIds.includes(event.id);
             });
           } else {
             self.PremiumEvents = [];
