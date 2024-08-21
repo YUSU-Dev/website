@@ -21,3 +21,13 @@ export const Default = {
     external_tickets: false,
   },
 };
+
+export const testWelcome = {
+  args: {
+    event_name: "Test Welcome Week 2024",
+    event_description:
+      "Get ready to kick off your university experience with a bang at our College Freshers' Week! This is your ultimate introduction to college life, packed with epic club nights, inclusive activities, and fun mixers designed to help you meet new friends and make unforgettable memories. Dance the night away at our themed parties, explore new interests at inclusive social mixers, and dive into exciting group activities where everyone is welcome. Whether you're looking to party, connect, or just have a great time, Freshers' Week has something for you. Don’t miss out—this is where your university journey begins! Whilst you're here, take a look at our College Sport Membership. Alcuin College competes in weekly leagues against other Colleges across more than 12 sports! All ability levels are welcome.",
+    u_next_on: "1719648000",
+    date_id: "4702",
+  },
+};

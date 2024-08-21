@@ -1,88 +1,120 @@
 <template>
-  <div
-    class="grid w-full grid-cols-1 justify-between gap-y-4 border-[0.5px] p-4 shadow xxs:grid-cols-4 sm:grid-cols-3 md:flex 3xl:grid-cols-1"
-  >
+  <div class="tile mb-4 flex justify-center pb-2 lg:pb-3">
     <div
-      class="order-2 flex flex-col items-center justify-center text-center xxs:col-span-2 sm:order-1 sm:col-span-1"
+      class="relative flex h-full w-full flex-col bg-white shadow transition md:max-w-[282px]"
     >
-      <p class="text-4xl">{{ date }}</p>
-      <p class="text-lg">{{ month }} {{ year }}</p>
-    </div>
-    <div
-      class="order-1 flex flex-col items-center justify-center text-center xxs:col-span-4 sm:order-2 sm:col-span-1"
-    >
-      <p class="text-3xl">{{ date_name }}</p>
-      <p class="text-lg" v-if="u_all_day">
-        All day<span v-if="date_venue">, {{ date_venue }}</span>
-      </p>
-      <p class="text-lg" v-else>
-        Start times from {{ time
-        }}<span v-if="date_venue">, {{ date_venue }}</span>
-      </p>
-    </div>
-    <div
-      v-if="from_price != 'NONE'"
-      class="order-3 flex items-center justify-center xxs:col-span-2 sm:col-span-1"
-    >
-      <Button
-        class="h-min"
-        :is-primary="true"
-        title="Buy Tickets"
-        :href="'/events/products/' + date_id"
-      />
-    </div>
-    <div
-      v-if="external_tickets != ''"
-      class="order-3 flex items-center justify-center xxs:col-span-2 sm:col-span-1"
-    >
-      <Button
-        :is-primary="true"
-        title="Find Tickets"
-        :href="'/events/external/' + date_id"
-      />
+      <div
+        class="flex h-full flex-col items-center justify-between gap-y-4 p-6"
+      >
+        <h3
+          v-if="event.event_date_title"
+          class="line-clamp-3 w-full text-center text-xl font-semibold"
+        >
+          {{ event.event_date_title }}
+        </h3>
+        <div class="flex w-full flex-col gap-y-1 text-center">
+          <p class="w-full" v-if="event.venue">{{ event.venue }}</p>
+          <p class="w-full">Start times from {{ time }}</p>
+          <p class="w-full">{{ date }} {{ month }} {{ year }}</p>
+        </div>
+        <div
+          v-if="event.has_products"
+          class="order-3 flex w-full items-center justify-center xxs:col-span-2 sm:col-span-1"
+        >
+          <Button
+            class="h-min w-full"
+            :is-primary="true"
+            title="Get Tickets"
+            :href="'/events/products/' + event.id"
+          />
+        </div>
+        <div
+          v-else-if="event.external_tickets != ''"
+          class="order-3 flex w-full items-center justify-center xxs:col-span-2 sm:col-span-1"
+        >
+          <Button
+            class="h-min w-full"
+            :is-primary="true"
+            title="Find Tickets"
+            :href="event.external_tickets"
+          />
+        </div>
+        <div
+          v-else
+          class="order-3 flex items-center justify-center xxs:col-span-2 sm:col-span-1"
+        >
+          <p>Placeholder (Free)</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Button from "../../components/button/button.ce.vue";
+import axios from "../../_common/axios.mjs";
 export default {
   name: "EventDateTile",
   props: {
     date_id: { type: String, default: "" },
-    date_start: { type: String, default: "" },
-    u_start_date: { type: String, default: "" },
-    u_end_date: { type: String, default: "" },
-    u_all_day: { type: Boolean, default: false },
-    date_name: { type: String, default: "" },
-    date_venue: { type: String, default: "" },
-    date_unix: { type: String, default: "" },
-    from_price: { type: String, default: "" },
-    external_tickets: { type: Boolean, default: false },
-    sale_start_date: { type: String, default: "" },
-    sale_end_date: { type: String, default: "" },
+  },
+  data() {
+    return {
+      dateId: { type: String, default: "" },
+      event: { type: Object, default: null },
+    };
   },
   components: {
     Button,
   },
+  created() {
+    this.dateId = this.date_id;
+    this.getEvent();
+  },
+  methods: {
+    getEvent: function () {
+      let self = this;
+      axios
+        .get("https://pluto.sums.su/api/events/" + this.dateId)
+        .then((response) => {
+          self.event = response.data;
+          self.event.start_date = new Date(self.event.start_date);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
   computed: {
     date() {
-      return new Date(this.u_start_date * 1000).getDate();
+      if (this.event && this.event.start_date) {
+        return this.event.start_date.getDate();
+      }
+      return "";
     },
     month() {
-      return new Date(this.u_start_date * 1000).toLocaleString("default", {
-        month: "long",
-      });
+      if (this.event && this.event.start_date) {
+        return this.event.start_date.toLocaleString("default", {
+          month: "long",
+        });
+      }
+      return "";
     },
     year() {
-      return new Date(this.u_start_date * 1000).getFullYear();
+      if (this.event && this.event.start_date) {
+        return this.event.start_date.getFullYear();
+      }
+      return "";
     },
     time() {
-      return new Date(this.u_start_date * 1000).toLocaleString("default", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      });
+      if (this.event && this.event.start_date) {
+        return this.event.start_date.toLocaleString("default", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        });
+      }
+      return "";
     },
   },
 };
