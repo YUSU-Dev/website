@@ -13,7 +13,7 @@
           {{ event.event_date_title }}
         </h3>
         <div class="flex w-full flex-col gap-y-1 text-center">
-          <p class="w-full" v-if="event.venue">{{ event.venue }}</p>
+          <p class="w-full" v-if="event.venue">{{ event.venue.name }}</p>
           <p class="w-full">Start times from {{ time }}</p>
           <p class="w-full">{{ date }} {{ month }} {{ year }}</p>
         </div>
@@ -24,12 +24,12 @@
           <Button
             class="h-min w-full"
             :is-primary="true"
-            title="Get Tickets"
+            title="Tickets"
             :href="'/events/products/' + event.id"
           />
         </div>
         <div
-          v-else-if="event.external_tickets != ''"
+          v-if="event.external_tickets != ''"
           class="order-3 flex w-full items-center justify-center xxs:col-span-2 sm:col-span-1"
         >
           <Button
@@ -38,12 +38,6 @@
             title="Find Tickets"
             :href="event.external_tickets"
           />
-        </div>
-        <div
-          v-else
-          class="order-3 flex items-center justify-center xxs:col-span-2 sm:col-span-1"
-        >
-          <p>Placeholder (Free)</p>
         </div>
       </div>
     </div>
