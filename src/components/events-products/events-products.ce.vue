@@ -63,7 +63,6 @@ import Loading from "../../components/loading/loading.ce.vue";
 import axios from "../../_common/axios.mjs";
 export default {
   props: {
-    signed_in: { type: Boolean, default: false },
     date_id: { type: String, default: "" },
   },
   components: {
