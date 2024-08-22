@@ -397,4 +397,9 @@
   animation-delay: 2s;
 }
 
+/* Checkbox */
+input[type="checkbox"] {
+  accent-color: #f2cb50;
+}
+
 @tailwind utilities;
