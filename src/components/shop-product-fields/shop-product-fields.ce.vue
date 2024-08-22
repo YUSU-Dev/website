@@ -25,7 +25,7 @@
             <span v-if="field.required" class="text-red-600">* Required</span>
           </label>
           <textarea
-            :v-model="'field[' + field.id + ']'"
+            v-model="fieldData[field.id]"
             :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
@@ -40,7 +40,7 @@
             >Only characters a-z, A-Z and spaces are permitted.</small
           >
           <input
-            :v-model="'field[' + field.id + ']'"
+            v-model="fieldData[field.id]"
             v-if="field.type == 'E'"
             :id="field.id"
             class="form-input"
@@ -53,7 +53,7 @@
           />
           <input
             v-if="field.type == 'N'"
-            :v-model="'field[' + field.id + ']'"
+            v-model="fieldData[field.id]"
             :id="field.id"
             class="form-input"
             :name="'field[' + field.id + ']'"
@@ -68,7 +68,7 @@
           <div v-if="field.type == 'D'">
             <select
               :id="field.id"
-              :v-model="'field[' + field.id + ']'"
+              v-model="fieldData[field.id]"
               :name="'field[' + field.id + ']'"
               class="form-select"
               :aria-label="field.name"
@@ -146,6 +146,7 @@ export default {
       ModalClosed: true,
       ErrorDescription: "",
       formData: {},
+      fieldData: {},
     };
   },
   created() {
@@ -158,10 +159,26 @@ export default {
       }
       this.formData.do = "post";
     }
+    this.mapFieldsToData();
   },
   methods: {
+    mapFieldsToData() {
+      const fields = this.fields;
+      for (let i = 0; i < fields.length; i++) {
+        this.fieldData[fields[i].id] =
+          this.formData["field[" + fields[i].id + "]"];
+      }
+    },
+    writeFieldstoFormData() {
+      const fields = this.fields;
+      for (let i = 0; i < fields.length; i++) {
+        this.formData["field[" + fields[i].id + "]"] =
+          this.fieldData[fields[i].id];
+      }
+    },
     addToBasket(productId) {
       let self = this;
+      this.writeFieldstoFormData();
       addToBasketHandler(productId)
         .then(function (response) {
           if (!response["success"]) {
