@@ -7,9 +7,9 @@
       <div class="container mx-auto">
         <div>
           {if errorCount == 1} {validation_errors}
-          <div class="alert alert-danger mb-3 mt-0">
-            <i class="fas fa-exclamation-circle">&nbsp;</i>
-            {error}
+          <div class="border-l-4 border-red-400 bg-red-100 p-2">
+            <h2 class="text-xl">Uh oh! There appears to be a few errors...</h2>
+            <p>{errors}</p>
           </div>
           {/validation_errors} {/if}
 
