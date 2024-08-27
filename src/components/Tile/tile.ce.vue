@@ -105,7 +105,7 @@
             <div class="pb-4 pl-1 pr-5 text-white">
               <ul class="mb-0 list-none ps-[10px]">
                 <li v-for="category in categories" :key="category.id">
-                  <a :href="'/news?categories=' + category.id"
+                  <a :href="categoryLink + '=' + category.id"
                     ><span>{{ category.name }}</span></a
                   >
                 </li>
@@ -177,6 +177,10 @@ export default {
     categories: {
       type: String,
       default: null,
+    },
+    categoryLink: {
+      type: String,
+      default: "/news?categories",
     },
     brand: {
       type: String,

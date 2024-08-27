@@ -28,6 +28,17 @@
           ></v-select>
         </div>
         <div class="flex flex-col">
+          <label>Event Tag</label>
+          <v-select
+            label="name"
+            :options="Tags"
+            :model-value="displayTag"
+            @update:model-value="updateTag"
+            placeholder="All"
+            class="h-full"
+          ></v-select>
+        </div>
+        <div class="flex flex-col">
           <label for="event-search">Search</label>
           <div class="input-group flex h-full border-[1px] border-black">
             <input
@@ -87,6 +98,8 @@
           :date="event.start_date"
           :group="event.group"
           :location="event.venue"
+          :categories="event.categories"
+          category-link="/events?tag"
           premium-event
         />
         <Tile
@@ -98,6 +111,8 @@
           :date="event.start_date"
           :group="event.group"
           :location="event.venue"
+          :categories="event.categories"
+          category-link="/events?tag"
         />
       </div>
       <div v-else class="a-z-wrap mt-10">
@@ -155,10 +170,12 @@ export default {
       Categories: [],
       Groups: [],
       Events: [],
+      Tags: [],
       PremiumEvents: [],
       SelectedType: "",
       SelectedGroup: "",
       SelectedVenue: "",
+      SelectedTag: "",
       Search: "",
       Page: 1,
       Pages: [],
@@ -206,6 +223,9 @@ export default {
       if (urlParams.has("category")) {
         self.SelectedType = urlParams.get("category");
       }
+      if (urlParams.has("tag")) {
+        self.SelectedTag = urlParams.get("tag");
+      }
     }
     //Get Categories
     axios
@@ -227,6 +247,18 @@ export default {
       .then(function (response) {
         self.Groups = response.data;
       });
+
+    // get Tags
+    axios
+      .get("https://pluto.sums.su/api/events/categories?sortBy=name", {
+        headers: {
+          "X-Site-Id": self.siteid,
+        },
+      })
+      .then(function (response) {
+        self.Tags = response.data;
+      });
+
     //get Events
     self.getEvents();
   },
@@ -267,6 +299,9 @@ export default {
       }
       if (self.premiumResults) {
         parameters += "&onlyPremium=1";
+      }
+      if (self.SelectedTag) {
+        parameters += "&categoryId=" + self.SelectedTag;
       }
       //if we're on the first page, get the premium events first
       if (
@@ -338,6 +373,14 @@ export default {
       }
       this.getEvents();
     },
+    updateTag(value) {
+      if (value) {
+        this.SelectedTag = value.id;
+      } else {
+        this.SelectedTag = "";
+      }
+      this.getEvents();
+    },
     search(event) {
       this.Search = event.target.value;
       this.getEvents();
@@ -373,6 +416,11 @@ export default {
     displayActivity() {
       return this.Groups.find((group) => {
         return group.id == this.SelectedGroup;
+      });
+    },
+    displayTag() {
+      return this.Tags.find((tag) => {
+        return tag.id == this.SelectedTag;
       });
     },
   },
