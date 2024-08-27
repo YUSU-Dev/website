@@ -4,9 +4,14 @@
   >
     <div class="flex flex-col gap-y-4">
       <p class="text-xl font-bold">{{ product_name }}</p>
-      <div class="break-words" v-html="product_description"></div>
+      <div
+        v-if="product_description"
+        class="break-words"
+        v-html="product_description"
+      ></div>
+      <div v-else class="break-words"><slot></slot></div>
     </div>
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between gap-2">
       <p v-if="product_price > 0" class="text-xl font-semibold">
         £{{ product_price }}
       </p>
