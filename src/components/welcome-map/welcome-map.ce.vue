@@ -119,28 +119,28 @@ export default {
             self.getRoute(coordinates);
           });
 
-          console.log(e.features[0].properties.facilities);
-          if (e.features[0].properties.facilities.length > 0) {
-            const facilities = document.createElement("div");
-            facilities.className = "flex flex-col";
-            const facilitiesTitle = document.createElement("h4");
-            facilitiesTitle.className = "font-semibold";
-            facilitiesTitle.textContent = "Facilities";
-            facilities.appendChild(facilitiesTitle);
-            const facilitiesList = document.createElement("ul");
-            facilitiesList.className = "list-disc list-inside";
-            for (
-              let i = 0;
-              i < e.features[0].properties.facilities.length;
-              i++
-            ) {
-              const facility = document.createElement("li");
-              facility.textContent = e.features[0].properties.facilities[i];
-              facilitiesList.appendChild(facility);
-            }
-            facilities.appendChild(facilitiesList);
-            popupContent.appendChild(facilities);
-          }
+          // console.log(e.features[0].properties.facilities);
+          // if (e.features[0].properties.facilities.length > 0) {
+          //   const facilities = document.createElement("div");
+          //   facilities.className = "flex flex-col";
+          //   const facilitiesTitle = document.createElement("h4");
+          //   facilitiesTitle.className = "font-semibold";
+          //   facilitiesTitle.textContent = "Facilities";
+          //   facilities.appendChild(facilitiesTitle);
+          //   const facilitiesList = document.createElement("ul");
+          //   facilitiesList.className = "list-disc list-inside";
+          //   for (
+          //     let i = 0;
+          //     i < e.features[0].properties.facilities.length;
+          //     i++
+          //   ) {
+          //     const facility = document.createElement("li");
+          //     facility.textContent = e.features[0].properties.facilities[i];
+          //     facilitiesList.appendChild(facility);
+          //   }
+          //   facilities.appendChild(facilitiesList);
+          //   popupContent.appendChild(facilities);
+          // }
 
           popupContent.appendChild(directionsButton);
 
@@ -214,7 +214,7 @@ export default {
                 "line-cap": "round",
               },
               paint: {
-                "line-color": "#f2cb50",
+                "line-color": "#307CBF",
                 "line-width": 5,
                 "line-opacity": 1,
               },
