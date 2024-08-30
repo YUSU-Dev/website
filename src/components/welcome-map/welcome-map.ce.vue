@@ -18,9 +18,11 @@ export default {
       start: [-1.055034237300904, 53.94578819348761],
       // end: [-1.052836524907442, 53.94704872205198],
       formattedZones: [],
+      urlLocation: "",
     };
   },
   mounted() {
+    this.getUrlParam();
     this.getLocations();
     mapboxgl.accessToken =
       "pk.eyJ1IjoieXVzdWRldjAiLCJhIjoiY2xtcTRlMTU2MGNwdzJrcW14Y3B2aG0ycSJ9.kN81n7Q88vP3zKWYfepbTA";
@@ -163,7 +165,6 @@ export default {
         .get("https://welcome-database.pages.dev/api/location")
         .then(function (response) {
           for (let i = 0; i < response.data.length; i++) {
-            console.log(response.data[i].facilities);
             self.formattedZones.push({
               type: "Feature",
               properties: {
@@ -224,6 +225,14 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
+    },
+    getUrlParam() {
+      let queryString = window.location.search;
+      let urlParams = new URLSearchParams(queryString);
+      if (urlParams.has("location")) {
+        this.urlLocation = urlParams.get("location");
+        console.log(this.urlLocation);
+      }
     },
   },
   unmounted() {
