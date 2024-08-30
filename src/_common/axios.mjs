@@ -19,6 +19,10 @@ axios.interceptors.request.use(function (config) {
         "https://yorksu.org/",
         "/__development_proxy__/",
       );
+      config.url = config.url.replace(
+        "https://welcome-database.pages.dev/",
+        "/__welcome_proxy__/",
+      );
     }
   }
 
