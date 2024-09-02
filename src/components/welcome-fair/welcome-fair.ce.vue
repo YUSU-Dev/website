@@ -1,17 +1,20 @@
 <template>
   <div class="flex flex-col gap-y-12">
     <div class="flex flex-wrap gap-4">
-      <button @click="locationFilter = ''" class="btn btn-primary text-black">
-        All
-      </button>
-      <button
+      <Button
+        title="All"
+        @click="locationFilter = ''"
+        is-primary
+        :class="{ 'btn-primary-active': locationFilter === '' }"
+      />
+      <Button
         v-for="location in locations"
         :key="location.id"
+        :title="location.name"
         @click="locationFilter = location.id"
-        class="btn btn-primary text-black"
-      >
-        {{ location.name }}
-      </button>
+        is-primary
+        :class="{ 'btn-primary-active': locationFilter === location.id }"
+      />
     </div>
     <div class="a-z-wrap" v-if="filteredStalls.length > 0">
       <div
@@ -58,11 +61,18 @@
                 is-primary
                 :url="'/activities/view/' + stall.url"
               />
-              <!-- <InterestButton
-              :activity-id="activity.id"
-              @unregister="unregisterInterest()"
-              @register="registerInterest()"
-            /> -->
+              <InterestButton
+                :activity-id="stall.id"
+                @unregister="unregisterInterest()"
+                @register="registerInterest()"
+              />
+              <!-- Can't remember the url off the top of my head -->
+              <Button
+                title="See on map"
+                class="flex w-full justify-center text-center"
+                is-primary
+                :url="'' + stall.locationId"
+              />
             </div>
           </div>
         </div>
@@ -75,10 +85,12 @@
 import axios from "../../_common/axios.mjs";
 import Button from "../button/button.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
+import InterestButton from "../interest-button/interest-button.ce.vue";
 export default {
   name: "WelcomeFair",
   components: {
     Button,
+    InterestButton,
   },
   data() {
     return {
@@ -125,6 +137,13 @@ export default {
         this.locationFilter = this.urlLocation;
         console.log(this.urlLocation);
       }
+    },
+    unregisterInterest(stall_id) {
+      const stall = this.stalls.indexOf(stall_id);
+      this.stalls.splice(stall, 1);
+    },
+    registerInterest() {
+      this.getStalls();
     },
   },
   computed: {
