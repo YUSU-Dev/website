@@ -30,7 +30,7 @@
               Stall {{ stall.stallNumber }}
             </p>
           </div>
-          <div class="flex aspect-square items-center justify-center">
+          <div class="relative flex aspect-square items-center justify-center">
             <img
               v-if="stall.logo"
               class="aspect-square bg-cover bg-center object-cover"
@@ -45,6 +45,14 @@
               alt=""
               loading="lazy"
             />
+            <div class="absolute right-2 top-2 hover:scale-110">
+              <InterestButton
+                :activity-id="stall.id"
+                @unregister="unregisterInterest()"
+                @register="registerInterest()"
+                is-heart
+              />
+            </div>
           </div>
           <div class="flex h-full flex-col justify-between gap-y-2 p-6">
             <h3
@@ -61,11 +69,11 @@
                 is-primary
                 :url="'/activities/view/' + stall.url"
               />
-              <InterestButton
+              <!-- <InterestButton
                 :activity-id="stall.id"
                 @unregister="unregisterInterest()"
                 @register="registerInterest()"
-              />
+              /> -->
               <!-- Can't remember the url off the top of my head -->
               <Button
                 title="See on map"
