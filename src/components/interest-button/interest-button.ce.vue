@@ -1,7 +1,7 @@
 <template>
   <button
     v-if="isHeart"
-    class="flex h-8 w-8 items-center justify-center rounded-full bg-beige"
+    class="flex h-8 w-8 items-center justify-center rounded-full bg-beige hover:scale-105"
     @click="doToggleInterest(activityId)"
   >
     <!-- Can't get fa-regular to work so had to use stroke path in CSS as workaround for the border -->

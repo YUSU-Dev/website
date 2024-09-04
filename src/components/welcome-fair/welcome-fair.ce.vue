@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-y-12">
+  <div class="flex flex-col gap-y-12" id="modalArea">
     <div class="flex flex-wrap gap-4">
       <Button
         title="All"
@@ -45,7 +45,7 @@
               alt=""
               loading="lazy"
             />
-            <div class="absolute right-2 top-2 hover:scale-110">
+            <div class="absolute right-2 top-2">
               <InterestButton
                 :activity-id="stall.id"
                 @unregister="unregisterInterest()"
@@ -128,7 +128,7 @@ export default {
     async getLocations() {
       let self = this;
       await axios
-        .get("https://welcome-database.pages.dev/api/location")
+        .get("https://welcome-database.pages.dev/api/location?venues=false")
         .then(function (response) {
           console.log(response.data);
           self.locations = response.data;

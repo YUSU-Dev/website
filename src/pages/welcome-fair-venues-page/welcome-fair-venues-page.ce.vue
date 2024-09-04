@@ -5,7 +5,7 @@
   />
   <div class="container mx-auto">
     <div class="flex flex-col gap-y-8">
-      <div class="flex gap-x-6">
+      <div class="flex flex-col gap-x-6 gap-y-4 sm:flex-row">
         <SectionLink sectionName="Welcome Fair" sectionUrl="/welcome-fair" />
         <SectionLink
           sectionName="Venues"
