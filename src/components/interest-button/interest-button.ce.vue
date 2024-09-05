@@ -1,5 +1,18 @@
 <template>
+  <button
+    v-if="isHeart"
+    class="flex h-8 w-8 items-center justify-center rounded-full bg-beige hover:scale-105"
+    @click="doToggleInterest(activityId)"
+  >
+    <!-- Can't get fa-regular to work so had to use stroke path in CSS as workaround for the border -->
+    <FontAwesomeIcon
+      icon="fa-solid fa-heart"
+      class="h-5 w-5"
+      :class="[title === 'Register Interest' ? 'text-white' : 'text-red-500']"
+    />
+  </button>
   <Button
+    v-else
     :title="title"
     class="flex w-full justify-center text-center"
     is-primary
@@ -31,12 +44,18 @@ import {
 import axios from "../../_common/axios.mjs";
 import Modal from "../modal/modal.ce.vue";
 import Toast from "../toast/toast.ce.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faHeart);
 export default {
   name: "InterestButton",
   components: {
     Button,
     Modal,
     Toast,
+    FontAwesomeIcon,
   },
   data() {
     return {
@@ -54,6 +73,10 @@ export default {
     activityId: {
       type: String,
       default: "",
+    },
+    isHeart: {
+      type: Boolean,
+      default: false,
     },
   },
   mounted() {

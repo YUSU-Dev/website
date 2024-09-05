@@ -402,4 +402,10 @@ input[type="checkbox"] {
   accent-color: #f2cb50;
 }
 
+/* Font Awesome */
+.fa-heart path {
+  stroke: grey;
+  stroke-width: 40;
+}
+
 @tailwind utilities;
