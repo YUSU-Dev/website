@@ -25,7 +25,7 @@ export default {
   mounted() {
     this.getLocations();
     mapboxgl.accessToken =
-      "pk.eyJ1IjoieXVzdWRldjAiLCJhIjoiY2xtcTRlMTU2MGNwdzJrcW14Y3B2aG0ycSJ9.kN81n7Q88vP3zKWYfepbTA";
+      "pk.eyJ1IjoieXVzdWRldjAiLCJhIjoiY20wcDd1YmRnMDMzajJpcjFhZng0M24xNSJ9.ikaabBuaSdRfEvVCOqbj9w";
     const map = new mapboxgl.Map({
       container: this.$refs.mapContainer,
       // Leaving this in commented for when Nathan inevitably asks me to take the 3D buildings out
