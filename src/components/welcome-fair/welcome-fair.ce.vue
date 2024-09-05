@@ -130,7 +130,6 @@ export default {
       await axios
         .get("https://welcome-database.pages.dev/api/location?venues=false")
         .then(function (response) {
-          console.log(response.data);
           self.locations = response.data;
         })
         .catch(function (error) {
