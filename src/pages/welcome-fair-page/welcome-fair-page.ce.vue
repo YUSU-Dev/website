@@ -7,12 +7,12 @@
     <div class="flex flex-col gap-y-8">
       <div class="flex flex-col gap-x-6 gap-y-4 sm:flex-row">
         <SectionLink
-          sectionName="Welcome Fair"
-          sectionUrl="/welcome-fair"
-          sectionIsActive
+          section-name="Welcome Fair"
+          section-url="/welcome-fair"
+          section-is-active
         />
-        <SectionLink sectionName="Venues" sectionUrl="/venues" />
-        <SectionLink sectionName="Map" sectionUrl="/map" />
+        <SectionLink section-name="Venues" section-url="/venues" />
+        <SectionLink section-name="Map" section-url="/map" />
       </div>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem nobis

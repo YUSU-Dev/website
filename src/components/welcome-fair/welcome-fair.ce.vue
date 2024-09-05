@@ -142,7 +142,6 @@ export default {
       if (urlParams.has("location")) {
         this.urlLocation = urlParams.get("location");
         this.locationFilter = this.urlLocation;
-        console.log(this.urlLocation);
       }
     },
     unregisterInterest(stall_id) {

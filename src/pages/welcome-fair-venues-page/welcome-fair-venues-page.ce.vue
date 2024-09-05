@@ -6,13 +6,13 @@
   <div class="container mx-auto">
     <div class="flex flex-col gap-y-8">
       <div class="flex flex-col gap-x-6 gap-y-4 sm:flex-row">
-        <SectionLink sectionName="Welcome Fair" sectionUrl="/welcome-fair" />
+        <SectionLink section-name="Welcome Fair" section-url="/welcome-fair" />
         <SectionLink
-          sectionName="Venues"
-          sectionUrl="/venues"
-          sectionIsActive
+          section-name="Venues"
+          section-url="/venues"
+          section-is-active
         />
-        <SectionLink sectionName="Map" sectionUrl="/map" />
+        <SectionLink section-name="Map" section-url="/map" />
       </div>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem nobis
