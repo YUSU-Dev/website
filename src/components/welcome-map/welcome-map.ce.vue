@@ -240,7 +240,7 @@ export default {
     updateActiveLocation(location) {
       let self = this;
       if (location) {
-        if (location != this.activeLocation) {
+        if (Object.keys(this.activeLocation).length !== 0) {
           this.map.setPaintProperty(
             self.activeLocation.properties.name,
             "circle-radius",
