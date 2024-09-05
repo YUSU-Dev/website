@@ -17,12 +17,12 @@ export default {
       // These coordinates are just for testing right now
       start: [-1.055034237300904, 53.94578819348761],
       // end: [-1.052836524907442, 53.94704872205198],
-      formattedZones: [],
+      formattedLocations: [],
       urlLocation: "",
+      activeLocation: {},
     };
   },
   mounted() {
-    this.getUrlParam();
     this.getLocations();
     mapboxgl.accessToken =
       "pk.eyJ1IjoieXVzdWRldjAiLCJhIjoiY2xtcTRlMTU2MGNwdzJrcW14Y3B2aG0ycSJ9.kN81n7Q88vP3zKWYfepbTA";
@@ -49,22 +49,22 @@ export default {
 
     let self = this;
     this.map.on("load", function () {
-      geolocate.trigger();
+      // geolocate.trigger();
       geolocate.on("geolocate", function (e) {
         self.start = [e.coords.longitude, e.coords.latitude];
       });
-      for (let i = 0; i < self.formattedZones.length; i++) {
-        map.addSource(self.formattedZones[i].properties.name, {
+      for (let i = 0; i < self.formattedLocations.length; i++) {
+        map.addSource(self.formattedLocations[i].properties.name, {
           type: "geojson",
           data: {
             type: "FeatureCollection",
-            features: [self.formattedZones[i]],
+            features: [self.formattedLocations[i]],
           },
         });
         self.map.addLayer({
-          id: self.formattedZones[i].properties.name,
+          id: self.formattedLocations[i].properties.name,
           type: "circle",
-          source: self.formattedZones[i].properties.name,
+          source: self.formattedLocations[i].properties.name,
           paint: {
             "circle-radius": 5,
             "circle-color": "#f2cb50",
@@ -73,9 +73,9 @@ export default {
           },
         });
         self.map.addLayer({
-          id: self.formattedZones[i].properties.name + " Label",
+          id: self.formattedLocations[i].properties.name + " Label",
           type: "symbol",
-          source: self.formattedZones[i].properties.name,
+          source: self.formattedLocations[i].properties.name,
           minzoom: 12,
           layout: {
             "text-field": ["get", "name"],
@@ -85,13 +85,14 @@ export default {
             visibility: "visible",
           },
         });
-        map.on("mouseenter", self.formattedZones[i].properties.name, () => {
+        map.on("mouseenter", self.formattedLocations[i].properties.name, () => {
           map.getCanvas().style.cursor = "pointer";
         });
-        map.on("mouseleave", self.formattedZones[i].properties.name, () => {
+        map.on("mouseleave", self.formattedLocations[i].properties.name, () => {
           map.getCanvas().style.cursor = "";
         });
-        map.on("click", self.formattedZones[i].properties.name, (e) => {
+        map.on("click", self.formattedLocations[i].properties.name, (e) => {
+          self.updateActiveLocation(e.features[0]);
           const coordinates = e.features[0].geometry.coordinates.slice();
           const popupContent = document.createElement("div");
           popupContent.className = "flex flex-col gap-y-2";
@@ -119,6 +120,7 @@ export default {
           directionsButton.textContent = "Directions";
           directionsButton.addEventListener("click", () => {
             self.getRoute(coordinates);
+            self.map.Popup.remove();
           });
 
           // console.log(e.features[0].properties.facilities);
@@ -150,12 +152,13 @@ export default {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
 
-          new mapboxgl.Popup()
+          self.map.Popup = new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setDOMContent(popupContent)
             .addTo(map);
         });
       }
+      self.getUrlParam();
     });
   },
   methods: {
@@ -165,7 +168,7 @@ export default {
         .get("https://welcome-database.pages.dev/api/location")
         .then(function (response) {
           for (let i = 0; i < response.data.length; i++) {
-            self.formattedZones.push({
+            self.formattedLocations.push({
               type: "Feature",
               properties: {
                 name: response.data[i].name,
@@ -231,13 +234,63 @@ export default {
       let urlParams = new URLSearchParams(queryString);
       if (urlParams.has("location")) {
         this.urlLocation = urlParams.get("location");
-        console.log(this.urlLocation);
+        this.updateActiveLocation();
       }
     },
-  },
-  unmounted() {
-    this.map.remove();
-    this.map = null;
+    updateActiveLocation(location) {
+      console.log(location);
+      let self = this;
+      if (location) {
+        if (location != this.activeLocation) {
+          this.map.setPaintProperty(
+            self.activeLocation.properties.name,
+            "circle-radius",
+            5,
+          );
+          this.map.setPaintProperty(
+            self.activeLocation.properties.name,
+            "circle-stroke-width",
+            1,
+          );
+          this.map.setLayoutProperty(
+            self.activeLocation.properties.name + " Label",
+            "text-size",
+            16,
+          );
+        }
+        this.activeLocation = location;
+      } else {
+        this.activeLocation = this.formattedLocations.find(
+          (location) => location.properties.id == this.urlLocation,
+        );
+      }
+      this.map.setPaintProperty(
+        self.activeLocation.properties.name,
+        "circle-radius",
+        8,
+      );
+      this.map.setPaintProperty(
+        self.activeLocation.properties.name,
+        "circle-stroke-width",
+        2,
+      );
+      this.map.setLayoutProperty(
+        self.activeLocation.properties.name + " Label",
+        "text-size",
+        18,
+      );
+      this.map.flyTo({
+        center: [
+          self.activeLocation.geometry.coordinates[0],
+          self.activeLocation.geometry.coordinates[1],
+        ],
+        zoom: 16,
+      });
+    },
+    unmounted() {
+      this.map.remove();
+      this.map = null;
+    },
   },
 };
 </script>
