@@ -3,9 +3,9 @@
     <div class="justify-center">
       <div
         v-if="!ShortView"
-        class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
+        class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-9"
       >
-        <div class="flex flex-col">
+        <div class="flex flex-col lg:col-span-2">
           <label>Category</label>
           <v-select
             label="name"
@@ -16,7 +16,7 @@
             class="h-full"
           ></v-select>
         </div>
-        <div class="flex flex-col" data-testid="activity-select">
+        <div class="flex flex-col lg:col-span-2" data-testid="activity-select">
           <label>Activity</label>
           <v-select
             label="name"
@@ -27,7 +27,7 @@
             class="h-full"
           ></v-select>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col lg:col-span-2">
           <label>Event Tag</label>
           <v-select
             label="name"
@@ -38,7 +38,7 @@
             class="h-full"
           ></v-select>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col lg:col-span-2">
           <label for="event-search">Search</label>
           <div class="input-group flex h-full border-[1px] border-black">
             <input
@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="flex items-end justify-start md:justify-end">
+        <div class="flex items-end justify-end xs:col-span-2 lg:col-span-1">
           <Button
             title="Reset"
             @click="reset"
