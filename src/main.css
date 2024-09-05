@@ -402,9 +402,16 @@ input[type="checkbox"] {
   accent-color: #f2cb50;
 }
 
+
 /* Mapbox */
 .mapboxgl-popup-close-button {
   @apply px-2;
+}
+
+/* Font Awesome */
+.fa-heart path {
+  stroke: grey;
+  stroke-width: 40;
 }
 
 @tailwind utilities;

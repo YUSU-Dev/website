@@ -479,7 +479,7 @@ export default {
             closed: true,
             links: [
               {
-                name: "About YorkSU",
+                name: "About York SU",
                 link: "/about-us",
               },
               {
@@ -495,7 +495,7 @@ export default {
                 link: "/contact-us",
               },
               {
-                name: "Sustainability at YorkSU",
+                name: "Sustainability at York SU",
                 link: "/sustainability",
               },
             ],
