@@ -413,4 +413,12 @@ input[type="checkbox"] {
   stroke-width: 40;
 }
 
+/* Dropdown */
+.vs__dropdown-menu li:not(:last-child) {
+  @apply border-b border-gray-400;
+}
+.vs__dropdown-option {
+  @apply text-wrap;
+}
+
 @tailwind utilities;
