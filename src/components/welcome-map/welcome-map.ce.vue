@@ -238,7 +238,6 @@ export default {
       }
     },
     updateActiveLocation(location) {
-      console.log(location);
       let self = this;
       if (location) {
         if (location != this.activeLocation) {
