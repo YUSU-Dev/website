@@ -9,7 +9,7 @@
         class="break-words"
         v-html="product_description"
       ></div>
-      <div class="break-words"><slot></slot></div>
+      <div v-else class="break-words"><slot></slot></div>
     </div>
     <div class="flex items-center justify-between gap-2">
       <p v-if="product_price > 0" class="text-xl font-semibold">
