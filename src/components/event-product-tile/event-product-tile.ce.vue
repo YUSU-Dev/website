@@ -34,7 +34,7 @@ export default {
     product_price: { type: String, default: "" },
     product_inventory: { type: String, default: "" },
     product_id: { type: Number, default: 0 },
-    product_description: { type: String, default: "" },
+    product_description: { type: String, default: null },
   },
   components: {
     AddToBasket,
