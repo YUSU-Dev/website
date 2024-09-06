@@ -14,6 +14,7 @@
       'btn-advice-support-active': adviceAndSupportSelected,
     }"
     :href="url"
+    :target="target"
   >
     <div v-if="arrow" class="mr-2">
       <FontAwesomeIcon icon="fa-solid fa-arrow-left" class="h-4 w-4" />
@@ -56,6 +57,10 @@ export default {
     type: {
       type: String,
       default: null,
+    },
+    target: {
+      type: String,
+      default: "_self",
     },
   },
   data() {
