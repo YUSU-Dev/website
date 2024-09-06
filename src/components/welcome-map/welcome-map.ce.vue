@@ -7,7 +7,7 @@
 @import "https://cdn.jsdelivr.net/npm/mapbox-gl/dist/mapbox-gl.css";
 </style>
 <script>
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "https://cdn.jsdelivr.net/npm/mapbox-gl@3.6.0/+esm";
 import axios from "../../_common/axios.mjs";
 export default {
   name: "WelcomeMap",
