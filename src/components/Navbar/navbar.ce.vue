@@ -468,6 +468,10 @@ export default {
                 name: "Cost of Living Support",
                 link: "/cost-of-living",
               },
+              {
+                name: "Activities Access Grants",
+                link: "/activities-access-grants",
+              },
               // {
               //   name: "Complaints",
               //   link: "/complaints",
