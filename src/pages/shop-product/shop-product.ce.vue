@@ -1,12 +1,14 @@
 <template>
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
-  <Navbar />
-  <main id="maincontent">
-    <div class="container mx-auto flex flex-col items-center justify-center">
-      <ShopProductId :image="image" :product-id="productId" />
-    </div>
-  </main>
-  <Footer />
+  <div class="min-h-screen xs:min-h-svh">
+    <Navbar />
+    <main id="maincontent">
+      <div class="container mx-auto flex flex-col items-center justify-center">
+        <ShopProductId :image="image" :product-id="productId" />
+      </div>
+    </main>
+    <Footer />
+  </div>
 </template>
 
 <script>
