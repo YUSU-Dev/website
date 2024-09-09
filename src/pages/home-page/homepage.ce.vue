@@ -3,7 +3,7 @@
   <HeroHeader :homepage="true" />
   <div
     id="maincontent"
-    class="container mx-auto flex flex-col items-center justify-center py-20"
+    class="min-h-mvh container mx-auto flex flex-col items-center justify-center py-20"
   >
     <div class="flex justify-center text-center">
       <h2 class="pb-16 text-3xl font-bold">How can we help today?</h2>
