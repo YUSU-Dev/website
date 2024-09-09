@@ -81,6 +81,10 @@
   .nav-section:nth-child(3n) {
     @apply md:border-r-0 lg:border-r;
   }
+  /* Footer */
+  .footer {
+    @apply min-h-[256px];
+  }
   /* v-select Classes */
   /* Events Filters */
   .events-filters {
