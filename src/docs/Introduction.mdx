@@ -8,114 +8,75 @@ import {
 
 <Meta title="Introduction" />
 
-import Readme from "../../README.md?raw";
-
-export const typography = {
-  type: {
-    sans: '"soleil", sans-serif',
-    serif: '"rooney-web", "serif"',
-  },
-  weight: {
-    regular: "400",
-    bold: "700",
-  },
-  size: {
-    h1: "36",
-    h2: "32",
-    h3: "24",
-    h4: "20",
-    sh1: "24",
-    sh2: "16",
-  },
-};
-
-export const SampleText =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-
 # Introduction
 
 Welcome to YorkSU's Storybook! This contains all of our components and styles for the website.
 
-# Style Guide
+ UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
 
-## Colours Palette
+## Installing
 
-<ColorPalette>
-<ColorItem
-    title="Primary Brand"
-    colors={{ 
-            'mustard': '#F2CB50', 
-            'light-pink': '#FFBBBE', 
-            'primary-blue': '#307CBF', 
-            'primary-red': '#E74C3C', 
-            'beige': '#F4E9E1', 
-            'black': '#231F20' 
-        }}
-  />
-  <ColorItem
-    title="Sub Brand"
-    subtitle="Student Life"
-    colors={{ 
-            'mustard': '#F2CB50', 
-            'light-pink': '#FFBBBE', 
-            'light-blue': '#D3E6EF', 
-            'beige': '#F4E9E1', 
-            'black': '#231F20' 
-        }}
-  />
-  <ColorItem
-    title="Sub Brand"
-    subtitle="Student Voice"
-    colors={{ 
-            'primary-red': '#E74C3C', 
-            'voice-orange': '#F2682F', 
-            'light-pink': '#FFBBBE', 
-            'beige': '#F4E9E1', 
-            'black': '#231F20' 
-        }}
-  />
-  <ColorItem
-    title="Sub Brand"
-    subtitle="Advice & Support"
-    colors={{ 
-            'primary-blue': '#307CBF', 
-            'advice-green': '#00A463', 
-            'light-blue': '#D3E6EF', 
-            'beige': '#F4E9E1', 
-            'black': '#231F20' 
-        }}
-  />
+To get started, clone this repo and run `npm ci`.
+To use Storybook, run `npm run storybook`.
 
-  </ColorPalette>
-## Typography
 
-### Soleil
+### Opinionated conventions used
 
-**Weights:** 400(regular), 700(bold)
+- For naming of directories or files we should use kebab-case.
+- Vue files should end `.ce.vue`
 
-<Typeset
-  fontSizes={[
-    Number(typography.size.h1),
-    Number(typography.size.h2),
-    Number(typography.size.h3),
-    Number(typography.size.h4),
-  ]}
-  fontWeight={typography.weight.bold}
-  sampleText={SampleText}
-  fontFamily={typography.type.sans}
+
+## Using on the York SU Website
+
+Any merges to `main` on this repo will automatically be deployed to https://assets.yorksu.org (hosted on Cloudflare R2).
+
+### Expression Engine Embedding onto pages
+
+To use these files with York SU's instance of Expression Engine you will just need to include the component(s) in the footer embed and then add it to the main html. For example:
+
+```html
+{embed="core-components/.hero-header" title='title' page_header="seo
+description" image_url='banner url' } ...
+<yorksu-activities
+  siteid=""
+  title="Clubs and Societies"
+  selectedparents="2,24,39"
+></yorksu-activities>
+... {embed="core-components/.footer" vue_comp="activities"}
+```
+
+Behind the scenes this is passed to the `.footer-assets` file which has the following code snippet.
+
+```html
+{exp:su_website_formatter:jsFormat js="{embed:vue_comp}"} {if js_count > 0} {js}
+<script
+  type="module"
+  src="https://assets.yorksu.org/components/{url}.component.js"
+></script>
+{/js} {/if} {/exp:su_website_formatter:jsFormat}
+```
+
+### Manual addition to pages
+
+To use them in production, not using the above method you will need to reference the component file - make sure you use `<script type="module">` otherwise it will not work. For example:
+
+```html
+<yorksu-activities
+  siteid=""
+  title="Clubs and Societies"
+  selectedparents="2,24,39"
+></yorksu-activities>
+<script
+  type="module"
+  src="https://assets.yorksu.org/components/activities.component.js"
+></script>
+```
+
+You will also need to add the stylesheet - there's one shared across all the components so you only need to add it once:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://assets.yorksu.org/components/components.css"
 />
-
-### Rooney
-
-**Weights:** 400(regular)
-
-<Typeset
-  fontSizes={[Number(typography.size.sh1), Number(typography.size.sh2)]}
-  fontWeight={typography.weight.regular}
-  sampleText={SampleText}
-  fontFamily={typography.type.serif}
-/>
-
-# README
-
-<Markdown>{Readme}</Markdown>
+```
