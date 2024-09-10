@@ -23,6 +23,10 @@ axios.interceptors.request.use(function (config) {
         "https://welcome-database.pages.dev/",
         "/__welcome_proxy__/",
       );
+      config.url = config.url.replace(
+        "https://welcome-api.yorksu.org/",
+        "/__welcome_proxy__/",
+      );
     }
   }
 

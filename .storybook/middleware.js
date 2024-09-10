@@ -27,4 +27,12 @@ module.exports = function expressMiddleware(router) {
       changeOrigin: true,
     }),
   );
+
+  router.use(
+    "/__welcome_proxy__",
+    createProxyMiddleware({
+      target: "https://welcome-api.yorksu.org",
+      changeOrigin: true,
+    }),
+  );
 };

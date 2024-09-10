@@ -86,6 +86,14 @@
         </div>
       </div>
     </div>
+    <Pagination
+      :array="stalls"
+      :load-page="loadPage"
+      :page="Page"
+      :more-results="MoreResults"
+      :previous-results="PreviousResults"
+      :loading="loading"
+    />
   </div>
 </template>
 
@@ -94,11 +102,13 @@ import axios from "../../_common/axios.mjs";
 import Button from "../button/button.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import InterestButton from "../interest-button/interest-button.ce.vue";
+import Pagination from "../Pagination/pagination.ce.vue";
 export default {
   name: "WelcomeFair",
   components: {
     Button,
     InterestButton,
+    Pagination,
   },
   data() {
     return {
@@ -106,9 +116,15 @@ export default {
       locations: [],
       locationFilter: "",
       urlLocation: "",
+      Page: 1,
+      Pages: [],
+      MoreResults: false,
+      PreviousResults: false,
+      loading: false,
     };
   },
   mounted() {
+    this.loading = true;
     this.getUrlParam();
     this.getStalls();
     this.getLocations();
@@ -119,7 +135,19 @@ export default {
       await axios
         .get("https://welcome-api.yorksu.org/api/stall")
         .then(function (response) {
+          console.log(response.data);
           self.stalls = response.data.stalls;
+          if (response.data.pagination.next_page) {
+            self.MoreResults = true;
+          } else {
+            self.MoreResults = false;
+          }
+          if (response.data.pagination.prev_page) {
+            self.PreviousResults = true;
+          } else {
+            self.PreviousResults = false;
+          }
+          self.loading = false;
         })
         .catch(function (error) {
           console.log(error);
@@ -149,6 +177,15 @@ export default {
       this.stalls.splice(stall, 1);
     },
     registerInterest() {
+      this.getStalls();
+    },
+    loadPage(pageNumber = null) {
+      if (pageNumber) {
+        this.Page = pageNumber;
+      } else {
+        this.Page++;
+      }
+      this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
       this.getStalls();
     },
   },
