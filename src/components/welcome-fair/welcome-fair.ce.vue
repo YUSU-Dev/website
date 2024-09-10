@@ -119,7 +119,7 @@ export default {
       await axios
         .get("https://welcome-api.yorksu.org/api/stall")
         .then(function (response) {
-          self.stalls = response.data;
+          self.stalls = response.data.stalls;
         })
         .catch(function (error) {
           console.log(error);
