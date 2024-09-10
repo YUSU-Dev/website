@@ -117,9 +117,9 @@ export default {
     async getStalls() {
       let self = this;
       await axios
-        .get("https://welcome-database.pages.dev/api/stall")
+        .get("https://welcome-api.yorksu.org/api/stall")
         .then(function (response) {
-          self.stalls = response.data;
+          self.stalls = response.data.stalls;
         })
         .catch(function (error) {
           console.log(error);
@@ -128,7 +128,7 @@ export default {
     async getLocations() {
       let self = this;
       await axios
-        .get("https://welcome-database.pages.dev/api/location?venues=false")
+        .get("https://welcome-api.yorksu.org/api/location?venues=false")
         .then(function (response) {
           self.locations = response.data;
         })

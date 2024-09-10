@@ -165,7 +165,7 @@ export default {
     async getLocations() {
       let self = this;
       await axios
-        .get("https://welcome-database.pages.dev/api/location")
+        .get("https://welcome-api.yorksu.org/api/location")
         .then(function (response) {
           for (let i = 0; i < response.data.length; i++) {
             self.formattedLocations.push({
