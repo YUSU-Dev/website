@@ -3,7 +3,7 @@
     <div class="flex flex-wrap gap-4">
       <Button
         title="All"
-        @click="locationFilter = ''"
+        @click="updateActiveLocation()"
         is-primary
         :class="{ 'btn-primary-active': locationFilter === '' }"
       />
@@ -11,14 +11,14 @@
         v-for="location in locations"
         :key="location.id"
         :title="location.name"
-        @click="locationFilter = location.id"
+        @click="updateActiveLocation(location.id)"
         is-primary
         :class="{ 'btn-primary-active': locationFilter === location.id }"
       />
     </div>
-    <div class="a-z-wrap" v-if="filteredStalls.length > 0">
+    <div class="a-z-wrap" v-if="stalls.length > 0 && !loading">
       <div
-        v-for="stall in filteredStalls"
+        v-for="stall in stalls"
         :key="stall.id"
         class="tile mb-4 flex justify-center pb-2 lg:pb-3"
       >
@@ -86,6 +86,17 @@
         </div>
       </div>
     </div>
+    <div class="a-z-wrap" v-else-if="loading">
+      <Tile v-for="stall in stalls" :key="stall.id" :loading="true" />
+    </div>
+    <Pagination
+      :array="stalls"
+      :load-page="loadPage"
+      :page="Page"
+      :more-results="MoreResults"
+      :previous-results="PreviousResults"
+      :loading="loading"
+    />
   </div>
 </template>
 
@@ -94,11 +105,15 @@ import axios from "../../_common/axios.mjs";
 import Button from "../button/button.ce.vue";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import InterestButton from "../interest-button/interest-button.ce.vue";
+import Pagination from "../Pagination/pagination.ce.vue";
+import Tile from "../Tile/tile.ce.vue";
 export default {
   name: "WelcomeFair",
   components: {
     Button,
     InterestButton,
+    Pagination,
+    Tile,
   },
   data() {
     return {
@@ -106,9 +121,15 @@ export default {
       locations: [],
       locationFilter: "",
       urlLocation: "",
+      Page: 1,
+      Pages: [],
+      MoreResults: false,
+      PreviousResults: false,
+      loading: false,
     };
   },
   mounted() {
+    this.loading = true;
     this.getUrlParam();
     this.getStalls();
     this.getLocations();
@@ -116,10 +137,25 @@ export default {
   methods: {
     async getStalls() {
       let self = this;
+      let parameters = "page=" + this.Page;
+      if (this.locationFilter) {
+        parameters += "&location=" + this.locationFilter;
+      }
       await axios
-        .get("https://welcome-api.yorksu.org/api/stall")
+        .get("https://welcome-api.yorksu.org/api/stall?" + parameters)
         .then(function (response) {
           self.stalls = response.data.stalls;
+          if (response.data.pagination.next_page) {
+            self.MoreResults = true;
+          } else {
+            self.MoreResults = false;
+          }
+          if (response.data.pagination.prev_page) {
+            self.PreviousResults = true;
+          } else {
+            self.PreviousResults = false;
+          }
+          self.loading = false;
         })
         .catch(function (error) {
           console.log(error);
@@ -151,18 +187,27 @@ export default {
     registerInterest() {
       this.getStalls();
     },
+    loadPage(pageNumber = null) {
+      if (pageNumber) {
+        this.Page = pageNumber;
+      } else {
+        this.Page++;
+      }
+      this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
+      this.getStalls();
+    },
+    updateActiveLocation(location) {
+      let self = this;
+      if (location) {
+        self.locationFilter = location;
+      } else {
+        self.locationFilter = "";
+      }
+      self.Page = 1;
+      self.getStalls();
+    },
   },
   computed: {
-    filteredStalls() {
-      let self = this;
-      if (this.locationFilter === "") {
-        return this.stalls;
-      } else {
-        return this.stalls.filter(function (stall) {
-          return stall.locationId === self.locationFilter;
-        });
-      }
-    },
     getImg() {
       return randomImageUrl("student-life");
     },
