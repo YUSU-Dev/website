@@ -8,7 +8,7 @@
         :class="{ 'btn-primary-active': locationFilter === '' }"
       />
       <Button
-        v-for="location in locations"
+        v-for="location in filteredLocations"
         :key="location.id"
         :title="location.name"
         @click="updateActiveLocation(location.id)"
@@ -61,7 +61,7 @@
             >
               {{ stall.name }}
             </h3>
-            <p v-if="stall.locationId">Location: {{ stall.locationId }}</p>
+            <p v-if="stall.locationId">{{ stall.location.name }}</p>
             <div class="flex flex-col gap-y-2">
               <Button
                 title="Go to activity"
@@ -79,14 +79,14 @@
                 title="See on map"
                 class="flex w-full justify-center text-center"
                 is-primary
-                :url="'' + stall.locationId"
+                :url="'/map?location=' + stall.locationId"
               />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="a-z-wrap" v-else-if="loading">
+    <div class="a-z-wrap" v-else>
       <Tile v-for="stall in stalls" :key="stall.id" :loading="true" />
     </div>
     <Pagination
@@ -136,8 +136,10 @@ export default {
   },
   methods: {
     async getStalls() {
+      this.loading = true;
       let self = this;
       let parameters = "page=" + this.Page;
+      parameters += "&limit=12";
       if (this.locationFilter) {
         parameters += "&location=" + this.locationFilter;
       }
@@ -167,6 +169,9 @@ export default {
         .get("https://welcome-api.yorksu.org/api/location?venues=false")
         .then(function (response) {
           self.locations = response.data;
+          for (let i = 0; i < self.locations.length; i++) {
+            console.log(self.locations[i]._count.stalls);
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -208,6 +213,11 @@ export default {
     },
   },
   computed: {
+    filteredLocations() {
+      return this.locations.filter(function (location) {
+        return location._count.stalls > 0;
+      });
+    },
     getImg() {
       return randomImageUrl("student-life");
     },
