@@ -295,7 +295,7 @@ export default {
         parameters += "&venueId=" + self.SelectedVenue;
       }
       if (self.Search) {
-        parameters += "&searchTerm=" + self.Search;
+        parameters += "&eventDateTitleSearchTerm=" + self.Search;
       }
       if (self.premiumResults) {
         parameters += "&onlyPremium=1";
