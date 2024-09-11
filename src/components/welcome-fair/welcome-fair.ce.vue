@@ -1,20 +1,30 @@
 <template>
   <div class="flex flex-col gap-y-12" id="modalArea">
-    <div class="flex flex-wrap gap-4">
-      <Button
-        title="All"
-        @click="updateActiveLocation()"
-        is-primary
-        :class="{ 'btn-primary-active': locationFilter === '' }"
-      />
-      <Button
-        v-for="location in filteredLocations"
-        :key="location.id"
-        :title="location.name"
-        @click="updateActiveLocation(location.id)"
-        is-primary
-        :class="{ 'btn-primary-active': locationFilter === location.id }"
-      />
+    <div class="flex flex-col gap-y-6">
+      <div class="flex lg:w-3/6">
+        <Searchbar
+          :submit-search-callback="submitSearch"
+          :initial-search-value="search"
+          placeholder="Search stalls..."
+          class="w-full"
+        />
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <Button
+          title="All"
+          @click="updateActiveLocation()"
+          is-primary
+          :class="{ 'btn-primary-active': locationFilter === '' }"
+        />
+        <Button
+          v-for="location in filteredLocations"
+          :key="location.id"
+          :title="location.name"
+          @click="updateActiveLocation(location.id)"
+          is-primary
+          :class="{ 'btn-primary-active': locationFilter === location.id }"
+        />
+      </div>
     </div>
     <div class="a-z-wrap" v-if="stalls.length > 0 && !loading">
       <div
@@ -107,6 +117,7 @@ import { randomImageUrl } from "../../_common/randomImage.mjs";
 import InterestButton from "../interest-button/interest-button.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
 import Tile from "../Tile/tile.ce.vue";
+import Searchbar from "../searchbar/searchbar.ce.vue";
 export default {
   name: "WelcomeFair",
   components: {
@@ -114,6 +125,7 @@ export default {
     InterestButton,
     Pagination,
     Tile,
+    Searchbar,
   },
   data() {
     return {
@@ -126,6 +138,7 @@ export default {
       MoreResults: false,
       PreviousResults: false,
       loading: false,
+      search: "",
     };
   },
   mounted() {
@@ -140,6 +153,10 @@ export default {
       let self = this;
       let parameters = "page=" + this.Page;
       parameters += "&limit=12";
+      if (this.search) {
+        parameters += "&search=" + this.search;
+        this.locationFilter = "";
+      }
       if (this.locationFilter) {
         parameters += "&location=" + this.locationFilter;
       }
@@ -184,6 +201,13 @@ export default {
         this.urlLocation = urlParams.get("location");
         this.locationFilter = this.urlLocation;
       }
+      if (urlParams.has("search")) {
+        this.search = urlParams.get("search");
+      }
+    },
+    submitSearch(searchValue) {
+      this.search = searchValue;
+      this.getStalls();
     },
     unregisterInterest(stall_id) {
       const stall = this.stalls.indexOf(stall_id);
@@ -203,6 +227,7 @@ export default {
     },
     updateActiveLocation(location) {
       let self = this;
+      this.search = "";
       if (location) {
         self.locationFilter = location;
       } else {
