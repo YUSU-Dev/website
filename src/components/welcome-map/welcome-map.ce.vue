@@ -187,6 +187,18 @@ export default {
           console.log(error);
         });
     },
+    async getStallLocation(stall_url) {
+      let self = this;
+      await axios
+        .get("https://welcome-api.yorksu.org/api/stall/" + stall_url)
+        .then(function (response) {
+          self.urlLocation = response.data.stall.locationId;
+          self.updateActiveLocation();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     async getRoute(end) {
       let self = this;
       await axios
@@ -235,6 +247,9 @@ export default {
       if (urlParams.has("location")) {
         this.urlLocation = urlParams.get("location");
         this.updateActiveLocation();
+      }
+      if (urlParams.has("activity")) {
+        this.getStallLocation(urlParams.get("activity"));
       }
     },
     updateActiveLocation(location) {
