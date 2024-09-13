@@ -33,7 +33,7 @@
       siteid="tZyLG9BX9f4hdTp2HLva5c"
       :selectedparents="selectedparents"
       :title="componenttitle"
-      :wishlist="true"
+      :wishlist="wishlist"
     />
   </div>
   <Footer />
@@ -48,6 +48,7 @@ export default {
     title: { type: String, default: "" },
     componenttitle: { type: String, default: "" },
     selectedparents: { type: String, default: "" },
+    wishlist: { type: Boolean, default: false },
   },
   components: {
     HeroHeader,

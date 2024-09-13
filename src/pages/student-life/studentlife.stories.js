@@ -33,3 +33,19 @@ export const Multiple = {
     componenttitle: "Search for a Society, Sport Club or Volunteering Group",
   },
 };
+
+export const sportsWishlist = {
+  args: {
+    title: "Sports",
+    selectedparents: "24",
+    wishlist: true,
+  },
+};
+
+export const societiesWishlist = {
+  args: {
+    title: "Societies",
+    selectedparents: "2",
+    wishlist: true,
+  },
+};
