@@ -33,6 +33,7 @@
       siteid="tZyLG9BX9f4hdTp2HLva5c"
       :selectedparents="selectedparents"
       :title="componenttitle"
+      :wishlist="true"
     />
   </div>
   <Footer />
