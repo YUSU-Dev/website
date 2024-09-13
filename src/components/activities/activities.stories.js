@@ -36,3 +36,10 @@ export const ShortViewWithTitle = {
     title: "Hes East",
   },
 };
+
+export const Wishlist = {
+  args: {
+    selectedparents: "2,24,39",
+    wishlist: true,
+  },
+};

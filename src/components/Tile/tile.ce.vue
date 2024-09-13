@@ -1,8 +1,8 @@
 <template>
   <div class="tile mb-4 flex justify-center pb-2 lg:pb-3">
     <div
-      class="relative h-full w-full bg-white shadow transition hover:scale-105 md:max-w-[282px]"
-      :class="{ 'animate-pulse': loading }"
+      class="relative h-full w-full bg-white shadow transition md:max-w-[282px]"
+      :class="{ 'animate-pulse': loading, 'hover:scale-105': !wishlist }"
     >
       <a class="group flex h-full flex-col text-black no-underline" :href="url">
         <div class="relative flex aspect-square items-center justify-center">
