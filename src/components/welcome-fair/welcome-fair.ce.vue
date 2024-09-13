@@ -209,13 +209,6 @@ export default {
       this.search = searchValue;
       this.getStalls();
     },
-    unregisterInterest(stall_id) {
-      const stall = this.stalls.indexOf(stall_id);
-      this.stalls.splice(stall, 1);
-    },
-    registerInterest() {
-      this.getStalls();
-    },
     loadPage(pageNumber = null) {
       if (pageNumber) {
         this.Page = pageNumber;

@@ -1,43 +1,39 @@
 <template>
   <div class="tile mb-4 flex justify-center pb-2 lg:pb-3">
     <div
-      class="relative h-full w-full bg-white shadow transition hover:scale-105 md:max-w-[282px]"
-      :class="{ 'animate-pulse': loading }"
+      class="relative h-full w-full bg-white shadow transition md:max-w-[282px]"
+      :class="{ 'animate-pulse': loading, 'hover:scale-105': !wishlist }"
     >
       <a class="group flex h-full flex-col text-black no-underline" :href="url">
-        <div
-          v-if="image"
-          class="flex aspect-square items-center justify-center"
-        >
+        <div class="relative flex aspect-square items-center justify-center">
           <img
+            v-if="image"
             class="aspect-square bg-cover bg-center object-cover"
             :src="image"
             alt=""
             loading="lazy"
           />
-        </div>
-        <div
-          v-else-if="group && group.thumbnail_url"
-          class="flex aspect-square items-center justify-center"
-        >
           <img
+            v-else-if="group && group.thumbnail_url"
             class="aspect-square bg-cover bg-center object-cover"
             :src="group.thumbnail_url"
             alt=""
             loading="lazy"
           />
-        </div>
-        <div
-          v-else-if="loading"
-          class="aspect-square bg-slate-200 bg-cover bg-center"
-        ></div>
-        <div v-else class="flex aspect-square items-center justify-center">
+          <div
+            v-else-if="loading"
+            class="aspect-square bg-slate-200 bg-cover bg-center"
+          ></div>
           <img
+            v-else
             class="aspect-square bg-cover bg-center"
             :src="randomImage(section)"
             alt=""
             loading="lazy"
           />
+          <div v-if="wishlist" class="absolute right-2 top-2">
+            <InterestButton :activity-id="id" is-heart />
+          </div>
         </div>
         <div v-if="!loading" class="flex h-full flex-col justify-between p-6">
           <div class="flex flex-col">
@@ -128,12 +124,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import Loading from "../loading/loading.ce.vue";
+import InterestButton from "../interest-button/interest-button.ce.vue";
 
 library.add(faTag, faArrowLeft, faArrowRight);
 
 export default {
-  components: { FontAwesomeIcon, Loading },
+  components: { FontAwesomeIcon, Loading, InterestButton },
   props: {
+    id: {
+      type: Number,
+      default: null,
+    },
     url: {
       type: String,
       default: null,
@@ -203,6 +204,10 @@ export default {
       default: false,
     },
     premiumEvent: {
+      type: Boolean,
+      default: false,
+    },
+    wishlist: {
       type: Boolean,
       default: false,
     },

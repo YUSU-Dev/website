@@ -113,10 +113,12 @@
         <Tile
           v-for="Group in Groups"
           :key="Group.id"
+          :id="Group.id"
           :url="'/activities/view/' + Group.url_name"
           :title="Group.name"
           :image="Group.thumbnail_url"
           section="student-life"
+          :wishlist="wishlist"
         />
       </div>
       <div class="a-z-wrap mt-10" v-else>
@@ -160,6 +162,10 @@ export default {
     title: {
       type: String,
       default: null,
+    },
+    wishlist: {
+      type: Boolean,
+      default: false,
     },
   },
   components: {
