@@ -28,8 +28,7 @@ export default {
       "pk.eyJ1IjoieXVzdWRldjAiLCJhIjoiY20wcDd1YmRnMDMzajJpcjFhZng0M24xNSJ9.ikaabBuaSdRfEvVCOqbj9w";
     const map = new mapboxgl.Map({
       container: this.$refs.mapContainer,
-      // Leaving this in commented for when Nathan inevitably asks me to take the 3D buildings out
-      // style: "mapbox://styles/mapbox/streets-v12",
+      style: "mapbox://styles/mapbox/streets-v12",
       center: [-1.054709, 53.945624],
       zoom: 15,
     });
