@@ -344,7 +344,6 @@ export default {
           )
           .then(function (response) {
             self.excludedTaggedEvents = response.data.data;
-            console.log(self.excludedTaggedEvents);
           });
       }
       //get the rest of the events
