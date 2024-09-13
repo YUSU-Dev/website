@@ -28,3 +28,10 @@ export const GroupViewNoResults = {
     icon: true,
   },
 };
+
+export const ExcludedTags = {
+  args: {
+    typeid: "19",
+    excludedTags: "413",
+  },
+};

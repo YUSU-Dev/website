@@ -157,6 +157,7 @@ export default {
     premium: { type: Boolean, default: false },
     title: { type: String, default: null },
     icon: { type: Boolean, default: false },
+    excludedTags: { type: String, default: null },
   },
   components: {
     Tile,
@@ -172,6 +173,7 @@ export default {
       Events: [],
       Tags: [],
       PremiumEvents: [],
+      excludedTaggedEvents: [],
       SelectedType: "",
       SelectedGroup: "",
       SelectedVenue: "",
@@ -325,6 +327,26 @@ export default {
             self.PremiumEvents = response.data.data;
           });
       }
+      // get excluded Tags
+      if (self.excludedTags) {
+        const categoryIds = self.excludedTags;
+        axios
+          .get(
+            "https://pluto.sums.su/api/events?" +
+              "sortBy=start_date&futureOrOngoing=1&page=1" +
+              "&perPage=200&categoryIds=" +
+              categoryIds,
+            {
+              headers: {
+                "X-Site-Id": self.siteid,
+              },
+            },
+          )
+          .then(function (response) {
+            self.excludedTaggedEvents = response.data.data;
+            console.log(self.excludedTaggedEvents);
+          });
+      }
       //get the rest of the events
       axios
         .get("https://pluto.sums.su/api/events?" + parameters, {
@@ -337,6 +359,14 @@ export default {
             const premiumEventIds = self.PremiumEvents.map((event) => event.id);
             self.Events = response.data.data.filter((event) => {
               return !premiumEventIds.includes(event.id);
+            });
+          } else if (self.excludedTaggedEvents.length > 0) {
+            self.PremiumEvents = [];
+            const excludedTaggedEventIds = self.excludedTaggedEvents.map(
+              (event) => event.id,
+            );
+            self.Events = response.data.data.filter((event) => {
+              return !excludedTaggedEventIds.includes(event.id);
             });
           } else {
             self.PremiumEvents = [];
