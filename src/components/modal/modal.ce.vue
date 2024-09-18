@@ -46,7 +46,7 @@
                 href="mailto:it@yorksu.org"
                 class="text-blue-800 underline dark:text-blue-400"
                 >YorkSU IT Support</a
-              >
+              >.
             </p>
           </div>
         </div>
