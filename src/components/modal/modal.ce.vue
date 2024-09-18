@@ -46,13 +46,18 @@
                 href="mailto:it@yorksu.org"
                 class="text-blue-800 underline dark:text-blue-400"
                 >YorkSU IT Support</a
-              >.
+              >
             </p>
           </div>
         </div>
         <div class="modal-footer">
           <div v-if="!signedIn">
             <a type="button" class="btn btn-primary" href="/sign-in">Sign In</a>
+          </div>
+          <div v-if="welcomeMapError">
+            <a type="button" class="btn btn-primary" href="/welcome-fair"
+              >View Stalls</a
+            >
           </div>
           <button
             type="button"
@@ -85,6 +90,10 @@ export default {
     errorDescription: {
       type: String,
       default: "Undefined Error!",
+    },
+    welcomeMapError: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ["close"],

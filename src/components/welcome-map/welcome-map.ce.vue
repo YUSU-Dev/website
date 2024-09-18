@@ -1,7 +1,19 @@
 <template>
   <div class="container mx-auto">
-    <div ref="mapContainer" class="map-container h-[600px]"></div>
+    <div
+      id="map-container"
+      ref="mapContainer"
+      class="map-container h-[600px]"
+    ></div>
   </div>
+  <Modal
+    title="Stall not found!"
+    error-description="It looks like this activity isn't at welcome fair, but we have plenty more to see on our stalls page. Click below to take a look!"
+    :modal-closed="ModalClosed"
+    @close="ModalClosed = true"
+    signed-in
+    welcome-map-error
+  />
 </template>
 <style>
 @import "https://cdn.jsdelivr.net/npm/mapbox-gl/dist/mapbox-gl.css";
@@ -9,17 +21,21 @@
 <script>
 import mapboxgl from "https://cdn.jsdelivr.net/npm/mapbox-gl@3.6.0/+esm";
 import axios from "../../_common/axios.mjs";
+import Modal from "../modal/modal.ce.vue";
 export default {
   name: "WelcomeMap",
+  components: {
+    Modal,
+  },
   data() {
     return {
       map: null,
-      // These coordinates are just for testing right now
+      // These coordinates are the student centre
       start: [-1.055034237300904, 53.94578819348761],
-      // end: [-1.052836524907442, 53.94704872205198],
       formattedLocations: [],
       urlLocation: "",
       activeLocation: {},
+      ModalClosed: true,
     };
   },
   mounted() {
@@ -92,69 +108,6 @@ export default {
         });
         map.on("click", self.formattedLocations[i].properties.name, (e) => {
           self.updateActiveLocation(e.features[0]);
-          const coordinates = e.features[0].geometry.coordinates.slice();
-          const popupContent = document.createElement("div");
-          popupContent.className = "flex flex-col gap-y-2";
-
-          const title = document.createElement("h3");
-          title.className = "font-bold text-lg";
-          title.textContent = e.features[0].properties.name;
-          popupContent.appendChild(title);
-
-          if (e.features[0].properties.category_name) {
-            const category = document.createElement("h4");
-            category.className = "font-semibold";
-            category.textContent = e.features[0].properties.category_name;
-            popupContent.appendChild(category);
-          }
-
-          const seeStallsButton = document.createElement("a");
-          seeStallsButton.className =
-            "btn text-center bg-mustard font-semibold py-1";
-          seeStallsButton.textContent = "See Stalls";
-          popupContent.appendChild(seeStallsButton);
-
-          const directionsButton = document.createElement("button");
-          directionsButton.className = "bg-mustard font-semibold py-1";
-          directionsButton.textContent = "Directions";
-          directionsButton.addEventListener("click", () => {
-            self.getRoute(coordinates);
-            self.map.Popup.remove();
-          });
-
-          // console.log(e.features[0].properties.facilities);
-          // if (e.features[0].properties.facilities.length > 0) {
-          //   const facilities = document.createElement("div");
-          //   facilities.className = "flex flex-col";
-          //   const facilitiesTitle = document.createElement("h4");
-          //   facilitiesTitle.className = "font-semibold";
-          //   facilitiesTitle.textContent = "Facilities";
-          //   facilities.appendChild(facilitiesTitle);
-          //   const facilitiesList = document.createElement("ul");
-          //   facilitiesList.className = "list-disc list-inside";
-          //   for (
-          //     let i = 0;
-          //     i < e.features[0].properties.facilities.length;
-          //     i++
-          //   ) {
-          //     const facility = document.createElement("li");
-          //     facility.textContent = e.features[0].properties.facilities[i];
-          //     facilitiesList.appendChild(facility);
-          //   }
-          //   facilities.appendChild(facilitiesList);
-          //   popupContent.appendChild(facilities);
-          // }
-
-          popupContent.appendChild(directionsButton);
-
-          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-          }
-
-          self.map.Popup = new mapboxgl.Popup()
-            .setLngLat(coordinates)
-            .setDOMContent(popupContent)
-            .addTo(map);
         });
       }
       self.getUrlParam();
@@ -174,6 +127,7 @@ export default {
                 category_name: response.data[i].category_name,
                 id: response.data[i].id,
                 facilities: response.data[i].facilities,
+                venue_url: response.data[i].venue_url,
               },
               geometry: {
                 type: "Point",
@@ -195,6 +149,7 @@ export default {
           self.updateActiveLocation();
         })
         .catch(function (error) {
+          self.ModalClosed = false;
           console.log(error);
         });
     },
@@ -240,11 +195,62 @@ export default {
           console.log(error);
         });
     },
+    createPopup(features) {
+      let self = this;
+      const coordinates = features.geometry.coordinates.slice();
+      const popupContent = document.createElement("div");
+      popupContent.className = "flex flex-col gap-y-2";
+
+      const title = document.createElement("h3");
+      title.className = "font-bold text-lg";
+      title.textContent = features.properties.name;
+      popupContent.appendChild(title);
+
+      if (features.properties.category_name) {
+        const category = document.createElement("h4");
+        category.className = "font-semibold";
+        category.textContent = features.properties.category_name;
+        popupContent.appendChild(category);
+      }
+
+      if (!features.properties.venue_url) {
+        const seeStallsButton = document.createElement("a");
+        seeStallsButton.className =
+          "btn text-center bg-mustard font-semibold py-1";
+        seeStallsButton.textContent = "See Stalls";
+        seeStallsButton.href = `/welcome-fair?location=${features.properties.id}`;
+        popupContent.appendChild(seeStallsButton);
+      }
+
+      const directionsButton = document.createElement("button");
+      directionsButton.className = "bg-mustard font-semibold py-1";
+      directionsButton.textContent = "Directions";
+      directionsButton.addEventListener("click", () => {
+        self.getRoute(coordinates);
+        self.map.Popup.remove();
+      });
+
+      popupContent.appendChild(directionsButton);
+
+      while (
+        Math.abs(features.geometry.coordinates[1] - coordinates[0]) > 180
+      ) {
+        coordinates[0] +=
+          features.geometry.coordinates[1] > coordinates[0] ? 360 : -360;
+      }
+
+      self.map.Popup = new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setDOMContent(popupContent)
+        .addTo(self.map);
+    },
     getUrlParam() {
       let queryString = window.location.search;
       let urlParams = new URLSearchParams(queryString);
       if (urlParams.has("location")) {
         this.urlLocation = urlParams.get("location");
+        const mapContainer = this.$refs.mapContainer;
+        mapContainer.scrollIntoView({ behavior: "smooth" });
         this.updateActiveLocation();
       }
       if (urlParams.has("activity")) {
@@ -277,6 +283,7 @@ export default {
           (location) => location.properties.id == this.urlLocation,
         );
       }
+      this.createPopup(this.activeLocation);
       this.map.setPaintProperty(
         self.activeLocation.properties.name,
         "circle-radius",
