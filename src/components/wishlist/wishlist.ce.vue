@@ -90,10 +90,10 @@ export default {
       type: Array,
       default: null,
     },
-  },
-  signedIn: {
-    type: Boolean,
-    default: false,
+    signedIn: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
