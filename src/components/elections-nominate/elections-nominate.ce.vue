@@ -1,10 +1,20 @@
 <template>
+  <style>
+    .cr-boundary {
+      width: 100% !important;
+      aspect-ratio: 1 / 1;
+      height: auto !important;
+    }
+  </style>
   {exp:su_elections:nominationForm election_id="{segment_3}"
   activity_id="{segment_4}"} {embed="core-components/.header"
   title="Nominations"}
 
   <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.js"></script>
+  <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/image-cropper.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.css" rel="stylesheet">
   <div class="container mx-auto">
     <div class="flex flex-col">
       <div class="flex flex-col">
@@ -200,6 +210,72 @@
                 <span class="text-red-600">* Required</span>
                 {/if}
               </label>
+              <div class="form-group">
+                {if field_name == "photo"}
+                <p class="text-sm">
+                  <span class="font-semibold">File Types:</span>{field_file_types}
+                  <span class="font-semibold">Max Size:</span> {field_max_size}
+                  {if field_image == 1}
+                  <span class="font-semibold">Dimensions Must Be:</span>{field_dimensions}{/if}
+                </p>
+                <div>
+                  <a href="{field_url}" target="_blank" id="thumb__container"><img src="{field_value}"
+                    id="nom__thumbnail"></a>
+                    <i class="ai-check reg__icon upload__confirmed" id="thumb__check"></i>
+                    <script>
+                    $('#nom__thumbnail').each(function () {
+                      if (this.src == '{field_url}') {
+                        //If it has source
+                        $('#thumb__check').show();
+                        $('#thumb__check').css('display', 'inline-block');
+                      }
+                    });
+                    </script>
+                </div>
+                <!-- Hidden input fields for submission -->
+                <input type="hidden" class="image-data" id="document_{field_name}" name="item" {if field_disabled==1}disabled{/if}>
+                  <!-- Visible image select input -->
+                   <input class="crop__upload" type="file" src="#" name="itemUploader" id="crop__upload" {if field_disabled==1}disabled{/if}>
+                    <!-- Preview of cropped image before saving, after crop. Hidden after save -->
+                     <div class="mgn__b--2" id="preview-container" style="display: none;">
+                      <p>Image Preview: </p>
+                      <img id="upload-preview" name="itemHidden" src="" />
+                    </div>
+                    <!-- Popup Modal for cropping image -->
+                    <div id="crop__modal" class="cropModal" style="display: none;">
+                      <div class="cropmodalcontent">
+                        <!-- Modal Close -->
+                         <p class="closeElectionModalPopup text-end mb-0">
+                          <a href="javascript:closeModal();" onclick="closeModal();" id="close-btn-{candidate_id}">&times;</a>
+                        </p>
+                        <div class="modaldesktop">
+                          <div class="modalheadline">
+                            <p>Image Preview: </p>
+                          </div>
+                          <div class="modaltext">
+                          <!-- Placeholder for image -->
+                           <img id="my__image--d" src="" style="display: none;" />
+                           <!-- Crop and Rotate buttons -->
+                            <div class="g__4--m g__8--t g__12--d ta__c--d ta__c--m ta__c--t flex flex-wrap gap-4 mb-4">
+                              {if field_save == 1}
+                              <div class="btn btn-primary vanilla-rotate w-min flex flex-row gap-x-2 items-center" id="rotate" data-deg="-90" style="display: none;">Rotate <i class="fas fa-sync-alt"></i></div>
+                              <div class="btn btn-primary w-min" id="cropBtn" value="Crop" style="display: none;">Save</div>
+                              {/if}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {if:else}
+                <input class="form-control margin-bottom-20 rounded-0" type="file" id="document_{field_name}" name="item" {if field_disabled==1}disabled{/if}>
+                  <p class="text-sm">
+                    <span class="font-semibold">File Types:</span>{field_file_types}
+                    {if field_image == 1}
+                    <span class="font-semibold">Dimensions Must Be:</span>{field_dimensions}
+                    {/if}
+                  </p>
+                {/if}
+              </div>
               {/if}
             </fieldset>
           </form>
