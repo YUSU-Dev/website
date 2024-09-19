@@ -49,6 +49,12 @@
                   @unregister="unregisterInterest()"
                   @register="registerInterest()"
                 />
+                <Button
+                  title="Welcome Fair Location"
+                  class="flex w-full justify-center text-center"
+                  is-primary
+                  :url="'/map?activity=' + activity.url_name"
+                />
               </div>
             </div>
           </div>
