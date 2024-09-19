@@ -57,6 +57,8 @@ export default {
       },
       trackUserLocation: true,
     });
+    // Override the default camera update function to prevent the map from moving when the user location is updated
+    geolocate._updateCamera = () => {};
     const NavigationControl = new mapboxgl.NavigationControl();
     // Add the control to the map.
     this.map.addControl(geolocate);
@@ -64,7 +66,7 @@ export default {
 
     let self = this;
     this.map.on("load", function () {
-      // geolocate.trigger();
+      geolocate.trigger();
       geolocate.on("geolocate", function (e) {
         self.start = [e.coords.longitude, e.coords.latitude];
       });
