@@ -44,11 +44,7 @@
                   is-primary
                   :url="'/shop?activity_id=' + activity.id"
                 />
-                <InterestButton
-                  :activity-id="activity.id"
-                  @unregister="unregisterInterest()"
-                  @register="registerInterest()"
-                />
+                <InterestButton :activity-id="activity.id" />
                 <Button
                   title="Welcome Fair Location"
                   class="flex w-full justify-center text-center"
