@@ -14,16 +14,38 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.js"></script>
   <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/image-cropper.js"></script>
+  <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/elections-char-count.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.css" rel="stylesheet">
   <div class="container mx-auto">
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-y-6">
       <div class="flex flex-col">
-        <h1 class="text-4xl font-bold">Nominations</h1>
+        <h1 class="text-4xl font-bold mb-6">Nominations</h1>
+        <h2 class="text-3xl font-semibold">Details</h2>
+        <div class="flex flex-col sm:flex-row gap-x-12 form-group">
+          <div class="flex flex-col">
+            <h3 class="text-xl mb-0">Position</h3>
+            <p>{election_name} <span class="text-sm">{election_sub_name}</span></p>
+            <h3 class="text-xl mb-0">No. of Positions</h3>
+            <p>{number_of_positions}</p>
+            <h3 class="text-xl mb-0">Election Method</h3>
+            <p>{election_method}</p>
+          </div>
+          <div class="flex flex-col">
+            <h3 class="text-xl mb-0" class="sub-heading text-muted">Nominations Open</h3>
+            <p>{nominations_open}</p>
+            <h3 class="text-xl mb-0" class="sub-heading text-muted">Nominations Close</h3>
+            <p>{nominations_close}</p>
+            <h3 class="text-xl mb-0" class="sub-heading text-muted">Voting Opens</h3>
+            <p>{voting_opens}</p>
+            <h3 class="text-xl mb-0" class="sub-heading text-muted">Voting Closes</h3>
+            <p>{voting_closes}</p>
+          </div>
+        </div>
       </div>
-      <p>{ Insert details tab here }</p>
-      <div class="flex flex-col">
+      <div class="flex flex-col gap-y-2">
         <h2 class="text-3xl font-semibold">Nomination Form</h2>
         <!-- Alerts -->
+        <div class="flex flex-col gap-y-4 py-4">
         {if nomination_submitted == 0}
         <div class="border-l-4 border-red-400 bg-red-100 p-2">
           <h2 class="mb-0 text-xl">
@@ -61,18 +83,21 @@
           <p>Your nomination has been approved.</p>
         </div>
         {/if}
+      </div>
         <!-- Alerts -->
         <!-- Nomination Form -->
-        <div class="flex flex-col gap-y-6">
+        <div class="flex flex-col gap-y-2">
           {if election_document_count > 0} {election_documents}
           <form method="post" enctype="multipart/form-data" id="{field_name}">
             <input type="hidden" name="do" value="update" />
             <input type="hidden" name="document" value="{field_name}" />
-            <fieldset>
+            <fieldset class="flex flex-col gap-y-1">
               {if field_method == "TEXT"} {if field_type == "INPUT"}
-              <label class="mb-2"
-                >{field_title} {if field_required}
+              <label class=""
+                >{field_title} {if field_required AND field_complete == 0}
                 <span class="text-red-600">* Required</span>
+                {if:elseif field_complete == 1}
+                <i class="fa fa-check text-green-500" aria-hidden="true"></i>
                 {/if}
               </label>
               {if field_name == 'can_name'}
@@ -96,7 +121,11 @@
                 class="form-input"
                 type="text"
                 autocomplete="given-name"
+                {if field_max_characters}
+                onkeyup="charcountupdate(this.value, 'count-{field_name}')"
+                {if:elseif field_max_words}
                 onkeyup="UpdateWordCount(this.value, 'count-{field_name}')"
+                {/if}
                 {if field_disabled==1}disabled{/if}
                   {if field_required}required{/if}
                   {if field_name =='manifesto_summary'} 
@@ -110,7 +139,7 @@
                   <button
                     type="submit"
                     aria-label="save"
-                    class="btn btn-block btn-secondary h-full bg-black px-1"
+                    class="btn btn-primary"
                     value="Save"
                   >
                     Save
@@ -120,7 +149,7 @@
                 <a
                   href="{field_url}"
                   target="_blank"
-                  class="btn btn-block btn-secondary h-full bg-black px-1"
+                  class="btn btn-primary"
                   >View</a
                 >
                 {/if}
@@ -129,23 +158,30 @@
                 {if field_max_characters}
                 <span class="font-semibold">Max Characters:</span>
                 {field_max_characters}
+                <span class="font-semibold">Character Count: <span id="count-{field_name}">0</span></span>
                 {/if}
                 {if field_max_words}
                 <span class="font-semibold">Max Words:</span>
                 {field_max_words}
-                {/if}
                 <span class="font-semibold">Word Count: <span id="count-{field_name}">0</span></span>
+                {/if}
               </p>
               {/if}
               {if field_type == "TEXTAREA"}
-              <label class="mb-2"
-                >{field_title} {if field_required}
+              <label class=""
+                >{field_title} {if field_required AND field_complete == 0}
                 <span class="text-red-600">* Required</span>
+                {if:elseif field_complete == 1}
+                <i class="fa fa-check text-green-500" aria-hidden="true"></i>
                 {/if}
               </label>
-              <div class="form-group p-0 mb-2">
+              <div class="form-group p-0">
                 <textarea
-                  onkeyup="UpdateWordCount(this.value, 'count-{field_name}')" 
+                {if field_max_characters}
+                onkeyup="charcountupdate(this.value, 'count-{field_name}')"
+                {if:elseif field_max_words}
+                onkeyup="UpdateWordCount(this.value, 'count-{field_name}')"
+                {/if}
                   id="{field_name}"
                   class="form-control p-2 w-full"
                   rows="6"
@@ -160,27 +196,30 @@
                 {if field_max_characters}
                 <span class="font-semibold">Max Characters:</span>
                 {field_max_characters}
+                <span class="font-semibold">Character Count: <span id="count-{field_name}">0</span></span>
                 {/if}
                 {if field_max_words}
                 <span class="font-semibold">Max Words:</span>
                 {field_max_words}
-                {/if}
                 <span class="font-semibold">Word Count: <span id="count-{field_name}">0</span></span>
+                {/if}
               </p>
                 {if field_view == 1}
-                  <a href="{field_url}" target="_blank" class="btn btn-block btn-secondary h-full bg-black px-1">View</a>
+                  <a href="{field_url}" target="_blank" class="btn btn-primary">View</a>
                 {/if}
                 {if field_save == 1}
-                  <input type="submit" class="btn btn-block btn-secondary h-full bg-black px-1" value="Save">
+                  <input type="submit" class="btn btn-primary" value="Save">
                 {/if}
               </div>
               {/if}
               {/if}
               {if field_method == "WYSIWYG"}
               {if field_type == "WYSIWYG"}
-              <label class="mb-2"
-                >{field_title} {if field_required}
+              <label class=""
+                >{field_title} {if field_required AND field_complete == 0}
                 <span class="text-red-600">* Required</span>
+                {if:elseif field_complete == 1}
+                <i class="fa fa-check text-green-500" aria-hidden="true"></i>
                 {/if}
               </label>
               <div class="form-group">
@@ -196,7 +235,30 @@
                  {if field_disabled == 1}disabled{/if}>
                   {field_value}
                 </textarea>
+                <p class="text-sm">
+                  {if field_max_characters}
+                  <span class="font-semibold">Max Characters:</span>
+                  {field_max_characters}
+                  {/if}
+                  {if field_max_words}
+                  <span class="font-semibold">Max Words:</span>
+                  {if field_name == 'manifesto'}
+                  500
+                  {if:elseif field_name == 'manifesto_summary'}
+                  {field_max_words}
+                  {/if}
+                  {/if}</p>
+                  <p class="text-sm">Content may look different after saving due to a filtering process that is applied to the content.</p>
+                  <p class="text-sm">Please do not add images, as they won't be displayed.</p>     
               </div>
+              <div class="flex justify-end">
+                                        {if field_view == 1}
+                                            <a href="{field_url}" target="_blank" class="btn btn-primary">View</a>
+                                        {/if}
+                                        {if field_save == 1}
+                                            <input type="submit" class="btn btn-primary" value="Save">
+                                        {/if}
+                                    </div>
               <script>
               CKEDITOR.replace('{field_title}',{
                 customConfig: 'https://sassets.sumsmanagement.com/web/ckeditor/config.js',
@@ -205,9 +267,11 @@
               {/if}
               {/if}
               {if field_method == "UPLOAD"}
-              <label class="mb-2"
-                >{field_title} {if field_required}
+              <label class=""
+                >{field_title} {if field_required AND field_complete == 0}
                 <span class="text-red-600">* Required</span>
+                {if:elseif field_complete == 1}
+                <i class="fa fa-check text-green-500" aria-hidden="true"></i>
                 {/if}
               </label>
               <div class="form-group">
@@ -266,6 +330,7 @@
                         </div>
                       </div>
                     </div>
+                    <!-- Popup Modal for cropping image ends -->
                 {if:else}
                 <input class="form-control margin-bottom-20 rounded-0" type="file" id="document_{field_name}" name="item" {if field_disabled==1}disabled{/if}>
                   <p class="text-sm">
@@ -276,10 +341,98 @@
                   </p>
                 {/if}
               </div>
+              <div class="flex justify-end">
+                {if field_view == 1}
+                <a href="{field_url}" target="_blank" class="btn btn-primary">View</a>
+                {/if}
+              </div>
+              {/if}
+              {if field_method == "SELECT"}
+              <div class="form-group">
+                <label class="mb-2">
+                  {field_title}
+                </label>
+                <select name="item" class="form-control" {if field_required} required {/if}>
+                  {field_options}
+                  <option value="{option_val}"
+                  {if field_value==option_val}selected{/if}>
+                    {option_txt}
+                  </option>
+                  {/field_options}
+                </select>
+              </div>
+              <div class="flex justify-end">
+                {if field_view == 1}
+                <a href="{field_url}" target="_blank" class="btn btn-primary">View</a>
+                {/if}
+                {if field_save == 1}
+                <input type="submit" class="btn btn-sm u-btn-primary" value="Save">
+                {/if}
+              </div>
               {/if}
             </fieldset>
           </form>
           {/election_documents} {/if}
+                     <!-- form 3 - submit everything -->
+                    {if nomination_submitted == 0}
+                    <form method="post" id="process-submission">
+                        <input type="hidden" name="submission" value="true">
+                        <h5>Ready to submit everything? <small style="display:block" class="g-mt-10">Make sure that
+                                you've pressed 'save' on each item above.</small></h5>
+                        <p class="text-sm"><em>If you're having issues with submitting a nomination
+                                    please contact <a
+                                        href="mailto:elections@yusu.org">elections@yorksu.org</a></em></p>
+                        <hr class="g-brd-gray-light-v4 g-mx-minus-30">
+                        {if allow_submission == 1}
+                        <ul class="pl-0 flex flex-col gap-y-2 mb-2">
+                          <li class="flex items-center gap-x-2">
+                            <div class="">
+                                <input type="checkbox" name="declare" value="1" class="declare" required>
+                            </div>
+                            <div class="">
+                                <p class="text-sm mb-0">I confirm I have read YUSU's privacy policy, with specific reference to the handling of my personal data as detailed in the 'Elections and Student Voice' and 'Information we may share with other organisations' sections.  </small></p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-x-2">
+                            <div class="">
+                                <input type="checkbox" name="declare_rules" value="1" class="declare" required>
+                            </div>
+                            <div class="">
+                                <p class="text-sm mb-0">I confirm I have read and agree to the <a target="_blank" href="https://docs.google.com/document/d/1ZJ9gxPlEmwk1o3WLY_szsOiz2yCvuiiunOgzF4MWkPw/edit?usp=sharing">College Election rules</a></p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-x-2">
+                            <div class="">
+                                <input type="checkbox" name="declare_privacy" value="1" class="declare" required>
+                            </div>
+                            <div class="">
+                                <p class="text-sm mb-0">I agree to the collection and publication of my name, pronouns, manifesto information and provided photograph to ensure a fair democratic voting process; and for the sharing of that data, together with my email address, with student media groups for the purposes of organising election events and promotion.</p>
+                            </div>
+                        </li>
+                          <li class="flex items-center gap-x-2">
+                            <div class="">
+                                <input type="checkbox" name="declare_success" value="1" class="declare" required>
+                            </div>
+                            <div class="">
+                                <p class="text-sm mb-0">If I am successful in the election process, I agree to my name, pronouns, email address, manifesto commitments and provided photograph being used by YUSU, and shared with student media for the purposes of declaring the election results and fulfilling the responsibilities of my elected position.</p>
+                            </div>
+                        </li>
+                        </ul>
+                        <p class="text-sm">An email confirmation will be sent upon successful submission.</p>
+                        <button class="btn btn-primary"
+                            onclick="javascript:declareSubmission();">Submit</button>
+                        <script type="text/javascript">
+                            function declareSubmission() {
+                                if (!confirm('Are you sure you wish to submit your nomination?')) return;
+                                if ($(".declare:checked").length == $(".declare").length) {
+                                    $('#process-submission').submit();
+                                }
+                            }
+                        </script>
+                        {/if}
+                    </form>
+                    {/if}
+                    <!-- end of form 3 -->
         </div>
         <!-- Nomination Form -->
       </div>
