@@ -9,4 +9,4 @@
 - [ ] I accept the contributor license agreement for this repository.
 - [ ] All active GitHub checks for tests, formatting, and security are passing.
 - [ ] The correct base branch is being used (if not `main`).
-- [ ] A GitHub issue is linked to this pull request.
+- [ ] A GitHub issue or linear task is linked to this pull request.
