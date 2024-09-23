@@ -32,6 +32,10 @@ We have a couple of resources to help you with contributing.
 - To find out more about the different types of contributions, the criteria or how to raise issues read [how to contribute](https://storybook.digital.yorksu.org/?path=/docs/contributing--docs).
 - Make sure to also read our [coding standards and technical instructions](CONTRIBUTING.md).
 
+## Need Help?
+
+Looking to add this on your website and don't know where to start? Reach out to us on the [SU Digital CoP](). We can also develop components for your own website in your branding reach out to us on the [SU Digital CoP]() or email us on [it@yorksu.org](mailto:it@yorksu.org) to discuss pricing.
+
 ## Security
 
 If you've found a vulnerability, we want to know so that we can fix it. [Our security policy](SECURITY.md) tells you how to do this.
