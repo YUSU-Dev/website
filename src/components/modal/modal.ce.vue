@@ -54,6 +54,11 @@
           <div v-if="!signedIn">
             <a type="button" class="btn btn-primary" href="/sign-in">Sign In</a>
           </div>
+          <div v-if="welcomeMapError">
+            <a type="button" class="btn btn-primary" href="/welcome-fair"
+              >View Stalls</a
+            >
+          </div>
           <button
             type="button"
             class="btn btn-primary"
@@ -85,6 +90,10 @@ export default {
     errorDescription: {
       type: String,
       default: "Undefined Error!",
+    },
+    welcomeMapError: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ["close"],

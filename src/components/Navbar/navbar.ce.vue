@@ -373,6 +373,10 @@ export default {
             closed: true,
             links: [
               {
+                name: "Welcome Fair",
+                link: "/welcome-fair",
+              },
+              {
                 name: "Sports A-Z",
                 link: "/sport",
               },
@@ -472,10 +476,10 @@ export default {
                 name: "Activities Access Grants",
                 link: "/activities-access-grants",
               },
-              // {
-              //   name: "Complaints",
-              //   link: "/complaints",
-              // },
+              {
+                name: "Complaints",
+                link: "/complaints",
+              },
             ],
           },
           {
