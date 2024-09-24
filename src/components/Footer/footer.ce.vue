@@ -77,6 +77,9 @@
                     <li>
                       <a href="/documents/privacy">Your Privacy</a>
                     </li>
+                    <li>
+                      <a href="/complaints">Complaints</a>
+                    </li>
                   </ul>
                 </div>
               </div>
