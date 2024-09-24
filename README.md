@@ -34,7 +34,7 @@ We have a couple of resources to help you with contributing.
 
 ## Need Help?
 
-Looking to add this on your website and don't know where to start? Reach out to us on the [SU Digital CoP](). We can also develop components for your own website in your branding reach out to us on the [SU Digital CoP]() or email us on [it@yorksu.org](mailto:it@yorksu.org) to discuss pricing.
+Looking to add this on your website and don't know where to start? Reach out to us on the [SU Digital CoP](https://discord.gg/fCF3Ugm8). We can also develop components for your own website in your branding reach out to us on the [SU Digital CoP](https://discord.gg/fCF3Ugm8) or email us on [it@yorksu.org](mailto:it@yorksu.org) to discuss pricing.
 
 ## Security
 
