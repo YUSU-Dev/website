@@ -476,10 +476,10 @@ export default {
                 name: "Activities Access Grants",
                 link: "/activities-access-grants",
               },
-              // {
-              //   name: "Complaints",
-              //   link: "/complaints",
-              // },
+              {
+                name: "Complaints",
+                link: "/complaints",
+              },
             ],
           },
           {
