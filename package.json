@@ -10,7 +10,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build-css": "tailwindcss -i ./src/main.css -o ./dist/components.css --minify",
-    "prepare": "husky install",
+    "prepare": "husky",
     "test-storybook": "test-storybook",
     "new": "node utils/component-cli.cjs"
   },
