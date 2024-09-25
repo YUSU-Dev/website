@@ -1,5 +1,5 @@
 {
-  "name": "yorksu-vue-3",
+  "name": "yusu-vue-3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "new": "node utils/component-cli.cjs"
   },
   "keywords": [],
-  "author": "University of York Students' Union Digital Team <it@yorksu.org>",
+  "author": "York University Students' Union Digital Team <it@yusu.org>",
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.5.0",

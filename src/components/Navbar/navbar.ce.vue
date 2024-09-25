@@ -6,14 +6,14 @@
           <img
             class="block h-[77px] sm:hidden"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
-            alt="University of York Students' Union"
+            alt="York University Students' Union"
             loading="lazy"
         /></a>
         <a href="/" aria-label="Homepage">
           <img
             class="hidden h-[77px] sm:block"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
-            alt="University of York Students' Union"
+            alt="York University Students' Union"
             loading="lazy"
           />
         </a>
@@ -461,7 +461,7 @@ export default {
             closed: true,
             links: [
               {
-                name: "York SU Advice & Support",
+                name: "YUSU Advice & Support",
                 link: "/advice-support",
               },
               {
@@ -487,7 +487,7 @@ export default {
             closed: true,
             links: [
               {
-                name: "About York SU",
+                name: "About YUSU",
                 link: "/about-us",
               },
               {
@@ -496,14 +496,14 @@ export default {
               },
               {
                 name: "Jobs",
-                link: "https://apply.yorksu.org",
+                link: "https://apply.yusu.org",
               },
               {
                 name: "Contact Us",
                 link: "/contact-us",
               },
               {
-                name: "Sustainability at York SU",
+                name: "Sustainability at YUSU",
                 link: "/sustainability",
               },
             ],

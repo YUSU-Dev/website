@@ -43,9 +43,9 @@
               Please sign in below. If you are still having problems please get
               in touch with
               <a
-                href="mailto:it@yorksu.org"
+                href="mailto:it@yusu.org"
                 class="text-blue-800 underline dark:text-blue-400"
-                >YorkSU IT Support</a
+                >YUSU IT Support</a
               >.
             </p>
           </div>

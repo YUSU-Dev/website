@@ -9,7 +9,7 @@ export const Default = {
   args: {
     sub_groups: [
       {
-        name: "York SU Emails",
+        name: "YUSU Emails",
         options: [
           { name: "Student News", value: "option1" },
           { name: "Sabbs In Short", value: "option2" },

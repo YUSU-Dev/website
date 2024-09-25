@@ -239,7 +239,7 @@ export const Default = {
       {
         terminology: "Liberation networks",
         explanation:
-          "<p>Networks that support and represent specific groups of students, such as BAME students, Disabled students, local and commuting students, LGBTQ+ students and/or working-class students. We have eight liberation networks, as well as two community networks (Environment & Ethics, Raising and Giving), and each are represented by <a href='https://yorksu.org/officers'>Part-time Officers</a> who are elected by you!</p>",
+          "<p>Networks that support and represent specific groups of students, such as BAME students, Disabled students, local and commuting students, LGBTQ+ students and/or working-class students. We have eight liberation networks, as well as two community networks (Environment & Ethics, Raising and Giving), and each are represented by <a href='https://yusu.org/officers'>Part-time Officers</a> who are elected by you!</p>",
       },
       {
         terminology: "Manifesto",
@@ -298,16 +298,16 @@ export const Default = {
       {
         terminology: "Trustee",
         explanation:
-          "<p>A person who is responsible for overseeing the work of the Union and setting the strategic direction. Our <a href='https://yorksu.org/about-us'>Trustee Board</a> includes three elected Student Trustees, and each Sabb is also a Trustee. There are also appointed external members of the board</p>",
+          "<p>A person who is responsible for overseeing the work of the Union and setting the strategic direction. Our <a href='https://yusu.org/about-us'>Trustee Board</a> includes three elected Student Trustees, and each Sabb is also a Trustee. There are also appointed external members of the board</p>",
       },
       {
         terminology: "Vote",
         explanation: "<p>A formal indication of your candidate choice(s)</p>",
       },
       {
-        terminology: "Yorksu",
+        terminology: "YUSU",
         explanation:
-          "<p>University of York Students’ Union! We’re here for all students and are led by your elected officers to represent your voice. Whilst we work closely with the University on many projects, we are a separate, charitable organisation</p>",
+          "<p>York University Students’ Union! We’re here for all students and are led by your elected officers to represent your voice. Whilst we work closely with the University on many projects, we are a separate, charitable organisation</p>",
       },
     ],
     faqs: [

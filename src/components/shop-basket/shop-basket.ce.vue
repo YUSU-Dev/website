@@ -114,8 +114,8 @@
           <p class="mt-2">
             All events tickets are non-refundable. If you do require help with
             your order after purchasing please contact
-            <a class="text-blue-800 underline" href="mailto:finance@yorksu.org"
-              >finance@yorksu.org</a
+            <a class="text-blue-800 underline" href="mailto:finance@yusu.org"
+              >finance@yusu.org</a
             >
             or the student group running the event.
           </p>
@@ -230,7 +230,7 @@ export default {
       self.items = [];
       if (this.shopBasket.length === 0) {
         await axios
-          .get("https://yorksu.org/shop/basket-api-v2")
+          .get("https://yusu.org/shop/basket-api-v2")
           .then((response) => {
             let jsonData = {};
             try {

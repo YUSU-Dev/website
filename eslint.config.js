@@ -18,7 +18,7 @@ export default [
   {
     rules: {
       "vue/multi-word-component-names": 0, //  we use web components
-      "vue/no-reserved-component-names": 0, // we use web components so they're prefixed with yorksu-
+      "vue/no-reserved-component-names": 0, // we use web components so they're prefixed with yusu-
     },
   },
   configPretier,

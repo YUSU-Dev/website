@@ -35,7 +35,6 @@ function startServer() {
     cors({
       origin: [
         "https://yusu.org",
-        "https://yorksu.org",
         "https://yu-development.sums.su",
       ],
     })
@@ -49,7 +48,7 @@ function startServer() {
     if (req.originalUrl === "/") {
       const page = htmlTemplate({
         components: components.map((c) => ({
-          name: `yorksu-${c}`,
+          name: `yusu-${c}`,
           url: `http://localhost:3000/components/${c}.component.js`,
         })),
       });

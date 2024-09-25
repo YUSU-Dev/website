@@ -38,7 +38,7 @@
         <div v-if="!loading" class="flex h-full flex-col justify-between p-6">
           <div class="flex flex-col">
             <p v-if="premiumEvent" class="text-xs font-semibold text-gray-800">
-              York SU Featured Event
+              YUSU Featured Event
             </p>
 
             <p v-if="shopGroupName" class="text-xs font-semibold text-gray-800">

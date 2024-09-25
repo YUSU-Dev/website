@@ -1,14 +1,14 @@
-# Contributing to York SU Website
+# Contributing to YUSU Website
 
-Welcome and thank you for contributing to York SU website. This guide will take you through the technical considerations for contributing.
+Welcome and thank you for contributing to YUSU website. This guide will take you through the technical considerations for contributing.
 
 ## Code of Conduct
 
-The York SU has adopted the [Contributor Covenant](https://www.contributor-covenant.org/). Please familiarise yourself with our full [conduct principles](/CODE_OF_CONDUCT.md).
+The YUSU has adopted the [Contributor Covenant](https://www.contributor-covenant.org/). Please familiarise yourself with our full [conduct principles](/CODE_OF_CONDUCT.md).
 
 ## How to contribute
 
-To find out more about the different types of contributions, the criteria or how to raise issues read [how to contribute](https://storybook.digital.yorksu.org/?path=/docs/contributing--docs).
+To find out more about the different types of contributions, the criteria or how to raise issues read [how to contribute](https://storybook.digital.yusu.org/?path=/docs/contributing--docs).
 
 ### Making a suggestion or raising a bug
 
@@ -60,7 +60,7 @@ import Foo from "./foo.vue";
 register("foo", Foo);
 ```
 
-You can now use it anywhere on the website as the `<yorksu-foo>` tag.
+You can now use it anywhere on the website as the `<yusu-foo>` tag.
 
 ## Data Fetching
 

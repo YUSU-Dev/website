@@ -34,7 +34,7 @@ export default {
   methods: {
     getBanners: function () {
       axios
-        .get("https://yorksu.org/api/banners/homepage-whats-on")
+        .get("https://yusu.org/api/banners/homepage-whats-on")
         .then((response) => {
           if (response.data.length) {
             var cleanedData = response.data

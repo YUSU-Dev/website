@@ -161,7 +161,7 @@ export default {
         parameters += "&location=" + this.locationFilter;
       }
       await axios
-        .get("https://welcome-api.yorksu.org/api/stall?" + parameters)
+        .get("https://welcome-api.yusu.org/api/stall?" + parameters)
         .then(function (response) {
           self.stalls = response.data.stalls;
           if (response.data.pagination.next_page) {
@@ -183,7 +183,7 @@ export default {
     async getLocations() {
       let self = this;
       await axios
-        .get("https://welcome-api.yorksu.org/api/location?venues=false")
+        .get("https://welcome-api.yusu.org/api/location?venues=false")
         .then(function (response) {
           self.locations = response.data;
           for (let i = 0; i < self.locations.length; i++) {

@@ -97,7 +97,7 @@ export default {
   methods: {
     getBanners: function () {
       axios
-        .get("https://yorksu.org/api/banners/homepage-carousel")
+        .get("https://yusu.org/api/banners/homepage-carousel")
         .then((response) => {
           if (response.data.length) {
             var cleanedData = response.data

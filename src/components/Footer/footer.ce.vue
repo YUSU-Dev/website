@@ -10,8 +10,8 @@
             <div>
               <a href="/">
                 <img
-                  src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-white-full.png"
-                  alt="YorkSU Logo"
+                  src="https://assets-cdn.sums.su/YU/website/img/yusu-logo-white-full.png"
+                  alt="YUSU Logo"
                   class="w-52"
                 />
               </a>
@@ -24,7 +24,7 @@
                 </li>
                 <li>Charity Company #10688097 | VAT #GB272458389</li>
                 <li>
-                  © University of York Students' Union 2024 | All rights
+                  © York University Students' Union 2024 | All rights
                   reserved | Powered by
                   <a
                     href="https://sums.digital"
@@ -54,7 +54,7 @@
                     </li>
                     <li><a href="/advertise-with-us">Advertise With Us</a></li>
                     <li>
-                      <a href="https://apply.yorksu.org" target="_blank"
+                      <a href="https://apply.yusu.org" target="_blank"
                         >Jobs</a
                       >
                     </li>
@@ -103,8 +103,8 @@
                       icon="fas fa-envelope"
                       class="mr-2 inline h-4 w-4"
                     />
-                    <a href="mailto:reception@yorksu.org"
-                      >reception@yorksu.org</a
+                    <a href="mailto:reception@yusu.org"
+                      >reception@yusu.org</a
                     >
                   </li>
                 </ul>
@@ -119,7 +119,7 @@
               </li>
               <li>Charity Company #10688097 | VAT #GB272458389</li>
               <li>
-                © University of York Students' Union 2024 | All rights reserved
+                © York University Students' Union 2024 | All rights reserved
                 | Powered by
                 <a
                   href="https://sums.digital"

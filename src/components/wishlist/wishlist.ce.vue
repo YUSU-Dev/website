@@ -124,7 +124,7 @@ export default {
       let wishlistIds = [];
 
       await axios
-        .get("https://yorksu.org/wishlist/wishlist-api")
+        .get("https://yusu.org/wishlist/wishlist-api")
         .then((response) => {
           let jsonData = {};
           try {

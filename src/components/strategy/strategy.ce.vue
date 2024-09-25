@@ -7,7 +7,7 @@
             OUR STRATEGY
           </h2>
           <p>
-            We are the University of York Students’ Union. We exist to make sure
+            We are the York University Students’ Union. We exist to make sure
             every student at York gets the most out of their time here. From
             hosting events, to running elections, overseeing clubs and
             societies, and providing a helping hand when it’s needed. The work
@@ -409,49 +409,49 @@ export default {
           name: "Lewis Parrey",
           position: "Union Affairs Officer",
           pronouns: "He/Him",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-affairs.webp",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yusu-sabbs-central-hall-affairs.webp",
           url: "/officers/union-affairs",
         },
         {
           name: "Gen Andrews",
           pronouns: "She/Her",
           position: "Union Development Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-development.webp",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yusu-sabbs-central-hall-development.webp",
           url: "/officers/union-development",
         },
         {
           name: "Fenella Johnson",
           position: "Academic Officer",
           pronouns: "She/Her",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-academic.webp",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yusu-sabbs-central-hall-academic.webp",
           url: "/officers/academic",
         },
         {
           name: "Ezreal Xie",
           pronouns: "He/Him",
           position: "Equality and Inclusion Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-equality.webp",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yusu-sabbs-central-hall-equality.webp",
           url: "/officers/equality",
         },
         {
           name: "Freddy Russell",
           pronouns: "He/Him",
           position: "Community & Wellbeing Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-community.webp",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yusu-sabbs-central-hall-community.webp",
           url: "/officers/community",
         },
         {
           name: "Kaitlyn Beattie-Zarb",
           pronouns: "She/Her",
           position: "Activities Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-activities.webp",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yusu-sabbs-central-hall-activities.webp",
           url: "/officers/activities",
         },
         {
           name: "Tanisha Jain (TJ)",
           pronouns: "She/Her",
           position: "Sports Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-sports.webp",
+          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yusu-sabbs-central-hall-sports.webp",
           url: "/officers/sport",
         },
       ],

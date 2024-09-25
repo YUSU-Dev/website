@@ -119,7 +119,7 @@ export default {
     async getLocations() {
       let self = this;
       await axios
-        .get("https://welcome-api.yorksu.org/api/location")
+        .get("https://welcome-api.yusu.org/api/location")
         .then(function (response) {
           for (let i = 0; i < response.data.length; i++) {
             self.formattedLocations.push({
@@ -145,7 +145,7 @@ export default {
     async getStallLocation(stall_url) {
       let self = this;
       await axios
-        .get("https://welcome-api.yorksu.org/api/stall/" + stall_url)
+        .get("https://welcome-api.yusu.org/api/stall/" + stall_url)
         .then(function (response) {
           self.urlLocation = response.data.stall.locationId;
           self.updateActiveLocation();

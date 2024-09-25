@@ -132,7 +132,7 @@
                 name="address1"
                 class="form-input"
                 type="text"
-                placeholder="University of York Students' Union"
+                placeholder="York University Students' Union"
                 autocomplete="address-line1"
                 required
               />
@@ -211,7 +211,7 @@
                 name="email_address"
                 class="form-input"
                 type="email"
-                placeholder="email@yorksu.org"
+                placeholder="email@yusu.org"
                 autocomplete="email"
                 required
               />

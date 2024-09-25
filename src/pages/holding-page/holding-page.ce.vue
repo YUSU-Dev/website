@@ -4,7 +4,7 @@
       <img
         class="my-4 w-10/12 md:w-6/12"
         src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
-        alt="University of York Students' Union"
+        alt="York University Students' Union"
         loading="lazy"
       />
       <h1 class="my-4 text-xl">
@@ -17,8 +17,8 @@
       </h1>
       <h1 class="my-4 text-xl">
         To get in touch with us, you can contact us at
-        <a href="mailto:helpdesk@yorksu.org" class="text-blue-800 underline"
-          >helpdesk@yorksu.org</a
+        <a href="mailto:helpdesk@yusu.org" class="text-blue-800 underline"
+          >helpdesk@yusu.org</a
         >.
       </h1>
     </div>

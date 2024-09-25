@@ -54,20 +54,20 @@ export default {
     };
   },
   mounted() {
-    const cookieConsent = getCookie("yorksu-cookie-consent");
+    const cookieConsent = getCookie("yusu-cookie-consent");
     if (cookieConsent === "ok") {
       this.displayCookieConsent = false;
     }
   },
   methods: {
     acceptCookies() {
-      setCookie("yorksu-cookie-consent", "ok", {
+      setCookie("yusu-cookie-consent", "ok", {
         expires: 365,
       });
       this.displayCookieConsent = false;
     },
     rejectCookies() {
-      setCookie("yorksu-cookie-consent", "rejected", {
+      setCookie("yusu-cookie-consent", "rejected", {
         expires: 365,
       });
       this.displayCookieConsent = true;

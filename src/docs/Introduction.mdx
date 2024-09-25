@@ -10,9 +10,9 @@ import {
 
 # Introduction
 
-Welcome to YorkSU's Storybook! This contains all of our components and styles for the website.
+Welcome to YUSU's Storybook! This contains all of our components and styles for the website.
 
- UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
+ UI testing and development environment for YUSU website. This repo has two functions, one is to dynamically generate the JS files for our website
 
 ## Installing
 
@@ -26,22 +26,22 @@ To use Storybook, run `npm run storybook`.
 - Vue files should end `.ce.vue`
 
 
-## Using on the York SU Website
+## Using on the YUSU Website
 
-Any merges to `main` on this repo will automatically be deployed to https://assets.yorksu.org (hosted on Cloudflare R2).
+Any merges to `main` on this repo will automatically be deployed to https://assets.yusu.org (hosted on Cloudflare R2).
 
 ### Expression Engine Embedding onto pages
 
-To use these files with York SU's instance of Expression Engine you will just need to include the component(s) in the footer embed and then add it to the main html. For example:
+To use these files with YUSU's instance of Expression Engine you will just need to include the component(s) in the footer embed and then add it to the main html. For example:
 
 ```html
 {embed="core-components/.hero-header" title='title' page_header="seo
 description" image_url='banner url' } ...
-<yorksu-activities
+<yusu-activities
   siteid=""
   title="Clubs and Societies"
   selectedparents="2,24,39"
-></yorksu-activities>
+></yusu-activities>
 ... {embed="core-components/.footer" vue_comp="activities"}
 ```
 
@@ -51,7 +51,7 @@ Behind the scenes this is passed to the `.footer-assets` file which has the foll
 {exp:su_website_formatter:jsFormat js="{embed:vue_comp}"} {if js_count > 0} {js}
 <script
   type="module"
-  src="https://assets.yorksu.org/components/{url}.component.js"
+  src="https://assets.yusu.org/components/{url}.component.js"
 ></script>
 {/js} {/if} {/exp:su_website_formatter:jsFormat}
 ```
@@ -61,14 +61,14 @@ Behind the scenes this is passed to the `.footer-assets` file which has the foll
 To use them in production, not using the above method you will need to reference the component file - make sure you use `<script type="module">` otherwise it will not work. For example:
 
 ```html
-<yorksu-activities
+<yusu-activities
   siteid=""
   title="Clubs and Societies"
   selectedparents="2,24,39"
-></yorksu-activities>
+></yusu-activities>
 <script
   type="module"
-  src="https://assets.yorksu.org/components/activities.component.js"
+  src="https://assets.yusu.org/components/activities.component.js"
 ></script>
 ```
 
@@ -77,6 +77,6 @@ You will also need to add the stylesheet - there's one shared across all the com
 ```html
 <link
   rel="stylesheet"
-  href="https://assets.yorksu.org/components/components.css"
+  href="https://assets.yusu.org/components/components.css"
 />
 ```

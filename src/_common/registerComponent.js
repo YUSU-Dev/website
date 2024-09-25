@@ -6,5 +6,5 @@ export function register(name, component, forceExcludeMainCSS = false) {
     component.styles = [...(component.styles ?? []), MainCSS.default];
   }
   const el = defineCustomElement(component);
-  customElements.define(`yorksu-${name}`, el);
+  customElements.define(`yusu-${name}`, el);
 }

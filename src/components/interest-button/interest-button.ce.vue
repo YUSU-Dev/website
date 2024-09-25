@@ -100,7 +100,7 @@ export default {
       var self = this;
       await axios
         .get(
-          "https://yorksu.org/wishlist/wishlist-activity-api/" +
+          "https://yusu.org/wishlist/wishlist-activity-api/" +
             self.activityId,
         )
         .then((response) => {

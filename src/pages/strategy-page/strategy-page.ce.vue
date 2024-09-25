@@ -2,7 +2,7 @@
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
   <HeroHeader
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
-    title="YorkSU Strategy"
+    title="YUSU Strategy"
   />
   <div id="maincontent" class="flex flex-col items-center justify-center">
     <Strategy />

@@ -1,15 +1,15 @@
 <!-- markdownlint-disable-file -->
 <p align="center">
-  <img width="150px" src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-black-icon.png" alt="" loading="lazy">
+  <img width="150px" src="https://assets-cdn.sums.su/YU/website/img/yusu-logo-black-icon.png" alt="" loading="lazy">
 </p>
 
-# York SU Website Components
+# YUSU Website Components
 
 [![Build and Upload to R2](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml)
 [![pages-build-deployment](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/pages/pages-build-deployment)
 [![Storybook Tests](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/storybook-tests.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/storybook-tests.yml)
 
-A UI testing and development environment for York SU website. This repo has two functions, one is to dynamically generate the JS files for our website
+A UI testing and development environment for YUSU website. This repo has two functions, one is to dynamically generate the JS files for our website
 
 ## Installing
 
@@ -21,20 +21,20 @@ To use Storybook, run `npm run storybook`.
 - For naming of directories or files we should use kebab-case.
 - Vue files should end `.ce.vue`
 
-## Usage on the York SU Website
+## Usage on the YUSU Website
 
-Any merges to `main` on this repo will automatically be deployed to https://assets.yorksu.org (hosted on Cloudflare R2). More information on how to add to the website can be found in [storybook](storybook.digital.yorksu.org/?path=/docs/introduction--docs)
+Any merges to `main` on this repo will automatically be deployed to https://assets.yusu.org (hosted on Cloudflare R2). More information on how to add to the website can be found in [storybook](storybook.digital.yusu.org/?path=/docs/introduction--docs)
 
 ## Contributing
 
 We have a couple of resources to help you with contributing.
 
-- To find out more about the different types of contributions, the criteria or how to raise issues read [how to contribute](https://storybook.digital.yorksu.org/?path=/docs/contributing--docs).
+- To find out more about the different types of contributions, the criteria or how to raise issues read [how to contribute](https://storybook.digital.yusu.org/?path=/docs/contributing--docs).
 - Make sure to also read our [coding standards and technical instructions](CONTRIBUTING.md).
 
 ## Need Help?
 
-Looking to add this on your website and don't know where to start? Reach out to us on the [SU Digital CoP](https://discord.gg/fCF3Ugm8). We can also develop components for your own website in your branding reach out to us on the [SU Digital CoP](https://discord.gg/fCF3Ugm8) or email us on [it@yorksu.org](mailto:it@yorksu.org) to discuss pricing.
+Looking to add this on your website and don't know where to start? Reach out to us on the [SU Digital CoP](https://discord.gg/fCF3Ugm8). We can also develop components for your own website in your branding reach out to us on the [SU Digital CoP](https://discord.gg/fCF3Ugm8) or email us on [it@yusu.org](mailto:it@yusu.org) to discuss pricing.
 
 ## Security
 
@@ -42,7 +42,7 @@ If you've found a vulnerability, we want to know so that we can fix it. [Our sec
 
 ## License
 
-Copyright © 2024 University of York Students' Union
+Copyright © 2024 York University Students' Union
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
