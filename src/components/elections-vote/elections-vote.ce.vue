@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
     {exp:su_elections:voteForm election_id="{segment_3}" activity_id="{segment_4}"}
     {embed="core-components/.header" title='Vote'}
