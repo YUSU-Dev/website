@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import Navbar from "../../components/Navbar/navbar.ce.vue";
-import Footer from "../../components/Footer/footer.ce.vue";
+import Navbar from "../../../components/Navbar/navbar.ce.vue";
+import Footer from "../../../components/Footer/footer.ce.vue";
 export default {
   name: "AssociateLogin",
   components: {
