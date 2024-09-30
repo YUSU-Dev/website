@@ -373,10 +373,6 @@ export default {
             closed: true,
             links: [
               {
-                name: "Welcome Fair",
-                link: "/welcome-fair",
-              },
-              {
                 name: "Sports A-Z",
                 link: "/sport",
               },
