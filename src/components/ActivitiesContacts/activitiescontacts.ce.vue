@@ -170,7 +170,7 @@ export default {
       const parseURL = (url) => {
         try {
           return new URL(url);
-        } catch (e) {
+        } catch {
           return null;
         }
       };
@@ -179,12 +179,12 @@ export default {
         return parsedURL && allowedHosts.includes(parsedURL.host);
       };
       const allowedHosts = {
-        facebook: ['facebook.com', 'www.facebook.com'],
-        instagram: ['instagram.com', 'www.instagram.com'],
-        twitter: ['twitter.com', 'www.twitter.com', 'x.com', 'www.x.com'],
-        youtube: ['youtube.com', 'www.youtube.com'],
-        discord: ['discord.gg', 'www.discord.gg', 'slack.com', 'www.slack.com'],
-        tiktok: ['tiktok.com', 'www.tiktok.com']
+        facebook: ["facebook.com", "www.facebook.com"],
+        instagram: ["instagram.com", "www.instagram.com"],
+        twitter: ["twitter.com", "www.twitter.com", "x.com", "www.x.com"],
+        youtube: ["youtube.com", "www.youtube.com"],
+        discord: ["discord.gg", "www.discord.gg", "slack.com", "www.slack.com"],
+        tiktok: ["tiktok.com", "www.tiktok.com"],
       };
       if (this.facebook) {
         if (isValidHost(this.facebook, allowedHosts.facebook)) {
