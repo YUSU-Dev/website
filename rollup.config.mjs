@@ -5,13 +5,17 @@ import replace from "@rollup/plugin-replace";
 import { minify } from "rollup-plugin-esbuild";
 import postcss from "rollup-plugin-postcss";
 import alias from "@rollup/plugin-alias";
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 
 import postcssConfig from "./postcss.config.mjs";
 import path from "node:path";
 
 const entrypoints = globSync("*/**/*.component.js", {
-  ignore: ["dist/**"],
+  ignore: [
+    "dist/**",
+    "src/components/elections-vote/elections-vote.component.js",
+    "src/components/elections-nominate/elections-nominate.component.js",
+  ],
 });
 
 function inlineCSSPlugin() {
