@@ -123,80 +123,25 @@
             </div>
 
             <div class="mb-2">
-              <label for="address1"
-                >Address Line 1
-                <span class="text-red-600">* Required</span></label
-              >
               <input
                 id="address1"
                 name="address1"
                 class="form-input"
-                type="text"
+                type="hidden"
+                value="Redacted"
                 placeholder="University of York Students' Union"
-                autocomplete="address-line1"
                 required
               />
             </div>
 
             <div class="mb-2">
-              <label for="address2">Address Line 2</label>
-              <input
-                id="address2"
-                name="address2"
-                class="form-input"
-                type="text"
-                placeholder="University of York"
-                autocomplete="address-line2"
-              />
-            </div>
-
-            <div class="mb-2">
-              <label for="address3">Address Line 3</label>
-              <input
-                id="address3"
-                name="address3"
-                class="form-input"
-                type="text"
-                placeholder="Heslington"
-                autocomplete="address-line3"
-              />
-            </div>
-
-            <div class="mb-2">
-              <label for="address4">City</label>
-              <input
-                id="address4"
-                name="address4"
-                class="form-input"
-                type="text"
-                placeholder="York"
-                autocomplete="address-level2"
-              />
-            </div>
-
-            <div class="mb-2">
-              <label for="address5">Country</label>
-              <input
-                id="address5"
-                name="address5"
-                class="form-input"
-                type="text"
-                placeholder="North Yorkshire"
-                autocomplete="country-name"
-              />
-            </div>
-
-            <div class="mb-2">
-              <label for="postcode"
-                >Postcode <span class="text-red-600">* Required</span></label
-              >
               <input
                 id="postcode"
                 name="postcode"
                 class="form-input"
-                type="text"
+                type="hidden"
+                value="YO10 5DD"
                 placeholder="YO10 5DD"
-                autocomplete="postal-code"
                 required
               />
             </div>
@@ -278,8 +223,8 @@
 </template>
 
 <script>
-import Navbar from "../../components/Navbar/navbar.ce.vue";
-import Footer from "../../components/Footer/footer.ce.vue";
+import Navbar from "../../../components/Navbar/navbar.ce.vue";
+import Footer from "../../../components/Footer/footer.ce.vue";
 export default {
   name: "AssociateApply",
   components: {
