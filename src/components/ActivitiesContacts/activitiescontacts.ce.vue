@@ -167,8 +167,27 @@ export default {
       return "'" + URL + "'";
     },
     setContacts() {
+      const parseURL = (url) => {
+        try {
+          return new URL(url);
+        } catch {
+          return null;
+        }
+      };
+      const isValidHost = (url, allowedHosts) => {
+        const parsedURL = parseURL(url);
+        return parsedURL && allowedHosts.includes(parsedURL.host);
+      };
+      const allowedHosts = {
+        facebook: ["facebook.com", "www.facebook.com"],
+        instagram: ["instagram.com", "www.instagram.com"],
+        twitter: ["twitter.com", "www.twitter.com", "x.com", "www.x.com"],
+        youtube: ["youtube.com", "www.youtube.com"],
+        discord: ["discord.gg", "www.discord.gg", "slack.com", "www.slack.com"],
+        tiktok: ["tiktok.com", "www.tiktok.com"],
+      };
       if (this.facebook) {
-        if (this.facebook.includes("facebook.com")) {
+        if (isValidHost(this.facebook, allowedHosts.facebook)) {
           this.facebookDisplay = this.name;
           this.facebookURL = this.facebook;
           if (!this.facebookURL.startsWith("https://")) {
@@ -180,7 +199,7 @@ export default {
         }
       }
       if (this.instagram) {
-        if (this.instagram.includes("instagram.com")) {
+        if (isValidHost(this.instagram, allowedHosts.instagram)) {
           this.instagramDisplay = this.name;
           this.instagramURL = this.instagram;
           if (!this.instagramURL.startsWith("https://")) {
@@ -192,10 +211,7 @@ export default {
         }
       }
       if (this.twitter) {
-        if (
-          this.twitter.includes("x.com") ||
-          this.twitter.includes("twitter.com")
-        ) {
+        if (isValidHost(this.twitter, allowedHosts.twitter)) {
           this.twitterDisplay = this.name;
           this.twitterURL = this.twitter;
           if (!this.twitterURL.startsWith("https://")) {
@@ -208,7 +224,7 @@ export default {
       }
       if (this.youtube) {
         this.youtubeDisplay = this.name;
-        if (this.youtube.includes("youtube.com")) {
+        if (isValidHost(this.youtube, allowedHosts.youtube)) {
           this.youtubeURL = this.youtube;
           if (!this.youtubeURL.startsWith("https://")) {
             this.youtubeURL = "https://" + this.youtubeURL;
@@ -222,7 +238,7 @@ export default {
         if (this.discord.includes("slack.com")) {
           this.isSlack = true;
         }
-        if (this.discord.includes("discord.gg") || this.isSlack) {
+        if (isValidHost(this.discord, allowedHosts.discord) || this.isSlack) {
           this.discordURL = this.discord;
           if (!this.discordURL.startsWith("https://")) {
             this.discordURL = "https://" + this.discordURL;
@@ -232,7 +248,7 @@ export default {
         }
       }
       if (this.tiktok) {
-        if (this.tiktok.includes("tiktok.com")) {
+        if (isValidHost(this.tiktok, allowedHosts.tiktok)) {
           this.tiktokDisplay = this.name;
           this.tiktokURL = this.tiktok;
           if (!this.tiktokURL.startsWith("https://")) {
