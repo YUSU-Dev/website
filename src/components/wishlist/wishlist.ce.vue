@@ -46,12 +46,12 @@
                     :url="'/shop?activity_id=' + activity.id"
                   />
                   <InterestButton :activity-id="activity.id" />
-                  <Button
+                  <!-- <Button
                     title="Welcome Fair Location"
                     class="flex w-full justify-center text-center"
                     is-primary
                     :url="'/map?activity=' + activity.url_name"
-                  />
+                  /> -->
                 </div>
               </div>
             </div>
