@@ -10,6 +10,7 @@ const config = {
     "@storybook/addon-themes",
     "@storybook/addon-coverage",
     "@storybook/addon-interactions",
+    "cheesy-stories",
   ],
   framework: {
     name: "@storybook/web-components-vite",

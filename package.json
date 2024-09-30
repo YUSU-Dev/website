@@ -74,6 +74,7 @@
     "@storybook/addon-docs": "^8.2.6",
     "@vitejs/plugin-vue": "^5.0.4",
     "axios": "^1.7.4",
+    "cheesy-stories": "^0.1.1",
     "commander": "^12.1.0",
     "http-proxy-middleware": "^3.0.0",
     "mapbox-gl": "^3.6.0",
