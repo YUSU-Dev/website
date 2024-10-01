@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { addToBasketHandler } from "../shop/shop.basket.js";
+import { addToBasketHandler } from "../shop/shop-index/shop.basket.js";
 import Button from "../button/button.ce.vue";
 import Modal from "../modal/modal.ce.vue";
 

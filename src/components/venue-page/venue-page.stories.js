@@ -1,7 +1,7 @@
 import "./venue-page.component.js";
 
 export default {
-  title: "Components/Venue Page",
+  title: "Page Content/Venue Page",
   component: "venue-page",
 };
 

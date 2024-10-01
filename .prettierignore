@@ -3,6 +3,6 @@
 .prettierignore
 
 *.mdx
-src/pages/shop-old-fields/shop-products-fields-ee.html
+src/pages/shop/shop-old-fields/shop-products-fields-ee.html
 src/components/elections-nominate/elections-nominate.ce.vue
 src/components/elections-vote/elections-vote.ce.vue

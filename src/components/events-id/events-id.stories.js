@@ -1,7 +1,7 @@
 import "./events-id.component.js";
 
 export default {
-  title: "Components/Events/ID",
+  title: "Page Content/Events/ID",
   component: "events-id",
 };
 

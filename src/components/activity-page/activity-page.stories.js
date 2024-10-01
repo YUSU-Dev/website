@@ -1,7 +1,7 @@
 import "./activity-page.component.js";
 
 export default {
-  title: "PageContent/Activity View Page",
+  title: "Page Content/Activity Page",
   component: "activity-page",
 };
 

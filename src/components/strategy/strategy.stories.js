@@ -1,7 +1,7 @@
 import "./strategy.component.js";
 
 export default {
-  title: "Components/Strategy",
+  title: "Page Content/Strategy",
   component: "strategy",
 };
 

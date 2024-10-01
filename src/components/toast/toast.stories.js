@@ -1,7 +1,7 @@
 import "./toast.component.js";
 
 export default {
-  title: "Components/Toast",
+  title: "Elements/Toast",
   component: "toast",
 };
 

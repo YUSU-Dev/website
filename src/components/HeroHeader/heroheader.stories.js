@@ -1,7 +1,7 @@
 import "./heroheader.component.js";
 
 export default {
-  title: "Components/HeroHeader",
+  title: "Core Components/HeroHeader",
   component: "heroheader",
   parameters: {},
 };

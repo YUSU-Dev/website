@@ -10,7 +10,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import postcssConfig from "./postcss.config.mjs";
 import path from "node:path";
 
-const entrypoints = globSync("*/**/*.component.js", {
+const entrypoints = globSync("*/**/**/*.component.js", {
   ignore: [
     "dist/**",
     "src/components/elections-vote/elections-vote.component.js",

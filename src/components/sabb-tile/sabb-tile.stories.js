@@ -1,7 +1,7 @@
 import "./sabb-tile.component.js";
 
 export default {
-  title: "Elements/Sabb Tile",
+  title: "Elements/Tile/Sabb Tile",
   component: "sabb-tile",
 };
 

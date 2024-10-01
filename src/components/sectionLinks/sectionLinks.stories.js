@@ -1,7 +1,7 @@
 import "./sectionLinks.component.js";
 
 export default {
-  title: "Components/SectionLinks/Full Example",
+  title: "Components/Section Links/Full Example",
   component: "section-links",
 };
 

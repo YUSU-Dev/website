@@ -1,7 +1,7 @@
 import "./homepage.component.js";
 
 export default {
-  title: "Pages/HomePage",
+  title: "Pages/Homepage",
   component: "homepage",
 };
 

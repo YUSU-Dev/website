@@ -1,7 +1,7 @@
 import "./account.component.js";
 
 export default {
-  title: "Components/Account",
+  title: "Page Content/Account",
   component: "account",
 };
 

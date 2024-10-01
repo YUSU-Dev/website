@@ -1,7 +1,7 @@
 import "./elections-list.component.js";
 
 export default {
-  title: "Components/Elections List",
+  title: "Page Content/Elections/Elections List",
   component: "elections-list",
 };
 
