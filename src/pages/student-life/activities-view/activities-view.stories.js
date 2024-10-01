@@ -1,7 +1,7 @@
 import "./activities-view.component.js";
 
 export default {
-  title: "Pages/ActivitiesView",
+  title: "Pages/Student Life/ActivitiesView",
   component: "activities-view",
 };
 

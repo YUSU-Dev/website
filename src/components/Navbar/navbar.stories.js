@@ -1,7 +1,7 @@
 import "./navbar.component.js";
 
 export default {
-  title: "Components/Navbar",
+  title: "Core Components/Navbar",
   component: "navbar",
 };
 

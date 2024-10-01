@@ -1,7 +1,7 @@
 import "./shop-old-fields.component.js";
 
 export default {
-  title: "Pages/Shop Old Fields",
+  title: "Pages/Shop/Shop Old Fields",
   component: "shop-old-fields",
 };
 

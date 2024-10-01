@@ -1,7 +1,7 @@
 import "./shop-product.component.js";
 
 export default {
-  title: "Pages/Shop Product",
+  title: "Pages/Shop/Shop Product",
   component: "shop-product",
 };
 

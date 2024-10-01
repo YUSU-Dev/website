@@ -1,7 +1,7 @@
 import "./studentlife.component.js";
 
 export default {
-  title: "Pages/StudentLife",
+  title: "Pages/Student Life/Student Life",
   component: "studentlife",
 };
 

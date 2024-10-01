@@ -1,7 +1,7 @@
 import "./networks-page.component.js";
 
 export default {
-  title: "Pages/Networks Page",
+  title: "Pages/Student Voice/Networks Page",
   component: "networks-page",
 };
 

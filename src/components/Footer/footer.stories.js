@@ -1,7 +1,7 @@
 import "./footer.component.js";
 
 export default {
-  title: "Components/Footer",
+  title: "Core Components/Footer",
   component: "footer",
 };
 

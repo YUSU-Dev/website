@@ -20,6 +20,17 @@ const preview = {
       },
       defaultViewport: "iphone14",
     },
+    options: {
+      storySort: {
+        order: [
+          "Intro",
+          "Elements",
+          "Core Components",
+          "Components",
+          ["Page Content", "Pages"],
+        ],
+      },
+    },
   },
   tags: ["autodocs"],
   decorators: [

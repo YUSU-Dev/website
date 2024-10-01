@@ -1,7 +1,7 @@
 import "./herobanner.component.js";
 
 export default {
-  title: "Components/HeroBanner",
+  title: "Core Components/HeroBanner",
   component: "herobanner",
   parameters: {},
 };

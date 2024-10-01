@@ -1,7 +1,7 @@
 import "./events-products.component.js";
 
 export default {
-  title: "Components/Events/Products",
+  title: "Page Content/Events/Products",
   component: "events-products",
 };
 

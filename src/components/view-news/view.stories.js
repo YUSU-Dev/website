@@ -1,7 +1,7 @@
 import "./view-news.component.js";
 
 export default {
-  title: "Components/News/View News",
+  title: "Page Content/News/View News",
   component: "view-news",
 };
 

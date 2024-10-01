@@ -1,7 +1,7 @@
 import "./site-searchbar.component.js";
 
 export default {
-  title: "Components/Site Searchbar",
+  title: "Elements/Searchbar/Site Searchbar",
   component: "site-searchbar",
 };
 

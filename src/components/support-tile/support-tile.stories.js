@@ -1,7 +1,7 @@
 import "./support-tile.component.js";
 
 export default {
-  title: "Elements/Support Tile",
+  title: "Elements/Tile/Support Tile",
   component: "support-tile",
 };
 

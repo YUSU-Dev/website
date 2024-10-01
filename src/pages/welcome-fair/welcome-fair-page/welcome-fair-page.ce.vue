@@ -31,7 +31,7 @@
 <script>
 import HeroHeader from "../../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../../components/Footer/footer.ce.vue";
-import WelcomeFair from "../../../components/welcome-fair/welcome-fair.ce.vue";
+import WelcomeFair from "../../../components/welcome-fair//welcome-fair-index/welcome-fair.ce.vue";
 import SectionLink from "../../../components/section-link/section-link.ce.vue";
 export default {
   name: "WelcomeFairPage",

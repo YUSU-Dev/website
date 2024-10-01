@@ -1,7 +1,7 @@
 import "./self-definitions-form.component.js";
 
 export default {
-  title: "Pages/Self Definitions Form",
+  title: "Pages/Student Voice/Self Definitions Form",
   component: "self-definitions-form",
 };
 

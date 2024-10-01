@@ -1,7 +1,7 @@
 import "./elections-resources.component.js";
 
 export default {
-  title: "Components/Elections Resources",
+  title: "Page Content/Elections/Elections Resources",
   component: "elections-resources",
 };
 

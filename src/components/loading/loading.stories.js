@@ -1,7 +1,7 @@
 import "./loading.component.js";
 
 export default {
-  title: "Components/Loading",
+  title: "Elements/Loading",
   component: "loading",
 };
 

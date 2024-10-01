@@ -1,7 +1,7 @@
 import "./activities-view-page.component.js";
 
 export default {
-  title: "Components/Activities View Page",
+  title: "Page Content/Activity Page/Activities View without Header",
   component: "activities-view-page",
 };
 

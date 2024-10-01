@@ -1,7 +1,7 @@
 import "./activities-embed.component.js";
 
 export default {
-  title: "Components/Activities Embed",
+  title: "Components/Activities/Activities Embed",
   component: "activities-embed",
 };
 

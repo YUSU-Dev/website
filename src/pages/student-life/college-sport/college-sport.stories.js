@@ -1,7 +1,7 @@
 import "./college-sport.component.js";
 
 export default {
-  title: "Pages/College Sport",
+  title: "Pages/Student Life/College Sport",
   component: "college-sport",
 };
 

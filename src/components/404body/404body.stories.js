@@ -2,7 +2,7 @@ import "./404body.component.js";
 import { fn } from "@storybook/test";
 
 export default {
-  title: "PageContent/404Body",
+  title: "Page Content/404 Body",
   component: "404body",
   parameters: {},
 };
