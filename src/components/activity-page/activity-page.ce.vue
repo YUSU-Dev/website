@@ -92,7 +92,7 @@
 <script>
 import Button from "../../components/button/button.ce.vue";
 import Events from "../../components/Events/events.ce.vue";
-import Shop from "../../components/shop/shop.ce.vue";
+import Shop from "../../components/shop/shop-index/shop.ce.vue";
 import Activities from "../../components/activities/activities.ce.vue";
 import ActivitiesContacts from "../../components/ActivitiesContacts/activitiescontacts.ce.vue";
 import axios from "../../_common/axios.mjs";
