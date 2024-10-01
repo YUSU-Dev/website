@@ -14,7 +14,7 @@
     {if:else}
     <section class="my-4 py-4">
       <div class="container mx-auto flex flex-col justify-center pt-4">
-        <form id="associate-login" method="post" class="">
+        <form id="associate-form" method="post" class="">
           <div>
             <h1 class="text-2xl font-bold">Associate Member Registration</h1>
           </div>
@@ -107,13 +107,13 @@
             </div>
 
             <div class="mb-2">
-              <label for="dob"
+              <label for="dob-field"
                 >Date of Birth
                 <span class="text-red-600">* Required</span></label
               >
               <input
-                id="dob"
-                name="dob"
+                id="dob-field"
+                name="dob-field"
                 class="form-input"
                 autocomplete="bday"
                 type="date"
@@ -172,6 +172,13 @@
                 value="0"
                 placeholder="07770777077"
                 autocomplete="tel"
+              />
+              <input
+                id="dob"
+                name="dob"
+                class="form-input"
+                type="hidden"
+                placeholder="15/01/1997"
               />
             </div>
 
