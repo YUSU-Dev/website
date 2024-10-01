@@ -57,7 +57,7 @@ export default {
       v-for="(link, index) in LinksList"
       :key="index"
       :href="link.href"
-      class="group flex min-h-24 justify-center py-2"
+      class="group flex min-h-24 py-2"
     >
       <div
         :class="`flex h-14 w-14 flex-shrink-0 items-center justify-center bg-mustard group-hover:bg-primary-pink ${link.SVGPadding ?? 'p-2'} `"
