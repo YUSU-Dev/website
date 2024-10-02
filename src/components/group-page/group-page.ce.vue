@@ -1,9 +1,9 @@
 <template>
   <main>
-    <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
+    <div class="flex flex-col gap-x-20 gap-y-12 md:flex-row">
       <div class="flex flex-grow flex-col gap-y-6">
         <div
-          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row sm:hidden"
+          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row md:hidden"
         >
           <!-- {if category_name != "College Sport (Groups)"} -->
           <Button
@@ -25,33 +25,21 @@
           <InterestButton v-if="!isAdoptable" :activity-id="groupId" />
         </div>
         <div
-          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row sm:hidden"
+          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row md:hidden"
         >
           <GroupPagesList
             :group-id="groupId"
             :group-url="pageActivity.url_name"
+            :selected-url="pageDetails.url_title"
           />
         </div>
-        <div v-if="pageActivity.description" class="flex flex-col">
-          <h2 class="mb-5 text-3xl font-bold">About</h2>
-          <article v-html="pageActivity.description"></article>
-        </div>
-        <div v-else class="flex flex-col gap-y-6">
-          <div class="flex flex-col">
-            <h3 class="text-xl font-semibold">Meeting times</h3>
-            <p>Please get in touch via email to find out our meeting times.</p>
-          </div>
-          <div class="flex flex-col">
-            <h3 class="text-xl font-semibold">Get Involved</h3>
-            <p>
-              We are open to all students, and encourage those from all
-              backgrounds to come along!
-            </p>
-          </div>
+        <div class="flex flex-col">
+          <h1 class="text-3xl font-bold">{{ pageDetails.title }}</h1>
+          <article v-html="groupPage.content"></article>
         </div>
       </div>
       <div class="flex flex-col gap-y-8">
-        <div class="hidden w-max flex-col gap-y-4 sm:flex">
+        <div class="hidden w-max flex-col gap-y-4 md:flex">
           <Button
             v-if="isActivity"
             :class="{ 'bg-light-blue': title == 'join' }"
@@ -72,6 +60,7 @@
           <GroupPagesList
             :group-id="groupId"
             :group-url="pageActivity.url_name"
+            :selected-url="pageDetails.url_title"
           />
         </div>
         <div class="flex flex-col">
@@ -90,22 +79,10 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col">
-      <Events :groupid="groupId" title="Events" icon />
-      <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
-      <Activities
-        v-if="subgroupCategoryId"
-        :selectedcategory="subgroupCategoryId"
-        :title="subgroupCategoryName"
-      />
-    </div>
   </main>
 </template>
 <script>
 import Button from "../../components/button/button.ce.vue";
-import Events from "../../components/Events/events.ce.vue";
-import Shop from "../../components/shop/shop-index/shop.ce.vue";
-import Activities from "../../components/activities/activities.ce.vue";
 import ActivitiesContacts from "../../components/ActivitiesContacts/activitiescontacts.ce.vue";
 import axios from "../../_common/axios.mjs";
 import InterestButton from "../interest-button/interest-button.ce.vue";
@@ -113,10 +90,13 @@ import GroupPagesList from "../group-pages-list/group-pages-list.ce.vue";
 export default {
   props: {
     groupId: { type: String, default: null },
+    pageUrl: { type: String, default: null },
   },
   data() {
     return {
       pageActivity: {},
+      groupPage: {},
+      pageDetails: {},
       subgroupCategoryId: null,
       subgroupCategoryName: null,
       isAdoptable: false,
@@ -127,9 +107,6 @@ export default {
   components: {
     Button,
     ActivitiesContacts,
-    Events,
-    Shop,
-    Activities,
     InterestButton,
     GroupPagesList,
   },
@@ -148,10 +125,23 @@ export default {
             "X-Site-Id": self.siteid,
           },
         }),
+        axios.get(
+          "https://pluto.sums.su/api/groups/" +
+            self.groupId +
+            "/pages/" +
+            self.pageUrl,
+          {
+            headers: {
+              "X-Site-Id": self.siteid,
+            },
+          },
+        ),
       ])
       .then(
-        axios.spread((response1, response2) => {
+        axios.spread((response1, response2, response3) => {
           self.pageActivity = response1.data;
+          self.groupPage = response3.data;
+          self.pageDetails = response3.data.page;
           self.loading = false;
           self.pageActivity.category = response2.data.find(
             (item) => item.id === self.pageActivity.activity_category_id,
