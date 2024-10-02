@@ -44,7 +44,6 @@ export default {
       )
       .then((response) => {
         self.pages = response.data;
-        console.log(self.pages);
       })
       .catch((error) => {
         console.log(error);
