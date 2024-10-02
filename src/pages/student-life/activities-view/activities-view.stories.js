@@ -1,13 +1,24 @@
 import "./activities-view.component.js";
 
 export default {
-  title: "Pages/Student Life/ActivitiesView",
+  title: "Pages/Student Life/Activities View",
   component: "activities-view",
 };
 
 export const cybersoc = {
   args: {
     activityid: 7,
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because it's user submitted content and will always fail.
+    },
+  },
+};
+
+export const TestSoc = {
+  args: {
+    activityid: 483,
   },
   parameters: {
     a11y: {
