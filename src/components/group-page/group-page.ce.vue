@@ -23,6 +23,10 @@
             url="/adopt-an-activity"
           />
           <InterestButton v-if="!isAdoptable" :activity-id="groupId" />
+        </div>
+        <div
+          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row sm:hidden"
+        >
           <GroupPagesList
             :group-id="groupId"
             :group-url="pageActivity.url_name"

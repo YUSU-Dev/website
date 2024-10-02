@@ -1,7 +1,7 @@
 import "./activities-page.component.js";
 
 export default {
-  title: "Pages/Activities Page",
+  title: "Pages/Student Life/Activities Page",
   component: "activities-page",
 };
 

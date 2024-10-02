@@ -1,7 +1,7 @@
 import "./group-page.component.js";
 
 export default {
-  title: "Components/Group Page",
+  title: "Components/Activities/Group Page",
   component: "group-page",
 };
 
