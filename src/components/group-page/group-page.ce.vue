@@ -1,9 +1,9 @@
 <template>
   <main>
-    <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
+    <div class="flex flex-col gap-x-20 gap-y-12 md:flex-row">
       <div class="flex flex-grow flex-col gap-y-6">
         <div
-          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row sm:hidden"
+          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row md:hidden"
         >
           <!-- {if category_name != "College Sport (Groups)"} -->
           <Button
@@ -25,7 +25,7 @@
           <InterestButton v-if="!isAdoptable" :activity-id="groupId" />
         </div>
         <div
-          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row sm:hidden"
+          class="flex flex-col gap-x-4 gap-y-4 xxs:w-max xxs:flex-row md:hidden"
         >
           <GroupPagesList
             :group-id="groupId"
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="flex flex-col gap-y-8">
-        <div class="hidden w-max flex-col gap-y-4 sm:flex">
+        <div class="hidden w-max flex-col gap-y-4 md:flex">
           <Button
             v-if="isActivity"
             :class="{ 'bg-light-blue': title == 'join' }"
