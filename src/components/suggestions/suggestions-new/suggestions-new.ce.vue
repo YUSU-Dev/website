@@ -1,6 +1,6 @@
 <!-- eslint-disable -->
 <template>
-  {embed="core-components/.hero-header" title="New Suggestion"
+  {embed="core-components/.hero-header" title="New Idea"
   image_url="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg"}
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
@@ -19,7 +19,7 @@
       <div class="border-l-4 border-green-400 bg-green-100 p-2">
         <h2 class="mb-0 text-xl">Success!</h2>
         <p>
-          Thank you for submitting an idea, question, view or experience to YUSUggestions.
+          Thank you for submitting an idea, question, view or experience to York SU Big Ideas.
           Your submission will be reviewed and published on the website within 2 days, unless it
           is considered unsuitable. Once on the website other students will be able to express
           interest in your submission, add comments and, where appropriate, a Sabbatical Officer
@@ -43,13 +43,13 @@
               <p><em class="">Your University registered name will be published
                   alongside your idea. We cannot accommodate anonymous submissions, however if you do
                   not identify as your University registered name and publication would cause
-                  distress, please email <a href="mailto:yusuggestions@yusu.org">yusuggestions@yusu.org</a> and we
+                  distress, please email <a href="mailto:engagement@yorksu.org">engagement@yorksu.org</a> and we
                   will help find a way for you to have your idea heard.</em></p>
             </li>
             <li>
               <p><em>Once submitted, you will be unable to change your idea.
                   If you wish to alter it in any way, please email the Student Voice team at <a
-                    href="mailto:yusuggestions@yusu.org">yusuggestions@yusu.org</a> as soon as
+                    href="mailto:engagement@yorksu.org">engagement@yorksu.org</a> as soon as
                   possible.</em></p>
             </li>
           </ul>
@@ -69,13 +69,13 @@
 
       {/if}
 
-      <h2 class="text-2xl font-semibold">My SUggestion</h2>
+      <h2 class="text-2xl font-semibold">My Big Idea</h2>
 
       <form class="flex flex-col gap-y-6" method="post" role="form">
 
         <div class="form-group flex flex-col gap-y-2">
 
-          <label class="" for="suggestions_categories_id">SUggestion Type</label>
+          <label class="" for="suggestions_categories_id">Idea Type</label>
 
           <select required id="suggestions_categories_id" name="suggestions_categories_id"
             class="form-control rounded border p-1">
@@ -95,7 +95,7 @@
           </select>
 
           <small class="form-text text-muted g-font-size-default g-mt-10">Provides you with a framework to
-            build your SUggestion from</small>
+            build your idea from</small>
 
           <div id="explanation" class="my-6" role="alert" style="display:none;">
             <div class="">
@@ -107,7 +107,7 @@
 
         <div class="form-group flex flex-col gap-y-2">
 
-          <label class="" for="title">SUggestion Title</label>
+          <label class="" for="title">Idea Title</label>
 
           <input required id="title" name="title" class="form-control rounded required border p-1"
             onkeyup="charcountupdate(this.value, this.id)" />
@@ -119,7 +119,7 @@
         </div>
 
         <div class="form-group flex flex-col gap-y-2">
-          <label class="" for="description">SUggestion Detail</label>
+          <label class="" for="description">Idea Detail</label>
           <textarea id="description" name="description" class="form-control rounded border p-1" rows="7"
             required onkeyup="charcountupdate(this.value, this.id)"></textarea>
           <div class="flex flex-col">

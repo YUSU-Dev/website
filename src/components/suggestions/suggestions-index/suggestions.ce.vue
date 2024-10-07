@@ -119,7 +119,7 @@
                             {votes} Votes
                           </div>
                           {/if}
-                          {if canVote==1}<i role="button" aria-label="vote down" id="vote-down-{suggestionID}"
+                          {if canVote == 1}<i role="button" aria-label="vote down" id="vote-down-{suggestionID}"
                             data-suggestion-id="{suggestionID}"
                             class="fa fa-thumbs-down vote-down vote vote-down-{suggestionID} g-color-gray-light-v1 {if votedDown == 1}vote-active{/if}"></i>
                           {/if}
@@ -217,8 +217,16 @@
               vote: vote
             },
             success: function (data) {
-              console.log(data);
-              location.reload();
+              var response = JSON.parse(data)
+              console.log(response);
+              if (response.success == true) {
+                location.reload();
+              }
+              else {
+                if (response.error_message == 'Sorry, you cannot change your vote after 24 hours.\n') {
+                  alert(response.error_message)
+                }
+              }
             },
             error: function (error) {
               console.log(error);
