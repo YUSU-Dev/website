@@ -402,10 +402,10 @@ export default {
                 name: "Elections",
                 link: "/elections",
               },
-              // {
-              //   name: "Suggestions",
-              //   link: "/suggestions",
-              // },
+              {
+                name: "Big Ideas",
+                link: "/suggestions",
+              },
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
