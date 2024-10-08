@@ -39,7 +39,9 @@
       {exp:channel:entries channel="pages"}
       <!-- Page Content -->
       <div>
+        <article>
         {page_content}
+      </article>
       </div>
       {/exp:channel:entries}
       <div class="">
