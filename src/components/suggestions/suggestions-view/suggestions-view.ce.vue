@@ -303,20 +303,14 @@
 
         <div class="flex flex-col gap-y-6">
 
+          {if votingOpen == 1}
+
           <div class="">
             <h3 class="text-2xl font-bold">Add a
               Comment</h3>
           </div>
 
           {if logged_in > 0}
-
-          <!-- Date -->
-          <!-- <div class="text-center d-md-table-cell g-valign-middle g-py-10 g-px-20">
-              <span class="d-block g-font-size-40 g-line-height-1 g-color-gray-dark-v2 u-icon-v1">
-                <i class="icon-bubbles"></i>
-              </span>
-            </div> -->
-          <!-- End Date -->
 
           <form class="flex flex-col">
             <div class="">
@@ -355,6 +349,8 @@
             <p><em class="">Please log in if you wish to comment and take part in the
                 discussion!</em></p>
           </div>
+
+          {/if}
 
           {/if}
 
@@ -453,8 +449,16 @@
               vote: vote
             },
             success: function (data) {
-              console.log(data);
-              location.reload();
+              var response = JSON.parse(data)
+              console.log(response);
+              if (response.success == true) {
+                location.reload();
+              }
+              else {
+                if (response.error_message == 'Sorry, you cannot change your vote after 24 hours.\n') {
+                  alert(response.error_message)
+                }
+              }
             },
             error: function (error) {
               console.log(error);
