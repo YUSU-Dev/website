@@ -169,9 +169,12 @@
                 :key="subheading.name"
                 :class="`${index != section.links.length - 1 && 'border-b border-black pb-3'} ${index != 0 && 'pt-3'}`"
               >
-                <a :href="subheading.link" class="hover:underline">{{
-                  subheading.name
-                }}</a>
+                <a
+                  :href="subheading.link"
+                  class="hover:underline"
+                  :target="subheading.target ?? '_self'"
+                  >{{ subheading.name }}</a
+                >
               </li>
             </ul>
           </div>
@@ -192,9 +195,12 @@
                     v-for="subheading in section.links"
                     :key="subheading.name"
                   >
-                    <a :href="subheading.link" class="hover:underline">{{
-                      subheading.name
-                    }}</a>
+                    <a
+                      :href="subheading.link"
+                      class="hover:underline"
+                      :target="subheading.target ?? '_self'"
+                      >{{ subheading.name }}</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -444,7 +450,8 @@ export default {
             links: [
               {
                 name: "Student Group Resource Hub",
-                link: "https://resource-hub.yusu.org",
+                link: "https://resource-hub.yorksu.org",
+                target: "_blank",
               },
               {
                 name: "Book an Event",
@@ -493,6 +500,7 @@ export default {
               {
                 name: "Jobs",
                 link: "https://apply.yorksu.org",
+                target: "_blank",
               },
               {
                 name: "Contact Us",
