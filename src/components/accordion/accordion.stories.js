@@ -10,3 +10,17 @@ export const Default = {
     label: "test",
   },
 };
+
+export const StudentLife = {
+  args: {
+    label: "Student Life",
+    isStudentLife: true,
+  },
+};
+
+export const StudentVoice = {
+  args: {
+    label: "Student Voice",
+    isStudentVoice: true,
+  },
+};
