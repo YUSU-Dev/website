@@ -1,31 +1,30 @@
 <template>
   <div class="flex flex-col shadow">
-    <button
-      class="btn flex-1 px-2 py-4 text-center shadow"
-      :class="{
-        'btn-primary': primaryButton,
-        'btn-secondary': secondaryButton,
-        'btn-student-life': studentLifeButton,
-        'btn-student-voice': studentVoiceButton,
-        'btn-advice-support': adviceAndSupportButton,
-      }"
-      @click="openTab = !openTab"
+    <Button
+      class="btn w-full flex-1 px-2 py-4 text-center shadow"
+      :type="buttonType"
+      @click="selected = !selected"
+      :title="label"
     >
-      <h2 class="mb-0">{{ label }}</h2>
-    </button>
-    <div v-if="openTab">
+    </Button>
+    <div v-show="selected">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
+import Button from "../button/button.ce.vue";
 export default {
   name: "Accordion",
   props: {
     label: {
       type: String,
       default: "",
+    },
+    type: {
+      type: String,
+      default: null,
     },
     isPrimary: Boolean,
     isStudentLife: Boolean,
@@ -34,29 +33,28 @@ export default {
     isActivitiesView: Boolean,
     isSecondary: Boolean,
   },
+  components: {
+    Button,
+  },
   data() {
     return {
-      openTab: false,
-      primaryButton: false,
-      studentLifeButton: false,
-      adviceAndSupportButton: false,
-      studentVoiceButton: false,
-      secondaryButton: false,
+      selected: false,
+      buttonType: "",
     };
   },
-  mounted() {
+  created() {
     if (this.isPrimary || this.type === "primary") {
-      this.primaryButton = true;
+      this.buttonType = "primary";
     } else if (this.isStudentLife || this.type === "student-life") {
-      this.studentLifeButton = true;
+      this.buttonType = "student-life";
     } else if (this.isAdviceAndSupport || this.type === "advice-support") {
-      this.adviceAndSupportButton = true;
+      this.buttonType = "advice-support";
     } else if (this.isStudentVoice || this.type === "student-voice") {
-      this.studentVoiceButton = true;
+      this.buttonType = "student-voice";
     } else if (this.isSecondary || this.type === "secondary") {
-      this.secondaryButton = true;
+      this.buttonType = "secondary";
     } else {
-      this.primaryButton = true;
+      this.buttonType = "primary";
     }
   },
 };
