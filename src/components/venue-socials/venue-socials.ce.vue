@@ -1,10 +1,6 @@
 <template>
   <div v-if="venue == 'courtyard'">
-    <ActivitiesContacts
-      name="The Courtyard"
-      instagram="thecourtyard_yorksu"
-      facebook="courtyardyusubars"
-    />
+    <ActivitiesContacts name="The Courtyard" instagram="thecourtyard_yorksu" />
   </div>
   <div v-else-if="venue == 'glasshouse'">
     <ActivitiesContacts
@@ -16,7 +12,6 @@
     <ActivitiesContacts
       name="The Kitchen at Alcuin"
       instagram="thekitchenatalcuin"
-      facebook="thekitchenatalcuin"
     />
   </div>
   <div v-else-if="venue == 'lounge'">
