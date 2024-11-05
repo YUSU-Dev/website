@@ -22,7 +22,7 @@ jobs:
       - name: Upload to R2
         uses: shallwefootball/upload-s3-action@master
         with:
-          aws_key_id: e30f326bc79f0d75fd1c9bff9fb3e34f
+          aws_key_id: ${{ secrets.R2_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           aws_bucket: website-assets
           endpoint: https://253071de7d6a98119d35de03b25422a8.r2.cloudflarestorage.com
