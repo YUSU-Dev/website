@@ -42,7 +42,7 @@
     <h2 class="text-3xl">{title}</h2>
 
 
-    <div class="">
+    <article class="">
       <div class="">
 
         <div class="my-10">
@@ -386,7 +386,7 @@
 
       {/if}
 
-    </div>
+    </article>
 
   </div>
 
