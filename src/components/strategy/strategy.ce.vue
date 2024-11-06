@@ -427,7 +427,7 @@ export default {
           url: "/officers/academic",
         },
         {
-          name: "Ezreal Xie",
+          name: "Teddy Bland",
           pronouns: "He/Him",
           position: "Equality and Inclusion Officer",
           img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-equality.webp",
