@@ -5,10 +5,11 @@ export default {
   component: "elections-stats",
 };
 
-export const Default = {};
-
-export const withTitle = {
+export const Default = {
   args: {
-    title: "Elections Stats",
+    sports: true,
+    societies: true,
+    departments: true,
+    accommodations: true,
   },
 };
