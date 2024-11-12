@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import { text } from "@fortawesome/fontawesome-svg-core";
 import * as echarts from "echarts";
 export default {
   name: "ElectionsGraph",
