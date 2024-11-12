@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { text } from "@fortawesome/fontawesome-svg-core";
 import * as echarts from "echarts";
 export default {
   name: "ElectionsGraph",
@@ -20,37 +21,30 @@ export default {
       default: "",
     },
   },
+  data() {
+    return {
+      isMobile: window.innerWidth < 768,
+      myChart: null,
+    };
+  },
   mounted() {
     this.drawGraph();
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.handleResize);
   },
   methods: {
-    drawGraph() {
-      console.log(this.data);
-      var chart = this.$refs[this.id];
-      var myChart = echarts.init(chart);
-
-      const option = {
+    createOptions() {
+      const isMobile = this.isMobile;
+      let option = {
         tooltip: {},
-        xAxis: {
-          type: "category",
-          data: this.data.map((item) => item.name),
-          name: "Sports Clubs",
-          nameLocation: "middle",
-          nameGap: 50,
-          axisLabel: {
-            interval: 0,
-            rotate: -15,
-          },
-        },
-        yAxis: {
-          type: "value",
-          name: "Total Votes",
-          nameLocation: "middle", // Align the y-axis label in the middle
-          nameGap: 50,
-        },
+        xAxis: {},
+        yAxis: {},
         series: [
           {
             type: "bar",
+            showBackground: isMobile ? true : false,
             data: this.data.map((item) => item.total_votes),
             itemStyle: {
               color: "#f2cb50",
@@ -61,14 +55,58 @@ export default {
                 shadowBlur: 10,
               },
             },
+            barWidth: isMobile ? "100%" : "auto",
           },
         ],
         grid: {
-          left: 80,
           right: 40,
           top: 0,
         },
       };
+
+      if (isMobile) {
+        console.log("Drawing mobile graph");
+        option.xAxis = {
+          type: "value",
+          name: "Total Votes",
+          nameLocation: "middle",
+          nameGap: 50,
+        };
+        option.yAxis = {
+          type: "category",
+          data: this.data.map((item) => item.name),
+          axisLabel: {
+            inside: true,
+            textStyle: {
+              color: "#000",
+              fontSize: 16,
+              overflow: "hidden",
+            },
+          },
+          z: 10,
+        };
+        option.grid.left = "40";
+      } else {
+        console.log("Drawing desktop graph");
+        option.xAxis = {
+          type: "category",
+          data: this.data.map((item) => item.name),
+          name: "Sports Clubs",
+          nameLocation: "middle",
+          nameGap: 50,
+          axisLabel: {
+            interval: 0,
+            rotate: -15,
+          },
+        };
+        option.yAxis = {
+          type: "value",
+          name: "Total Votes",
+          nameLocation: "middle",
+          nameGap: 50,
+        };
+        option.grid.left = "80";
+      }
 
       if (this.title) {
         option.title = {
@@ -80,11 +118,31 @@ export default {
         option.grid.top = "48";
       }
 
-      myChart.setOption(option);
+      return option;
+    },
+    drawGraph() {
+      var chart = this.$refs[this.id];
+      var myChart;
+      if (this.myChart) {
+        myChart = this.myChart;
+      } else {
+        myChart = echarts.init(chart);
+      }
 
-      window.addEventListener("resize", function () {
-        myChart.resize();
-      });
+      var option = this.createOptions();
+      myChart.setOption(option);
+      this.myChart = myChart;
+    },
+    handleResize() {
+      this.myChart.resize();
+      this.isMobile = window.innerWidth < 768;
+    },
+  },
+  watch: {
+    isMobile(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.drawGraph();
+      }
     },
   },
 };
