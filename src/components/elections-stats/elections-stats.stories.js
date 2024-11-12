@@ -1,7 +1,7 @@
 import "./elections-stats.component.js";
 
 export default {
-  title: "Components/Elections Stats",
+  title: "Components/Elections/Elections Stats",
   component: "elections-stats",
 };
 

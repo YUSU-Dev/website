@@ -43,6 +43,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    minimumMembers: {
+      type: Number,
+      default: 15,
+    },
+    chartSize: {
+      type: Number,
+      default: 10,
+    },
   },
   data() {
     return {
@@ -66,10 +74,12 @@ export default {
             var sports = response.data.activities_subcats.find(
               (item) => item.category_data.name === "Sports",
             ).activity_data;
-            sports = sports.filter((item) => item.total_members > 15);
+            sports = sports.filter(
+              (item) => item.total_members > self.minimumMembers,
+            );
             sports = sports.sort((a, b) => b.total_votes - a.total_votes);
-            if (sports.length > 10) {
-              sports = sports.slice(0, 10);
+            if (sports.length > self.chartSize) {
+              sports = sports.slice(0, self.chartSize);
             }
             self.graphs.push({
               title: sports.length + " sports clubs",
@@ -81,10 +91,12 @@ export default {
             var societies = response.data.activities_parents.find(
               (item) => item.category_data.name === "Societies",
             ).activity_data;
-            societies = societies.filter((item) => item.total_members > 15);
+            societies = societies.filter(
+              (item) => item.total_members > self.minimumMembers,
+            );
             societies = societies.sort((a, b) => b.total_votes - a.total_votes);
-            if (societies.length > 10) {
-              societies = societies.slice(0, 10);
+            if (societies.length > self.chartSize) {
+              societies = societies.slice(0, self.chartSize);
             }
             self.graphs.push({
               title: societies.length + " societies",
@@ -95,13 +107,13 @@ export default {
           if (self.departments) {
             var departments = response.data.schools;
             departments = departments.filter(
-              (item) => item.total_electorate > 15,
+              (item) => item.total_electorate > self.minimumMembers,
             );
             departments = departments.sort(
               (a, b) => b.total_votes - a.total_votes,
             );
-            if (departments.length > 10) {
-              departments = departments.slice(0, 10);
+            if (departments.length > self.chartSize) {
+              departments = departments.slice(0, self.chartSize);
             }
             self.graphs.push({
               title: departments.length + " departments",
@@ -112,13 +124,13 @@ export default {
           if (self.accommodations) {
             var accommodations = response.data.accommodations;
             accommodations = accommodations.filter(
-              (item) => item.total_electorate > 15,
+              (item) => item.total_electorate > self.minimumMembers,
             );
             accommodations = accommodations.sort(
               (a, b) => b.total_votes - a.total_votes,
             );
-            if (accommodations.length > 10) {
-              accommodations = accommodations.slice(0, 10);
+            if (accommodations.length > self.chartSize) {
+              accommodations = accommodations.slice(0, self.chartSize);
             }
             self.graphs.push({
               title: accommodations.length + " accommodations",
