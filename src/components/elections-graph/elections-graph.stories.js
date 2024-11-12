@@ -1,7 +1,7 @@
 import "./elections-graph.component.js";
 
 export default {
-  title: "Components/Elections Graph",
+  title: "Components/Elections/Elections Graph",
   component: "elections-graph",
 };
 
