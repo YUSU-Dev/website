@@ -72,7 +72,6 @@ export default {
       await axios
         .get("https://pluto.sums.su/api/elections/statistics")
         .then(function (response) {
-          console.log(response.data);
           if (self.sports) {
             var sports = response.data.activities_subcats.find(
               (item) => item.category_data.name === "Sports",
