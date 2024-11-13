@@ -1,9 +1,13 @@
 <template>
-  <div class="min-h-96 w-full" :ref="id"></div>
+  <div v-if="!loading" class="min-h-96 w-full" :ref="id"></div>
+  <div v-else class="">
+    <Loading :loading="loading" text></Loading>
+  </div>
 </template>
 
 <script>
 import * as echarts from "echarts";
+import Loading from "../loading/loading.ce.vue";
 export default {
   name: "ElectionsGraph",
   props: {
@@ -19,6 +23,13 @@ export default {
       type: String,
       default: "",
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: {
+    Loading,
   },
   data() {
     return {

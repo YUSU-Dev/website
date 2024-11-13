@@ -6,6 +6,7 @@
       :data="graph.data"
       :title="graph.title"
       :id="graph.id"
+      :loading="loading"
     />
   </div>
 </template>
@@ -54,6 +55,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       all: true,
       selected: [],
       graphs: [],
@@ -66,6 +68,7 @@ export default {
   methods: {
     async getStatistics() {
       let self = this;
+      this.loading = true;
       await axios
         .get("https://pluto.sums.su/api/elections/statistics")
         .then(function (response) {
@@ -138,6 +141,7 @@ export default {
               id: "accommodations",
             });
           }
+          self.loading = false;
         });
     },
   },
