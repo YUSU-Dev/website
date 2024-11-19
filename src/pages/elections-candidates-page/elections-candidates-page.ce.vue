@@ -4,7 +4,7 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
   />
   <div class="container mx-auto">
-    <ElectionsCandidates :electionId="electionId" />
+    <ElectionsCandidates :election-id="electionId" />
   </div>
   <Footer />
 </template>

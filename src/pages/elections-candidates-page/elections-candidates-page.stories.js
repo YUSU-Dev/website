@@ -1,7 +1,7 @@
 import "./elections-candidates-page.component.js";
 
 export default {
-  title: "Pages/Elections Candidates Page",
+  title: "Pages/Elections/Elections Candidates Page",
   component: "elections-candidates-page",
 };
 
