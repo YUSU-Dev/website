@@ -13,7 +13,7 @@
             <div class="aspect-[141/161] bg-cover">
               <img
                 :src="candidate.assets.document_photo"
-                :alt="candidate.name"
+                alt=""
                 class="h-full w-full object-cover"
               />
               <div
