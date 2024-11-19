@@ -34,12 +34,8 @@
 
 <script>
 import axios from "../../_common/axios.mjs";
-import SabbTile from "../sabb-tile/sabb-tile.ce.vue";
 export default {
   name: "ElectionsCandidates",
-  components: {
-    SabbTile,
-  },
   props: {
     electionId: {
       type: String,
@@ -61,9 +57,10 @@ export default {
       await axios
         .get("https://pluto.sums.su/api/elections/" + this.electionId)
         .then(function (response) {
-          console.log(response.data);
           self.electionName = response.data.name;
-          self.candidates = response.data.candidates;
+          self.candidates = response.data.candidates.filter(
+            (candidate) => candidate.id !== 9,
+          );
         });
     },
   },
