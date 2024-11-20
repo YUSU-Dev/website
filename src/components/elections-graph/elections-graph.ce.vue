@@ -19,6 +19,10 @@ export default {
       type: String,
       default: "",
     },
+    axisLabel: {
+      type: String,
+      default: "",
+    },
     id: {
       type: String,
       default: "",
@@ -101,7 +105,7 @@ export default {
         option.xAxis = {
           type: "category",
           data: this.data.map((item) => item.name),
-          name: "Sports Clubs",
+          name: this.axisLabel,
           nameLocation: "middle",
           nameGap: 50,
           axisLabel: {

@@ -5,6 +5,7 @@
       :key="graph.title"
       :data="graph.data"
       :title="graph.title"
+      :axis-label="graph.axisLabel"
       :id="graph.id"
       :loading="loading"
     />
@@ -85,6 +86,7 @@ export default {
             }
             self.graphs.push({
               title: sports.length + " sports clubs",
+              axisLabel: "Sports Clubs",
               data: sports,
               id: "sports",
             });
@@ -102,6 +104,7 @@ export default {
             }
             self.graphs.push({
               title: societies.length + " societies",
+              axisLabel: "Societies",
               data: societies,
               id: "societies",
             });
@@ -119,6 +122,7 @@ export default {
             }
             self.graphs.push({
               title: departments.length + " departments",
+              axisLabel: "Departments",
               data: departments,
               id: "departments",
             });
@@ -136,6 +140,7 @@ export default {
             }
             self.graphs.push({
               title: accommodations.length + " colleges",
+              axisLabel: "Colleges",
               data: accommodations,
               id: "accommodations",
             });
