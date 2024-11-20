@@ -135,7 +135,7 @@ export default {
               accommodations = accommodations.slice(0, self.chartSize);
             }
             self.graphs.push({
-              title: accommodations.length + " accommodations",
+              title: accommodations.length + " colleges",
               data: accommodations,
               id: "accommodations",
             });
