@@ -237,6 +237,7 @@ export default {
       let self = this;
       self.Loading = true;
       self.items = [];
+      self.ModalClosed = true;
       if (this.shopBasket.length === 0) {
         await axios
           .get("https://yorksu.org/shop/basket-api-v2")
