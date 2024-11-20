@@ -313,7 +313,7 @@ export default {
 
       if (self.items[index].items_remove == 0) {
         console.log("Item is not removable");
-        self.ErrorActionName = "Empty Basket";
+        self.ErrorActionName = "Empty basket";
         self.ErrorDescription =
           "This item cannot be removed individually, to remove this item please clear your basket using the empty basket button.";
         self.ModalClosed = false;
