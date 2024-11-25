@@ -14,6 +14,8 @@ export const Default = {
       config: {
         rules: [{ id: "empty-heading", enabled: false }],
       },
+      options: {},
+      manual: true,
     },
   },
 };
