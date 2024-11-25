@@ -1,6 +1,6 @@
 <template>
   <div class="body-style flex flex-col gap-y-8">
-    <h2 class="text-3xl font-bold">{{ electionName ?? "York SU Election" }}</h2>
+    <h2 v-if="electionName" class="text-3xl font-bold">{{ electionName }}</h2>
     <div
       class="grid grid-cols-1 gap-2 xxs:grid-cols-2 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5"
     >
@@ -48,7 +48,7 @@ export default {
       candidates: [],
     };
   },
-  mounted() {
+  created() {
     this.getCandidates();
   },
   methods: {
