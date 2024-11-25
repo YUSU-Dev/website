@@ -16,3 +16,9 @@ export const NoImage = {
     articleid: "2104",
   },
 };
+
+export const OldArticle = {
+  args: {
+    articleid: "1348",
+  },
+};
