@@ -14,6 +14,13 @@
       </div>
     </div>
     <hr />
+    <div
+      v-if="articleAge"
+      class="mb-2 flex flex-row items-center gap-2 border-l-4 border-yellow-400 bg-yellow-100 p-2"
+    >
+      <FontAwesomeIcon icon="fas fa-clock" class="h-4 w-4" />
+      <h3 class="mb-0 text-lg">This article is {{ articleAge }}</h3>
+    </div>
     <article
       id="news-article"
       v-html="Article.body"
@@ -30,11 +37,17 @@ import axios from "../../_common/axios.mjs";
 import { randomImageUrl } from "../../_common/randomImage.mjs";
 import Button from "../button/button.ce.vue";
 import Loading from "../loading/loading.ce.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import dayjs from "dayjs";
 
+library.add(faClock);
 export default {
   components: {
     Button,
     Loading,
+    FontAwesomeIcon,
   },
   props: {
     siteid: { type: String, default: "" },
@@ -43,6 +56,7 @@ export default {
   data() {
     return {
       Article: {},
+      articleAge: "",
       loading: true,
       image: "",
     };
@@ -50,6 +64,24 @@ export default {
   methods: {
     randomImage() {
       return randomImageUrl("primary");
+    },
+    getArticleAge(articleDate) {
+      const cleanedDate = articleDate.replace(/(\d+)(st|nd|rd|th)/, "$1");
+      const now = dayjs();
+      const article = dayjs(cleanedDate, "DD MMMM YYYY");
+      const diffMonths = now.diff(article, "month");
+      const diffYears = now.diff(article, "year");
+      if (diffYears == 1) {
+        return `more than ${diffYears} year old.`;
+      } else if (diffYears > 1) {
+        return `more than ${diffYears} years old.`;
+      } else if (diffMonths > 6) {
+        return `more than 6 months old.`;
+      } else if (diffMonths > 3) {
+        return `more than 3 months old.`;
+      } else {
+        return null;
+      }
     },
   },
   mounted() {
@@ -67,6 +99,7 @@ export default {
         if (self.Article.thumbnail) {
           self.image = self.Article.thumbnail;
         }
+        self.articleAge = self.getArticleAge(self.Article.date);
         self.loading = false;
       })
       .catch(function () {
