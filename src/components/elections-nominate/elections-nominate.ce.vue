@@ -161,7 +161,7 @@
                 <textarea {if field_max_characters} onkeyup="charcountupdate(this.value, 'count-{field_name}')"
                   {if:elseif field_max_words} onkeyup="UpdateWordCount(this.value, 'count-{field_name}')" {/if}
                   id="{field_name}" class="form-control p-2 w-full" rows="6" name="item" {if
-                  field_disabled==1}disabled{/if} placeholder="{if field_required} Required {/if}">
+                  field_disabled==1}disabled{/if} {if field_required}required{/if} placeholder="{if field_required} Required {/if}">
                   {field_value}
                 </textarea>
               </div>
