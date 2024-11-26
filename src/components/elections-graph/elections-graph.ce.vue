@@ -1,5 +1,33 @@
 <template>
-  <div v-if="!loading" class="min-h-96 w-full" :ref="id"></div>
+  <div v-if="!loading" class="px-6">
+    <div class="min-h-96 w-full" :ref="id"></div>
+    <div class="flex flex-col items-center justify-center gap-4 xs:flex-row">
+      <Button
+        v-if="small && (medium || large)"
+        :selected="activeSize == 'small'"
+        @click="setGraphSize('small')"
+        is-primary
+        text="Small"
+        class="w-full sm:w-fit"
+      />
+      <Button
+        v-if="medium && (small || large)"
+        :selected="activeSize == 'medium'"
+        @click="setGraphSize('medium')"
+        is-primary
+        text="Medium"
+        class="w-full sm:w-fit"
+      />
+      <Button
+        v-if="large && (small || medium)"
+        :selected="activeSize == 'large'"
+        @click="setGraphSize('large')"
+        is-primary
+        text="Large"
+        class="w-full sm:w-fit"
+      />
+    </div>
+  </div>
   <div v-else class="">
     <Loading :loading="loading" text></Loading>
   </div>
@@ -8,6 +36,7 @@
 <script>
 import * as echarts from "echarts";
 import Loading from "../loading/loading.ce.vue";
+import Button from "../button/button.ce.vue";
 export default {
   name: "ElectionsGraph",
   props: {
@@ -31,14 +60,29 @@ export default {
       type: Boolean,
       default: false,
     },
+    small: {
+      type: Array,
+      default: null,
+    },
+    medium: {
+      type: Array,
+      default: null,
+    },
+    large: {
+      type: Array,
+      default: null,
+    },
   },
   components: {
     Loading,
+    Button,
   },
   data() {
     return {
       isMobile: window.innerWidth < 768,
       myChart: null,
+      activeSize: "small",
+      windowWidth: window.innerWidth,
     };
   },
   mounted() {
@@ -51,15 +95,25 @@ export default {
   methods: {
     createOptions() {
       const isMobile = this.isMobile;
+      var data = this.data;
+      if (this.small && this.activeSize === "small") {
+        data = this.small;
+      } else if (this.medium && this.activeSize === "medium") {
+        data = this.medium;
+      } else if (this.large && this.activeSize === "large") {
+        data = this.large;
+      }
       let option = {
-        tooltip: {},
+        tooltip: {
+          confine: true,
+        },
         xAxis: {},
         yAxis: {},
         series: [
           {
             type: "bar",
             showBackground: isMobile ? true : false,
-            data: this.data.map((item) => item.total_votes),
+            data: data.map((item) => item.overall_percent),
             itemStyle: {
               color: "#f2cb50",
               borderColor: "000000",
@@ -73,13 +127,14 @@ export default {
           },
         ],
         grid: {
-          right: 40,
           top: 0,
+          left: 0,
+          right: 0,
+          containLabel: true,
         },
       };
 
       if (isMobile) {
-        console.log("Drawing mobile graph");
         option.xAxis = {
           type: "value",
           name: "Total Votes",
@@ -88,23 +143,22 @@ export default {
         };
         option.yAxis = {
           type: "category",
-          data: this.data.map((item) => item.name),
+          data: data.map((item) => item.name),
           axisLabel: {
             inside: true,
             textStyle: {
               color: "#000",
               fontSize: 16,
-              overflow: "hidden",
             },
+            width: "90%",
           },
           z: 10,
+          inverse: true,
         };
-        option.grid.left = "40";
       } else {
-        console.log("Drawing desktop graph");
         option.xAxis = {
           type: "category",
-          data: this.data.map((item) => item.name),
+          data: data.map((item) => item.name),
           name: this.axisLabel,
           nameLocation: "middle",
           nameGap: 50,
@@ -119,7 +173,6 @@ export default {
           nameLocation: "middle",
           nameGap: 50,
         };
-        option.grid.left = "80";
       }
 
       if (this.title) {
@@ -150,6 +203,10 @@ export default {
     handleResize() {
       this.myChart.resize();
       this.isMobile = window.innerWidth < 768;
+    },
+    setGraphSize(size) {
+      this.activeSize = size;
+      this.drawGraph();
     },
   },
   watch: {

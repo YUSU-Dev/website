@@ -7,9 +7,13 @@ export default {
 
 export const Default = {
   args: {
-    sports: true,
-    societies: true,
-    departments: true,
-    accommodations: true,
+    all: true,
+  },
+};
+
+export const SizesEnabled = {
+  args: {
+    all: true,
+    sizesEnabled: true,
   },
 };

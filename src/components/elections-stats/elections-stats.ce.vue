@@ -4,6 +4,9 @@
       v-for="graph in graphs"
       :key="graph.title"
       :data="graph.data"
+      :small="graph.small"
+      :medium="graph.medium"
+      :large="graph.large"
       :title="graph.title"
       :axis-label="graph.axisLabel"
       :id="graph.id"
@@ -24,6 +27,10 @@ export default {
     title: {
       type: String,
       default: "",
+    },
+    all: {
+      type: Boolean,
+      default: true,
     },
     sports: {
       type: Boolean,
@@ -53,14 +60,19 @@ export default {
       type: Number,
       default: 10,
     },
+    sizesEnabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       loading: false,
-      all: true,
       selected: [],
       graphs: [],
       stats: [],
+      mediumThreshold: 200,
+      largeThreshold: 400,
     };
   },
   mounted() {
@@ -73,80 +85,92 @@ export default {
       await axios
         .get("https://pluto.sums.su/api/elections/statistics")
         .then(function (response) {
-          if (self.sports) {
-            var sports = response.data.activities_subcats.find(
-              (item) => item.category_data.name === "Sports",
-            ).activity_data;
-            sports = sports.filter(
-              (item) => item.total_members > self.minimumMembers,
+          if (self.sports || self.all) {
+            self.processData(
+              response.data.activities_subcats,
+              "Sports",
+              "total_members",
+              "sports clubs",
             );
-            sports = sports.sort((a, b) => b.total_votes - a.total_votes);
-            if (sports.length > self.chartSize) {
-              sports = sports.slice(0, self.chartSize);
-            }
-            self.graphs.push({
-              title: sports.length + " sports clubs",
-              axisLabel: "Sports Clubs",
-              data: sports,
-              id: "sports",
-            });
           }
-          if (self.societies) {
-            var societies = response.data.activities_parents.find(
-              (item) => item.category_data.name === "Societies",
-            ).activity_data;
-            societies = societies.filter(
-              (item) => item.total_members > self.minimumMembers,
+          if (self.societies || self.all) {
+            self.processData(
+              response.data.activities_parents,
+              "Societies",
+              "total_members",
+              "societies",
             );
-            societies = societies.sort((a, b) => b.total_votes - a.total_votes);
-            if (societies.length > self.chartSize) {
-              societies = societies.slice(0, self.chartSize);
-            }
-            self.graphs.push({
-              title: societies.length + " societies",
-              axisLabel: "Societies",
-              data: societies,
-              id: "societies",
-            });
           }
-          if (self.departments) {
-            var departments = response.data.schools;
-            departments = departments.filter(
-              (item) => item.total_electorate > self.minimumMembers,
+          if (self.departments || self.all) {
+            self.processData(
+              response.data.schools,
+              "Departments",
+              "total_electorate",
+              "departments",
             );
-            departments = departments.sort(
-              (a, b) => b.total_votes - a.total_votes,
-            );
-            if (departments.length > self.chartSize) {
-              departments = departments.slice(0, self.chartSize);
-            }
-            self.graphs.push({
-              title: departments.length + " departments",
-              axisLabel: "Departments",
-              data: departments,
-              id: "departments",
-            });
           }
-          if (self.accommodations) {
-            var accommodations = response.data.accommodations;
-            accommodations = accommodations.filter(
-              (item) => item.total_electorate > self.minimumMembers,
+          if (self.accommodations || self.all) {
+            self.processData(
+              response.data.accommodations,
+              "Accommodations",
+              "total_electorate",
+              "accommodations",
             );
-            accommodations = accommodations.sort(
-              (a, b) => b.total_votes - a.total_votes,
-            );
-            if (accommodations.length > self.chartSize) {
-              accommodations = accommodations.slice(0, self.chartSize);
-            }
-            self.graphs.push({
-              title: accommodations.length + " colleges",
-              axisLabel: "Colleges",
-              data: accommodations,
-              id: "accommodations",
-            });
           }
           self.loading = false;
         });
+    },
+    processData(data, categoryName, memberKey, title) {
+      let categoryData =
+        data.find(
+          (item) =>
+            item.category_data && item.category_data.name === categoryName,
+        )?.activity_data || data;
+      categoryData = categoryData.filter(
+        (item) => item[memberKey] > this.minimumMembers,
+      );
+      categoryData = categoryData.sort(
+        (a, b) => b.overall_percent - a.overall_percent,
+      );
+      if (categoryData.length > this.chartSize) {
+        categoryData = categoryData.slice(0, this.chartSize);
+      }
+      let small = null,
+        medium = null,
+        large = null;
+      if (this.sizesEnabled) {
+        small = this.filterAndSlice(
+          categoryData,
+          (item) => item[memberKey] < this.mediumThreshold,
+        );
+        medium = this.filterAndSlice(
+          categoryData,
+          (item) =>
+            item[memberKey] >= this.mediumThreshold &&
+            item[memberKey] < this.largeThreshold,
+        );
+        large = this.filterAndSlice(
+          categoryData,
+          (item) => item[memberKey] >= this.largeThreshold,
+        );
+      }
+
+      this.graphs.push({
+        title: `${categoryData.length} ${title}`,
+        axisLabel: title.toUpperCase(),
+        data: categoryData,
+        small: small,
+        medium: medium,
+        large: large,
+        id: categoryName.toLowerCase(),
+      });
+    },
+    filterAndSlice(data, filter) {
+      let filteredData = data.filter(filter);
+      if (filteredData.length > this.chartSize) {
+        filteredData = filteredData.slice(0, this.chartSize);
+      }
+      return filteredData.length === 0 ? null : filteredData;
     },
   },
 };
