@@ -40,7 +40,7 @@ import Loading from "../loading/loading.ce.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-import dayjs from "dayjs";
+import dayjs from "https://cdn.jsdelivr.net/npm/dayjs@1.11.13/+esm";
 
 library.add(faClock);
 export default {
