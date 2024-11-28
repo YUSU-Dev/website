@@ -426,3 +426,11 @@ input[type="checkbox"] {
 }
 
 @tailwind utilities;
+
+/* WYSIWYG Tables */
+.sums-table {
+  @apply !w-full;
+}
+.sums-table tr {
+  @apply flex flex-wrap;
+}
