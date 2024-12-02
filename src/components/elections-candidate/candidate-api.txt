@@ -1,0 +1,318 @@
+            
+            [
+            
+            {
+                "name": "Abdurrahman Butt",
+                "document_pronouns": "He/Him/His",
+                "document_manifesto_summary": "&bull; More student jobs, More student power &bull; Enrich Campus Life with More Student Events &bull; York Exploration Initiative",
+                "document_manifesto": "Manifesto point 1 :More student jobs, More student power<br />
+<br />
+Let us make the university a truly student-led institution by putting jobs back in the hands of students. Instead of outsourcing roles, we can tap into the talent pool and leverage the skills here on campus. Imagine a university where the library is run by fellow students, and campus events are organised by classmates. That is the kind of community I want to build with your vote and support&mdash;where opportunities for paid, flexible work are created with students at the centre.<br />
+<br />
+By focusing on student employment, we will create a more integrated and dynamic university environment, where students are directly involved in the operations and day-to-day functioning on campus, actively shaping the university&#039;s daily life. This will make the university a community where students do not merely attend, but also lead, shape, and innovate.<br />
+<br />
+Manifesto Point 2: Enrich Campus Life with More Student Events<br />
+<br />
+I am committed to transforming our campus into a vibrant hub of activity by expanding student centred events that foster a sense of belonging and community spirit. This could include dynamic and engaging activities, such as a campus wide sports festival with friendly competitions, where proceeds are donated to a student-nominated charity. We could also host charity auctions and festive celebrations, like Halloween parties and bonfire nights, complete with fireworks to bring students together for memorable experiences such to name a few example events.<br />
+To honour and celebrate the rich diversity of our student body, I propose the introduction of cultural day events that feature food stalls representing a wide array of traditions. We will source these culinary delights from local and independent cultural restaurants in York, as supporting these establishments is an essential part of the York spirit.<br />
+<br />
+In addition to the gastronomic experience, we will celebrate significant cultural festivities, such as the Chinese New Year and other meaningful holidays. These celebrations will not only help our international students feel more at home but will also provide invaluable opportunities for all students to engage with, learn from, and appreciate the myriad cultural traditions that enrich our community.<br />
+<br />
+York Exploration Initiative<br />
+<br />
+In my commitment to fostering a vibrant and inclusive community at the University of York, I am excited to introduce the York Exploration Initiative. This initiative aims to offer guided trips for students to discover the rich history, culture, and attractions of our remarkable university city.<br />
+These excursions will provide an invaluable opportunity for home students, particularly those unfamiliar with York, to immerse themselves in its unique charm. Simultaneously, they will serve as a warm welcome for our international students, encouraging camaraderie and shared experiences.<br />
+By exploring York together, we will not only deepen our understanding of this beautiful city but also cultivate a sense of belonging and community among all students<br />
+                "
+            },
+            
+            {
+                "name": "Freddie Newell",
+                "document_pronouns": "He/They",
+                "document_manifesto_summary": "1. Establishing the Gender Expression Fund to support our transgender/non-binary students to support their transition and freedom of expression. 2. Establish an International Students&rsquo; Steering Group to focus on university failings in support. 3. Establish sensory spaces for our neurodiverse students to enable them to fully access university spaces.",
+                "document_manifesto": "Hi there! I&#039;m Freddie and I am running to be your next Equality &amp; Inclusion Officer in this year&#039;s elections. Over the last year I have had the  pleasure to serve as your LGBTQ+  Officer, as well as being the former Vice President (Community &amp; Wellbeing) to Constantine College. If elected, I aim to work on these policies:<br />
+<br />
+<br />
+The Gender Expression Fund (GEF): <br />
+<br />
+At current our transgender and non-binary students are still facing a plethora of complexities surrounding university life - whether that be misgendering, inadequate support services/funding, or a lack of safe spaces. Whilst in the administrative sense, the university has attempted to mitigate potential harm caused to our transgender/non-binary students by introducing randomly generated email usernames, as well as introducing pronouns on student ID cards - crucial work is still left untouched. This is why I&#039;m proposing the GEF - This is an initiative where I plan to lobby key university officials and work with local and national charities to set up funds using both York SU funds as well as university subsidies/grants for students within our transgender/non-binary/genderfluid communities to apply for financial support to purchase items - eg. binds - to support students in their journey to feeling more comfortable with their identity, as well as ensuring that we as a university and York SU, support the right to freedom of expression.<br />
+<br />
+The Establishment of an International Students&#039; Steering Group: <br />
+<br />
+Following the International Engagement Focus Group Report (FGR), it has become apparent that the university has committed catastrophic errors regarding the treatment of our international students. The total expenditure that the university states is &quot;focused on your student experience&quot; amounted to &pound;427m - and yet international students are seeing very little return on the financial expenditure they have given to the university. From issues from healthcare, housing, finance, mental health support, and even cultural engagement, the university has failed to ensure our international students are supported adequately throughout their time here at York. This is why I am recommending, following the International Students (FGR) that a steering group be established, to focus purely on the needs of our international community, working with university staff, as well as societies and the EDI Exchange, to work on the recommendations laid out by the FGR, to ensure that our students aren&#039;t left behind, but involved in conversation.<br />
+<br />
+Supporting Neurodiverse Students: <br />
+<br />
+As your LGBTQ+ Students Officer&#039; one of my previous commitments was to ensuring York Pride was more accessible to our disabled students - it is now time for this to be expanded and brought onto campus for our students. In conjunction with DTEF, I plan to lobby the university to establish more sensory rooms for our neurodiverse students, which they can book out, so our students are able to access university spaces without feeling anxious and overwhelmed. Additionally, I plan on opening a consultation up for all disabled students to gauge where they feel we are failing as a university to meet their access requirements.<br />
+<br />
+<br />
+                "
+            },
+            
+            {
+                "name": "Jaden Lynch",
+                "document_pronouns": "they/them/theirs",
+                "document_manifesto_summary": "-Help students from a variety of socioeconomic backgrounds. -Ensure female students are treated equally and with respect and dignity. -Increase the support available for students with disabilities, learning difficulties and neurodivergence.",
+                "document_manifesto": "I am standing for the role of Equality and Inclusion Officer because I am determined to empower every student&#039;s voice. <br />
+<br />
+My experience in similar roles proves I have the potential to fulfil everything this position requires and more. I have been the secretary of the local youth branch of a national political party, and hold committee positions for various student societies. This shows I am capable of the administrative and executive demands, and can represent and assist the student body in the best way possible. <br />
+<br />
+In Britain, 93% of people went to state school - but despite being the vast majority, we are underrepresented in government, the legal system, executive roles, and much more. This shows how students from less privileged backgrounds, particularly those from low-income families, must be supported in order to bridge this gap - particularly in higher education. <br />
+<br />
+As your Equality and Inclusion Officer, I would ensure someone&rsquo;s economic background would never change the possibilities available to them. Whether it involves opportunities within the university or support with career prospects, it will always be my priority to assist every student equally, no matter the background.  <br />
+<br />
+One of my biggest aims in standing for this role is to address the issues faced by women at York.  In seminars and lectures, the conversation is often dominated by male students; in societies, it is not uncommon to see majority-male committees, or meetings where women&rsquo;s voices are rarely heard. The issue of sexual harassment, though the university does aim to address it, is still prevalent - the reports of drink spiking during Freshers&rsquo; highlighted this. <br />
+<br />
+Although misogyny is often seen as a thing of the past, the evidence is damning: sexism is alive and well, and York is no exception. One of my top priorities as your Equality and Inclusion Officer would be to tackle misogyny on campus and make this university a safe and welcoming space for all women.<br />
+<br />
+Another issue which takes precedence to me is the welfare of students with disabilities, learning difficulties and neurodivergence. Although York is already fairly welcoming in this aspect, work remains to be done. <br />
+<br />
+As your Equality and Inclusion officer, I would work to ensure measures were in place to give every student equal quality of education. Non-exhaustively, these measures would include the following: making sure every building was wheelchair accessible, providing specialised educational support for students with conditions like ADHD and dyslexia which can make learning more difficult, and working with York&rsquo;s mental health services to help every student feel supported. Students with disabilities - whether learning difficulties, physical impairments or otherwise - should always be accounted for, not regarded as an afterthought. <br />
+<br />
+Although I have laid out my top priorities, the many things I aim to achieve in this role extend beyond this short summary. With your vote, hopefully we can see them happen. As your Equality and Inclusion officer, the voice of every York student would be empowered - and that is why you should vote for me. <br />
+<br />
+                "
+            },
+            
+            {
+                "name": "Leila Tskhhovrebasvili",
+                "document_pronouns": "She/her/hers",
+                "document_manifesto_summary": "1. Advocate for financial support for students with financial constraints. 2. Promote mental health services tailored to international students. 2. Strengthen LGBTQ+ rights through policies, awareness campaigns, and safe spaces.",
+                "document_manifesto": "As an Equality and Inclusion Officer at the University of York, one of my key priorities will be promoting the rights of students facing financial constraints. Many talented students struggle to fully participate in university life due to a lack of financial resources, which can affect their ability to purchase necessary study materials and techniques, participate in fieldwork, or engage in research activities. To address this, I will advocate for greater financial support from the university, including scholarships, grants, and bursaries specifically aimed at students from low-income backgrounds. These bursaries will also fund students to attend conferences, competitions, and other academic opportunities that are critical to their personal and professional development. I will work to establish a resource center where students can access essential supplies, such as stationery and textbooks, free of charge or at subsidized rates. By ensuring that financial constraints do not become a barrier to academic success and personal growth, I will help create a more equitable and inclusive learning environment.<br />
+<br />
+Another key focus will be the mental health of international students, a group that often faces significant challenges in adjusting to life at a new university, country, and culture. Many international students experience feelings of isolation, homesickness, and stress due to academic pressure and cultural differences, which can negatively affect their mental health. I will advocate for more accessible mental health services specifically tailored to the needs of international students, such as multilingual counselors and peer support groups. I will also collaborate with student services to organize regular workshops on coping strategies and cross-cultural adaptation. Additionally, I will work with international student societies to create safe spaces where students can discuss their mental health issues openly and receive the support they need. By fostering a community of inclusion and support, we can reduce the stigma surrounding mental health and ensure that international students feel more integrated and confident in seeking help.<br />
+<br />
+Promoting LGBTQ+ rights and inclusion will also be a central aspect of my work. While the University of York has made strides in fostering an LGBTQ+-inclusive environment, challenges like discrimination, harassment, and lack of representation remain. As an Equality and Inclusion Officer, I will work to strengthen existing policies that protect LGBTQ+ students and staff from discrimination while developing new initiatives that celebrate diversity. This includes increasing visibility through events, advocacy campaigns, and safe spaces for LGBTQ+ individuals to share their experiences. I will also ensure that the university&rsquo;s curriculum and resources reflect a diverse range of perspectives, fostering a culture of acceptance. Collaborating with LGBTQ+ organizations and creating allyship programs will be key to engaging the wider university community in understanding and supporting LGBTQ+ rights. Through these measures, I aim to create a university where every individual, regardless of their gender identity or sexual orientation, feels valued and respected.<br />
+<br />
+Through collaborative initiatives, policy reform, and raising awareness, I aim to create a university environment where diversity is celebrated, and equality is the norm for all."
+            },
+            
+            {
+                "name": "Luca Arnold-Jenkins",
+                "document_pronouns": "He/They",
+                "document_manifesto_summary": "Encourage discussion. Welcome change. Don&#039;t just open doors for people, create the space for them.  ",
+                "document_manifesto": "Hi, my name is Luca, and I am on my 4th year at York, but my first year on a new undergraduate degree in Computer Science.<br />
+<br />
+My experience of York so far has taken me through over a year of Law LLB, through two LOAs, and now restarting my university journey in Computer Science. This has allowed me to see how different departments work with freshers, while currently being a fresher. But it also means I have the experience of chairing a society of over 100 members for over a year, working with the SU, putting on brand new types of events, and all the different admin and risk assessments that came along with that.<br />
+<br />
+But more importantly than my professional experience, I have seen just how vital creating an inclusive environment is, and finding so many areas where we might fall short. <br />
+<br />
+For those who are neurodiverse, I will create options including quieter times, lack of overhead lighting, and stimulation breaks, where opportunities for students fall short in these accommodations. I remember my second freshers fair, running a stall during the quiet hour, with many stalls not set up, with groups not ready, and not giving these people who need this quieter space access to the same information. I want to ensure these rules are followed for those who need these spaces, and creating similar chances across give it a go and the rest of the year. Where there may be an edge case, and environments can&#039;t be controlled, the people attending still deserve to know about possible light and volume levels, playing films with subtitles in socials, and making sure these accommodations are as well known as possible.<br />
+<br />
+I will ensure the LGBTQ+ community is welcomed and accepted, providing spaces to discuss queer issues, provide opportunities to educate and support the staff and student bodies. I would create and share spaces for discussion, support, and championing of queer issues. Queerness and engagement with it is not one size fits all, and everyone should be given the opportunity to engage in their own way. Bright bold discussion of intersectional debates should be encouraged to develop understanding and compassion for all the reasons these issues are important. Queer spaces can be muted discussion, silent support, vocal discussion about issues and just loud pride, and all of them should be welcomed, encourage and supported.<br />
+<br />
+As an estranged student, newly also classed as a mature student, the student communities and networks provide options to meet people and find friendly faces that share experiences with you. Having seen the differences in how courses promote student interaction, creating communities is vital, for wellbeing, to create friends, and to maximise on the university experience. Ensuring these communities are accessible, creating focus groups to understand barriers and remove them is so important. By creating outputs where possible to examine, support, and to be able to find the best ways to engage and sharing this with every group will enable change and development.<br />
+"
+            },
+            
+            {
+                "name": "Lucrezia Borelli",
+                "document_pronouns": "",
+                "document_manifesto_summary": "1. Introduce an online platform for reporting needs, suggestions and discrimination, with accountability reports to track progress.  2. Organize workshops and create resources to promote understanding of diversity, identity, and support for international students.  3. Improve campus accessibility with tactile signage, adjustable desks, non-slip ramps, and inclusive event planning.",
+                "document_manifesto": "Hello, my name is Lucrezia and I am an international student in my second year studying History and Philosophy. As an international student, I experienced firsthand the challenges of adapting to a new environment. For this reason, I am truly passionate about ensuring that everyone feels acknowledged and valued when joining our institution.<br />
+<br />
+CREATING A WELCOMING AND INCLUSIVE ENVIRONMENT<br />
+Diversity is our strength, and because I am aware that everyone&#039;s needs and experiences can be very diverse, my first goal is to ensure that every member of the university feels heard.<br />
+In order to reach this goal, I will:<br />
+<br />
+1. Implement an online form that will enable people to express their needs and suggest improvements. This platform will allow both students and staff to report instances of discrimination, and any issue can be addressed promptly.<br />
+<br />
+2. Introduce accountability reports to track progress and identify areas of improvement. These will be based on surveys that will allow students to express how satisfied they are with the diversity, equality, and inclusion initiatives. I will regularly review feedback and work with the university to track the impact of these changes, ensuring that we are continuously improving our efforts.<br />
+<br />
+PROMOTING KNOWLEDGE AND BREAKING DOWN BARRIERS<br />
+Secondly, I believe that knowledge is key to breaking down barriers and prejudices. To foster understanding, I will:<br />
+<br />
+1. Organize workshops and invite leaders from diverse communities to share their experiences and insights, increasing representation and inclusivity.<br />
+<br />
+2. Create resources in collaboration with members of staff and students on relevant topics such as gender and sexuality, what racism is, what identity is, and their historical context. It is crucial to raise awareness on these essential topics. <br />
+<br />
+3. Develop resources for international students to navigate life in a new, different country.  Even issues that may seem intuitive can be challenging for international students. I will provide clear and accessible guidance on processes such as voter registration, using Flywire, obtaining a UK phone number and many other essential aspects of settling into a new environment. <br />
+<br />
+IMPROVING ACCESSIBILITY FOR ALL STUDENTS<br />
+Lastly, it is fundamental to provide everyone with an inclusive university life. For this reason, I want to address structural issues within the university to guarantee that every area on campus is independently accessible to everyone. To achieve this, my initiatives will include:<br />
+<br />
+1. Installing auditory cues, tactile and braille signage around campus and on the campus maps.<br />
+<br />
+2. Providing adjustable desks and accessible seating in the library.<br />
+<br />
+3. Adding non-slip materials to ramps and flooring to reduce the risk of injuries.<br />
+<br />
+4. Collaborating with societies to ensure that people with disabilities feel included and have access to all events, including socials.<br />
+                "
+            },
+            
+            {
+                "name": "Nguyen Doan Nguyen",
+                "document_pronouns": "he/him/his",
+                "document_manifesto_summary": "1. Listening the voices of the people and addressing any problems 2. Increased facilities and support structure across the entire campus 3. An International Day event to celebrate culture through traditions, arts, and really really good food",
+                "document_manifesto": "                                                                        <br />
+&ldquo;Equality, Diversity, and Inclusion&rdquo;. These words have been thrown around again and again, whether by politicians or the media. I am not here to use equality as a buzzword to simply get votes. To me, equality and inclusion are not just words, but necessities for everyone.<br />
+<br />
+Now, I&rsquo;m not going to lie to you and say I&rsquo;ll be the next Nelson Mandela, or MLK Jr., or RuPaul from the hit TV series RuPaul&rsquo;s Drag Race. I will, however, be a real representative of the student body, someone who will tackle the wants and needs of the community, addressing what truly matters. <br />
+<br />
+I am Nguyen, an Asian international student studying law, a proud bisexual, and someone who will serve you proudly. These are what I will try and accomplish if elected:<br />
+<br />
+REPRESENTING THE COMMUNITY<br />
+This role is not one where I would decide everything as the &ldquo;Supreme Leader of Equality&rdquo;. I plan to:<br />
+- Work closely with every college&rsquo;s committees, including the Disability &amp; Access, LGBTQ+, BAME, and International Officers, to see the ongoing issues across campus<br />
+- Open a box for all suggestions/problems/comments for things equality-related <br />
+<br />
+INCREASED FACILITIES<br />
+- Adding neurodivergent-friendly items across places like the library, including weighted blankets and sound-proof headphones<br />
+- Provide more dyslexia-friendly resources in the library<br />
+- Add more free feminine hygiene product dispensers across campus<br />
+<br />
+LGBTQ+ REPRESENTATION<br />
+- Work with the LGBTQ societies around campus to help with queer-friendly club nights and socials<br />
+- Providing support services for those questioning or struggling with their identities. You are valid, no matter who, what, when, where, and why you are<br />
+<br />
+SUPPORT FOR INTERNATIONAL STUDENTS <br />
+- A support system for international students who wants to get involved but don&rsquo;t know how to<br />
+- Working with cultural and national societies around campus to better accommodate students <br />
+<br />
+A NEW EVENT, FOR ANY AND EVERYBODY<br />
+<br />
+Inclusion is just as much about celebration of culture as it is about feeling equal. Even if you are not from a culture, that doesn&#039;t mean you can&rsquo;t celebrate it. One of my main promises for office is to create an International day. This event would includes:<br />
+<br />
+- Wearing traditional clothing from your culture, whether it&rsquo;s a Chinese qipao, a Spanish Flamenco dress, or the Scottish kilt<br />
+- Sharing of culture and traditions through different forms of arts. Visual art, music, drama, anything you can think of<br />
+- And most importantly, an INTERNATIONAL FOOD COURT. A spread of different cultures and traditions through the form of really, really good food. Imagine, a soup dumpling stand next to a gelato stand next to a chippy stand. <br />
+<br />
+This project is something big that I want to bring to the university. If elected, I will work with as many societies as possible to make this event a reality. <br />
+<br />
+Of course, all of this comes with my duty to uphold equality within the events and policies run by the student union, and be the voice of the people. Vote Nguyen!<br />
+            <br />
+                <br />
+                "
+            },
+            
+            {
+                "name": "Rictika",
+                "document_pronouns": "She/her",
+                "document_manifesto_summary": "1. I want to develop resource tools for international student where they can ask there own questions without the fear of judgement.",
+                "document_manifesto": "As an Indian student ,I&#039;ve noticed a common fear among many of us at the University. This anxiety often stems from a lack of information about the rules and regulations for international student, as well as a hesitation to express our views. I want to be a resource for my fellow students, helping them with their queries and providing the information they need to navigate this new environment.<br />
+                "
+            },
+            
+            {
+                "name": "Salman",
+                "document_pronouns": "he/him/his",
+                "document_manifesto_summary": "1. Diversity and Equity: Promote inclusion, supporting underrepresented groups and enhancing accessibility. 2.  Mental Health and Wellbeing: Create supportive spaces for students to share experiences, promoting emotional and social well-being. 3. Scholarship and Support: Improve scholarship accessibility through partnerships and outreach, ensuring equal opportunities for all students.",
+                "document_manifesto": "Empowering Diversity: Your Voice, Your Choice<br />
+<br />
+Hi, I&rsquo;m Salman, an international M.Sc. Health Economics student. I&#039;m passionate about fostering an inclusive environment for everyone, particularly for those who may feel unheard. I believe in the culture of transparency and openness. As Indian philanthropist, Ratan Tata once said, &ldquo;If you want to walk fast, walk alone. But if you want to walk far, walk together.&quot; I live by this quote, believing that real growth happens when we uplift one another. In my free time, I enjoy playing badminton and pool.<br />
+<br />
+Diversity and Equity:<br />
+<br />
+My experience as an Inclusion and Diversity representative at a multinational company has shown me how essential it is to nurture a supportive, inclusive environment. Having enriching experience of studying abroad, I understand the importance of building a community that embraces diversity in all forms. Whether it&#039;s supporting LGBTQ+ students, advocating accessibility for disabled students, or helping international students adapt to a new culture, I believe everyone deserves to feel valued and supported. My goal would be to cultivate a space where differences are celebrated, and every student has access to the resources and opportunities they need to thrive.<br />
+<br />
+To bring this vision to life, I would create regular forums and focus group discussions to address diversity-related issues and better understand the needs of underrepresented groups. I would advocate for better accessibility at university events, support systems tailored for international students, and work with student unions to improve representation for LGBTQ+, disabled, and minority ethnic groups in decision-making processes. Organizing cultural events and establishing a buddy program would also help students transition into their new environment, while offering a safe space for open discussions and representation.<br />
+<br />
+Mental Health and Wellbeing: <br />
+<br />
+As a pharmacist, I value the holistic development of students, recognizing that mental health is the cornerstone of a healthy, productive society, and it&rsquo;s essential that we nurture not only academic growth but also emotional and social well-being.<br />
+<br />
+To encourage students to voice their concerns, I propose an anonymous feedback system to ensure all voices are heard without fear of judgment. Additionally, storytelling sessions would provide students with opportunities to connect and share their diverse life experiences. These efforts would foster a sense of belonging, helping students feel comfortable discussing challenges and accessing the support they need.<br />
+<br />
+Scholarship and Support:<br />
+<br />
+As an international student, I understand how financial barriers can make education feel out of reach. By reviewing existing scholarship policies, we can make education more accessible for everyone. Scholarships are crucial in attracting talent and promoting equal opportunities for all students.<br />
+<br />
+To make an impact, we should collaborate with international educational organizations, local businesses, and foundations that share our vision for student support. Additionally, we should promote scholarships creatively through social media, webinars, and outreach events. Workshops would also help guide students through the application process. By focusing on scholarships and support systems, we can create a welcoming environment where every student feels valued and empowered to succeed."
+            },
+            
+            {
+                "name": "Silvana Olaya Zapata",
+                "document_pronouns": "She/Her",
+                "document_manifesto_summary": " 1.International Students: Offer more financial help for international students to make living costs easier. 2. &iexcl;We are hearing! : Create inclusive events to connect students with shared identities, foster dialogue and support mental health.   3. Accessibility and Intersectionality: Help everyone move around easily, including people with disabilities and different identities.",
+                "document_manifesto": " I am Silvana Olaya Zapata, an international student in the master&rsquo;s program of Women, Violence, and Conflict. My experience in a new environment has shown me that, in certain ways, being an international student can represent a disadvantage. We face challenges such as language barriers, adapting to different methodologies, and the difficulty of integrating into established groups. Additionally, financial challenges can seriously affect our mental health and quality of life, making it essential to have more funding options for daily living expenses, not just tuition scholarships. We must work to ensure that the campus offers better-adapted and accessible spaces that allow everyone to thrive.<br />
+<br />
+Inclusion is a broad and complex issue. Growing up in a family with people with physical disabilities has made me aware of the daily challenges they face to fit into a society that is not always designed for them. Our campus should be a welcoming and accessible space for everyone.<br />
+We need to recognize and address the many forms of disabilities that exist, including students who are blind, deaf, have chronic illnesses such as diabetes or fatigue, mental health challenges, developmental disorders, learning difficulties like dyslexia or ADHD, and physical disabilities. To achieve truly inclusive and effective solutions, I will rely on specialized professionals and, crucially, on the people who face these realities. We cannot envision a different world without directly listening to their experiences and needs. We must go beyond simplistic solutions to complex problems and genuinely understand the realities of their lives.<br />
+<br />
+It is essential to remember that the world must adapt to diversity and create solutions. It is not people who think, feel, or live differently who should adjust to a world designed for only a few. Inclusion should not be confined to the humanities; studies on gender, diversity, and inclusion must be integrated across all fields of knowledge. To accomplish this, we need to implement workshops on diversity and disability for students and staff and create meeting points where people can become aware of and reflect on these topics. We cannot allow inclusion to remain an external matter or one that only affects those who suffer from it and their loved ones. Inclusion is not just a goal; it is a necessity.<br />
+I want to contribute to building a campus where everyone, regardless of their condition, feels like an integral part of the community. I guarantee that I will do my best to transform our academic environment into a place where every voice is heard and where everyone has the opportunity to be true to themselves as they move toward their personal and professional goals.<br />
+<br />
+                <br />
+                "
+            },
+            
+            {
+                "name": "Teddy Bland",
+                "document_pronouns": "He/Him",
+                "document_manifesto_summary": ".Raise awareness of unrecognised barriers to education, especially traumatic and adverse childhood experiences. .Support tolerance and cohesion between internationals and home students through cultural sharing programmes and challenging foreign accent discrimination. .Combat classism in the University&#039;s culture and focus on access to careers opportunities and competitive societies.  ",
+                "document_manifesto": "Firstly, because of my many friends and connections with international societies and the work I did welcoming international students at Manchester Airport, I am aware of issues that have arisen due to the University&#039;s decision to not use English tests for admissions and the stress this has caused the international body and home students. I have been and will continue to work particularly closely with my home department, Language and Linguistic science to implement free English support schemes like reintroducing the Language Caf&eacute; which is currently in planning as well as more cultural sharing sessions to help facilitate connections between home and international students. I would look to engage more departments, especially those who have a large international cohort, like students in the School for Business and Society, who may be struggling to achieve academically because of language barriers. In this current political climate, it seems necessary to me to embrace our diverse student body as well as making sure that the changes we are seeing can happen smoothly for the enjoyment of all students, to give UOY students the best opportunities they deserve, including good friends and a strong network in their academic life and beyond. <br />
+<br />
+Secondly, I want to broaden the criteria that are used by the SU and the University to means-test or qualify somebody for equal access schemes. For example, I believe there are some underrepresented experiences like my own with traumatic/adverse childhood experiences such as abuse, a mentally/physically ill sibling, substance problems in the family home. These experiences and many others are currently not recognised at all by most schemes even though they are psychologically inhibiting and can cause students financial difficulty even if their household income is above a certain threshold, especially for those who are only just over the threshold. As well as continuing to uphold support for recognised disadvantages, I think it&#039;s time the SU and the University recognise that not all barriers to education can be summarised in simple ways. I am looking to form a student group to discuss their experiences for this. <br />
+<br />
+Last but not least, I believe there is a problem with classism amongst the student body, especially as the ever-increasing rents and costs associated with study at UOY are pricing many lower and middle income students out of university. I will push for additional financial support where possible but also I will not be quiet about challenging classism where I see it and I will make sure that issues such as prejudice towards working class students, local York citizens, derogatory attitudes to students with a part time job and unfair advantages in competitive societies such as performance or sports based on expensive outside experience are challenged and rectified through a culture of kindness and opportunity. <br />
+<br />
+If I were your new Equality and Inclusion Officer, you could rest assured that the role would be in safe hands and I would start working hard straight away to see changes I feel genuinely passionate about making. <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                "
+            },
+            
+            {
+                "name": "WU ZHE",
+                "document_pronouns": "She/Her/Hers",
+                "document_manifesto_summary": "1. Establish Inclusive Spaces: Build safe, reflective spaces online and offline where marginalized groups can gather, express themselves, and support one another. 2. Celebrate Diversity: Organize an International Cultural Festival to foster connections among diverse students. 3. Collaborate for Inclusivity: Engage diverse voices to shape inclusive policies and infrastructure.",
+                "document_manifesto": "Hello, I&rsquo;m WU ZHE, a passionate advocate for equality and inclusion, currently pursuing a master&rsquo;s in Women&rsquo;s and Gender Studies. My journey as an international student and involvement in feminist groups have taught me the importance of creating spaces where everyone feels safe, heard, and valued.<br />
+<br />
+1. Creating Safe and Reflective Spaces:<br />
+University life can be fast-paced, teeming with information. We need moments to slow down and reflect, so I aim to help build a safe space, both offline and online, where students with similar concerns can come together to listen to each other. This space would especially welcome marginalized groups, including LGBTQIA+ students, international students, and students with disabilities. Each gathering would have a unique theme or form of expression, such as making a collective zine, cooking together, or simply sitting quietly to feel connected. Additionally, a private online space would give students the freedom to express themselves openly, find solidarity, and share anonymously if needed. This space would encourage sharing daily experiences with discrimination, such as misogyny, homophobia, transphobia, and other harmful behaviors. Through reflection and discussion, we can foster awareness, mutual understanding, and collective action within our community.<br />
+<br />
+2. Celebrating Diversity and Building Connections:<br />
+Adapting to life in a new place can be challenging, especially for international students who face homesickness, cultural adjustment, and isolation. Meaningful connections and familiar comforts can play a crucial role in enhancing well-being. Drawing from my experience as a trained peer counselor, I know that a supportive community helps individuals feel less alone and more understood. I envision organizing an International Cultural Festival&mdash;an event where students can celebrate and explore different cultures while building genuine connections. This festival would provide a welcoming space for students to share stories, discover common ground, and create lasting friendships, helping everyone feel more at home at our university.<br />
+<br />
+3. Listening and Collaborating for True Inclusivity:<br />
+It&rsquo;s easy to fall into the trap of imagining what others might need, especially for students with disabilities and other marginalized groups. True inclusivity, however, requires a shift from &#039;them&#039; to &#039;we&#039;&mdash;focusing on listening and collaborating rather than assuming on their behalf. I was inspired by a party held in Shanghai for deaf individuals, which highlighted the importance of inclusive spaces and really challenged my own preconceptions. It reminded me that we can&rsquo;t assume someone&rsquo;s experience; we need to hear it directly from them. With this in mind, I aim to foster open conversations with students from diverse backgrounds to understand their challenges and perspectives. By embracing their input, we can work together to improve campus infrastructure, support services, and policies in a way that truly reflects the needs and aspirations of all students.<br />
+<br />
+Being seen and heard can be difficult sometimes, but together, we can create spaces where everyone truly feels valued and included. Here we are, ready to listen, connect, and make a meaningful difference in our community.        "
+            },
+            
+            {
+                "name": "Yokesh",
+                "document_pronouns": "He/Him/His",
+                "document_manifesto_summary": "1.Enhance accessibility and expand mental health services for diverse student needs. 2.Work towards decreasing the number of class days in a week to improve students work-life balance. 3.Organize events that celebrate cultural and identity diversity for a more inclusive environment and everyone fell welcomed.",
+                "document_manifesto": "Hi, My name is Yokesh and i am an international student studying Msc Engineering Management in York.<br />
+<br />
+Creating a truly inclusive and supportive environment at the University of York starts with accessibility. With a significant amount of learning now happening online, it is crucial to ensure that all digital resources are accessible to students of all abilities. I will advocate for implementing web accessibility standards across all digital platforms used by the university. This includes tools such as screen readers and transcription services, which are essential for students with disabilities to access online materials equitably. By ensuring that our digital resources meet accessibility standards, we can support all students in their academic pursuits, regardless of their abilities.<br />
+<br />
+Equally important is providing tailored mental health support that recognizes the unique challenges faced by diverse groups within our student body, including international students, LGBTQ+ students, and students with disabilities. It is not enough to have general mental health resources; we need specialized professionals who understand these specific experiences and can offer meaningful support. I will work to expand the range of support services available, including diverse support groups and targeted workshops that promote understanding and resilience. Addressing mental health issues in this way will empower students from all backgrounds to thrive at university.<br />
+<br />
+Moreover, building a respectful and welcoming campus culture requires a proactive stance on allyship and anti-discrimination. I believe that all members of our community should be equipped with the knowledge and tools to challenge discrimination and support one another. To this end, I will introduce allyship workshops and anti-discrimination training, covering essential topics such as racial justice, LGBTQ+ rights, and disability awareness. By educating students, faculty, and staff on these critical issues, we can work together to eliminate prejudice and promote a more inclusive culture on campus.<br />
+<br />
+Beyond training and support, our physical campus infrastructure should also reflect our commitment to inclusion. Accessibility improvements, such as installing ramps, elevators, and sensory-friendly areas, are vital for enabling independence and full participation in campus life. I will advocate for these additions, which will help students with mobility and sensory disabilities navigate the university with greater ease. This is about fostering independence and ensuring that all students can fully engage in both academic and social activities on campus.<br />
+<br />
+Finally, I am committed to celebrating diversity by organizing events that highlight and honor various cultures, identities, and perspectives. Cultural heritage months, LGBTQ+ pride celebrations, and workshops on diverse identities will be integral to my efforts. These events will provide a platform for students to learn about and engage with different cultures and communities, fostering a sense of belonging for everyone. By actively promoting such events, the University of York can be a place where all students feel represented, valued, and supported in every aspect of university life.<br />
+<br />
+In sum, my vision as Equality and Inclusion Officer is to create a university where accessibility, mental health, allyship, infrastructure, and cultural celebration come together to support a diverse and thriving community.<br />
+                "
+            },
+            
+            {
+                "name": "Zainab ",
+                "document_pronouns": "She/Her/Hers",
+                "document_manifesto_summary": "Action 1. Inclusive Assessment Policy for International Postgraduate Students Action 2. Increase Cultural Awareness between BAME LGBTQ and others Action 3. Enhancing Financial Support for Disabled Students ",
+                "document_manifesto": "                  Hi, I am Zainab, an international student pursuing a PhD in CS.<br />
+I aim at tacking the unconscious discrimination from three aspects. The inclusive Teaching, Learning and Assessment Policy Statement needs to be empowered by supporting international students who raised concerns regarding their academic experience. Currently, the university assessment policy is rigid for all PGR students regardless of the quality of service the students receive. Sometimes, the staff may fail to engage with the student&rsquo;s work or provide meaningful feedback to externally funded international students. In this case, the student becomes responsible for solving the issue by finding a new supervisor and restarting his research from scratch (this could be after a year of the PhD program since international students may not be familiar with the university policies), which requires extra funds and workload. Despite these challenges, students are often assessed under the same criteria as others, without accounting for the fact that the issue was caused by university staff.<br />
+<br />
+According to A report into the lived experiences of BAME LGBTQ students at the University of York, &ldquo;Participants expressed there was an informal and institutionalized hierarchy of racism, with Muslim, Arab and South Asian students feeling more marginalized than other BAME students&rdquo;.  I think cultural differences play a role in this point. The university introduced an ideal environment in the induction week and thorough out the written policies. There is a lack in educating the students about the cultural differences that affect basic things like trust and communication. I guess there is a need to increase the awareness of cultural differences in the university for both students and staff.  This can be achieved by organizing a series of workshops targeting successful cases of BAME LGBTQ individuals where their voices were heard and impacted a decision without focusing on the case itself but on analyzing why it worked and how it is linked to cultural differences.<br />
+<br />
+Both Being a Disabled Student at the University of York Report and the YUSU Cost of Living Initiatives 2023/24 reports emphasize the need for greater financial support for disabled students. The latter report highlights that there is currently only one competitive grant available, and finding accessible employment is often challenging. York University uses the Handshake platform to advertise internal and external job opportunities, but it does not indicate whether the jobs are accessible, and the platform itself is not user-friendly for disabled individuals. A more accessible platform is needed to promote jobs that clearly indicate available accessibility services. This would help disabled students continue their education while avoiding physical or emotional harm from working in unsafe environments.<br />
+<br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                "
+            },
+            
+            ]
+        
+    

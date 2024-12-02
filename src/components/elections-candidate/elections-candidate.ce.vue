@@ -77,17 +77,29 @@ export default {
   },
   methods: {
     async getCandidates() {
-      var self = this;
+      // var self = this;
+      // await axios
+      //   .get("https://pluto.sums.su/api/elections/" + this.electionId)
+      //   .then(function (response) {
+      //     self.electionName = response.data.name;
+      //     self.candidate = response.data.candidates.find(
+      //       (candidate) => candidate.id == self.candidateId,
+      //     );
+      //     self.document_manifesto = self.candidate.assets.document_manifesto;
+      //     self.document_photo = self.candidate.assets.document_photo;
+      //   });
       await axios
-        .get("https://pluto.sums.su/api/elections/" + this.electionId)
+        .get("https://yorksu.org/elections/candidate-api/" + this.electionId)
         .then(function (response) {
-          self.electionName = response.data.name;
-          self.candidate = response.data.candidates.find(
-            (candidate) => candidate.id == self.candidateId,
-          );
-          self.document_manifesto = self.candidate.assets.document_manifesto;
-          self.document_photo = self.candidate.assets.document_photo;
-          console.log(self.document_manifesto);
+          const data = response.data
+            .replace(/&bull;/g, "•")
+            .replace(/&mdash;/g, "—")
+            .replace(/&quot;/g, '"')
+            .replace(/&#039;/g, "'")
+            .replace(/&amp;/g, "&")
+            .replace(/<br \/>/g, "\n");
+          const parsedData = JSON.parse(data);
+          console.log(parsedData);
         });
     },
   },
