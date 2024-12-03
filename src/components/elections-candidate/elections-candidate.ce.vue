@@ -101,7 +101,6 @@ export default {
         self.document_photo = self.candidate.assets.document_photo;
         self.candidate.pronouns = pronounsResponse.data;
         self.candidate.manifesto_summary = manifestoSummaryResponse.data;
-        console.log(self.candidate);
       } catch (error) {
         console.error(error);
       }
