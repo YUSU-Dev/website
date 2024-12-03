@@ -11,7 +11,7 @@
             every student at York gets the most out of their time here. From
             hosting events, to running elections, overseeing clubs and
             societies, and providing a helping hand when it’s needed. The work
-            we do is led by five elected sabbatical officers, who represent
+            we do is led by seven elected sabbatical officers, who represent
             students to the University, the city of York, and nationally.
           </p>
         </div>
@@ -152,9 +152,9 @@
           </h2>
           <p>
             Each year, our new set of Sabbatical Officers create a group
-            manifesto to guide their work for the upcoming year. Using the YUSU
-            strategy as a foundation, they build upwards to create tangible and
-            measurable actions, which are more immediately related to the
+            manifesto to guide their work for the upcoming year. Using the York
+            SU strategy as a foundation, they build upwards to create tangible
+            and measurable actions, which are more immediately related to the
             student journey here in York(such as house prices) creating a local
             action plan for the year.
           </p>
