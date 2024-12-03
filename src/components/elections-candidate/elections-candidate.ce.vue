@@ -10,7 +10,9 @@
         />
 
         <div class="flex flex-col gap-4">
-          <h2 class="text-3xl">{{ electionName }} candidate</h2>
+          <h2 v-if="electionName" class="text-3xl">
+            {{ electionName }} candidate
+          </h2>
 
           <div class="flex flex-col gap-4 md:flex-row">
             <img
@@ -21,8 +23,12 @@
             />
 
             <div class="flex flex-col justify-end">
-              <h3 class="text-2xl">{{ candidate.name }}</h3>
-              <h4 class="text-xl">{{ candidate.pronouns }}</h4>
+              <h3 v-if="candidate.name" class="text-2xl">
+                {{ candidate.name }}
+              </h3>
+              <h4 v-if="candidate.pronouns" class="text-xl">
+                {{ candidate.pronouns }}
+              </h4>
             </div>
           </div>
         </div>
@@ -35,7 +41,7 @@
 
           <div>
             <h3 class="text-2xl">MANIFESTO</h3>
-            <p>{{ document_manifesto }}</p>
+            {{ document_manifesto }}
           </div>
         </div>
       </div>
