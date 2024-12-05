@@ -1,9 +1,9 @@
 <!-- eslint-disable -->
 <template>
-    {exp:su_elections:voteForm election_id="{segment_3}" activity_id="{segment_4}"}
-    {embed="core-components/.header" title='Vote'}
+    <!-- {exp:su_elections:voteForm election_id="{segment_3}" activity_id="{segment_4}"}
+    {embed="core-components/.header" title='Vote'} -->
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
 
     <div class="container mx-auto">
 
@@ -86,86 +86,22 @@
 
                     <input type="hidden" name="do" value="vote">
                     <input type="hidden" name="election_id" value="{election_id}">
-
-                    <div class="flex flex-col gap-y-6 my-10">
-                        {candidates}
-                        <div class="flex flex-col gap-y-4 form-group p-4">
-
-
-                            <div class="flex flex-col sm:flex-row gap-4">
-
-                                <div class="">
-                                    {if document_photo != ""}
-                                    <img src="{document_photo}" class="max-h-40 aspect-square">
-                                    {/if}
-                                </div>
-
-                                <div class="flex flex-col">
-                                    <h2 class="text-3xl font-bold mb-0">{candidate_name}</h2>
-                                    {if document_pronouns != ""}
-                                    <p class="text-lg font-semibold">({document_pronouns})</p>
-                                    {/if}
-                                    {if document_blurb != ""}
-                                    <p class="">{document_blurb}</p>
-                                    {/if}
-                                </div>
+                    <h2 class="text-3xl font-bold">Candidates</h2>
+                    <div class="grid xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-10">
+                        <button type="button" v-for="candidate in candidates" :key="candidate.id"
+                            class="flex flex-col shadow border" @click="handleVote(candidate.id)"
+                            :class="{ 'selected-candidate': selectedCandidates.includes(candidate.id) }">
+                            <div v-if="candidate.assets.document_photo">
+                                <img :src="candidate.assets.document_photo" alt="" />
+                            </div>
+                            <div v-else>
 
                             </div>
-
-                            <div class="flex flex-col gap-y-2">
-                                {if document_manifesto_summary != ""}
-                                <div class="border-l-4 border-gray-400 bg-gray-100 p-2">
-                                    <a href="javascript:manifestoSummary({candidate_id});">
-                                        <h3 class="text-2xl mb-0 flex items-center gap-x-2">Manifesto
-                                            Summary <i id="manifesto-summary-chevron"
-                                                class="fa-solid fa-chevron-down"></i>
-                                        </h3>
-                                    </a>
-                                    <p id="manifesto-summary-{candidate_id}" class="hidden">{document_manifesto_summary}
-                                    </p>
-                                </div>
-                                {/if}
-                                {if manifesto_text != ""}
-                                <div class="border-l-4 border-gray-400 bg-gray-100 p-2">
-                                    <a href="javascript:manifesto({candidate_id});">
-                                        <h3 class="text-2xl mb-0 flex items-center gap-x-2">Full Manifesto (Reason
-                                            for Standing) <i id="manifesto-chevron"
-                                                class="fa-solid fa-chevron-down"></i>
-                                        </h3>
-                                    </a>
-                                    <p id="manifesto-{candidate_id}" class="hidden">{manifesto_text}</p>
-                                </div>
-                                {/if}
+                            <div class="flex flex-col p-2 w-full text-start">
+                                <h3 class="text-lg font-semibold truncate xs:text-wrap">{{ candidate.name }}</h3>
+                                <p class="truncate xs:text-wrap">{{ candidate.pronouns }}</p>
                             </div>
-
-                            <div>
-                                {if method == "S"}
-
-                                <select class="bg-gray-100 p-1 rounded" name="candidate[{candidate_id}]">
-                                    {options}
-                                    {if option == 0}
-                                    <option value="{option}" {if option_selected} selected {/if}>-
-                                    </option>
-                                    {if:else}
-                                    <option value="{option}" {if option_selected} selected {/if}>
-                                        {option}</option>
-                                    {/if}
-                                    {/options}
-                                </select>
-
-                                {if:elseif method == "R"}
-
-                                <div class="flex items-center gap-x-2">
-                                    <input class="w-5 h-5" name="candidate" value="{candidate_id}"
-                                        id="candidate-{candidate_id}" type="checkbox">
-                                    <label class="text-lg">Vote</label>
-                                </div>
-
-                                {/if}
-                            </div>
-
-                        </div>
-                        {/candidates}
+                        </button>
                     </div>
 
                     <hr>
@@ -204,11 +140,11 @@
 
 
 
-    {embed="core-components/.footer"}
-    {/exp:su_elections:voteForm}
+    <!-- {embed="core-components/.footer"}
+    {/exp:su_elections:voteForm} -->
 
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     function manifesto(manifestoID) {
         $('#manifesto-' + manifestoID).toggleClass('hidden');
         $('#manifesto-chevron').toggleClass('fa-chevron-down');
@@ -248,11 +184,61 @@
     $('#view-role-desc').click(function () {
         $('#role-description').show();
     });
-</script>
+</script> -->
 </template>
 
 <script>
+import axios from "../../_common/axios.mjs";
 export default {
     name: "ElectionsVote",
+    props: {
+        electionId: {
+            type: String,
+            default: "",
+        },
+    },
+    data() {
+        return {
+            candidates: [],
+            votes: [],
+            selectedCandidates: [],
+        };
+    },
+    mounted() {
+        this.getCandidates();
+    },
+    methods: {
+        async getCandidates() {
+            var self = this;
+            try {
+                const [electionsResponse, pronounsResponse] =
+                    await Promise.all([
+                        axios.get("https://pluto.sums.su/api/elections/" + this.electionId),
+                        axios.get("https://yorksu.org/elections/all-candidate-pronouns/" + this.electionId),
+                    ]);
+                self.candidates = electionsResponse.data.candidates;
+                let cleanedData = pronounsResponse.data.replace(/,\s*([\]}])/g, '$1');
+                let JSONData = JSON.parse(cleanedData);
+                self.candidates.forEach(candidate => {
+                    const pronouns = JSONData.find(pronoun => pronoun.id == candidate.id);
+                    if (pronouns) {
+                        candidate.pronouns = pronouns.pronouns;
+                    }
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        handleVote(candidateId) {
+            if (this.votes.includes(candidateId)) {
+                this.votes = this.votes.filter(id => id !== candidateId);
+                this.selectedCandidates = this.selectedCandidates.filter(id => id !== candidateId);
+            } else {
+                this.votes.push(candidateId);
+                this.selectedCandidates.push(candidateId);
+            }
+            console.log(this.votes);
+        }
+    }
 };
 </script>

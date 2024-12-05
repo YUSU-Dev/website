@@ -434,3 +434,8 @@ input[type="checkbox"] {
 .sums-table tr {
   @apply flex flex-wrap;
 }
+
+/* Voting */
+.selected-candidate {
+  @apply border-4 border-voice-orange;
+}
