@@ -108,8 +108,8 @@
 
                     {if spoilt_votes == 1}
                     <div class="flex gap-x-2 items-center my-10">
-                        <input id="spoil-vote" class="w-5 h-5" type="checkbox" name="spoilt" value="Y">
-                        <label class="text-lg">Spoil Vote</label>
+                        <input id="spoil-vote" class="w-5 h-5" type="checkbox" name="spoilt" value="Y" aria-labelledby="spoil-vote-label">
+                        <label id="spoil-vote-label" class="text-lg">Spoil Vote</label>
                     </div>
                     <div class="clearfix"></div>
                     {/if}
