@@ -21,7 +21,7 @@
               <h1
                 class="w-full break-words text-center text-2xl font-bold sm:text-3xl"
               >
-                {{ group }}
+                {{ decodedGroup }}
               </h1>
             </div>
             <div
@@ -129,6 +129,21 @@ export default {
         return (this.groupLogo = randomImageUrl("student-life"));
       }
       return (this.groupLogo = this.logo);
+    },
+  },
+  computed: {
+    decodedGroup() {
+      if (!this.group) return "";
+      return this.group
+        .replace(/&#39;/g, "'")
+        .replace(/&#8217;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&#8220;/g, '"')
+        .replace(/&#8221;/g, '"')
+        .replace(/&lsquo;/g, "'")
+        .replace(/&rsquo;/g, "'")
+        .replace(/&ldquo;/g, '"')
+        .replace(/&rdquo;/g, '"');
     },
   },
 };

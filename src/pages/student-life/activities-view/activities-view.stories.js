@@ -92,3 +92,9 @@ export const ConstantineSport = {
     },
   },
 };
+
+export const SwapShop = {
+  args: {
+    activityid: 382,
+  },
+};
