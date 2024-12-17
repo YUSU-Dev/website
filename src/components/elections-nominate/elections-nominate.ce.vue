@@ -1,5 +1,4 @@
-<!-- eslint-disable -->
-<template>
+
   <style>
     .cr-boundary {
       width: 100% !important;
@@ -14,7 +13,7 @@
   <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.js"></script>
-  <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/image-cropper.js"></script>
+  <!-- <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/image-cropper.js"></script> -->
   <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/elections-char-count.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.css" rel="stylesheet">
   <div class="container mx-auto">
@@ -94,10 +93,9 @@
         <!-- Alerts -->
         <!-- Nomination Form -->
         <div class="flex flex-col gap-y-2">
-          {if election_document_count > 0} {election_documents}
-          <form method="post" enctype="multipart/form-data" id="{field_name}">
-            <input type="hidden" name="do" value="update" />
-            <input type="hidden" name="document" value="{field_name}" />
+          {if election_document_count > 0}
+          <form method="post" enctype="multipart/form-data" id="election-nominate-form">
+          {election_documents}
             <fieldset class="flex flex-col gap-y-1">
               {if field_method == "TEXT"} {if field_type == "INPUT"}
               <label class="">{field_title} {if field_required AND field_complete == 0}
@@ -121,7 +119,7 @@
               </p>
               {/if}
               <div class="input-group flex">
-                <input name="item" id="{field_name}" class="form-input" type="text" autocomplete="given-name" {if
+                <input name="{field_name}" id="{field_name}" class="form-input" type="text" autocomplete="given-name" {if
                   field_max_characters} onkeyup="charcountupdate(this.value, 'count-{field_name}')" {if:elseif
                   field_max_words} onkeyup="UpdateWordCount(this.value, 'count-{field_name}')" {/if} {if
                   field_disabled==1}disabled{/if} {if field_required}required{/if} {if field_name=='manifesto_summary' }
@@ -160,7 +158,7 @@
               <div class="form-group p-0">
                 <textarea {if field_max_characters} onkeyup="charcountupdate(this.value, 'count-{field_name}')"
                   {if:elseif field_max_words} onkeyup="UpdateWordCount(this.value, 'count-{field_name}')" {/if}
-                  id="{field_name}" class="form-control p-2 w-full" rows="6" name="item" {if
+                  id="{field_name}" class="form-control p-2 w-full" rows="6" name="{field_name}" {if
                   field_disabled==1}disabled{/if} {if field_required}required{/if} placeholder="{if field_required} Required {/if}">
                   {field_value}
                 </textarea>
@@ -202,7 +200,7 @@
                 {if:elseif field_name == 'manifesto_summary'}
                 <p class="text-sm">Please use three bullet points to summarise your manifesto ideas.</p>
                 {/if}
-                <textarea class="form-control p-2 w-full" rows="6" id="{field_title}" name="item" {if
+                <textarea class="form-control p-2 w-full" rows="6" id="{field_title}" name="{field_name}" {if
                   field_disabled==1}disabled{/if}>
                   {field_value}
                 </textarea>
@@ -269,7 +267,7 @@
                     </script>
                 </div>
                 <!-- Hidden input fields for submission -->
-                <input type="hidden" class="image-data" id="document_{field_name}" name="item" {if
+                <input type="hidden" class="image-data" id="document_{field_name}" name="{field_name}" {if
                   field_disabled==1}disabled{/if}>
                 <!-- Visible image select input -->
                 <input class="crop__upload w-full" type="file" src="#" name="itemUploader" id="crop__upload" {if
@@ -300,7 +298,7 @@
                           <div class="btn btn-primary vanilla-rotate w-min flex flex-row gap-x-2 items-center"
                             id="rotate" data-deg="-90" style="display: none;">Rotate <i class="fas fa-sync-alt"></i>
                           </div>
-                          <div class="btn btn-primary w-min" id="cropBtn" value="Crop" style="display: none;">Save</div>
+                          <div class="btn btn-primary w-min" id="cropBtn" value="Crop" style="display: none;">Crop</div>
                           {/if}
                         </div>
                       </div>
@@ -310,7 +308,7 @@
                 <!-- Popup Modal for cropping image ends -->
                 {if:else}
                 <input class="form-control margin-bottom-20 rounded-0" type="file" id="document_{field_name}"
-                  name="item" {if field_disabled==1}disabled{/if}>
+                  name="{field_name}" {if field_disabled==1}disabled{/if}>
                 <p class="text-sm">
                   <span class="font-semibold">File Types:</span>{field_file_types}
                   {if field_image == 1}
@@ -319,7 +317,7 @@
                 </p>
                 {/if}
               </div>
-              <div class="flex justify-end">
+              <div class="flex justify-end gap-2">
                 {if field_view == 1}
                 <a href="{field_url}" target="_blank" class="btn btn-primary">View</a>
                 {/if}
@@ -330,7 +328,7 @@
                 <label class="mb-2">
                   {field_title}
                 </label>
-                <select name="item" class="form-control" {if field_required} required {/if}>
+                <select name="{field_name}" class="form-control" {if field_required} required {/if}>
                   {field_options}
                   <option value="{option_val}" {if field_value==option_val}selected{/if}>
                     {option_txt}
@@ -343,13 +341,14 @@
                 <a href="{field_url}" target="_blank" class="btn btn-primary">View</a>
                 {/if}
                 {if field_save == 1}
-                <input type="submit" class="btn btn-sm u-btn-primary" value="Save">
+                <input type="submit" class="btn btn-primary" value="Save">
                 {/if}
               </div>
               {/if}
             </fieldset>
-          </form>
-          {/election_documents} {/if}
+          {/election_documents} 
+        </form>
+        {/if}
           <!-- form 3 - submit everything -->
           {if nomination_submitted == 0}
           <form method="post" id="process-submission">
@@ -423,11 +422,8 @@
       </div>
     </div>
   </div>
-  {embed="core-components/.footer"} {/exp:su_elections:nominationForm}
-</template>
+  <script type="text/javascript" src="/elections/election-nominate.js"></script>
+  <script type="text/javascript" src="/elections/image-cropper.js"></script>
 
-<script>
-export default {
-  name: "ElectionsNominate",
-};
-</script>
+  {embed="core-components/.footer"} {/exp:su_elections:nominationForm}
+
