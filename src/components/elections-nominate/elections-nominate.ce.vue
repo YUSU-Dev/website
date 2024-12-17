@@ -357,7 +357,7 @@
             <h5>Ready to submit everything? <small style="display:block" class="g-mt-10">Make sure that
                 you've pressed 'save' on each item above.</small></h5>
             <p class="text-sm"><em>If you're having issues with submitting a nomination
-                please contact <a href="mailto:elections@yusu.org">elections@yorksu.org</a></em></p>
+                please contact <a href="mailto:elections@yorksu.org">elections@yorksu.org</a></em></p>
             <hr class="g-brd-gray-light-v4 g-mx-minus-30">
             {if allow_submission == 1}
             <ul class="pl-0 flex flex-col gap-y-2 mb-2">
@@ -366,12 +366,12 @@
                   <input type="checkbox" name="declare" value="1" class="declare" required>
                 </div>
                 <div class="">
-                  <p class="text-sm mb-0">I confirm I have read YUSU's privacy policy, with specific reference to the
+                  <p class="text-sm mb-0">I confirm I have read York SU's privacy policy, with specific reference to the
                     handling of my personal data as detailed in the 'Elections and Student Voice' and 'Information we
                     may share with other organisations' sections. </small></p>
                 </div>
               </li>
-              <li class="flex items-center gap-x-2">
+              <!-- <li class="flex items-center gap-x-2">
                 <div class="">
                   <input type="checkbox" name="declare_rules" value="1" class="declare" required>
                 </div>
@@ -380,7 +380,7 @@
                       href="https://docs.google.com/document/d/1ZJ9gxPlEmwk1o3WLY_szsOiz2yCvuiiunOgzF4MWkPw/edit?usp=sharing">College
                       Election rules</a></p>
                 </div>
-              </li>
+              </li> -->
               <li class="flex items-center gap-x-2">
                 <div class="">
                   <input type="checkbox" name="declare_privacy" value="1" class="declare" required>
@@ -398,7 +398,7 @@
                 </div>
                 <div class="">
                   <p class="text-sm mb-0">If I am successful in the election process, I agree to my name, pronouns,
-                    email address, manifesto commitments and provided photograph being used by YUSU, and shared with
+                    email address, manifesto commitments and provided photograph being used by York SU, and shared with
                     student media for the purposes of declaring the election results and fulfilling the responsibilities
                     of my elected position.</p>
                 </div>
