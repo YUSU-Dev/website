@@ -141,7 +141,7 @@
 
                         <div class="flex gap-x-4">
                             <button type="button" id="clear-vote" class="btn btn-student-voice" @click="clearVotes()">Clear Votes</button>
-                            <button type="submit" class="btn btn-student-voice">Submit</button>
+                            <button type="button" class="btn btn-student-voice" @click="submitVotes()">Review and Submit</button>
                         </div>
 
                         <p><em>If you're having issues voting please contact <a
@@ -208,11 +208,13 @@
 </script> -->
     <CandidateModal v-if="candidate" :candidate-id="String(candidate.id)" :election-id="String(election.id)"
         :candidate-name="candidate.name" :modal-closed="ModalClosed" @close="ModalClosed = true" />
+    <VoteModal :modal-closed="VoteModalClosed" :votes="votes" :candidates="candidates" :vote-spoiled="voteSpoiled" @close="VoteModalClosed = true" />
 </template>
 
 <script>
 import axios from "../../_common/axios.mjs";
 import CandidateModal from "../candidate-modal/candidate-modal.ce.vue";
+import VoteModal from "../vote-modal/vote-modal.ce.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
@@ -227,6 +229,7 @@ export default {
     },
     components: {
         CandidateModal,
+        VoteModal,
         FontAwesomeIcon,
     },
     data() {
@@ -237,11 +240,12 @@ export default {
             votes: [],
             selectedCandidates: [],
             ModalClosed: true,
+            VoteModalClosed: true,
             voteSpoiled: false,
         };
     },
     mounted() {
-        console.log(this.candidate);
+        // console.log(this.candidate);
         this.getCandidates();
     },
     methods: {
@@ -254,7 +258,7 @@ export default {
                         axios.get("https://pluto.sums.su/api/elections/" + this.electionId),
                         axios.get("https://yorksu.org/elections/all-candidate-pronouns/" + this.electionId),
                     ]);
-                console.log(electionsResponse.data);
+                // console.log(electionsResponse.data);
                 self.election = electionsResponse.data;
                 self.candidates = electionsResponse.data.candidates;
                 let cleanedData = pronounsResponse.data.replace(/,\s*([\]}])/g, '$1');
@@ -288,12 +292,12 @@ export default {
                 const candidate = this.candidates.find(candidate => candidate.id === id);
                 candidate.voteOrder = index + 1;
             });
-            console.log(this.votes);
+            // console.log(this.votes);
         },
         viewManifesto(candidateId) {
-            console.log(candidateId);
+            // console.log(candidateId);
             this.candidate = this.candidates.find(candidate => candidate.id === candidateId);
-            console.log(this.candidate);
+            // console.log(this.candidate);
             this.ModalClosed = false;
         },
         clearVotes() {
@@ -306,6 +310,18 @@ export default {
         spoilVote() {
             if (this.votes.length > 0) {
                 this.clearVotes();
+            }
+        },
+        submitVotes() {
+            if (this.votes.length > 0 && this.voteSpoiled == false) {
+                console.log("Voting submitted, votes: ");
+                console.log(this.votes);
+                this.VoteModalClosed = false;
+            } else if (this.votes.length == 0 && this.voteSpoiled) {
+                console.log("Vote spoiled");
+                this.VoteModalClosed = false;
+            } else {
+                console.log("Please vote for at least 1 candidate or spoil your vote.");
             }
         },
     }

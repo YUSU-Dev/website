@@ -1,7 +1,7 @@
 <template>
   <div
     v-show="!modalClosed"
-    id="candidate-modal"
+    id="vote-modal"
     class="modal z-50 flex items-start"
     aria-label="Error Modal"
     tabindex="-1"
@@ -9,7 +9,7 @@
     @click="handleBackgroundClick"
   >
     <div
-      id="candidate-modal-container"
+      id="vote-modal-container"
       class="container relative h-full px-6"
       role="document"
     >
@@ -19,9 +19,9 @@
       >
         <div class="modal-header">
           <div class="flex items-center gap-4">
-            <FontAwesomeIcon icon="fa-solid fa-circle-info" class="h-6 w-6">
+            <FontAwesomeIcon icon="fa-solid fa-check-to-slot" class="h-6 w-6">
             </FontAwesomeIcon>
-            <h2 class="modal-title">{{ candidateName }}</h2>
+            <h2 class="modal-title">Confirm Votes</h2>
           </div>
           <button
             type="button"
@@ -49,12 +49,30 @@
           </button>
         </div>
         <div class="modal-body">
-          <ElectionsCandidate
-            :key="candidateKey"
-            :candidate-id="candidateId"
-            :election-id="electionId"
-            embedded
-          />
+          <div class="flex flex-col gap-8">
+            <div
+              class="flex items-center gap-8"
+              :key="candidate.id"
+              v-for="candidate in orderedCandidates"
+            >
+              <div class="flex h-12 w-12 items-center justify-center border-2">
+                <p class="text-3xl font-bold">{{ candidate.voteOrder }}</p>
+              </div>
+              <h2 class="text-2xl">{{ candidate.name }}</h2>
+            </div>
+            <div class="flex gap-4">
+              <button
+                type="button"
+                class="btn btn-student-voice"
+                @click="$emit('close')"
+              >
+                Cancel
+              </button>
+              <button type="button" class="btn btn-student-voice">
+                Confirm
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -64,27 +82,26 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-library.add(faCircleInfo);
-import ElectionsCandidate from "../elections-candidate/elections-candidate.ce.vue";
+import { faCheckToSlot } from "@fortawesome/free-solid-svg-icons";
+library.add(faCheckToSlot);
 export default {
-  name: "CandidateModal",
+  name: "VoteModal",
   props: {
     modalClosed: {
       type: Boolean,
       default: true,
     },
-    candidateId: {
-      type: String,
-      default: "",
+    votes: {
+      type: Array,
+      default: () => [],
     },
-    electionId: {
-      type: String,
-      default: "",
+    candidates: {
+      type: Array,
+      default: () => [],
     },
-    candidateName: {
-      type: String,
-      default: "",
+    voteSpoiled: {
+      type: Boolean,
+      default: false,
     },
     loading: {
       type: Boolean,
@@ -92,24 +109,36 @@ export default {
     },
   },
   components: {
-    ElectionsCandidate,
     FontAwesomeIcon,
   },
   data() {
     return {
-      candidateKey: 0,
+      orderedCandidates: 0,
     };
   },
+  mounted() {},
   watch: {
-    candidateId() {
-      this.candidateKey += 1;
+    modalClosed(newVal) {
+      if (!newVal) {
+        this.updateVotes();
+      }
     },
   },
   methods: {
+    updateVotes() {
+      if (this.voteSpoiled !== true) {
+        this.orderedCandidates = this.candidates
+          .filter((candidate) => candidate.voteOrder !== null)
+          .sort((a, b) => a.voteOrder - b.voteOrder);
+        console.log("Candidates sorted by voteOrder:", this.orderedCandidates);
+      } else {
+        this.orderedCandidates = [];
+      }
+    },
     handleBackgroundClick(event) {
       if (
-        event.target.id === "candidate-modal" ||
-        event.target.id === "candidate-modal-container"
+        event.target.id === "vote-modal" ||
+        event.target.id === "vote-modal-container"
       ) {
         this.$emit("close");
       }
