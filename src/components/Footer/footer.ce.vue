@@ -24,7 +24,7 @@
                 </li>
                 <li>Charity Company #10688097 | VAT #GB272458389</li>
                 <li>
-                  © University of York Students' Union 2024 | All rights
+                  © University of York Students' Union 2025 | All rights
                   reserved | Powered by
                   <a
                     href="https://sums.digital"
@@ -119,7 +119,7 @@
               </li>
               <li>Charity Company #10688097 | VAT #GB272458389</li>
               <li>
-                © University of York Students' Union 2024 | All rights reserved
+                © University of York Students' Union 2025 | All rights reserved
                 | Powered by
                 <a
                   href="https://sums.digital"
