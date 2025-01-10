@@ -473,6 +473,11 @@ export default {
                 name: "Book an Event",
                 link: "/events/book-event",
               },
+              {
+                name: "Employability Hub",
+                link: "https://resource-hub.yorksu.org/employability/employability-home#",
+                target: "_blank",
+              },
             ],
           },
           {
