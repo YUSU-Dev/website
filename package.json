@@ -31,7 +31,7 @@
     "@storybook/builder-vite": "^8.4.4",
     "@storybook/manager-api": "^8.4.4",
     "@storybook/test": "^8.4.4",
-    "@storybook/test-runner": "^0.19.1",
+    "@storybook/test-runner": "^0.21.0",
     "@storybook/theming": "^8.4.4",
     "@storybook/vue3": "^8.4.4",
     "@storybook/vue3-vite": "^8.4.4",
