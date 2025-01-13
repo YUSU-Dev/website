@@ -19,7 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-replace": "^5.0.5",
     "@storybook/addon-coverage": "^1.0.4",
     "@storybook/addon-essentials": "^8.4.4",
