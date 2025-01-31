@@ -85,6 +85,10 @@
   .footer {
     @apply min-h-[256px];
   }
+  /* Notice Bar */
+  .notice-close {
+    @apply absolute right-0 p-2;
+  }
   /* v-select Classes */
   /* Events Filters */
   .events-filters {
