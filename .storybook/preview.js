@@ -41,6 +41,11 @@ const preview = {
       return storyFn();
     },
   ],
+  initialGlobals: {
+    a11y: {
+      manual: true,
+    },
+  },
 };
 
 export default preview;
