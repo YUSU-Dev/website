@@ -6,5 +6,8 @@ export default {
 };
 
 export const Default = {
-  args: {},
+  args: {
+    expiry: "10s",
+    cookieName: "test-bar",
+  },
 };

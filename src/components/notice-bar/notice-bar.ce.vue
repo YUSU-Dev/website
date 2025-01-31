@@ -28,15 +28,43 @@
 </template>
 
 <script>
+import {
+  setCookie,
+  getCookie,
+} from "https://cdn.jsdelivr.net/npm/tiny-cookie@2.5.1/+esm";
+
 export default {
   name: "NoticeBar",
+  props: {
+    cookieName: {
+      type: String,
+      default: "",
+    },
+    expiry: {
+      type: String,
+      default: "15m",
+    },
+  },
   data() {
     return {
       isVisible: true,
+      cookieFullName: "yorksu-notice-bar",
     };
+  },
+  mounted() {
+    if (this.cookieName) {
+      this.cookieFullName = `yorksu-${this.cookieName}`;
+    }
+    const cookieDismissed = getCookie(this.cookieFullName);
+    if (cookieDismissed === "ok") {
+      this.isVisible = false;
+    }
   },
   methods: {
     closeNotice() {
+      setCookie(this.cookieFullName, "ok", {
+        expires: this.expiry,
+      });
       this.isVisible = false;
     },
   },
