@@ -13,6 +13,13 @@ export const Embedded = {
   },
 };
 
+export const EmbeddedWithSearch = {
+  args: {
+    embedded: true,
+    search: true,
+  },
+};
+
 export const selectedCategories = {
   args: {
     embedded: true,
