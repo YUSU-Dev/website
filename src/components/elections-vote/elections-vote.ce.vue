@@ -274,7 +274,7 @@ export default {
         console.log("Voting submitted, votes: ");
         console.log(this.votes);
         this.createFormData();
-        submitVoteHandler(this.formData)
+        submitVoteHandler(this.electionId, this.formData)
           .then(function (response) {
             if (!response["success"]) {
               var data = response.error_message;
@@ -296,7 +296,7 @@ export default {
         this.VoteModalClosed = true;
       } else if (this.votes.length == 0 && this.voteSpoiled) {
         console.log("Vote spoiled");
-        submitVoteHandler(this.formData)
+        submitVoteHandler(this.electionId, this.formData)
           .then(function (response) {
             if (!response["success"]) {
               var data = response.error_message;
