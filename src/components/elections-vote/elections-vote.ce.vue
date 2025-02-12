@@ -1,82 +1,5 @@
-<!-- eslint-disable -->
 <template>
-    <!-- {exp:su_elections:voteForm election_id="{segment_3}" activity_id="{segment_4}"}
-    {embed="core-components/.header" title='Vote'} -->
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
-
-    <div class="container mx-auto">
-
-        <div class="flex flex-col gap-y-6">
-
-            <h1 class="text-4xl font-bold mb-6">Vote</h1>
-
-            <div class="border-l-4 border-gray-400 bg-gray-100 p-2">
-                <h2 class="mb-0 text-xl">
-                    York SU uses the Single Transferable Voting System. You need to vote in order of preference,
-                    with 1 being your first preference (i.e. the candidate you want to win). This is so that if
-                    the person you want to win does not win, your second preference is taken into account.
-                </h2>
-            </div>
-
-            <div class="info">
-            </div>
-
-            {if valid_vote}
-
-            <div class="border-l-4 border-green-400 bg-green-100 p-2">
-                <h2 class="mb-0 text-xl">Success!</h2>
-                <p>
-                    Your vote was successfully registered.
-                </p>
-            </div>
-
-            {/if}
-
-
-            <div class="flex flex-col gap-y-6">
-                <!-- Details -->
-                <div class="flex flex-col">
-                    <h2 class="text-2xl">
-                        <i class="fa fa-tasks"></i>
-                        {{ election.name }}
-                    </h2>
-                    <div class="form-group">
-                        <div class="flex flex-col sm:flex-row gap-x-12">
-                            <div class="flex flex-col">
-                                <h3 class="text-xl mb-0">Election Method</h3>
-                                <p>{{ election.method }}</p>
-                                <h3 class="text-xl mb-0">No. of Positions</h3>
-                                <p>{{ election.number_of_positions }}</p>
-                            </div>
-                            <div class="flex flex-col">
-                                <h3 class="text-xl mb-0">Voting Opens</h3>
-                                <p>{{ election.voting_start }}</p>
-                                <h3 class="text-xl mb-0">Voting Closes</h3>
-                                <p>{{ election.voting_end }}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="flex flex-col">
-                            <h3 class="text-xl mb-0">Description</h3>
-                            <p>{election_description}</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Details -->
-
-                {if error_count}
-                <div class="border-l-4 border-red-400 bg-red-100 p-2">
-                    <h2 class="mb-0 text-xl">
-                        Uh oh! There appears to be a few errors...
-                    </h2>
-                    {validation_errors}
-                    <ul>
-                        <li>{error}</li>
-                    </ul>
-                    {/validation_errors}
-                </div>
-                {/if}
+    <div>
 
                 <form method="post">
 
@@ -89,13 +12,6 @@
                             :class="{ 'selected-candidate': selectedCandidates.includes(candidate.id) }">
                             <div class="relative">
                                 <div class="absolute flex w-full justify-end">
-                                    <!-- <div class="h-8 w-8 flex items-center m-2">
-                                        <button type="button" class="" @click.stop="viewManifesto(candidate.id)"
-                                            aria-label="View manifesto">
-                                            <FontAwesomeIcon icon="fa-solid fa-circle-info" class="w-6 h-6">
-                                            </FontAwesomeIcon>
-                                        </button>
-                                    </div> -->
                                     <div v-if="candidate.voteOrder"
                                         class="bg-voice-orange w-8 h-8 flex items-center justify-center rounded-full m-2">
                                         <p>{{ candidate.voteOrder }}</p>
@@ -126,14 +42,12 @@
 
                     <hr>
 
-                    {if spoilt_votes == 1}
-                    <div class="flex gap-x-2 items-center my-10">
+                    
+                    <div v-if="spoiltVote == '1'" class="flex gap-x-2 items-center my-10">
                         <input id="spoil-vote" class="w-5 h-5" type="checkbox" name="spoilt" v-model="voteSpoiled"
-                            aria-labelledby="spoil-vote-label" @click="spoilVote()">
+                            aria-labelledby="spoil-vote-label" @click="doSpoilVote()">
                         <label id="spoil-vote-label" class="text-lg">Spoil Vote</label>
                     </div>
-                    <div class="clearfix"></div>
-                    {/if}
 
                     <hr>
 
@@ -151,64 +65,10 @@
 
                 </form>
 
-            </div>
-
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- {embed="core-components/.footer"}
-    {/exp:su_elections:voteForm} -->
-
-
-    <!-- <script type="text/javascript">
-    function manifesto(manifestoID) {
-        $('#manifesto-' + manifestoID).toggleClass('hidden');
-        $('#manifesto-chevron').toggleClass('fa-chevron-down');
-        $('#manifesto-chevron').toggleClass('fa-chevron-up');
-    }
-
-    function manifestoSummary(manifestoID) {
-        $('#manifesto-summary-' + manifestoID).toggleClass('hidden');
-        $('#manifesto-summary-chevron').toggleClass('fa-chevron-down');
-        $('#manifesto-summary-chevron').toggleClass('fa-chevron-up');
-    }
-
-    $('#clear-vote').click(function () {
-        $('input[name="candidate"]').prop('checked', false);
-        $('.candidate-list').val('');
-        $('input[name="spoilt"]').prop('checked', false);
-        $('.candidate-list').removeAttr('disabled');
-        $('.candidate-list').val('');
-        $('input[name="candidate"]').prop('disabled', false);
-        $('input[name="candidate"]').prop('checked', false);
-    });
-
-    $('#spoil-vote').click(function () {
-        if ($(this).is(':checked')) {
-            $('.candidate-list').attr('disabled', 'true');
-            $('.candidate-list').val('');
-            $('input[name="candidate"]').prop('disabled', true);
-            $('input[name="candidate"]').prop('checked', false);
-        } else {
-            $('.candidate-list').removeAttr('disabled');
-            $('.candidate-list').val('');
-            $('input[name="candidate"]').prop('disabled', false);
-            $('input[name="candidate"]').prop('checked', false);
-        }
-    });
-
-    $('#view-role-desc').click(function () {
-        $('#role-description').show();
-    });
-</script> -->
     <CandidateModal v-if="candidate" :candidate-id="String(candidate.id)" :election-id="String(election.id)"
         :candidate-name="candidate.name" :modal-closed="ModalClosed" @close="ModalClosed = true" />
     <VoteModal :modal-closed="VoteModalClosed" :votes="votes" :candidates="candidates" :vote-spoiled="voteSpoiled" @close="VoteModalClosed = true" />
+</div>
 </template>
 
 <script>
@@ -225,6 +85,10 @@ export default {
         electionId: {
             type: String,
             default: "",
+        },
+        spoiltVote: {
+            type: String,
+            default: '',
         },
     },
     components: {
@@ -307,7 +171,7 @@ export default {
                 candidate.voteOrder = null;
             });
         },
-        spoilVote() {
+        doSpoilVote() {
             if (this.votes.length > 0) {
                 this.clearVotes();
             }
