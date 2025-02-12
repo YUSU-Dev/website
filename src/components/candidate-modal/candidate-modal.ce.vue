@@ -21,7 +21,9 @@
           <div class="flex items-center gap-4">
             <FontAwesomeIcon icon="fa-solid fa-circle-info" class="h-6 w-6">
             </FontAwesomeIcon>
-            <h2 class="modal-title">{{ candidateName }}</h2>
+            <h2 v-if="candidateName" class="modal-title">
+              {{ candidateName }}
+            </h2>
           </div>
           <button
             type="button"
