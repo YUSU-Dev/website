@@ -51,7 +51,9 @@
             <hr />
             <div class="flex flex-col">
               <h3 class="mb-0 text-xl">Description</h3>
-              <p>{election_description}</p>
+              <article>
+                <p>{election_description}</p>
+              </article>
             </div>
           </div>
         </div>

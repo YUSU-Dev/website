@@ -3,7 +3,7 @@
     <div method="post">
       <h2 class="text-3xl font-bold">Candidates</h2>
       <div
-        class="my-10 grid gap-6 xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+        class="xxs:grid-cols-2 xs:grid-cols-3 my-10 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
       >
         <button
           type="button"
@@ -19,7 +19,7 @@
             <div class="absolute flex w-full justify-end">
               <div
                 v-if="candidate.voteOrder"
-                class="m-2 flex h-8 w-8 items-center justify-center rounded-full bg-voice-orange"
+                class="bg-voice-orange m-2 flex h-8 w-8 items-center justify-center rounded-full"
               >
                 <p>{{ candidate.voteOrder }}</p>
               </div>
@@ -40,14 +40,14 @@
             </div>
           </div>
           <div class="flex h-full w-full flex-col p-2 text-start">
-            <h3 class="truncate text-lg font-semibold xs:text-wrap">
+            <h3 class="xs:text-wrap truncate text-lg font-semibold">
               {{ candidate.name }}
             </h3>
             <div
               v-if="candidate.id != 9"
               class="flex flex-grow flex-col justify-between sm:flex-row"
             >
-              <p class="truncate xs:text-wrap">{{ candidate.pronouns }}</p>
+              <p class="xs:text-wrap truncate">{{ candidate.pronouns }}</p>
               <div class="flex items-end justify-end">
                 <button
                   type="button"
@@ -180,7 +180,6 @@ export default {
     };
   },
   mounted() {
-    // console.log(this.candidate);
     this.getCandidates();
   },
   methods: {
@@ -207,7 +206,6 @@ export default {
               this.electionId,
           ),
         ]);
-        // console.log(electionsResponse.data);
         self.election = electionsResponse.data;
         self.candidates = electionsResponse.data.candidates;
         let cleanedData = pronounsResponse.data.replace(/,\s*([\]}])/g, "$1");
@@ -249,15 +247,11 @@ export default {
         );
         candidate.voteOrder = index + 1;
       });
-      console.log(this.votes);
-      // console.log(this.selectedCandidates);
     },
     viewManifesto(candidateId) {
-      // console.log(candidateId);
       this.candidate = this.candidates.find(
         (candidate) => candidate.id === candidateId,
       );
-      // console.log(this.candidate);
       this.ModalClosed = false;
     },
     clearVotes() {

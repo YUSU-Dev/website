@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isVisible" class="w-full bg-mustard">
+  <div v-if="isVisible" class="bg-mustard w-full">
     <div class="relative flex w-full items-center justify-center px-4 py-1">
       <slot></slot>
       <button

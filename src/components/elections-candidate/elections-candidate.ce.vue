@@ -49,7 +49,7 @@
         <div class="flex flex-col gap-6">
           <div v-if="!loading">
             <h3 class="text-2xl">MANIFESTO SUMMARY</h3>
-            {{ candidate.manifesto_summary }}
+            <div class="body-style" v-html="candidate.manifesto_summary"></div>
           </div>
           <Loading :loading="loading" text />
 

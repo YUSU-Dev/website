@@ -23,7 +23,7 @@
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Details</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="grid w-fit grid-cols-1 gap-y-2 sm:grid-cols-2">
           <p class="font-semibold">Full Name:</p>
           <p>Daniel Parker</p>
@@ -94,7 +94,7 @@
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Activities</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="flex flex-col">
           <h3 class="mb-4 text-lg font-semibold">Nothing to show</h3>
           <p>
@@ -106,7 +106,7 @@
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Committees</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="flex flex-col">
           <h3 class="mb-4 text-lg font-semibold">Nothing to show</h3>
           <p>You are not currently involved in any committees.</p>
@@ -121,7 +121,7 @@
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Purchase History</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="flex flex-col">
           <h3 class="mb-4 text-lg font-semibold">Nothing to show</h3>
           <p>There are currently no purchases to show.</p>

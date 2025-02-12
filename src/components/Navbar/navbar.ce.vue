@@ -1,5 +1,5 @@
 <template>
-  <nav class="sticky left-0 top-0 z-10 w-full bg-beige shadow">
+  <nav class="bg-beige sticky top-0 left-0 z-10 w-full shadow">
     <div class="container mx-auto flex justify-between py-0">
       <div class="my-7">
         <a href="/" aria-label="Homepage">
@@ -21,42 +21,42 @@
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
             href="/web-accessibility-statement"
             >Accessibility</a
           >
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
             @click="getBearerToken()"
             href="javascript:;"
             >Student Dashboard</a
           >
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-out"
             >Sign Out</a
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
             href="/web-accessibility-statement"
             >Accessibility</a
           >
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
             href="/associate-member"
             >Associate Sign In</a
           >
           <a
-            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-in/sso"
             >Student Sign In</a
           >
         </div>
         <div class="flex items-center justify-end">
           <a
-            class="hidden xs:flex"
+            class="xs:flex hidden"
             href="/search#gsc.tab=0"
             aria-label="Search the website"
           >
@@ -66,7 +66,7 @@
             ></FontAwesomeIcon>
           </a>
           <a
-            class="ml-7 hidden xs:flex"
+            class="xs:flex ml-7 hidden"
             href="/shop/basket"
             aria-label="View your basket"
           >
@@ -95,7 +95,7 @@
       class="max-h-[calc(100vh-133px)] overflow-y-auto bg-[#f5f5f5]"
     >
       <div
-        class="container mx-auto flex flex-col py-0 pb-8 pt-6 lg:grid lg:grid-cols-5"
+        class="container mx-auto flex flex-col py-0 pt-6 pb-8 lg:grid lg:grid-cols-5"
       >
         <div class="order-2 lg:order-1 lg:col-span-4">
           <div
@@ -103,38 +103,38 @@
             class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
           >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/web-accessibility-statement"
               >Accessibility</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               @click="getBearerToken()"
               href="javascript:;"
               >Member Dashboard</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-out"
               >Sign Out</a
             >
           </div>
           <div
             v-else
-            class="mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 xs:flex-row lg:hidden"
+            class="xs:flex-row mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 lg:hidden"
           >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/web-accessibility-statement"
               >Accessibility</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/associate-member"
               >Associate Sign In</a
             >
             <a
-              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-in/sso"
               >Student Sign In</a
             >
@@ -202,10 +202,10 @@
               :key="section.name"
               class="nav-section flex flex-col pb-6"
             >
-              <div class="flex w-full items-end pb-2 pr-10">
+              <div class="flex w-full items-end pr-10 pb-2">
                 <p class="text-start font-bold">{{ section.name }}</p>
               </div>
-              <div class="pb-7 pt-3">
+              <div class="pt-3 pb-7">
                 <ul class="flex flex-col gap-2 text-sm">
                   <li
                     v-for="subheading in section.links"
@@ -228,10 +228,10 @@
           class="order-1 flex flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
         >
           <div
-            class="mb-6 grid w-full grid-cols-2 justify-center gap-y-4 xs:flex xs:justify-between lg:mb-0 lg:flex-col lg:gap-y-8"
+            class="xs:flex xs:justify-between mb-6 grid w-full grid-cols-2 justify-center gap-y-4 lg:mb-0 lg:flex-col lg:gap-y-8"
           >
             <a
-              class="flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline xs:hidden xs:border-none sm:gap-x-6"
+              class="xs:hidden xs:border-none flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline sm:gap-x-6"
               href="/search#gsc.tab=0"
             >
               <FontAwesomeIcon
@@ -241,7 +241,7 @@
               Search
             </a>
             <a
-              class="flex justify-end gap-x-2 text-start text-lg font-bold hover:underline xs:hidden xs:justify-start sm:gap-x-6"
+              class="xs:hidden xs:justify-start flex justify-end gap-x-2 text-start text-lg font-bold hover:underline sm:gap-x-6"
               href="/shop/basket"
             >
               <FontAwesomeIcon
@@ -251,7 +251,7 @@
               Basket
             </a>
             <a
-              class="flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline xs:border-none sm:gap-x-6"
+              class="xs:border-none flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline sm:gap-x-6"
               href="/events"
             >
               <FontAwesomeIcon
@@ -261,10 +261,10 @@
               Events
             </a>
             <div
-              class="hidden h-8 border-r border-black xs:block lg:hidden"
+              class="xs:block hidden h-8 border-r border-black lg:hidden"
             ></div>
             <a
-              class="flex justify-end gap-x-2 text-start text-lg font-bold hover:underline xs:justify-start sm:gap-x-6"
+              class="xs:justify-start flex justify-end gap-x-2 text-start text-lg font-bold hover:underline sm:gap-x-6"
               href="/news"
             >
               <FontAwesomeIcon
@@ -274,10 +274,10 @@
               News
             </a>
             <div
-              class="hidden h-8 border-r border-black xs:block lg:hidden"
+              class="xs:block hidden h-8 border-r border-black lg:hidden"
             ></div>
             <a
-              class="flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline xs:border-none sm:gap-x-6"
+              class="xs:border-none flex gap-x-2 border-r border-black text-start text-lg font-bold hover:underline sm:gap-x-6"
               href="/venues"
             >
               <FontAwesomeIcon
@@ -287,10 +287,10 @@
               Venues
             </a>
             <div
-              class="hidden h-8 border-r border-black xs:block lg:hidden"
+              class="xs:block hidden h-8 border-r border-black lg:hidden"
             ></div>
             <a
-              class="flex justify-end gap-x-2 text-start text-lg font-bold hover:underline xs:justify-start sm:gap-x-6"
+              class="xs:justify-start flex justify-end gap-x-2 text-start text-lg font-bold hover:underline sm:gap-x-6"
               href="/shop?category=8"
             >
               <FontAwesomeIcon

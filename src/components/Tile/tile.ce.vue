@@ -31,7 +31,7 @@
             alt=""
             loading="lazy"
           />
-          <div v-if="wishlist" class="absolute right-2 top-2">
+          <div v-if="wishlist" class="absolute top-2 right-2">
             <InterestButton :activity-id="id" is-heart />
           </div>
         </div>
@@ -89,7 +89,7 @@
       <div v-if="categories">
         <div
           v-if="categories.length"
-          class="group absolute top-2.5 ml-2 mr-3 flex max-h-[232.33px] max-w-full flex-col overflow-y-auto rounded bg-[#40454d]"
+          class="group absolute top-2.5 mr-3 ml-2 flex max-h-[232.33px] max-w-full flex-col overflow-y-auto rounded bg-[#40454d]"
         >
           <div class="flex items-center">
             <FontAwesomeIcon icon="fas fa-tag" class="h-8 w-8 p-2 text-white" />
@@ -98,7 +98,7 @@
             </p>
           </div>
           <div class="hidden group-hover:flex">
-            <div class="pb-4 pl-1 pr-5 text-white">
+            <div class="pr-5 pb-4 pl-1 text-white">
               <ul class="mb-0 list-none ps-[10px]">
                 <li v-for="category in categories" :key="category.id">
                   <a :href="categoryLink + '=' + category.id"

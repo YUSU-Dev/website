@@ -21,7 +21,7 @@
         </div>
         <div
           v-if="event.has_products"
-          class="order-3 flex w-full items-center justify-center xxs:col-span-2 sm:col-span-1"
+          class="xxs:col-span-2 order-3 flex w-full items-center justify-center sm:col-span-1"
         >
           <Button
             class="h-min w-full"
@@ -32,7 +32,7 @@
         </div>
         <div
           v-if="event.external_tickets != ''"
-          class="order-3 flex w-full items-center justify-center xxs:col-span-2 sm:col-span-1"
+          class="xxs:col-span-2 order-3 flex w-full items-center justify-center sm:col-span-1"
         >
           <Button
             class="h-min w-full"

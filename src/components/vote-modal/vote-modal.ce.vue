@@ -10,7 +10,7 @@
   >
     <div
       id="vote-modal-container"
-      class="container relative h-full px-6"
+      class="relative container h-full px-6"
       role="document"
     >
       <div

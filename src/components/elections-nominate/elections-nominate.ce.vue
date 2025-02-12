@@ -45,7 +45,9 @@
           </div>
           <div class="flex flex-col">
             <h3 class="text-xl mb-0">Description</h3>
-            <p>{election_description}</p>
+            <article>
+              <p>{election_description}</p>
+            </article>
           </div>
         </div>
       </div>

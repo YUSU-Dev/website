@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen items-center justify-center bg-beige shadow">
+  <div class="bg-beige flex h-screen items-center justify-center shadow">
     <div class="flex w-10/12 flex-col">
       <img
         class="my-4 w-10/12 md:w-6/12"
