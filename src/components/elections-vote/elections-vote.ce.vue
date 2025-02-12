@@ -276,12 +276,13 @@ export default {
         this.createFormData();
         submitVoteHandler(this.electionId, this.formData)
           .then(function (response) {
-            if (!response["success"]) {
+            if (response["valid_vote"] != 1) {
               var data = response.error_message;
               console.log("Error: " + data);
               return;
             }
             console.log("Vote submitted successfully");
+            window.location.assign("/elections");
           })
           .catch(function (response) {
             if (response.error_message != "undefined") {
@@ -298,12 +299,13 @@ export default {
         console.log("Vote spoiled");
         submitVoteHandler(this.electionId, this.formData)
           .then(function (response) {
-            if (!response["success"]) {
+            if (response["valid_vote"] != 1) {
               var data = response.error_message;
               console.log("Error: " + data);
               return;
             }
             console.log("Vote submitted successfully");
+            window.location.assign("/elections");
           })
           .catch(function (response) {
             if (response.error_message != "undefined") {
