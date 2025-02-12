@@ -47,7 +47,7 @@
           class=""
         />
         <div
-          v-if="u_next_on && u_next_on !== 'u_next_on'"
+          v-if="u_next_on && u_next_on !== '{u_next_on}'"
           class="flex flex-col"
         >
           <h2 class="mb-4 border-b border-black pb-4 text-2xl font-bold">

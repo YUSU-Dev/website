@@ -1,6 +1,16 @@
 <template>
   <div id="newsTop" class=""></div>
   <div v-if="embedded" class="">
+    <div class="mb-5" v-if="search">
+      <label for="search">
+        <h2 class="mb-2 text-xl font-semibold">Search</h2>
+      </label>
+      <Searchbar
+        :submit-search-callback="submitSearch"
+        :initial-search-value="filterSearch"
+        placeholder="Search articles..."
+      />
+    </div>
     <div v-if="!firstLoad" class="news-row tile-wrap">
       <Tile
         v-for="article in News"
@@ -141,6 +151,10 @@ export default {
   },
   props: {
     embedded: {
+      type: Boolean,
+      default: false,
+    },
+    search: {
       type: Boolean,
       default: false,
     },
