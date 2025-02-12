@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div method="post">
+    <div>
       <h2 class="text-3xl font-bold">Candidates</h2>
       <div
-        class="xxs:grid-cols-2 xs:grid-cols-3 my-10 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
+        class="my-10 grid gap-6 xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       >
         <button
           type="button"
@@ -19,7 +19,7 @@
             <div class="absolute flex w-full justify-end">
               <div
                 v-if="candidate.voteOrder"
-                class="bg-voice-orange m-2 flex h-8 w-8 items-center justify-center rounded-full"
+                class="m-2 flex h-8 w-8 items-center justify-center rounded-full bg-voice-orange"
               >
                 <p>{{ candidate.voteOrder }}</p>
               </div>
@@ -40,14 +40,14 @@
             </div>
           </div>
           <div class="flex h-full w-full flex-col p-2 text-start">
-            <h3 class="xs:text-wrap truncate text-lg font-semibold">
+            <h3 class="truncate text-lg font-semibold xs:text-wrap">
               {{ candidate.name }}
             </h3>
             <div
               v-if="candidate.id != 9"
               class="flex flex-grow flex-col justify-between sm:flex-row"
             >
-              <p class="xs:text-wrap truncate">{{ candidate.pronouns }}</p>
+              <p class="truncate xs:text-wrap">{{ candidate.pronouns }}</p>
               <div class="flex items-end justify-end">
                 <button
                   type="button"
@@ -97,6 +97,11 @@
           <button
             type="button"
             class="btn btn-student-voice"
+            :class="{
+              'bg-gray-300 hover:bg-gray-300':
+                votes.length == 0 && !voteSpoiled,
+            }"
+            :disabled="votes.length == 0 && !voteSpoiled"
             @click="confirmVotes()"
           >
             Review and Submit
@@ -106,7 +111,11 @@
         <p>
           <em
             >If you're having issues voting please contact
-            <a href="mailto:elections@yorksu.org">elections@yorksu.org</a>.</em
+            <a
+              class="text-blue-800 underline"
+              href="mailto:elections@yorksu.org"
+              >elections@yorksu.org</a
+            >.</em
           >
         </p>
       </div>
@@ -275,13 +284,7 @@ export default {
         console.log(this.votes);
         this.createFormData();
         submitVoteHandler(this.electionId, this.formData)
-          .then(function (response) {
-            if (response["valid_vote"] != 1) {
-              var data = response.error_message;
-              console.log("Error: " + data);
-              return;
-            }
-            console.log("Vote submitted successfully");
+          .then(function () {
             window.location.assign("/elections");
           })
           .catch(function (response) {
@@ -298,13 +301,7 @@ export default {
       } else if (this.votes.length == 0 && this.voteSpoiled) {
         console.log("Vote spoiled");
         submitVoteHandler(this.electionId, this.formData)
-          .then(function (response) {
-            if (response["valid_vote"] != 1) {
-              var data = response.error_message;
-              console.log("Error: " + data);
-              return;
-            }
-            console.log("Vote submitted successfully");
+          .then(function () {
             window.location.assign("/elections");
           })
           .catch(function (response) {
