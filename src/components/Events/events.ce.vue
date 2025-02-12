@@ -3,7 +3,7 @@
     <div class="justify-center">
       <div
         v-if="!ShortView"
-        class="events-filters xs:grid-cols-2 grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-9"
+        class="events-filters grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-9"
       >
         <div class="flex flex-col lg:col-span-2">
           <label>Category</label>
@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="xs:col-span-2 flex items-end justify-end lg:col-span-1">
+        <div class="flex items-end justify-end xs:col-span-2 lg:col-span-1">
           <Button
             title="Reset"
             @click="reset"
@@ -84,7 +84,7 @@
         </h2>
       </div>
       <div v-if="Events.length == 0 && !Loading" class="">
-        <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
+        <h3 class="mb-4 mt-16 text-xl font-semibold text-[#555]">
           There are currently no events
         </h3>
       </div>

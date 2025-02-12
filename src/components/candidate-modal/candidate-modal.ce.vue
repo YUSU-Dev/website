@@ -10,7 +10,7 @@
   >
     <div
       id="candidate-modal-container"
-      class="relative container h-full px-6"
+      class="container relative h-full px-6"
       role="document"
     >
       <div

@@ -20,7 +20,7 @@
               <div class="flex h-full flex-col justify-between">
                 <h2 class="text-xl font-bold">{{ item.product_name }}</h2>
 
-                <div class="xs:gap-y-2 flex flex-col gap-y-1 md:gap-y-3">
+                <div class="flex flex-col gap-y-1 xs:gap-y-2 md:gap-y-3">
                   <div class="grid grid-cols-2 items-center md:grid-cols-3">
                     <p>Item Price:</p>
                     <p>£{{ item.price_total }}</p>

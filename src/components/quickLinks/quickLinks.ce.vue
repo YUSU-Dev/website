@@ -66,7 +66,7 @@ export default {
       class="group flex min-h-24 py-2"
     >
       <div
-        :class="`bg-mustard group-hover:bg-primary-pink flex h-14 w-14 flex-shrink-0 items-center justify-center ${link.SVGPadding ?? 'p-2'} `"
+        :class="`flex h-14 w-14 flex-shrink-0 items-center justify-center bg-mustard group-hover:bg-primary-pink ${link.SVGPadding ?? 'p-2'} `"
         v-html="link.icon"
       />
       <div class="flex max-w-72 flex-col justify-between px-5">

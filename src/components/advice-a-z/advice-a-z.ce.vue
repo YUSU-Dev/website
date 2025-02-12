@@ -41,9 +41,9 @@
         />
       </div>
     </div>
-    <hr class="mt-0 mb-2" />
+    <hr class="mb-2 mt-0" />
     <div
-      class="xxs:grid-cols-2 grid gap-x-4 gap-y-4 sm:grid-cols-3 lg:grid-cols-4"
+      class="grid gap-x-4 gap-y-4 xxs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
     >
       <SupportTile
         v-for="item in FilteredMenu"

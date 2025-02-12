@@ -30,7 +30,7 @@
 
   body p,
   .body-style p {
-    @apply text-base leading-relaxed text-pretty;
+    @apply text-pretty text-base leading-relaxed;
   }
 
   main h1,
@@ -119,7 +119,7 @@
     }
 
     .vs__selected {
-      @apply bg-light-pink rounded-none;
+      @apply rounded-none bg-light-pink;
     }
 
     .vs__deselect {
@@ -131,7 +131,7 @@
     }
 
     .vs__dropdown-option {
-      @apply px-2 text-sm text-pretty;
+      @apply text-pretty px-2 text-sm;
     }
   }
 
@@ -145,7 +145,7 @@
   }
 
   .btn-secondary {
-    @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin text-white;
+    @apply bg-black px-2 py-1 font-thin text-white hover:bg-primary-pink;
   }
 
   .btn-tertiary {
@@ -179,12 +179,12 @@
 
   /* Skip to Main Content */
   #skiptocontent a {
-    @apply bg-mustard hover:bg-light-blue absolute top-0 left-0 z-50 -translate-y-full transform px-4 py-2 text-black opacity-0 transition focus:translate-y-0 focus:opacity-100;
+    @apply absolute left-0 top-0 z-50 -translate-y-full transform bg-mustard px-4 py-2 text-black opacity-0 transition hover:bg-light-blue focus:translate-y-0 focus:opacity-100;
   }
 
   /* Modals */
   .modal {
-    @apply fixed top-0 right-0 left-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-x-hidden overflow-y-auto md:inset-0;
+    @apply fixed left-0 right-0 top-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0;
   }
 
   .modal-body {
@@ -332,15 +332,15 @@
 }
 
 .sabb-tile {
-  @apply xxs:w-[calc(50%_-_4px)] aspect-[141/161] w-full md:w-[282px];
+  @apply aspect-[141/161] w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
 }
 
 .tile-wrap .tile {
-  @apply xxs:w-[calc(50%_-_4px)] w-full md:w-[282px];
+  @apply w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
 }
 
 .a-z-wrap {
-  @apply xxs:grid-cols-2 grid gap-x-4 sm:grid-cols-3 md:grid-cols-4;
+  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4;
 }
 
 /* Elections */
@@ -441,5 +441,5 @@ input[type="checkbox"] {
 
 /* Voting */
 .selected-candidate {
-  @apply border-voice-orange border-4;
+  @apply border-4 border-voice-orange;
 }

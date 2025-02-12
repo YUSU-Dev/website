@@ -5,7 +5,7 @@
     :event-thumbnail="eventDate.thumbnail_url"
   />
   <div
-    class="container mx-auto flex flex-col items-center justify-center pt-20 pb-10"
+    class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
   >
     <Loading text :loading="loading" class="w-full" />
     <div v-if="!loading" class="grid w-full grid-cols-5 gap-x-4">

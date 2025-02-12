@@ -4,7 +4,7 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
   />
   <div
-    class="container mx-auto flex flex-col gap-x-6 gap-y-4 px-2 pt-10 pb-6 font-semibold sm:flex-row lg:px-3"
+    class="container mx-auto flex flex-col gap-x-6 gap-y-4 px-2 pb-6 pt-10 font-semibold sm:flex-row lg:px-3"
   >
     <a href="/"
       ><Button

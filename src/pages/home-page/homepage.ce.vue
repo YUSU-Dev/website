@@ -19,7 +19,7 @@
     <Sabbs />
   </div>
   <div class="bg-beige">
-    <div class="bg-beige container mx-auto py-20">
+    <div class="container mx-auto bg-beige py-20">
       <Adverts />
     </div>
   </div>

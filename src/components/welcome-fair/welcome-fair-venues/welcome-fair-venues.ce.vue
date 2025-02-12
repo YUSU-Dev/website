@@ -2,7 +2,7 @@
   <div class="flex flex-wrap justify-center gap-6">
     <a
       href="/venues/courtyard"
-      class="xs:w-[calc(50%_-_1.5rem)] flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105"
+      class="flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105 xs:w-[calc(50%_-_1.5rem)]"
     >
       <h2 class="sr-only">The Courtyard</h2>
       <img
@@ -14,7 +14,7 @@
     </a>
     <a
       href="/venues/glasshouse"
-      class="xs:w-[calc(50%_-_1.5rem)] flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105"
+      class="flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105 xs:w-[calc(50%_-_1.5rem)]"
     >
       <h2 class="sr-only">The Glasshouse</h2>
       <img
@@ -26,7 +26,7 @@
     </a>
     <a
       href="/venues/kitchen"
-      class="xs:w-[calc(50%_-_1.5rem)] flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105"
+      class="flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105 xs:w-[calc(50%_-_1.5rem)]"
     >
       <h2 class="sr-only">The Kitchen at Alcuin</h2>
       <img
@@ -38,7 +38,7 @@
     </a>
     <a
       href="/venues/lounge"
-      class="xs:w-[calc(50%_-_1.5rem)] flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105"
+      class="flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105 xs:w-[calc(50%_-_1.5rem)]"
     >
       <h2 class="sr-only">The Lounge</h2>
       <img
@@ -50,7 +50,7 @@
     </a>
     <a
       href="/venues/vanbrugh-arms"
-      class="xs:w-[calc(50%_-_1.5rem)] flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105"
+      class="flex w-full justify-center border border-gray-100 p-6 shadow-lg hover:scale-105 xs:w-[calc(50%_-_1.5rem)]"
     >
       <h2 class="sr-only">The Vanbrugh Arms</h2>
       <img

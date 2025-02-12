@@ -1,6 +1,6 @@
 <template>
   <!-- Breadcrumb Navigation -->
-  <div class="container mx-auto pt-12 pb-8 font-serif text-sm">
+  <div class="container mx-auto pb-8 pt-12 font-serif text-sm">
     <!-- {exp:su_sections:generateBreadcrumbNew title="{embed:title}"} -->
     <p>
       <!-- {breadcrumbs} -->

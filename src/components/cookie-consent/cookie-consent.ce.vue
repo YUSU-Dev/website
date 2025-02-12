@@ -1,7 +1,7 @@
 <template>
   <div
     id="error-modal"
-    class="align-end fixed bottom-0 left-0 z-50 flex justify-start overflow-x-hidden overflow-y-auto"
+    class="align-end fixed bottom-0 left-0 z-50 flex justify-start overflow-y-auto overflow-x-hidden"
     aria-label="Cookie Consent Modal"
     role="dialog"
     v-if="displayCookieConsent"

@@ -10,7 +10,7 @@
             </div>
 
             <div class="text-centre absolute inset-0 pt-6 md:pt-12">
-              <h1 class="text-xl font-bold break-all text-gray-800 md:text-3xl">
+              <h1 class="break-all text-xl font-bold text-gray-800 md:text-3xl">
                 Redirecting to Student Dashboard
               </h1>
 

@@ -26,7 +26,7 @@
           <!-- {fields} -->
           <!-- {if field_id == 10} -->
           <div
-            class="bg-light-blue flex items-center p-2 text-sm text-wrap md:text-base"
+            class="flex items-center text-wrap bg-light-blue p-2 text-sm md:text-base"
           >
             <svg
               class="mr-2 h-4 w-4 fill-current"

@@ -1,7 +1,7 @@
 <template>
   <div v-if="!loading" class="px-6">
     <div class="min-h-96 w-full" :ref="id"></div>
-    <div class="xs:flex-row flex flex-col items-center justify-center gap-4">
+    <div class="flex flex-col items-center justify-center gap-4 xs:flex-row">
       <Button
         v-if="small && (medium || large)"
         :selected="activeSize == 'small'"
