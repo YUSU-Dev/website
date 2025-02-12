@@ -7,22 +7,34 @@
           href="/elections/candidates"
           arrow
           is-student-voice
+          v-if="!embedded"
         />
 
         <div class="flex flex-col gap-4">
-          <h2 v-if="electionName" class="text-3xl">
-            {{ electionName }} candidate
-          </h2>
+          <div v-if="electionName">
+            <h2 v-if="!loading" class="text-3xl">
+              {{ electionName }} candidate
+            </h2>
+            <Loading :loading="loading" text />
+          </div>
 
           <div class="flex flex-col gap-4 md:flex-row">
-            <img
-              v-if="document_photo"
-              class="max-w-"
-              :src="document_photo"
-              :alt="'Candidate Headshot: ' + candidate.name"
-            />
+            <div v-if="document_photo" class="max-h-96 max-w-96">
+              <img
+                v-if="!loading"
+                class="h-full w-full"
+                :src="document_photo"
+                :alt="'Candidate Headshot: ' + candidate.name"
+              />
+              <Loading
+                :loading="loading"
+                image
+                :text="false"
+                class="h-96 w-96"
+              />
+            </div>
 
-            <div class="flex flex-col justify-end">
+            <div v-if="!loading" class="flex flex-col justify-end">
               <h3 v-if="candidate.name" class="text-2xl">
                 {{ candidate.name }}
               </h3>
@@ -30,19 +42,22 @@
                 {{ candidate.pronouns }}
               </h4>
             </div>
+            <Loading :loading="loading" text />
           </div>
         </div>
 
         <div class="flex flex-col gap-6">
-          <div>
+          <div v-if="!loading">
             <h3 class="text-2xl">MANIFESTO SUMMARY</h3>
             {{ candidate.manifesto_summary }}
           </div>
+          <Loading :loading="loading" text />
 
-          <div>
+          <div v-if="!loading">
             <h3 class="text-2xl">MANIFESTO</h3>
             {{ document_manifesto }}
           </div>
+          <Loading :loading="loading" text />
         </div>
       </div>
     </div>
@@ -52,10 +67,12 @@
 <script>
 import axios from "../../_common/axios.mjs";
 import Button from "../button/button.ce.vue";
+import Loading from "../loading/loading.ce.vue";
 export default {
   name: "ElectionsCandidate",
   components: {
     Button,
+    Loading,
   },
   props: {
     electionId: {
@@ -66,6 +83,10 @@ export default {
       type: String,
       default: "",
     },
+    embedded: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -73,6 +94,7 @@ export default {
       candidate: {},
       document_manifesto: "",
       document_photo: "",
+      loading: false,
     };
   },
   mounted() {
@@ -81,6 +103,7 @@ export default {
   methods: {
     async getCandidates() {
       var self = this;
+      self.loading = true;
       try {
         const [electionResponse, pronounsResponse, manifestoSummaryResponse] =
           await Promise.all([
@@ -110,6 +133,7 @@ export default {
       } catch (error) {
         console.error(error);
       }
+      self.loading = false;
     },
   },
 };

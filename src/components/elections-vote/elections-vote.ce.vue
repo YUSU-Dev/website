@@ -1,244 +1,331 @@
-<!-- eslint-disable -->
 <template>
-    <!-- {exp:su_elections:voteForm election_id="{segment_3}" activity_id="{segment_4}"}
-    {embed="core-components/.header" title='Vote'} -->
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
-
-    <div class="container mx-auto">
-
-        <div class="flex flex-col gap-y-6">
-
-            <h1 class="text-4xl font-bold mb-6">Vote</h1>
-
-            {if election_id != "1937"}
-            <div class="border-l-4 border-gray-400 bg-gray-100 p-2">
-                <h2 class="mb-0 text-xl">
-                    York SU uses the Single Transferable Voting System. You need to vote in order of preference,
-                    with 1 being your first preference (i.e. the candidate you want to win). This is so that if
-                    the person you want to win does not win, your second preference is taken into account.
-                </h2>
+  <div>
+    <div method="post">
+      <h2 class="text-3xl font-bold">Candidates</h2>
+      <div
+        class="my-10 grid gap-6 xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+      >
+        <button
+          type="button"
+          v-for="candidate in candidates"
+          :key="candidate.id"
+          class="flex h-full flex-col border shadow"
+          @click="handleVote(candidate.id)"
+          :class="{
+            'selected-candidate': selectedCandidates.includes(candidate.id),
+          }"
+        >
+          <div class="relative">
+            <div class="absolute flex w-full justify-end">
+              <div
+                v-if="candidate.voteOrder"
+                class="m-2 flex h-8 w-8 items-center justify-center rounded-full bg-voice-orange"
+              >
+                <p>{{ candidate.voteOrder }}</p>
+              </div>
             </div>
-            {/if}
-
-            <div class="info">
+            <div v-if="candidate.assets.document_photo">
+              <img
+                :src="candidate.assets.document_photo"
+                alt=""
+                draggable="false"
+              />
             </div>
-
-            {if valid_vote}
-
-            <div class="border-l-4 border-green-400 bg-green-100 p-2">
-                <h2 class="mb-0 text-xl">Success!</h2>
-                <p>
-                    Your vote was successfully registered.
-                </p>
+            <div v-else>
+              <img
+                src="https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp"
+                alt=""
+                draggable="false"
+              />
             </div>
-
-            {/if}
-
-
-            <div class="flex flex-col gap-y-6">
-                <!-- Details -->
-                <div class="flex flex-col">
-                    <h2 class="text-2xl">
-                        <i class="fa fa-tasks"></i>
-                        {election_name} <small>{election_sub_name}</small>
-                    </h2>
-                    <div class="form-group">
-                        <div class="flex flex-col sm:flex-row gap-x-12">
-                            <div class="flex flex-col">
-                                <h3 class="text-xl mb-0">Election Method</h3>
-                                <p>{election_method}</p>
-                                {if election_id != "1937"}
-                                <h3 class="text-xl mb-0">No. of Positions</h3>
-                                <p>{number_of_positions}</p>
-                                {/if}
-                            </div>
-                            <div class="flex flex-col">
-                                <h3 class="text-xl mb-0">Voting Opens</h3>
-                                <p>{voting_opens}</p>
-                                <h3 class="text-xl mb-0">Voting Closes</h3>
-                                <p>{voting_closes}</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="flex flex-col">
-                            <h3 class="text-xl mb-0">Description</h3>
-                            <p>{election_description}</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Details -->
-
-                {if error_count}
-                <div class="border-l-4 border-red-400 bg-red-100 p-2">
-                    <h2 class="mb-0 text-xl">
-                        Uh oh! There appears to be a few errors...
-                    </h2>
-                    {validation_errors}
-                    <ul>
-                        <li>{error}</li>
-                    </ul>
-                    {/validation_errors}
-                </div>
-                {/if}
-
-                <form method="post">
-
-                    <input type="hidden" name="do" value="vote">
-                    <input type="hidden" name="election_id" value="{election_id}">
-                    <h2 class="text-3xl font-bold">Candidates</h2>
-                    <div class="grid xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 my-10">
-                        <button type="button" v-for="candidate in candidates" :key="candidate.id"
-                            class="flex flex-col shadow border" @click="handleVote(candidate.id)"
-                            :class="{ 'selected-candidate': selectedCandidates.includes(candidate.id) }">
-                            <div v-if="candidate.assets.document_photo">
-                                <img :src="candidate.assets.document_photo" alt="" />
-                            </div>
-                            <div v-else>
-
-                            </div>
-                            <div class="flex flex-col p-2 w-full text-start">
-                                <h3 class="text-lg font-semibold truncate xs:text-wrap">{{ candidate.name }}</h3>
-                                <p class="truncate xs:text-wrap">{{ candidate.pronouns }}</p>
-                            </div>
-                        </button>
-                    </div>
-
-                    <hr>
-
-                    {if spoilt_votes == 1}
-                    <div class="flex gap-x-2 items-center my-10">
-                        <input id="spoil-vote" class="w-5 h-5" type="checkbox" name="spoilt" value="Y" aria-labelledby="spoil-vote-label">
-                        <label id="spoil-vote-label" class="text-lg">Spoil Vote</label>
-                    </div>
-                    <div class="clearfix"></div>
-                    {/if}
-
-                    <hr>
-
-                    <div class="flex flex-col gap-y-4">
-
-                        <div class="flex gap-x-4">
-                            <button type="button" id="clear-vote" class="btn btn-primary">Clear Vote</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-
-                        <p><em>If you're having issues voting please contact <a
-                                    href="mailto:elections@yorksu.org">elections@yorksu.org</a>.</em></p>
-
-                    </div>
-
-                </form>
-
+          </div>
+          <div class="flex h-full w-full flex-col p-2 text-start">
+            <h3 class="truncate text-lg font-semibold xs:text-wrap">
+              {{ candidate.name }}
+            </h3>
+            <div
+              v-if="candidate.id != 9"
+              class="flex flex-grow flex-col justify-between sm:flex-row"
+            >
+              <p class="truncate xs:text-wrap">{{ candidate.pronouns }}</p>
+              <div class="flex items-end justify-end">
+                <button
+                  type="button"
+                  class=""
+                  @click.stop="viewManifesto(candidate.id)"
+                  aria-label="View manifesto"
+                >
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-circle-info"
+                    class="h-6 w-6"
+                  >
+                  </FontAwesomeIcon>
+                </button>
+              </div>
             </div>
+          </div>
+        </button>
+      </div>
 
+      <hr />
 
+      <div v-if="spoiltVote == '1'" class="my-10 flex items-center gap-x-2">
+        <input
+          id="spoil-vote"
+          class="h-5 w-5"
+          type="checkbox"
+          name="spoilt"
+          v-model="voteSpoiled"
+          aria-labelledby="spoil-vote-label"
+          @click="doSpoilVote()"
+        />
+        <label id="spoil-vote-label" class="text-lg">Spoil Vote</label>
+      </div>
 
+      <hr />
+
+      <div class="flex flex-col gap-y-4">
+        <div class="flex gap-x-4">
+          <button
+            type="button"
+            id="clear-vote"
+            class="btn btn-student-voice"
+            @click="clearVotes()"
+          >
+            Clear Votes
+          </button>
+          <button
+            type="button"
+            class="btn btn-student-voice"
+            @click="confirmVotes()"
+          >
+            Review and Submit
+          </button>
         </div>
 
+        <p>
+          <em
+            >If you're having issues voting please contact
+            <a href="mailto:elections@yorksu.org">elections@yorksu.org</a>.</em
+          >
+        </p>
+      </div>
     </div>
 
-
-
-    <!-- {embed="core-components/.footer"}
-    {/exp:su_elections:voteForm} -->
-
-
-    <!-- <script type="text/javascript">
-    function manifesto(manifestoID) {
-        $('#manifesto-' + manifestoID).toggleClass('hidden');
-        $('#manifesto-chevron').toggleClass('fa-chevron-down');
-        $('#manifesto-chevron').toggleClass('fa-chevron-up');
-    }
-
-    function manifestoSummary(manifestoID) {
-        $('#manifesto-summary-' + manifestoID).toggleClass('hidden');
-        $('#manifesto-summary-chevron').toggleClass('fa-chevron-down');
-        $('#manifesto-summary-chevron').toggleClass('fa-chevron-up');
-    }
-
-    $('#clear-vote').click(function () {
-        $('input[name="candidate"]').prop('checked', false);
-        $('.candidate-list').val('');
-        $('input[name="spoilt"]').prop('checked', false);
-        $('.candidate-list').removeAttr('disabled');
-        $('.candidate-list').val('');
-        $('input[name="candidate"]').prop('disabled', false);
-        $('input[name="candidate"]').prop('checked', false);
-    });
-
-    $('#spoil-vote').click(function () {
-        if ($(this).is(':checked')) {
-            $('.candidate-list').attr('disabled', 'true');
-            $('.candidate-list').val('');
-            $('input[name="candidate"]').prop('disabled', true);
-            $('input[name="candidate"]').prop('checked', false);
-        } else {
-            $('.candidate-list').removeAttr('disabled');
-            $('.candidate-list').val('');
-            $('input[name="candidate"]').prop('disabled', false);
-            $('input[name="candidate"]').prop('checked', false);
-        }
-    });
-
-    $('#view-role-desc').click(function () {
-        $('#role-description').show();
-    });
-</script> -->
+    <CandidateModal
+      v-if="candidate"
+      :candidate-id="String(candidate.id)"
+      :election-id="String(election.id)"
+      :candidate-name="candidate.name"
+      :modal-closed="ModalClosed"
+      @close="ModalClosed = true"
+    />
+    <VoteModal
+      :modal-closed="VoteModalClosed"
+      :votes="votes"
+      :candidates="candidates"
+      :vote-spoiled="voteSpoiled"
+      @close="VoteModalClosed = true"
+      @submit="submitVotes"
+    />
+    <Modal
+      :modal-closed="ErrorModalClosed"
+      title="Error"
+      error-description="Please vote for at least 1 candidate or spoil your vote."
+      @close="ErrorModalClosed = true"
+    />
+  </div>
 </template>
 
 <script>
 import axios from "../../_common/axios.mjs";
+import CandidateModal from "../candidate-modal/candidate-modal.ce.vue";
+import VoteModal from "../vote-modal/vote-modal.ce.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { submitVoteHandler } from "./election-vote.js";
+import Modal from "../modal/modal.ce.vue";
+library.add(faCircleInfo);
 export default {
-    name: "ElectionsVote",
-    props: {
-        electionId: {
-            type: String,
-            default: "",
-        },
+  name: "ElectionsVote",
+  props: {
+    electionId: {
+      type: String,
+      default: "",
     },
-    data() {
-        return {
-            candidates: [],
-            votes: [],
-            selectedCandidates: [],
-        };
+    spoiltVote: {
+      type: String,
+      default: "",
     },
-    mounted() {
-        this.getCandidates();
-    },
-    methods: {
-        async getCandidates() {
-            var self = this;
-            try {
-                const [electionsResponse, pronounsResponse] =
-                    await Promise.all([
-                        axios.get("https://pluto.sums.su/api/elections/" + this.electionId),
-                        axios.get("https://yorksu.org/elections/all-candidate-pronouns/" + this.electionId),
-                    ]);
-                self.candidates = electionsResponse.data.candidates;
-                let cleanedData = pronounsResponse.data.replace(/,\s*([\]}])/g, '$1');
-                let JSONData = JSON.parse(cleanedData);
-                self.candidates.forEach(candidate => {
-                    const pronouns = JSONData.find(pronoun => pronoun.id == candidate.id);
-                    if (pronouns) {
-                        candidate.pronouns = pronouns.pronouns;
-                    }
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        },
-        handleVote(candidateId) {
-            if (this.votes.includes(candidateId)) {
-                this.votes = this.votes.filter(id => id !== candidateId);
-                this.selectedCandidates = this.selectedCandidates.filter(id => id !== candidateId);
-            } else {
-                this.votes.push(candidateId);
-                this.selectedCandidates.push(candidateId);
-            }
-            console.log(this.votes);
+  },
+  components: {
+    CandidateModal,
+    VoteModal,
+    FontAwesomeIcon,
+    Modal,
+  },
+  data() {
+    return {
+      election: [],
+      candidates: [],
+      candidate: "",
+      votes: [],
+      selectedCandidates: [],
+      ModalClosed: true,
+      ErrorModalClosed: true,
+      VoteModalClosed: true,
+      voteSpoiled: false,
+      formData: {},
+    };
+  },
+  mounted() {
+    // console.log(this.candidate);
+    this.getCandidates();
+  },
+  methods: {
+    createFormData() {
+      this.formData.do = "vote";
+      this.formData.election_id = this.electionId;
+      if (this.election.method == "STV" && this.voteSpoiled == false) {
+        for (let i = 0; i < this.votes.length; i++) {
+          this.formData["candidate[" + this.votes[i] + "]"] = i + 1;
         }
-    }
+      }
+      if (this.voteSpoiled) {
+        this.formData.spoilt = "Y";
+      }
+    },
+    async getCandidates() {
+      var self = this;
+      self.ModalClosed = true;
+      try {
+        const [electionsResponse, pronounsResponse] = await Promise.all([
+          axios.get("https://pluto.sums.su/api/elections/" + this.electionId),
+          axios.get(
+            "https://yorksu.org/elections/all-candidate-pronouns/" +
+              this.electionId,
+          ),
+        ]);
+        // console.log(electionsResponse.data);
+        self.election = electionsResponse.data;
+        self.candidates = electionsResponse.data.candidates;
+        let cleanedData = pronounsResponse.data.replace(/,\s*([\]}])/g, "$1");
+        let JSONData = JSON.parse(cleanedData);
+        self.candidates.forEach((candidate) => {
+          const pronouns = JSONData.find(
+            (pronoun) => pronoun.id == candidate.id,
+          );
+          if (pronouns) {
+            candidate.pronouns = pronouns.pronouns;
+          }
+          candidate.voteOrder = null;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    handleVote(candidateId) {
+      if (this.voteSpoiled) {
+        this.voteSpoiled = false;
+      }
+      const candidate = this.candidates.find(
+        (candidate) => candidate.id === candidateId,
+      );
+      if (this.votes.includes(candidateId)) {
+        this.votes = this.votes.filter((id) => id !== candidateId);
+        this.selectedCandidates = this.selectedCandidates.filter(
+          (id) => id !== candidateId,
+        );
+        candidate.voteOrder = null;
+      } else {
+        this.votes.push(candidateId);
+        this.selectedCandidates.push(candidateId);
+        candidate.voteOrder = this.votes.length;
+      }
+      this.votes.forEach((id, index) => {
+        const candidate = this.candidates.find(
+          (candidate) => candidate.id === id,
+        );
+        candidate.voteOrder = index + 1;
+      });
+      console.log(this.votes);
+      // console.log(this.selectedCandidates);
+    },
+    viewManifesto(candidateId) {
+      // console.log(candidateId);
+      this.candidate = this.candidates.find(
+        (candidate) => candidate.id === candidateId,
+      );
+      // console.log(this.candidate);
+      this.ModalClosed = false;
+    },
+    clearVotes() {
+      this.votes = [];
+      this.selectedCandidates = [];
+      this.candidates.forEach((candidate) => {
+        candidate.voteOrder = null;
+      });
+    },
+    doSpoilVote() {
+      if (this.votes.length > 0) {
+        this.clearVotes();
+      }
+    },
+    confirmVotes() {
+      this.VoteModalClosed = false;
+    },
+    submitVotes() {
+      if (this.votes.length > 0 && this.voteSpoiled == false) {
+        console.log("Voting submitted, votes: ");
+        console.log(this.votes);
+        this.createFormData();
+        submitVoteHandler(this.formData)
+          .then(function (response) {
+            if (!response["success"]) {
+              var data = response.error_message;
+              console.log("Error: " + data);
+              return;
+            }
+            console.log("Vote submitted successfully");
+          })
+          .catch(function (response) {
+            if (response.error_message != "undefined") {
+              console.log(
+                "There was an error submitting the vote: " +
+                  response.error_message,
+              );
+            } else {
+              console.log("Undefined error submitting vote");
+            }
+          });
+        this.VoteModalClosed = true;
+      } else if (this.votes.length == 0 && this.voteSpoiled) {
+        console.log("Vote spoiled");
+        submitVoteHandler(this.formData)
+          .then(function (response) {
+            if (!response["success"]) {
+              var data = response.error_message;
+              console.log("Error: " + data);
+              return;
+            }
+            console.log("Vote submitted successfully");
+          })
+          .catch(function (response) {
+            if (response.error_message != "undefined") {
+              console.log(
+                "There was an error submitting the vote: " +
+                  response.error_message,
+              );
+            } else {
+              console.log("Undefined error submitting vote");
+            }
+          });
+        this.VoteModalClosed = true;
+      } else {
+        console.log("Please vote for at least 1 candidate or spoil your vote.");
+      }
+    },
+  },
 };
 </script>
