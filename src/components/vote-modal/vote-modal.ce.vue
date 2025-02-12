@@ -68,7 +68,11 @@
               >
                 Cancel
               </button>
-              <button type="button" class="btn btn-student-voice">
+              <button
+                type="button"
+                class="btn btn-student-voice"
+                @click="$emit('submit')"
+              >
                 Confirm
               </button>
             </div>
@@ -144,6 +148,6 @@ export default {
       }
     },
   },
-  emits: ["close"],
+  emits: ["close", "submit"],
 };
 </script>
