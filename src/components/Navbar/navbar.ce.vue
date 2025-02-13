@@ -470,7 +470,7 @@ export default {
                 target: "_blank",
               },
               {
-                name: "Book an Event",
+                name: "Bookings",
                 link: "/events/book-event",
               },
               {
