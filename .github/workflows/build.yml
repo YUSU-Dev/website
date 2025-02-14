@@ -1,11 +1,11 @@
 name: Build and Upload to R2
 
 on:
-  push:
-    branches:
-      - main
-  # release:
-  #   types: [published]
+  # push:
+  #   branches:
+  #     - main
+  release:
+    types: [published]
 
 jobs:
   build-and-publish:
