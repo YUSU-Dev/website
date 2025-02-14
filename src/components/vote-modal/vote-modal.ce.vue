@@ -55,10 +55,24 @@
               :key="candidate.id"
               v-for="candidate in orderedCandidates"
             >
-              <div class="flex h-12 w-12 items-center justify-center border-2">
+              <div
+                class="flex min-h-12 min-w-12 items-center justify-center border-2"
+              >
                 <p class="text-3xl font-bold">{{ candidate.voteOrder }}</p>
               </div>
-              <h2 class="text-2xl">{{ candidate.name }}</h2>
+              <h3 class="text-2xl">{{ candidate.name }}</h3>
+            </div>
+            <div v-if="voteSpoiled" class="flex items-center gap-8">
+              <div class="flex h-12 w-12 items-center justify-center border-2">
+                <p class="text-3xl font-bold">S</p>
+              </div>
+              <h3 class="!text-2xl">Vote spoiled</h3>
+            </div>
+            <div class="border-l-4 border-voice-orange">
+              <p class="pl-2 text-sm">
+                Please ensure that you are happy with your votes before you
+                click confirm, as this choice is final.
+              </p>
             </div>
             <div class="flex gap-4">
               <button

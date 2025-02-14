@@ -1,9 +1,51 @@
 <template>
   <div>
     <div>
+      <div
+        class="body-style mb-6 flex flex-col gap-2 border-l-4 border-gray-400 bg-gray-100 p-2"
+      >
+        <h2 class="!text-xl font-bold">How to vote</h2>
+        <ol class="list-inside list-decimal">
+          <li class="">
+            View each candidate, you can click the
+            <FontAwesomeIcon
+              icon="fa-solid fa-circle-info"
+              class="inline-flex h-4 w-4 items-center"
+              aria-label="View manifesto button"
+            >
+            </FontAwesomeIcon>
+            icon to view more in depth candidate information.
+          </li>
+          <li>
+            Vote using the STV system, clicking your choices in order of
+            preference.
+            <a
+              class="text-blue-800 underline"
+              href="https://www.youtube.com/watch?v=J1GLiPkXnII&feature=youtu.be"
+              target="_blank"
+              >Further explanation</a
+            >.
+          </li>
+          <li>
+            You may also choose to spoil your vote by ticking “Spoil vote” at
+            the bottom of your ballot, which is a way to demonstrate your
+            dissatisfaction with the available candidates while still
+            participating in the democratic process.
+            <a
+              class="text-blue-800 underline"
+              href="https://votingcounts.org.uk/spoilt-ballot"
+              target="_blank"
+              >Further explanation</a
+            >.
+          </li>
+          <li>
+            Once you are happy with your votes, please click review and submit.
+          </li>
+        </ol>
+      </div>
       <h2 class="text-3xl font-bold">Candidates</h2>
       <div
-        class="my-10 grid gap-6 xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+        class="mb-10 mt-4 grid gap-6 xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       >
         <button
           type="button"
@@ -54,6 +96,7 @@
                   class=""
                   @click.stop="viewManifesto(candidate.id)"
                   aria-label="View manifesto"
+                  title="View manifesto"
                 >
                   <FontAwesomeIcon
                     icon="fa-solid fa-circle-info"
@@ -67,9 +110,11 @@
         </button>
       </div>
 
-      <hr />
-
-      <div v-if="spoiltVote == '1'" class="my-10 flex items-center gap-x-2">
+      <div
+        @click="doSpoilVote()"
+        v-if="spoiltVote == '1'"
+        class="my-10 flex w-fit items-center gap-x-2"
+      >
         <input
           id="spoil-vote"
           class="h-5 w-5"
@@ -77,12 +122,9 @@
           name="spoilt"
           v-model="voteSpoiled"
           aria-labelledby="spoil-vote-label"
-          @click="doSpoilVote()"
         />
         <label id="spoil-vote-label" class="text-lg">Spoil Vote</label>
       </div>
-
-      <hr />
 
       <div class="flex flex-col gap-y-4">
         <div class="flex gap-x-4">
@@ -122,10 +164,10 @@
     </div>
 
     <CandidateModal
-      v-if="candidate"
-      :candidate-id="String(candidate.id)"
+      v-if="selectedCandidate"
+      :candidate-id="String(selectedCandidate.id)"
       :election-id="String(election.id)"
-      :candidate-name="candidate.name"
+      :candidate-name="selectedCandidate.name"
       :modal-closed="ModalClosed"
       @close="ModalClosed = true"
     />
@@ -178,7 +220,7 @@ export default {
     return {
       election: [],
       candidates: [],
-      candidate: "",
+      selectedCandidate: "",
       votes: [],
       selectedCandidates: [],
       ModalClosed: true,
@@ -200,6 +242,7 @@ export default {
           this.formData["candidate[" + this.votes[i] + "]"] = i + 1;
         }
       }
+      // TODO: Add handling for referendum elections
       if (this.voteSpoiled) {
         this.formData.spoilt = "Y";
       }
@@ -258,7 +301,7 @@ export default {
       });
     },
     viewManifesto(candidateId) {
-      this.candidate = this.candidates.find(
+      this.selectedCandidate = this.candidates.find(
         (candidate) => candidate.id === candidateId,
       );
       this.ModalClosed = false;
@@ -271,6 +314,7 @@ export default {
       });
     },
     doSpoilVote() {
+      this.voteSpoiled = !this.voteSpoiled;
       if (this.votes.length > 0) {
         this.clearVotes();
       }
