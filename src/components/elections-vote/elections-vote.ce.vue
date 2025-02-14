@@ -20,6 +20,7 @@
             Vote using the STV system, clicking your choices in order of
             preference.
             <a
+              class="text-blue-800 underline"
               href="https://www.youtube.com/watch?v=J1GLiPkXnII&feature=youtu.be"
               target="_blank"
               >Further explanation</a
@@ -30,7 +31,10 @@
             the bottom of your ballot, which is a way to demonstrate your
             dissatisfaction with the available candidates while still
             participating in the democratic process.
-            <a href="https://votingcounts.org.uk/spoilt-ballot" target="_blank"
+            <a
+              class="text-blue-800 underline"
+              href="https://votingcounts.org.uk/spoilt-ballot"
+              target="_blank"
               >Further explanation</a
             >.
           </li>

@@ -41,8 +41,7 @@
     @apply mb-3;
   }
 
-  main article a,
-  .body-style a {
+  main article a {
     @apply text-blue-800 underline;
   }
 
