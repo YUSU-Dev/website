@@ -1,20 +1,20 @@
 <!-- eslint-disable -->
 <template>
   <!-- {exp:su_elections:voteForm election_id="{segment_3}"
-  activity_id="{segment_4}"} {embed="core-components/.header" title='Vote'}
+  activity_id="{segment_4}"} {embed="core-components/.header" title='Vote'} -->
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
   <div class="container mx-auto">
     <div class="flex flex-col gap-y-6">
       <h1 class="mb-6 text-4xl font-bold">Vote</h1>
 
       <div class="border-l-4 border-gray-400 bg-gray-100 p-2">
-        <h2 class="mb-0 text-xl">
+        <p class="mb-0">
           York SU uses the Single Transferable Voting System. You need to vote
           in order of preference, with 1 being your first preference (i.e. the
           candidate you want to win). This is so that if the person you want to
           win does not win, your second preference is taken into account.
-        </h2>
+        </p>
       </div>
 
       {if valid_vote}
@@ -51,9 +51,7 @@
             <hr />
             <div class="flex flex-col">
               <h3 class="mb-0 text-xl">Description</h3>
-              <article>
-                <p>{election_description}</p>
-              </article>
+              <p>{election_description}</p>
             </div>
           </div>
         </div>
@@ -71,7 +69,7 @@
           {/validation_errors}
         </div>
         {/if}
-        <ElectionsVote election-id="2209" spoilt-vote="true" />
+        <ElectionsVote election-id="2209" spoilt-vote="1" />
       </div>
     </div>
   </div>

@@ -92,6 +92,7 @@
                   class=""
                   @click.stop="viewManifesto(candidate.id)"
                   aria-label="View manifesto"
+                  title="View manifesto"
                 >
                   <FontAwesomeIcon
                     icon="fa-solid fa-circle-info"
@@ -105,7 +106,11 @@
         </button>
       </div>
 
-      <div v-if="spoiltVote == '1'" class="my-10 flex items-center gap-x-2">
+      <div
+        @click="doSpoilVote()"
+        v-if="spoiltVote == '1'"
+        class="my-10 flex w-fit items-center gap-x-2"
+      >
         <input
           id="spoil-vote"
           class="h-5 w-5"
@@ -113,7 +118,6 @@
           name="spoilt"
           v-model="voteSpoiled"
           aria-labelledby="spoil-vote-label"
-          @click="doSpoilVote()"
         />
         <label id="spoil-vote-label" class="text-lg">Spoil Vote</label>
       </div>
@@ -306,6 +310,7 @@ export default {
       });
     },
     doSpoilVote() {
+      this.voteSpoiled = !this.voteSpoiled;
       if (this.votes.length > 0) {
         this.clearVotes();
       }
