@@ -61,7 +61,7 @@
             <div class="absolute flex w-full justify-end">
               <div
                 v-if="candidate.voteOrder"
-                class="m-2 flex h-8 w-8 items-center justify-center rounded-full bg-voice-orange"
+                class="m-2 flex h-8 w-8 items-center justify-center rounded-full border border-black bg-voice-orange"
               >
                 <p>{{ candidate.voteOrder }}</p>
               </div>
@@ -75,14 +75,14 @@
             </div>
             <div v-else>
               <img
-                src="https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp"
+                src="https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Pink.webp"
                 alt=""
                 draggable="false"
               />
             </div>
           </div>
           <div class="flex h-full w-full flex-col p-2 text-start">
-            <h3 class="truncate text-lg font-semibold xs:text-wrap">
+            <h3 class="line-clamp-3 text-lg font-semibold">
               {{ candidate.name }}
             </h3>
             <div
