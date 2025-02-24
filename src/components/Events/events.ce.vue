@@ -313,19 +313,33 @@ export default {
           self.PerPage
       ) {
         self.firstPagePremium = true;
-        axios
-          .get(
-            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=4&" +
+        Promise.all([
+          axios.get(
+            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=4" +
               parameters,
             {
               headers: {
                 "X-Site-Id": self.siteid,
               },
             },
-          )
-          .then(function (response) {
-            self.PremiumEvents = response.data.data;
-          });
+          ),
+          axios.get(
+            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=37" +
+              parameters,
+            {
+              headers: {
+                "X-Site-Id": self.siteid,
+              },
+            },
+          ),
+        ]).then(function (responses) {
+          self.PremiumEvents = responses[0].data.data.concat(
+            responses[1].data.data,
+          );
+          self.PremiumEvents.sort(
+            (a, b) => new Date(a.start_date) - new Date(b.start_date),
+          );
+        });
       }
       // get excluded Tags
       if (self.excludedTags) {
