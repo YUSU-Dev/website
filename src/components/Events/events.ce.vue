@@ -315,7 +315,7 @@ export default {
         self.firstPagePremium = true;
         Promise.all([
           axios.get(
-            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=4" +
+            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=4&" +
               parameters,
             {
               headers: {
@@ -324,7 +324,7 @@ export default {
             },
           ),
           axios.get(
-            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=37" +
+            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=37&" +
               parameters,
             {
               headers: {
