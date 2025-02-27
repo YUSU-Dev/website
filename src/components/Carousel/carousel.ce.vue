@@ -67,7 +67,7 @@ export default {
       default: 5000,
     },
     defaultBanner: {
-      type: Object,
+      type: [Object, String],
       default() {
         return {
           url: "/",
@@ -87,7 +87,11 @@ export default {
     };
   },
   async created() {
-    this.banners.push(this.defaultBanner);
+    let banner = this.defaultBanner;
+    if (typeof banner === "string") {
+      banner = JSON.parse(banner);
+    }
+    this.banners.push(banner);
     this.getBanners();
   },
   async mounted() {
