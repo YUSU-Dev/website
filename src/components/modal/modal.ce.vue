@@ -59,6 +59,11 @@
               >View Stalls</a
             >
           </div>
+          <div v-if="action && actionName">
+            <button type="button" class="btn btn-primary" @click="action">
+              {{ actionName }}
+            </button>
+          </div>
           <button
             type="button"
             class="btn btn-primary"
@@ -94,6 +99,14 @@ export default {
     welcomeMapError: {
       type: Boolean,
       default: false,
+    },
+    actionName: {
+      type: String,
+      default: "Close",
+    },
+    action: {
+      type: Function,
+      default: () => {},
     },
   },
   emits: ["close"],

@@ -136,6 +136,8 @@
     :title="'Basket Error!'"
     :error-description="ErrorDescription"
     :modal-closed="ModalClosed"
+    :action="ErrorAction"
+    :action-name="ErrorActionName"
     @close="ModalClosed = true"
   />
 </template>
@@ -217,17 +219,25 @@ export default {
       ModalClosed: true,
       ErrorDescription: "",
       Loading: true,
+      ErrorActionName: "",
+      ErrorAction: {
+        type: Function,
+        default: () => {},
+      },
     };
   },
   created() {
     this.getBasketItems();
   },
-  mounted() {},
+  mounted() {
+    this.ErrorAction = this.emptyBasket;
+  },
   methods: {
     async getBasketItems() {
       let self = this;
       self.Loading = true;
       self.items = [];
+      self.ModalClosed = true;
       if (this.shopBasket.length === 0) {
         await axios
           .get("https://yorksu.org/shop/basket-api-v2")
@@ -299,6 +309,18 @@ export default {
     },
     removeItem(itemId) {
       let self = this;
+      let index = self.items.findIndex((item) => item.id === itemId);
+      self.ErrorActionName = "";
+
+      if (self.items[index].items_remove == 0) {
+        console.log("Item is not removable");
+        self.ErrorActionName = "Empty basket";
+        self.ErrorDescription =
+          "This item cannot be removed individually, to remove this item please clear your basket using the empty basket button.";
+        self.ModalClosed = false;
+        return;
+      }
+
       removeItemHandler(itemId)
         .then(function (response) {
           if (!response["success"]) {
@@ -331,6 +353,7 @@ export default {
         .then(function (response) {
           if (!response["success"]) {
             var data = response.error_message;
+            self.ErrorActionName = "";
             self.ErrorDescription = data;
             self.ModalClosed = false;
             return;
@@ -339,6 +362,7 @@ export default {
           }
         })
         .catch(function (response) {
+          self.ErrorActionName = "";
           if (response.error_message != "undefined") {
             console.log(
               "There was an error clearing the basket: " +
@@ -359,6 +383,7 @@ export default {
         .then(function (response) {
           if (!response["success"]) {
             var data = response.error_message;
+            self.ErrorActionName = "";
             self.ErrorDescription = data;
             self.ModalClosed = false;
             return;
@@ -367,6 +392,7 @@ export default {
           }
         })
         .catch(function (response) {
+          self.ErrorActionName = "";
           if (response.error_message != "undefined") {
             console.log(
               "There was an error clearing the basket: " +

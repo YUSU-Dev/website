@@ -11,26 +11,15 @@
             every student at York gets the most out of their time here. From
             hosting events, to running elections, overseeing clubs and
             societies, and providing a helping hand when it’s needed. The work
-            we do is led by five elected sabbatical officers, who represent
+            we do is led by seven elected sabbatical officers, who represent
             students to the University, the city of York, and nationally.
           </p>
         </div>
-        <!-- <div> -->
         <div class="flex flex-col gap-y-4">
           <h3 class="text-center text-2xl font-semibold">Our Sabbs</h3>
-          <div class="tile-wrap">
-            <SabbTile
-              v-for="sabb in sabbsList"
-              :key="sabb.name"
-              :name="sabb.name"
-              :position="sabb.position"
-              :url="sabb.url"
-              :img="sabb.img"
-              :pronouns="sabb.pronouns"
-            />
-          </div>
+
+          <Sabbs no-title />
         </div>
-        <!-- </div> -->
         <div class="mx-auto h-6 w-10/12 bg-mustard"></div>
         <div class="flex flex-col gap-y-12">
           <h2 class="text-end text-4xl font-bold">OUR MISSION</h2>
@@ -78,7 +67,7 @@
                 class="absolute -left-[8.6px] h-4 w-4 rounded-full bg-black"
               ></div>
               <p>
-                See more than 80% of all students engage with us (through
+                See more than 70% of all students engage with us (through
                 memberships, event attendance, being a representative, and/or
                 voting in the elections)
               </p>
@@ -88,10 +77,8 @@
                 class="absolute -left-[8.6px] h-4 w-4 rounded-full bg-black"
               ></div>
               <p>
-                We want to see X% of students feel part of a community at the
-                University of York. The baseline for this will be established in
-                our 2024 annual survey and we expect to see a year on year
-                increase.
+                We want to see 80% of students feel part of a community at the
+                University of York.
               </p>
             </div>
             <div class="relative flex items-center pl-4">
@@ -165,9 +152,9 @@
           </h2>
           <p>
             Each year, our new set of Sabbatical Officers create a group
-            manifesto to guide their work for the upcoming year. Using the YUSU
-            strategy as a foundation, they build upwards to create tangible and
-            measurable actions, which are more immediately related to the
+            manifesto to guide their work for the upcoming year. Using the York
+            SU strategy as a foundation, they build upwards to create tangible
+            and measurable actions, which are more immediately related to the
             student journey here in York(such as house prices) creating a local
             action plan for the year.
           </p>
@@ -395,72 +382,15 @@
 </template>
 
 <script>
-import SabbTile from "../sabb-tile/sabb-tile.ce.vue";
+import Sabbs from "../Sabbs/sabbs.ce.vue";
 import SabbAccordion from "../sabb-accordion/sabb-accordion.ce.vue";
 import Button from "../button/button.ce.vue";
 export default {
   name: "Strategy",
-  props: {
-    sabbsList: {
-      type: Array,
-      required: true,
-      default: () => [
-        {
-          name: "Lewis Parrey",
-          position: "Union Affairs Officer",
-          pronouns: "He/Him",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-affairs.webp",
-          url: "/officers/union-affairs",
-        },
-        {
-          name: "Gen Andrews",
-          pronouns: "She/Her",
-          position: "Union Development Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-development.webp",
-          url: "/officers/union-development",
-        },
-        {
-          name: "Fenella Johnson",
-          position: "Academic Officer",
-          pronouns: "She/Her",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-academic.webp",
-          url: "/officers/academic",
-        },
-        {
-          name: "Teddy Bland",
-          pronouns: "He/Him",
-          position: "Equality and Inclusion Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-equality.webp",
-          url: "/officers/equality",
-        },
-        {
-          name: "Freddy Russell",
-          pronouns: "He/Him",
-          position: "Community & Wellbeing Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-community.webp",
-          url: "/officers/community",
-        },
-        {
-          name: "Kaitlyn Beattie-Zarb",
-          pronouns: "She/Her",
-          position: "Activities Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-activities.webp",
-          url: "/officers/activities",
-        },
-        {
-          name: "Tanisha Jain (TJ)",
-          pronouns: "She/Her",
-          position: "Sports Officer",
-          img: "https://assets-cdn.sums.su/YU/website/img/sabbs/24-25/yorksu-sabbs-central-hall-sports.webp",
-          url: "/officers/sport",
-        },
-      ],
-    },
-  },
   components: {
-    SabbTile,
     SabbAccordion,
     Button,
+    Sabbs,
   },
 };
 </script>

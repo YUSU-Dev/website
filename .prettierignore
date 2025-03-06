@@ -5,7 +5,6 @@
 *.mdx
 src/pages/shop/shop-old-fields/shop-products-fields-ee.html
 src/components/elections-nominate/elections-nominate.ce.vue
-src/components/elections-vote/elections-vote.ce.vue
 src/components/suggestions/suggestions-index/suggestions.ce.vue
 src/components/suggestions/suggestions-new/suggestions-new.ce.vue
 src/components/suggestions/suggestions-view/suggestions-view.ce.vue

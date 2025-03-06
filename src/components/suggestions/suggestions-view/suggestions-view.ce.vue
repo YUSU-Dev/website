@@ -69,7 +69,7 @@
 
             {if suggestionsCategoryId == 6}
             <li class="list-inline-item g-mb-10 g-mb-0--lg">
-              <p style="color: red;"><i class="fas fa-tags"></i> Covid-19</p>
+              <p class="text-red-800"><i class="fas fa-tags"></i> Covid-19</p>
             </li>
 
             {/if}
@@ -114,7 +114,7 @@
 
             {if fast_tracked == 1}
 
-            <div class="text-green-500 font-semibold mb-2"
+            <div class="text-green-800 font-semibold mb-2"
               title="This idea has been fast-tracked as the Executive Committee have agreed that they want to take this idea forward to be put into action.">
               <p class="flex items-center gap-x-2 mb-0"><i class="fas fa-bolt"></i> Fast Tracked</p>
             </div>

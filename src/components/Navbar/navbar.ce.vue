@@ -20,7 +20,11 @@
       </div>
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
-          <slot name="reachdeck"></slot>
+          <a
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            href="/web-accessibility-statement"
+            >Accessibility</a
+          >
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             @click="getBearerToken()"
@@ -34,7 +38,11 @@
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
-          <slot name="reachdeck"></slot>
+          <a
+            class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
+            href="/web-accessibility-statement"
+            >Accessibility</a
+          >
           <a
             class="ml-3 bg-black px-4 py-1 text-white hover:bg-mustard hover:text-black"
             href="/associate-member"
@@ -94,7 +102,11 @@
             v-if="signedIn"
             class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
           >
-            <slot name="reachdeck-mobile"></slot>
+            <a
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              href="/web-accessibility-statement"
+              >Accessibility</a
+            >
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               @click="getBearerToken()"
@@ -111,7 +123,11 @@
             v-else
             class="mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 xs:flex-row lg:hidden"
           >
-            <slot name="reachdeck-mobile"></slot>
+            <a
+              class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
+              href="/web-accessibility-statement"
+              >Accessibility</a
+            >
             <a
               class="bg-black px-4 py-1 text-center text-white hover:bg-mustard hover:text-black"
               href="/associate-member"
@@ -454,8 +470,13 @@ export default {
                 target: "_blank",
               },
               {
-                name: "Book an Event",
+                name: "Bookings",
                 link: "/events/book-event",
+              },
+              {
+                name: "Employability Hub",
+                link: "https://resource-hub.yorksu.org/employability/employability-home#",
+                target: "_blank",
               },
             ],
           },

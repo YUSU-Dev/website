@@ -85,6 +85,10 @@
   .footer {
     @apply min-h-[256px];
   }
+  /* Notice Bar */
+  .notice-close {
+    @apply absolute right-0 p-2;
+  }
   /* v-select Classes */
   /* Events Filters */
   .events-filters {
@@ -426,3 +430,16 @@ input[type="checkbox"] {
 }
 
 @tailwind utilities;
+
+/* WYSIWYG Tables */
+.sums-table {
+  @apply !w-full;
+}
+.sums-table tr {
+  @apply flex flex-wrap;
+}
+
+/* Voting */
+.selected-candidate {
+  @apply border-4 border-voice-orange;
+}

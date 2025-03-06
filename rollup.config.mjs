@@ -13,7 +13,6 @@ import path from "node:path";
 const entrypoints = globSync("*/**/**/*.component.js", {
   ignore: [
     "dist/**",
-    "src/components/elections-vote/elections-vote.component.js",
     "src/components/elections-nominate/elections-nominate.component.js",
   ],
 });

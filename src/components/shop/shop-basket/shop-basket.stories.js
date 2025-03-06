@@ -22,7 +22,7 @@ export const Default = {
             product_name: "DELIVERY",
             price_single: "14.50",
             price_total: "14.50",
-            item_remove: "1",
+            item_remove: "0",
           },
           {
             id: "112998",
