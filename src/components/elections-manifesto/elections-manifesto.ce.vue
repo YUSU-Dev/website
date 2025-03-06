@@ -4,50 +4,16 @@
 
     <div class="flex flex-col">
       <div
+        v-for="election in elections"
+        :key="election.title"
         class="flex w-full items-center justify-between gap-x-2 border-b-2 py-2"
       >
-        <h3 class="mb-0 text-xl">UNION AFFAIRS OFFICER</h3>
-        <Button title="Edit" href="/elections/nominate/1946" is-student-voice />
-      </div>
-
-      <div
-        class="flex w-full items-center justify-between gap-x-2 border-b-2 py-2"
-      >
-        <h3 class="mb-0 text-xl">UNION DEVELOPMENT OFFICER</h3>
-        <Button title="Edit" href="/elections/nominate/1946" is-student-voice />
-      </div>
-
-      <div
-        class="flex w-full items-center justify-between gap-x-2 border-b-2 py-2"
-      >
-        <h3 class="mb-0 text-xl">ACADEMIC OFFICER</h3>
-        <Button title="Edit" href="/elections/nominate/1946" is-student-voice />
-      </div>
-
-      <div
-        class="flex w-full items-center justify-between gap-x-2 border-b-2 py-2"
-      >
-        <h3 class="mb-0 text-xl">SPORTS OFFICER</h3>
-        <Button title="Edit" href="/elections/nominate/1946" is-student-voice />
-      </div>
-
-      <div
-        class="flex w-full items-center justify-between gap-x-2 border-b-2 py-2"
-      >
-        <h3 class="mb-0 text-xl">EQUALITY AND INCLUSION OFFICER</h3>
-        <Button title="Edit" href="/elections/nominate/1946" is-student-voice />
-      </div>
-
-      <div
-        class="flex w-full items-center justify-between gap-x-2 border-b-2 py-2"
-      >
-        <h3 class="mb-0 text-xl">COMMUNITY AND WELLBEING OFFICER</h3>
-        <Button title="Edit" href="/elections/nominate/1946" is-student-voice />
-      </div>
-
-      <div class="flex w-full items-center justify-between gap-x-2 py-2">
-        <h3 class="mb-0 text-xl">ACTIVITIES OFFICER</h3>
-        <Button title="Edit" href="/elections/nominate/1946" is-student-voice />
+        <h3 class="mb-0 text-xl">{{ election.title }}</h3>
+        <Button
+          title="Edit"
+          :href="'/elections/nominate/' + election.id"
+          is-student-voice
+        />
       </div>
     </div>
   </div>
@@ -59,6 +25,40 @@ export default {
   name: "ElectionsManifesto",
   components: {
     Button,
+  },
+  data() {
+    return {
+      elections: [
+        {
+          title: "UNION AFFAIRS OFFICER",
+          id: "2311",
+        },
+        {
+          title: "UNION DEVELOPMENT OFFICER",
+          id: "2312",
+        },
+        {
+          title: "ACADEMIC OFFICER",
+          id: "2313",
+        },
+        {
+          title: "SPORTS OFFICER",
+          id: "2318",
+        },
+        {
+          title: "EQUALITY AND INCLUSION OFFICER",
+          id: "2314",
+        },
+        {
+          title: "COMMUNITY AND WELLBEING OFFICER",
+          id: "2315",
+        },
+        {
+          title: "ACTIVITIES OFFICER",
+          id: "2317",
+        },
+      ],
+    };
   },
 };
 </script>
