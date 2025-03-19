@@ -374,7 +374,7 @@
         <Button
           title="View The Impact Report"
           is-primary
-          url="https://968c42875777681c2b62-5a01dd4a6616d09e705101b62b4054a7.ssl.cf3.rackcdn.com/3BE69FC0_Impact_Report_FINAL_2023.pdf"
+          url="https://assets-cdn.sums.su/YU/Documents/Impact-Reports/York_SU_Impact_Report_2023-24.pdf"
         />
       </div>
     </div>
