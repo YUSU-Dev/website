@@ -259,6 +259,7 @@ export default {
           ),
         ]);
         self.election = electionsResponse.data;
+        self.candidates = self.candidates.sort(() => Math.random() - 0.5);
         self.candidates = electionsResponse.data.candidates;
         let cleanedData = pronounsResponse.data.replace(/,\s*([\]}])/g, "$1");
         let JSONData = JSON.parse(cleanedData);
