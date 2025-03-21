@@ -61,6 +61,7 @@ export default {
           self.candidates = response.data.candidates.filter(
             (candidate) => candidate.id !== 9,
           );
+          self.candidates = self.candidates.sort(() => Math.random() - 0.5);
         });
     },
   },
