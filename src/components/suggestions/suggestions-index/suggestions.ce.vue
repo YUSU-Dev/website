@@ -99,7 +99,7 @@
                   <div class="vote-items flex flex-wrap gap-3">
                     {suggestions}
                     <div
-                      class="border rounded hover:shadow p-3 flex flex-col xs:flex-row gap-2 justify-between flex-grow sm:max-w-[50%] vote-item">
+                      class="border rounded-sm hover:shadow-sm p-3 flex flex-col xs:flex-row gap-2 justify-between grow sm:max-w-[50%] vote-item">
                       <div class="flex flex-col justify-between">
                         <div id="vote-actions" class="vote-actions flex gap-2 items-center">
                           {if canVote == 1}

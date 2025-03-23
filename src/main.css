@@ -1,11 +1,225 @@
 /* BASE 
    Edit with caution, this is the base layer and changes here will cascade to the whole site.
 */
-@tailwind base;
+@import "tailwindcss";
+
+@theme {
+  --font-*: initial;
+  --font-sans: soleil, inter, sans-serif;
+  --font-serif: rooney-web, serif;
+
+  --color-beige: #f4e9e1;
+  --color-mustard: #f2cb50;
+  --color-light-blue: #d3e6ef;
+  --color-light-pink: #fad7d9;
+  --color-primary-pink: #ffbbbe;
+  --color-voice-orange: #f2682f;
+  --color-advice-green: #00a463;
+  --color-primary-blue: #307cbf;
+  --color-primary-red: #e74c3c;
+
+  --breakpoint-xxs: 320px;
+  --breakpoint-xs: 476px;
+  --breakpoint-3xl: 1650px;
+  --breakpoint-max: 1900px;
+}
+
+@utility container {
+  padding-inline: 1rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility container {
+  /* Container */
+  @apply max-w-full py-10 sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl;
+}
+
+@utility banner-container {
+  @apply w-full max-w-(--breakpoint-2xl);
+}
+
+@utility nav-section {
+  /* Navbar */
+  @apply border-r border-black;
+  &:nth-child(2n) {
+    @apply border-r-0 md:border-r;
+  }
+  &:nth-child(3n) {
+    @apply md:border-r-0 lg:border-r;
+  }
+}
+
+@utility footer {
+  /* Footer */
+  @apply min-h-[256px];
+}
+
+@utility notice-close {
+  /* Notice Bar */
+  @apply absolute right-0 p-2;
+}
+
+@utility events-filters {
+  /* v-select Classes */
+  /* Events Filters */
+  .vs__dropdown-toggle {
+    @apply h-full rounded-none bg-black text-white;
+  }
+
+  .vs__open-indicator {
+    @apply fill-white;
+  }
+
+  .vs__selected {
+    @apply text-white;
+  }
+
+  .vs__selected-options {
+    @apply flex-nowrap!;
+  }
+
+  .vs__clear {
+    @apply ml-2 fill-white;
+  }
+}
+
+@utility news-filters {
+  /* News Filters */
+  .vs__dropdown-toggle {
+    @apply h-full rounded-none bg-[#f7f7f7];
+  }
+
+  .vs__selected {
+    @apply bg-light-pink rounded-none;
+  }
+
+  .vs__deselect {
+    @apply ml-2 fill-black;
+  }
+
+  .vs__dropdown-menu {
+    @apply flex flex-col gap-y-1 overflow-x-hidden;
+  }
+
+  .vs__dropdown-option {
+    @apply px-2 text-sm text-pretty;
+  }
+}
+
+@utility btn {
+  /* Button Classes */
+  @apply px-3 py-3 text-black no-underline hover:text-black;
+}
+
+@utility btn-primary {
+  @apply bg-mustard hover:bg-primary-pink;
+}
+
+@utility btn-secondary {
+  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin text-white;
+}
+
+@utility btn-tertiary {
+  @apply transition group-hover:translate-x-4;
+}
+
+@utility btn-student-life {
+  @apply bg-mustard hover:bg-light-blue;
+}
+
+@utility btn-student-voice {
+  @apply bg-voice-orange hover:bg-light-pink;
+}
+
+@utility btn-advice-support {
+  @apply bg-advice-green hover:bg-light-blue;
+}
+
+@utility btn-primary-active {
+  @apply bg-primary-pink font-bold text-black;
+}
+
+@utility btn-secondary-active {
+  @apply bg-primary-pink font-bold text-black;
+}
+
+@utility btn-advice-support-active {
+  @apply bg-light-blue font-bold;
+}
+
+@utility btn-student-life-active {
+  @apply bg-light-blue font-bold;
+}
+
+@utility btn-student-voice-active {
+  @apply bg-light-pink font-bold;
+}
+
+@utility modal {
+  /* Modals */
+  @apply fixed top-0 right-0 left-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-x-hidden overflow-y-auto md:inset-0;
+}
+
+@utility modal-body {
+  @apply space-y-4 p-4 md:p-5;
+
+  & p {
+    @apply text-base leading-relaxed text-black dark:text-gray-200;
+  }
+}
+
+@utility modal-dialog {
+  @apply relative max-h-full w-full max-w-2xl p-4;
+}
+
+@utility modal-content {
+  @apply relative rounded-lg bg-white shadow-sm dark:bg-gray-700;
+}
+
+@utility modal-header {
+  @apply flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600;
+}
+
+@utility modal-title {
+  @apply text-xl font-semibold dark:text-white;
+}
+
+@utility modal-footer {
+  @apply flex items-center gap-3 rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600;
+}
+
+@utility form-group {
+  @apply w-full appearance-none rounded-sm border bg-white px-3 py-2 leading-tight hover:border-gray-500;
+}
+
+@utility form-input {
+  @apply form-group text-gray-700;
+}
+
+@utility form-select {
+  @apply form-group block pr-8;
+}
 
 @layer base {
   body {
-    @apply m-0 grid min-h-[100vh] grid-rows-[auto,1fr,auto] font-sans;
+    @apply m-0 grid min-h-[100vh] grid-rows-[auto_1fr_auto] font-sans;
   }
 
   body h1,
@@ -30,7 +244,7 @@
 
   body p,
   .body-style p {
-    @apply text-pretty text-base leading-relaxed;
+    @apply text-base leading-relaxed text-pretty;
   }
 
   main h1,
@@ -61,379 +275,222 @@
 /* COMPONENTS 
   The below CSS is used for adding custom classes to components.
 */
-@tailwind components;
 
 @layer components {
-  /* Container */
-  .container {
-    @apply max-w-full py-10 sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl;
-  }
-  .banner-container {
-    @apply w-full max-w-screen-2xl;
-  }
-  /* Navbar */
-  .nav-section {
-    @apply border-r border-black;
-  }
-  .nav-section:nth-child(2n) {
-    @apply border-r-0 md:border-r;
-  }
-  .nav-section:nth-child(3n) {
-    @apply md:border-r-0 lg:border-r;
-  }
-  /* Footer */
-  .footer {
-    @apply min-h-[256px];
-  }
-  /* Notice Bar */
-  .notice-close {
-    @apply absolute right-0 p-2;
-  }
-  /* v-select Classes */
-  /* Events Filters */
-  .events-filters {
-    .vs__dropdown-toggle {
-      @apply h-full rounded-none bg-black text-white;
-    }
-
-    .vs__open-indicator {
-      @apply fill-white;
-    }
-
-    .vs__selected {
-      @apply text-white;
-    }
-
-    .vs__selected-options {
-      @apply !flex-nowrap;
-    }
-
-    .vs__clear {
-      @apply ml-2 fill-white;
-    }
-  }
-  /* News Filters */
-  .news-filters {
-    .vs__dropdown-toggle {
-      @apply h-full rounded-none bg-[#f7f7f7];
-    }
-
-    .vs__selected {
-      @apply rounded-none bg-light-pink;
-    }
-
-    .vs__deselect {
-      @apply ml-2 fill-black;
-    }
-
-    .vs__dropdown-menu {
-      @apply flex flex-col gap-y-1 overflow-x-hidden;
-    }
-
-    .vs__dropdown-option {
-      @apply text-pretty px-2 text-sm;
-    }
-  }
-
-  /* Button Classes */
-  .btn {
-    @apply px-3 py-3 text-black no-underline hover:text-black;
-  }
-
-  .btn-primary {
-    @apply bg-mustard hover:bg-primary-pink;
-  }
-
-  .btn-secondary {
-    @apply bg-black px-2 py-1 font-thin text-white hover:bg-primary-pink;
-  }
-
-  .btn-tertiary {
-    @apply transition group-hover:translate-x-4;
-  }
-
-  .btn-student-life {
-    @apply bg-mustard hover:bg-light-blue;
-  }
-
-  .btn-student-voice {
-    @apply bg-voice-orange hover:bg-light-pink;
-  }
-
-  .btn-advice-support {
-    @apply bg-advice-green hover:bg-light-blue;
-  }
-
-  .btn-primary-active,
-  .btn-secondary-active {
-    @apply bg-primary-pink font-bold text-black;
-  }
-  .btn-advice-support-active,
-  .btn-student-life-active {
-    @apply bg-light-blue font-bold;
-  }
-
-  .btn-student-voice-active {
-    @apply bg-light-pink font-bold;
-  }
-
   /* Skip to Main Content */
   #skiptocontent a {
-    @apply absolute left-0 top-0 z-50 -translate-y-full transform bg-mustard px-4 py-2 text-black opacity-0 transition hover:bg-light-blue focus:translate-y-0 focus:opacity-100;
-  }
-
-  /* Modals */
-  .modal {
-    @apply fixed left-0 right-0 top-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0;
-  }
-
-  .modal-body {
-    @apply space-y-4 p-4 md:p-5;
-  }
-
-  .modal-body p {
-    @apply text-base leading-relaxed text-black dark:text-gray-200;
-  }
-
-  .modal-dialog {
-    @apply relative max-h-full w-full max-w-2xl p-4;
-  }
-
-  .modal-content {
-    @apply relative rounded-lg bg-white shadow dark:bg-gray-700;
-  }
-
-  .modal-header {
-    @apply flex items-center justify-between rounded-t border-b p-4 md:p-5 dark:border-gray-600;
-  }
-
-  .modal-title {
-    @apply text-xl font-semibold dark:text-white;
-  }
-
-  .modal-footer {
-    @apply flex items-center gap-3 rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600;
-  }
-
-  .form-group {
-    @apply w-full appearance-none rounded border bg-white px-3 py-2 leading-tight hover:border-gray-500;
-  }
-  .form-input {
-    @apply form-group text-gray-700;
-  }
-  .form-select {
-    @apply form-group block pr-8;
+    @apply bg-mustard hover:bg-light-blue absolute top-0 left-0 z-50 -translate-y-full transform px-4 py-2 text-black opacity-0 transition focus:translate-y-0 focus:opacity-100;
   }
 }
 
-/* Banners */
-/*
+@layer components {
+  /* Banners */
+  /*
   Enter and leave animations can use different
   durations and timing functions.
 */
-.fade-enter-active {
-  @apply delay-300 duration-300 ease-out;
-}
-.fade-enter-from {
-  @apply transform opacity-0;
-}
-.fade-enter-to {
-  @apply opacity-100;
-}
-.fade-leave-active {
-  @apply transform duration-200 ease-in;
-}
-.fade-leave-from {
-  @apply opacity-100;
-}
-.fade-leave-to {
-  @apply opacity-0;
-}
+  .fade-enter-active {
+    @apply delay-300 duration-300 ease-out;
+  }
+  .fade-enter-from {
+    @apply transform opacity-0;
+  }
+  .fade-enter-to {
+    @apply opacity-100;
+  }
+  .fade-leave-active {
+    @apply transform duration-200 ease-in;
+  }
+  .fade-leave-from {
+    @apply opacity-100;
+  }
+  .fade-leave-to {
+    @apply opacity-0;
+  }
 
-.slide-prev-enter-active {
-  @apply duration-[1000ms] ease-linear;
-}
-.slide-prev-enter-from {
-  @apply translate-x-[-100%] transform opacity-0;
-}
-.slide-prev-enter-to {
-  @apply opacity-100;
-}
-.slide-prev-leave-active {
-  @apply translate-x-[100%] transform duration-[1000ms] ease-linear;
-}
-.slide-prev-leave-from {
-  @apply opacity-100;
-}
-.slide-prev-leave-to {
-  @apply opacity-0;
-}
+  .slide-prev-enter-active {
+    @apply duration-[1000ms] ease-linear;
+  }
+  .slide-prev-enter-from {
+    @apply translate-x-[-100%] transform opacity-0;
+  }
+  .slide-prev-enter-to {
+    @apply opacity-100;
+  }
+  .slide-prev-leave-active {
+    @apply translate-x-[100%] transform duration-[1000ms] ease-linear;
+  }
+  .slide-prev-leave-from {
+    @apply opacity-100;
+  }
+  .slide-prev-leave-to {
+    @apply opacity-0;
+  }
 
-.slide-next-enter-active {
-  @apply duration-[1000ms] ease-linear;
-}
-.slide-next-enter-from {
-  @apply translate-x-[100%] transform opacity-0;
-}
-.slide-next-enter-to {
-  @apply opacity-100;
-}
-.slide-next-leave-active {
-  @apply translate-x-[-100%] transform duration-[1000ms] ease-linear;
-}
-.slide-next-leave-from {
-  @apply opacity-100;
-}
-.slide-next-leave-to {
-  @apply opacity-0;
-}
+  .slide-next-enter-active {
+    @apply duration-[1000ms] ease-linear;
+  }
+  .slide-next-enter-from {
+    @apply translate-x-[100%] transform opacity-0;
+  }
+  .slide-next-enter-to {
+    @apply opacity-100;
+  }
+  .slide-next-leave-active {
+    @apply translate-x-[-100%] transform duration-[1000ms] ease-linear;
+  }
+  .slide-next-leave-from {
+    @apply opacity-100;
+  }
+  .slide-next-leave-to {
+    @apply opacity-0;
+  }
 
-.slide-top-enter-active,
-.slide-top-leave-active {
-  transition:
-    max-height 1s ease,
-    transform 0.5s ease,
-    opacity 0.5s ease;
-  overflow: hidden;
-}
-.slide-top-enter-from,
-.slide-top-leave-to {
-  max-height: 0;
-  opacity: 0;
-}
-.slide-top-enter-to,
-.slide-top-leave-from {
-  max-height: 250px;
-  opacity: 1;
-}
-
-.slide-bottom-enter-active,
-.slide-bottom-leave-active {
-  transition:
-    max-height 1s ease,
-    transform 0.5s ease,
-    opacity 0.5s ease;
-  overflow: hidden;
-}
-.slide-bottom-enter-from,
-.slide-bottom-leave-to {
-  max-height: 0px;
-  opacity: 0;
-}
-.slide-bottom-enter-to,
-.slide-bottom-leave-from {
-  max-height: 250px;
-  opacity: 1;
-}
-
-/* embedded tile wrapping */
-.tile-wrap {
-  @apply mx-2 flex flex-wrap justify-center gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4;
-}
-
-.sabb-tile {
-  @apply aspect-[141/161] w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
-}
-
-.tile-wrap .tile {
-  @apply w-full xxs:w-[calc(50%_-_4px)] md:w-[282px];
-}
-
-.a-z-wrap {
-  @apply grid gap-x-4 xxs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4;
-}
-
-/* Elections */
-.terminology p {
-  @apply mb-0;
-}
-
-/* Text Outline */
-.outline-1 {
-  -webkit-text-stroke: 1px black;
-}
-
-/* Animations */
-
-.animated {
-  animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
+  .slide-top-enter-active,
+  .slide-top-leave-active {
+    transition:
+      max-height 1s ease,
+      transform 0.5s ease,
+      opacity 0.5s ease;
+    overflow: hidden;
+  }
+  .slide-top-enter-from,
+  .slide-top-leave-to {
+    max-height: 0;
     opacity: 0;
   }
-  100% {
+  .slide-top-enter-to,
+  .slide-top-leave-from {
+    max-height: 250px;
     opacity: 1;
   }
-}
 
-[data-animation]:not(.u-in-viewport) {
-  visibility: visible !important;
-}
+  .slide-bottom-enter-active,
+  .slide-bottom-leave-active {
+    transition:
+      max-height 1s ease,
+      transform 0.5s ease,
+      opacity 0.5s ease;
+    overflow: hidden;
+  }
+  .slide-bottom-enter-from,
+  .slide-bottom-leave-to {
+    max-height: 0px;
+    opacity: 0;
+  }
+  .slide-bottom-enter-to,
+  .slide-bottom-leave-from {
+    max-height: 250px;
+    opacity: 1;
+  }
 
-.animate-delay {
-  animation-delay: 0.5s;
-}
+  /* embedded tile wrapping */
+  .tile-wrap {
+    @apply mx-2 flex flex-wrap justify-center gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-4;
+  }
 
-.animate-second {
-  animation-duration: 2s !important;
-  animation-timing-function: linear;
-}
+  .sabb-tile {
+    @apply xxs:w-[calc(50%_-_4px)] aspect-141/161 w-full md:w-[282px];
+  }
 
-.animate-third {
-  animation-delay: 0.75s;
-}
+  .tile-wrap .tile {
+    @apply xxs:w-[calc(50%_-_4px)] w-full md:w-[282px];
+  }
 
-.animate-fourth {
-  animation-delay: 1s;
-}
+  .a-z-wrap {
+    @apply xxs:grid-cols-2 grid gap-x-4 sm:grid-cols-3 md:grid-cols-4;
+  }
 
-.animate-fifth {
-  animation-delay: 1.25s;
-}
+  /* Elections */
+  .terminology p {
+    @apply mb-0;
+  }
 
-.animate-sixth {
-  animation-delay: 1.5s;
-}
+  /* Text Outline */
+  .outline-1 {
+    -webkit-text-stroke: 1px black;
+  }
 
-.animate-seventh {
-  animation-delay: 1.75s;
-}
+  /* Animations */
 
-.animate-eigth {
-  animation-delay: 2s;
-}
+  .animated {
+    animation: fadeIn 1s ease-in-out;
+  }
 
-/* Checkbox */
-input[type="checkbox"] {
-  accent-color: #f2cb50;
-}
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
-/* Mapbox */
-.mapboxgl-popup-close-button {
-  @apply px-2;
-}
+  [data-animation]:not(.u-in-viewport) {
+    visibility: visible !important;
+  }
 
-/* Font Awesome */
-.fa-heart path {
-  stroke: grey;
-  stroke-width: 40;
-}
+  .animate-delay {
+    animation-delay: 0.5s;
+  }
 
-/* Dropdown */
-.vs__dropdown-menu li:not(:last-child) {
-  @apply border-b border-gray-400;
-}
-.vs__dropdown-option {
-  @apply text-wrap;
-}
+  .animate-second {
+    animation-duration: 2s !important;
+    animation-timing-function: linear;
+  }
 
-@tailwind utilities;
+  .animate-third {
+    animation-delay: 0.75s;
+  }
+
+  .animate-fourth {
+    animation-delay: 1s;
+  }
+
+  .animate-fifth {
+    animation-delay: 1.25s;
+  }
+
+  .animate-sixth {
+    animation-delay: 1.5s;
+  }
+
+  .animate-seventh {
+    animation-delay: 1.75s;
+  }
+
+  .animate-eigth {
+    animation-delay: 2s;
+  }
+
+  /* Checkbox */
+  input[type="checkbox"] {
+    accent-color: #f2cb50;
+  }
+
+  /* Mapbox */
+  .mapboxgl-popup-close-button {
+    @apply px-2;
+  }
+
+  /* Font Awesome */
+  .fa-heart path {
+    stroke: grey;
+    stroke-width: 40;
+  }
+
+  /* Dropdown */
+  .vs__dropdown-menu li:not(:last-child) {
+    @apply border-b border-gray-400;
+  }
+  .vs__dropdown-option {
+    @apply text-wrap;
+  }
+}
 
 /* WYSIWYG Tables */
 .sums-table {
-  @apply !w-full;
+  @apply w-full!;
 }
 .sums-table tr {
   @apply flex flex-wrap;
@@ -441,5 +498,5 @@ input[type="checkbox"] {
 
 /* Voting */
 .selected-candidate {
-  @apply border-4 border-voice-orange;
+  @apply border-voice-orange border-4;
 }
