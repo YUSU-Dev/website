@@ -124,7 +124,6 @@
 }
 
 @utility btn {
-  /* Button Classes */
   @apply px-3 py-3 text-black no-underline hover:text-black;
 }
 
@@ -133,11 +132,11 @@
 }
 
 @utility btn-secondary {
-  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin text-white;
+  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin !text-white hover:!text-black;
 }
 
 @utility btn-tertiary {
-  @apply transition group-hover:translate-x-4;
+  @apply !transition group-hover:!translate-x-4;
 }
 
 @utility btn-student-life {
