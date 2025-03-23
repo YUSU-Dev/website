@@ -22,7 +22,7 @@
     />
     <div class="container mx-auto border-t border-black">
       <div
-        class="grid gap-x-4 pt-6 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        class="xs:grid-cols-2 grid gap-x-4 pt-6 md:grid-cols-3 lg:grid-cols-4"
       >
         <EventsDateTile :date_id="date_id" />
       </div>

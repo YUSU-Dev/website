@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto pb-2 pt-12 font-serif text-sm">
+  <div class="container mx-auto pt-12 pb-2 font-serif text-sm">
     <p>
       <a class="text-black no-underline hover:underline" href="/">Home</a>
       <span v-if="firstSegmentName">

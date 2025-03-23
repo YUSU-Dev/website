@@ -20,7 +20,7 @@
 
           <Sabbs no-title />
         </div>
-        <div class="mx-auto h-6 w-10/12 bg-mustard"></div>
+        <div class="bg-mustard mx-auto h-6 w-10/12"></div>
         <div class="flex flex-col gap-y-12">
           <h2 class="text-end text-4xl font-bold">OUR MISSION</h2>
           <div class="flex justify-center">
@@ -36,7 +36,7 @@
             <div
               class="flex flex-col gap-y-6 border border-[#eee] px-6 py-12 text-center shadow-lg hover:scale-105"
             >
-              <h3 class="text-2xl font-semibold text-primary-red xs:text-3xl">
+              <h3 class="text-primary-red xs:text-3xl text-2xl font-semibold">
                 EMPOWER
               </h3>
               <p>
@@ -48,7 +48,7 @@
             <div
               class="flex flex-col gap-y-6 border border-[#eee] px-6 py-12 text-center shadow-lg hover:scale-105"
             >
-              <h3 class="text-2xl font-semibold text-primary-blue xs:text-3xl">
+              <h3 class="text-primary-blue xs:text-3xl text-2xl font-semibold">
                 CREATE CONNECTIONS
               </h3>
               <p>
@@ -92,7 +92,7 @@
             </div>
           </div>
         </div>
-        <div class="mx-auto h-6 w-10/12 bg-mustard"></div>
+        <div class="bg-mustard mx-auto h-6 w-10/12"></div>
         <div class="flex flex-col gap-y-8">
           <h2 class="text-4xl font-bold">MAKING IT HAPPEN</h2>
           <h3 class="text-xl font-semibold">
@@ -100,7 +100,7 @@
           </h3>
           <div class="flex">
             <div
-              class="flex items-center justify-center px-6 text-4xl font-bold xs:px-10"
+              class="xs:px-10 flex items-center justify-center px-6 text-4xl font-bold"
             >
               1
             </div>
@@ -124,14 +124,14 @@
               </p>
             </div>
             <div
-              class="flex items-center justify-center px-6 text-4xl font-bold xs:px-10"
+              class="xs:px-10 flex items-center justify-center px-6 text-4xl font-bold"
             >
               2
             </div>
           </div>
           <div class="flex">
             <div
-              class="flex items-center justify-center px-6 text-4xl font-bold xs:px-10"
+              class="xs:px-10 flex items-center justify-center px-6 text-4xl font-bold"
             >
               3
             </div>
@@ -145,7 +145,7 @@
             </div>
           </div>
         </div>
-        <div class="mx-auto h-6 w-10/12 bg-mustard"></div>
+        <div class="bg-mustard mx-auto h-6 w-10/12"></div>
         <div class="flex flex-col gap-y-8">
           <h2 class="text-4xl font-bold">
             WHAT DOES THIS ALL MEAN FOR STUDENTS?
