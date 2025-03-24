@@ -2,12 +2,12 @@
   <div
     v-show="!toastClosed"
     id="alert-toast"
-    class="fixed bottom-20 right-5 z-50 flex w-full max-w-xs items-center space-x-4 divide-x divide-gray-200 rounded-lg bg-white p-4 text-gray-500 shadow rtl:divide-x-reverse dark:divide-gray-700 dark:bg-gray-800 dark:text-gray-400"
+    class="fixed right-5 bottom-20 z-50 flex w-full max-w-xs items-center space-x-4 divide-x divide-gray-200 rounded-lg bg-white p-4 text-gray-500 shadow-sm rtl:divide-x-reverse dark:divide-gray-700 dark:bg-gray-800 dark:text-gray-400"
     role="alert"
   >
     <div class="flex">
       <div
-        class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-900 dark:text-green-300"
+        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-900 dark:text-green-300"
       >
         <FontAwesomeIcon icon="fas fa-check" class="h-4 w-4" />
         <span class="sr-only">Check icon</span>

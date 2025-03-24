@@ -1,9 +1,7 @@
-import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
-
-import tailwindConfig from "./tailwind.config.js";
+import tailwindcss from "@tailwindcss/postcss";
 
 export default {
-  plugins: [tailwindcss(tailwindConfig), autoprefixer, cssnano],
+  plugins: [tailwindcss, autoprefixer, cssnano],
 };

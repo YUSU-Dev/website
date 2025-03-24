@@ -1,6 +1,6 @@
 <template>
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
-  <div class="min-h-screen xs:min-h-svh">
+  <div class="xs:min-h-svh min-h-screen">
     <Navbar />
     <main id="maincontent">
       <div class="container mx-auto flex flex-col items-center justify-center">
