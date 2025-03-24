@@ -250,9 +250,6 @@ export default {
       }
       // TODO: Add handling for referendum elections
       if (this.voteSpoiled) {
-        for (let i = 0; i < this.candidates.length; i++) {
-          this.formData["candidate[" + this.candidates[i].id + "]"] = "0";
-        }
         this.formData.spoilt = "Y";
       }
     },
@@ -354,6 +351,7 @@ export default {
         this.VoteModalClosed = true;
       } else if (this.votes.length == 0 && this.voteSpoiled) {
         console.log("Vote spoiled");
+        this.createFormData();
         submitVoteHandler(this.electionId, this.formData)
           .then(function () {
             window.location.assign("/elections");
