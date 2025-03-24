@@ -89,8 +89,10 @@
               v-if="candidate.id != 9"
               class="flex flex-grow flex-col justify-between sm:flex-row"
             >
-              <p class="truncate xs:text-wrap">{{ candidate.pronouns }}</p>
-              <div class="flex items-end justify-end">
+              <p v-if="candidate.pronouns" class="truncate xs:text-wrap">
+                {{ candidate.pronouns }}
+              </p>
+              <div class="flex flex-grow items-end justify-end">
                 <button
                   :id="'view-manifesto-' + candidate.id"
                   type="button"
