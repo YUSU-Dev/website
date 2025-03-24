@@ -250,6 +250,9 @@ export default {
       }
       // TODO: Add handling for referendum elections
       if (this.voteSpoiled) {
+        for (let i = 0; i < this.candidates.length; i++) {
+          this.formData["candidate[" + this.candidates[i].id + "]"] = "0";
+        }
         this.formData.spoilt = "Y";
       }
     },
