@@ -90,7 +90,7 @@
               class="flex flex-grow flex-col justify-between sm:flex-row"
             >
               <p
-                v-if="candidate.pronouns !== '{document_pronouns}'"
+                v-if="!candidate.pronouns.includes('{document_pronouns}')"
                 class="truncate xs:text-wrap"
               >
                 {{ candidate.pronouns }}

@@ -39,7 +39,7 @@
                 {{ candidate.name }}
               </h3>
               <h4
-                v-if="candidate.pronouns !== '{document_pronouns}'"
+                v-if="!candidate.pronouns.includes('{document_pronouns}')"
                 class="text-xl"
               >
                 {{ candidate.pronouns }}
