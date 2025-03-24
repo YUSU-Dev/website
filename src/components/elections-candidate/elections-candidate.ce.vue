@@ -38,7 +38,10 @@
               <h3 v-if="candidate.name" class="text-2xl">
                 {{ candidate.name }}
               </h3>
-              <h4 v-if="candidate.pronouns" class="text-xl">
+              <h4
+                v-if="candidate.pronouns !== '{document_pronouns}'"
+                class="text-xl"
+              >
                 {{ candidate.pronouns }}
               </h4>
             </div>
