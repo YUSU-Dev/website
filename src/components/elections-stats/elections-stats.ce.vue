@@ -112,9 +112,9 @@ export default {
           if (self.accommodations || self.all) {
             self.processData(
               response.data.accommodations,
-              "Accommodations",
+              "Colleges",
               "total_electorate",
-              "accommodations",
+              "colleges",
             );
           }
           self.loading = false;
