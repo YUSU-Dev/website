@@ -92,6 +92,7 @@
               <p class="xs:text-wrap truncate">{{ candidate.pronouns }}</p>
               <div class="flex items-end justify-end">
                 <button
+                  :id="'view-manifesto-' + candidate.id"
                   type="button"
                   class=""
                   @click.stop="viewManifesto(candidate.id)"
