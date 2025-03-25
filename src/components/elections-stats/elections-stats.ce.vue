@@ -1,5 +1,19 @@
 <template>
   <div class="flex flex-col">
+    <div class="flex flex-wrap items-center justify-center gap-x-12 pb-12">
+      <div v-for="stat in stats" :key="stat.title" class="p-4">
+        <div
+          class="flex h-36 w-36 flex-col items-center justify-center text-center"
+        >
+          <div class="flex h-2/4 items-center justify-center">
+            <h2 class="text-xl font-semibold">{{ stat.title }}</h2>
+          </div>
+          <div class="h-2/4 text-5xl font-bold text-voice-orange">
+            {{ stat.data }}
+          </div>
+        </div>
+      </div>
+    </div>
     <ElectionsGraph
       v-for="graph in graphs"
       :key="graph.title"
@@ -85,6 +99,21 @@ export default {
       await axios
         .get("https://pluto.sums.su/api/elections/statistics")
         .then(function (response) {
+          if (self.generalStats || self.all) {
+            // self.stats.push({'title': 'Total Electorate', 'data': response.data.total_electorate});
+            self.stats.push({
+              title: "% Turnout",
+              data: response.data.overallPercent + "%",
+            });
+            self.stats.push({
+              title: "Total Votes",
+              data: response.data.total_votes,
+            });
+            self.stats.push({
+              title: "Unique Voters",
+              data: response.data.unique_voters,
+            });
+          }
           if (self.sports || self.all) {
             self.processData(
               response.data.activities_subcats,
