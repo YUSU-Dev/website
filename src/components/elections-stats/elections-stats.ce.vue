@@ -113,7 +113,6 @@ export default {
               title: "Unique Voters",
               data: response.data.unique_voters,
             });
-            console.log(self.stats);
           }
           if (self.sports || self.all) {
             self.processData(
