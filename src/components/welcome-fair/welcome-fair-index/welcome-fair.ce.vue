@@ -55,7 +55,7 @@
               alt=""
               loading="lazy"
             />
-            <div class="absolute right-2 top-2">
+            <div class="absolute top-2 right-2">
               <InterestButton
                 :activity-id="stall.id"
                 @unregister="unregisterInterest()"

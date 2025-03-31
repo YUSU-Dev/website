@@ -41,7 +41,7 @@
         />
       </div>
     </div>
-    <hr class="mb-2 mt-0" />
+    <hr class="mt-0 mb-2" />
     <div
       class="xxs:grid-cols-2 grid gap-x-4 gap-y-4 sm:grid-cols-3 lg:grid-cols-4"
     >

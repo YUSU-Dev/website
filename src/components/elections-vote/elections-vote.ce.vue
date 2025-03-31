@@ -45,7 +45,7 @@
       </div>
       <h2 class="text-3xl font-bold">Candidates</h2>
       <div
-        class="xxs:grid-cols-2 xs:grid-cols-3 mb-10 mt-4 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
+        class="xxs:grid-cols-2 xs:grid-cols-3 mt-4 mb-10 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
       >
         <button
           type="button"

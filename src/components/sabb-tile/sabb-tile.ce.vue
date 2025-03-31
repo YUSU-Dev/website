@@ -8,7 +8,7 @@
           class="h-full w-full object-cover"
         />
         <div
-          class="bg-linear-to-t absolute inset-0 from-black to-transparent to-60%"
+          class="absolute inset-0 bg-linear-to-t from-black to-transparent to-60%"
         ></div>
       </div>
       <div class="absolute bottom-4 w-full px-4">

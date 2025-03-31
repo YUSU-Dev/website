@@ -19,7 +19,7 @@
               class="mx-2 w-fit max-w-full gap-y-2 bg-white px-6 py-3"
             >
               <h1
-                class="w-full break-words text-center text-2xl font-bold sm:text-3xl"
+                class="w-full text-center text-2xl font-bold break-words sm:text-3xl"
               >
                 {{ decodedGroup }}
               </h1>
@@ -29,7 +29,7 @@
               class="mx-2 w-fit max-w-full bg-white px-6 py-3"
             >
               <h1
-                class="w-full break-words text-center text-2xl font-bold sm:text-2xl"
+                class="w-full text-center text-2xl font-bold break-words sm:text-2xl"
               >
                 {{ category }}
               </h1>

@@ -7,7 +7,7 @@
       >
         <div v-if="title" class="mx-2 max-w-full bg-white px-6 py-3">
           <h1
-            class="mb-0 w-full break-words text-center text-2xl font-bold sm:text-3xl"
+            class="mb-0 w-full text-center text-2xl font-bold break-words sm:text-3xl"
           >
             {{ title }}
           </h1>
