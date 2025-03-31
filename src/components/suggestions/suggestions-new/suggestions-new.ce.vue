@@ -78,7 +78,7 @@
           <label class="" for="suggestions_categories_id">Idea Type</label>
 
           <select required id="suggestions_categories_id" name="suggestions_categories_id"
-            class="form-control rounded border p-1">
+            class="form-control rounded-sm border p-1">
 
             <option value="">Select a type...</option>
 
@@ -109,7 +109,7 @@
 
           <label class="" for="title">Idea Title</label>
 
-          <input required id="title" name="title" class="form-control rounded required border p-1"
+          <input required id="title" name="title" class="form-control rounded-sm required border p-1"
             onkeyup="charcountupdate(this.value, this.id)" />
 
           <div class="flex flex-col">
@@ -120,7 +120,7 @@
 
         <div class="form-group flex flex-col gap-y-2">
           <label class="" for="description">Idea Detail</label>
-          <textarea id="description" name="description" class="form-control rounded border p-1" rows="7"
+          <textarea id="description" name="description" class="form-control rounded-sm border p-1" rows="7"
             required onkeyup="charcountupdate(this.value, this.id)"></textarea>
           <div class="flex flex-col">
             <p class="mb-0">Max Characters: <span class="font-semibold">2000</span></p>

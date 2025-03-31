@@ -4,8 +4,8 @@
       <li
         v-for="section in sections"
         :key="section.title"
-        class="btn-primary shadow-sm"
-        :class="{ '!bg-light-pink': activeSection === section.title }"
+        class="btn-primary shadow-xs"
+        :class="{ 'bg-light-pink!': activeSection === section.title }"
       >
         <button
           @click="activeSection = section.title"
@@ -17,13 +17,13 @@
     </ul>
 
     <div
-      class="hidden flex-grow flex-col"
-      :class="{ '!flex': activeSection === 'Me' }"
+      class="hidden grow flex-col"
+      :class="{ 'flex!': activeSection === 'Me' }"
     >
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Details</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="grid w-fit grid-cols-1 gap-y-2 sm:grid-cols-2">
           <p class="font-semibold">Full Name:</p>
           <p>Daniel Parker</p>
@@ -79,8 +79,8 @@
     </div>
 
     <!-- <div
-      class="hidden flex-grow"
-      :class="{ '!flex': activeSection === 'Interests' }"
+      class="hidden grow"
+      :class="{ 'flex!': activeSection === 'Interests' }"
     >
       <div class="p-2">
         <h2 class="text-2xl font-semibold">My Interests</h2>
@@ -88,13 +88,13 @@
     </div> -->
 
     <div
-      class="hidden flex-grow flex-col"
-      :class="{ '!flex': activeSection === 'Activities' }"
+      class="hidden grow flex-col"
+      :class="{ 'flex!': activeSection === 'Activities' }"
     >
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Activities</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="flex flex-col">
           <h3 class="mb-4 text-lg font-semibold">Nothing to show</h3>
           <p>
@@ -106,7 +106,7 @@
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Committees</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="flex flex-col">
           <h3 class="mb-4 text-lg font-semibold">Nothing to show</h3>
           <p>You are not currently involved in any committees.</p>
@@ -115,13 +115,13 @@
     </div>
 
     <div
-      class="hidden flex-grow flex-col"
-      :class="{ '!flex': activeSection === 'Purchases' }"
+      class="hidden grow flex-col"
+      :class="{ 'flex!': activeSection === 'Purchases' }"
     >
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">My Purchase History</h2>
       </div>
-      <div class="mb-10 mt-4 flex flex-col gap-y-8 px-3 py-2">
+      <div class="mt-4 mb-10 flex flex-col gap-y-8 px-3 py-2">
         <div class="flex flex-col">
           <h3 class="mb-4 text-lg font-semibold">Nothing to show</h3>
           <p>There are currently no purchases to show.</p>
@@ -130,8 +130,8 @@
     </div>
 
     <div
-      class="hidden flex-grow flex-col"
-      :class="{ '!flex': activeSection === 'Settings' }"
+      class="hidden grow flex-col"
+      :class="{ 'flex!': activeSection === 'Settings' }"
     >
       <div class="h-min w-full bg-gray-100 px-3 py-2">
         <h2 class="text-xl font-semibold">Email Subscriptions</h2>
@@ -147,7 +147,7 @@
           :key="option.name"
           class="flex gap-x-4"
         >
-          <input type="checkbox" class="checked:!bg-mustard" checked />
+          <input type="checkbox" class="checked:bg-mustard!" checked />
           <p>{{ option.name }}</p>
         </div>
       </div>
