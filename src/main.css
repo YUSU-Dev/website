@@ -52,7 +52,7 @@
 }
 
 @utility banner-container {
-  @apply w-full max-w-(--breakpoint-2xl);
+  @apply max-w-(--breakpoint-2xl) w-full;
 }
 
 @utility nav-section {
@@ -119,7 +119,7 @@
   }
 
   .vs__dropdown-option {
-    @apply px-2 text-sm text-pretty;
+    @apply text-pretty px-2 text-sm;
   }
 }
 
@@ -173,7 +173,7 @@
 
 @utility modal {
   /* Modals */
-  @apply fixed top-0 right-0 left-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-x-hidden overflow-y-auto md:inset-0;
+  @apply fixed left-0 right-0 top-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0;
 }
 
 @utility modal-body {
@@ -244,7 +244,7 @@
 
   body p,
   .body-style p {
-    @apply text-base leading-relaxed text-pretty;
+    @apply text-pretty text-base leading-relaxed;
   }
 
   main h1,
@@ -279,7 +279,7 @@
 @layer components {
   /* Skip to Main Content */
   #skiptocontent a {
-    @apply bg-mustard hover:bg-light-blue absolute top-0 left-0 z-50 -translate-y-full transform px-4 py-2 text-black opacity-0 transition focus:translate-y-0 focus:opacity-100;
+    @apply bg-mustard hover:bg-light-blue absolute left-0 top-0 z-50 -translate-y-full transform px-4 py-2 text-black opacity-0 transition focus:translate-y-0 focus:opacity-100;
   }
 }
 

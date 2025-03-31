@@ -5,7 +5,7 @@
     :event-thumbnail="event_thumbnail"
   />
   <div
-    class="container mx-auto flex flex-col items-center justify-center pt-20 pb-10"
+    class="container mx-auto flex flex-col items-center justify-center pb-10 pt-20"
   >
     <div class="grid w-full grid-cols-5 gap-x-4">
       <div

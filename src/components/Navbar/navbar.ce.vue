@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-beige sticky top-0 left-0 z-10 w-full shadow-sm">
+  <nav class="bg-beige sticky left-0 top-0 z-10 w-full shadow-sm">
     <div class="container mx-auto flex justify-between py-0">
       <div class="my-7">
         <a href="/" aria-label="Homepage">
@@ -95,7 +95,7 @@
       class="max-h-[calc(100vh-133px)] overflow-y-auto bg-[#f5f5f5]"
     >
       <div
-        class="container mx-auto flex flex-col py-0 pt-6 pb-8 lg:grid lg:grid-cols-5"
+        class="container mx-auto flex flex-col py-0 pb-8 pt-6 lg:grid lg:grid-cols-5"
       >
         <div class="order-2 lg:order-1 lg:col-span-4">
           <div
@@ -202,10 +202,10 @@
               :key="section.name"
               class="nav-section flex flex-col pb-6"
             >
-              <div class="flex w-full items-end pr-10 pb-2">
+              <div class="flex w-full items-end pb-2 pr-10">
                 <p class="text-start font-bold">{{ section.name }}</p>
               </div>
-              <div class="pt-3 pb-7">
+              <div class="pb-7 pt-3">
                 <ul class="flex flex-col gap-2 text-sm">
                   <li
                     v-for="subheading in section.links"

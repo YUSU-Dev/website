@@ -105,7 +105,7 @@
         </div>
       </div>
       <div v-if="Groups.length == 0 && !loading" class="">
-        <h2 class="mt-16 mb-4 text-center text-2xl font-semibold">
+        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
           No groups found
         </h2>
       </div>

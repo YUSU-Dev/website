@@ -73,7 +73,7 @@
     <div class="relative flex">
       <div class="">
         <div class="" v-if="!Products.length && !Loading">
-          <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
+          <h3 class="mb-4 mt-16 text-xl font-semibold text-[#555]">
             No products found
           </h3>
         </div>

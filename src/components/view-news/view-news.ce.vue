@@ -1,7 +1,7 @@
 <template>
   <main class="mb-7">
     <Button title="Back to News" is-primary="true" arrow="true" url="/news" />
-    <h2 class="mt-10 mb-5 text-3xl font-bold">
+    <h2 class="mb-5 mt-10 text-3xl font-bold">
       {{ Article.title ?? "Loading..." }}
     </h2>
     <div class="mb-4">

@@ -8,7 +8,7 @@
         @click="selectedCategory = 0"
       >
         <FontAwesomeIcon icon="fa-core fa-hand-fist" class="h-8 w-8 p-1" />
-        <p class="text-center text-wrap">All</p>
+        <p class="text-wrap text-center">All</p>
       </a>
       <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
@@ -17,7 +17,7 @@
         @click="selectedCategory = 29"
       >
         <FontAwesomeIcon icon="fa-core fa-graduation-cap" class="h-8 w-8 p-1" />
-        <p class="text-center text-wrap">Academic</p>
+        <p class="text-wrap text-center">Academic</p>
       </a>
       <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
@@ -26,7 +26,7 @@
         @click="selectedCategory = 31"
       >
         <FontAwesomeIcon icon="fa-core fa-earth-europe" class="h-8 w-8 p-1" />
-        <p class="text-center text-wrap">Community and Environmental</p>
+        <p class="text-wrap text-center">Community and Environmental</p>
       </a>
       <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
@@ -35,7 +35,7 @@
         @click="selectedCategory = 33"
       >
         <FontAwesomeIcon icon="fa-core fa-bullhorn" class="h-8 w-8 p-1" />
-        <p class="text-center text-wrap">Liberation and Diversity</p>
+        <p class="text-wrap text-center">Liberation and Diversity</p>
       </a>
       <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
@@ -44,7 +44,7 @@
         @click="selectedCategory = 30"
       >
         <FontAwesomeIcon icon="fa-core fa-parachute-box" class="h-8 w-8 p-1" />
-        <p class="text-center text-wrap">Student Activities</p>
+        <p class="text-wrap text-center">Student Activities</p>
       </a>
       <a
         class="btn-student-voice flex flex-col items-center justify-center gap-y-2"
@@ -56,7 +56,7 @@
           icon="fa-core fa-hand-holding-heart"
           class="h-8 w-8 p-1"
         />
-        <p class="text-center text-wrap">Welfare</p>
+        <p class="text-wrap text-center">Welfare</p>
       </a>
     </div>
     <div class="mt-6 grid grid-cols-1 md:grid-cols-3">

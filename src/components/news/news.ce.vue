@@ -80,7 +80,7 @@
 
     <div class="mx-md-0 order-1 col-span-5 xl:order-1 xl:col-span-4 xl:pr-4">
       <div v-if="News.length == 0 && !loading && !firstLoad" class="">
-        <h2 class="mt-16 mb-4 text-center text-2xl font-semibold">
+        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
           No Articles Found
         </h2>
       </div>

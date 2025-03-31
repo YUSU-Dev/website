@@ -84,7 +84,7 @@
         </h2>
       </div>
       <div v-if="Events.length == 0 && !Loading" class="">
-        <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
+        <h3 class="mb-4 mt-16 text-xl font-semibold text-[#555]">
           There are currently no events
         </h3>
       </div>
