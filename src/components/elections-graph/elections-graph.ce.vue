@@ -115,7 +115,7 @@ export default {
             showBackground: isMobile ? true : false,
             data: data.map((item) => item.overall_percent),
             itemStyle: {
-              color: "#f2cb50",
+              color: "#F2682F",
               borderColor: "000000",
               borderWidth: 1,
               backgroundStyle: {
@@ -128,8 +128,8 @@ export default {
         ],
         grid: {
           top: 0,
-          left: 0,
-          right: 0,
+          left: 10,
+          right: 10,
           containLabel: true,
         },
       };
@@ -137,9 +137,12 @@ export default {
       if (isMobile) {
         option.xAxis = {
           type: "value",
-          name: "Total Votes",
+          name: "Voter Turnout",
           nameLocation: "middle",
           nameGap: 50,
+          axisLabel: {
+            formatter: "{value}%",
+          },
         };
         option.yAxis = {
           type: "category",
@@ -151,6 +154,16 @@ export default {
               fontSize: 16,
             },
             width: "90%",
+            formatter: function (value) {
+              const graphElement = this.$refs[this.id];
+              if (value.length > graphElement.offsetWidth / 10) {
+                return (
+                  value.substring(0, graphElement.offsetWidth / 10) + "..."
+                );
+              } else {
+                return value;
+              }
+            }.bind(this),
           },
           z: 10,
           inverse: true,
@@ -161,17 +174,20 @@ export default {
           data: data.map((item) => item.name),
           name: this.axisLabel,
           nameLocation: "middle",
-          nameGap: 50,
+          nameGap: 75,
           axisLabel: {
             interval: 0,
-            rotate: -15,
+            rotate: -25,
           },
         };
         option.yAxis = {
           type: "value",
-          name: "Total Votes",
+          name: "Voter Turnout",
           nameLocation: "middle",
           nameGap: 50,
+          axisLabel: {
+            formatter: "{value}%",
+          },
         };
       }
 

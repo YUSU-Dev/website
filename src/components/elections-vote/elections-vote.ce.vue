@@ -45,7 +45,7 @@
       </div>
       <h2 class="text-3xl font-bold">Candidates</h2>
       <div
-        class="xxs:grid-cols-2 xs:grid-cols-3 mt-4 mb-10 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
+        class="xxs:grid-cols-2 xs:grid-cols-3 mb-10 mt-4 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
       >
         <button
           type="button"
@@ -89,8 +89,13 @@
               v-if="candidate.id != 9"
               class="flex grow flex-col justify-between sm:flex-row"
             >
-              <p class="xs:text-wrap truncate">{{ candidate.pronouns }}</p>
-              <div class="flex items-end justify-end">
+              <p
+                v-if="!candidate.pronouns.includes('{document_pronouns}')"
+                class="xs:text-wrap truncate"
+              >
+                {{ candidate.pronouns }}
+              </p>
+              <div class="flex flex-grow items-end justify-end">
                 <button
                   :id="'view-manifesto-' + candidate.id"
                   type="button"
@@ -346,6 +351,7 @@ export default {
         this.VoteModalClosed = true;
       } else if (this.votes.length == 0 && this.voteSpoiled) {
         console.log("Vote spoiled");
+        this.createFormData();
         submitVoteHandler(this.electionId, this.formData)
           .then(function () {
             window.location.assign("/elections");
