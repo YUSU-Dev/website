@@ -1,14 +1,21 @@
 <template>
   <div style="width: 1000px; height: 300px">
     <vueper-slides>
-      <vueper-slide v-for="i in 5" :key="i" :title="i.toString()" />
+      <vueper-slide
+        v-for="(slide, i) in headshots"
+        :key="i"
+        :image="slide.image"
+        :title="slide.title"
+        :content="slide.name"
+      />
     </vueper-slides>
   </div>
 </template>
-
+<style>
+@import "https://cdn.jsdelivr.net/npm/vueperslides@3.6.0/dist/vueperslides.min.css";
+</style>
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
-import "vueperslides/dist/vueperslides.css";
 export default {
   name: "AdviceHeadshots",
   components: {
