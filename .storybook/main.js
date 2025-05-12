@@ -24,10 +24,11 @@ const config = {
   async viteFinal(config) {
     const { mergeConfig } = await import("vite");
     const { default: vue } = await import("@vitejs/plugin-vue");
+    const path = await import("path");
     return mergeConfig(config, {
       plugins: [vue()],
       css: {
-        postcss: require.resolve("../postcss.config.mjs"),
+        postcss: path.resolve("../postcss.config.mjs"),
       },
     });
   },
