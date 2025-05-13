@@ -133,36 +133,4 @@ export default {
 
 <style>
 @import "https://cdn.jsdelivr.net/npm/vueperslides@3.6.0/dist/vueperslides.min.css";
-.vueperslides__bullets {
-  position: absolute;
-  align-items: start;
-  top: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  height: min-content;
-}
-
-.vueperslides__bullets .vueperslides__bullet .default {
-  @apply border-none bg-[#f7f7f7];
-}
-
-.vueperslides__bullets .vueperslides__bullet--active .default {
-  @apply bg-advice-green;
-}
-
-.vueperslides__arrow {
-  @apply text-advice-green;
-}
-
-.vueperslide {
-  transform: scale(0.9);
-  transition: transform 0s ease-in-out;
-  border: 15px solid #ffffff;
-}
-
-.vueperslide--active {
-  border-color: #f7f7f7;
-  transform: scale(1);
-}
 </style>
