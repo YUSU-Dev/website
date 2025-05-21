@@ -1,7 +1,7 @@
 import "./advice-a-z.component.js";
 
 export default {
-  title: "Components/Advice A Z",
+  title: "Components/Advice/Advice A Z",
   component: "advice-a-z",
 };
 
