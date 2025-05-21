@@ -211,12 +211,10 @@
             </div>
 
             <div class="mb-2">
+              {recaptcha_widget}
               <button
                 type="submit"
-                class="btn btn-primary g-recaptcha flex w-fit items-center"
-                data-sitekey="6LfcJtoZAAAAAMy0Tlo5ctL0Ald0Thn3dUR4GJtc"
-                data-callback="onSubmit"
-                data-action="submit"
+                class="btn btn-primary flex w-fit items-center"
               >
                 Submit Application
               </button>
