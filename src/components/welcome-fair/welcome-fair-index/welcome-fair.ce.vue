@@ -33,9 +33,9 @@
         class="tile mb-4 flex justify-center pb-2 lg:pb-3"
       >
         <div
-          class="relative flex h-full w-full flex-col bg-white shadow transition md:max-w-[282px]"
+          class="relative flex h-full w-full flex-col bg-white shadow-sm transition md:max-w-[282px]"
         >
-          <div v-if="stall.stallNumber" class="flex justify-center bg-beige">
+          <div v-if="stall.stallNumber" class="bg-beige flex justify-center">
             <p class="py-1 text-lg font-semibold">
               Stall {{ stall.stallNumber }}
             </p>
@@ -55,7 +55,7 @@
               alt=""
               loading="lazy"
             />
-            <div class="absolute right-2 top-2">
+            <div class="absolute top-2 right-2">
               <InterestButton
                 :activity-id="stall.id"
                 @unregister="unregisterInterest()"

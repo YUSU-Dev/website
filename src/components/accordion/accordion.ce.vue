@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col shadow">
+  <div class="flex flex-col shadow-sm">
     <Button
-      class="btn w-full flex-1 px-2 py-4 text-center shadow"
+      class="btn w-full flex-1 px-2 py-4 text-center shadow-sm"
       :type="buttonType"
       @click="selected = !selected"
       :title="label"

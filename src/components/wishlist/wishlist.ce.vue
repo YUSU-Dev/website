@@ -14,7 +14,7 @@
             class="tile mb-4 flex justify-center pb-2 lg:pb-3"
           >
             <div
-              class="relative flex h-full w-full flex-col bg-white shadow transition md:max-w-[282px]"
+              class="relative flex h-full w-full flex-col bg-white shadow-sm transition md:max-w-[282px]"
             >
               <div class="flex aspect-square items-center justify-center">
                 <img

@@ -1,4 +1,7 @@
 /** @type { import('@storybook/vue3-vite').StorybookConfig } */
+import path from "path";
+import { fileURLToPath } from "url";
+
 const config = {
   stories: ["../**/**/*.stories.@(js|jsx|mjs|ts|tsx)", "../**/*.mdx"],
   addons: [
@@ -24,10 +27,15 @@ const config = {
   async viteFinal(config) {
     const { mergeConfig } = await import("vite");
     const { default: vue } = await import("@vitejs/plugin-vue");
+
+    // Resolve the PostCSS config path using ES module syntax
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
     return mergeConfig(config, {
       plugins: [vue()],
       css: {
-        postcss: require.resolve("../postcss.config.mjs"),
+        postcss: path.resolve(__dirname, "../postcss.config.mjs"),
       },
     });
   },

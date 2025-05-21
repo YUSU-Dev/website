@@ -8,7 +8,7 @@
           <div class="flex h-2/4 items-center justify-center">
             <h2 class="text-xl font-semibold">{{ stat.title }}</h2>
           </div>
-          <div class="h-2/4 text-5xl font-bold text-voice-orange">
+          <div class="text-voice-orange h-2/4 text-5xl font-bold">
             {{ stat.data }}
           </div>
         </div>
