@@ -213,7 +213,7 @@
             <div class="mb-2">
               {recaptcha_widget}
               <button
-                type="submit"
+                onclick="onSubmit()"
                 class="btn btn-primary flex w-fit items-center"
               >
                 Submit Application
