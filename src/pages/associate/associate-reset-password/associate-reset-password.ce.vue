@@ -43,6 +43,7 @@
             </div>
 
             <div class="mb-2">
+              {recaptcha_widget}
               <input
                 type="submit"
                 class="btn btn-primary flex w-fit items-center"
