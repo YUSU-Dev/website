@@ -8,6 +8,7 @@
         <h4 class="mb-2 xxs:text-sm xs:text-lg md:text-xl">
           {{ name }}
         </h4>
+        <h5 v-if="category && !activeCategory">{{ category }}</h5>
         <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
           <p class="">Learn more</p>
           <FontAwesomeIcon
@@ -32,6 +33,8 @@ export default {
     img: { type: String, default: "" },
     name: { type: String, default: "" },
     url: { type: String, default: "" },
+    category: { type: String, default: "" },
+    activeCategory: { type: String, default: "" },
   },
   components: {
     FontAwesomeIcon,

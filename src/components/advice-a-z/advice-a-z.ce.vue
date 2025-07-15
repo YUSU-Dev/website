@@ -31,6 +31,13 @@
         class="flex flex-col gap-x-2 gap-y-2 md:flex-row"
       >
         <Button
+          title="All"
+          is-advice-and-support
+          class="px-8 text-start"
+          :class="{ 'bg-light-blue': selectedCategory == '' }"
+          @click="updateCategory('')"
+        />
+        <Button
           v-for="category in Categories"
           :key="category"
           :title="category"
@@ -46,11 +53,13 @@
       class="grid gap-x-4 gap-y-4 xxs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
     >
       <SupportTile
-        v-for="item in FilteredMenu"
+        v-for="item in Tiles"
         :key="item.name"
         :name="item.name"
         :url="item.url"
-        :img="getTileImage(item.category)"
+        :category="item.category"
+        :activeCategory="selectedCategory"
+        :img="backgroundImage(item.category) || getTileImage()"
       />
     </div>
   </div>
@@ -85,27 +94,38 @@ export default {
   },
   data() {
     return {
-      Menu: [],
+      Data: null,
+      Tiles: [],
       Categories: [],
       Search: "",
       selectedCategory: "",
+      backgroundImages: {
+        "Health, Wellbeing & Support":
+          "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp",
+        "Academic Issues":
+          "https://assets-cdn.sums.su/YU/website/img/advice/advice-light-blue.webp",
+        "Housing Support":
+          "https://assets-cdn.sums.su/YU/website/img/advice/advice-green.webp",
+      },
     };
   },
   created() {
     var self = this;
     if (self.apiurl) {
       axios.get(self.apiurl, {}).then(function (response) {
-        let data = JSON.parse(
-          "[" +
-            response.data.substring(0, response.data.lastIndexOf(",")) +
-            "]",
+        self.data = JSON.parse(
+          response.data.replace(/,\]/g, "]"), // Remove trailing commas before parsing
         );
-        self.Menu = data.sort(self.compare);
-        self.Menu.forEach((menuElement) => {
-          if (!self.Categories.includes(menuElement.category)) {
-            self.Categories.push(menuElement.category);
-          }
-        });
+        self.Categories = self.data.children.map((item) => item.name);
+
+        self.Tiles = self.data.children.flatMap((item) =>
+          item.children.map((tile) => ({
+            name: tile.name,
+            url: tile.url,
+            category: item.name,
+          })),
+        );
+        self.Tiles.sort(self.compare);
       });
     } else {
       let data = self.apitext;
@@ -131,12 +151,39 @@ export default {
       return randomAdviceImageUrl();
     },
     updateCategory: function (category) {
-      if (this.selectedCategory != category) {
-        this.selectedCategory = category;
-      } else {
-        this.selectedCategory = null;
+      if (category === this.selectedCategory) {
+        return; // No change, do nothing
+      } else if (category === "") {
+        this.selectedCategory = "";
+        this.Tiles = this.data.children.flatMap((item) =>
+          item.children.map((tile) => ({
+            name: tile.name,
+            url: tile.url,
+            category: item.name,
+          })),
+        );
+        return;
       }
-      return true;
+      this.selectedCategory = category;
+      let updatedData = this.data.children.filter((item) => {
+        return item.name.toLowerCase() === category.toLowerCase();
+      });
+      let updatedTiles = [];
+      updatedData.children.forEach((tile) => {
+        console.log("Processing tile:", tile);
+        if (tile.name && tile.url) {
+          updatedTiles.push({
+            name: tile.name,
+            url: tile.url,
+            category: updatedData.category,
+          });
+        }
+      });
+      updatedTiles.sort(this.compare);
+      this.Tiles = updatedTiles;
+    },
+    backgroundImage: function (category) {
+      return this.backgroundImages[category] || null;
     },
   },
   computed: {

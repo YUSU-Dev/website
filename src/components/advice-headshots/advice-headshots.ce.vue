@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center">
-    <div class="mt-10" style="width: 90%">
+    <div class="mt-10 w-full md:w-[90%]">
       <vueper-slides
         class="no-shadow"
         style="max-width: 100vw"
@@ -24,8 +24,7 @@
     <!-- Active Slide Content Below the Slideshow -->
     <div
       v-if="activeSlide"
-      class="flex flex-col gap-2 bg-[#f7f7f7] p-4"
-      style="width: 90%"
+      class="flex w-full flex-col gap-2 bg-[#f7f7f7] p-4 md:w-[90%]"
     >
       <h2 class="text-2xl font-bold">{{ activeSlide.name }}</h2>
       <p class="text-lg font-semibold">{{ activeSlide.title }}</p>
