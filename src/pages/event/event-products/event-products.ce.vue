@@ -7,7 +7,7 @@
       <!-- If not signed in -->
       <div v-if="!signed_in" class="flex flex-col gap-y-4">
         <p class="text-2xl font-bold">Are you a...</p>
-        <div class="flex gap-x-4 xs:gap-x-6">
+        <div class="xs:gap-x-6 flex gap-x-4">
           <Button is-primary title="Student" class="px-6 font-semibold" />
           <Button is-primary title="Public" class="px-8 font-semibold" />
         </div>
