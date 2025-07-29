@@ -56,7 +56,7 @@ export default {
         {
           find: /^vue$/,
           replacement:
-            "https://unpkg.com/vue@3.4.21/dist/vue.runtime.esm-browser.prod.js",
+            "https://unpkg.com/vue@3.5.18/dist/vue.runtime.esm-browser.prod.js",
         },
       ],
     }),
