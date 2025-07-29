@@ -1,7 +1,7 @@
 <template>
   <div
     id="error-modal"
-    class="align-end fixed bottom-0 left-0 z-50 flex justify-start overflow-y-auto overflow-x-hidden"
+    class="align-end fixed bottom-0 left-0 z-50 flex justify-start overflow-x-hidden overflow-y-auto"
     aria-label="Cookie Consent Modal"
     role="dialog"
     v-if="displayCookieConsent"
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div
-          class="flex items-center justify-items-end gap-3 rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600"
+          class="flex items-center justify-items-end gap-3 rounded-b-sm border-t border-gray-200 p-4 md:p-5 dark:border-gray-600"
         >
           <button
             type="button"

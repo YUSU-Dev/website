@@ -6,7 +6,7 @@
     <div class="justify-center">
       <div v-if="!selectedcategory" class="input-group flex">
         <input
-          class="search form-control w-full border-[1px] border-black p-2"
+          class="search form-control w-full border border-black p-2"
           type="text"
           aria-label="search for an activity"
           name="search"
@@ -51,7 +51,7 @@
                 >
                   <a
                     :class="{
-                      'btn-student-life-active !btn-student-life':
+                      'btn-student-life-active btn-student-life!':
                         SelectedParent.id === Parent.id,
                     }"
                     class="btn-student-life flex h-full w-full justify-center border-2 border-none px-4 py-2"
@@ -71,7 +71,7 @@
               >
                 <a
                   :class="{
-                    'btn-student-life-active !btn-student-life':
+                    'btn-student-life-active btn-student-life!':
                       SelectedCategory === '',
                   }"
                   href="#"
@@ -91,7 +91,7 @@
               >
                 <a
                   :class="{
-                    'btn-student-life-active !btn-student-life':
+                    'btn-student-life-active btn-student-life!':
                       SelectedCategory.id === Category.id,
                   }"
                   class="btn-student-life flex justify-center px-4 py-2"
@@ -105,7 +105,7 @@
         </div>
       </div>
       <div v-if="Groups.length == 0 && !loading" class="">
-        <h2 class="mb-4 mt-16 text-center text-2xl font-semibold">
+        <h2 class="mt-16 mb-4 text-center text-2xl font-semibold">
           No groups found
         </h2>
       </div>

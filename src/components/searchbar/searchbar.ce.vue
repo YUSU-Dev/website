@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class="input-group flex border-[1px] border-black">
+  <div class="input-group flex border border-black">
     <input
       ref="search"
       name="search"

@@ -4,7 +4,7 @@
       <div
         class="body-style mb-6 flex flex-col gap-2 border-l-4 border-gray-400 bg-gray-100 p-2"
       >
-        <h2 class="!text-xl font-bold">How to vote</h2>
+        <h2 class="text-xl! font-bold">How to vote</h2>
         <ol class="list-inside list-decimal">
           <li class="">
             View each candidate, you can click the
@@ -45,13 +45,13 @@
       </div>
       <h2 class="text-3xl font-bold">Candidates</h2>
       <div
-        class="mb-10 mt-4 grid gap-6 xxs:grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+        class="xxs:grid-cols-2 xs:grid-cols-3 mt-4 mb-10 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
       >
         <button
           type="button"
           v-for="candidate in candidates"
           :key="candidate.id"
-          class="flex h-full flex-col border shadow"
+          class="flex h-full flex-col border shadow-sm"
           @click="handleVote(candidate.id)"
           :class="{
             'selected-candidate': selectedCandidates.includes(candidate.id),
@@ -61,7 +61,7 @@
             <div class="absolute flex w-full justify-end">
               <div
                 v-if="candidate.voteOrder"
-                class="m-2 flex h-8 w-8 items-center justify-center rounded-full border border-black bg-voice-orange"
+                class="bg-voice-orange m-2 flex h-8 w-8 items-center justify-center rounded-full border border-black"
               >
                 <p>{{ candidate.voteOrder }}</p>
               </div>
@@ -87,15 +87,15 @@
             </h3>
             <div
               v-if="candidate.id != 9"
-              class="flex flex-grow flex-col justify-between sm:flex-row"
+              class="flex grow flex-col justify-between sm:flex-row"
             >
               <p
                 v-if="!candidate.pronouns.includes('{document_pronouns}')"
-                class="truncate xs:text-wrap"
+                class="xs:text-wrap truncate"
               >
                 {{ candidate.pronouns }}
               </p>
-              <div class="flex flex-grow items-end justify-end">
+              <div class="flex grow items-end justify-end">
                 <button
                   :id="'view-manifesto-' + candidate.id"
                   type="button"

@@ -49,7 +49,7 @@
           <ul class="flex gap-2 text-uppercase list-none pl-0">
 
             <li class="list-inline-item g-mr-10 g-mb-10 g-mb-0--xs">
-              <div style="font-size: 14px; padding: 0px 5px; border: 1px solid;" class="rounded text-uppercase tooltips"
+              <div style="font-size: 14px; padding: 0px 5px; border: 1px solid;" class="rounded-sm text-uppercase tooltips"
                 data-toggle="tooltip" data-placement="bottom" title="{statusDescription}">
                 {statusDateFormatted} - {status}
               </div>
@@ -58,7 +58,7 @@
             {if fast_tracked == 1}
 
             <li class="list-inline-item g-mb-10 g-mb-0--lg">
-              <div style="font-size: 14px; padding: 0px 5px; border: 1px solid;" class="rounded text-uppercase tooltips"
+              <div style="font-size: 14px; padding: 0px 5px; border: 1px solid;" class="rounded-sm text-uppercase tooltips"
                 data-toggle="tooltip" data-placement="bottom" title=""
                 data-original-title="This idea has been fast-tracked as the Executive Committee have agreed that they want to take this idea forward to be put into action.">
                 {fast_tracked_date} - Fast-tracked
@@ -160,7 +160,7 @@
           <div class="flex flex-col gap-y-4">
             {feedback}
 
-            <div class="border rounded flex flex-col gap-4 p-4">
+            <div class="border rounded-sm flex flex-col gap-4 p-4">
 
               <div class="flex gap-2">
                 <img class="feedback-img" src="{feedback_image}" alt="{feedback_name}, {feedback_position}">
@@ -202,7 +202,7 @@
             {if hasComments == 1}
 
             {comments}
-            <div class="border rounded p-4">
+            <div class="border rounded-sm p-4">
               <div id="comment-{commentID}" class="flex flex-col gap-4">
 
                 <div class="">
@@ -265,7 +265,7 @@
 
                     <div class="" id="report-form-{commentID}">
                       <select title="Report Options" id="report-option-{commentID}"
-                        class="form-control rounded border p-1">
+                        class="form-control rounded-sm border p-1">
                         {reportOptions}
                         <option value="{val}">{txt}</option>
                         {/reportOptions}
@@ -315,7 +315,7 @@
           <form class="flex flex-col">
             <div class="">
               <label for="new-comment" class="sr-only">New Comment</label>
-              <textarea id="new-comment" class="form-control rounded w-full border p-2"
+              <textarea id="new-comment" class="form-control rounded-sm w-full border p-2"
                 onkeyup="charcountupdate(this.value)" rows="8" placeholder="Have your say..."
                 data-maxlength="400"></textarea>
               <p class="mb-0">Max Characters: <span class="font-semibold">4000</span></p>

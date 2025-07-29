@@ -1,7 +1,7 @@
 <template>
   <footer id="footer" class="flex h-full items-end">
     <div class="w-full bg-black">
-      <div class="sm:px8 container mx-auto px-6 pb-12 pt-6 lg:px-6">
+      <div class="sm:px8 container mx-auto px-6 pt-6 pb-12 lg:px-6">
         <h1 class="sr-only text-white">Footer</h1>
         <div
           class="flex flex-col gap-y-12 py-4 text-white lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-0 xl:gap-x-12"
@@ -38,7 +38,7 @@
           </div>
 
           <div
-            class="flex flex-col gap-y-10 border-b-[1px] border-white pb-16 lg:flex-row lg:gap-x-4 lg:gap-y-0 lg:border-none lg:pb-0 xl:gap-x-6"
+            class="flex flex-col gap-y-10 border-b border-white pb-16 lg:flex-row lg:gap-x-4 lg:gap-y-0 lg:border-none lg:pb-0 xl:gap-x-6"
           >
             <div class="flex flex-col gap-y-4">
               <div>

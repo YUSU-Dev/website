@@ -15,11 +15,11 @@
         </h2>
         <div v-if="!hidefilter">
           <div
-            class="grid grid-cols-1 gap-x-4 gap-y-4 xs:grid-cols-2 lg:grid-cols-4"
+            class="xs:grid-cols-2 grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-4"
           >
             <div class="flex flex-col">
               <label for="event-search">Search</label>
-              <div class="input-group flex h-full border-[1px] border-black">
+              <div class="input-group flex h-full border border-black">
                 <input
                   class="form-control h-full w-full"
                   type="text"
@@ -73,7 +73,7 @@
     <div class="relative flex">
       <div class="">
         <div class="" v-if="!Products.length && !Loading">
-          <h3 class="mb-4 mt-16 text-xl font-semibold text-[#555]">
+          <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
             No products found
           </h3>
         </div>
