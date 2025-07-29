@@ -8,3 +8,5 @@ src/components/elections-nominate/elections-nominate.ce.vue
 src/components/suggestions/suggestions-index/suggestions.ce.vue
 src/components/suggestions/suggestions-new/suggestions-new.ce.vue
 src/components/suggestions/suggestions-view/suggestions-view.ce.vue
+
+.node-version
