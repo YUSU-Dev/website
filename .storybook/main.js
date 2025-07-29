@@ -3,13 +3,11 @@ const config = {
   stories: ["../**/**/*.stories.@(js|jsx|mjs|ts|tsx)", "../**/*.mdx"],
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
     "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     "@storybook/addon-themes",
     "@storybook/addon-coverage",
-    "@storybook/addon-interactions",
+    "@storybook/addon-docs",
   ],
   framework: {
     name: "@storybook/web-components-vite",
