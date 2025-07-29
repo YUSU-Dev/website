@@ -1,9 +1,6 @@
-import {
-  INITIAL_VIEWPORTS,
-  MINIMAL_VIEWPORTS,
-} from "@storybook/addon-viewport";
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from "storybook/viewport";
 
-/** @type { import('@storybook/vue3').Preview } */
+/** @type { import('@storybook/vue3-vite').Preview } */
 const preview = {
   parameters: {
     controls: {

@@ -1,5 +1,5 @@
 import "./searchbar.component.js";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 
 export default {
   title: "Elements/Searchbar",
