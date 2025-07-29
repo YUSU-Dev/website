@@ -1,4 +1,4 @@
-import axios from "https://unpkg.com/axios@1.6.8/dist/esm/axios.min.js";
+import axios from "https://unpkg.com/axios@1.11.0/dist/esm/axios.min.js";
 
 axios.interceptors.request.use(function (config) {
   if (config.url.includes("pluto.sums.su")) {
