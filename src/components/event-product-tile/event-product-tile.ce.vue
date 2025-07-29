@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex max-w-[282px] flex-col justify-between gap-y-6 border-[0.5px] p-4 shadow"
+    class="flex max-w-[282px] flex-col justify-between gap-y-6 border-[0.5px] p-4 shadow-sm"
   >
     <div class="flex flex-col gap-y-4">
       <p class="text-xl font-bold">{{ product_name }}</p>

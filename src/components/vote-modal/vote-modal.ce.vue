@@ -10,7 +10,7 @@
   >
     <div
       id="vote-modal-container"
-      class="container relative h-full px-6"
+      class="relative container h-full px-6"
       role="document"
     >
       <div
@@ -66,9 +66,9 @@
               <div class="flex h-12 w-12 items-center justify-center border-2">
                 <p class="text-3xl font-bold">S</p>
               </div>
-              <h3 class="!text-2xl">Vote spoiled</h3>
+              <h3 class="text-2xl!">Vote spoiled</h3>
             </div>
-            <div class="border-l-4 border-voice-orange">
+            <div class="border-voice-orange border-l-4">
               <p class="pl-2 text-sm">
                 Please ensure that you are happy with your votes before you
                 click confirm, as this choice is final.

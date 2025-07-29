@@ -35,14 +35,14 @@
               <div v-if="election.activity_id" class="flex justify-end">
                 <a
                   href="/elections/nominate/{election_id}/{activity_id}"
-                  class="w-24 bg-mustard py-1 text-center text-black no-underline"
+                  class="bg-mustard w-24 py-1 text-center text-black no-underline"
                   >Nominate</a
                 >
               </div>
               <div v-else class="flex justify-end">
                 <a
                   href="/elections/nominate/{election_id}"
-                  class="w-24 bg-mustard py-1 text-center text-black no-underline"
+                  class="bg-mustard w-24 py-1 text-center text-black no-underline"
                   >Nominate</a
                 >
               </div>
@@ -88,7 +88,7 @@
               <div v-else class="flex justify-end">
                 <a
                   href="/elections/vote/{election_id}"
-                  class="w-24 bg-mustard py-1 text-center text-black no-underline"
+                  class="bg-mustard w-24 py-1 text-center text-black no-underline"
                   >Vote Now</a
                 >
               </div>

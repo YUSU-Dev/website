@@ -4,7 +4,7 @@
     <form class="py-4">
       <div v-for="field in fields" :key="field.id">
         <div
-          class="flex items-center text-wrap bg-light-blue p-2 text-sm md:text-base"
+          class="bg-light-blue flex items-center p-2 text-sm text-wrap md:text-base"
           v-if="field.id == 10"
         >
           <svg
