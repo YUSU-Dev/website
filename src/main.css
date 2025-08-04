@@ -133,7 +133,7 @@
 }
 
 @utility btn-secondary {
-  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin !text-white hover:text-black;
+  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin !text-white hover:!text-black;
 }
 
 @utility btn-tertiary {
@@ -149,7 +149,7 @@
 }
 
 @utility btn-advice-support {
-  @apply bg-advice-green hover:bg-light-blue !text-white hover:text-black;
+  @apply bg-advice-green hover:bg-light-blue !text-white hover:!text-black;
 }
 
 @utility btn-primary-active {
