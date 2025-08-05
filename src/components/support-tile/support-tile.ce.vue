@@ -2,13 +2,16 @@
   <a class="group flex" :href="url">
     <div class="relative text-white">
       <div class="aspect-square w-full bg-cover md:max-w-[282px]">
-        <img :src="img" :alt="name" class="h-full w-full object-cover" />
+        <img :src="img" alt="" class="h-full w-full object-cover" />
       </div>
       <div class="absolute inset-0 flex w-full flex-col justify-center px-4">
         <h4 class="xxs:text-sm xs:text-lg mb-2 md:text-xl">
           {{ name }}
         </h4>
-        <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
+        <div
+          class="mt-2 hidden items-center text-sm md:flex md:text-base"
+          aria-hidden="true"
+        >
           <p class="">Learn more</p>
           <FontAwesomeIcon
             icon="fas fa-arrow-right"
