@@ -125,15 +125,15 @@
 
 @utility btn {
   /* Button Classes */
-  @apply px-3 py-3 text-black no-underline hover:text-black;
+  @apply px-3 py-3 text-black no-underline;
 }
 
 @utility btn-primary {
-  @apply bg-mustard hover:bg-primary-pink;
+  @apply bg-mustard hover:bg-primary-pink text-black hover:text-black;
 }
 
 @utility btn-secondary {
-  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin text-white;
+  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin !text-white hover:!text-black;
 }
 
 @utility btn-tertiary {
@@ -141,15 +141,15 @@
 }
 
 @utility btn-student-life {
-  @apply bg-mustard hover:bg-light-blue;
+  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
 }
 
 @utility btn-student-voice {
-  @apply bg-voice-orange hover:bg-light-pink;
+  @apply bg-voice-orange hover:bg-light-pink text-black hover:text-black;
 }
 
 @utility btn-advice-support {
-  @apply bg-advice-green hover:bg-light-blue;
+  @apply bg-advice-green hover:bg-light-blue !text-white hover:!text-black;
 }
 
 @utility btn-primary-active {
