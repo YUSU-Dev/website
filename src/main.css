@@ -149,7 +149,7 @@
 }
 
 @utility btn-advice-support {
-  @apply bg-advice-green hover:bg-light-blue !text-white hover:!text-black;
+  @apply bg-advice-green hover:bg-light-blue;
 }
 
 @utility btn-primary-active {
