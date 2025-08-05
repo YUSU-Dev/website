@@ -125,7 +125,7 @@
 
 @utility btn {
   /* Button Classes */
-  @apply px-3 py-3 text-black no-underline;
+  @apply px-3 py-3 no-underline;
 }
 
 @utility btn-primary {
@@ -133,7 +133,7 @@
 }
 
 @utility btn-secondary {
-  @apply hover:bg-primary-pink bg-black px-2 py-1 font-thin !text-white hover:!text-black;
+  @apply hover:bg-primary-pink bg-black !px-2 font-thin text-white hover:text-black;
 }
 
 @utility btn-tertiary {
@@ -157,7 +157,7 @@
 }
 
 @utility btn-secondary-active {
-  @apply bg-primary-pink font-bold text-black;
+  @apply bg-primary-pink !px-2 font-bold text-black;
 }
 
 @utility btn-advice-support-active {
