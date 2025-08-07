@@ -51,7 +51,7 @@ export default {
           name: "Rich Andrew",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/rich-andrew.jpeg",
-          title: "Advice and Welfare Manager",
+          title: "Advice & Support Manager",
           personalStatement:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dictum, ipsum sit amet dignissim finibus, augue nulla varius risus, id tristique lorem augue eget felis. Pellentesque malesuada fringilla mi. Aliquam lacus risus, consectetur et ante ut, molestie pretium lorem. Vestibulum suscipit vehicula mauris et mollis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc facilisis risus eu purus porttitor, sit amet dignissim mauris volutpat. Mauris pellentesque tempor urna feugiat tempus. Pellentesque mollis id nisl non accumsan. Suspendisse efficitur sit amet purus sed dignissim.",
         },
@@ -59,7 +59,7 @@ export default {
           name: "Charlotte Renshaw",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/charlotte-renshaw.jpeg",
-          title: "Academic and Welfare Development Coordinator",
+          title: "Advice & Support Development Coordinator",
           personalStatement:
             "Vivamus venenatis est purus, id ultrices sem eleifend quis. In augue urna, sollicitudin id nisi et, vehicula aliquet lectus. Nullam mattis semper diam, a pharetra ante accumsan sed. Sed convallis quam sapien, vel sodales dui commodo quis. In pharetra venenatis leo, consectetur congue dui. Nam tristique a purus in condimentum. Donec risus eros, convallis eu ullamcorper eu, iaculis vel nulla.",
         },
@@ -67,7 +67,7 @@ export default {
           name: "Evie Cox",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/evie-cox.jpeg",
-          title: "Academic and Welfare Development Coordinator",
+          title: "Advice & Support Development Coordinator",
           personalStatement:
             "Nullam vitae dapibus sem. Curabitur turpis ante, sollicitudin nec sollicitudin convallis, euismod eget quam. Suspendisse nec placerat nisl. Aliquam hendrerit tempus arcu at tincidunt. Curabitur tellus leo, dapibus ut nisi a, sollicitudin congue nulla. Aliquam vel nunc in diam blandit vehicula nec ut elit. Nulla sed augue at risus vestibulum blandit. Proin tempor efficitur turpis, et aliquam nunc ultrices at. Donec aliquam convallis tellus, vel luctus sapien ullamcorper sed. Vivamus dapibus vulputate tincidunt. Duis in lacus condimentum, cursus nunc at, posuere sapien.",
         },
@@ -75,7 +75,7 @@ export default {
           name: "Matt Johnstone",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/matt-johnstone.jpeg",
-          title: "Academic and Welfare Development Coordinator",
+          title: "Advice & Support Development Coordinator",
           personalStatement:
             "Mauris molestie gravida enim, nec ornare elit rutrum ut. Donec pellentesque vulputate consectetur. Suspendisse lacinia lacinia volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean a nisl leo. Praesent sagittis massa nunc, id pretium erat commodo in. Morbi molestie mauris hendrerit, pulvinar eros ac, dignissim erat.",
         },
@@ -83,7 +83,7 @@ export default {
           name: "Laura Robertson",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/laura-robertson.jpeg",
-          title: "Academic and Welfare Development Coordinator",
+          title: "Advice & Support Development Coordinator",
           personalStatement:
             "Aliquam aliquam orci lacus, sit amet laoreet justo hendrerit at. Aliquam volutpat, ipsum vel efficitur eleifend, dolor odio vulputate elit, nec venenatis quam turpis sed eros. Suspendisse sed posuere justo. Nullam commodo egestas erat. Nulla ut libero quam. Pellentesque eu sodales ex. Morbi nibh justo, finibus ut turpis eget, auctor ornare augue. Nunc lobortis sit amet massa quis commodo. Donec at velit at ipsum feugiat tincidunt. Vivamus sed lorem quis erat dignissim fringilla ut eu enim.",
         },
