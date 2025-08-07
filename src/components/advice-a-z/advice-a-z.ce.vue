@@ -26,10 +26,7 @@
           </div>
         </div>
       </div>
-      <div
-        v-if="Categories.length > 1"
-        class="flex flex-col gap-x-2 gap-y-2 md:flex-row"
-      >
+      <div v-if="Categories.length > 1" class="flex flex-wrap gap-x-2 gap-y-2">
         <Button
           title="All"
           is-advice-and-support
@@ -102,8 +99,8 @@ export default {
       backgroundImages: {
         "Health, Wellbeing & Support":
           "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp",
-        "Academic Issues":
-          "https://assets-cdn.sums.su/YU/website/img/advice/advice-light-blue.webp",
+        // "Academic":
+        //   "https://assets-cdn.sums.su/YU/website/img/advice/advice-light-blue.webp",
         "Housing Support":
           "https://assets-cdn.sums.su/YU/website/img/advice/advice-green.webp",
       },
@@ -151,6 +148,7 @@ export default {
       return randomAdviceImageUrl();
     },
     updateCategory: function (category) {
+      console.log("Updating category to:", category);
       if (category === this.selectedCategory) {
         return; // No change, do nothing
       } else if (category === "") {
@@ -168,8 +166,9 @@ export default {
       let updatedData = this.data.children.filter((item) => {
         return item.name.toLowerCase() === category.toLowerCase();
       });
+      console.log("Updated data for category:", updatedData);
       let updatedTiles = [];
-      updatedData.children.forEach((tile) => {
+      updatedData[0].children.forEach((tile) => {
         console.log("Processing tile:", tile);
         if (tile.name && tile.url) {
           updatedTiles.push({
