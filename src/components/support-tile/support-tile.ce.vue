@@ -5,10 +5,15 @@
         <img :src="img" :alt="name" class="h-full w-full object-cover" />
       </div>
       <div class="absolute inset-0 flex w-full flex-col justify-center px-4">
-        <h4 class="xxs:text-sm xs:text-lg mb-2 md:text-xl">
+        <h2 class="xxs:text-sm xs:text-lg mb-2 md:text-xl">
           {{ name }}
-        </h4>
-        <h5 v-if="category && !activeCategory">{{ category }}</h5>
+        </h2>
+        <h3
+          class="xxs:!text-xs xs:!text-sm md:!text-base"
+          v-if="category && !activeCategory"
+        >
+          {{ category }}
+        </h3>
         <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
           <p class="">Learn more</p>
           <FontAwesomeIcon
