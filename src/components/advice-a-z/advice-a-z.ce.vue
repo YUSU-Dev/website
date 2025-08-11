@@ -175,9 +175,6 @@ export default {
       updatedTiles.sort(this.compare);
       this.Tiles = updatedTiles;
     },
-    backgroundImage: function (category) {
-      return this.backgroundImages[category] || null;
-    },
   },
   computed: {
     FilteredMenu() {
