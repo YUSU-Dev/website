@@ -149,7 +149,7 @@
 }
 
 @utility btn-advice-support {
-  @apply bg-advice-green hover:bg-light-blue;
+  @apply bg-advice-green hover:bg-light-blue text-black;
 }
 
 @utility btn-primary-active {
@@ -507,7 +507,6 @@
   top: -45px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
   height: min-content;
 }
 

@@ -26,17 +26,21 @@
           </div>
         </div>
       </div>
-      <div
-        v-if="Categories.length > 1"
-        class="flex flex-col gap-x-2 gap-y-2 md:flex-row"
-      >
+      <div v-if="Categories.length > 1" class="flex flex-wrap gap-x-2 gap-y-2">
+        <Button
+          title="All"
+          is-advice-and-support
+          class="px-8 text-start"
+          :class="{ 'bg-light-blue !text-black': selectedCategory == '' }"
+          @click="updateCategory('')"
+        />
         <Button
           v-for="category in Categories"
           :key="category"
           :title="category"
           is-advice-and-support
           class="px-8 text-start"
-          :class="{ 'bg-light-blue': selectedCategory == category }"
+          :class="{ 'bg-light-blue !text-black': selectedCategory == category }"
           @click="updateCategory(category)"
         />
       </div>
@@ -46,11 +50,13 @@
       class="xxs:grid-cols-2 grid gap-x-4 gap-y-4 sm:grid-cols-3 lg:grid-cols-4"
     >
       <SupportTile
-        v-for="item in FilteredMenu"
+        v-for="item in Tiles"
         :key="item.name"
         :name="item.name"
         :url="item.url"
-        :img="getTileImage(item.category)"
+        :category="item.category"
+        :activeCategory="selectedCategory"
+        :img="backgroundImage"
       />
     </div>
   </div>
@@ -85,27 +91,32 @@ export default {
   },
   data() {
     return {
-      Menu: [],
+      Data: null,
+      Tiles: [],
       Categories: [],
       Search: "",
       selectedCategory: "",
+      backgroundImage:
+        "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp",
     };
   },
   created() {
     var self = this;
     if (self.apiurl) {
       axios.get(self.apiurl, {}).then(function (response) {
-        let data = JSON.parse(
-          "[" +
-            response.data.substring(0, response.data.lastIndexOf(",")) +
-            "]",
+        self.data = JSON.parse(
+          response.data.replace(/,\]/g, "]"), // Remove trailing commas before parsing
         );
-        self.Menu = data.sort(self.compare);
-        self.Menu.forEach((menuElement) => {
-          if (!self.Categories.includes(menuElement.category)) {
-            self.Categories.push(menuElement.category);
-          }
-        });
+        self.Categories = self.data.children.map((item) => item.name);
+
+        self.Tiles = self.data.children.flatMap((item) =>
+          item.children.map((tile) => ({
+            name: tile.name,
+            url: tile.url,
+            category: item.name,
+          })),
+        );
+        self.Tiles.sort(self.compare);
       });
     } else {
       let data = self.apitext;
@@ -131,12 +142,38 @@ export default {
       return randomAdviceImageUrl();
     },
     updateCategory: function (category) {
-      if (this.selectedCategory != category) {
-        this.selectedCategory = category;
-      } else {
-        this.selectedCategory = null;
+      console.log("Updating category to:", category);
+      if (category === this.selectedCategory) {
+        return; // No change, do nothing
+      } else if (category === "") {
+        this.selectedCategory = "";
+        this.Tiles = this.data.children.flatMap((item) =>
+          item.children.map((tile) => ({
+            name: tile.name,
+            url: tile.url,
+            category: item.name,
+          })),
+        );
+        return;
       }
-      return true;
+      this.selectedCategory = category;
+      let updatedData = this.data.children.filter((item) => {
+        return item.name.toLowerCase() === category.toLowerCase();
+      });
+      console.log("Updated data for category:", updatedData);
+      let updatedTiles = [];
+      updatedData[0].children.forEach((tile) => {
+        console.log("Processing tile:", tile);
+        if (tile.name && tile.url) {
+          updatedTiles.push({
+            name: tile.name,
+            url: tile.url,
+            category: updatedData.category,
+          });
+        }
+      });
+      updatedTiles.sort(this.compare);
+      this.Tiles = updatedTiles;
     },
   },
   computed: {
