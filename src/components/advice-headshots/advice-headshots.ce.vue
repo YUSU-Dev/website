@@ -27,8 +27,9 @@
       class="flex w-full flex-col gap-2 bg-[#f7f7f7] p-4 md:w-[90%]"
     >
       <h2 class="text-2xl font-bold">{{ activeSlide.name }}</h2>
-      <p class="text-lg font-semibold">{{ activeSlide.title }}</p>
-      <p class="">{{ activeSlide.personalStatement }}</p>
+      <h3 class="font-semibold">{{ activeSlide.title }}</h3>
+      <h4 class="font-bold">Student testimonial:</h4>
+      <p class="">"{{ activeSlide.testimonial }}"</p>
     </div>
   </div>
 </template>
@@ -52,40 +53,40 @@ export default {
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/rich-andrew.jpeg",
           title: "Advice & Support Manager",
-          personalStatement:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dictum, ipsum sit amet dignissim finibus, augue nulla varius risus, id tristique lorem augue eget felis. Pellentesque malesuada fringilla mi. Aliquam lacus risus, consectetur et ante ut, molestie pretium lorem. Vestibulum suscipit vehicula mauris et mollis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc facilisis risus eu purus porttitor, sit amet dignissim mauris volutpat. Mauris pellentesque tempor urna feugiat tempus. Pellentesque mollis id nisl non accumsan. Suspendisse efficitur sit amet purus sed dignissim.",
+          testimonial:
+            "The guidance I received from my adviser was vital to my response to the process I was engaging in, and without his help I would not have been able to manage the situation sucessfully.",
         },
         {
           name: "Charlotte Renshaw",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/charlotte-renshaw.jpeg",
           title: "Advice & Support Development Coordinator",
-          personalStatement:
-            "Vivamus venenatis est purus, id ultrices sem eleifend quis. In augue urna, sollicitudin id nisi et, vehicula aliquet lectus. Nullam mattis semper diam, a pharetra ante accumsan sed. Sed convallis quam sapien, vel sodales dui commodo quis. In pharetra venenatis leo, consectetur congue dui. Nam tristique a purus in condimentum. Donec risus eros, convallis eu ullamcorper eu, iaculis vel nulla.",
+          testimonial:
+            "I wanted to express my sincere thanks for your incredibly clear and thorough responses to my questions. Your guidance has been very helpful, especially with everything feeling so overwhelming. I feel extremely fortunate to have your support and advice during this challenging time.",
         },
         {
           name: "Evie Cox",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/evie-cox.jpeg",
           title: "Advice & Support Development Coordinator",
-          personalStatement:
-            "Nullam vitae dapibus sem. Curabitur turpis ante, sollicitudin nec sollicitudin convallis, euismod eget quam. Suspendisse nec placerat nisl. Aliquam hendrerit tempus arcu at tincidunt. Curabitur tellus leo, dapibus ut nisi a, sollicitudin congue nulla. Aliquam vel nunc in diam blandit vehicula nec ut elit. Nulla sed augue at risus vestibulum blandit. Proin tempor efficitur turpis, et aliquam nunc ultrices at. Donec aliquam convallis tellus, vel luctus sapien ullamcorper sed. Vivamus dapibus vulputate tincidunt. Duis in lacus condimentum, cursus nunc at, posuere sapien.",
+          testimonial:
+            "My advisor Evie, was nothing short of excellent. She was so patient and actively listened to everything I said. It felt like she had struck the perfect balance of being supportive and empathetic whilst remaining calm and offering other perspectives in an unbiased manner. Evie always responded in a timely manner, and wherever she was unable to do so, she would inform me and give me a timeline of when I could expect to hear back from her. I can't express in words how much her help made a difference to me. She is a credit to York SU and I feel lucky to have been put in touch with her - any students who get the pleasure of being advised by Evie are blessed and in the best hands.",
         },
         {
           name: "Matt Johnstone",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/matt-johnstone.jpeg",
           title: "Advice & Support Development Coordinator",
-          personalStatement:
-            "Mauris molestie gravida enim, nec ornare elit rutrum ut. Donec pellentesque vulputate consectetur. Suspendisse lacinia lacinia volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean a nisl leo. Praesent sagittis massa nunc, id pretium erat commodo in. Morbi molestie mauris hendrerit, pulvinar eros ac, dignissim erat.",
+          testimonial:
+            "I just wanted to thank you so so much for all of your help. You've been fantastic. From making me feel so comfortable in our initial meeting to being so unbelievably helpful with statement writing and editing and getting back to me in excellent time, you've made what has been such a stressful situation so much more bearable and I cannot thank you enough.",
         },
         {
           name: "Laura Robertson",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/laura-robertson.jpeg",
           title: "Advice & Support Development Coordinator",
-          personalStatement:
-            "Aliquam aliquam orci lacus, sit amet laoreet justo hendrerit at. Aliquam volutpat, ipsum vel efficitur eleifend, dolor odio vulputate elit, nec venenatis quam turpis sed eros. Suspendisse sed posuere justo. Nullam commodo egestas erat. Nulla ut libero quam. Pellentesque eu sodales ex. Morbi nibh justo, finibus ut turpis eget, auctor ornare augue. Nunc lobortis sit amet massa quis commodo. Donec at velit at ipsum feugiat tincidunt. Vivamus sed lorem quis erat dignissim fringilla ut eu enim.",
+          testimonial:
+            "Your help came at what was truly one of the darkest and most difficult times for me, and the guidance and encouragement you gave were unbelievably valuable. It’s comforting to know that I have people like you who are willing to help me navigate these challenges.",
         },
       ]),
       breakpoints: {

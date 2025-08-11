@@ -31,7 +31,7 @@
           title="All"
           is-advice-and-support
           class="px-8 text-start"
-          :class="{ 'bg-light-blue': selectedCategory == '' }"
+          :class="{ 'bg-light-blue !text-black': selectedCategory == '' }"
           @click="updateCategory('')"
         />
         <Button
@@ -40,7 +40,7 @@
           :title="category"
           is-advice-and-support
           class="px-8 text-start"
-          :class="{ 'bg-light-blue': selectedCategory == category }"
+          :class="{ 'bg-light-blue !text-black': selectedCategory == category }"
           @click="updateCategory(category)"
         />
       </div>
@@ -56,7 +56,7 @@
         :url="item.url"
         :category="item.category"
         :activeCategory="selectedCategory"
-        :img="backgroundImage(item.category) || getTileImage()"
+        :img="backgroundImage"
       />
     </div>
   </div>
@@ -96,14 +96,8 @@ export default {
       Categories: [],
       Search: "",
       selectedCategory: "",
-      backgroundImages: {
-        "Health, Wellbeing & Support":
-          "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp",
-        // "Academic":
-        //   "https://assets-cdn.sums.su/YU/website/img/advice/advice-light-blue.webp",
-        "Housing Support":
-          "https://assets-cdn.sums.su/YU/website/img/advice/advice-green.webp",
-      },
+      backgroundImage:
+        "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp",
     };
   },
   created() {
