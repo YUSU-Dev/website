@@ -121,7 +121,7 @@
 
         <p dir="ltr">
           <a
-            class="text-blue-500 hover:underline"
+            class="text-blue-800 underline"
             href="https://yorksu.org/advice-support/support-a-z"
             >All Support and Policy Guides</a
           >
@@ -144,7 +144,7 @@
               Provide a crisis or emergency service. The University&rsquo;s
               website has helpful information about
               <a
-                class="text-blue-500 hover:underline"
+                class="text-blue-800 underline"
                 href="https://www.york.ac.uk/students/health/crisis/"
                 >what to do if you are in a crisis</a
               >.
@@ -155,7 +155,7 @@
               Provide counselling or specialist mental health support. You can
               find more information about the
               <a
-                class="text-blue-500 hover:underline"
+                class="text-blue-800 underline"
                 href="https://www.york.ac.uk/students/health/help/"
                 >range of help and support for students</a
               >, including:
@@ -165,7 +165,7 @@
               <li aria-level="2" dir="ltr">
                 <p dir="ltr" role="presentation">
                   <a
-                    class="text-blue-500 hover:underline"
+                    class="text-blue-800 underline"
                     href="https://www.york.ac.uk/students/health/help/open-door/"
                     >Open Door</a
                   >
@@ -174,7 +174,7 @@
               <li aria-level="2" dir="ltr">
                 <p dir="ltr" role="presentation">
                   <a
-                    class="text-blue-500 hover:underline"
+                    class="text-blue-800 underline"
                     href="https://www.york.ac.uk/students/support/student-hub/"
                     >Student Hub</a
                   >
@@ -183,7 +183,7 @@
               <li aria-level="2" dir="ltr">
                 <p dir="ltr" role="presentation">
                   <a
-                    class="text-blue-500 hover:underline"
+                    class="text-blue-800 underline"
                     href="https://www.york.ac.uk/students/support/disability/"
                     >Disability Services</a
                   >
@@ -195,7 +195,7 @@
               <li aria-level="2" dir="ltr">
                 <p dir="ltr" role="presentation">
                   <a
-                    class="text-blue-500 hover:underline"
+                    class="text-blue-800 underline"
                     href="https://www.york.ac.uk/students/health/help/247support/"
                     >24/7 online support and resources with TalkCampus</a
                   >.
@@ -216,9 +216,7 @@
 
       <p dir="ltr">
         You can find us at
-        <a
-          class="text-blue-500 hover:underline"
-          href="https://www.york.ac.uk/map/#locid423"
+        <a class="underline" href="https://www.york.ac.uk/map/#locid423"
           >the Student Centre, James College</a
         >.
       </p>
@@ -239,17 +237,17 @@
       <p dir="ltr">
         Please first complete our
         <a
-          class="text-blue-500 hover:underline"
+          class="underline"
           href="https://docs.google.com/forms/d/e/1FAIpQLScg-2rGGR8VzgXsi5671tn1RdUGBssjzRZRmr_-WVlNHchMMg/viewform"
           >Confidential Advice Record</a
         >, or you can
         <a
-          class="text-blue-500 hover:underline"
+          class="underline"
           href="https://drive.google.com/file/d/1KxC6EpskhbBhRIY2JNjl8xnjsl55aK9l/view"
           >download a Confidential Advice Record</a
         >
         and email it to
-        <a class="text-blue-500 hover:underline" href="mailto:advice@yorksu.org"
+        <a class="underline" href="mailto:advice@yorksu.org"
           >advice@yorksu.org</a
         >. Please also include as many details about your query as you can. Once
         you have sent your completed Confidential Advice Record, an adviser will
@@ -302,7 +300,7 @@
       if your complaint is not satisfactorily resolved, then formal complaints
       can be made by following the
       <a
-        class="text-blue-500 hover:underline"
+        class="text-blue-800 underline"
         href="http://44e636c1ebe784492f84-5a01dd4a6616d09e705101b62b4054a7.r95.cf3.rackcdn.com/5DE90C55_YUSU-Corporate-Complaints-Policy-2019.pdf"
         >York SU&#39;s Corporate Complaints process</a
       >.
