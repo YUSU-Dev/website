@@ -11,6 +11,7 @@
         :class="{ 'bg-light-blue': title == 'Sports' }"
         title="Sports"
         is-student-life="True"
+        :selected="true"
         class="px-10 text-center"
     /></a>
     <a href="/"
