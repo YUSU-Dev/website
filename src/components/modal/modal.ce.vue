@@ -102,7 +102,7 @@ export default {
     },
     actionName: {
       type: String,
-      default: "Close",
+      default: null,
     },
     action: {
       type: Function,

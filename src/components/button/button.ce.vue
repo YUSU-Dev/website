@@ -81,21 +81,56 @@ export default {
     FontAwesomeIcon,
   },
   mounted() {
-    if (this.isPrimary || this.type === "primary") {
-      this.primaryButton = true;
-      this.primarySelected = this.selected;
-    } else if (this.isStudentLife || this.type === "student-life") {
-      this.studentLifeButton = true;
-      this.studentLifeSelected = this.selected;
-    } else if (this.isAdviceAndSupport || this.type === "advice-support") {
-      this.adviceAndSupportButton = true;
-      this.adviceAndSupportSelected = this.selected;
-    } else if (this.isStudentVoice || this.type === "student-voice") {
-      this.studentVoiceButton = true;
-      this.studentVoiceSelected = this.selected;
-    } else if (this.isSecondary || this.type === "secondary") {
-      this.secondaryButton = true;
-      this.secondarySelected = this.selected;
+    const type =
+      this.type ||
+      (this.isPrimary
+        ? "primary"
+        : this.isStudentLife
+          ? "student-life"
+          : this.isAdviceAndSupport
+            ? "advice-support"
+            : this.isStudentVoice
+              ? "student-voice"
+              : this.isSecondary
+                ? "secondary"
+                : null);
+
+    if (this.selected) {
+      switch (type) {
+        case "primary":
+          this.primarySelected = true;
+          break;
+        case "student-life":
+          this.studentLifeSelected = true;
+          break;
+        case "advice-support":
+          this.adviceAndSupportSelected = true;
+          break;
+        case "student-voice":
+          this.studentVoiceSelected = true;
+          break;
+        case "secondary":
+          this.secondarySelected = true;
+          break;
+      }
+    } else {
+      switch (type) {
+        case "primary":
+          this.primaryButton = true;
+          break;
+        case "student-life":
+          this.studentLifeButton = true;
+          break;
+        case "advice-support":
+          this.adviceAndSupportButton = true;
+          break;
+        case "student-voice":
+          this.studentVoiceButton = true;
+          break;
+        case "secondary":
+          this.secondaryButton = true;
+          break;
+      }
     }
   },
 };
