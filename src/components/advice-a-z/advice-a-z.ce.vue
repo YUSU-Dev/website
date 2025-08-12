@@ -50,7 +50,7 @@
       class="xxs:grid-cols-2 grid gap-x-4 gap-y-4 sm:grid-cols-3 lg:grid-cols-4"
     >
       <SupportTile
-        v-for="item in Tiles"
+        v-for="item in FilteredTiles"
         :key="item.name"
         :name="item.name"
         :url="item.url"
@@ -116,7 +116,7 @@ export default {
             category: item.name,
           })),
         );
-        self.Tiles.sort(self.compare);
+        self.Tiles.sort(self.compare); // Sort all tiles by name initially
       });
     } else {
       let data = self.apitext;
@@ -142,41 +142,31 @@ export default {
       return randomAdviceImageUrl();
     },
     updateCategory: function (category) {
-      console.log("Updating category to:", category);
-      if (category === this.selectedCategory) {
-        return; // No change, do nothing
-      } else if (category === "") {
-        this.selectedCategory = "";
-        this.Tiles = this.data.children.flatMap((item) =>
-          item.children.map((tile) => ({
-            name: tile.name,
-            url: tile.url,
-            category: item.name,
-          })),
-        );
-        return;
-      }
       this.selectedCategory = category;
-      let updatedData = this.data.children.filter((item) => {
-        return item.name.toLowerCase() === category.toLowerCase();
-      });
-      console.log("Updated data for category:", updatedData);
-      let updatedTiles = [];
-      updatedData[0].children.forEach((tile) => {
-        console.log("Processing tile:", tile);
-        if (tile.name && tile.url) {
-          updatedTiles.push({
-            name: tile.name,
-            url: tile.url,
-            category: updatedData.category,
-          });
-        }
-      });
-      updatedTiles.sort(this.compare);
-      this.Tiles = updatedTiles;
     },
   },
   computed: {
+    FilteredTiles() {
+      let tiles = this.Tiles;
+
+      // Apply search filter
+      if (this.Search) {
+        tiles = tiles.filter((item) =>
+          item.name.toLowerCase().includes(this.Search.toLowerCase()),
+        );
+      }
+
+      // Apply category filter
+      if (this.selectedCategory) {
+        tiles = tiles.filter(
+          (item) =>
+            item.category.toLowerCase() === this.selectedCategory.toLowerCase(),
+        );
+      }
+
+      // Sort by name
+      return tiles.sort(this.compare);
+    },
     FilteredMenu() {
       let self = this;
       let Menu = self.Menu;
