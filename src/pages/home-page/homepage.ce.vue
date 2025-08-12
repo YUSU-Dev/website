@@ -11,16 +11,16 @@
     <QuickLinks />
   </div>
   <div class="bg-beige">
-    <div class="container mx-auto py-20">
-      <News :embedded="true" :homepage="true" />
+    <div class="bg-beige container mx-auto py-20">
+      <Adverts />
     </div>
   </div>
   <div class="container mx-auto py-20">
     <Sabbs />
   </div>
   <div class="bg-beige">
-    <div class="bg-beige container mx-auto py-20">
-      <Adverts />
+    <div class="container mx-auto py-20">
+      <News :embedded="true" :homepage="true" />
     </div>
   </div>
   <Footer />
