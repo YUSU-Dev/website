@@ -406,6 +406,11 @@
     @apply mb-0;
   }
 
+  /* Countdown */
+  .countdown-text {
+    @apply text-7xl font-bold;
+  }
+
   /* Text Outline */
   .outline-1 {
     -webkit-text-stroke: 1px black;
