@@ -406,6 +406,15 @@
     @apply mb-0;
   }
 
+  /* Countdown */
+  .countdown-text {
+    @apply text-8xl font-extrabold;
+  }
+
+  .countdown-title {
+    @apply text-3xl font-extrabold;
+  }
+
   /* Text Outline */
   .outline-1 {
     -webkit-text-stroke: 1px black;
