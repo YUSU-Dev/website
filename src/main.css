@@ -408,11 +408,7 @@
 
   /* Countdown */
   .countdown-text {
-    @apply text-8xl font-extrabold;
-  }
-
-  .countdown-title {
-    @apply text-3xl font-extrabold;
+    @apply text-7xl font-bold;
   }
 
   /* Text Outline */
