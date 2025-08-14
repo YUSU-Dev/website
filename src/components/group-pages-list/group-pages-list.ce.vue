@@ -1,12 +1,12 @@
 <template>
   <div class="flex w-full flex-col">
-    <h2 class="text-2xl font-bold" v-if="pages[0]">Group Pages</h2>
+    <h2 class="pb-4 text-2xl font-bold" v-if="pages[0]">Group Pages</h2>
     <div class="flex w-full flex-col gap-4">
       <Button
         v-for="page in pages"
         :key="page.id"
         :title="page.title"
-        class="btn-student-life w-full px-10 text-center"
+        class="btn-student-life w-full px-4 text-center"
         :class="{ 'btn-student-life-active': page.url_title == selectedUrl }"
         :url="'/activities/page/' + page.activity_id + '/' + page.url_title"
       />
