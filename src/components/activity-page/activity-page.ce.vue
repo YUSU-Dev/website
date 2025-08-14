@@ -11,7 +11,7 @@
             :class="{ 'bg-light-blue': title == 'join' }"
             title="Join"
             is-student-life
-            class="xxs:w-min w-full px-10 text-center"
+            class="xxs:w-min w-full px-4 text-center"
             :url="'/shop?activity_id=' + pageActivity.id"
           />
           <Button
@@ -19,7 +19,7 @@
             :class="{ 'bg-light-blue': title == 'join' }"
             title="How to Adopt"
             is-student-life
-            class="px-10 text-center"
+            class="px-4 text-center"
             url="/adopt-an-activity"
           />
           <InterestButton v-if="!isAdoptable" :activity-id="groupId" />
@@ -34,7 +34,10 @@
         </div>
         <div v-if="pageActivity.description" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">About</h2>
-          <article v-html="pageActivity.description"></article>
+          <article
+            class="wrap-anywhere"
+            v-html="pageActivity.description"
+          ></article>
         </div>
         <div v-else class="flex flex-col gap-y-6">
           <div class="flex flex-col">
@@ -50,14 +53,14 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-y-8">
+      <div class="flex min-w-2/10 flex-col gap-y-8 sm:w-min">
         <div class="hidden w-max flex-col gap-y-4 sm:flex">
           <Button
             v-if="isActivity"
             :class="{ 'bg-light-blue': title == 'join' }"
             title="Join"
             is-student-life
-            class="w-full px-10 text-center"
+            class="w-full px-4 text-center"
             :url="'/shop?activity_id=' + pageActivity.id"
           />
           <Button
@@ -65,14 +68,16 @@
             :class="{ 'bg-light-blue': title == 'join' }"
             title="How to Adopt"
             is-student-life
-            class="w-full px-10 text-center"
+            class="w-full px-4 text-center"
             url="/adopt-an-activity"
           />
           <InterestButton :activity-id="groupId" />
-          <GroupPagesList
-            :group-id="groupId"
-            :group-url="pageActivity.url_name"
-          />
+          <div class="flex flex-col gap-y-4 pt-4">
+            <GroupPagesList
+              :group-id="groupId"
+              :group-url="pageActivity.url_name"
+            />
+          </div>
         </div>
         <div class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">Contact</h2>
@@ -87,6 +92,19 @@
             :discord="pageActivity.discord"
             :tiktok="pageActivity.tiktok"
           />
+        </div>
+        <div v-if="badges.length > 0" class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">Badges</h2>
+          <div class="xxs:grid-cols-3 grid grid-cols-2 gap-4 sm:grid-cols-2">
+            <div v-for="(badge, index) in badges" :key="index" class="">
+              <img
+                :src="badge.image_link"
+                :alt="badge.badge_name"
+                :title="badge.badge_name"
+                class="w-full"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -122,6 +140,7 @@ export default {
       isAdoptable: false,
       isAcademicRep: false,
       isActivity: true,
+      badges: [],
     };
   },
   components: {
@@ -148,9 +167,14 @@ export default {
             "X-Site-Id": self.siteid,
           },
         }),
+        axios.get("https://yorksu.org/activities/badges-api/" + self.groupId, {
+          headers: {
+            "X-Site-Id": self.siteid,
+          },
+        }),
       ])
       .then(
-        axios.spread((response1, response2) => {
+        axios.spread((response1, response2, response3) => {
           self.pageActivity = response1.data;
           self.loading = false;
           self.pageActivity.category = response2.data.find(
@@ -161,6 +185,9 @@ export default {
             this.pageActivity.activity_category_id,
           );
           this.isActivity = !this.isAdoptable && !this.isAcademicRep;
+          self.badges = JSON.parse(
+            response3.data.replace(/,\]/g, "]"), // Remove trailing commas before parsing
+          );
         }),
       );
     this.getSubgroupCategoryId();
