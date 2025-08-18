@@ -1,0 +1,112 @@
+<template>
+  <div class="flex flex-col bg-gray-200 p-4">
+    <h2 class="mb-2 text-2xl font-bold">Charity Donation</h2>
+    <p class="mb-2">
+      Would you like to add a £1 charity donation to your order?
+    </p>
+    <!-- <div
+              class="wrap-anywhere"
+              v-html="charityDonation.description"
+            ></div> -->
+    <div class="flex items-center justify-between gap-2">
+      <p class="font-bold">{{ charityDonation.name }}</p>
+      <!-- checkbox -->
+      <div>
+        <input
+          type="checkbox"
+          v-model="charityDonation.checked"
+          @change="toggleDonation"
+          class="h-6 w-6"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "../../_common/axios.mjs";
+import { addToBasketHandler } from "../shop/shop-index/shop.basket.js";
+import { removeItemHandler } from "../shop/shop-index/shop.gateway.js";
+export default {
+  name: "CharityDonation",
+  data() {
+    return {
+      charityDonation: {
+        type: Array,
+        default: () => [],
+      },
+    };
+  },
+  created() {
+    this.getDonationProduct();
+  },
+  methods: {
+    async getDonationProduct() {
+      await axios
+        .get(`https://pluto.sums.su/api/products/` + 14498, {
+          headers: {
+            "X-Site-Id": self.siteid,
+          },
+        })
+        .then((response) => {
+          this.charityDonation = response.data;
+          console.log("Charity Donation Product:", this.charityDonation);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    toggleDonation() {
+      const isChecked = this.charityDonation.checked;
+
+      console.log("Checkbox state:", isChecked);
+
+      if (isChecked) {
+        console.log("Adding charity donation to basket");
+        addToBasketHandler(this.charityDonation.id)
+          .then(function (response) {
+            if (!response["success"]) {
+              console.log(
+                "There was an error adding the product to the basket: " +
+                  response.error_message,
+              );
+              return;
+            }
+          })
+          .catch(function (response) {
+            if (response.error_message != "undefined") {
+              console.log(
+                "There was an error adding the product to the basket: " +
+                  response.error_message,
+              );
+            } else {
+              console.log("Undefined error adding product to basket");
+            }
+          });
+      } else {
+        console.log("Removing charity donation from basket");
+        removeItemHandler(this.charityDonation.id)
+          .then(function (response) {
+            if (!response["success"]) {
+              console.log(
+                "There was an error removing the product from the basket: " +
+                  response.error_message,
+              );
+              return;
+            }
+          })
+          .catch(function (response) {
+            if (response.error_message != "undefined") {
+              console.log(
+                "There was an error removing the product from the basket: " +
+                  response.error_message,
+              );
+            } else {
+              console.log("Undefined error removing product from basket");
+            }
+          });
+      }
+    },
+  },
+};
+</script>

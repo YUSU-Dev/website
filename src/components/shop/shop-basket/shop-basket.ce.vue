@@ -85,6 +85,8 @@
 
       <div class="col-span-1 mb-4">
         <div class="flex max-w-96 flex-col gap-2 md:ml-4">
+          <!-- Optional donation -->
+          <!-- <CharityDonation /> -->
           <div class="bg-gray-200 p-4">
             <h2 class="mb-2 text-2xl font-bold">Summary</h2>
             <div class="flex justify-between text-lg">
@@ -153,6 +155,7 @@ import {
   emptyBasketHandler,
   payNowHandler,
 } from "../../shop/shop-index/shop.gateway.js";
+// import CharityDonation from "../../charity-donation/charity-donation.ce.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -173,6 +176,7 @@ export default {
     FontAwesomeIcon,
     Modal,
     Loading,
+    // CharityDonation,
   },
   props: {
     errorMessage: {

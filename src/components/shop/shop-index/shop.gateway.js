@@ -15,7 +15,7 @@ export function removeItemHandler(itemID) {
       })
       .fail(function (response) {
         console.log(
-          "There was an error removing the product to the basket: " +
+          "There was an error removing the product from the basket: " +
             response.error_message,
         );
         resolve(response);
@@ -36,7 +36,7 @@ export function emptyBasketHandler() {
       })
       .fail(function (response) {
         console.log(
-          "There was an error removing the product to the basket: " +
+          "There was an error removing the product from the basket: " +
             response.error_message,
         );
         resolve(response);
@@ -58,7 +58,7 @@ export function payNowHandler() {
       })
       .fail(function (response) {
         console.log(
-          "There was an error removing the product to the basket: " +
+          "There was an error removing the product from the basket: " +
             response.error_message,
         );
         resolve(response);
