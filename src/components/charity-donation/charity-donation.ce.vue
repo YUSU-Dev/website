@@ -14,6 +14,7 @@
       <div>
         <input
           type="checkbox"
+          aria-label="Charity Donation"
           v-model="charityDonation.checked"
           @change="toggleDonation"
           class="h-6 w-6"
