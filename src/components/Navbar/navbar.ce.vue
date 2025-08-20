@@ -414,6 +414,10 @@ export default {
                 name: "Activity Wishlist",
                 link: "/wishlist",
               },
+              {
+                name: "Give It A Go",
+                link: "/give-it-a-go",
+              },
             ],
           },
           {
