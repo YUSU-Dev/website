@@ -49,7 +49,7 @@ export default {
     return {
       headshots: this.shuffle([
         {
-          name: "Rich Andrew",
+          name: "Rich",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/rich-andrew.jpeg",
           title: "Advice & Support Manager",
@@ -57,7 +57,7 @@ export default {
             "The guidance I received from my adviser was vital to my response to the process I was engaging in, and without his help I would not have been able to manage the situation sucessfully.",
         },
         {
-          name: "Charlotte Renshaw",
+          name: "Charlotte",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/charlotte-renshaw.jpeg",
           title: "Advice & Support Development Coordinator",
@@ -65,15 +65,15 @@ export default {
             "I wanted to express my sincere thanks for your incredibly clear and thorough responses to my questions. Your guidance has been very helpful, especially with everything feeling so overwhelming. I feel extremely fortunate to have your support and advice during this challenging time.",
         },
         {
-          name: "Evie Cox",
+          name: "Evie",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/evie-cox.jpeg",
           title: "Advice & Support Development Coordinator",
           testimonial:
-            "My advisor Evie, was nothing short of excellent. She was so patient and actively listened to everything I said. It felt like she had struck the perfect balance of being supportive and empathetic whilst remaining calm and offering other perspectives in an unbiased manner. Evie always responded in a timely manner, and wherever she was unable to do so, she would inform me and give me a timeline of when I could expect to hear back from her. I can't express in words how much her help made a difference to me. She is a credit to York SU and I feel lucky to have been put in touch with her - any students who get the pleasure of being advised by Evie are blessed and in the best hands.",
+            "My advisor Evie, was nothing short of excellent. She was so patient and actively listened to everything I said. It felt like she had struck the perfect balance of being supportive and empathetic whilst remaining calm and offering other perspectives in an unbiased manner. Evie always responded in a timely manner, and wherever she was unable to do so, she would inform me and give me a timeline of when I could expect to hear back from her. I can't express in words how much her help made a difference to me.",
         },
         {
-          name: "Matt Johnstone",
+          name: "Matt",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/matt-johnstone.jpeg",
           title: "Advice & Support Development Coordinator",
@@ -81,7 +81,7 @@ export default {
             "I just wanted to thank you so so much for all of your help. You've been fantastic. From making me feel so comfortable in our initial meeting to being so unbelievably helpful with statement writing and editing and getting back to me in excellent time, you've made what has been such a stressful situation so much more bearable and I cannot thank you enough.",
         },
         {
-          name: "Laura Robertson",
+          name: "Laura",
           image:
             "https://assets-cdn.sums.su/YU/website/img/advice/laura-robertson.jpeg",
           title: "Advice & Support Development Coordinator",
