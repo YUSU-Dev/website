@@ -16,10 +16,11 @@
           <h2 class="text-3xl font-bold">
             {{ eventDate.event_date_title }} - {{ startDate }}
           </h2>
-          <div
+          <article
             v-if="eventDate.description"
+            class="body-style flex flex-col gap-y-4"
             v-html="eventDate.description"
-          ></div>
+          ></article>
         </div>
       </div>
       <div
