@@ -92,7 +92,8 @@ export default {
         this.categoryName == "Goodricke College Sports" ||
         this.categoryName == "Halifax College Sports" ||
         this.categoryName == "Langwith College Sports" ||
-        this.categoryName == "Anne Lister & David Kato College Sports" ||
+        this.categoryName == "Anne Lister College Sports" ||
+        this.categoryName == "David Kato College Sports" ||
         this.categoryName == "Hes East College Sports"
       ) {
         this.firstSegmentName = "College Sport";
@@ -133,10 +134,10 @@ export default {
         this.secondSegmentUrl = "/activities/view/halifax-sport";
       } else if (this.categoryName == "Langwith College Sports") {
         this.secondSegmentUrl = "/activities/view/langwith-sport";
-      } else if (
-        this.categoryName == "Anne Lister & David Kato College Sports"
-      ) {
-        this.secondSegmentUrl = "/activities/view/lister_kato_sport";
+      } else if (this.categoryName == "Anne Lister College Sports") {
+        this.secondSegmentUrl = "/activities/view/lister_sport";
+      } else if (this.categoryName == "David Kato College Sports") {
+        this.secondSegmentUrl = "/activities/view/davidkatosport";
       }
 
       if (this.secondSegmentUrl) {
