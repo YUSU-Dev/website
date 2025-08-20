@@ -220,10 +220,13 @@ export default {
         this.subgroupCategoryName = "Halifax College Sports";
       } else if (this.groupId == "553") {
         this.subgroupCategoryId = 38;
-        this.subgroupCategoryName = "Anne Lister & David Kato College Sports";
+        this.subgroupCategoryName = "Anne Lister College Sports";
       } else if (this.groupId == "398") {
         this.subgroupCategoryId = "37,45";
         this.subgroupCategoryName = "Langwith College Sports";
+      } else if (this.groupId == "763") {
+        this.subgroupCategoryId = 46;
+        this.subgroupCategoryName = "David Kato College Sports";
       }
     },
   },
