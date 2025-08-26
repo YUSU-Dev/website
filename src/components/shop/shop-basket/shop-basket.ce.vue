@@ -27,12 +27,25 @@
                   </div>
                   <div class="grid grid-cols-2 items-center md:grid-cols-3">
                     <p>Quantity:</p>
-                    <div class="flex items-center">
+                    <div v-if="item.id == charityId" class="flex items-center">
                       <a
                         @click="removeItem(item.id)"
                         href="javascript:;"
                         :aria-label="
-                          'Remove' + item.product_name + 'from basket'
+                          'Remove ' + item.product_name + ' from basket'
+                        "
+                        class="btn-primary flex items-center gap-2 p-2"
+                      >
+                        <FontAwesomeIcon icon="fas fa-minus" class="h-3 w-3" />
+                        <p>Remove</p>
+                      </a>
+                    </div>
+                    <div v-else class="flex items-center">
+                      <a
+                        @click="removeItem(item.id)"
+                        href="javascript:;"
+                        :aria-label="
+                          'Remove ' + item.product_name + ' from basket'
                         "
                         class="btn-primary p-2"
                       >
@@ -86,7 +99,12 @@
       <div class="col-span-1 mb-4">
         <div class="flex max-w-96 flex-col gap-2 md:ml-4">
           <!-- Optional donation -->
-          <!-- <CharityDonation /> -->
+          <CharityDonation
+            v-if="items.length > 0 && charityId"
+            :basket-items="items"
+            :charity-id="charityId"
+            @donation-updated="getBasketItems"
+          />
           <div class="bg-gray-200 p-4">
             <h2 class="mb-2 text-2xl font-bold">Summary</h2>
             <div class="flex justify-between text-lg">
@@ -155,7 +173,7 @@ import {
   emptyBasketHandler,
   payNowHandler,
 } from "../../shop/shop-index/shop.gateway.js";
-// import CharityDonation from "../../charity-donation/charity-donation.ce.vue";
+import CharityDonation from "../../charity-donation/charity-donation.ce.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -176,7 +194,7 @@ export default {
     FontAwesomeIcon,
     Modal,
     Loading,
-    // CharityDonation,
+    CharityDonation,
   },
   props: {
     errorMessage: {
@@ -188,6 +206,10 @@ export default {
       default() {
         return [];
       },
+    },
+    charityId: {
+      type: String,
+      default: null,
     },
   },
   data() {
@@ -212,6 +234,7 @@ export default {
         type: Array,
         value: [],
       },
+      donationItem: null,
       productImages: {
         type: Array,
         value: [],
@@ -303,6 +326,9 @@ export default {
           });
       }
       self.items = products;
+      self.donationItem = products.find(
+        (item) => item.product_id === self.charityId,
+      );
       self.Loading = false;
     },
     formatPrice(price) {
