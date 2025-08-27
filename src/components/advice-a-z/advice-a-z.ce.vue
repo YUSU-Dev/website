@@ -143,6 +143,16 @@ export default {
     },
     updateCategory: function (category) {
       this.selectedCategory = category;
+      if (this.Search) {
+        this.Search = "";
+      }
+    },
+  },
+  watch: {
+    Search: function (newVal, oldVal) {
+      if (newVal && !oldVal && this.selectedCategory) {
+        this.selectedCategory = "";
+      }
     },
   },
   computed: {
