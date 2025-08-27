@@ -40,6 +40,10 @@ export default {
       type: String,
       default: null,
     },
+    donationItem: {
+      type: Object,
+      default: null,
+    },
   },
   data() {
     return {
@@ -112,7 +116,7 @@ export default {
             }
           });
       } else {
-        removeItemHandler(this.charityDonation.id)
+        removeItemHandler(this.donationItem.id)
           .then(function (response) {
             if (!response["success"]) {
               console.log(
