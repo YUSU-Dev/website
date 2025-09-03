@@ -117,7 +117,7 @@ export default {
           });
       } else {
         removeItemHandler(this.donationBasketId)
-          .then(function (response) {
+          .then((response) => {
             if (!response["success"]) {
               console.log(
                 "There was an error removing the product from the basket: " +
