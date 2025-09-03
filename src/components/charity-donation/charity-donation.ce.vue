@@ -40,8 +40,8 @@ export default {
       type: String,
       default: null,
     },
-    donationItem: {
-      type: Object,
+    donationBasketId: {
+      type: String,
       default: null,
     },
   },
@@ -116,7 +116,7 @@ export default {
             }
           });
       } else {
-        removeItemHandler(this.donationItem.id)
+        removeItemHandler(this.donationBasketId)
           .then(function (response) {
             if (!response["success"]) {
               console.log(

@@ -106,7 +106,7 @@
             v-if="items.length > 0 && charityId"
             :basket-items="items"
             :charity-id="charityId"
-            :donation-item="donationItem"
+            :donation-item="donationBasketId"
             @donation-updated="getBasketItems"
           />
           <div class="bg-gray-200 p-4">
@@ -238,7 +238,10 @@ export default {
         type: Array,
         value: [],
       },
-      donationItem: null,
+      donationBasketId: {
+        type: String,
+        value: null,
+      },
       productImages: {
         type: Array,
         value: [],
@@ -330,9 +333,12 @@ export default {
           });
       }
       self.items = products;
-      self.donationItem = products.find(
+      var donationBasketItem = products.find(
         (item) => item.product_id === self.charityId,
       );
+      if (donationBasketItem) {
+        self.donationBasketId = donationBasketItem.id;
+      }
       self.Loading = false;
     },
     formatPrice(price) {
