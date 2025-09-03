@@ -27,7 +27,10 @@
                   </div>
                   <div class="grid grid-cols-2 items-center md:grid-cols-3">
                     <p>Quantity:</p>
-                    <div v-if="item.id == charityId" class="flex items-center">
+                    <div
+                      v-if="item.product_id == charityId"
+                      class="flex items-center"
+                    >
                       <a
                         @click="removeItem(item.id)"
                         href="javascript:;"
@@ -103,6 +106,7 @@
             v-if="items.length > 0 && charityId"
             :basket-items="items"
             :charity-id="charityId"
+            :donation-item="donationBasketId"
             @donation-updated="getBasketItems"
           />
           <div class="bg-gray-200 p-4">
@@ -234,7 +238,10 @@ export default {
         type: Array,
         value: [],
       },
-      donationItem: null,
+      donationBasketId: {
+        type: String,
+        value: null,
+      },
       productImages: {
         type: Array,
         value: [],
@@ -326,9 +333,12 @@ export default {
           });
       }
       self.items = products;
-      self.donationItem = products.find(
+      var donationBasketItem = products.find(
         (item) => item.product_id === self.charityId,
       );
+      if (donationBasketItem) {
+        self.donationBasketId = donationBasketItem.id;
+      }
       self.Loading = false;
     },
     formatPrice(price) {
