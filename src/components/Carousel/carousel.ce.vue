@@ -5,8 +5,10 @@
         ref="vueperSlides"
         :key="slidesKey"
         class="no-shadow carousel-slides"
+        role="region"
+        aria-label="Homepage carousel"
         :autoplay="autoplayEnabled"
-        :duration="interval"
+        :duration="interval * 1000"
         :touchable="true"
         :bullets="false"
         :arrows="false"
@@ -15,6 +17,7 @@
         @autoplay-pause="onAutoplayPause"
         @autoplay-resume="onAutoplayResume"
         @ready="onVueperSlidesReady"
+        @slide="onSlideChange"
         :fixed-height="'400px'"
         :dragging-distance="70"
       >
@@ -23,6 +26,9 @@
           :key="index"
           :image="banner.img"
           :link="banner.url"
+          :alt="banner.alt"
+          :aria-label="banner.alt"
+          :tabindex="index === currentSlideIndex ? '0' : '-1'"
         >
         </vueper-slide>
       </vueper-slides>
@@ -82,7 +88,7 @@ export default {
   props: {
     interval: {
       type: Number,
-      default: 6000,
+      default: 6,
     },
   },
   data() {
@@ -91,38 +97,35 @@ export default {
       playing: true,
       banners: [],
       slidesKey: 0,
+      currentSlideIndex: 0,
     };
   },
   async created() {
-    this.getBanners();
-  },
-  mounted() {
-    this.playing = true;
-    this.autoplayEnabled = true;
+    await this.getBanners();
   },
   methods: {
-    getBanners: function () {
-      axios
-        .get("https://yorksu.org/api/banners/homepage-carousel")
-        .then((response) => {
-          if (response.data.length) {
-            var cleanedData = response.data
-              .replace("{banners}", "[")
-              .replace("{/banners}", "]")
-              .replace(/,\s*]/, "]");
-            var jsonData = JSON.parse(cleanedData);
-            this.banners = jsonData;
+    getBanners: async function () {
+      const response = await axios.get(
+        "https://yorksu.org/api/banners/homepage-carousel",
+      );
 
-            this.$nextTick(() => {
-              if (this.$refs.vueperSlides && this.banners.length > 1) {
-                this.autoplayEnabled = true;
-                this.playing = true;
-                this.$refs.vueperSlides.resumeAutoplay();
-              }
-            });
-            this.slidesKey += 1;
+      if (response.data.length) {
+        var cleanedData = response.data
+          .replace("{banners}", "[")
+          .replace("{/banners}", "]")
+          .replace(/,\s*]/, "]");
+        var jsonData = JSON.parse(cleanedData);
+        this.banners = jsonData;
+
+        this.$nextTick(() => {
+          if (this.$refs.vueperSlides && this.banners.length > 1) {
+            this.autoplayEnabled = true;
+            this.playing = true;
+            this.$refs.vueperSlides.resumeAutoplay();
           }
         });
+        this.slidesKey += 1;
+      }
     },
     startSlide: function () {
       this.autoplayEnabled = true;
@@ -157,6 +160,9 @@ export default {
     },
     onAutoplayResume: function () {
       this.playing = true;
+    },
+    onSlideChange: function (event) {
+      this.currentSlideIndex = event.currentSlide.index;
     },
   },
 };
