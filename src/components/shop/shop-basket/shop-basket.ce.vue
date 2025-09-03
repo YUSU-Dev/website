@@ -106,7 +106,7 @@
             v-if="items.length > 0 && charityId"
             :basket-items="items"
             :charity-id="charityId"
-            :donation-item="donationBasketId"
+            :donation-basket-id="donationBasketId"
             @donation-updated="getBasketItems"
           />
           <div class="bg-gray-200 p-4">
