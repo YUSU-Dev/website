@@ -1,21 +1,37 @@
 <template>
   <div class="bg-mustard flex justify-center overflow-x-hidden">
     <div class="max:banner-container w-full">
-      <transition-group
-        :name="transition"
-        tag="div"
-        class="relative flex h-[400px] justify-center"
+      <vueper-slides
+        ref="vueperSlides"
+        :key="slidesKey"
+        class="no-shadow carousel-slides"
+        role="region"
+        aria-label="Homepage carousel"
+        :autoplay="autoplayEnabled"
+        :duration="interval * 1000"
+        :touchable="true"
+        :bullets="false"
+        :arrows="false"
+        :pause-on-hover="false"
+        :pause-on-touch="false"
+        @autoplay-pause="onAutoplayPause"
+        @autoplay-resume="onAutoplayResume"
+        @ready="onVueperSlidesReady"
+        @slide="onSlideChange"
+        :fixed-height="'400px'"
+        :dragging-distance="70"
       >
-        <div v-for="i in [currentIndex]" :key="i" class="absolute">
-          <a :href="banners[currentIndex].url">
-            <img
-              :src="banners[currentIndex].img"
-              :alt="banners[currentIndex].alt"
-              class="h-[400px] object-cover"
-            />
-          </a>
-        </div>
-      </transition-group>
+        <vueper-slide
+          v-for="(banner, index) in banners"
+          :key="index"
+          :image="banner.img"
+          :link="banner.url"
+          :alt="banner.alt"
+          :aria-label="banner.alt"
+          :tabindex="index === currentSlideIndex ? '0' : '-1'"
+        >
+        </vueper-slide>
+      </vueper-slides>
     </div>
   </div>
   <div class="bg-[#f7f7f7]">
@@ -46,6 +62,9 @@
     </div>
   </div>
 </template>
+<style>
+@import "https://cdn.jsdelivr.net/npm/vueperslides@3.6.0/dist/vueperslides.min.css";
+</style>
 <script>
 import axios from "../../_common/axios.mjs";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -56,90 +75,94 @@ import {
   faPause,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
+import { VueperSlides, VueperSlide } from "vueperslides";
+
 library.add(faArrowLeft, faArrowRight, faPause, faPlay);
+
 export default {
   components: {
     FontAwesomeIcon,
+    VueperSlides,
+    VueperSlide,
   },
   props: {
     interval: {
       type: Number,
-      default: 5000,
-    },
-    defaultBanner: {
-      type: [Object, String],
-      default() {
-        return {
-          url: "/",
-          img: "https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_banners_Homepage_Default.jpg",
-          alt: "Welcome! We're your Students' Union - here to make sure you love your time at York",
-        };
-      },
+      default: 6,
     },
   },
   data() {
     return {
-      currentIndex: 0,
-      timer: null,
-      transition: "slide-next",
+      autoplayEnabled: true,
       playing: true,
       banners: [],
+      slidesKey: 0,
+      currentSlideIndex: 0,
     };
   },
   async created() {
-    let banner = this.defaultBanner;
-    if (typeof banner === "string") {
-      banner = JSON.parse(banner);
-    }
-    this.banners.push(banner);
-    this.getBanners();
+    await this.getBanners();
   },
-  async mounted() {
-    this.startSlide();
-  },
-  updated() {},
   methods: {
-    getBanners: function () {
-      axios
-        .get("https://yorksu.org/api/banners/homepage-carousel")
-        .then((response) => {
-          if (response.data.length) {
-            var cleanedData = response.data
-              .replace("{banners}", "[")
-              .replace("{/banners}", "]")
-              .replace(/,\s*]/, "]");
-            var jsonData = JSON.parse(cleanedData);
-            this.banners.push(...jsonData);
+    getBanners: async function () {
+      const response = await axios.get(
+        "https://yorksu.org/api/banners/homepage-carousel",
+      );
+
+      if (response.data.length) {
+        var cleanedData = response.data
+          .replace("{banners}", "[")
+          .replace("{/banners}", "]")
+          .replace(/,\s*]/, "]");
+        var jsonData = JSON.parse(cleanedData);
+        this.banners = jsonData;
+
+        this.$nextTick(() => {
+          if (this.$refs.vueperSlides && this.banners.length > 1) {
+            this.autoplayEnabled = true;
+            this.playing = true;
+            this.$refs.vueperSlides.resumeAutoplay();
           }
         });
+        this.slidesKey += 1;
+      }
     },
     startSlide: function () {
-      this.timer = setInterval(this.next, this.interval);
+      this.autoplayEnabled = true;
       this.playing = true;
+      if (this.$refs.vueperSlides) {
+        this.$refs.vueperSlides.resumeAutoplay();
+      }
     },
     stopSlide: function () {
-      clearInterval(this.timer);
+      this.autoplayEnabled = false;
       this.playing = false;
+      if (this.$refs.vueperSlides) {
+        this.$refs.vueperSlides.pauseAutoplay();
+      }
     },
     next: function () {
-      this.transition = "slide-next";
-      this.stopSlide();
-      if (this.currentIndex === this.banners.length - 1) {
-        this.currentIndex = 0;
-      } else {
-        this.currentIndex += 1;
+      if (this.$refs.vueperSlides) {
+        this.$refs.vueperSlides.next();
       }
-      this.startSlide();
     },
     prev: function () {
-      this.transition = "slide-prev";
-      this.stopSlide();
-      if (this.currentIndex === 0) {
-        this.currentIndex = this.banners.length - 1;
-      } else {
-        this.currentIndex -= 1;
+      if (this.$refs.vueperSlides) {
+        this.$refs.vueperSlides.previous();
       }
-      this.startSlide();
+    },
+    onVueperSlidesReady: function () {
+      this.playing = true;
+      this.autoplayEnabled = true;
+    },
+    onAutoplayPause: function () {
+      this.playing = false;
+    },
+    onAutoplayResume: function () {
+      this.playing = true;
+    },
+    onSlideChange: function (event) {
+      this.currentSlideIndex = event.currentSlide.index;
     },
   },
 };

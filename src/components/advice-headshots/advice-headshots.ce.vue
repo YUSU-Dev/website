@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center justify-center">
     <div class="mt-10 w-full md:w-[90%]">
       <vueper-slides
-        class="no-shadow"
+        class="no-shadow advice-carousel"
         style="max-width: 100vw"
         :visible-slides="4"
         :slide-ratio="1 / 4"
