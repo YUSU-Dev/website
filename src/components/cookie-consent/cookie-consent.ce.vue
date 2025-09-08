@@ -1,6 +1,6 @@
 <template>
   <div
-    id="error-modal"
+    id="cookie-consent"
     class="align-end fixed bottom-0 left-0 z-50 flex justify-start overflow-x-hidden overflow-y-auto"
     aria-label="Cookie Consent Modal"
     role="dialog"
@@ -16,8 +16,9 @@
             <p>
               We use necessary cookies to ensure you get the best experience on
               our website. By continuing on our site you are agreeing to using
-              cookies to help us understand usage and how to improve it. View
-              our
+              cookies to help us understand usage and how to improve it, you can
+              help us further by accepting optional cookies which allows us
+              further insights into your experience on our site. View our
               <a
                 href="/documents/cookie-policy"
                 class="text-blue-800 underline dark:text-blue-400"
@@ -27,14 +28,21 @@
           </div>
         </div>
         <div
-          class="flex items-center justify-items-end gap-3 rounded-b-sm border-t border-gray-200 p-4 md:p-5 dark:border-gray-600"
+          class="flex flex-wrap items-center justify-items-end gap-3 rounded-b-sm border-t border-gray-200 p-4 md:p-5 dark:border-gray-600"
         >
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="rejectCookies()"
+          >
+            Accept Required Cookies
+          </button>
           <button
             type="button"
             class="btn btn-primary"
             @click="acceptCookies()"
           >
-            Close
+            Accept all Cookies
           </button>
         </div>
       </div>
@@ -55,7 +63,7 @@ export default {
   },
   mounted() {
     const cookieConsent = getCookie("yorksu-cookie-consent");
-    if (cookieConsent === "ok") {
+    if (cookieConsent === "ok" || cookieConsent === "rejected") {
       this.displayCookieConsent = false;
     }
   },
@@ -64,13 +72,21 @@ export default {
       setCookie("yorksu-cookie-consent", "ok", {
         expires: 365,
       });
+      window.clarity("consentv2", {
+        ad_storage: "granted",
+        analytics_storage: "granted",
+      });
       this.displayCookieConsent = false;
     },
     rejectCookies() {
       setCookie("yorksu-cookie-consent", "rejected", {
-        expires: 365,
+        expires: 3,
       });
-      this.displayCookieConsent = true;
+      window.clarity("consentv2", {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+      });
+      this.displayCookieConsent = false;
     },
   },
 };
