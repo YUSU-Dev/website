@@ -9,7 +9,8 @@
         aria-label="Homepage carousel"
         :autoplay="autoplayEnabled"
         :duration="interval * 1000"
-        :touchable="true"
+        :touchable="false"
+        :breakpoints="carouselBreakpoints"
         :bullets="false"
         :arrows="false"
         :pause-on-hover="false"
@@ -98,6 +99,11 @@ export default {
       banners: [],
       slidesKey: 0,
       currentSlideIndex: 0,
+      carouselBreakpoints: {
+        767: {
+          touchable: true,
+        },
+      },
     };
   },
   async created() {
