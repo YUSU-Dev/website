@@ -62,29 +62,29 @@ export default {
     };
   },
   mounted() {
-    const cookieConsent = getCookie("yorksu-cookie-consent");
+    const cookieConsent = getCookie("yorksu-clarity-cookie-consent");
     if (cookieConsent === "ok" || cookieConsent === "rejected") {
       this.displayCookieConsent = false;
     }
   },
   methods: {
     acceptCookies() {
-      setCookie("yorksu-cookie-consent", "ok", {
+      setCookie("yorksu-clarity-cookie-consent", "ok", {
         expires: 365,
       });
       window.clarity("consentv2", {
-        ad_storage: "granted",
-        analytics_storage: "granted",
+        ad_Storage: "granted",
+        analytics_Storage: "granted",
       });
       this.displayCookieConsent = false;
     },
     rejectCookies() {
-      setCookie("yorksu-cookie-consent", "rejected", {
+      setCookie("yorksu-clarity-cookie-consent", "rejected", {
         expires: 3,
       });
       window.clarity("consentv2", {
-        ad_storage: "denied",
-        analytics_storage: "denied",
+        ad_Storage: "denied",
+        analytics_Storage: "denied",
       });
       this.displayCookieConsent = false;
     },
