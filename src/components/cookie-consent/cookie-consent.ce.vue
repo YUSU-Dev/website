@@ -62,7 +62,7 @@ export default {
     };
   },
   mounted() {
-    const cookieConsent = getCookie("yorksu-cookie-consent");
+    const cookieConsent = getCookie("yorksu-clarity-cookie-consent");
     if (cookieConsent === "ok" || cookieConsent === "rejected") {
       this.displayCookieConsent = false;
     }
