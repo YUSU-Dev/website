@@ -103,7 +103,7 @@
         <div class="flex max-w-96 flex-col gap-2 md:ml-4">
           <!-- Optional donation -->
           <CharityDonation
-            v-if="items.length > 0 && charityId"
+            v-if="charityId"
             :basket-items="items"
             :charity-id="charityId"
             :donation-basket-id="donationBasketId"

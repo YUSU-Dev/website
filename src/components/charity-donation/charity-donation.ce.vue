@@ -9,7 +9,10 @@
               v-html="charityDonation.description"
             ></div> -->
     <div class="flex items-center justify-between gap-2">
-      <p class="font-bold">{{ charityDonation.name }}</p>
+      <div v-if="loading" class="h-full w-full">
+        <Loading :loading="loading" text white />
+      </div>
+      <p v-else class="font-bold">{{ charityDonation.name }}</p>
       <!-- checkbox -->
       <div>
         <input
@@ -28,6 +31,7 @@
 import axios from "../../_common/axios.mjs";
 import { addToBasketHandler } from "../shop/shop-index/shop.basket.js";
 import { removeItemHandler } from "../shop/shop-index/shop.gateway.js";
+import Loading from "../loading/loading.ce.vue";
 export default {
   name: "CharityDonation",
   emits: ["donation-updated"],
@@ -45,12 +49,16 @@ export default {
       default: null,
     },
   },
+  components: {
+    Loading,
+  },
   data() {
     return {
       charityDonation: {
         type: Array,
         default: () => [],
       },
+      loading: false,
     };
   },
   created() {
@@ -74,6 +82,7 @@ export default {
       }
     },
     async getDonationProduct() {
+      this.loading = true;
       await axios
         .get(`https://pluto.sums.su/api/products/` + this.charityId, {
           headers: {
@@ -87,6 +96,7 @@ export default {
         .catch((error) => {
           console.error(error);
         });
+      this.loading = false;
     },
     toggleDonation() {
       const isChecked = this.charityDonation.checked;

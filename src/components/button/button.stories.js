@@ -12,6 +12,14 @@ export const PrimaryButton = {
   },
 };
 
+export const PrimaryButtonActive = {
+  args: {
+    title: "Primary Button",
+    isPrimary: true,
+    selected: true,
+  },
+};
+
 export const PrimaryButtonWithArrow = {
   args: {
     title: "Primary Button",

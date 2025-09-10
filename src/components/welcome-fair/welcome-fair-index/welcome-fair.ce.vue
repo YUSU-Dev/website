@@ -14,7 +14,7 @@
           title="All"
           @click="updateActiveLocation()"
           is-primary
-          :class="{ 'btn-primary-active': locationFilter === '' }"
+          :class="{ '!btn-primary-active': locationFilter === '' }"
         />
         <Button
           v-for="location in filteredLocations"
@@ -22,7 +22,7 @@
           :title="location.name"
           @click="updateActiveLocation(location.id)"
           is-primary
-          :class="{ 'btn-primary-active': locationFilter === location.id }"
+          :class="{ '!btn-primary-active': locationFilter === location.id }"
         />
       </div>
     </div>
