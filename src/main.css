@@ -123,8 +123,12 @@
   }
 }
 
+/* Button Classes */
+button {
+  @apply cursor-pointer;
+}
+
 @utility btn {
-  /* Button Classes */
   @apply px-3 py-3 no-underline;
 }
 
