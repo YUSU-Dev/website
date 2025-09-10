@@ -51,7 +51,7 @@
                 >
                   <a
                     :class="{
-                      'btn-student-life-active btn-student-life!':
+                      '!btn-student-life-active':
                         SelectedParent.id === Parent.id,
                     }"
                     class="btn-student-life flex h-full w-full justify-center border-2 border-none px-4 py-2"
@@ -71,8 +71,7 @@
               >
                 <a
                   :class="{
-                    'btn-student-life-active btn-student-life!':
-                      SelectedCategory === '',
+                    '!btn-student-life-active': SelectedCategory === '',
                   }"
                   href="#"
                   class="btn-student-life flex justify-center px-4 py-2"
@@ -91,7 +90,7 @@
               >
                 <a
                   :class="{
-                    'btn-student-life-active btn-student-life!':
+                    '!btn-student-life-active':
                       SelectedCategory.id === Category.id,
                   }"
                   class="btn-student-life flex justify-center px-4 py-2"
