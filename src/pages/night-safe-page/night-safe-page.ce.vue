@@ -4,9 +4,24 @@
     image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Advice_Support.jpg"
     title="Nightlife in York"
   />
-  <div id="main" class="container mx-auto">
+  <main id="main" class="container mx-auto">
     <!-- Main content -->
-    <div class="{page_class} body-style flex flex-col gap-y-4">
+    <article class="{page_class} body-style flex flex-col gap-y-4">
+      <div class="flex gap-x-4">
+        <Button
+          text="Report an incident"
+          url="https://docs.google.com/forms/d/e/1FAIpQLSf9iSAF0q4s3VS3fgEgKtp99u7gH_kHsBJZ7rSVbGS80T73KQ/viewform?usp=sf_link"
+          is-primary
+          target="_blank"
+        />
+
+        <Button
+          text="York Safer Clubbing Guide"
+          url="https://assets-cdn.sums.su/YU/Documents/advice/yp-voodo-safer-clubbing.pdf"
+          is-primary
+          target="_blank"
+        />
+      </div>
       <!-- Main Content -->
       <!-- Page 2263 content --->
       <div class="flex flex-col gap-y-4">
@@ -319,18 +334,20 @@
       </div>
       <!-- End of page 2265 content -->
       <!-- End Main Content-->
-    </div>
-  </div>
+    </article>
+  </main>
   <Footer />
 </template>
 <script>
 import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
+import Button from "../../components/button/button.ce.vue";
 export default {
   name: "NightSafePage",
   components: {
     HeroHeader,
     Footer,
+    Button,
   },
 };
 </script>
