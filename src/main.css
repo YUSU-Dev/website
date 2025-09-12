@@ -254,9 +254,8 @@ button {
   main h1,
   main h2,
   main h3,
-  main h4,
-  main p {
-    @apply mb-3;
+  main h4 {
+    @apply mb-1;
   }
 
   main article a {
