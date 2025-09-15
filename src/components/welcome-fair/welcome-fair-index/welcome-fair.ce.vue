@@ -25,6 +25,20 @@
           :class="{ '!btn-primary-active': locationFilter === location.id }"
         />
       </div>
+      <div v-if="locationFilter" class="flex flex-wrap gap-4">
+        <Button
+          title="See on map"
+          is-secondary
+          :url="'https://yorksu.org/map?location=' + locationFilter"
+        />
+        <Button
+          v-if="currentStallMap"
+          title="Stalls Map"
+          is-secondary
+          :url="currentStallMap.map"
+          target="_blank"
+        />
+      </div>
     </div>
     <div class="a-z-wrap" v-if="stalls.length > 0 && !loading">
       <div
@@ -114,6 +128,7 @@
 import axios from "../../../_common/axios.mjs";
 import Button from "../../button/button.ce.vue";
 import { randomImageUrl } from "../../../_common/randomImage.mjs";
+import { stallMaps } from "../../../_common/stallMaps.mjs";
 import InterestButton from "../../interest-button/interest-button.ce.vue";
 import Pagination from "../../Pagination/pagination.ce.vue";
 import Tile from "../../Tile/tile.ce.vue";
@@ -139,6 +154,7 @@ export default {
       PreviousResults: false,
       loading: false,
       search: "",
+      stallMaps,
     };
   },
   mounted() {
@@ -238,6 +254,9 @@ export default {
     },
     getImg() {
       return randomImageUrl("student-life");
+    },
+    currentStallMap() {
+      return this.stallMaps.find((stall) => stall.id === this.locationFilter);
     },
   },
 };

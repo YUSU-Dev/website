@@ -21,6 +21,7 @@
 <script>
 import mapboxgl from "https://cdn.jsdelivr.net/npm/mapbox-gl@3.6.0/+esm";
 import axios from "../../../_common/axios.mjs";
+import { stallMaps } from "../../../_common/stallMaps.mjs";
 import Modal from "../../modal/modal.ce.vue";
 export default {
   name: "WelcomeMap",
@@ -36,6 +37,7 @@ export default {
       urlLocation: "",
       activeLocation: {},
       ModalClosed: true,
+      stallMaps,
     };
   },
   mounted() {
@@ -222,6 +224,17 @@ export default {
         seeStallsButton.textContent = "See Stalls";
         seeStallsButton.href = `/welcome-fair?location=${features.properties.id}`;
         popupContent.appendChild(seeStallsButton);
+
+        const stallMap = this.stallMaps.find(
+          (stall) => stall.id === features.properties.id,
+        );
+        if (stallMap) {
+          const seeStallsMap = seeStallsButton.cloneNode(true);
+          seeStallsMap.textContent = "Stalls Map";
+          seeStallsMap.href = stallMap.map;
+          seeStallsMap.target = "_blank";
+          popupContent.appendChild(seeStallsMap);
+        }
       }
 
       const directionsButton = document.createElement("button");
