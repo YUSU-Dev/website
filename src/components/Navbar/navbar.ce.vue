@@ -523,8 +523,13 @@ export default {
                 link: "/documents",
               },
               {
-                name: "Jobs",
+                name: "York SU Jobs",
                 link: "https://apply.yorksu.org",
+                target: "_blank",
+              },
+              {
+                name: "External Jobs",
+                link: "https://joblinkstudent.jobs/cities/jobs-in-york/",
                 target: "_blank",
               },
               {
