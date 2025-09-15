@@ -1,3 +1,4 @@
+// This file contains the stall maps for different locations at the welcome fair, and is used by the welcome-map and welcome-fair components.
 export const stallMaps = [
   {
     id: "1",
