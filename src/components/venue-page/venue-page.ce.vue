@@ -5,12 +5,14 @@
   <main>
     <article v-html="page_content"></article>
   </main>
+  <VenueMenu :title="title" />
   <Events :venueid="page_class" title="Events" icon class="" />
   <article v-html="additional_page_content"></article>
 </template>
 <!-- eslint-disable vue/prop-name-casing -->
 <script>
 import Events from "../../components/Events/events.ce.vue";
+import VenueMenu from "../../components/venue-menu/venue-menu.ce.vue";
 
 export default {
   name: "VenuePage",
@@ -38,6 +40,7 @@ export default {
   },
   components: {
     Events,
+    VenueMenu,
   },
 };
 </script>
