@@ -1,31 +1,36 @@
 <template>
-  <div class="py-10" v-if="menu">
-    <button
-      :id="buttonId"
-      class="btn-primary rounded p-4 transition-[width] duration-500 ease-in-out"
-      :class="menuOpen ? 'w-full rounded-b-none' : 'w-48'"
-      @click="menuOpen = !menuOpen"
-      :aria-expanded="menuOpen"
-      :aria-controls="menuContentId"
-      :aria-label="`${menuOpen ? 'Close' : 'Open'} ${title} menu`"
-      type="button"
-    >
-      {{ title }} menu
-    </button>
-    <div
-      :id="menuContentId"
-      class="overflow-hidden rounded-b border bg-[#f7f7f7] transition-all duration-500 ease-in-out"
-      :class="menuOpen ? 'max-h-[100vh] w-full' : 'max-h-0 w-48 border-none'"
-      :aria-hidden="!menuOpen"
-      :aria-labelledby="buttonId"
-    >
-      <iframe
-        v-if="menu"
-        :src="pdfUrl"
-        class="aspect-[4/5] max-h-[90vh] min-h-[50vh] w-full"
-        :aria-label="`${title} menu`"
-        :tabindex="menuOpen ? '0' : '-1'"
-      />
+  <div class="flex flex-col gap-y-4 py-10" v-if="matchingMenus.length > 0">
+    <div v-for="(menuItem, index) in matchingMenus" :key="index">
+      <button
+        :id="getButtonId(index)"
+        class="btn-primary rounded p-4 transition-[width] duration-500 ease-in-out"
+        :class="openMenus[index] ? 'w-full rounded-b-none' : 'w-48'"
+        @click="toggleMenu(index)"
+        :aria-expanded="openMenus[index]"
+        :aria-controls="getMenuContentId(index)"
+        :aria-label="`${openMenus[index] ? 'Close' : 'Open'} ${menuItem.displayName}`"
+        type="button"
+      >
+        {{ menuItem.displayName }}
+      </button>
+      <div
+        :id="getMenuContentId(index)"
+        class="overflow-hidden rounded-b border bg-[#f7f7f7] transition-all duration-500 ease-in-out"
+        :class="
+          openMenus[index] ? 'max-h-[100vh] w-full' : 'max-h-0 w-48 border-none'
+        "
+        :aria-hidden="!openMenus[index]"
+        :aria-labelledby="getButtonId(index)"
+      >
+        <iframe
+          v-if="menuItem.url"
+          :src="getPdfUrl(menuItem.url)"
+          :title="`${menuItem.displayName} PDF`"
+          class="aspect-[4/5] max-h-[90vh] min-h-[50vh] w-full"
+          :aria-label="`${menuItem.displayName} menu`"
+          :tabindex="openMenus[index] ? '0' : '-1'"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -44,26 +49,54 @@ export default {
       menus: [
         {
           title: "The Courtyard",
-          menu: "https://assets-cdn.sums.su/YU/Evening_Menu_Online.pdf",
+          buttonName: "The Courtyard Lunch Menu",
+          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Courtyard_Lunch_Menu_Online_2025.pdf",
+        },
+        {
+          title: "The Courtyard",
+          buttonName: "The Courtyard Evening Menu",
+          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Courtyard_Evening_Menu_Online_2025.pdf",
+        },
+        {
+          title: "The Glasshouse",
+          buttonName: "The Glasshouse Menu",
+          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Glasshouse_Menu_Online_2025.pdf",
+        },
+        {
+          title: "The Kitchen at Alcuin",
+          buttonName: "The Kitchen Menu",
+          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Kitchen_Online_Menu_2025.pdf",
         },
       ],
-      menuOpen: false,
+      openMenus: {},
     };
   },
   computed: {
-    menu() {
-      const menu = this.menus.find((m) => m.title === this.title);
-      return menu ? menu.menu : null;
+    matchingMenus() {
+      const matches = this.menus.filter((m) => m.title === this.title);
+      return matches.map((match) => ({
+        ...match,
+        url: match.menu,
+        displayName: match.buttonName || match.title,
+      }));
     },
-    pdfUrl() {
-      if (!this.menu) return null;
-      return `${this.menu}#view=FitH&zoom=page-width`;
+  },
+  methods: {
+    toggleMenu(index) {
+      this.openMenus = {
+        ...this.openMenus,
+        [index]: !this.openMenus[index],
+      };
     },
-    menuContentId() {
-      return `menu-content-${this.title?.toLowerCase().replace(/\s+/g, "-") || "default"}`;
+    getPdfUrl(menuUrl) {
+      if (!menuUrl) return null;
+      return `${menuUrl}#view=FitH&zoom=page-width`;
     },
-    buttonId() {
-      return `menu-button-${this.title?.toLowerCase().replace(/\s+/g, "-") || "default"}`;
+    getMenuContentId(index) {
+      return `menu-content-${this.title?.toLowerCase().replace(/\s+/g, "-") || "default"}-${index}`;
+    },
+    getButtonId(index) {
+      return `menu-button-${this.title?.toLowerCase().replace(/\s+/g, "-") || "default"}-${index}`;
     },
   },
 };
