@@ -11,7 +11,7 @@ export const Default = {
 
 export const Courtyard = {
   args: {
-    title: "Courtyard",
+    title: "The Courtyard",
     page_content: `<p>Whether you&#39;re just looking for a daytime coffee or wanting to watch some live sports on an evening, The Courtyard is the place to be! With a range of events from quizzes to karaoke, a beer garden, and a variety of food to satisfy your taste buds, you can always find what you need at The Courtyard.</p><hr /><h2>Opening hours</h2><p>Monday - Friday 8:30-23:00</p><p>Saturday - Sunday 11:00-23:00</p><hr /><h2>Order to table</h2><p>You can now order food and drink directly to your table in Courtyard!</p><!-- <p><a href="https://order.storekit.com/yusu-courtyard/menu">Use this link to get started!</a></p> --><p>Snap the QR code on your table to get started or <a href="https://order.storekit.com/yusu-courtyard/menu">click here to open our ordering portal.</a></p><hr /><h2>Food and drink</h2><p>We have a range of food and drinks on offer, so why not pop in and take a look?</p><ul><li><a href="https://assets-cdn.sums.su/YU/Venues/Weirdough_Menu.pdf" target="_blank">WeirDough menu</a></li></ul>`,
     page_class: "1",
     page_key_image:
