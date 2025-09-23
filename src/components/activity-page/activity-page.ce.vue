@@ -93,6 +93,20 @@
             :tiktok="pageActivity.tiktok"
           />
         </div>
+        <div v-if="documents.length > 0" class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">Documents</h2>
+          <div class="flex flex-col gap-y-4">
+            <a
+              v-for="(document, index) in documents"
+              :key="index"
+              :href="document.document_url"
+              target="_blank"
+              class="btn btn-primary w-full px-4 text-center"
+            >
+              {{ document.document_name }}
+            </a>
+          </div>
+        </div>
         <div v-if="badges.length > 0" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">Badges</h2>
           <div class="xxs:grid-cols-3 grid grid-cols-2 gap-4 sm:grid-cols-2">
@@ -141,6 +155,7 @@ export default {
       isAcademicRep: false,
       isActivity: true,
       badges: [],
+      documents: [],
     };
   },
   components: {
@@ -172,9 +187,17 @@ export default {
             "X-Site-Id": self.siteid,
           },
         }),
+        axios.get(
+          "https://yorksu.org/activities/documents-api/" + self.groupId,
+          {
+            headers: {
+              "X-Site-Id": self.siteid,
+            },
+          },
+        ),
       ])
       .then(
-        axios.spread((response1, response2, response3) => {
+        axios.spread((response1, response2, response3, response4) => {
           self.pageActivity = response1.data;
           self.loading = false;
           self.pageActivity.category = response2.data.find(
@@ -187,6 +210,9 @@ export default {
           this.isActivity = !this.isAdoptable && !this.isAcademicRep;
           self.badges = JSON.parse(
             response3.data.replace(/,\]/g, "]"), // Remove trailing commas before parsing
+          );
+          self.documents = JSON.parse(
+            response4.data.replace(/,\]/g, "]"), // Remove trailing commas before parsing
           );
         }),
       );
