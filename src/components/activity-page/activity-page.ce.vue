@@ -182,18 +182,9 @@ export default {
             "X-Site-Id": self.siteid,
           },
         }),
-        axios.get("https://yorksu.org/activities/badges-api/" + self.groupId, {
-          headers: {
-            "X-Site-Id": self.siteid,
-          },
-        }),
+        axios.get("https://yorksu.org/activities/badges-api/" + self.groupId),
         axios.get(
           "https://yorksu.org/activities/documents-api/" + self.groupId,
-          {
-            headers: {
-              "X-Site-Id": self.siteid,
-            },
-          },
         ),
       ])
       .then(
