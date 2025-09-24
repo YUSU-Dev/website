@@ -29,6 +29,8 @@
           class="aspect-[4/5] max-h-[90vh] min-h-[50vh] w-full"
           :aria-label="`${menuItem.displayName} menu`"
           :tabindex="openMenus[index] ? '0' : '-1'"
+          allow="fullscreen"
+          scrolling="yes"
         />
       </div>
     </div>
@@ -90,7 +92,7 @@ export default {
     },
     getPdfUrl(menuUrl) {
       if (!menuUrl) return null;
-      return `${menuUrl}#view=FitH&zoom=page-width`;
+      return `https://drive.google.com/viewerng/viewer?embedded=true&url=${menuUrl}#view=FitH&zoom=page-width`;
     },
     getMenuContentId(index) {
       return `menu-content-${this.title?.toLowerCase().replace(/\s+/g, "-") || "default"}-${index}`;
