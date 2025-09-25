@@ -6,6 +6,7 @@
     <article v-html="page_content"></article>
   </main>
   <VenueMenu :title="title" />
+  <SlideShow folder-id="491|506|520|65|491" />
   <Events :venueid="page_class" title="Events" icon class="" />
   <article v-html="additional_page_content"></article>
 </template>
@@ -13,6 +14,7 @@
 <script>
 import Events from "../../components/Events/events.ce.vue";
 import VenueMenu from "../../components/venue-menu/venue-menu.ce.vue";
+import SlideShow from "../../components/slideshow/slideshow.ce.vue";
 
 export default {
   name: "VenuePage",
@@ -41,6 +43,7 @@ export default {
   components: {
     Events,
     VenueMenu,
+    SlideShow,
   },
 };
 </script>
