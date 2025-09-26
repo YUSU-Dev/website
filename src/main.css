@@ -587,6 +587,30 @@ button {
   @apply opacity-90;
 }
 
+/* Masonry Layout */
+.masonry-container {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-container {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-container {
+    column-count: 3;
+  }
+}
+
+.masonry-item {
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+}
+
 @layer properties {
   *,
   :before,
