@@ -27,7 +27,7 @@
         Search through
         <a
           href="https://support.yorksu.org/support/home"
-          class="text-blue-800 hover:underline"
+          class="text-blue-800 underline"
           >our FAQs</a
         >&nbsp;to&nbsp;find the answer!
       </p>
@@ -41,9 +41,7 @@
       <p>
         Come and visit us in the Union building during our opening hours, give
         us a ring on 01904 323724, or send us an email at
-        <a
-          href="mailto:helpdesk@yorksu.org"
-          class="text-blue-800 hover:underline"
+        <a href="mailto:helpdesk@yorksu.org" class="text-blue-800 underline"
           >helpdesk@yorksu.org</a
         >.
       </p>
@@ -65,7 +63,7 @@
               <li v-for="email in department.emails" :key="email">
                 <a
                   :href="`mailto:${email}`"
-                  class="break-all text-blue-800 hover:underline"
+                  class="break-all text-blue-800 underline"
                   >{{ email }}</a
                 >
               </li>
@@ -159,7 +157,7 @@
         many other University buildings on the
         <a
           href="https://www.accessable.co.uk/university-of-york/access-guides/sc-yusu-student-centre"
-          class="text-blue-800 hover:underline"
+          class="text-blue-800 underline"
         >
           AccessAble website</a
         >, or on the free AccessAble App.
