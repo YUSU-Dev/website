@@ -25,7 +25,10 @@
 
       <p>
         Search through
-        <a href="https://support.yorksu.org/support/home">our FAQs</a
+        <a
+          href="https://support.yorksu.org/support/home"
+          class="text-blue-800 hover:underline"
+          >our FAQs</a
         >&nbsp;to&nbsp;find the answer!
       </p>
 
@@ -38,7 +41,11 @@
       <p>
         Come and visit us in the Union building during our opening hours, give
         us a ring on 01904 323724, or send us an email at
-        <a href="mailto:helpdesk@yorksu.org">helpdesk@yorksu.org</a>.
+        <a
+          href="mailto:helpdesk@yorksu.org"
+          class="text-blue-800 hover:underline"
+          >helpdesk@yorksu.org</a
+        >.
       </p>
 
       <p>&nbsp;</p>
@@ -123,7 +130,7 @@
             class="w-full"
             style="border: 0"
             tabindex="0"
-            title="Location of YUSU Reception on Google Maps"
+            title="Location of York SU Reception on Google Maps"
           ></iframe>
         </div>
 
@@ -152,6 +159,7 @@
         many other University buildings on the
         <a
           href="https://www.accessable.co.uk/university-of-york/access-guides/sc-yusu-student-centre"
+          class="text-blue-800 hover:underline"
         >
           AccessAble website</a
         >, or on the free AccessAble App.
