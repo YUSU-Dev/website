@@ -51,7 +51,7 @@
           :key="department.name"
           class="rounded border-2"
         >
-          <div class="h-2 w-full" :class="`bg-${department.colour}`"></div>
+          <div class="h-2 w-full" :class="`${department.colour}`"></div>
           <div class="p-4">
             <h3 class="mb-2 text-xl font-bold">{{ department.name }}</h3>
             <ul class="list-disc pl-[18px]">
@@ -195,47 +195,47 @@ export default {
         {
           name: "Advice and Support Centre",
           emails: ["advice@yorksu.org"],
-          colour: "[#00a463]",
+          colour: "bg-advice-green",
         },
         {
           name: "Sport Clubs",
           emails: ["sportsadmin@yorksu.org"],
-          colour: "mustard",
+          colour: "bg-mustard",
         },
         {
           name: "Societies & Student Media",
           emails: ["societies@yorksu.org"],
-          colour: "mustard",
+          colour: "bg-mustard",
         },
         {
           name: "Sport",
           emails: ["collegesport@yorksu.org", "socialsport@yorksu.org"],
-          colour: "mustard",
+          colour: "bg-mustard",
         },
         {
           name: "Helpdesk",
           emails: ["helpdesk@yorksu.org", "transport@yorksu.org"],
-          colour: "light-pink",
+          colour: "bg-light-pink",
         },
         {
           name: "IT",
           emails: ["it@yorksu.org"],
-          colour: "beige",
+          colour: "bg-beige",
         },
         {
           name: "Events and advertising",
           emails: ["events@yorksu.org", "advertising@yorksu.org"],
-          colour: "primary-red",
+          colour: "bg-primary-red",
         },
         {
           name: "Communications",
           emails: ["communications@yorksu.org"],
-          colour: "primary-red",
+          colour: "bg-primary-red",
         },
         {
           name: "Student Voice",
           emails: ["engagement@yorksu.org"],
-          colour: "primary-red",
+          colour: "bg-primary-red",
         },
         {
           name: "Finance",
@@ -245,12 +245,12 @@ export default {
             "finance-suppliers@yorksu.org",
             "finance-customer@yorksu.org",
           ],
-          colour: "mustard",
+          colour: "bg-mustard",
         },
         {
           name: "Complaints",
           emails: ["complaints@yorksu.org"],
-          colour: "mustard",
+          colour: "bg-mustard",
         },
       ],
     };
