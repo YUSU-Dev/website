@@ -50,31 +50,34 @@
 
       <h3 class="mb-6">Specific enquiries</h3>
 
-      <div class="xs:grid-cols-2 grid w-full grid-cols-1 gap-4 lg:grid-cols-3">
+      <div class="masonry-container w-full">
         <div
           v-for="department in departments"
           :key="department.name"
-          class="rounded border-2"
+          class="masonry-item mb-4 break-inside-avoid rounded border-2"
         >
           <div class="h-2 w-full" :class="`${department.colour}`"></div>
           <div class="p-4">
             <h3 class="mb-2 text-xl font-bold">{{ department.name }}</h3>
             <ul class="list-disc pl-[18px]">
-              <li v-for="email in department.emails" :key="email">
+              <li v-for="email in department.emails" :key="email.email">
+                <div v-if="email.description" class="mb-1 text-sm">
+                  {{ email.description }}
+                </div>
                 <a
-                  :href="`mailto:${email}`"
+                  :href="`mailto:${email.email}`"
                   class="break-all text-blue-800 underline"
-                  >{{ email }}</a
+                  >{{ email.email }}</a
                 >
               </li>
             </ul>
           </div>
         </div>
-        <div class="flex flex-col rounded border-2">
+        <div class="masonry-item mb-4 break-inside-avoid rounded border-2">
           <div class="bg-primary-red h-2 w-full"></div>
-          <div class="flex flex-grow flex-col p-4">
+          <div class="p-4">
             <h3 class="mb-2 text-xl font-bold">Social Media</h3>
-            <div class="flex flex-grow items-center justify-center">
+            <div class="flex items-center justify-center py-4">
               <ul class="flex gap-8">
                 <li>
                   <a
@@ -200,62 +203,97 @@ export default {
       departments: [
         {
           name: "Advice and Support Centre",
-          emails: ["advice@yorksu.org"],
+          emails: [{ email: "advice@yorksu.org", description: "" }],
           colour: "bg-advice-green",
         },
         {
-          name: "Sport Clubs",
-          emails: ["sportsadmin@yorksu.org"],
-          colour: "bg-mustard",
-        },
-        {
           name: "Societies & Student Media",
-          emails: ["societies@yorksu.org"],
+          emails: [{ email: "societies@yorksu.org", description: "" }],
           colour: "bg-mustard",
         },
         {
-          name: "Sport",
-          emails: ["collegesport@yorksu.org", "socialsport@yorksu.org"],
+          name: "Sports",
+          emails: [
+            {
+              email: "collegesport@yorksu.org",
+              description: "For college sport enquiries:",
+            },
+            {
+              email: "socialsport@yorksu.org",
+              description: "For social sport enquiries:",
+            },
+            {
+              email: "sportsadmin@yorksu.org",
+              description: "For BUCS enquiries:",
+            },
+          ],
           colour: "bg-mustard",
         },
         {
           name: "Helpdesk",
-          emails: ["helpdesk@yorksu.org", "transport@yorksu.org"],
+          emails: [
+            {
+              email: "helpdesk@yorksu.org",
+              description: "For helpdesk enquiries:",
+            },
+            {
+              email: "transport@yorksu.org",
+              description: "For transport enquiries:",
+            },
+          ],
           colour: "bg-light-pink",
         },
         {
           name: "IT",
-          emails: ["it@yorksu.org"],
+          emails: [{ email: "it@yorksu.org", description: "" }],
           colour: "bg-beige",
         },
         {
           name: "Events and advertising",
-          emails: ["events@yorksu.org", "advertising@yorksu.org"],
+          emails: [
+            { email: "events@yorksu.org", description: "For event enquiries:" },
+            {
+              email: "advertising@yorksu.org",
+              description: "For advertising enquiries:",
+            },
+          ],
           colour: "bg-primary-red",
         },
         {
           name: "Communications",
-          emails: ["communications@yorksu.org"],
+          emails: [{ email: "communications@yorksu.org", description: "" }],
           colour: "bg-primary-red",
         },
         {
           name: "Student Voice",
-          emails: ["engagement@yorksu.org"],
+          emails: [{ email: "engagement@yorksu.org", description: "" }],
           colour: "bg-primary-red",
         },
         {
           name: "Finance",
           emails: [
-            "finance@yorksu.org",
-            "finance-payment-request@yorksu.org",
-            "finance-suppliers@yorksu.org",
-            "finance-customer@yorksu.org",
+            {
+              email: "finance@yorksu.org",
+              description: "For student group and general enquiries:",
+            },
+            {
+              email: "finance-payment-request@yorksu.org",
+              description: "For student group payment request authorisations:",
+            },
+            {
+              email: "finance-suppliers@yorksu.org",
+              description: "For buying enquiries:",
+            },
+            {
+              email: "finance-customer@yorksu.org",
+              description: "For selling enquiries:",
+            },
           ],
           colour: "bg-mustard",
         },
         {
           name: "Complaints",
-          emails: ["complaints@yorksu.org"],
+          emails: [{ email: "complaints@yorksu.org", description: "" }],
           colour: "bg-mustard",
         },
       ],
