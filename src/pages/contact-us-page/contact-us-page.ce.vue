@@ -45,7 +45,7 @@
 
       <h3 class="mb-6">Specific enquiries</h3>
 
-      <div class="grid w-full grid-cols-3 gap-4">
+      <div class="xs:grid-cols-2 grid w-full grid-cols-1 gap-4 lg:grid-cols-3">
         <div
           v-for="department in departments"
           :key="department.name"
@@ -58,7 +58,7 @@
               <li v-for="email in department.emails" :key="email">
                 <a
                   :href="`mailto:${email}`"
-                  class="text-blue-800 hover:underline"
+                  class="break-all text-blue-800 hover:underline"
                   >{{ email }}</a
                 >
               </li>
@@ -67,9 +67,9 @@
         </div>
         <div class="flex flex-col rounded border-2">
           <div class="bg-primary-red h-2 w-full"></div>
-          <div class="flex-grow p-4">
+          <div class="flex flex-grow flex-col p-4">
             <h3 class="mb-2 text-xl font-bold">Social Media</h3>
-            <div class="flex h-full items-center justify-center">
+            <div class="flex flex-grow items-center justify-center">
               <ul class="flex gap-8">
                 <li>
                   <a
@@ -120,7 +120,7 @@
             frameborder="0"
             height="450"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d814.8908980123266!2d-1.0549032676943715!3d53.945621565148834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879303476496f6d%3A0xdc7fdec68c2a4ed!2sUniversity%20of%20York%20Students'%20Union%20(YUSU)!5e0!3m2!1sen!2suk!4v1613489348499!5m2!1sen!2suk"
-            class="h-auto w-full"
+            class="w-full"
             style="border: 0"
             tabindex="0"
             title="Location of YUSU Reception on Google Maps"
@@ -195,7 +195,7 @@ export default {
         {
           name: "Advice and Support Centre",
           emails: ["advice@yorksu.org"],
-          colour: "advice-green",
+          colour: "[#00a463]",
         },
         {
           name: "Sport Clubs",
