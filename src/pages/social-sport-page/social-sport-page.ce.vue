@@ -20,7 +20,6 @@
         friends, no matter your ability.&nbsp;
       </p>
 
-      <p><meta charset="utf-8" /></p>
 
       <p dir="ltr">
         Some sessions charge a small fee, but most are free! Please register
