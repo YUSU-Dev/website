@@ -20,7 +20,6 @@
         friends, no matter your ability.&nbsp;
       </p>
 
-
       <p dir="ltr">
         Some sessions charge a small fee, but most are free! Please register
         your interest via the events below.
@@ -29,7 +28,6 @@
       <p dir="ltr">&nbsp;</p>
 
       <h2 dir="ltr">Social Sport Leagues</h2>
-
 
       <p dir="ltr">
         You can also take part in social sport leagues. These are fun,

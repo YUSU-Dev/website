@@ -38,12 +38,12 @@ function startServer() {
         "https://yorksu.org",
         "https://yu-development.sums.su",
       ],
-    })
+    }),
   );
   app.use("/components", serveStatic(".dev"));
 
   const htmlTemplate = Handlebars.compile(
-    fs.readFileSync("./dev-banner.html", { encoding: "utf-8" })
+    fs.readFileSync("./dev-banner.html", { encoding: "utf-8" }),
   );
   app.use((req, res) => {
     if (req.originalUrl === "/") {
