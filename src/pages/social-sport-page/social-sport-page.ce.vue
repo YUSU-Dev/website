@@ -4,7 +4,7 @@
     title="Social Sport"
   />
   <div class="container mx-auto">
-    <SocialSportTimetable />
+    <EventTimetable :button-title="'Social Sport Timetable'" :type-id="30" />
   </div>
   <div id="main" class="body-style container mx-auto">
     <!-- Main Content -->
@@ -61,14 +61,14 @@
 import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
 import Events from "../../components/Events/events.ce.vue";
-import SocialSportTimetable from "../../components/social-sport-timetable/social-sport-timetable.ce.vue";
+import EventTimetable from "../../components/event-timetable/event-timetable.ce.vue";
 export default {
   name: "SocialSportPage",
   components: {
     HeroHeader,
     Footer,
     Events,
-    SocialSportTimetable,
+    EventTimetable,
   },
 };
 </script>

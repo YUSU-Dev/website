@@ -7,10 +7,10 @@
       @click="toggleTimetable"
       :aria-expanded="isExpanded"
       aria-controls="timetable-content"
-      :aria-label="`${isExpanded ? 'Close' : 'Open'} Social Sport Timetable`"
+      :aria-label="`${isExpanded ? 'Close' : 'Open'} ${buttonTitle}`"
       type="button"
     >
-      Social Sport Timetable
+      {{ buttonTitle }}
     </button>
     <div
       id="timetable-content"
@@ -121,9 +121,19 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faArrowLeft, faArrowRight);
 export default {
-  name: "SocialSportTimetable",
+  name: "EventTimetable",
   components: {
     FontAwesomeIcon,
+  },
+  props: {
+    buttonTitle: {
+      type: String,
+      default: null,
+    },
+    typeId: {
+      type: Number,
+      default: null,
+    },
   },
   data() {
     return {
@@ -317,9 +327,9 @@ export default {
       });
 
       const requests = monthsToFetch.map((month) =>
-        axios.get(`https://pluto.sums.su/api/events?typeId=30&date=${month}`, {
-          headers: { "X-Site-Id": self.siteid },
-        }),
+        axios.get(
+          `https://pluto.sums.su/api/events?typeId=${this.typeId}&date=${month}`,
+        ),
       );
 
       const responses = await Promise.all(requests);
