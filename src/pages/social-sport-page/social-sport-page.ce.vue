@@ -30,7 +30,6 @@
 
       <h2 dir="ltr">Social Sport Leagues</h2>
 
-      <p dir="ltr"><meta charset="utf-8" /></p>
 
       <p dir="ltr">
         You can also take part in social sport leagues. These are fun,
