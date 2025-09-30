@@ -611,6 +611,12 @@ button {
   break-inside: avoid;
 }
 
+/* Timetable */
+.timetable-title {
+  @apply text-sm text-wrap;
+  word-break: break-word;
+}
+
 @layer properties {
   *,
   :before,
