@@ -27,13 +27,9 @@
       class="body-style mb-5"
     ></article>
     <Loading :loading="loading" text></Loading>
-    <div class="flex flex-col gap-4 pt-10">
+    <div class="flex flex-col gap-4 pt-10" v-if="categories.length">
       <h2 class="text-3xl font-bold">Related News</h2>
-      <News
-        v-if="categories.length"
-        :selected-categories="categories"
-        embedded
-      />
+      <News :selected-categories="categories" embedded />
     </div>
   </main>
 </template>
