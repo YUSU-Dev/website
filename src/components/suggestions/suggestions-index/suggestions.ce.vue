@@ -52,11 +52,11 @@
         <div class="">
           <div>
             <!-- Nav tabs -->
-            <ul role="tablist" data-target="tabs" class="flex flex-wrap gap-2 pl-0 mb-10">
+            <ul role="list" data-target="tabs" class="flex flex-wrap gap-2 pl-0 mb-10">
               {tabs}
-              <li class="list-none ">
+              <li class="list-none" role="listitem">
                 <a class="btn btn-student-voice flex items-center gap-2 tab-button" data-toggle="tab"
-                  href="javascript:tab({id});" role="tab" id="tab-{id}">
+                  href="javascript:tab({id});" id="tab-{id}">
                   {name}
                   <span class="">{suggestions_count}</span>
                 </a>
