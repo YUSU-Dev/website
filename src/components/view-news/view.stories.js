@@ -22,3 +22,10 @@ export const OldArticle = {
     articleid: "1348",
   },
 };
+
+export const WithCategories = {
+  args: {
+    articleid: "2266",
+    categoryName: "Student Life|Freshers| ",
+  },
+};
