@@ -5,6 +5,7 @@
     id="maincontent"
     class="container mx-auto flex flex-col items-center justify-center py-20"
   >
+    <h1 class="sr-only">York SU Homepage</h1>
     <div class="flex justify-center text-center">
       <h2 class="pb-16 text-3xl font-bold">How can we help today?</h2>
     </div>

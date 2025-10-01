@@ -8,12 +8,12 @@
         <h2 class="xxs:text-sm xs:text-lg mb-2 md:text-xl">
           {{ name }}
         </h2>
-        <h3
+        <p
           class="xxs:!text-xs xs:!text-sm md:!text-base"
           v-if="category && !activeCategory"
         >
           {{ category }}
-        </h3>
+        </p>
         <div class="mt-2 hidden items-center text-sm md:flex md:text-base">
           <p class="">Learn more</p>
           <FontAwesomeIcon

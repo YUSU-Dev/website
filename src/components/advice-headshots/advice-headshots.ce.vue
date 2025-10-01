@@ -12,6 +12,7 @@
         arrows-outside
         @slide="updateActiveSlide"
         :breakpoints="breakpoints"
+        role="region"
       >
         <vueper-slide
           v-for="(headshot, index) in headshots"

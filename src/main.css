@@ -71,6 +71,10 @@
   @apply min-h-[256px];
 }
 
+.footer li {
+  @apply min-h-[24px];
+}
+
 @utility notice-close {
   /* Notice Bar */
   @apply absolute right-0 p-2;
