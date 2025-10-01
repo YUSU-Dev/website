@@ -27,6 +27,10 @@
       class="body-style mb-5"
     ></article>
     <Loading :loading="loading" text></Loading>
+    <div class="flex flex-col gap-4 pt-10" v-if="categories.length">
+      <h2 class="text-3xl font-bold">Related News</h2>
+      <News :selected-categories="categories" embedded />
+    </div>
   </main>
 </template>
 <style>
@@ -41,6 +45,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "https://cdn.jsdelivr.net/npm/dayjs@1.11.13/+esm";
+import News from "../news/news.ce.vue";
 
 library.add(faClock);
 export default {
@@ -48,10 +53,12 @@ export default {
     Button,
     Loading,
     FontAwesomeIcon,
+    News,
   },
   props: {
     siteid: { type: String, default: "" },
     articleid: { type: Number, default: 0 },
+    categoryName: { type: String, default: null },
   },
   data() {
     return {
@@ -59,6 +66,7 @@ export default {
       articleAge: "",
       loading: true,
       image: "",
+      categories: [],
     };
   },
   methods: {
@@ -83,23 +91,40 @@ export default {
         return null;
       }
     },
+    async getArticleCategories() {
+      let name = this.categoryName
+        .split("|")
+        .map((cat) => cat.trim())
+        .filter(Boolean);
+      const requests = name.map((category) =>
+        axios.get(
+          `https://pluto.sums.su/api/news/categories?searchTerm=${encodeURIComponent(category)}`,
+        ),
+      );
+      const responses = await Promise.all(requests);
+
+      const categoryIds = responses
+        .map((response) => response.data.data)
+        .flat()
+        .map((category) => category.id);
+      this.categories = categoryIds.join(",");
+    },
   },
   mounted() {
     var self = this;
     self.image = self.randomImage();
     self.loading = true;
     axios
-      .get("https://pluto.sums.su/api/news/" + self.articleid, {
-        headers: {
-          "X-Site-Id": self.siteid,
-        },
-      })
+      .get("https://pluto.sums.su/api/news/" + self.articleid)
       .then(function (response) {
         self.Article = response.data;
         if (self.Article.thumbnail) {
           self.image = self.Article.thumbnail;
         }
         self.articleAge = self.getArticleAge(self.Article.date);
+        if (self.categoryName) {
+          self.getArticleCategories();
+        }
         self.loading = false;
       })
       .catch(function () {
