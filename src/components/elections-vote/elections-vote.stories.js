@@ -15,3 +15,14 @@ export const Default = {
     },
   },
 };
+
+export const Referendum = {
+  args: {
+    electionId: "2326",
+  },
+  parameters: {
+    a11y: {
+      disable: true, // Disables the a11y check for this specific story, because of an accessibility issue we are looking in to. [WEB-459]
+    },
+  },
+};

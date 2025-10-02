@@ -16,7 +16,7 @@
             </FontAwesomeIcon>
             icon to view more in depth candidate information.
           </li>
-          <li>
+          <li v-if="election.method === 'STV'">
             Vote using the STV system, clicking your choices in order of
             preference.
             <a
@@ -25,6 +25,10 @@
               target="_blank"
               >Further explanation</a
             >.
+          </li>
+          <li v-if="election.method === 'REFERENDUM'">
+            Vote by selecting your choice. You can only select one option in a
+            referendum.
           </li>
           <li>
             You may also choose to spoil your vote by ticking “Spoil vote” at
@@ -43,7 +47,12 @@
           </li>
         </ol>
       </div>
-      <h2 class="text-3xl font-bold">Candidates</h2>
+      <h2 v-if="election.method === 'STV'" class="text-3xl font-bold">
+        Candidates
+      </h2>
+      <h2 v-if="election.method === 'REFERENDUM'" class="text-3xl font-bold">
+        Options
+      </h2>
       <div
         class="xxs:grid-cols-2 xs:grid-cols-3 mt-4 mb-10 grid gap-6 md:grid-cols-4 lg:grid-cols-5"
       >
@@ -57,62 +66,73 @@
             'selected-candidate': selectedCandidates.includes(candidate.id),
           }"
         >
-          <div class="relative">
-            <div class="absolute flex w-full justify-end">
-              <div
-                v-if="candidate.voteOrder"
-                class="bg-voice-orange m-2 flex h-8 w-8 items-center justify-center rounded-full border border-black"
-              >
-                <p>{{ candidate.voteOrder }}</p>
-              </div>
-            </div>
-            <div v-if="candidate.assets.document_photo">
-              <img
-                :src="candidate.assets.document_photo"
-                alt=""
-                draggable="false"
-              />
-            </div>
-            <div v-else>
-              <img
-                src="https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Pink.webp"
-                alt=""
-                draggable="false"
-              />
-            </div>
-          </div>
-          <div class="flex h-full w-full flex-col p-2 text-start">
-            <h3 class="line-clamp-3 text-lg font-semibold">
-              {{ candidate.name }}
-            </h3>
-            <div
-              v-if="candidate.id != 9"
-              class="flex grow flex-col justify-between sm:flex-row"
-            >
-              <p
-                v-if="!candidate.pronouns.includes('{document_pronouns}')"
-                class="xs:text-wrap truncate"
-              >
-                {{ candidate.pronouns }}
-              </p>
-              <div class="flex grow items-end justify-end">
-                <button
-                  :id="'view-manifesto-' + candidate.id"
-                  type="button"
-                  class=""
-                  @click.stop="viewManifesto(candidate.id)"
-                  aria-label="View manifesto"
-                  title="View manifesto"
+          <template v-if="election.method === 'STV'">
+            <div class="relative">
+              <div class="absolute flex w-full justify-end">
+                <div
+                  v-if="candidate.voteOrder"
+                  class="bg-voice-orange m-2 flex h-8 w-8 items-center justify-center rounded-full border border-black"
                 >
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-circle-info"
-                    class="h-6 w-6"
-                  >
-                  </FontAwesomeIcon>
-                </button>
+                  <p>{{ candidate.voteOrder }}</p>
+                </div>
+              </div>
+              <div v-if="candidate.assets.document_photo">
+                <img
+                  :src="candidate.assets.document_photo"
+                  alt=""
+                  draggable="false"
+                />
+              </div>
+              <div v-else>
+                <img
+                  src="https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Pink.webp"
+                  alt=""
+                  draggable="false"
+                />
               </div>
             </div>
-          </div>
+            <div class="flex h-full w-full flex-col p-2 text-start">
+              <h3 class="line-clamp-3 text-lg font-semibold">
+                {{ candidate.name }}
+              </h3>
+              <div
+                v-if="candidate.id != 9"
+                class="flex grow flex-col justify-between sm:flex-row"
+              >
+                <p
+                  v-if="!candidate.pronouns.includes('{document_pronouns}')"
+                  class="xs:text-wrap truncate"
+                >
+                  {{ candidate.pronouns }}
+                </p>
+                <div class="flex grow items-end justify-end">
+                  <button
+                    :id="'view-manifesto-' + candidate.id"
+                    type="button"
+                    class=""
+                    @click.stop="viewManifesto(candidate.id)"
+                    aria-label="View manifesto"
+                    title="View manifesto"
+                  >
+                    <FontAwesomeIcon
+                      icon="fa-solid fa-circle-info"
+                      class="h-6 w-6"
+                    >
+                    </FontAwesomeIcon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
+          <template v-if="election.method === 'REFERENDUM'">
+            <div
+              class="flex h-full w-full flex-col justify-center p-4 text-center"
+            >
+              <h3 class="text-xl font-semibold">
+                {{ candidate.name }}
+              </h3>
+            </div>
+          </template>
         </button>
       </div>
 
@@ -248,7 +268,11 @@ export default {
           this.formData["candidate[" + this.votes[i] + "]"] = i + 1;
         }
       }
-      // TODO: Add handling for referendum elections
+      if (this.election.method == "REFERENDUM" && this.voteSpoiled == false) {
+        if (this.votes.length > 0) {
+          this.formData["candidate"] = this.votes[0];
+        }
+      }
       if (this.voteSpoiled) {
         this.formData.spoilt = "Y";
       }
@@ -289,6 +313,17 @@ export default {
       const candidate = this.candidates.find(
         (candidate) => candidate.id === candidateId,
       );
+      if (this.election.method == "REFERENDUM") {
+        this.votes = [];
+        this.selectedCandidates = [];
+        this.candidates.forEach((c) => {
+          c.voteOrder = null;
+        });
+        this.votes.push(candidateId);
+        this.selectedCandidates.push(candidateId);
+        candidate.voteOrder = 1;
+        return;
+      }
       if (this.votes.includes(candidateId)) {
         this.votes = this.votes.filter((id) => id !== candidateId);
         this.selectedCandidates = this.selectedCandidates.filter(
