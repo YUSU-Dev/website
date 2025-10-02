@@ -27,7 +27,7 @@
       class="body-style mb-5"
     ></article>
     <Loading :loading="loading" text></Loading>
-    <div class="flex flex-col gap-4 pt-10" v-if="categories.length">
+    <div class="flex flex-col gap-4 pt-10" v-if="categories">
       <h2 class="text-3xl font-bold">Related News</h2>
       <News :selected-categories="categories" embedded />
     </div>
@@ -66,8 +66,18 @@ export default {
       articleAge: "",
       loading: true,
       image: "",
-      categories: [],
+      categories: "",
     };
+  },
+  watch: {
+    categoryName: {
+      handler(newValue) {
+        if (newValue) {
+          this.getArticleCategories();
+        }
+      },
+      immediate: true,
+    },
   },
   methods: {
     randomImage() {
@@ -92,6 +102,10 @@ export default {
       }
     },
     async getArticleCategories() {
+      if (!this.categoryName) {
+        return;
+      }
+
       let name = this.categoryName
         .split("|")
         .map((cat) => cat.trim())
@@ -122,9 +136,6 @@ export default {
           self.image = self.Article.thumbnail;
         }
         self.articleAge = self.getArticleAge(self.Article.date);
-        if (self.categoryName) {
-          self.getArticleCategories();
-        }
         self.loading = false;
       })
       .catch(function () {
