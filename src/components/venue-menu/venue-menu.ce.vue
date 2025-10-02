@@ -15,15 +15,28 @@
       </button>
       <div
         :id="getMenuContentId(index)"
-        class="overflow-hidden rounded-b border bg-[#f7f7f7] transition-all duration-500 ease-in-out"
+        class="relative overflow-hidden rounded-b border bg-[#f7f7f7] transition-all duration-500 ease-in-out"
         :class="
           openMenus[index] ? 'max-h-[100vh] w-full' : 'max-h-0 w-48 border-none'
         "
         :aria-hidden="!openMenus[index]"
         :aria-labelledby="getButtonId(index)"
       >
+        <div
+          v-show="loadingIframes[index]"
+          class="absolute inset-0 z-10 flex min-h-[50vh] items-center justify-center bg-[#f7f7f7]"
+        >
+          <div class="flex flex-col items-center gap-4">
+            <div
+              class="h-12 w-12 animate-spin rounded-full border-b-2 border-blue-600"
+            ></div>
+            <p class="text-gray-600">Loading menu...</p>
+          </div>
+        </div>
+
         <iframe
           v-if="menuItem.url"
+          :ref="`iframe-${index}`"
           :src="getPdfUrl(menuItem.url)"
           :title="`${menuItem.displayName} PDF`"
           class="aspect-[4/5] max-h-[90vh] min-h-[50vh] w-full"
@@ -31,6 +44,7 @@
           :tabindex="openMenus[index] ? '0' : '-1'"
           allow="fullscreen"
           scrolling="yes"
+          @load="onIframeLoad(index)"
         />
       </div>
     </div>
@@ -71,6 +85,9 @@ export default {
         },
       ],
       openMenus: {},
+      reloadTimers: {},
+      loadedIframes: {},
+      loadingIframes: {},
     };
   },
   computed: {
@@ -100,6 +117,52 @@ export default {
     getButtonId(index) {
       return `menu-button-${this.title?.toLowerCase().replace(/\s+/g, "-") || "default"}-${index}`;
     },
+    startReloadTimer(index) {
+      this.loadingIframes = {
+        ...this.loadingIframes,
+        [index]: true,
+      };
+
+      if (this.reloadTimers[index]) {
+        clearInterval(this.reloadTimers[index]);
+      }
+
+      this.reloadTimers[index] = setInterval(() => {
+        const iframeRef = this.$refs[`iframe-${index}`];
+        if (iframeRef && iframeRef[0]) {
+          const currentSrc = iframeRef[0].src;
+          iframeRef[0].src = currentSrc;
+        }
+      }, 1000);
+    },
+    onIframeLoad(index) {
+      if (this.reloadTimers[index]) {
+        clearInterval(this.reloadTimers[index]);
+        delete this.reloadTimers[index];
+        this.loadedIframes[index] = true;
+        this.loadingIframes = {
+          ...this.loadingIframes,
+          [index]: false,
+        };
+      }
+    },
+    initializePdfLoading() {
+      this.matchingMenus.forEach((_, index) => {
+        if (!this.loadedIframes[index]) {
+          this.startReloadTimer(index);
+        }
+      });
+    },
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.initializePdfLoading();
+    });
+  },
+  beforeUnmount() {
+    Object.values(this.reloadTimers).forEach((timer) => {
+      clearInterval(timer);
+    });
   },
 };
 </script>
