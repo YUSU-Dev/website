@@ -369,11 +369,14 @@ export default {
         console.log("Voting submitted, votes: ");
         console.log(this.votes);
         this.createFormData();
+
         submitVoteHandler(this.electionId, this.formData)
           .then(function () {
-            window.location.assign("/elections");
+            setTimeout(() => {
+              window.location.assign("/elections");
+            }, 3500);
           })
-          .catch(function (response) {
+          .catch((response) => {
             if (response.error_message != "undefined") {
               console.log(
                 "There was an error submitting the vote: " +
@@ -382,16 +385,21 @@ export default {
             } else {
               console.log("Undefined error submitting vote");
             }
+            setTimeout(() => {
+              this.VoteModalClosed = true;
+            }, 4000);
           });
-        this.VoteModalClosed = true;
       } else if (this.votes.length == 0 && this.voteSpoiled) {
         console.log("Vote spoiled");
         this.createFormData();
+
         submitVoteHandler(this.electionId, this.formData)
           .then(function () {
-            window.location.assign("/elections");
+            setTimeout(() => {
+              window.location.assign("/elections");
+            }, 3500);
           })
-          .catch(function (response) {
+          .catch((response) => {
             if (response.error_message != "undefined") {
               console.log(
                 "There was an error submitting the vote: " +
@@ -400,8 +408,10 @@ export default {
             } else {
               console.log("Undefined error submitting vote");
             }
+            setTimeout(() => {
+              this.VoteModalClosed = true;
+            }, 4000);
           });
-        this.VoteModalClosed = true;
       } else {
         console.log("Please vote for at least 1 candidate or spoil your vote.");
       }

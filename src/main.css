@@ -213,6 +213,14 @@ button {
   @apply flex items-center gap-3 rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600;
 }
 
+.fold-container {
+  transform-style: preserve-3d;
+}
+
+.fold-top-half {
+  transition: filter 0.6s ease-out;
+}
+
 @utility form-group {
   @apply w-full appearance-none rounded-sm border bg-white px-3 py-2 leading-tight hover:border-gray-500;
 }
