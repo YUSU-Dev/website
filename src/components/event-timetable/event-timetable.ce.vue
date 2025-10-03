@@ -326,21 +326,33 @@ export default {
         }
       });
 
-      const requests = monthsToFetch.map((month) =>
-        axios.get(
-          `https://pluto.sums.su/api/events?typeId=${this.typeId}&date=${month}`,
-        ),
-      );
+      const allEvents = [];
 
-      const responses = await Promise.all(requests);
+      for (const month of monthsToFetch) {
+        const eventsForMonth = await this.fetchAllPagesForMonth(month);
+        allEvents.push(...eventsForMonth);
+      }
 
-      const newEvents = responses.flatMap((response) => response.data.data);
-
-      this.events.push(...newEvents);
+      this.events.push(...allEvents);
       this.loadedMonths.push(...monthsToFetch);
       this.loadingMonths = this.loadingMonths.filter(
         (month) => !monthsToFetch.includes(month),
       );
+    },
+
+    async fetchAllPagesForMonth(month) {
+      const eventsFromAllPages = [];
+      let nextPageUrl = `https://pluto.sums.su/api/events?typeId=${this.typeId}&date=${month}&perPage=100`;
+
+      while (nextPageUrl) {
+        const response = await axios.get(nextPageUrl);
+        const data = response.data;
+
+        eventsFromAllPages.push(...data.data);
+        nextPageUrl = data.next_page_url;
+      }
+
+      return eventsFromAllPages;
     },
 
     formatTime(dateStr) {
