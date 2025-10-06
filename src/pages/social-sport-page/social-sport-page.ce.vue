@@ -4,7 +4,16 @@
     title="Social Sport"
   />
   <div class="container mx-auto">
-    <EventTimetable :button-title="'Social Sport Timetable'" :type-id="30" />
+    <expanding-button
+      button-title="Social Sport Timetable"
+      button-id="social-sport-timetable-button"
+      content-id="social-sport-timetable-content"
+      collapsed-width="w-48"
+    >
+      <template #default="{ isExpanded }">
+        <EventTimetable :type-id="30" :is-visible="isExpanded" />
+      </template>
+    </expanding-button>
   </div>
   <div id="main" class="body-style container mx-auto">
     <!-- Main Content -->
@@ -58,6 +67,7 @@ import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
 import Footer from "../../components/Footer/footer.ce.vue";
 import Events from "../../components/Events/events.ce.vue";
 import EventTimetable from "../../components/event-timetable/event-timetable.ce.vue";
+import ExpandingButton from "../../components/expanding-button/expanding-button.ce.vue";
 export default {
   name: "SocialSportPage",
   components: {
@@ -65,6 +75,7 @@ export default {
     Footer,
     Events,
     EventTimetable,
+    ExpandingButton,
   },
 };
 </script>
