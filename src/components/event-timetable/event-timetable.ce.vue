@@ -1,113 +1,87 @@
 <template>
   <div class="timetable">
-    <button
-      id="timetable-button"
-      class="btn-primary rounded p-4 transition-[width] duration-500 ease-in-out"
-      :class="isExpanded ? 'w-full rounded-b-none' : 'w-48'"
-      @click="toggleTimetable"
-      :aria-expanded="isExpanded"
-      aria-controls="timetable-content"
-      :aria-label="`${isExpanded ? 'Close' : 'Open'} ${buttonTitle}`"
-      type="button"
-    >
-      {{ buttonTitle }}
-    </button>
     <div
-      id="timetable-content"
-      class="rounded-b border bg-white transition-all duration-500 ease-in-out"
-      :class="
-        isExpanded
-          ? 'max-h-[100vh] w-full overflow-x-auto p-6'
-          : 'max-h-0 w-48 overflow-hidden border-none'
-      "
-      :aria-hidden="!isExpanded"
-      aria-labelledby="timetable-button"
+      class="mb-6 flex min-h-[100px] flex-wrap items-center justify-center gap-x-8 gap-y-4 rounded-lg bg-gray-50 p-4 md:justify-between"
     >
-      <div>
-        <div
-          class="mb-6 flex min-h-[100px] flex-wrap items-center justify-center gap-x-8 gap-y-4 rounded-lg bg-gray-50 p-4 md:justify-between"
+      <button
+        @click="goToPreviousWeek"
+        :tabindex="isVisible ? '0' : '-1'"
+        class="order-2 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50 md:order-1"
+      >
+        <FontAwesomeIcon icon="fa-arrow-left" class="h-4 w-4" /> Previous
+      </button>
+
+      <div class="order-1 w-full text-center md:order-2 md:w-auto">
+        <h3 class="text-lg font-semibold">{{ weekLabel }}</h3>
+        <button
+          v-if="currentWeekOffset !== 0"
+          @click="goToCurrentWeek"
+          :tabindex="isVisible ? '0' : '-1'"
+          class="mt-1 rounded border bg-white px-2 py-1 text-sm hover:bg-gray-50"
         >
-          <button
-            @click="goToPreviousWeek"
-            :tabindex="isExpanded ? '0' : '-1'"
-            class="order-2 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50 md:order-1"
-          >
-            <FontAwesomeIcon icon="fa-arrow-left" class="h-4 w-4" /> Previous
-          </button>
+          Back to this week
+        </button>
+      </div>
 
-          <div class="order-1 w-full text-center md:order-2 md:w-auto">
-            <h3 class="text-lg font-semibold">{{ weekLabel }}</h3>
-            <button
-              v-if="currentWeekOffset !== 0"
-              @click="goToCurrentWeek"
-              :tabindex="isExpanded ? '0' : '-1'"
-              class="mt-1 rounded border bg-white px-2 py-1 text-sm hover:bg-gray-50"
+      <button
+        @click="goToNextWeek"
+        :tabindex="isVisible ? '0' : '-1'"
+        class="order-3 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50"
+      >
+        Next
+        <FontAwesomeIcon
+          icon="fa-arrow-right"
+          class="h-4 w-4"
+        ></FontAwesomeIcon>
+      </button>
+    </div>
+
+    <div class="grid min-h-[450px] grid-cols-1 gap-4 lg:grid-cols-7">
+      <div v-for="day in days" :key="day" class="rounded-lg border p-3">
+        <div class="mb-3 text-center">
+          <h3 class="font-semibold">{{ day }}</h3>
+          <p class="text-sm text-gray-600">
+            {{ formatDate(groupedEvents[day].date) }}
+          </p>
+        </div>
+
+        <div v-if="columnLoadingStates[day]" class="space-y-2">
+          <div v-for="n in 3" :key="n" class="animate-pulse">
+            <div class="mb-1 h-4 rounded bg-gray-300"></div>
+            <div class="h-3 w-3/4 rounded bg-gray-200"></div>
+          </div>
+        </div>
+
+        <ul v-else-if="groupedEvents[day].events.length" class="space-y-2">
+          <li
+            v-for="event in groupedEvents[day].events"
+            :key="`${event.event_id}-${event.start_date}`"
+          >
+            <a
+              :href="`/events/id/${event.event_id}-${event.url_name}`"
+              :tabindex="isVisible ? '0' : '-1'"
+              :class="[
+                'flex flex-col rounded p-2 text-sm transition-colors duration-200',
+                isPastEvent(event.start_date)
+                  ? 'bg-gray-100 hover:bg-gray-200'
+                  : 'bg-blue-50 hover:bg-blue-100',
+              ]"
             >
-              Back to this week
-            </button>
-          </div>
-
-          <button
-            @click="goToNextWeek"
-            :tabindex="isExpanded ? '0' : '-1'"
-            class="order-3 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50"
-          >
-            Next
-            <FontAwesomeIcon
-              icon="fa-arrow-right"
-              class="h-4 w-4"
-            ></FontAwesomeIcon>
-          </button>
-        </div>
-
-        <div class="grid min-h-[450px] grid-cols-1 gap-4 lg:grid-cols-7">
-          <div v-for="day in days" :key="day" class="rounded-lg border p-3">
-            <div class="mb-3 text-center">
-              <h3 class="font-semibold">{{ day }}</h3>
-              <p class="text-sm text-gray-600">
-                {{ formatDate(groupedEvents[day].date) }}
-              </p>
-            </div>
-
-            <div v-if="columnLoadingStates[day]" class="space-y-2">
-              <div v-for="n in 3" :key="n" class="animate-pulse">
-                <div class="mb-1 h-4 rounded bg-gray-300"></div>
-                <div class="h-3 w-3/4 rounded bg-gray-200"></div>
-              </div>
-            </div>
-
-            <ul v-else-if="groupedEvents[day].events.length" class="space-y-2">
-              <li
-                v-for="event in groupedEvents[day].events"
-                :key="`${event.event_id}-${event.start_date}`"
+              <div
+                :class="[
+                  'font-semibold',
+                  isPastEvent(event.start_date) ? '' : 'text-blue-800',
+                ]"
               >
-                <a
-                  :href="`/events/id/${event.event_id}-${event.url_name}`"
-                  :tabindex="isExpanded ? '0' : '-1'"
-                  :class="[
-                    'flex flex-col rounded p-2 text-sm transition-colors duration-200',
-                    isPastEvent(event.start_date)
-                      ? 'bg-gray-100 hover:bg-gray-200'
-                      : 'bg-blue-50 hover:bg-blue-100',
-                  ]"
-                >
-                  <div
-                    :class="[
-                      'font-semibold',
-                      isPastEvent(event.start_date) ? '' : 'text-blue-800',
-                    ]"
-                  >
-                    {{ formatTime(event.start_date) }}
-                  </div>
-                  <h4 class="timetable-title">
-                    {{ event.title }}
-                  </h4>
-                </a>
-              </li>
-            </ul>
-            <p v-else class="py-4 text-center text-xs italic">No events</p>
-          </div>
-        </div>
+                {{ formatTime(event.start_date) }}
+              </div>
+              <h4 class="timetable-title">
+                {{ event.title }}
+              </h4>
+            </a>
+          </li>
+        </ul>
+        <p v-else class="py-4 text-center text-xs italic">No events</p>
       </div>
     </div>
   </div>
@@ -126,13 +100,13 @@ export default {
     FontAwesomeIcon,
   },
   props: {
-    buttonTitle: {
-      type: String,
-      default: null,
-    },
     typeId: {
       type: Number,
       default: null,
+    },
+    isVisible: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {
@@ -150,7 +124,6 @@ export default {
         "Sunday",
       ],
       currentWeekOffset: 0,
-      isExpanded: false,
     };
   },
   watch: {
@@ -248,6 +221,9 @@ export default {
       return states;
     },
   },
+  mounted() {
+    this.fetchEvents();
+  },
   methods: {
     goToPreviousWeek() {
       this.currentWeekOffset--;
@@ -259,13 +235,6 @@ export default {
 
     goToCurrentWeek() {
       this.currentWeekOffset = 0;
-    },
-
-    toggleTimetable() {
-      this.isExpanded = !this.isExpanded;
-      if (this.isExpanded && this.loadedMonths.length === 0) {
-        this.fetchEvents();
-      }
     },
 
     checkAndFetchNewMonths() {
