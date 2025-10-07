@@ -7,6 +7,12 @@ export default {
 
 export const Default = {
   args: {
+    buttonTitle: "Events Timetable",
+  },
+};
+
+export const SocialSport = {
+  args: {
     buttonTitle: "Social Sport Timetable",
     typeId: 30,
   },
