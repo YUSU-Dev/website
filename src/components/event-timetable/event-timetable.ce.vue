@@ -64,15 +64,10 @@
                 'flex flex-col rounded p-2 text-sm transition-colors duration-200',
                 isPastEvent(event.start_date)
                   ? 'bg-gray-100 hover:bg-gray-200'
-                  : 'bg-blue-50 hover:bg-blue-100',
+                  : 'bg-mustard opacity-85 hover:opacity-100',
               ]"
             >
-              <div
-                :class="[
-                  'font-semibold',
-                  isPastEvent(event.start_date) ? '' : 'text-blue-800',
-                ]"
-              >
+              <div :class="['font-semibold']">
                 {{ formatTime(event.start_date) }}
               </div>
               <h4 class="timetable-title">
@@ -104,6 +99,22 @@ export default {
       type: Number,
       default: null,
     },
+    groupId: {
+      type: Number,
+      default: null,
+    },
+    venueId: {
+      type: Number,
+      default: null,
+    },
+    categoryId: {
+      type: Number,
+      default: null,
+    },
+    searchTerm: {
+      type: String,
+      default: null,
+    },
     isVisible: {
       type: Boolean,
       default: true,
@@ -124,6 +135,7 @@ export default {
         "Sunday",
       ],
       currentWeekOffset: 0,
+      searchTimeout: null,
     };
   },
   watch: {
@@ -132,6 +144,34 @@ export default {
         this.$nextTick(() => {
           this.checkAndFetchNewMonths();
         });
+      },
+    },
+    typeId: {
+      handler() {
+        this.refreshEvents();
+      },
+    },
+    groupId: {
+      handler() {
+        this.refreshEvents();
+      },
+    },
+    venueId: {
+      handler() {
+        this.refreshEvents();
+      },
+    },
+    categoryId: {
+      handler() {
+        this.refreshEvents();
+      },
+    },
+    searchTerm: {
+      handler() {
+        clearTimeout(this.searchTimeout);
+        this.searchTimeout = setTimeout(() => {
+          this.refreshEvents();
+        }, 500);
       },
     },
   },
@@ -224,6 +264,11 @@ export default {
   mounted() {
     this.fetchEvents();
   },
+  beforeUnmount() {
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
+  },
   methods: {
     goToPreviousWeek() {
       this.currentWeekOffset--;
@@ -311,7 +356,25 @@ export default {
 
     async fetchAllPagesForMonth(month) {
       const eventsFromAllPages = [];
-      let nextPageUrl = `https://pluto.sums.su/api/events?typeId=${this.typeId}&date=${month}&perPage=100`;
+      let baseUrl = `https://pluto.sums.su/api/events?date=${month}&perPage=100`;
+
+      if (this.typeId) {
+        baseUrl += `&typeId=${this.typeId}`;
+      }
+      if (this.groupId) {
+        baseUrl += `&groupId=${this.groupId}`;
+      }
+      if (this.venueId) {
+        baseUrl += `&venueId=${this.venueId}`;
+      }
+      if (this.categoryId) {
+        baseUrl += `&categoryId=${this.categoryId}`;
+      }
+      if (this.searchTerm && this.searchTerm.length >= 2) {
+        baseUrl += `&eventDateTitleSearchTerm=${encodeURIComponent(this.searchTerm)}`;
+      }
+
+      let nextPageUrl = baseUrl;
 
       while (nextPageUrl) {
         const response = await axios.get(nextPageUrl);
@@ -330,6 +393,15 @@ export default {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
+      });
+    },
+
+    refreshEvents() {
+      this.events = [];
+      this.loadedMonths = [];
+      this.loadingMonths = [];
+      this.$nextTick(() => {
+        this.fetchEvents();
       });
     },
   },

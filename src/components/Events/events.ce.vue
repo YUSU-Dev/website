@@ -73,6 +73,31 @@
           />
         </div>
       </div>
+      <!-- View Mode Toggle -->
+      <div v-if="!ShortView" class="mt-4 flex justify-center">
+        <div class="flex rounded-lg border border-gray-300 bg-white p-1">
+          <button
+            @click="viewMode = 'list'"
+            :class="[
+              'flex items-center rounded-md px-4 py-2 transition-colors',
+              viewMode === 'list' ? 'bg-mustard opacity-90' : '',
+            ]"
+          >
+            <FontAwesomeIcon icon="fas fa-list" class="mr-2 h-4 w-4" />
+            List View
+          </button>
+          <button
+            @click="viewMode = 'timetable'"
+            :class="[
+              'flex items-center rounded-md px-4 py-2 transition-colors',
+              viewMode === 'timetable' ? 'bg-mustard opacity-90' : '',
+            ]"
+          >
+            <FontAwesomeIcon icon="fas fa-calendar-week" class="mr-2 h-4 w-4" />
+            Timetable View
+          </button>
+        </div>
+      </div>
       <div v-else-if="title">
         <h2 class="flex items-center pb-2 text-3xl font-bold">
           {{ title }}
@@ -88,7 +113,69 @@
           There are currently no events
         </h3>
       </div>
-      <div v-if="!Loading" class="a-z-wrap mt-10">
+
+      <div v-if="!ShortView">
+        <!-- Timetable View -->
+        <div v-show="viewMode === 'timetable'" class="py-10">
+          <EventTimetable
+            :is-visible="viewMode === 'timetable'"
+            :type-id="SelectedType"
+            :group-id="SelectedGroup"
+            :venue-id="SelectedVenue"
+            :category-id="SelectedTag"
+            :search-term="Search"
+            :siteid="siteid"
+          />
+        </div>
+
+        <!-- List View -->
+        <div v-show="viewMode === 'list' && !Loading" class="a-z-wrap mt-10">
+          <Tile
+            v-for="event in PremiumEvents"
+            :key="event.id"
+            :url="'/events/id/' + event.event_id + '-' + event.url_name"
+            :title="event.event_date_title"
+            :image="event.thumbnail_url"
+            :date="event.start_date"
+            :group="event.group"
+            :location="event.venue"
+            :categories="event.categories"
+            category-link="/events?tag"
+            premium-event
+          />
+          <Tile
+            v-for="event in Events"
+            :key="event.id"
+            :url="'/events/id/' + event.event_id + '-' + event.url_name"
+            :title="event.event_date_title"
+            :image="event.thumbnail_url"
+            :date="event.start_date"
+            :group="event.group"
+            :location="event.venue"
+            :categories="event.categories"
+            category-link="/events?tag"
+          />
+        </div>
+
+        <!-- Loading State -->
+        <div v-show="viewMode === 'list' && Loading" class="a-z-wrap mt-10">
+          <Tile v-for="item in PerPage" :key="item" :loading="true" />
+        </div>
+
+        <!-- Pagination (only for list view) -->
+        <Pagination
+          v-show="viewMode === 'list'"
+          :array="Groups"
+          :loading="Loading"
+          :load-page="loadPage"
+          :page="Page"
+          :more-results="MoreResults"
+          :previous-results="PreviousResults"
+        />
+      </div>
+
+      <!-- Short View (when ShortView is true) -->
+      <div v-else-if="!Loading" class="a-z-wrap mt-10">
         <Tile
           v-for="event in PremiumEvents"
           :key="event.id"
@@ -115,17 +202,11 @@
           category-link="/events?tag"
         />
       </div>
+
+      <!-- Short View Loading -->
       <div v-else class="a-z-wrap mt-10">
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
       </div>
-      <Pagination
-        :array="Groups"
-        :loading="Loading"
-        :load-page="loadPage"
-        :page="Page"
-        :more-results="MoreResults"
-        :previous-results="PreviousResults"
-      />
     </div>
   </div>
 </template>
@@ -136,15 +217,23 @@
 import "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/+esm";
 import Tile from "../Tile/tile.ce.vue";
 import Pagination from "../Pagination/pagination.ce.vue";
+import EventTimetable from "../event-timetable/event-timetable.ce.vue";
 import axios from "../../_common/axios.mjs";
 import Button from "../../components/button/button.ce.vue";
 import vSelect from "vue-select";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faCalendar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faCalendar,
+  faList,
+  faCalendarWeek,
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
 library.add(faCalendar);
+library.add(faList);
+library.add(faCalendarWeek);
 
 export default {
   props: {
@@ -163,6 +252,7 @@ export default {
     Tile,
     Pagination,
     Button,
+    EventTimetable,
     "v-select": vSelect,
     FontAwesomeIcon,
   },
@@ -189,6 +279,7 @@ export default {
       Placeholder: "Select an option",
       Loading: true,
       firstPagePremium: false,
+      viewMode: "list",
     };
   },
   created() {
@@ -296,7 +387,7 @@ export default {
       if (self.SelectedVenue) {
         parameters += "&venueId=" + self.SelectedVenue;
       }
-      if (self.Search) {
+      if (self.Search && self.Search.length >= 2) {
         parameters += "&eventDateTitleSearchTerm=" + self.Search;
       }
       if (self.premiumResults) {
@@ -440,6 +531,9 @@ export default {
       }
       this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
       this.getEvents(true);
+    },
+    toggleViewMode(mode) {
+      this.viewMode = mode;
     },
   },
   computed: {
