@@ -5,7 +5,7 @@
     >
       <button
         @click="goToPreviousWeek"
-        :tabindex="isVisible ? '0' : '-1'"
+        :tabindex="currentlyVisible ? '0' : '-1'"
         class="order-2 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50 md:order-1"
       >
         <FontAwesomeIcon icon="fa-arrow-left" class="h-4 w-4" /> Previous
@@ -16,7 +16,7 @@
         <button
           v-if="currentWeekOffset !== 0"
           @click="goToCurrentWeek"
-          :tabindex="isVisible ? '0' : '-1'"
+          :tabindex="currentlyVisible ? '0' : '-1'"
           class="mt-1 rounded border bg-white px-2 py-1 text-sm hover:bg-gray-50"
         >
           Back to this week
@@ -25,7 +25,7 @@
 
       <button
         @click="goToNextWeek"
-        :tabindex="isVisible ? '0' : '-1'"
+        :tabindex="currentlyVisible ? '0' : '-1'"
         class="order-3 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50"
       >
         Next
@@ -59,7 +59,7 @@
           >
             <a
               :href="`/events/id/${event.event_id}-${event.url_name}`"
-              :tabindex="isVisible ? '0' : '-1'"
+              :tabindex="currentlyVisible ? '0' : '-1'"
               :class="[
                 'flex flex-col rounded p-2 text-sm transition-colors duration-200',
                 isPastEvent(event.start_date)
@@ -136,6 +136,7 @@ export default {
       ],
       currentWeekOffset: 0,
       searchTimeout: null,
+      buttonIsExpanded: null,
     };
   },
   watch: {
@@ -174,8 +175,21 @@ export default {
         }, 500);
       },
     },
+    isVisible: {
+      handler(newVal) {
+        if (this.buttonIsExpanded === null) {
+          this.buttonIsExpanded = newVal;
+        }
+      },
+      immediate: true,
+    },
   },
   computed: {
+    currentlyVisible() {
+      return this.buttonIsExpanded !== null
+        ? this.buttonIsExpanded
+        : this.isVisible;
+    },
     currentWeekDates() {
       const today = new Date();
       const currentDay = today.getDay();
@@ -263,11 +277,19 @@ export default {
   },
   mounted() {
     this.fetchEvents();
+
+    this.$el.addEventListener("expanding-button-toggle", (event) => {
+      this.buttonIsExpanded = event.detail.isExpanded;
+    });
   },
   beforeUnmount() {
     if (this.searchTimeout) {
       clearTimeout(this.searchTimeout);
     }
+    this.$el.removeEventListener(
+      "expanding-button-toggle",
+      this.handleExpandingButtonToggle,
+    );
   },
   methods: {
     goToPreviousWeek() {

@@ -10,9 +10,7 @@
       content-id="social-sport-timetable-content"
       collapsed-width="w-48"
     >
-      <template #default="{ isExpanded }">
-        <EventTimetable :type-id="30" :is-visible="isExpanded" />
-      </template>
+      <EventTimetable :type-id="30" />
     </expanding-button>
   </div>
   <div id="main" class="body-style container mx-auto">
