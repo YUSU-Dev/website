@@ -5,7 +5,6 @@
     >
       <button
         @click="goToPreviousWeek"
-        :tabindex="currentlyVisible ? '0' : '-1'"
         class="order-2 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50 md:order-1"
       >
         <FontAwesomeIcon icon="fa-arrow-left" class="h-4 w-4" /> Previous
@@ -16,7 +15,6 @@
         <button
           v-if="currentWeekOffset !== 0"
           @click="goToCurrentWeek"
-          :tabindex="currentlyVisible ? '0' : '-1'"
           class="mt-1 rounded border bg-white px-2 py-1 text-sm hover:bg-gray-50"
         >
           Back to this week
@@ -25,7 +23,6 @@
 
       <button
         @click="goToNextWeek"
-        :tabindex="currentlyVisible ? '0' : '-1'"
         class="order-3 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50"
       >
         Next
@@ -59,7 +56,6 @@
           >
             <a
               :href="`/events/id/${event.event_id}-${event.url_name}`"
-              :tabindex="currentlyVisible ? '0' : '-1'"
               :class="[
                 'flex flex-col rounded p-2 text-sm transition-colors duration-200',
                 isPastEvent(event.start_date)
@@ -115,10 +111,6 @@ export default {
       type: String,
       default: null,
     },
-    isVisible: {
-      type: Boolean,
-      default: true,
-    },
   },
   data() {
     return {
@@ -136,7 +128,6 @@ export default {
       ],
       currentWeekOffset: 0,
       searchTimeout: null,
-      expandingButtonVisible: null,
     };
   },
   watch: {
@@ -177,11 +168,6 @@ export default {
     },
   },
   computed: {
-    currentlyVisible() {
-      return this.expandingButtonVisible !== null
-        ? this.expandingButtonVisible
-        : this.isVisible;
-    },
     currentWeekDates() {
       const today = new Date();
       const currentDay = today.getDay();
@@ -269,24 +255,11 @@ export default {
   },
   mounted() {
     this.fetchEvents();
-
-    this.handleExpandingButtonToggle = (event) => {
-      this.expandingButtonVisible = event.detail.isExpanded;
-    };
-
-    this.$el.addEventListener(
-      "expanding-button-toggle",
-      this.handleExpandingButtonToggle,
-    );
   },
   beforeUnmount() {
     if (this.searchTimeout) {
       clearTimeout(this.searchTimeout);
     }
-    this.$el.removeEventListener(
-      "expanding-button-toggle",
-      this.handleExpandingButtonToggle,
-    );
   },
   methods: {
     goToPreviousWeek() {
