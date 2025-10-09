@@ -5,18 +5,16 @@
     >
       <button
         @click="goToPreviousWeek"
-        :tabindex="isVisible ? '0' : '-1'"
         class="order-2 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50 md:order-1"
       >
         <FontAwesomeIcon icon="fa-arrow-left" class="h-4 w-4" /> Previous
       </button>
 
       <div class="order-1 w-full text-center md:order-2 md:w-auto">
-        <h3 class="text-lg font-semibold">{{ weekLabel }}</h3>
+        <h2 class="text-lg font-semibold">{{ weekLabel }}</h2>
         <button
           v-if="currentWeekOffset !== 0"
           @click="goToCurrentWeek"
-          :tabindex="isVisible ? '0' : '-1'"
           class="mt-1 rounded border bg-white px-2 py-1 text-sm hover:bg-gray-50"
         >
           Back to this week
@@ -25,7 +23,6 @@
 
       <button
         @click="goToNextWeek"
-        :tabindex="isVisible ? '0' : '-1'"
         class="order-3 flex w-[110px] items-center justify-between rounded border bg-white px-3 py-2 hover:bg-gray-50"
       >
         Next
@@ -59,7 +56,6 @@
           >
             <a
               :href="`/events/id/${event.event_id}-${event.url_name}`"
-              :tabindex="isVisible ? '0' : '-1'"
               :class="[
                 'flex flex-col rounded p-2 text-sm transition-colors duration-200',
                 isPastEvent(event.start_date)
@@ -114,10 +110,6 @@ export default {
     searchTerm: {
       type: String,
       default: null,
-    },
-    isVisible: {
-      type: Boolean,
-      default: true,
     },
   },
   data() {

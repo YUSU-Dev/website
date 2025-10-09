@@ -10,7 +10,7 @@
       :aria-label="`${isExpanded ? 'Close' : 'Open'} ${buttonTitle}`"
       type="button"
     >
-      <slot name="button" :is-expanded="isExpanded">
+      <slot name="button">
         {{ buttonTitle }}
       </slot>
     </button>
@@ -25,7 +25,7 @@
       :aria-hidden="!isExpanded"
       :aria-labelledby="buttonId"
     >
-      <slot :is-expanded="isExpanded" :toggle-expanded="toggleExpanded"></slot>
+      <slot v-if="renderContent"></slot>
     </div>
   </div>
 </template>
@@ -59,11 +59,21 @@ export default {
   data() {
     return {
       isExpanded: this.initiallyExpanded,
+      renderContent: this.initiallyExpanded,
     };
   },
   methods: {
     toggleExpanded() {
       this.isExpanded = !this.isExpanded;
+
+      if (this.isExpanded) {
+        this.renderContent = true;
+      } else {
+        setTimeout(() => {
+          this.renderContent = false;
+        }, 500);
+      }
+
       this.$emit("toggle", this.isExpanded);
       this.$emit(this.isExpanded ? "expanded" : "collapsed");
     },
