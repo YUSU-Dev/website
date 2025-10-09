@@ -136,7 +136,7 @@ export default {
       ],
       currentWeekOffset: 0,
       searchTimeout: null,
-      buttonIsExpanded: null,
+      expandingButtonVisible: null,
     };
   },
   watch: {
@@ -175,19 +175,11 @@ export default {
         }, 500);
       },
     },
-    isVisible: {
-      handler(newVal) {
-        if (this.buttonIsExpanded === null) {
-          this.buttonIsExpanded = newVal;
-        }
-      },
-      immediate: true,
-    },
   },
   computed: {
     currentlyVisible() {
-      return this.buttonIsExpanded !== null
-        ? this.buttonIsExpanded
+      return this.expandingButtonVisible !== null
+        ? this.expandingButtonVisible
         : this.isVisible;
     },
     currentWeekDates() {
@@ -278,9 +270,14 @@ export default {
   mounted() {
     this.fetchEvents();
 
-    this.$el.addEventListener("expanding-button-toggle", (event) => {
-      this.buttonIsExpanded = event.detail.isExpanded;
-    });
+    this.handleExpandingButtonToggle = (event) => {
+      this.expandingButtonVisible = event.detail.isExpanded;
+    };
+
+    this.$el.addEventListener(
+      "expanding-button-toggle",
+      this.handleExpandingButtonToggle,
+    );
   },
   beforeUnmount() {
     if (this.searchTimeout) {

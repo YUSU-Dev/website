@@ -61,18 +61,24 @@ export default {
       isExpanded: this.initiallyExpanded,
     };
   },
+  mounted() {
+    this.dispatchToggleEvent();
+  },
   methods: {
+    dispatchToggleEvent() {
+      const event = new CustomEvent("expanding-button-toggle", {
+        detail: { isExpanded: this.isExpanded },
+        bubbles: true,
+      });
+      this.$el.dispatchEvent(event);
+    },
     toggleExpanded() {
       this.isExpanded = !this.isExpanded;
       this.$emit("toggle", this.isExpanded);
       this.$emit(this.isExpanded ? "expanded" : "collapsed");
 
       this.$nextTick(() => {
-        const event = new CustomEvent("expanding-button-toggle", {
-          detail: { isExpanded: this.isExpanded },
-          bubbles: true,
-        });
-        this.$el.dispatchEvent(event);
+        this.dispatchToggleEvent();
       });
     },
   },
