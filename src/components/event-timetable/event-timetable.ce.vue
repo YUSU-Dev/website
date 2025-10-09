@@ -12,7 +12,7 @@
       </button>
 
       <div class="order-1 w-full text-center md:order-2 md:w-auto">
-        <h3 class="text-lg font-semibold">{{ weekLabel }}</h3>
+        <h2 class="text-lg font-semibold">{{ weekLabel }}</h2>
         <button
           v-if="currentWeekOffset !== 0"
           @click="goToCurrentWeek"
