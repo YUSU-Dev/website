@@ -6,7 +6,7 @@
           <FontAwesomeIcon icon="fa-core fa-envelope" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">Email</h3>
         </div>
-        <div class="text-lg">
+        <div class="text-lg break-all">
           <p class="">{{ email }}</p>
         </div>
       </div>
@@ -17,7 +17,7 @@
           <FontAwesomeIcon icon="fa-brands fa-facebook" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">Facebook</h3>
         </div>
-        <div class="text-lg">
+        <div class="text-lg break-all">
           <p class="">{{ facebookDisplay }}</p>
         </div>
       </div>
@@ -28,7 +28,7 @@
           <FontAwesomeIcon icon="fa-brands fa-instagram" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">Instagram</h3>
         </div>
-        <div class="text-lg">
+        <div class="text-lg break-all">
           <p class="">{{ instagramDisplay }}</p>
         </div>
       </div>
@@ -39,7 +39,7 @@
           <FontAwesomeIcon icon="fa-brands fa-x-twitter" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">X</h3>
         </div>
-        <div class="text-lg">
+        <div class="text-lg break-all">
           <p class="">{{ twitterDisplay }}</p>
         </div>
       </div>
@@ -50,7 +50,7 @@
           <FontAwesomeIcon icon="fa-brands fa-youtube" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">Youtube</h3>
         </div>
-        <div class="text-lg">
+        <div class="text-lg break-all">
           <p class="">{{ youtubeDisplay }}</p>
         </div>
       </div>
@@ -65,7 +65,7 @@
           <FontAwesomeIcon icon="fa-brands fa-slack" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">Slack</h3>
         </div>
-        <div class="text-lg">
+        <div class="text-lg break-all">
           <p class="">{{ discordDisplay }}</p>
         </div>
       </div>
@@ -76,7 +76,7 @@
           <FontAwesomeIcon icon="fa-brands fa-tiktok" class="h-4 w-4" />
           <h3 class="mb-0 text-lg font-bold">Tiktok</h3>
         </div>
-        <div class="text-lg">
+        <div class="text-lg break-all">
           <p class="">{{ tiktokDisplay }}</p>
         </div>
       </div>
