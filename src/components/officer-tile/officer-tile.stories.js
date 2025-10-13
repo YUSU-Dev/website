@@ -7,6 +7,7 @@ export default {
 
 export const Default = {
   args: {
-    title: "Union Affairs Officer",
+    position: "Union Affairs Officer",
+    uri: "union-affairs",
   },
 };

@@ -56,7 +56,6 @@
           <a href="#">Read my full manifesto</a>
         </p>
 
-        <p dir="ltr" role="presentation">&nbsp;</p>
         <!-- End Page Content -->
       </div>
       <div class="order-1 flex justify-center md:order-2">
