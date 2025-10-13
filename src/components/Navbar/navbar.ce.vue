@@ -463,8 +463,8 @@ export default {
                 link: "/colleges",
               },
               {
-                name: "Networks",
-                link: "/networks",
+                name: "Student Equity Collective",
+                link: "/student-equity-collective",
               },
             ],
           },
