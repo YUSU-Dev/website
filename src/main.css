@@ -740,6 +740,18 @@ button {
   white-space: normal;
 }
 
+.dropdown-compact .vs__dropdown-option {
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 8px 12px;
+  line-height: 1.4;
+}
+
+.categories-dropdown .vs__selected-options {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 @layer properties {
   *,
   :before,
