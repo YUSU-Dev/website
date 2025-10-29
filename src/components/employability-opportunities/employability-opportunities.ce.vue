@@ -414,7 +414,7 @@
 </style>
 <script>
 import axios from "../../_common/axios.mjs";
-import Pagination from "../Pagination/Pagination.ce.vue";
+import Pagination from "../Pagination/pagination.ce.vue";
 import EmployabilityModal from "../employability-modal/employability-modal.ce.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
