@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import HeroHeader from "../../components/HeroHeader/HeroHeader.ce.vue";
-import Footer from "../../components/Footer/Footer.ce.vue";
+import HeroHeader from "../../components/HeroHeader/heroheader.ce.vue";
+import Footer from "../../components/Footer/footer.ce.vue";
 import EmployabilityOpportunities from "../../components/employability-opportunities/employability-opportunities.ce.vue";
 
 export default {
