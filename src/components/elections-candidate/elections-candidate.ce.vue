@@ -58,7 +58,7 @@
 
           <div v-if="!loading">
             <h3 class="text-2xl">MANIFESTO</h3>
-            {{ document_manifesto }}
+            <div class="body-style" v-html="document_manifesto"></div>
           </div>
           <Loading :loading="loading" text />
         </div>
