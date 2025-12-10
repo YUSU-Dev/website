@@ -79,7 +79,7 @@ export default {
           menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Glasshouse_Menu_Online_2025.pdf",
         },
         {
-          title: "The Kitchen at Alcuin",
+          title: "The Kitchen",
           buttonName: "The Kitchen Menu",
           menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Kitchen_Online_Menu_2025.pdf",
         },
