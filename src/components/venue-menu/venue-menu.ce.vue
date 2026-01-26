@@ -83,6 +83,11 @@ export default {
           buttonName: "The Kitchen Menu",
           menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Kitchen_Online_Menu_2025.pdf",
         },
+        {
+          title: "The Vanbrugh Arms",
+          buttonName: "The Vanbrugh Arms Menu",
+          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/CY_Menu_EVENING_2025VA.pdf",
+        },
       ],
       openMenus: {},
       reloadTimers: {},
