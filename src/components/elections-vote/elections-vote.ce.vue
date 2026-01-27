@@ -372,9 +372,7 @@ export default {
 
         submitVoteHandler(this.electionId, this.formData)
           .then(function () {
-            setTimeout(() => {
-              window.location.assign("/elections");
-            }, 3500);
+            console.log("Vote submitted successfully");
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -395,9 +393,7 @@ export default {
 
         submitVoteHandler(this.electionId, this.formData)
           .then(function () {
-            setTimeout(() => {
-              window.location.assign("/elections");
-            }, 3500);
+            console.log("Spoiled vote submitted successfully");
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
