@@ -8,10 +8,12 @@ export function submitVoteHandler(electionId, formData) {
       data: formData,
     })
       .done(function (response) {
+        console.log("Vote submission successful:", response);
         resolve(response); // Resolve the promise with the response
       })
       .fail(function (response) {
-        console.log("There was an error voting: " + response.error_message);
+        console.log("There was an error voting:", response);
+        console.log("Error message:", response.error_message);
         resolve(response);
       });
   });
