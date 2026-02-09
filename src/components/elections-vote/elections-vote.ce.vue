@@ -365,17 +365,16 @@ export default {
       this.VoteModalClosed = false;
     },
     submitVotes() {
-      var self = this;
       if (this.votes.length > 0 && this.voteSpoiled == false) {
         console.log("Voting submitted, votes: ");
         console.log(this.votes);
         this.createFormData();
 
         submitVoteHandler(this.electionId, this.formData)
-          .then(function () {
+          .then(() => {
             console.log("Vote submitted successfully");
-            console.log("self:", self);
-            self.checkForMoreElections();
+            console.log("this:", this);
+            this.checkForMoreElections();
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -387,7 +386,7 @@ export default {
               console.log("Undefined error submitting vote");
             }
             setTimeout(() => {
-              self.VoteModalClosed = true;
+              this.VoteModalClosed = true;
             }, 4000);
           });
       } else if (this.votes.length == 0 && this.voteSpoiled) {
@@ -395,9 +394,9 @@ export default {
         this.createFormData();
 
         submitVoteHandler(this.electionId, this.formData)
-          .then(function () {
+          .then(() => {
             console.log("Spoiled vote submitted successfully");
-            self.checkForMoreElections();
+            this.checkForMoreElections();
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -409,7 +408,7 @@ export default {
               console.log("Undefined error submitting vote");
             }
             setTimeout(() => {
-              self.VoteModalClosed = true;
+              this.VoteModalClosed = true;
             }, 4000);
           });
       } else {
