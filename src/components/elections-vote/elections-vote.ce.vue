@@ -374,7 +374,9 @@ export default {
           .then(() => {
             console.log("Vote submitted successfully");
             console.log("this:", this);
-            this.checkForMoreElections();
+            setTimeout(() => {
+              this.checkForMoreElections();
+            }, 4700);
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -396,7 +398,9 @@ export default {
         submitVoteHandler(this.electionId, this.formData)
           .then(() => {
             console.log("Spoiled vote submitted successfully");
-            this.checkForMoreElections();
+            setTimeout(() => {
+              this.checkForMoreElections();
+            }, 4700);
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
