@@ -386,7 +386,7 @@ export default {
               console.log("checkForMoreElections called successfully");
             } catch (error) {
               console.error("Error calling checkForMoreElections:", error);
-              // Fallback redirect on error
+              // This is now a backup fallback in case of unexpected errors
               window.location.href = "/elections";
             }
           })
@@ -426,7 +426,7 @@ export default {
                 "Error calling checkForMoreElections for spoiled vote:",
                 error,
               );
-              // Fallback redirect on error
+              // This is now a backup fallback in case of unexpected errors
               window.location.href = "/elections";
             }
           })
@@ -473,6 +473,8 @@ export default {
         })
         .catch((error) => {
           console.error("Error checking for more elections:", error);
+          // Redirect to elections page on API failure
+          window.location.href = "/elections";
         });
     },
   },
