@@ -365,15 +365,16 @@ export default {
       this.VoteModalClosed = false;
     },
     submitVotes() {
-      const self = this;
+      var self = this;
       if (this.votes.length > 0 && this.voteSpoiled == false) {
         console.log("Voting submitted, votes: ");
         console.log(this.votes);
         this.createFormData();
 
         submitVoteHandler(this.electionId, this.formData)
-          .then(() => {
+          .then(function () {
             console.log("Vote submitted successfully");
+            console.log("self:", self);
             self.checkForMoreElections();
           })
           .catch((response) => {
@@ -394,7 +395,7 @@ export default {
         this.createFormData();
 
         submitVoteHandler(this.electionId, this.formData)
-          .then(() => {
+          .then(function () {
             console.log("Spoiled vote submitted successfully");
             self.checkForMoreElections();
           })
