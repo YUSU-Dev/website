@@ -372,9 +372,21 @@ export default {
         this.createFormData();
 
         submitVoteHandler(this.electionId, this.formData)
-          .then(() => {
+          .then((response) => {
             console.log("Vote submitted successfully");
-            self.checkForMoreElections();
+            console.log("Promise resolved with response:", response);
+            console.log("self is:", self);
+            console.log(
+              "self.checkForMoreElections is:",
+              self.checkForMoreElections,
+            );
+            console.log("About to call checkForMoreElections");
+            try {
+              self.checkForMoreElections();
+              console.log("checkForMoreElections called successfully");
+            } catch (error) {
+              console.error("Error calling checkForMoreElections:", error);
+            }
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -396,7 +408,23 @@ export default {
         submitVoteHandler(this.electionId, this.formData)
           .then(() => {
             console.log("Spoiled vote submitted successfully");
-            self.checkForMoreElections();
+            console.log("self is:", self);
+            console.log(
+              "self.checkForMoreElections is:",
+              self.checkForMoreElections,
+            );
+            console.log("About to call checkForMoreElections for spoiled vote");
+            try {
+              self.checkForMoreElections();
+              console.log(
+                "checkForMoreElections called successfully for spoiled vote",
+              );
+            } catch (error) {
+              console.error(
+                "Error calling checkForMoreElections for spoiled vote:",
+                error,
+              );
+            }
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
