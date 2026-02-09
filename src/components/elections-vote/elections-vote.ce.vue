@@ -438,7 +438,6 @@ export default {
         })
         .catch((error) => {
           console.error("Error checking for more elections:", error);
-          window.location.href = "/elections";
         });
     },
   },
