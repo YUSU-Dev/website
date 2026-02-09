@@ -1,7 +1,7 @@
 import $ from "https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm";
 
 export function submitVoteHandler(electionId, formData) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     $.ajax({
       url: "/elections/vote/" + electionId,
       method: "POST",
@@ -14,7 +14,7 @@ export function submitVoteHandler(electionId, formData) {
       .fail(function (response) {
         console.log("There was an error voting:", response);
         console.log("Error message:", response.error_message);
-        resolve(response);
+        reject(response); // Reject the promise on failure
       });
   });
 }
