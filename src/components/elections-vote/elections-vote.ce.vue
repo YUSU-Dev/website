@@ -371,8 +371,9 @@ export default {
         this.createFormData();
 
         submitVoteHandler(this.electionId, this.formData)
-          .then(function () {
+          .then(() => {
             console.log("Vote submitted successfully");
+            this.checkForMoreElections();
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -392,8 +393,9 @@ export default {
         this.createFormData();
 
         submitVoteHandler(this.electionId, this.formData)
-          .then(function () {
+          .then(() => {
             console.log("Spoiled vote submitted successfully");
+            this.checkForMoreElections();
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -411,6 +413,33 @@ export default {
       } else {
         console.log("Please vote for at least 1 candidate or spoil your vote.");
       }
+    },
+    async checkForMoreElections() {
+      await axios
+        .get("https://yorksu.org/elections/has-voted-api")
+        .then((response) => {
+          // Remove trailing comma and parse JSON
+          let cleanedData = response.data.replace(/,\s*([\]}])/g, "$1");
+          let elections = JSON.parse(cleanedData);
+
+          if (elections && elections.length > 0) {
+            const nextElection = elections.find(
+              (election) => election.has_voted == "0",
+            );
+
+            if (nextElection) {
+              window.location.href = `/elections/vote/${nextElection.id}`;
+            } else {
+              window.location.href = "/elections";
+            }
+          } else {
+            window.location.href = "/elections";
+          }
+        })
+        .catch((error) => {
+          console.error("Error checking for more elections:", error);
+          window.location.href = "/elections";
+        });
     },
   },
 };
