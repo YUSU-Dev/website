@@ -64,6 +64,11 @@
             Please ensure that you are happy with your votes before you click
             confirm, as this choice is final.
           </p>
+          <p class="pl-2 text-sm">
+            When you click confirm, you will be redirected to the next available
+            election, or back to the elections homepage if there are no more
+            elections to vote in.
+          </p>
         </div>
         <div class="flex gap-4">
           <button

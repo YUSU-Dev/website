@@ -376,7 +376,7 @@ export default {
             console.log("this:", this);
             setTimeout(() => {
               this.checkForMoreElections();
-            }, 4700);
+            }, 4000);
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
@@ -400,7 +400,7 @@ export default {
             console.log("Spoiled vote submitted successfully");
             setTimeout(() => {
               this.checkForMoreElections();
-            }, 4700);
+            }, 4000);
           })
           .catch((response) => {
             if (response.error_message != "undefined") {
