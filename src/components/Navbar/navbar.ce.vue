@@ -440,6 +440,10 @@ export default {
                 name: "Research & Insight",
                 link: "/research-insight",
               },
+              {
+                name: "SUmmit",
+                link: "/summit",
+              },
             ],
           },
           {
