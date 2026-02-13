@@ -305,11 +305,16 @@ export default {
       if (search) {
         parameters += "&searchTerm=" + search;
       }
+
+      let categoriesToUse = null;
       if (categories && categories.length > 0) {
-        parameters += "&categoryIds=" + categories.join(",");
+        categoriesToUse = categories;
+      } else if (self.selectedCategories) {
+        categoriesToUse = [self.selectedCategories];
       }
-      if (self.selectedCategories) {
-        parameters += "&categoryIds=" + self.selectedCategories;
+
+      if (categoriesToUse && categoriesToUse.length > 0) {
+        parameters += "&categoryIds=" + categoriesToUse.join(",");
       }
       let response = await axios.get(
         "https://pluto.sums.su/api/news?" + parameters,
