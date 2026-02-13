@@ -270,9 +270,20 @@ export default {
           foundAllCategories = true;
         }
       }
-      self.NewsCategories = self.categoriesDictionary.filter(
+      let allCategories = self.categoriesDictionary.filter(
         (value) => Object.keys(value).length !== 0,
       );
+
+      if (self.selectedCategories) {
+        let selectedCategoryIds = self.selectedCategories
+          .split(",")
+          .map((id) => parseInt(id.trim()));
+        self.NewsCategories = allCategories.filter((category) =>
+          selectedCategoryIds.includes(category.id),
+        );
+      } else {
+        self.NewsCategories = allCategories;
+      }
     },
     getNews: async function (append = false, search = null, categories = null) {
       let self = this;
