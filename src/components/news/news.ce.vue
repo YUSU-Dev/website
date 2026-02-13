@@ -277,9 +277,9 @@ export default {
       if (self.selectedCategories) {
         let selectedCategoryIds = self.selectedCategories
           .split(",")
-          .map((id) => parseInt(id.trim()));
+          .map((id) => id.trim());
         self.NewsCategories = allCategories.filter((category) =>
-          selectedCategoryIds.includes(category.id),
+          selectedCategoryIds.includes(category.id.toString()),
         );
       } else {
         self.NewsCategories = allCategories;
