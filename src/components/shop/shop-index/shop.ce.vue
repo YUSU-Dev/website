@@ -84,7 +84,11 @@
             :url="'/shop/product/' + product.id + '-' + product.url_name"
             :title="product.name"
             :image="product.image"
-            :text="toCurrency(product.price)"
+            :text="
+              product.variable_price
+                ? 'Choose your fee'
+                : toCurrency(product.price)
+            "
             :product-id="product.id"
             :shop-group-name="product.group_name"
           />
