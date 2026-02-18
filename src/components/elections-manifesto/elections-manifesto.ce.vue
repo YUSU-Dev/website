@@ -31,31 +31,23 @@ export default {
       elections: [
         {
           title: "UNION AFFAIRS OFFICER",
-          id: "2311",
-        },
-        {
-          title: "UNION DEVELOPMENT OFFICER",
-          id: "2312",
+          id: "2428",
         },
         {
           title: "ACADEMIC OFFICER",
-          id: "2313",
+          id: "2432",
         },
         {
           title: "SPORTS OFFICER",
-          id: "2318",
+          id: "2430",
         },
         {
-          title: "EQUALITY AND INCLUSION OFFICER",
-          id: "2314",
-        },
-        {
-          title: "COMMUNITY AND WELLBEING OFFICER",
-          id: "2315",
+          title: "COMMUNITY AND INCLUSION OFFICER",
+          id: "2434",
         },
         {
           title: "ACTIVITIES OFFICER",
-          id: "2317",
+          id: "2431",
         },
       ],
     };
