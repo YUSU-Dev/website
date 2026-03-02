@@ -384,8 +384,34 @@ export default {
     confirmVotes() {
       this.VoteModalClosed = false;
     },
-    skipElection() {
-      this.checkForMoreElections();
+    async skipElection() {
+      await axios
+        .get("https://yorksu.org/elections/has-voted-api")
+        .then((response) => {
+          console.log("Received response from has-voted-api:", response.data);
+          // Remove trailing comma and parse JSON
+          let cleanedData = response.data.replace(/,\s*([\]}])/g, "$1");
+          let elections = JSON.parse(cleanedData);
+
+          if (elections && elections.length > 0) {
+            const nextElection = elections.find(
+              (election) =>
+                election.has_voted == "0" && election.id != this.electionId,
+            );
+
+            if (nextElection) {
+              window.location.href = `/elections/vote/${nextElection.id}`;
+            } else {
+              window.location.href = "/elections";
+            }
+          } else {
+            window.location.href = "/elections";
+          }
+        })
+        .catch((error) => {
+          console.error("Error checking for more elections:", error);
+          window.location.href = "/elections";
+        });
     },
     submitVotes() {
       if (this.votes.length > 0 && this.voteSpoiled == false) {
