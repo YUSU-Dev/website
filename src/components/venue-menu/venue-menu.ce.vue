@@ -76,7 +76,7 @@ export default {
         {
           title: "The Glasshouse",
           buttonName: "The Glasshouse Menu",
-          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Glasshouse_Menu_Online_2025.pdf",
+          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Glasshouse_Menu_Online_2026.pdf",
         },
         {
           title: "The Kitchen",
