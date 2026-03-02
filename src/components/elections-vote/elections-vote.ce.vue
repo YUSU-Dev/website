@@ -394,13 +394,22 @@ export default {
           let elections = JSON.parse(cleanedData);
 
           if (elections && elections.length > 0) {
-            const nextElection = elections.find(
-              (election) =>
-                election.has_voted == "0" && election.id != this.electionId,
+            const unvotedElections = elections.filter(
+              (election) => election.has_voted == "0",
             );
 
-            if (nextElection) {
-              window.location.href = `/elections/vote/${nextElection.id}`;
+            if (unvotedElections.length > 1) {
+              const currentIndex = unvotedElections.findIndex(
+                (election) => election.id == this.electionId,
+              );
+
+              if (currentIndex !== -1) {
+                const nextIndex = (currentIndex + 1) % unvotedElections.length;
+                const nextElection = unvotedElections[nextIndex];
+                window.location.href = `/elections/vote/${nextElection.id}`;
+              } else {
+                window.location.href = `/elections/vote/${unvotedElections[0].id}`;
+              }
             } else {
               window.location.href = "/elections";
             }
