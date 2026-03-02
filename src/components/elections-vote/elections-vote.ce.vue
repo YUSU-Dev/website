@@ -1,6 +1,24 @@
 <template>
   <div>
     <div>
+      <div class="mb-6 flex justify-between gap-4">
+        <Button
+          arrow
+          title="Back to all elections"
+          url="/elections"
+          class="btn-student-voice"
+        />
+        <button
+          class="btn btn-student-voice flex items-center"
+          @click="skipElection"
+        >
+          Skip for now
+          <FontAwesomeIcon
+            icon="fa-solid fa-arrow-right"
+            class="ml-2 h-4 w-4"
+          />
+        </button>
+      </div>
       <div
         class="body-style mb-6 flex flex-col gap-2 border-l-4 border-gray-400 bg-gray-100 p-2"
       >
@@ -223,6 +241,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { submitVoteHandler } from "./election-vote.js";
 import Modal from "../modal/modal.ce.vue";
+import Button from "../button/button.ce.vue";
 library.add(faCircleInfo);
 export default {
   name: "ElectionsVote",
@@ -241,6 +260,7 @@ export default {
     VoteModal,
     FontAwesomeIcon,
     Modal,
+    Button,
   },
   data() {
     return {
@@ -363,6 +383,9 @@ export default {
     },
     confirmVotes() {
       this.VoteModalClosed = false;
+    },
+    skipElection() {
+      this.checkForMoreElections();
     },
     submitVotes() {
       if (this.votes.length > 0 && this.voteSpoiled == false) {
