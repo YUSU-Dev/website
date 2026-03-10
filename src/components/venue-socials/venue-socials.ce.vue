@@ -11,7 +11,7 @@
   <div v-else-if="venue == 'kitchen'">
     <ActivitiesContacts
       name="The Kitchen at Alcuin"
-      instagram="thekitchenatalcuin"
+      instagram="thekitchen_yorksu"
     />
   </div>
   <div v-else-if="venue == 'lounge'">
