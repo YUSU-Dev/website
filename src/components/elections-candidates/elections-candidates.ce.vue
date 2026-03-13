@@ -12,7 +12,11 @@
           <div class="relative text-white shadow-sm transition hover:scale-105">
             <div class="aspect-141/161 bg-cover">
               <img
-                :src="candidate.assets.document_photo"
+                :src="
+                  candidate.assets && candidate.assets.document_photo
+                    ? candidate.assets.document_photo
+                    : 'https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Pink.webp'
+                "
                 alt=""
                 class="h-full w-full object-cover"
               />
