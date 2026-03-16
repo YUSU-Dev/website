@@ -14,6 +14,25 @@
         </div>
       </div>
     </div>
+    <div class="flex flex-col pb-12">
+      <h2 class="mb-2 text-center text-2xl font-semibold">
+        Total votes for each position
+      </h2>
+      <div class="flex flex-wrap items-center justify-center gap-x-12">
+        <div
+          v-for="stat in sabbStats"
+          :key="stat.title"
+          class="flex h-36 w-56 flex-col items-center justify-center p-4 text-center"
+        >
+          <div class="flex h-2/4 items-center justify-center">
+            <h2 class="line-clamp-3 text-xl font-semibold">{{ stat.title }}</h2>
+          </div>
+          <div class="text-voice-orange h-2/4 text-5xl font-bold">
+            {{ stat.data }}
+          </div>
+        </div>
+      </div>
+    </div>
     <ElectionsGraph
       v-for="graph in graphs"
       :key="graph.title"
@@ -66,6 +85,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    sabbaticalStats: {
+      type: Boolean,
+      default: false,
+    },
     minimumMembers: {
       type: Number,
       default: 15,
@@ -85,6 +108,7 @@ export default {
       selected: [],
       graphs: [],
       stats: [],
+      sabbStats: [],
       mediumThreshold: 200,
       largeThreshold: 400,
     };
@@ -113,6 +137,16 @@ export default {
               title: "Unique Voters",
               data: response.data.unique_voters,
             });
+          }
+          if (self.sabbaticalStats || self.all) {
+            for (const election of response.data.elections) {
+              if (election.id != "2441") {
+                self.sabbStats.push({
+                  title: election.name,
+                  data: election.total_votes,
+                });
+              }
+            }
           }
           if (self.sports || self.all) {
             self.processData(
