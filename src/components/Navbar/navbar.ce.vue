@@ -429,6 +429,10 @@ export default {
                 link: "/elections",
               },
               {
+                name: "Elections Candidates",
+                link: "/elections/candidates",
+              },
+              {
                 name: "Big Ideas",
                 link: "/suggestions",
               },
