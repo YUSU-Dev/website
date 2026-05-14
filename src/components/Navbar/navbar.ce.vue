@@ -414,10 +414,6 @@ export default {
                 name: "Activity Wishlist",
                 link: "/wishlist",
               },
-              {
-                name: "Give It A Go",
-                link: "/give-it-a-go",
-              },
             ],
           },
           {
@@ -428,14 +424,10 @@ export default {
                 name: "Elections",
                 link: "/elections",
               },
-              {
-                name: "Elections Candidates",
-                link: "/elections/candidates",
-              },
-              {
+              /* {
                 name: "Big Ideas",
                 link: "/suggestions",
-              },
+              }, */
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
