@@ -21,37 +21,47 @@
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
-            href="/web-accessibility-statement"
-            >Accessibility</a
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            href="/societies"
+            >Societies</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            href="/events"
+            >Events</a
+          >
+          <a
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
             @click="getBearerToken()"
             href="javascript:;"
             >Student Dashboard</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-out"
             >Sign Out</a
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
-            href="/web-accessibility-statement"
-            >Accessibility</a
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            href="/societies"
+            >Societies</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            href="/events"
+            >Events</a
+          >
+          <a
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
             href="/associate-member"
-            >Associate Sign In</a
+            >Associate</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-in/sso"
-            >Student Sign In</a
+            >Student</a
           >
         </div>
         <div class="flex items-center justify-end">
@@ -103,18 +113,23 @@
             class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
           >
             <a
-              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
-              href="/web-accessibility-statement"
-              >Accessibility</a
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              href="/societies"
+              >Societies</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              href="/events"
+              >Events</a
+            >
+            <a
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
               @click="getBearerToken()"
               href="javascript:;"
               >Member Dashboard</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-out"
               >Sign Out</a
             >
@@ -124,22 +139,27 @@
             class="xs:flex-row mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 lg:hidden"
           >
             <a
-              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
-              href="/web-accessibility-statement"
-              >Accessibility</a
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              href="/societies"
+              >Societies</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              href="/events"
+              >Events</a
+            >
+            <a
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/associate-member"
               >Associate Sign In</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-in/sso"
               >Student Sign In</a
             >
           </div>
-
+ 
           <!-- Mobile Nav -->
           <div
             id="mobileItems"
@@ -194,7 +214,7 @@
               </li>
             </ul>
           </div>
-
+ 
           <!-- Desktop Nav -->
           <div class="hidden grid-cols-2 gap-x-8 sm:grid md:grid-cols-3">
             <div
@@ -223,7 +243,7 @@
             </div>
           </div>
         </div>
-
+ 
         <div
           class="order-1 flex flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
         >
@@ -342,7 +362,7 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { getBearerToken } from "../Navbar/bearer.js";
-
+ 
 library.add(
   faFacebook,
   faInstagram,
@@ -360,7 +380,7 @@ library.add(
   faMugSaucer,
   faCartShopping,
 );
-
+ 
 export default {
   name: "Navbar",
   props: {
@@ -543,24 +563,6 @@ export default {
             ],
           },
         ],
-        // mainButtons: [
-        //   {
-        //     name: "Events",
-        //     link: "/events",
-        //   },
-        //   {
-        //     name: "Venues",
-        //     link: "/venues",
-        //   },
-        //   {
-        //     name: "Shop",
-        //     link: "/shop?category=8",
-        //   },
-        //   {
-        //     name: "News",
-        //     link: "/news",
-        //   },
-        // ],
         socials: [
           {
             name: "Facebook",
