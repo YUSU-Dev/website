@@ -131,12 +131,12 @@
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/associate-member"
-              >Associate Sign In</a
+              >Associate</a
             >
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-in/sso"
-              >Student Sign In</a
+              >Student</a
             >
           </div>
 
@@ -414,28 +414,20 @@ export default {
                 name: "Activity Wishlist",
                 link: "/wishlist",
               },
-              {
-                name: "Give It A Go",
-                link: "/give-it-a-go",
-              },
             ],
           },
           {
             name: "Student Voice",
             closed: true,
             links: [
-              {
+              /* {
                 name: "Elections",
                 link: "/elections",
               },
               {
-                name: "Elections Candidates",
-                link: "/elections/candidates",
-              },
-              {
                 name: "Big Ideas",
                 link: "/suggestions",
-              },
+              }, */
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
