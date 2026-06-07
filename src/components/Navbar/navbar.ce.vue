@@ -21,45 +21,35 @@
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
-            href="/societies"
-            >Societies</a
-          >
-          <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/events"
             >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             @click="getBearerToken()"
             href="javascript:;"
             >Student Dashboard</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-out"
             >Sign Out</a
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
-            href="/societies"
-            >Societies</a
-          >
-          <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/events"
             >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/associate-member"
             >Associate Sign In</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded-full bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-in/sso"
             >Student Sign In</a
           >
@@ -113,23 +103,18 @@
             class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
           >
             <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
-              href="/societies"
-              >Societies</a
-            >
-            <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/events"
               >Events</a
             >
             <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded bg-black px-4 py-1 text-center text-white hover:text-black"
               @click="getBearerToken()"
               href="javascript:;"
               >Member Dashboard</a
             >
             <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-out"
               >Sign Out</a
             >
@@ -139,27 +124,22 @@
             class="xs:flex-row mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 lg:hidden"
           >
             <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
-              href="/societies"
-              >Societies</a
-            >
-            <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/events"
               >Events</a
             >
             <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/associate-member"
-              >Associate</a
+              >Associate Sign In</a
             >
             <a
-              class="hover:bg-mustard rounded-full bg-black px-4 py-1 text-center text-white hover:text-black"
+              class="hover:bg-mustard rounded bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-in/sso"
-              >Student</a
+              >Student Sign In</a
             >
           </div>
- 
+
           <!-- Mobile Nav -->
           <div
             id="mobileItems"
@@ -214,7 +194,7 @@
               </li>
             </ul>
           </div>
- 
+
           <!-- Desktop Nav -->
           <div class="hidden grid-cols-2 gap-x-8 sm:grid md:grid-cols-3">
             <div
@@ -243,7 +223,7 @@
             </div>
           </div>
         </div>
- 
+
         <div
           class="order-1 flex flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
         >
@@ -340,8 +320,8 @@
   </nav>
 </template>
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faMagnifyingGlass,
   faBasketShopping,
@@ -354,15 +334,15 @@ import {
   faBook,
   faMugSaucer,
   faCartShopping,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faInstagram,
   faTiktok,
   faXTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { getBearerToken } from '../Navbar/bearer.js';
- 
+} from "@fortawesome/free-brands-svg-icons";
+import { getBearerToken } from "../Navbar/bearer.js";
+
 library.add(
   faFacebook,
   faInstagram,
@@ -380,9 +360,9 @@ library.add(
   faMugSaucer,
   faCartShopping,
 );
- 
+
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   props: {
     signedIn: {
       type: Boolean,
@@ -411,33 +391,33 @@ export default {
       menuData: {
         sections: [
           {
-            name: 'Activities',
+            name: "Activities",
             closed: true,
             links: [
               {
-                name: 'Sports A-Z',
-                link: '/sport',
+                name: "Sports A-Z",
+                link: "/sport",
               },
               {
-                name: 'Societies A-Z',
-                link: '/societies',
+                name: "Societies A-Z",
+                link: "/societies",
               },
               {
-                name: 'Adopt an Activity',
-                link: '/adopt-an-activity',
+                name: "Adopt an Activity",
+                link: "/adopt-an-activity",
               },
               {
-                name: 'Volunteering & Fundraising',
-                link: '/volunteering',
+                name: "Volunteering & Fundraising",
+                link: "/volunteering",
               },
               {
-                name: 'Activity Wishlist',
-                link: '/wishlist',
+                name: "Activity Wishlist",
+                link: "/wishlist",
               },
             ],
           },
           {
-            name: 'Student Voice',
+            name: "Student Voice",
             closed: true,
             links: [
               /* {
@@ -449,140 +429,158 @@ export default {
                 link: "/suggestions",
               }, */
               {
-                name: 'Campaign & Projects',
-                link: '/campaigns',
+                name: "Campaign & Projects",
+                link: "/campaigns",
               },
               {
-                name: 'Research & Insight',
-                link: '/research-insight',
+                name: "Research & Insight",
+                link: "/research-insight",
               },
               {
-                name: 'SUmmit',
-                link: '/summit',
-              },
-            ],
-          },
-          {
-            name: 'Communities & Leaders',
-            closed: true,
-            links: [
-              {
-                name: 'Academic Reps',
-                link: '/academic-reps',
-              },
-              {
-                name: 'Officers and Representation',
-                link: '/officers',
-              },
-              {
-                name: 'Colleges',
-                link: '/colleges',
-              },
-              {
-                name: 'Student Equity Collective',
-                link: '/student-equity-collective',
+                name: "SUmmit",
+                link: "/summit",
               },
             ],
           },
           {
-            name: 'Resources',
+            name: "Communities & Leaders",
             closed: true,
             links: [
               {
-                name: 'Student Group Resource Hub',
-                link: 'https://resource-hub.yorksu.org',
-                target: '_blank',
+                name: "Academic Reps",
+                link: "/academic-reps",
               },
               {
-                name: 'Bookings',
-                link: '/events/book-event',
+                name: "Officers and Representation",
+                link: "/officers",
               },
               {
-                name: 'Employability Hub',
-                link: 'https://resource-hub.yorksu.org/employability/employability-home#',
-                target: '_blank',
+                name: "Colleges",
+                link: "/colleges",
+              },
+              {
+                name: "Student Equity Collective",
+                link: "/student-equity-collective",
               },
             ],
           },
           {
-            name: 'Support',
+            name: "Resources",
             closed: true,
             links: [
               {
-                name: 'York SU Advice & Support',
-                link: '/advice-support',
+                name: "Student Group Resource Hub",
+                link: "https://resource-hub.yorksu.org",
+                target: "_blank",
               },
               {
-                name: 'Support A-Z',
-                link: '/advice-support/support-a-z',
+                name: "Bookings",
+                link: "/events/book-event",
               },
               {
-                name: 'Cost of Living Support',
-                link: '/cost-of-living',
-              },
-              {
-                name: 'Activities Access Grants',
-                link: '/activities-access-grants',
-              },
-              {
-                name: 'Complaints',
-                link: '/complaints',
+                name: "Employability Hub",
+                link: "https://resource-hub.yorksu.org/employability/employability-home#",
+                target: "_blank",
               },
             ],
           },
           {
-            name: 'About Us',
+            name: "Support",
             closed: true,
             links: [
               {
-                name: 'About York SU',
-                link: '/about-us',
+                name: "York SU Advice & Support",
+                link: "/advice-support",
               },
               {
-                name: 'Policies and Documents',
-                link: '/documents',
+                name: "Support A-Z",
+                link: "/advice-support/support-a-z",
               },
               {
-                name: 'York SU Jobs',
-                link: 'https://apply.yorksu.org',
-                target: '_blank',
+                name: "Cost of Living Support",
+                link: "/cost-of-living",
               },
               {
-                name: 'External Jobs',
-                link: 'https://joblinkstudent.jobs/cities/jobs-in-york/',
-                target: '_blank',
+                name: "Activities Access Grants",
+                link: "/activities-access-grants",
               },
               {
-                name: 'Contact Us',
-                link: '/contact-us',
+                name: "Complaints",
+                link: "/complaints",
+              },
+            ],
+          },
+          {
+            name: "About Us",
+            closed: true,
+            links: [
+              {
+                name: "About York SU",
+                link: "/about-us",
               },
               {
-                name: 'Sustainability at York SU',
-                link: '/sustainability',
+                name: "Policies and Documents",
+                link: "/documents",
+              },
+              {
+                name: "York SU Jobs",
+                link: "https://apply.yorksu.org",
+                target: "_blank",
+              },
+              {
+                name: "External Jobs",
+                link: "https://joblinkstudent.jobs/cities/jobs-in-york/",
+                target: "_blank",
+              },
+              {
+                name: "Contact Us",
+                link: "/contact-us",
+              },
+              {
+                name: "Sustainability at York SU",
+                link: "/sustainability",
               },
             ],
           },
         ],
+        // mainButtons: [
+        //   {
+        //     name: "Events",
+        //     link: "/events",
+        //   },
+        //   {
+        //     name: "Venues",
+        //     link: "/venues",
+        //   },
+        //   {
+        //     name: "Shop",
+        //     link: "/shop?category=8",
+        //   },
+        //   {
+        //     name: "News",
+        //     link: "/news",
+        //   },
+        // ],
         socials: [
           {
-            name: 'Facebook',
-            link: 'https://facebook.com/yorkunisu',
-            icon: 'fa-facebook',
+            name: "Facebook",
+            link: "https://facebook.com/yorkunisu",
+            icon: "fa-facebook",
           },
           {
-            name: 'Instagram',
-            link: 'https://instagram.com/yorkunisu',
-            icon: 'fa-instagram',
+            name: "Instagram",
+            link: "https://instagram.com/yorkunisu",
+            icon: "fa-instagram",
           },
           {
-            name: 'TikTok',
-            link: 'https://tiktok.com/@yorkunisu',
-            icon: 'fa-tiktok',
+            name: "TikTok",
+            link: "https://tiktok.com/@yorkunisu",
+            icon: "fa-tiktok",
           },
           {
-            name: 'Twitter',
-            link: 'https://x.com/yorkunisu',
-            icon: 'fa-x-twitter',
+            name: "Twitter",
+            link: "https://x.com/yorkunisu",
+            icon: "fa-x-twitter",
           },
         ],
       },
