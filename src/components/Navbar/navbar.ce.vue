@@ -154,7 +154,11 @@
               v-for="(section, index) in menuData.sections"
               :key="section.name"
               @click="section.closed = !section.closed"
-              :class="`${index != menuData.sections.length - 1 && 'border-b border-black'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex items-center justify-between`"
+              :class="`${
+                index != menuData.sections.length - 1 && 'border-b border-black'
+              } p${
+                index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'
+              }-3 flex items-center justify-between`"
             >
               <p class="text-start font-bold">{{ section.name }}</p>
               <FontAwesomeIcon
@@ -414,20 +418,28 @@ export default {
                 name: "Activity Wishlist",
                 link: "/wishlist",
               },
+              {
+                name: "Give It A Go",
+                link: "/give-it-a-go",
+              },
             ],
           },
           {
             name: "Student Voice",
             closed: true,
             links: [
-              /* {
+              {
                 name: "Elections",
                 link: "/elections",
               },
               {
+                name: "Elections Candidates",
+                link: "/elections/candidates",
+              },
+              {
                 name: "Big Ideas",
                 link: "/suggestions",
-              }, */
+              },
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
