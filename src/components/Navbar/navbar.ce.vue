@@ -116,7 +116,7 @@
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-out"
-              >Sign Out</a
+>Sign Out</a
             >
           </div>
           <div
@@ -157,7 +157,11 @@
               :class="`${
                 index != menuData.sections.length - 1 && 'border-b border-black'
               } p${
-                index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'
+                index == 0
+                  ? 'b'
+                  : index == menuData.sections.length - 1
+                    ? 't'
+                    : 'y'
               }-3 flex items-center justify-between`"
             >
               <p class="text-start font-bold">{{ section.name }}</p>
@@ -229,7 +233,8 @@
         </div>
 
         <div
-          class="order-1 flex flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
+          class="order-1 flex
+flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
         >
           <div
             class="xs:flex xs:justify-between mb-6 grid w-full grid-cols-2 justify-center gap-y-4 lg:mb-0 lg:flex-col lg:gap-y-8"
@@ -362,7 +367,7 @@ library.add(
   faCalendar,
   faBook,
   faMugSaucer,
-  faCartShopping,
+faCartShopping,
 );
 
 export default {
@@ -418,28 +423,20 @@ export default {
                 name: "Activity Wishlist",
                 link: "/wishlist",
               },
-              {
-                name: "Give It A Go",
-                link: "/give-it-a-go",
-              },
             ],
           },
           {
             name: "Student Voice",
             closed: true,
             links: [
-              {
+              /* {
                 name: "Elections",
                 link: "/elections",
               },
               {
-                name: "Elections Candidates",
-                link: "/elections/candidates",
-              },
-              {
                 name: "Big Ideas",
                 link: "/suggestions",
-              },
+              }, */
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
@@ -532,7 +529,7 @@ export default {
               },
               {
                 name: "Policies and Documents",
-                link: "/documents",
+link: "/documents",
               },
               {
                 name: "York SU Jobs",
