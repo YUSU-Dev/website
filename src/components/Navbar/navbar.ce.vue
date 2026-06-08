@@ -7,8 +7,8 @@
             class="block h-[77px] sm:hidden"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
             alt="University of York Students' Union"
-            loading="lazy"
-        /></a>
+            loading="lazy" />
+        </a>
         <a href="/home" aria-label="Homepage">
           <img
             class="hidden h-[77px] sm:block"
@@ -116,7 +116,7 @@
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
               href="/sign-out"
->Sign Out</a
+              >Sign Out</a
             >
           </div>
           <div
@@ -233,8 +233,7 @@
         </div>
 
         <div
-          class="order-1 flex
-flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
+          class="order-1 flex flex-col justify-between lg:order-2 lg:col-span-1 lg:pl-12"
         >
           <div
             class="xs:flex xs:justify-between mb-6 grid w-full grid-cols-2 justify-center gap-y-4 lg:mb-0 lg:flex-col lg:gap-y-8"
@@ -367,7 +366,7 @@ library.add(
   faCalendar,
   faBook,
   faMugSaucer,
-faCartShopping,
+  faCartShopping,
 );
 
 export default {
