@@ -429,11 +429,11 @@ export default {
             name: "Student Voice",
             closed: true,
             links: [
-              /* {
+              {
                 name: "Elections",
                 link: "/elections",
               },
-              {
+              /* {
                 name: "Big Ideas",
                 link: "/suggestions",
               }, */
