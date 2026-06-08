@@ -22,35 +22,35 @@
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/events"
             >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             @click="getBearerToken()"
             href="javascript:;"
             >Student Dashboard</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-out"
             >Sign Out</a
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/events"
             >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/associate-member"
             >Associate Sign In</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-in/sso"
             >Student Sign In</a
           >
