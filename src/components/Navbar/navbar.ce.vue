@@ -7,7 +7,8 @@
             class="block h-[77px] sm:hidden"
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
             alt="University of York Students' Union"
-            loading="lazy" />
+            loading="lazy"
+          />
         </a>
         <a href="/home" aria-label="Homepage">
           <img
@@ -528,7 +529,7 @@ export default {
               },
               {
                 name: "Policies and Documents",
-link: "/documents",
+                link: "/documents",
               },
               {
                 name: "York SU Jobs",
