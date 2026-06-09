@@ -1,134 +1,122 @@
 <template>
   <footer id="footer" class="footer flex h-full items-end">
     <div class="w-full bg-black">
-      <div class="sm:px8 container mx-auto px-6 pt-6 pb-12 lg:px-6">
+      <div class="sm:px-8 container mx-auto px-6 pt-6 pb-12 lg:px-6">
         <h1 class="sr-only text-white">Footer</h1>
         <div
-          class="flex flex-col gap-y-12 py-4 text-white lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-0 xl:gap-x-12"
+          class="flex flex-col gap-y-12 py-4 text-white"
         >
-          <div class="flex flex-col gap-y-6 border-white pr-2 lg:border-r-2">
-            <div>
-              <a href="/">
-                <img
-                  src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-white-full.png"
-                  alt="YorkSU Logo"
-                  class="w-52"
-                />
-              </a>
-            </div>
-            <div class="hidden text-xs lg:flex">
+          <div>
+            <a href="/">
+              <img
+                src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-white-full.png"
+                alt="YorkSU Logo"
+                class="w-52"
+              />
+            </a>
+          </div>
+          <div class="grid grid-cols-2 gap-6 text-sm md:grid-cols-2 lg:grid-cols-4">
+            <div class="flex flex-col gap-y-4">
+              <h2 class="text-xs font-medium uppercase tracking-widest text-yellow-400">
+                Get Involved
+              </h2>
               <ul class="flex flex-col gap-y-1">
+                <li><a href="/activities/societies">Societies</a></li>
+                <li><a href="/activities/sport">Sports clubs</a></li>
+                <li><a href="/volunteering">Volunteering</a></li>
+                <li><a href="/student-media">Student media</a></li>
+              </ul>
+            </div>
+
+            <div class="flex flex-col gap-y-4">
+              <h2 class="text-xs font-medium uppercase tracking-widest text-yellow-400">
+                Support
+              </h2>
+              <ul class="flex flex-col gap-y-1">
+                <li><a href="/advice">Advice service</a></li>
+                <li><a href="/night-safety">Night safety</a></li>
+                <li><a href="/mental-health">Mental health</a></li>
+                <li><a href="/housing">Housing help</a></li>
+              </ul>
+            </div>
+
+            <div class="flex flex-col gap-y-4">
+              <h2 class="text-xs font-medium uppercase tracking-widest text-yellow-400">
+                About
+              </h2>
+              <ul class="flex flex-col gap-y-1">
+                <li><a href="/about-us">Who we are</a></li>
+                <li><a href="/contact">Contact us</a></li>
                 <li>
-                  Registered in England and Wales | Charity Registration
-                  #1173404
-                </li>
-                <li>Charity Company #10688097 | VAT #GB272458389</li>
-                <li>
-                  © University of York Students' Union 2025 | All rights
-                  reserved | Powered by
                   <a
-                    href="https://sums.digital"
+                    href="https://apply.yorksu.org"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >SUMS</a
+                    >Jobs</a
                   >
                 </li>
+                <li><a href="/documents/web-accessibility-statement">Accessibility</a></li>
+              </ul>
+            </div>
+
+            <div class="flex flex-col gap-y-4">
+              <h2 class="text-xs font-medium uppercase tracking-widest text-yellow-400">
+                Policies
+              </h2>
+              <ul class="flex flex-col gap-y-1">
+                <li><a href="/documents/refund-policy">Refund Policy</a></li>
+                <li><a href="/documents/term-and-conditions">Terms &amp; Conditions</a></li>
+                <li><a href="/documents/privacy">Your Privacy</a></li>
+                <li><a href="/complaints">Complaints</a></li>
               </ul>
             </div>
           </div>
 
-          <div
-            class="flex flex-col gap-y-10 border-b border-white pb-16 lg:flex-row lg:gap-x-4 lg:gap-y-0 lg:border-none lg:pb-0 xl:gap-x-6"
-          >
-            <div class="flex flex-col gap-y-4">
-              <div>
-                <h2 class="text-xl">Useful Links</h2>
-              </div>
-              <div class="flex gap-x-6 text-sm">
-                <div>
-                  <ul class="flex flex-col gap-y-1">
-                    <li>
-                      <a href="/documents/web-accessibility-statement"
-                        >Accessibility Statement</a
-                      >
-                    </li>
-                    <li><a href="/advertise-with-us">Advertise With Us</a></li>
-                    <li>
-                      <a href="https://apply.yorksu.org" target="_blank"
-                        >Jobs</a
-                      >
-                    </li>
-                    <li>
-                      <a href="/brand-hub">Brand Hub</a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <ul class="flex flex-col gap-y-1">
-                    <!-- <li><a href="/about-us/staff">Our Staff</a></li> -->
-                    <li>
-                      <a href="/documents/refund-policy">Refund Policy</a>
-                    </li>
-                    <li>
-                      <a href="/documents/term-and-conditions"
-                        >Terms & Conditions</a
-                      >
-                    </li>
-                    <li>
-                      <a href="/documents/privacy">Your Privacy</a>
-                    </li>
-                    <li>
-                      <a href="/complaints">Complaints</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+          <div class="mt-10 flex flex-col gap-y-6 border-t border-white/20 pt-6 text-white/40 lg:flex-row lg:items-center lg:justify-between lg:gap-y-0">
+            <p class="text-xs text-white/40">
+              © 2026 University of York Students' Union · Charity no. 1173404 · Powered by
+              <a
+                href="https://sums.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white/40 hover:text-white"
+                >SUMS</a
+              >
+            </p>
+            <div class="flex items-center gap-2">
+              <a
+                href="https://www.instagram.com/yorksu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-white/60 hover:text-white"
+              >
+                <FontAwesomeIcon icon="fab fa-instagram" class="h-4 w-4" />
+              </a>
+              <a
+                href="https://twitter.com/yorksu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-white/60 hover:text-white"
+              >
+                <FontAwesomeIcon icon="fab fa-x-twitter" class="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.facebook.com/yorksu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-white/60 hover:text-white"
+              >
+                <FontAwesomeIcon icon="fab fa-facebook-f" class="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@yorksu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 text-white/60 hover:text-white"
+              >
+                <FontAwesomeIcon icon="fab fa-tiktok" class="h-4 w-4" />
+              </a>
             </div>
-
-            <div class="flex flex-col gap-y-4">
-              <div>
-                <h2 class="text-xl">Contact Us</h2>
-              </div>
-              <div class="text-sm">
-                <ul class="flex flex-col gap-y-1">
-                  <li>
-                    <FontAwesomeIcon
-                      icon="fas fa-phone"
-                      class="mr-2 inline h-4 w-4"
-                    />
-                    <a href="tel:+441904323724">01904 32 3724</a>
-                  </li>
-                  <li>
-                    <FontAwesomeIcon
-                      icon="fas fa-envelope"
-                      class="mr-2 inline h-4 w-4"
-                    />
-                    <a href="mailto:reception@yorksu.org"
-                      >reception@yorksu.org</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex text-xs lg:hidden">
-            <ul class="flex flex-col gap-y-3">
-              <li>
-                Registered in England and Wales | Charity Registration #1173404
-              </li>
-              <li>Charity Company #10688097 | VAT #GB272458389</li>
-              <li>
-                © University of York Students' Union 2025 | All rights reserved
-                | Powered by
-                <a
-                  href="https://sums.digital"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >SUMS</a
-                >
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -138,9 +126,14 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faInstagram,
+  faXTwitter,
+  faFacebookF,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
 
-library.add(faPhone, faEnvelope);
+library.add(faInstagram, faXTwitter, faFacebookF, faTiktok);
 
 export default {
   name: "Footer",
