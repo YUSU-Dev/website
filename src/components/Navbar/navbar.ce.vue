@@ -8,7 +8,8 @@
             src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
             alt="University of York Students' Union"
             loading="lazy"
-        /></a>
+          />
+        </a>
         <a href="/home" aria-label="Homepage">
           <img
             class="hidden h-[77px] sm:block"
@@ -21,35 +22,35 @@
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
-            href="/web-accessibility-statement"
-            >Accessibility</a
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
+            href="/events"
+            >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             @click="getBearerToken()"
             href="javascript:;"
             >Student Dashboard</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-out"
             >Sign Out</a
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
-            href="/web-accessibility-statement"
-            >Accessibility</a
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
+            href="/events"
+            >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/associate-member"
             >Associate Sign In</a
           >
           <a
-            class="hover:bg-mustard ml-3 bg-black px-4 py-1 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black"
             href="/sign-in/sso"
             >Student Sign In</a
           >
@@ -104,8 +105,8 @@
           >
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
-              href="/web-accessibility-statement"
-              >Accessibility</a
+              href="/events"
+              >Events</a
             >
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
@@ -125,8 +126,8 @@
           >
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
-              href="/web-accessibility-statement"
-              >Accessibility</a
+              href="/events"
+              >Events</a
             >
             <a
               class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black"
@@ -154,7 +155,15 @@
               v-for="(section, index) in menuData.sections"
               :key="section.name"
               @click="section.closed = !section.closed"
-              :class="`${index != menuData.sections.length - 1 && 'border-b border-black'} p${index == 0 ? 'b' : index == menuData.sections.length - 1 ? 't' : 'y'}-3 flex items-center justify-between`"
+              :class="`${
+                index != menuData.sections.length - 1 && 'border-b border-black'
+              } p${
+                index == 0
+                  ? 'b'
+                  : index == menuData.sections.length - 1
+                    ? 't'
+                    : 'y'
+              }-3 flex items-center justify-between`"
             >
               <p class="text-start font-bold">{{ section.name }}</p>
               <FontAwesomeIcon
@@ -414,10 +423,6 @@ export default {
                 name: "Activity Wishlist",
                 link: "/wishlist",
               },
-              {
-                name: "Give It A Go",
-                link: "/give-it-a-go",
-              },
             ],
           },
           {
@@ -428,14 +433,10 @@ export default {
                 name: "Elections",
                 link: "/elections",
               },
-              {
-                name: "Elections Candidates",
-                link: "/elections/candidates",
-              },
-              {
+              /* {
                 name: "Big Ideas",
                 link: "/suggestions",
-              },
+              }, */
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
