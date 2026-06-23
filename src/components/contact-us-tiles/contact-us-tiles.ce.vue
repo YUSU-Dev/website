@@ -106,7 +106,7 @@ export default {
             },
             {
               email: "sportsadmin@yorksu.org",
-              description: "For BUCS enquiries:",
+              description: "For University Sport Club & BUCS enquiries:",
             },
           ],
           colour: "bg-mustard",
