@@ -73,7 +73,7 @@
           >
             <FontAwesomeIcon
               icon="fa-solid fa-basket-shopping"
-              class="h-11 w-11"
+              class="h-12 w-12"
             ></FontAwesomeIcon>
           </a>
           <button
