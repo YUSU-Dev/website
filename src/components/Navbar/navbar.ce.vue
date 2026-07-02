@@ -342,7 +342,7 @@ import {
   faCalendar,
   faBook,
   faMugSaucer,
-  faCartShopping
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -367,7 +367,7 @@ library.add(
   faCalendar,
   faBook,
   faMugSaucer,
-  faCartShopping
+  faCartShopping,
 );
 
 export default {
