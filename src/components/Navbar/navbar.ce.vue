@@ -101,7 +101,7 @@
         <div class="order-2 lg:order-1 lg:col-span-4">
           <div
             v-if="signedIn"
-            class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
+            class="mb-10 flex flex-col justify-center gap-y-5 lg:hidden"
           >
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
@@ -122,7 +122,7 @@
           </div>
           <div
             v-else
-            class="xs:flex-row mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 lg:hidden"
+            class="xs:flex-row mb-8 flex flex-col flex-wrap gap-x-3 gap-y-5 lg:hidden"
           >
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
@@ -342,7 +342,7 @@ import {
   faCalendar,
   faBook,
   faMugSaucer,
-  faCartShopping
+  faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -367,7 +367,7 @@ library.add(
   faCalendar,
   faBook,
   faMugSaucer,
-  faCartShopping
+  faCartShopping,
 );
 
 export default {

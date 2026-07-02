@@ -25,29 +25,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v5
         with:
           node-version: "22.x"
           cache: "npm"
       - run: npm ci
-      - name: Run Prettier and fix formatting issues
-        run: npx prettier --write 'src/**'
-      - name: Check if files were modified
-        id: check
-        run: |
-          if git diff --quiet; then
-            echo "changes=false" >> $GITHUB_OUTPUT
-          else
-            echo "changes=true" >> $GITHUB_OUTPUT
-          fi
-      - name: Commit and push formatting fixes
-        if: steps.check.outputs.changes == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add 'src/**'
-          git commit -m "chore: auto-fix Prettier formatting issues"
-          git push
+      - run: npx prettier --check 'src/**'
