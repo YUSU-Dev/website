@@ -22,58 +22,58 @@
       <div class="my-5 flex flex-col justify-center">
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-3 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
             href="/events"
             >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-3 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
             @click="getBearerToken()"
             href="javascript:;"
             >Student Dashboard</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-3 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
             href="/sign-out"
             >Sign Out</a
           >
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <a
-            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-3 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
             href="/events"
             >Events</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-3 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
             href="/associate-member"
             >Associate Sign In</a
           >
           <a
-            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-3 text-white hover:text-black"
+            class="hover:bg-mustard ml-3 rounded bg-black px-4 py-1 text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
             href="/sign-in/sso"
             >Student Sign In</a
           >
         </div>
         <div class="flex items-center justify-end">
           <a
-            class="xs:flex hidden"
+            class="xs:flex relative hidden before:absolute before:inset-[-6px] before:content-['']"
             href="/search#gsc.tab=0"
             aria-label="Search the website"
           >
             <FontAwesomeIcon
               icon="fa-solid fa-magnifying-glass"
-              class="h-11 w-11"
+              class="h-8 w-8"
             ></FontAwesomeIcon>
           </a>
           <a
-            class="xs:flex ml-7 hidden"
+            class="xs:flex relative ml-7 hidden before:absolute before:inset-[-6px] before:content-['']"
             href="/shop/basket"
             aria-label="View your basket"
           >
             <FontAwesomeIcon
               icon="fa-solid fa-basket-shopping"
-              class="h-12 w-12"
+              class="h-8 w-8"
             ></FontAwesomeIcon>
           </a>
           <button
@@ -104,18 +104,18 @@
             class="mb-10 flex flex-col justify-center gap-y-3 lg:hidden"
           >
             <a
-              class="hover:bg-mustard bg-black px-4 py-3 text-center text-white hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
               href="/events"
               >Events</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-3 text-center text-white hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
               @click="getBearerToken()"
               href="javascript:;"
               >Member Dashboard</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-3 text-center text-white hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
               href="/sign-out"
               >Sign Out</a
             >
@@ -125,17 +125,17 @@
             class="xs:flex-row mb-8 flex flex-col flex-wrap gap-x-3 gap-y-3 lg:hidden"
           >
             <a
-              class="hover:bg-mustard bg-black px-4 py-3 text-center text-white hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
               href="/events"
               >Events</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-3 text-center text-white hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
               href="/associate-member"
               >Associate Sign In</a
             >
             <a
-              class="hover:bg-mustard bg-black px-4 py-3 text-center text-white hover:text-black"
+              class="hover:bg-mustard bg-black px-4 py-1 text-center text-white hover:text-black relative before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-['']"
               href="/sign-in/sso"
               >Student Sign In</a
             >
