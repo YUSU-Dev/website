@@ -57,7 +57,7 @@
         </div>
         <div class="flex items-center justify-end">
           <a
-            class="xs:flex relative hidden before:absolute before:inset-[-6px] before:content-['']"
+            class="xs:flex relative hidden min-h-[44px] min-w-[44px] items-center justify-center before:absolute before:inset-[-6px] before:content-['']"
             href="/search#gsc.tab=0"
             aria-label="Search the website"
           >
@@ -67,7 +67,7 @@
             ></FontAwesomeIcon>
           </a>
           <a
-            class="xs:flex relative ml-7 hidden before:absolute before:inset-[-6px] before:content-['']"
+            class="xs:flex relative ml-7 hidden min-h-[44px] min-w-[44px] items-center justify-center before:absolute before:inset-[-6px] before:content-['']"
             href="/shop/basket"
             aria-label="View your basket"
           >
@@ -77,7 +77,7 @@
             ></FontAwesomeIcon>
           </a>
           <button
-            class="ml-12 text-4xl"
+            class="ml-12 flex min-h-[44px] min-w-[44px] items-center justify-center text-4xl"
             @click="navClosed = !navClosed"
             aria-label="Toggle the website navigation bar"
             title="Toggle the website navigation bar"
