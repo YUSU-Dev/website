@@ -199,12 +199,15 @@ export default {
             this.pageActivity.activity_category_id,
           );
           this.isActivity = !this.isAdoptable && !this.isAcademicRep;
-          self.badges = JSON.parse(
-            response3.data.replace(/,\]/g, "]"), // Remove trailing commas before parsing
-          );
-          self.documents = JSON.parse(
-            response4.data.replace(/,\]/g, "]"), // Remove trailing commas before parsing
-          );
+          self.badges =
+            typeof response3.data === "string"
+              ? JSON.parse(response3.data.replace(/,\]/g, "]"))
+              : response3.data;
+
+          self.documents =
+            typeof response4.data === "string"
+              ? JSON.parse(response4.data.replace(/,\]/g, "]"))
+              : response4.data;
         }),
       );
     this.getSubgroupCategoryId();
