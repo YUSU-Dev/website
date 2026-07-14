@@ -199,15 +199,9 @@ export default {
             this.pageActivity.activity_category_id,
           );
           this.isActivity = !this.isAdoptable && !this.isAcademicRep;
-          self.badges =
-            typeof response3.data === "string"
-              ? JSON.parse(response3.data.replace(/,\]/g, "]"))
-              : response3.data;
+          self.badges = self.parseApiData(response3.data);
 
-          self.documents =
-            typeof response4.data === "string"
-              ? JSON.parse(response4.data.replace(/,\]/g, "]"))
-              : response4.data;
+          self.documents = self.parseApiData(response4.data);
         }),
       );
     this.getSubgroupCategoryId();
@@ -215,6 +209,27 @@ export default {
   methods: {
     wrapURL(URL) {
       return "'" + URL + "'";
+    },
+    parseApiData(payload) {
+      if (payload === null || payload === undefined) {
+        return [];
+      }
+
+      if (typeof payload === "string") {
+        const trimmedPayload = payload.trim();
+
+        if (!trimmedPayload) {
+          return [];
+        }
+
+        try {
+          return JSON.parse(trimmedPayload.replace(/,\]/g, "]"));
+        } catch {
+          return [];
+        }
+      }
+
+      return payload;
     },
     getSubgroupCategoryId() {
       if (this.groupId == "267") {
