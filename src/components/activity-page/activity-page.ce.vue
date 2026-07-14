@@ -226,6 +226,7 @@ export default {
           return JSON.parse(trimmedPayload.replace(/,\]/g, "]"));
         } catch (e) {
           console.error("Failed to parse activity page data:", e);
+        } catch {
           return [];
         }
       }
