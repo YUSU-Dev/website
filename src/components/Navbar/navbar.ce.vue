@@ -50,21 +50,21 @@
           </a>
           <div class="ml-3 flex overflow-hidden rounded">
             <a
-              class="hover:bg-mustard relative flex items-center gap-x-1 border-r border-white bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+              class="bg-mustard relative flex items-center gap-x-1 border-r border-black/20 px-4 py-1 text-black before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:brightness-95"
               href="/sign-in/sso"
             >
               <FontAwesomeIcon
-                icon="fa-solid fa-circle-user"
+                icon="fa-solid fa-right-to-bracket"
                 class="h-4 w-4"
               ></FontAwesomeIcon>
               Student
             </a>
             <a
-              class="hover:bg-mustard relative flex items-center gap-x-1 bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+              class="bg-mustard relative flex items-center gap-x-1 px-4 py-1 text-black before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:brightness-95"
               href="/associate-member"
             >
               <FontAwesomeIcon
-                icon="fa-solid fa-circle-user"
+                icon="fa-solid fa-right-to-bracket"
                 class="h-4 w-4"
               ></FontAwesomeIcon>
               Associate
@@ -151,21 +151,21 @@
             </a>
             <div class="flex flex-1 overflow-hidden rounded">
               <a
-                class="hover:bg-mustard relative flex flex-1 items-center justify-center gap-x-1 border-r border-white bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+                class="bg-mustard relative flex flex-1 items-center justify-center gap-x-1 border-r border-black/20 px-4 py-1 text-black before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:brightness-95"
                 href="/sign-in/sso"
               >
                 <FontAwesomeIcon
-                  icon="fa-solid fa-circle-user"
+                  icon="fa-solid fa-right-to-bracket"
                   class="h-4 w-4"
                 ></FontAwesomeIcon>
                 Student
               </a>
               <a
-                class="hover:bg-mustard relative flex flex-1 items-center justify-center gap-x-1 bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+                class="bg-mustard relative flex flex-1 items-center justify-center gap-x-1 px-4 py-1 text-black before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:brightness-95"
                 href="/associate-member"
               >
                 <FontAwesomeIcon
-                  icon="fa-solid fa-circle-user"
+                  icon="fa-solid fa-right-to-bracket"
                   class="h-4 w-4"
                 ></FontAwesomeIcon>
                 Associate
@@ -373,6 +373,7 @@ import {
   faCaretLeft,
   faUniversalAccess,
   faCircleUser,
+  faRightToBracket,
   faCalendar,
   faBook,
   faMugSaucer,
@@ -398,6 +399,7 @@ library.add(
   faCaretRight,
   faUniversalAccess,
   faCircleUser,
+  faRightToBracket,
   faCalendar,
   faBook,
   faMugSaucer,
