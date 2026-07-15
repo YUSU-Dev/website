@@ -24,36 +24,52 @@
           <a
             class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
             href="/events"
-            >Events</a
           >
+            Events
+          </a>
           <a
             class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
             @click="getBearerToken()"
             href="javascript:;"
-            >Student Dashboard</a
           >
+            Student Dashboard
+          </a>
           <a
             class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
             href="/sign-out"
-            >Sign Out</a
           >
+            Sign Out
+          </a>
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
           <a
             class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
             href="/events"
-            >Events</a
           >
-          <a
-            class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
-            href="/associate-member"
-            >Associate Sign In</a
-          >
-          <a
-            class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
-            href="/sign-in/sso"
-            >Student Sign In</a
-          >
+            Events
+          </a>
+          <div class="ml-3 flex overflow-hidden rounded">
+            <a
+              class="hover:bg-mustard relative flex items-center gap-x-1 border-r border-white bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+              href="/sign-in/sso"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-circle-user"
+                class="h-4 w-4"
+              ></FontAwesomeIcon>
+              Student
+            </a>
+            <a
+              class="hover:bg-mustard relative flex items-center gap-x-1 bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+              href="/associate-member"
+            >
+              <FontAwesomeIcon
+                icon="fa-solid fa-circle-user"
+                class="h-4 w-4"
+              ></FontAwesomeIcon>
+              Associate
+            </a>
+          </div>
         </div>
         <div class="flex items-center justify-end">
           <a
@@ -106,19 +122,22 @@
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
               href="/events"
-              >Events</a
             >
+              Events
+            </a>
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
               @click="getBearerToken()"
               href="javascript:;"
-              >Member Dashboard</a
             >
+              Member Dashboard
+            </a>
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
               href="/sign-out"
-              >Sign Out</a
             >
+              Sign Out
+            </a>
           </div>
           <div
             v-else
@@ -127,18 +146,31 @@
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
               href="/events"
-              >Events</a
             >
-            <a
-              class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
-              href="/associate-member"
-              >Associate Sign In</a
-            >
-            <a
-              class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
-              href="/sign-in/sso"
-              >Student Sign In</a
-            >
+              Events
+            </a>
+            <div class="flex flex-1 overflow-hidden rounded">
+              <a
+                class="hover:bg-mustard relative flex flex-1 items-center justify-center gap-x-1 border-r border-white bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+                href="/sign-in/sso"
+              >
+                <FontAwesomeIcon
+                  icon="fa-solid fa-circle-user"
+                  class="h-4 w-4"
+                ></FontAwesomeIcon>
+                Student
+              </a>
+              <a
+                class="hover:bg-mustard relative flex flex-1 items-center justify-center gap-x-1 bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+                href="/associate-member"
+              >
+                <FontAwesomeIcon
+                  icon="fa-solid fa-circle-user"
+                  class="h-4 w-4"
+                ></FontAwesomeIcon>
+                Associate
+              </a>
+            </div>
           </div>
 
           <!-- Mobile Nav -->
@@ -198,8 +230,9 @@
                   :href="subheading.link"
                   class="hover:underline"
                   :target="subheading.target ?? '_self'"
-                  >{{ subheading.name }}</a
                 >
+                  {{ subheading.name }}
+                </a>
               </li>
             </ul>
           </div>
@@ -224,8 +257,9 @@
                       :href="subheading.link"
                       class="hover:underline"
                       :target="subheading.target ?? '_self'"
-                      >{{ subheading.name }}</a
                     >
+                      {{ subheading.name }}
+                    </a>
                   </li>
                 </ul>
               </div>
