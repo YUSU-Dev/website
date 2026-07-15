@@ -115,6 +115,13 @@
             >
               <FontAwesomeIcon icon="fas fa-envelope" class="h-4 w-4" />
             </a>
+            <a
+              aria-label="Call 01904 32 3724"
+              href="tel:+441904323724"
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
+            >
+              <FontAwesomeIcon icon="fas fa-phone" class="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>
@@ -130,9 +137,9 @@ import {
   faFacebook,
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faInstagram, faXTwitter, faFacebook, faTiktok, faEnvelope);
+library.add(faInstagram, faXTwitter, faFacebook, faTiktok, faEnvelope, faPhone);
 
 export default {
   name: "Footer",
