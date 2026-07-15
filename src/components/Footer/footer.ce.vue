@@ -23,7 +23,7 @@
             class="flex flex-col gap-y-4"
           >
             <h2
-              class="text-xs font-semibold tracking-wide text-gray-400 uppercase"
+              class="text-sm font-semibold tracking-wide text-gray-500 uppercase"
             >
               {{ column.title }}
             </h2>
@@ -33,7 +33,7 @@
                   :href="link.href"
                   :target="link.external ? '_blank' : null"
                   :rel="link.external ? 'noopener noreferrer' : null"
-                  class="text-base font-normal text-gray-300 hover:text-white hover:underline"
+                  class="text-sm font-normal text-gray-300 hover:text-white hover:underline"
                   >{{ link.label }}</a
                 >
               </li>
@@ -42,31 +42,57 @@
         </div>
 
         <div
-          class="mt-10 flex flex-col gap-y-4 border-t border-white/20 pt-6 text-xs text-white sm:flex-row sm:items-center sm:justify-between"
+          class="mt-10 flex flex-col gap-y-4 border-t border-white/20 pt-6 text-sm text-gray-300 sm:flex-row sm:items-start sm:justify-between"
         >
-          <ul class="flex flex-col gap-y-1 sm:flex-row sm:gap-x-2">
-            <li>© {{ currentYear }} University of York Students' Union</li>
-            <li class="hidden sm:inline">·</li>
-            <li>Charity no. 1173404</li>
-            <li class="hidden sm:inline">·</li>
-            <li>
-              Powered by
-              <a
-                href="https://sums.digital"
-                target="_blank"
-                rel="noopener noreferrer"
-                >SUMS</a
-              >
-            </li>
-            <li class="hidden sm:inline">·</li>
-            <li><a href="/documents/refund-policy">Refund Policy</a></li>
-            <li class="hidden sm:inline">·</li>
-            <li>
-              <a href="/documents/term-and-conditions">Terms & Conditions</a>
-            </li>
-            <li class="hidden sm:inline">·</li>
-            <li><a href="/documents/privacy">Privacy</a></li>
-          </ul>
+          <div class="flex flex-col gap-y-2">
+            <ul class="flex flex-wrap gap-x-2 gap-y-1">
+              <li>© {{ currentYear }} University of York Students' Union</li>
+              <li class="hidden sm:inline">·</li>
+              <li>Charity no. 1173404</li>
+              <li class="hidden sm:inline">·</li>
+              <li>
+                Powered by
+                <a
+                  href="https://sums.digital"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white hover:underline"
+                  >SUMS</a
+                >
+              </li>
+            </ul>
+            <ul class="flex flex-wrap gap-x-2 gap-y-1">
+              <li>
+                <a
+                  href="/documents/refund-policy"
+                  class="hover:text-white hover:underline"
+                  >Refund Policy</a
+                >
+              </li>
+              <li class="hidden sm:inline">·</li>
+              <li>
+                <a
+                  href="/documents/term-and-conditions"
+                  class="hover:text-white hover:underline"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li class="hidden sm:inline">·</li>
+              <li>
+                <a
+                  href="/documents/privacy"
+                  class="hover:text-white hover:underline"
+                  >Privacy</a
+                >
+              </li>
+              <li class="hidden sm:inline">·</li>
+              <li>
+                <a href="/complaints" class="hover:text-white hover:underline"
+                  >Complaints</a
+                >
+              </li>
+            </ul>
+          </div>
           <div class="flex gap-x-3">
             <a
               v-for="social in socials"
