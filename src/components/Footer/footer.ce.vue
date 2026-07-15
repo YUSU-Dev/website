@@ -33,7 +33,7 @@
                   :href="link.href"
                   :target="link.external ? '_blank' : null"
                   :rel="link.external ? 'noopener noreferrer' : null"
-                  class="text-base font-bold text-white hover:underline"
+                  class="text-base font-normal text-gray-300 hover:text-white hover:underline"
                   >{{ link.label }}</a
                 >
               </li>
