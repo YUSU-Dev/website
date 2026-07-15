@@ -108,6 +108,13 @@
                 class="h-4 w-4"
               />
             </a>
+            <a
+              aria-label="Email helpdesk@yorksu.org"
+              href="mailto:helpdesk@yorksu.org"
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
+            >
+              <FontAwesomeIcon icon="fas fa-envelope" class="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>
@@ -123,8 +130,9 @@ import {
   faFacebook,
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faInstagram, faXTwitter, faFacebook, faTiktok);
+library.add(faInstagram, faXTwitter, faFacebook, faTiktok, faEnvelope);
 
 export default {
   name: "Footer",
