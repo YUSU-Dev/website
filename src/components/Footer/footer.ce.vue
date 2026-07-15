@@ -23,7 +23,7 @@
             class="flex flex-col gap-y-4"
           >
             <h2
-              class="text-sm font-semibold tracking-wide text-gray-500 uppercase"
+              class="text-sm font-semibold tracking-wide text-gray-400 uppercase"
             >
               {{ column.title }}
             </h2>
