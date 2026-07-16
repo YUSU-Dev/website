@@ -94,7 +94,7 @@
             ]"
           >
             <FontAwesomeIcon icon="fas fa-calendar-week" class="mr-2 h-4 w-4" />
-            Timetable View
+            Calendar View
           </button>
         </div>
       </div>
