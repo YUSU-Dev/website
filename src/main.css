@@ -4,7 +4,6 @@
 @import "tailwindcss";
 
 @theme {
-  --font-*: initial;
   --font-sans: soleil, inter, sans-serif;
   --font-serif: rooney-web, serif;
 
@@ -52,11 +51,12 @@
 }
 
 @utility banner-container {
-  @apply w-full max-w-(--breakpoint-2xl);
+  @apply w-full max-w-[var(--breakpoint-2xl)];
 }
 
+/* Navbar */
+
 @utility nav-section {
-  /* Navbar */
   @apply border-r border-black;
   &:nth-child(2n) {
     @apply border-r-0 md:border-r;
@@ -96,7 +96,7 @@
   }
 
   .vs__selected-options {
-    @apply flex-nowrap!;
+    @apply !flex-nowrap;
   }
 
   .vs__clear {
@@ -128,6 +128,10 @@
 }
 
 /* Button Classes */
+button {
+  @apply cursor-pointer;
+}
+
 @utility btn {
   @apply rounded px-3 py-3 no-underline;
 }
@@ -228,6 +232,12 @@
 
 @utility form-select {
   @apply form-group block pr-8;
+}
+
+@utility text-wrap {
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 @layer base {
@@ -402,7 +412,7 @@
   }
 
   .sabb-tile {
-    @apply xxs:w-[calc(50%-4px)] aspect-141/161 w-full md:w-[282px];
+    @apply xxs:w-[calc(50%-4px)] aspect-[141/161] w-full md:w-[282px];
   }
 
   .tile-wrap .tile {
@@ -507,7 +517,7 @@
 
 /* WYSIWYG Tables */
 .sums-table {
-  @apply w-full!;
+  @apply !w-full;
 }
 .sums-table tr {
   @apply flex flex-wrap;
