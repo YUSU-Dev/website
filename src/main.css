@@ -128,16 +128,12 @@
 }
 
 /* Button Classes */
-button {
-  @apply cursor-pointer;
-}
-
 @utility btn {
-  @apply px-3 py-3 no-underline;
+  @apply rounded px-3 py-3 no-underline;
 }
 
 @utility btn-primary {
-  @apply bg-mustard hover:bg-primary-pink text-black hover:text-black;
+  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
 }
 
 @utility btn-secondary {
@@ -153,15 +149,15 @@ button {
 }
 
 @utility btn-student-voice {
-  @apply bg-voice-orange hover:bg-light-pink text-black hover:text-black;
+  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
 }
 
 @utility btn-advice-support {
-  @apply bg-advice-green hover:bg-light-blue text-black;
+  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
 }
 
 @utility btn-primary-active {
-  @apply bg-primary-pink font-bold text-black;
+  @apply bg-light-blue font-bold text-black;
 }
 
 @utility btn-secondary-active {
@@ -169,19 +165,20 @@ button {
 }
 
 @utility btn-advice-support-active {
-  @apply bg-light-blue font-bold;
+  @apply bg-light-blue font-bold text-black;
 }
 
 @utility btn-student-life-active {
-  @apply bg-light-blue font-bold;
+  @apply bg-light-blue font-bold text-black;
 }
 
 @utility btn-student-voice-active {
-  @apply bg-light-pink font-bold;
+  @apply bg-light-blue font-bold text-black;
 }
 
+/* Modals */
+
 @utility modal {
-  /* Modals */
   @apply fixed top-0 right-0 left-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-x-hidden overflow-y-auto md:inset-0;
 }
 
