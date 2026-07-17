@@ -133,7 +133,7 @@ button {
 }
 
 @utility btn {
-  @apply rounded px-3 py-3 no-underline;
+  @apply rounded-md px-3 py-3 no-underline;
 }
 
 @utility btn-primary {
