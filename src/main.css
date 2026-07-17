@@ -4,8 +4,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: soleil, inter, sans-serif;
-  --font-serif: rooney-web, serif;
+  --font-sans: "Soleil", "Inter", sans-serif;
+  --font-serif: "rooney-web", serif;
 
   --color-beige: #f4e9e1;
   --color-mustard: #f2cb50;
@@ -232,12 +232,6 @@ button {
 
 @utility form-select {
   @apply form-group block pr-8;
-}
-
-@utility text-wrap {
-  overflow-wrap: anywhere;
-  word-wrap: break-word;
-  white-space: normal;
 }
 
 @layer base {
@@ -511,7 +505,7 @@ button {
     @apply border-b border-gray-400;
   }
   .vs__dropdown-option {
-    @apply text-wrap;
+    @apply wrap-anywhere whitespace-normal;
   }
 }
 
@@ -632,7 +626,7 @@ button {
 
 /* Timetable */
 .timetable-title {
-  @apply text-sm text-wrap;
+  @apply text-sm wrap-anywhere whitespace-normal;
   word-break: break-word;
 }
 
