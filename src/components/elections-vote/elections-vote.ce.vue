@@ -119,7 +119,7 @@
               >
                 <p
                   v-if="!candidate.pronouns.includes('{document_pronouns}')"
-                  class="xs:text-wrap truncate"
+                  class="xs:wrap-anywhere xs:whitespace-normal truncate"
                 >
                   {{ candidate.pronouns }}
                 </p>

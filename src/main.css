@@ -4,9 +4,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-*: initial;
-  --font-sans: soleil, inter, sans-serif;
-  --font-serif: rooney-web, serif;
+  --font-sans: "Soleil", "Inter", sans-serif;
+  --font-serif: "rooney-web", serif;
 
   --color-beige: #f4e9e1;
   --color-mustard: #f2cb50;
@@ -52,11 +51,12 @@
 }
 
 @utility banner-container {
-  @apply w-full max-w-(--breakpoint-2xl);
+  @apply w-full max-w-[var(--breakpoint-2xl)];
 }
 
+/* Navbar */
+
 @utility nav-section {
-  /* Navbar */
   @apply border-r border-black;
   &:nth-child(2n) {
     @apply border-r-0 md:border-r;
@@ -96,7 +96,7 @@
   }
 
   .vs__selected-options {
-    @apply flex-nowrap!;
+    @apply !flex-nowrap;
   }
 
   .vs__clear {
@@ -133,11 +133,11 @@ button {
 }
 
 @utility btn {
-  @apply px-3 py-3 no-underline;
+  @apply rounded-md px-3 py-3 no-underline;
 }
 
 @utility btn-primary {
-  @apply bg-mustard hover:bg-primary-pink text-black hover:text-black;
+  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
 }
 
 @utility btn-secondary {
@@ -153,15 +153,15 @@ button {
 }
 
 @utility btn-student-voice {
-  @apply bg-voice-orange hover:bg-light-pink text-black hover:text-black;
+  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
 }
 
 @utility btn-advice-support {
-  @apply bg-advice-green hover:bg-light-blue text-black;
+  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
 }
 
 @utility btn-primary-active {
-  @apply bg-primary-pink font-bold text-black;
+  @apply bg-light-blue font-bold text-black;
 }
 
 @utility btn-secondary-active {
@@ -169,19 +169,20 @@ button {
 }
 
 @utility btn-advice-support-active {
-  @apply bg-light-blue font-bold;
+  @apply bg-light-blue font-bold text-black;
 }
 
 @utility btn-student-life-active {
-  @apply bg-light-blue font-bold;
+  @apply bg-light-blue font-bold text-black;
 }
 
 @utility btn-student-voice-active {
-  @apply bg-light-pink font-bold;
+  @apply bg-light-blue font-bold text-black;
 }
 
+/* Modals */
+
 @utility modal {
-  /* Modals */
   @apply fixed top-0 right-0 left-0 z-50 h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-x-hidden overflow-y-auto md:inset-0;
 }
 
@@ -405,7 +406,7 @@ button {
   }
 
   .sabb-tile {
-    @apply xxs:w-[calc(50%-4px)] aspect-141/161 w-full md:w-[282px];
+    @apply xxs:w-[calc(50%-4px)] aspect-[141/161] w-full md:w-[282px];
   }
 
   .tile-wrap .tile {
@@ -504,13 +505,13 @@ button {
     @apply border-b border-gray-400;
   }
   .vs__dropdown-option {
-    @apply text-wrap;
+    @apply wrap-anywhere whitespace-normal;
   }
 }
 
 /* WYSIWYG Tables */
 .sums-table {
-  @apply w-full!;
+  @apply !w-full;
 }
 .sums-table tr {
   @apply flex flex-wrap;
@@ -625,7 +626,7 @@ button {
 
 /* Timetable */
 .timetable-title {
-  @apply text-sm text-wrap;
+  @apply text-sm wrap-anywhere whitespace-normal;
   word-break: break-word;
 }
 

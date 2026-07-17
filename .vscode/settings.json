@@ -21,5 +21,11 @@
     "testid",
     "tiktok",
     "venueid"
-  ]
+  ],
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "files.associations": {
+    "src/main.css": "postcss"
+  }
 }
