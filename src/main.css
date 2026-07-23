@@ -149,7 +149,7 @@ button {
 }
 
 @utility btn-student-life {
-  @apply bg-mustard hover:bg-light-blue text-black hover:text-black;
+  @apply bg-mustard hover:bg-light-blue rounded text-black hover:text-black;
 }
 
 @utility btn-student-voice {
