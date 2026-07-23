@@ -440,11 +440,7 @@ export default {
             closed: true,
             links: [
               {
-                name: "Sports A-Z",
-                link: "/sport",
-              },
-              {
-                name: "Societies A-Z",
+                name: "Sports & Societies",
                 link: "/societies",
               },
               {
