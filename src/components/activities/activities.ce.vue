@@ -115,7 +115,7 @@
           :id="Group.id"
           :url="'/activities/view/' + Group.url_name"
           :title="Group.name"
-          :image="Group.thumbnail_url"
+          :image="Group.thumbnail_url || defaultTileFor(Group)"
           section="student-life"
           :wishlist="wishlist"
         />
@@ -165,6 +165,14 @@ export default {
     wishlist: {
       type: Boolean,
       default: false,
+    },
+    unisporttile: {
+      type: String,
+      default: null,
+    },
+    collegesporttile: {
+      type: String,
+      default: null,
     },
   },
   components: {
@@ -248,6 +256,13 @@ export default {
     }
   },
   methods: {
+    defaultTileFor(group) {
+      if (this.collegesporttile) return this.collegesporttile;
+      if (this.unisporttile && group && group.activity_category_id === 1) {
+        return this.unisporttile;
+      }
+      return null;
+    },
     /**
      * Fetch groups from API
      * @param bool append - are we getting more groups to append to the current list?
