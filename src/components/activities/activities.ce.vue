@@ -115,7 +115,7 @@
           :id="Group.id"
           :url="'/activities/view/' + Group.url_name"
           :title="Group.name"
-          :image="Group.thumbnail_url"
+          :image="Group.thumbnail_url || defaultTileFor(Group)"
           section="student-life"
           :wishlist="wishlist"
         />
@@ -143,6 +143,20 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
+
+// Default web tiles for sport clubs that have no thumbnail of their own.
+// Societies fall through to the standard placeholder (randomImage) as before.
+const UNI_SPORT_TILE =
+  "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_WEB_TILES_YSU.jpg";
+const COLLEGE_SPORT_TILE =
+  "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_WEB_TILES_YSU_College_Sport.jpg";
+
+// Uni sport clubs sit under category 1 ("Sports").
+const UNI_SPORT_CATEGORY_ID = 1;
+// College sport categories, matching the college mapping in activity-page.ce.vue.
+const COLLEGE_SPORT_CATEGORY_IDS = [
+  12, 23, 30, 31, 32, 33, 34, 35, 36, 37, 38, 45, 46,
+];
 
 export default {
   props: {
@@ -248,6 +262,16 @@ export default {
     }
   },
   methods: {
+    defaultTileFor(group) {
+      const categoryId = group && group.activity_category_id;
+      if (COLLEGE_SPORT_CATEGORY_IDS.includes(categoryId)) {
+        return COLLEGE_SPORT_TILE;
+      }
+      if (categoryId === UNI_SPORT_CATEGORY_ID) {
+        return UNI_SPORT_TILE;
+      }
+      return null;
+    },
     /**
      * Fetch groups from API
      * @param bool append - are we getting more groups to append to the current list?
