@@ -40,7 +40,7 @@ export default {
         {
           name: "Alex Brown",
           position: "Activities Officer",
-          pronouns: "",
+          pronouns: "He/Him",
           img: "https://assets-cdn.sums.su/YU/Student_voice/SabbaticalOfficers/2.webp",
           url: "/officers/activities",
         },
