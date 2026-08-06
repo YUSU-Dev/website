@@ -212,7 +212,7 @@ export default {
     } else if (self.selectedcategory) {
       self.CategoryIDs = self.selectedcategory;
     } else {
-      self.SelectedParents = "2,24";
+      self.SelectedParents = "2,1,12";
     }
     //check if looking for a specific activity, search, etc...
     let urlParams = new URLSearchParams(window.location.search);
