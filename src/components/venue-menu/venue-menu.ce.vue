@@ -65,12 +65,7 @@ export default {
       menus: [
         {
           title: "The Courtyard",
-          buttonName: "The Courtyard Lunch Menu",
-          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Courtyard_2627_Online.pdf",
-        },
-        {
-          title: "The Courtyard",
-          buttonName: "The Courtyard Evening Menu",
+          buttonName: "The Courtyard Menu",
           menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Courtyard_2627_Online.pdf",
         },
         {
