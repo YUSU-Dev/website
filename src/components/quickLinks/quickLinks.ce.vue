@@ -38,7 +38,7 @@ export default {
         {
           title: "Explore volunteering opportunities",
           href: "/volunteering",
-          icon: '<svg height=100% width=100% viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4,20 C4,30 12,36 20,36 C28,36 36,30 36,20 L32,20 C32,27 27,32 20,32 C13,32 8,27 8,20 Z" fill="black"/><path d="M20,22 C20,22 10,15 10,9 C10,5 13,2 17,2 C19,2 20,4 20,6 C20,4 21,2 23,2 C27,2 30,5 30,9 C30,15 20,22 20,22 Z" fill="black"/></svg>',
+          icon: '<svg height=100% width=100% xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M311.6 95C297.5 75.5 274.9 64 250.9 64C209.5 64 176 97.5 176 138.9L176 141.3C176 205.7 258 274.7 298.2 304.6C311.2 314.3 328.7 314.3 341.7 304.6C381.9 274.6 463.9 205.7 463.9 141.3L463.9 138.9C463.9 97.5 430.4 64 389 64C365 64 342.4 75.5 328.3 95L320 106.7L311.6 95zM141.3 405.5L98.7 448L64 448C46.3 448 32 462.3 32 480L32 544C32 561.7 46.3 576 64 576L384.5 576C413.5 576 441.8 566.7 465.2 549.5L591.8 456.2C609.6 443.1 613.4 418.1 600.3 400.3C587.2 382.5 562.2 378.7 544.4 391.8L424.6 480L312 480C298.7 480 288 469.3 288 456C288 442.7 298.7 432 312 432L384 432C401.7 432 416 417.7 416 400C416 382.3 401.7 368 384 368L231.8 368C197.9 368 165.3 381.5 141.3 405.5z"/></svg>',
           SVGPadding: "p-1.5",
         },
         // {
@@ -60,7 +60,7 @@ export default {
         {
           title: "Unofficial Freshers",
           href: "/news/article/unofficial-freshers",
-          icon: '<svg height=100% width=100% viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2,38 L16,14 L30,26 Z" fill="black"/><circle cx="26" cy="8" r="2.2" fill="black"/><circle cx="34" cy="14" r="1.8" fill="black"/><circle cx="20" cy="4" r="1.6" fill="black"/><circle cx="38" cy="22" r="2" fill="black"/><rect x="30" y="2" width="6" height="2" rx="1" transform="rotate(35 33 3)" fill="black"/><rect x="14" y="2" width="6" height="2" rx="1" transform="rotate(-25 17 3)" fill="black"/></svg>',
+          icon: '<svg height=100% width=100% xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M352 96C352 78.3 337.7 64 320 64C302.3 64 288 78.3 288 96L288 304C288 312.8 280.8 320 272 320C263.2 320 256 312.8 256 304L256 128C256 110.3 241.7 96 224 96C206.3 96 192 110.3 192 128L192 400C192 401.5 192 403.1 192.1 404.6L131.6 347C115.6 331.8 90.3 332.4 75 348.4C59.7 364.4 60.4 389.7 76.4 405L188.8 512C231.9 553.1 289.2 576 348.8 576L368 576C465.2 576 544 497.2 544 400L544 192C544 174.3 529.7 160 512 160C494.3 160 480 174.3 480 192L480 304C480 312.8 472.8 320 464 320C455.2 320 448 312.8 448 304L448 128C448 110.3 433.7 96 416 96C398.3 96 384 110.3 384 128L384 304C384 312.8 376.8 320 368 320C359.2 320 352 312.8 352 304L352 96z"/></svg>',
           SVGPadding: "p-1.5",
         },
         // {
