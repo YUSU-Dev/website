@@ -93,6 +93,16 @@
             :tiktok="pageActivity.tiktok"
           />
         </div>
+        <div v-if="collegeSportUrl" class="flex flex-col">
+          <a
+            :href="collegeSportUrl"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary w-full px-4 text-center"
+          >
+            View on College Sport
+          </a>
+        </div>
         <div v-if="documents.length > 0" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">Documents</h2>
           <div class="flex flex-col gap-y-4">
@@ -142,6 +152,35 @@ import ActivitiesContacts from "../../components/ActivitiesContacts/activitiesco
 import axios from "../../_common/axios.mjs";
 import InterestButton from "../interest-button/interest-button.ce.vue";
 import GroupPagesList from "../group-pages-list/group-pages-list.ce.vue";
+
+// Colleges-category activity IDs (yorksu.org "Colleges" category, 15) mapped to their
+// slug on the separate college-sport.yorksu.org platform (a Google Site - see
+// sites.google.com/yorksu.org/uoycollegesport). Confirmed against both systems on
+// 24 Aug 2026 - see the SUMS "Colleges" category listing and the platform's own
+// college pages.
+//
+// Halifax (293) and Wentworth (493) both point at the same "halifax-wentworth" slug:
+// the two colleges merged in real life, and the platform only has one combined page
+// for them. Confirmed with Tanya on 24 Aug 2026 that the separate Wentworth SUMS
+// record should also link to the combined page rather than being left unmapped.
+//
+// Deliberately NOT mapped, pending confirmation:
+//   - Hes East - has no matching page on college-sport.yorksu.org yet (confirmed
+//     404), so there is nothing to link to regardless of its SUMS record.
+const COLLEGE_SPORT_SLUGS = {
+  289: "alcuin",
+  290: "constantine",
+  291: "derwent",
+  292: "goodricke",
+  293: "halifax-wentworth",
+  294: "james",
+  295: "langwith",
+  296: "vanbrugh",
+  493: "halifax-wentworth",
+  513: "anne-lister",
+  540: "david-kato",
+};
+
 export default {
   props: {
     groupId: { type: String, default: null },
@@ -205,6 +244,12 @@ export default {
         }),
       );
     this.getSubgroupCategoryId();
+  },
+  computed: {
+    collegeSportUrl() {
+      const slug = COLLEGE_SPORT_SLUGS[this.groupId];
+      return slug ? `https://college-sport.yorksu.org/colleges/${slug}` : null;
+    },
   },
   methods: {
     wrapURL(URL) {
