@@ -1,348 +1,314 @@
 <template>
-  <div class="py-10" id="societies-a-z">
-    <div v-if="title" class="mb-4">
-      <h2 class="text-3xl font-bold">{{ title }}</h2>
-    </div>
-    <div class="justify-center">
-      <div v-if="!selectedcategory" class="input-group flex">
-        <input
-          class="search form-control w-full border border-black p-2"
-          type="text"
-          aria-label="search for an activity"
-          name="search"
-          placeholder="Search..."
-          @input="search($event)"
-        />
-        <div class="input-group-append">
-          <button
-            type="submit"
-            aria-label="Submit"
-            class="btn btn-block btn-secondary h-full w-full bg-black px-1"
-            @click="submitSearch"
-          >
-            <FontAwesomeIcon
-              icon="fa-solid fa-search"
-              class="h-8 w-8 p-2 text-white"
-            />
-          </button>
-        </div>
-      </div>
-      <div class="relative mt-6 flex pb-4">
-        <div class="w-full" v-if="Search">
-          <h3 class="text-center text-3xl font-semibold">Search Results</h3>
+  <main>
+    <div class="flex flex-col gap-x-20 gap-y-12 sm:flex-row">
+      <div class="flex grow flex-col gap-y-6">
+        <div
+          class="xxs:w-max xxs:flex-row flex flex-col gap-x-4 gap-y-4 sm:hidden"
+        >
+          <!-- {if category_name != "College Sport (Groups)"} -->
+          <Button
+            v-if="isActivity"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="Join"
+            is-student-life
+            class="xxs:w-min w-full px-4 text-center"
+            :url="'/shop?activity_id=' + pageActivity.id"
+          />
+          <Button
+            v-if="isAdoptable"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="How to Adopt"
+            is-student-life
+            class="px-4 text-center"
+            url="/adopt-an-activity"
+          />
+          <InterestButton v-if="!isAdoptable" :activity-id="groupId" />
         </div>
         <div
-          class="w-full max-w-4xl text-center"
-          v-if="!Search && ParentCategories.length > 0"
+          class="xxs:w-max xxs:flex-row flex flex-col gap-x-4 gap-y-4 sm:hidden"
         >
-          <div class="">
-            <h3 class="sr-only">Filters</h3>
-            <div v-if="ParentCategories.length > 1">
-              <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <li
-                  v-for="Parent in ParentCategories"
-                  @click.prevent="
-                    SelectedParent = Parent;
-                    SelectedCategory = '';
-                    getGroups();
-                  "
-                  class=""
-                  :key="Parent.id"
-                >
-                  <a
-                    :class="{
-                      '!btn-student-life-active':
-                        SelectedParent.id === Parent.id,
-                    }"
-                    class="btn-student-life flex h-full w-full justify-center border-2 border-none px-4 py-2"
-                  >
-                    <h3>{{ Parent.name }}</h3>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <ul class="mt-6 flex flex-wrap gap-2" v-if="SelectedParent">
-              <li
-                class=""
-                @click.prevent="
-                  SelectedCategory = '';
-                  getGroups();
-                "
-              >
-                <a
-                  :class="{
-                    '!btn-student-life-active': SelectedCategory === '',
-                  }"
-                  href="#"
-                  class="btn-student-life flex justify-center px-4 py-2"
-                >
-                  <h4>All</h4>
-                </a>
-              </li>
-              <li
-                v-for="Category in filteredCategories"
-                @click.prevent="
-                  SelectedCategory = Category;
-                  getGroups();
-                "
-                class=""
-                :key="Category.id"
-              >
-                <a
-                  :class="{
-                    '!btn-student-life-active':
-                      SelectedCategory.id === Category.id,
-                  }"
-                  class="btn-student-life flex justify-center px-4 py-2"
-                  :href="'/student-life/clubs-and-socs?category=' + Category.id"
-                >
-                  <h4>{{ Category.name }}</h4>
-                </a>
-              </li>
-            </ul>
+          <GroupPagesList
+            :group-id="groupId"
+            :group-url="pageActivity.url_name"
+          />
+        </div>
+        <div v-if="pageActivity.description" class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">About</h2>
+          <article
+            class="wrap-anywhere"
+            v-html="pageActivity.description"
+          ></article>
+        </div>
+        <div v-else class="flex flex-col gap-y-6">
+          <div class="flex flex-col">
+            <h3 class="text-xl font-semibold">Meeting times</h3>
+            <p>Please get in touch via email to find out our meeting times.</p>
+          </div>
+          <div class="flex flex-col">
+            <h3 class="text-xl font-semibold">Get Involved</h3>
+            <p>
+              We are open to all students, and encourage those from all
+              backgrounds to come along!
+            </p>
           </div>
         </div>
       </div>
-      <div v-if="Groups.length == 0 && !loading" class="">
-        <h2 class="mt-16 mb-4 text-center text-2xl font-semibold">
-          No groups found
-        </h2>
+      <div class="flex min-w-2/10 flex-col gap-y-8 sm:w-min">
+        <div class="hidden w-max flex-col gap-y-4 sm:flex">
+          <Button
+            v-if="isActivity"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="Join"
+            is-student-life
+            class="w-full px-4 text-center"
+            :url="'/shop?activity_id=' + pageActivity.id"
+          />
+          <Button
+            v-if="isAdoptable"
+            :class="{ 'bg-light-blue': title == 'join' }"
+            title="How to Adopt"
+            is-student-life
+            class="w-full px-4 text-center"
+            url="/adopt-an-activity"
+          />
+          <InterestButton :activity-id="groupId" />
+          <div class="flex flex-col gap-y-4 pt-4">
+            <GroupPagesList
+              :group-id="groupId"
+              :group-url="pageActivity.url_name"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">Contact</h2>
+          <ActivitiesContacts
+            v-if="!loading"
+            :name="pageActivity.name"
+            :email="pageActivity.email_address"
+            :facebook="pageActivity.facebook"
+            :instagram="pageActivity.instagram"
+            :twitter="pageActivity.twitter"
+            :youtube="pageActivity.youtube"
+            :discord="pageActivity.discord"
+            :tiktok="pageActivity.tiktok"
+          />
+        </div>
+        <div v-if="collegeSportUrl" class="flex flex-col">
+          <a
+            :href="collegeSportUrl"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary w-full px-4 text-center"
+          >
+            View on College Sport
+          </a>
+        </div>
+        <div v-if="documents.length > 0" class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">Documents</h2>
+          <div class="flex flex-col gap-y-4">
+            <a
+              v-for="(document, index) in documents"
+              :key="index"
+              :href="document.document_url"
+              target="_blank"
+              class="btn btn-primary w-full px-4 text-center"
+            >
+              {{ document.document_name }}
+            </a>
+          </div>
+        </div>
+        <div v-if="badges.length > 0" class="flex flex-col">
+          <h2 class="mb-5 text-3xl font-bold">Badges</h2>
+          <div class="xxs:grid-cols-3 grid grid-cols-2 gap-4 sm:grid-cols-2">
+            <div v-for="(badge, index) in badges" :key="index" class="">
+              <img
+                :src="badge.image_link"
+                :alt="badge.badge_name"
+                :title="badge.badge_name"
+                class="w-full"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="a-z-wrap mt-10" v-if="!loading">
-        <Tile
-          v-for="Group in Groups"
-          :key="Group.id"
-          :id="Group.id"
-          :url="'/activities/view/' + Group.url_name"
-          :title="Group.name"
-          :image="Group.thumbnail_url || defaultTileFor(Group)"
-          section="student-life"
-          :wishlist="wishlist"
-        />
-      </div>
-      <div class="a-z-wrap mt-10" v-else>
-        <Tile v-for="Item in PerPage" :key="Item" :loading="true" />
-      </div>
-      <Pagination
-        :array="Groups"
-        :load-page="loadPage"
-        :page="Page"
-        :more-results="MoreResults"
-        :previous-results="PreviousResults"
-        :loading="loading"
+    </div>
+    <div class="flex flex-col">
+      <Events :groupid="groupId" title="Events" icon />
+      <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
+      <Activities
+        v-if="subgroupCategoryId"
+        :selectedcategory="subgroupCategoryId"
+        :title="subgroupCategoryName"
       />
     </div>
-  </div>
+  </main>
 </template>
 <script>
-import Tile from "../Tile/tile.ce.vue";
-import Pagination from "../Pagination/pagination.ce.vue";
+import Button from "../../components/button/button.ce.vue";
+import Events from "../../components/Events/events.ce.vue";
+import Shop from "../../components/shop/shop-index/shop.ce.vue";
+import Activities from "../../components/activities/activities.ce.vue";
+import ActivitiesContacts from "../../components/ActivitiesContacts/activitiescontacts.ce.vue";
 import axios from "../../_common/axios.mjs";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import InterestButton from "../interest-button/interest-button.ce.vue";
+import GroupPagesList from "../group-pages-list/group-pages-list.ce.vue";
 
-library.add(faSearch);
-
-// Default web tiles for sport clubs that have no thumbnail of their own.
-// Societies fall through to the standard placeholder (randomImage) as before.
-const UNI_SPORT_TILE =
-  "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_WEB_TILES_YSU.jpg";
-const COLLEGE_SPORT_TILE =
-  "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_WEB_TILES_YSU_College_Sport.jpg";
-
-// Uni sport clubs sit under category 1 ("Sports").
-const UNI_SPORT_CATEGORY_ID = 1;
-// College sport categories, matching the college mapping in activity-page.ce.vue.
-const COLLEGE_SPORT_CATEGORY_IDS = [
-  12, 23, 30, 31, 32, 33, 34, 35, 36, 37, 38, 45, 46,
-];
+// Colleges-category activity IDs (yorksu.org "Colleges" category, 15) mapped to their
+// slug on the separate college-sport.yorksu.org platform (a Google Site - see
+// sites.google.com/yorksu.org/uoycollegesport). Confirmed against both systems on
+// 24 Aug 2026 - see the SUMS "Colleges" category listing and the platform's own
+// college pages.
+//
+// Halifax (293) and Wentworth (493) both point at the same "halifax-wentworth" slug:
+// the two colleges merged in real life, and the platform only has one combined page
+// for them. Confirmed with Tanya on 24 Aug 2026 that the separate Wentworth SUMS
+// record should also link to the combined page rather than being left unmapped.
+//
+// Deliberately NOT mapped, pending confirmation:
+//   - Hes East - has no matching page on college-sport.yorksu.org yet (confirmed
+//     404), so there is nothing to link to regardless of its SUMS record.
+const COLLEGE_SPORT_SLUGS = {
+  289: "alcuin",
+  290: "constantine",
+  291: "derwent",
+  292: "goodricke",
+  293: "halifax-wentworth",
+  294: "james",
+  295: "langwith",
+  296: "vanbrugh",
+  493: "halifax-wentworth",
+  513: "anne-lister",
+  540: "david-kato",
+};
 
 export default {
   props: {
-    siteid: {
-      type: String,
-      default: null,
-    },
-    selectedparents: {
-      type: String,
-      default: null,
-    },
-    selectedcategory: {
-      type: Number,
-      default: null,
-    },
-    title: {
-      type: String,
-      default: null,
-    },
-    wishlist: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  components: {
-    Tile,
-    Pagination,
-    FontAwesomeIcon,
+    groupId: { type: String, default: null },
   },
   data() {
     return {
-      Categories: [],
-      CategoryIDs: "",
-      ParentCategories: [],
-      Groups: [],
-      SelectedCategory: "",
-      SelectedParent: "",
-      SelectedParents: [],
-      Search: "",
-      Page: 1,
-      PerPage: 24,
-      Pages: [],
-      MoreResults: false,
-      PreviousResults: false,
-      loading: true,
+      pageActivity: {},
+      subgroupCategoryId: null,
+      subgroupCategoryName: null,
+      isAdoptable: false,
+      isAcademicRep: false,
+      isActivity: true,
+      badges: [],
+      documents: [],
     };
+  },
+  components: {
+    Button,
+    ActivitiesContacts,
+    Events,
+    Shop,
+    Activities,
+    InterestButton,
+    GroupPagesList,
   },
   created() {
     var self = this;
     self.loading = true;
-    if (self.selectedparents) {
-      self.SelectedParents = self.selectedparents.split(",");
-    } else if (self.selectedcategory) {
-      self.CategoryIDs = self.selectedcategory;
-    } else {
-      self.SelectedParents = "2,24";
-    }
-    //check if looking for a specific activity, search, etc...
-    let urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("search")) {
-      self.Search = urlParams.get("search");
-    }
-    //if we already have a category, don't get more info
-    if (!self.selectedcategory) {
-      //Get parents
-      axios
-        .get(
-          "https://pluto.sums.su/api/groups/categories?sortBy=name&isParent=1",
-          {
-            headers: {
-              "X-Site-Id": self.siteid,
-            },
-          },
-        )
-        .then(function (response) {
-          response.data.forEach((category) => {
-            if (self.SelectedParents.includes(category.id.toString())) {
-              self.ParentCategories = [...self.ParentCategories, category];
-            }
-          });
-        });
-      //get categories
-      axios
-        .get(
-          "https://pluto.sums.su/api/groups/categories?sortBy=name&isParent=0&parentIds=" +
-            self.selectedparents,
-          {
-            headers: {
-              "X-Site-Id": self.siteid,
-            },
-          },
-        )
-        .then(function (response) {
-          self.Categories = response.data;
-          let idArray = self.Categories.map(function (item) {
-            return item["id"];
-          });
-          self.CategoryIDs = idArray.join();
-          self.getGroups();
-        });
-    } else {
-      self.getGroups();
-    }
-  },
-  methods: {
-    defaultTileFor(group) {
-      const categoryId = group && group.activity_category_id;
-      if (COLLEGE_SPORT_CATEGORY_IDS.includes(categoryId)) {
-        return COLLEGE_SPORT_TILE;
-      }
-      if (categoryId === UNI_SPORT_CATEGORY_ID) {
-        return UNI_SPORT_TILE;
-      }
-      return null;
-    },
-    /**
-     * Fetch groups from API
-     * @param bool append - are we getting more groups to append to the current list?
-     */
-    getGroups: function (append = false) {
-      let self = this;
-      if (self.ParentCategories.length == 1) {
-        self.SelectedParent = self.ParentCategories[0];
-      }
-      if (!append) {
-        self.Page = 1;
-        self.Pages = [1];
-      }
-      let parameters =
-        "sortBy=name&perPage=" + self.PerPage + "&page=" + self.Page;
-      //add relevant parameters to the group search
-      if (self.CategoryIDs) {
-        parameters += "&categoryIds=" + self.CategoryIDs;
-      }
-      if (self.Search) {
-        parameters += "&searchTerm=" + self.Search;
-        self.SelectedCategory = self.SelectedParent = "";
-      } else if (self.SelectedCategory) {
-        parameters += "&categoryId=" + self.SelectedCategory.id;
-      } else if (self.SelectedParent) {
-        parameters += "&parentCategoryId=" + self.SelectedParent.id;
-      }
-      axios
-        .get("https://pluto.sums.su/api/groups?" + parameters, {
+    axios
+      .all([
+        axios.get("https://pluto.sums.su/api/groups/" + self.groupId, {
           headers: {
             "X-Site-Id": self.siteid,
           },
-        })
-        .then(function (response) {
-          self.Groups = response.data.data;
-          //If the API says there are more results (ie another page), update the template accordingly
-          if (response.data.next_page_url) {
-            self.MoreResults = true;
-          } else {
-            self.MoreResults = false;
-          }
-          if (response.data.prev_page_url) {
-            self.PreviousResults = true;
-          } else {
-            self.PreviousResults = false;
-          }
+        }),
+        axios.get("https://pluto.sums.su/api/groups/categories", {
+          headers: {
+            "X-Site-Id": self.siteid,
+          },
+        }),
+        axios.get("https://yorksu.org/activities/badges-api/" + self.groupId),
+        axios.get(
+          "https://yorksu.org/activities/documents-api/" + self.groupId,
+        ),
+      ])
+      .then(
+        axios.spread((response1, response2, response3, response4) => {
+          self.pageActivity = response1.data;
           self.loading = false;
-        });
-    },
-    loadPage(pageNumber = null) {
-      if (pageNumber) {
-        this.Page = pageNumber;
-      } else {
-        this.Page++;
-      }
-      this.Pages.indexOf(this.Page) === -1 ? this.Pages.push(this.Page) : "";
-      this.getGroups(true);
-    },
-    search(event) {
-      this.Search = event.target.value;
-      this.getGroups();
-    },
+          self.pageActivity.category = response2.data.find(
+            (item) => item.id === self.pageActivity.activity_category_id,
+          ).name;
+          this.isAdoptable = this.pageActivity.activity_category_id == 26;
+          this.isAcademicRep = [40, 41, 42, 43, 44].includes(
+            this.pageActivity.activity_category_id,
+          );
+          this.isActivity = !this.isAdoptable && !this.isAcademicRep;
+          self.badges = self.parseApiData(response3.data);
+
+          self.documents = self.parseApiData(response4.data);
+        }),
+      );
+    this.getSubgroupCategoryId();
   },
   computed: {
-    filteredCategories() {
-      let self = this;
-      return this.Categories.filter((category) => {
-        if (self.SelectedParent) {
-          return category.parent_id == self.SelectedParent.id;
+    collegeSportUrl() {
+      const slug = COLLEGE_SPORT_SLUGS[this.groupId];
+      return slug ? `https://college-sport.yorksu.org/colleges/${slug}` : null;
+    },
+  },
+  methods: {
+    wrapURL(URL) {
+      return "'" + URL + "'";
+    },
+    parseApiData(payload) {
+      if (payload === null || payload === undefined) {
+        return [];
+      }
+
+      if (typeof payload === "string") {
+        const trimmedPayload = payload.trim();
+
+        if (!trimmedPayload) {
+          return [];
         }
-      });
+
+        try {
+          return JSON.parse(trimmedPayload.replace(/,\]/g, "]"));
+        } catch (e) {
+          console.error("Failed to parse activity page data:", e);
+          return [];
+        }
+      }
+
+      return payload;
+    },
+    getSubgroupCategoryId() {
+      if (this.groupId == "267") {
+        this.subgroupCategoryId = 31;
+        this.subgroupCategoryName = "Alcuin College Sports";
+      } else if (this.groupId == "269") {
+        this.subgroupCategoryId = 30;
+        this.subgroupCategoryName = "James College Sports";
+      } else if (this.groupId == "309") {
+        this.subgroupCategoryId = 32;
+        this.subgroupCategoryName = "Vanbrugh College Sports";
+      } else if (this.groupId == "320") {
+        this.subgroupCategoryId = "33,45";
+        this.subgroupCategoryName = "Constantine College Sports";
+      } else if (this.groupId == "395") {
+        this.subgroupCategoryId = 34;
+        this.subgroupCategoryName = "Derwent College Sports";
+      } else if (this.groupId == "396") {
+        this.subgroupCategoryId = "35,45";
+        this.subgroupCategoryName = "Goodricke College Sports";
+      } else if (this.groupId == "397") {
+        this.subgroupCategoryId = 36;
+        this.subgroupCategoryName = "Halifax College Sports";
+      } else if (this.groupId == "553") {
+        this.subgroupCategoryId = 38;
+        this.subgroupCategoryName = "Anne Lister College Sports";
+      } else if (this.groupId == "398") {
+        this.subgroupCategoryId = "37,45";
+        this.subgroupCategoryName = "Langwith College Sports";
+      } else if (this.groupId == "763") {
+        this.subgroupCategoryId = 46;
+        this.subgroupCategoryName = "David Kato College Sports";
+      }
     },
   },
 };
