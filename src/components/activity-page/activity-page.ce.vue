@@ -93,6 +93,16 @@
             :tiktok="pageActivity.tiktok"
           />
         </div>
+        <div v-if="collegeSportUrl" class="flex flex-col">
+          <a
+            :href="collegeSportUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary w-full px-4 text-center"
+          >
+            View on College Sport
+          </a>
+        </div>
         <div v-if="documents.length > 0" class="flex flex-col">
           <h2 class="mb-5 text-3xl font-bold">Documents</h2>
           <div class="flex flex-col gap-y-4">
@@ -142,6 +152,25 @@ import ActivitiesContacts from "../../components/ActivitiesContacts/activitiesco
 import axios from "../../_common/axios.mjs";
 import InterestButton from "../interest-button/interest-button.ce.vue";
 import GroupPagesList from "../group-pages-list/group-pages-list.ce.vue";
+
+// Colleges-category activity IDs (yorksu.org "Colleges" category, 15) mapped to their
+// slug on the separate college-sport.yorksu.org platform (a Google Site: see
+// sites.google.com/yorksu.org/uoycollegesport).
+
+const COLLEGE_SPORT_SLUGS = {
+  289: "alcuin",
+  290: "constantine",
+  291: "derwent",
+  292: "goodricke",
+  293: "halifax-wentworth",
+  294: "james",
+  295: "langwith",
+  296: "vanbrugh",
+  493: "halifax-wentworth",
+  513: "anne-lister",
+  540: "david-kato",
+};
+
 export default {
   props: {
     groupId: { type: String, default: null },
@@ -205,6 +234,12 @@ export default {
         }),
       );
     this.getSubgroupCategoryId();
+  },
+  computed: {
+    collegeSportUrl() {
+      const slug = COLLEGE_SPORT_SLUGS[this.groupId];
+      return slug ? `https://college-sport.yorksu.org/colleges/${slug}` : null;
+    },
   },
   methods: {
     wrapURL(URL) {
