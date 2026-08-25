@@ -457,8 +457,8 @@ export default {
         },
       );
 
-      Promise.all([excludedTagsPromise, mainEventsPromise]).then(
-        function (results) {
+      Promise.all([excludedTagsPromise, mainEventsPromise])
+        .then(function (results) {
           const excludedResponse = results[0];
           const response = results[1];
           self.excludedTaggedEvents = excludedResponse
@@ -493,8 +493,11 @@ export default {
             self.PreviousResults = false;
           }
           self.Loading = false;
-        },
-      );
+        })
+        .catch(function (error) {
+          console.error("Failed to load events", error);
+          self.Loading = false;
+        });
     },
     //update various fields to change events data
     updateCategory(value) {
