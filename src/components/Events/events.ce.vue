@@ -432,33 +432,38 @@ export default {
           );
         });
       }
-      // get excluded Tags
-      if (self.excludedTags) {
-        const categoryIds = self.excludedTags;
-        axios
-          .get(
+
+      const excludedTagsPromise = self.excludedTags
+        ? axios.get(
             "https://pluto.sums.su/api/events?" +
               "sortBy=start_date&futureOrOngoing=1&page=1" +
               "&perPage=200&categoryIds=" +
-              categoryIds,
+              self.excludedTags,
             {
               headers: {
                 "X-Site-Id": self.siteid,
               },
             },
           )
-          .then(function (response) {
-            self.excludedTaggedEvents = response.data.data;
-          });
-      }
+        : Promise.resolve(null);
+
       //get the rest of the events
-      axios
-        .get("https://pluto.sums.su/api/events?" + parameters, {
+      const mainEventsPromise = axios.get(
+        "https://pluto.sums.su/api/events?" + parameters,
+        {
           headers: {
             "X-Site-Id": self.siteid,
           },
-        })
-        .then(function (response) {
+        },
+      );
+
+      Promise.all([excludedTagsPromise, mainEventsPromise])
+        .then(function (results) {
+          const excludedResponse = results[0];
+          const response = results[1];
+          self.excludedTaggedEvents = excludedResponse
+            ? excludedResponse.data.data
+            : [];
           if (self.firstPagePremium) {
             const premiumEventIds = self.PremiumEvents.map((event) => event.id);
             self.Events = response.data.data.filter((event) => {
@@ -487,6 +492,10 @@ export default {
           } else {
             self.PreviousResults = false;
           }
+          self.Loading = false;
+        })
+        .catch(function (error) {
+          console.error("Failed to load events", error);
           self.Loading = false;
         });
     },
