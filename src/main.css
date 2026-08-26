@@ -279,11 +279,13 @@ button {
     @apply py-2;
   }
 
-  main ul {
+  main ul,
+  .body-style ul {
     @apply list-disc pl-10;
   }
 
-  main ol {
+  main ol,
+  .body-style ol {
     @apply list-decimal pl-10;
   }
 }
