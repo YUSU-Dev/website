@@ -248,7 +248,7 @@ export default {
       while (!foundAllCategories) {
         let categoriesParameters = "perPage=100&page=" + categoriesPage;
         let page = await axios.get(
-          "https://pluto.sums.su/api/news/categories?" + categoriesParameters,
+          "https://pluto.sums.digital/api/news/categories?" + categoriesParameters,
           {
             headers: {
               "X-Site-Id": self.siteid,
@@ -317,7 +317,7 @@ export default {
         parameters += "&categoryIds=" + categoriesToUse.join(",");
       }
       let response = await axios.get(
-        "https://pluto.sums.su/api/news?" + parameters,
+        "https://pluto.sums.digital/api/news?" + parameters,
         {
           headers: {
             "X-Site-Id": self.siteid,

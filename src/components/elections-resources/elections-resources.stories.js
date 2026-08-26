@@ -12,7 +12,7 @@ export const Default = {
         <h2 class="text-2xl font-bold">Why vote?</h2>
         <p>
           <a
-            href="https://assets-cdn.sums.su/YU/elections2023/Why_vote.jpg"
+            href="https://assets-cdn.sums.digital/YU/elections2023/Why_vote.jpg"
             target="_blank"
             >Why Voting Matters</a
           >
@@ -33,20 +33,20 @@ export const Default = {
         <h2 class="text-2xl font-bold">Thinking about running?</h2>
         <p>
           <a
-            href="https://assets-cdn.sums.su/YU/elections2023/YUSU_Elections_-_Nominate.pdf"
+            href="https://assets-cdn.sums.digital/YU/elections2023/YUSU_Elections_-_Nominate.pdf"
             target="_blank"
             >What do I need to nominate?</a
           >
         </p>
         <p>
           <a
-            href="https://assets-cdn.sums.su/YU/Documents/Voice/Officer_Manifesto_Library.pdf"
+            href="https://assets-cdn.sums.digital/YU/Documents/Voice/Officer_Manifesto_Library.pdf"
             >Manifesto library</a
           >
         </p>
         <p>
           <a
-            href="https://assets-cdn.sums.su/YU/elections2023/YUSU_Elections_Handbooks.pdf"
+            href="https://assets-cdn.sums.digital/YU/elections2023/YUSU_Elections_Handbooks.pdf"
             >What are elections all about?</a
           >
         </p>
@@ -86,7 +86,7 @@ export const Default = {
         </p>
         <p>
           <a
-            href="https://assets-cdn.sums.su/YU/uploads/Being_a_Sabb.pdf"
+            href="https://assets-cdn.sums.digital/YU/uploads/Being_a_Sabb.pdf"
             target="_blank"
             >Being a Sabb</a
           >&nbsp;-
@@ -168,7 +168,7 @@ export const Default = {
         </p>
         <p>
           <a
-            href="https://assets-cdn.sums.su/YU/Documents/YUSU_Impact_Report_2021-22.pdf"
+            href="https://assets-cdn.sums.digital/YU/Documents/YUSU_Impact_Report_2021-22.pdf"
             target="_blank"
             >YUSU Impact Report 2021/22</a
           >

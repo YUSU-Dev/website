@@ -3,7 +3,7 @@
     <div class="flex w-10/12 flex-col">
       <img
         class="my-4 w-10/12 md:w-6/12"
-        src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
+        src="https://assets-cdn.sums.digital/YU/IMG/Website/new_logo_beige.png"
         alt="University of York Students' Union"
         loading="lazy"
       />

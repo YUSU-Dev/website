@@ -3,7 +3,7 @@
     v-if="loading"
     :group="Activity.name"
     :id="Activity.id"
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
     :logo="Activity.thumbnail_url"
     :category="Activity.category"
   />
@@ -11,7 +11,7 @@
     v-if="!loading"
     :group="Activity.name"
     :id="Activity.id"
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
     :logo="Activity.thumbnail_url"
     :category="Activity.category"
     :constitution="constitution"
@@ -63,12 +63,12 @@ export default {
     self.loading = true;
     axios
       .all([
-        axios.get("https://pluto.sums.su/api/groups/" + self.activityid, {
+        axios.get("https://pluto.sums.digital/api/groups/" + self.activityid, {
           headers: {
             "X-Site-Id": self.siteid,
           },
         }),
-        axios.get("https://pluto.sums.su/api/groups/categories", {
+        axios.get("https://pluto.sums.digital/api/groups/categories", {
           headers: {
             "X-Site-Id": self.siteid,
           },

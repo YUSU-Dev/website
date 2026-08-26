@@ -76,7 +76,7 @@ export default {
       let self = this;
       self.loading = true;
       axios
-        .get("https://pluto.sums.su/api/events/" + this.dateId)
+        .get("https://pluto.sums.digital/api/events/" + this.dateId)
         .then((response) => {
           self.event = response.data;
           self.event.start_date = new Date(self.event.start_date);

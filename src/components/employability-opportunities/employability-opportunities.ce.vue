@@ -167,7 +167,7 @@
                 >
                   <img
                     class="h-full w-full object-cover object-center"
-                    src="https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Yellow.webp"
+                    src="https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_Yellow.webp"
                     alt=""
                     loading="lazy"
                   />
@@ -492,14 +492,14 @@ export default {
 
     async getCategories() {
       const response = await axios.get(
-        "https://pluto.sums.su/api/employability/categories",
+        "https://pluto.sums.digital/api/employability/categories",
       );
       this.categories = response.data;
     },
 
     async getSkills() {
       const response = await axios.get(
-        "https://pluto.sums.su/api/employability/skills",
+        "https://pluto.sums.digital/api/employability/skills",
       );
       this.skills = response.data;
     },
@@ -528,7 +528,7 @@ export default {
       }
 
       const response = await axios.get(
-        `https://pluto.sums.su/api/employability/opportunities?${params}`,
+        `https://pluto.sums.digital/api/employability/opportunities?${params}`,
       );
 
       this.opportunities = response.data.data;
@@ -587,7 +587,7 @@ export default {
       this.modalOpen = true;
 
       const response = await axios.get(
-        `https://pluto.sums.su/api/employability/opportunities/${opportunityId}`,
+        `https://pluto.sums.digital/api/employability/opportunities/${opportunityId}`,
       );
 
       this.selectedOpportunity = response.data;

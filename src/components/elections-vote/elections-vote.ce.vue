@@ -103,7 +103,7 @@
               </div>
               <div v-else>
                 <img
-                  src="https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Pink.webp"
+                  src="https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_Pink.webp"
                   alt=""
                   draggable="false"
                 />
@@ -302,7 +302,7 @@ export default {
       self.ModalClosed = true;
       try {
         const [electionsResponse, pronounsResponse] = await Promise.all([
-          axios.get("https://pluto.sums.su/api/elections/" + this.electionId),
+          axios.get("https://pluto.sums.digital/api/elections/" + this.electionId),
           axios.get(
             "https://yorksu.org/elections/all-candidate-pronouns/" +
               this.electionId,

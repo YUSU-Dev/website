@@ -1,7 +1,7 @@
 <template>
   <EventsIdHeroBanner
     :title="eventDate.event_date_title"
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
     :event-thumbnail="eventDate.thumbnail_url"
   />
   <div
@@ -86,7 +86,7 @@ export default {
       var self = this;
       this.loading = true;
       await axios
-        .get("https://pluto.sums.su/api/events/" + self.date_id, {
+        .get("https://pluto.sums.digital/api/events/" + self.date_id, {
           headers: {
             "X-Site-Id": self.siteid,
           },

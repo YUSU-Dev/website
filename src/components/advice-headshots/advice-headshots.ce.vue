@@ -52,7 +52,7 @@ export default {
         {
           name: "Rich",
           image:
-            "https://assets-cdn.sums.su/YU/website/img/advice/rich-andrew.jpeg",
+            "https://assets-cdn.sums.digital/YU/website/img/advice/rich-andrew.jpeg",
           title: "Advice & Support Manager",
           testimonial:
             "The guidance I received from my adviser was vital to my response to the process I was engaging in, and without his help I would not have been able to manage the situation sucessfully.",
@@ -60,7 +60,7 @@ export default {
         {
           name: "Charlotte",
           image:
-            "https://assets-cdn.sums.su/YU/website/img/advice/charlotte-renshaw.jpeg",
+            "https://assets-cdn.sums.digital/YU/website/img/advice/charlotte-renshaw.jpeg",
           title: "Advice & Support Development Coordinator",
           testimonial:
             "I wanted to express my sincere thanks for your incredibly clear and thorough responses to my questions. Your guidance has been very helpful, especially with everything feeling so overwhelming. I feel extremely fortunate to have your support and advice during this challenging time.",
@@ -68,7 +68,7 @@ export default {
         {
           name: "Evie",
           image:
-            "https://assets-cdn.sums.su/YU/website/img/advice/evie-cox.jpeg",
+            "https://assets-cdn.sums.digital/YU/website/img/advice/evie-cox.jpeg",
           title: "Advice & Support Development Coordinator",
           testimonial:
             "My advisor Evie, was nothing short of excellent. She was so patient and actively listened to everything I said. It felt like she had struck the perfect balance of being supportive and empathetic whilst remaining calm and offering other perspectives in an unbiased manner. Evie always responded in a timely manner, and wherever she was unable to do so, she would inform me and give me a timeline of when I could expect to hear back from her. I can't express in words how much her help made a difference to me.",
@@ -76,7 +76,7 @@ export default {
         {
           name: "Matt",
           image:
-            "https://assets-cdn.sums.su/YU/website/img/advice/matt-johnstone.jpeg",
+            "https://assets-cdn.sums.digital/YU/website/img/advice/matt-johnstone.jpeg",
           title: "Advice & Support Development Coordinator",
           testimonial:
             "I just wanted to thank you so so much for all of your help. You've been fantastic. From making me feel so comfortable in our initial meeting to being so unbelievably helpful with statement writing and editing and getting back to me in excellent time, you've made what has been such a stressful situation so much more bearable and I cannot thank you enough.",
@@ -84,7 +84,7 @@ export default {
         {
           name: "Laura",
           image:
-            "https://assets-cdn.sums.su/YU/website/img/advice/laura-robertson.jpeg",
+            "https://assets-cdn.sums.digital/YU/website/img/advice/laura-robertson.jpeg",
           title: "Advice & Support Development Coordinator",
           testimonial:
             "Your help came at what was truly one of the darkest and most difficult times for me, and the guidance and encouragement you gave were unbelievably valuable. It’s comforting to know that I have people like you who are willing to help me navigate these challenges.",

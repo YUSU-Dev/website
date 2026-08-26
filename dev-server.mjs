@@ -36,7 +36,7 @@ function startServer() {
       origin: [
         "https://yusu.org",
         "https://yorksu.org",
-        "https://yu-development.sums.su",
+        "https://yu-development.sums.digital",
       ],
     }),
   );

@@ -84,7 +84,7 @@ export default {
     async getDonationProduct() {
       this.loading = true;
       await axios
-        .get(`https://pluto.sums.su/api/products/` + this.charityId, {
+        .get(`https://pluto.sums.digital/api/products/` + this.charityId, {
           headers: {
             "X-Site-Id": self.siteid,
           },

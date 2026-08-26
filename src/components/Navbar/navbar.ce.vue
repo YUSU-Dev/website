@@ -5,7 +5,7 @@
         <a href="/home" aria-label="Homepage">
           <img
             class="block h-[77px] sm:hidden"
-            src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_cropped_beige.png"
+            src="https://assets-cdn.sums.digital/YU/IMG/Website/new_logo_cropped_beige.png"
             alt="University of York Students' Union"
             loading="lazy"
           />
@@ -13,7 +13,7 @@
         <a href="/home" aria-label="Homepage">
           <img
             class="hidden h-[77px] sm:block"
-            src="https://assets-cdn.sums.su/YU/IMG/Website/new_logo_beige.png"
+            src="https://assets-cdn.sums.digital/YU/IMG/Website/new_logo_beige.png"
             alt="University of York Students' Union"
             loading="lazy"
           />

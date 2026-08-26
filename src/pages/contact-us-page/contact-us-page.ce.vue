@@ -1,6 +1,6 @@
 <template>
   <HeroHeader
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
     title="Contact Us"
   />
   <div

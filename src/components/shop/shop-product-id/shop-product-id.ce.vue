@@ -65,7 +65,7 @@ export default {
   created() {
     const self = this;
     axios
-      .get(`https://pluto.sums.su/api/products/` + self.productId, {
+      .get(`https://pluto.sums.digital/api/products/` + self.productId, {
         headers: {
           "X-Site-Id": self.siteid,
         },
@@ -83,7 +83,7 @@ export default {
           self.image = response.data.image;
         } else {
           self.image =
-            "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Red.webp";
+            "https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_Red.webp";
         }
       })
       .catch((error) => {

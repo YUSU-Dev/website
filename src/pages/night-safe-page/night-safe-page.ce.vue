@@ -1,7 +1,7 @@
 <template>
   <div id="skiptocontent"><a href="#main">skip to main content</a></div>
   <HeroHeader
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Advice_Support.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_Advice_Support.jpg"
     title="Nightlife in York"
   />
   <main id="main" class="container mx-auto">
@@ -17,7 +17,7 @@
 
         <Button
           text="York Safer Clubbing Guide"
-          url="https://assets-cdn.sums.su/YU/Documents/advice/yp-voodo-safer-clubbing.pdf"
+          url="https://assets-cdn.sums.digital/YU/Documents/advice/yp-voodo-safer-clubbing.pdf"
           is-primary
           target="_blank"
         />
@@ -115,14 +115,14 @@
       <div class="xxs:flex-row flex flex-col gap-4">
         <div class="">
           <img
-            src="https://assets-cdn.sums.su/YU/website/img/advice/Night-Safe/nightsafe_group.jpg"
+            src="https://assets-cdn.sums.digital/YU/website/img/advice/Night-Safe/nightsafe_group.jpg"
             alt="Night Safe volunteers"
             class="max-h-[300px]"
           />
         </div>
         <div class="">
           <img
-            src="https://assets-cdn.sums.su/YU/website/img/advice/Night-Safe/nightsafe.jpg"
+            src="https://assets-cdn.sums.digital/YU/website/img/advice/Night-Safe/nightsafe.jpg"
             alt="Night Safe volunteers"
             class="max-h-[300px]"
           />

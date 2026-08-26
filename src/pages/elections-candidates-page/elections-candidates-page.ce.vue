@@ -1,7 +1,7 @@
 <template>
   <HeroHeader
     title="Candidates"
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
   />
   <div class="container mx-auto">
     <ElectionsCandidates :election-id="electionId" />

@@ -66,22 +66,22 @@ export default {
         {
           title: "The Courtyard",
           buttonName: "The Courtyard Menu",
-          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Courtyard_2627_Online.pdf",
+          menu: "https://assets-cdn.sums.digital/YU/Venues/Menus/Courtyard_2627_Online.pdf",
         },
         {
           title: "The Glasshouse",
           buttonName: "The Glasshouse Menu",
-          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/Glasshouse_2627_Online.pdf",
+          menu: "https://assets-cdn.sums.digital/YU/Venues/Menus/Glasshouse_2627_Online.pdf",
         },
         {
           title: "The Kitchen",
           buttonName: "The Kitchen Menu",
-          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/kitchen_Menu_2627_Online.pdf",
+          menu: "https://assets-cdn.sums.digital/YU/Venues/Menus/kitchen_Menu_2627_Online.pdf",
         },
         {
           title: "The Vanbrugh Arms",
           buttonName: "The Vanbrugh Arms Menu",
-          menu: "https://assets-cdn.sums.su/YU/Venues/Menus/CY_Menu_EVENING_2025VA.pdf",
+          menu: "https://assets-cdn.sums.digital/YU/Venues/Menus/CY_Menu_EVENING_2025VA.pdf",
         },
       ],
       openMenus: {},

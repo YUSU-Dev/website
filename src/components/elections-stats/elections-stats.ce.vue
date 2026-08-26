@@ -121,7 +121,7 @@ export default {
       let self = this;
       this.loading = true;
       await axios
-        .get("https://pluto.sums.su/api/elections/statistics")
+        .get("https://pluto.sums.digital/api/elections/statistics")
         .then(function (response) {
           if (self.generalStats || self.all) {
             // self.stats.push({'title': 'Total Electorate', 'data': response.data.total_electorate});

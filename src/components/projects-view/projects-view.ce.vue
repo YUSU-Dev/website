@@ -110,7 +110,7 @@ export default {
   },
   created() {
     axios
-      .get("https://pluto.sums.su/api/news?categoryIds=19,33,30,31,34", {
+      .get("https://pluto.sums.digital/api/news?categoryIds=19,33,30,31,34", {
         headers: {
           "X-Site-Id": self.siteid,
         },
