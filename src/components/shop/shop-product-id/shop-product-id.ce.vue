@@ -16,7 +16,7 @@
           :product-id="productId"
           :signed-in="signedIn"
         />
-        <article class="mt-2" v-html="description"></article>
+        <article class="body-style mt-2" v-html="description"></article>
         <ShopProductFields
           v-if="fields.length"
           :has-stock="hasStock"
