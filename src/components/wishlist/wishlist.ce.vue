@@ -149,7 +149,8 @@ export default {
         if (item.interested_activity_id != 0) {
           await axios
             .get(
-              `https://pluto.sums.digital/api/groups/` + item.interested_activity_id,
+              `https://pluto.sums.digital/api/groups/` +
+                item.interested_activity_id,
               {
                 headers: {
                   "X-Site-Id": self.siteid,

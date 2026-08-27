@@ -35,7 +35,9 @@ export default {
     var self = this;
     axios
       .get(
-        "https://pluto.sums.digital/api/groups/" + self.groupId + "/pages?all=1",
+        "https://pluto.sums.digital/api/groups/" +
+          self.groupId +
+          "/pages?all=1",
         {
           headers: {
             "X-Site-Id": self.siteid,

@@ -302,7 +302,9 @@ export default {
       self.ModalClosed = true;
       try {
         const [electionsResponse, pronounsResponse] = await Promise.all([
-          axios.get("https://pluto.sums.digital/api/elections/" + this.electionId),
+          axios.get(
+            "https://pluto.sums.digital/api/elections/" + this.electionId,
+          ),
           axios.get(
             "https://yorksu.org/elections/all-candidate-pronouns/" +
               this.electionId,
