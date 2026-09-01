@@ -322,7 +322,7 @@ export default {
     }
     //Get Categories
     axios
-      .get("https://pluto.sums.su/api/events/types?sortBy=name", {
+      .get("https://pluto.sums.digital/api/events/types?sortBy=name", {
         headers: {
           "X-Site-Id": self.siteid,
         },
@@ -332,7 +332,7 @@ export default {
       });
     //get Activities
     axios
-      .get("https://pluto.sums.su/api/groups?sortBy=name&selectList=1", {
+      .get("https://pluto.sums.digital/api/groups?sortBy=name&selectList=1", {
         headers: {
           "X-Site-Id": self.siteid,
         },
@@ -343,7 +343,7 @@ export default {
 
     // get Tags
     axios
-      .get("https://pluto.sums.su/api/events/categories?sortBy=name", {
+      .get("https://pluto.sums.digital/api/events/categories?sortBy=name", {
         headers: {
           "X-Site-Id": self.siteid,
         },
@@ -406,7 +406,7 @@ export default {
         self.firstPagePremium = true;
         Promise.all([
           axios.get(
-            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=4&" +
+            "https://pluto.sums.digital/api/events?onlyPremium=1&typeId=4&" +
               parameters,
             {
               headers: {
@@ -415,7 +415,7 @@ export default {
             },
           ),
           axios.get(
-            "https://pluto.sums.su/api/events?onlyPremium=1&typeId=37&" +
+            "https://pluto.sums.digital/api/events?onlyPremium=1&typeId=37&" +
               parameters,
             {
               headers: {
@@ -435,7 +435,7 @@ export default {
 
       const excludedTagsPromise = self.excludedTags
         ? axios.get(
-            "https://pluto.sums.su/api/events?" +
+            "https://pluto.sums.digital/api/events?" +
               "sortBy=start_date&futureOrOngoing=1&page=1" +
               "&perPage=200&categoryIds=" +
               self.excludedTags,
@@ -449,7 +449,7 @@ export default {
 
       //get the rest of the events
       const mainEventsPromise = axios.get(
-        "https://pluto.sums.su/api/events?" + parameters,
+        "https://pluto.sums.digital/api/events?" + parameters,
         {
           headers: {
             "X-Site-Id": self.siteid,

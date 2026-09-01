@@ -15,7 +15,7 @@
                 :src="
                   candidate.assets && candidate.assets.document_photo
                     ? candidate.assets.document_photo
-                    : 'https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Pink.webp'
+                    : 'https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_Pink.webp'
                 "
                 alt=""
                 class="h-full w-full object-cover"
@@ -59,7 +59,7 @@ export default {
     async getCandidates() {
       var self = this;
       await axios
-        .get("https://pluto.sums.su/api/elections/" + this.electionId)
+        .get("https://pluto.sums.digital/api/elections/" + this.electionId)
         .then(function (response) {
           self.electionName = response.data.name;
           self.candidates = response.data.candidates.filter(

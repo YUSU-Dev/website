@@ -1,6 +1,6 @@
 <template>
   <HeroHeader
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_Student_Life.jpg"
     :title="title"
   />
   <div id="main" class="body-style container mx-auto">

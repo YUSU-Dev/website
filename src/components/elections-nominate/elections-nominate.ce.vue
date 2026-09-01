@@ -14,8 +14,8 @@
   <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.js"></script>
-  <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/image-cropper.js"></script>
-  <script type="text/javascript" src="https://assets-cdn.sums.su/YU/JS/elections-char-count.js"></script>
+  <script type="text/javascript" src="https://assets-cdn.sums.digital/YU/JS/image-cropper.js"></script>
+  <script type="text/javascript" src="https://assets-cdn.sums.digital/YU/JS/elections-char-count.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/croppie@2.6.5/croppie.min.css" rel="stylesheet">
   <div class="container mx-auto">
     <div class="flex flex-col gap-y-6">

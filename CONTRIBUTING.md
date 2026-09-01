@@ -83,7 +83,7 @@ export default {
     };
   },
   async created() {
-    const res = await axios.get("https://pluto.sums.su/api/groups");
+    const res = await axios.get("https://pluto.sums.digital/api/groups");
     this.groups = res.data;
   },
 };

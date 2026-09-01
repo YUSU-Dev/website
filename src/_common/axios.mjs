@@ -1,7 +1,7 @@
 import axios from "https://unpkg.com/axios@1.11.0/dist/esm/axios.min.js";
 
 axios.interceptors.request.use(function (config) {
-  if (config.url.includes("pluto.sums.su")) {
+  if (config.url.includes("pluto.sums.digital")) {
     config.headers["x-site-id"] ||= "tZyLG9BX9f4hdTp2HLva5c";
   }
 
@@ -12,7 +12,7 @@ axios.interceptors.request.use(function (config) {
       window.location.hostname === "127.0.0.1"
     ) {
       config.url = config.url.replace(
-        "https://pluto.sums.su/",
+        "https://pluto.sums.digital/",
         "/__pluto_proxy__/",
       );
       config.url = config.url.replace(

@@ -16,6 +16,6 @@ export const Default = {
 export const Membership = {
   args: {
     productId: 8439,
-    image: "https://assets-cdn.sums.su/YU/IMG/NewBrand/500x500_Blue.jpg",
+    image: "https://assets-cdn.sums.digital/YU/IMG/NewBrand/500x500_Blue.jpg",
   },
 };

@@ -7,7 +7,7 @@
       class="xs:w-[200px] aspect-square h-fit w-full rounded-full object-contain md:w-[300px]"
       :src="
         officer.imageUrl ||
-        'https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Yellow.webp'
+        'https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_Yellow.webp'
       "
     />
     <div class="flex w-full flex-col justify-center md:justify-start">
@@ -49,7 +49,7 @@ export default {
           uri: "union-affairs",
           name: "Lewis Parrey",
           imageUrl:
-            "https://assets-cdn.sums.su/YU/Student_voice/LP_website_pic.jpg",
+            "https://assets-cdn.sums.digital/YU/Student_voice/LP_website_pic.jpg",
           email: "unionaffairsofficer@yorksu.org",
           twitter: "AffairsYorkSU",
           instagram: "affairsyorksu",
@@ -59,7 +59,7 @@ export default {
           uri: "union-development",
           name: "Anna Lindberg",
           imageUrl:
-            "https://assets-cdn.sums.su/YU/Student_voice/ALB_website_pic.jpg",
+            "https://assets-cdn.sums.digital/YU/Student_voice/ALB_website_pic.jpg",
           email: "uniondevofficer@yorksu.org",
           twitter: "developyorksu",
           instagram: "developmentyorksu",
@@ -69,7 +69,7 @@ export default {
           uri: "academic",
           name: "Aya Haidar",
           imageUrl:
-            "https://assets-cdn.sums.su/YU/Student_voice/AYA_H_website_pic.jpg",
+            "https://assets-cdn.sums.digital/YU/Student_voice/AYA_H_website_pic.jpg",
           email: "academicofficer@yorksu.org",
           twitter: "",
           instagram: "academicyorksu",
@@ -79,7 +79,7 @@ export default {
           uri: "equality",
           name: "Abi Harrison",
           imageUrl:
-            "https://assets-cdn.sums.su/YU/Student_voice/AH_website_pic.jpg",
+            "https://assets-cdn.sums.digital/YU/Student_voice/AH_website_pic.jpg",
           email: "equalityinclusionofficer@yorksu.org",
           twitter: "",
           instagram: "equalityyorksu",
@@ -89,7 +89,7 @@ export default {
           uri: "community",
           name: "Sam Dickinson",
           imageUrl:
-            "https://assets-cdn.sums.su/YU/Student_voice/SD_website_pic.jpg",
+            "https://assets-cdn.sums.digital/YU/Student_voice/SD_website_pic.jpg",
           email: "communitywellbeingofficer@yorksu.org",
           twitter: "",
           instagram: "communityyorksu",
@@ -99,7 +99,7 @@ export default {
           uri: "activities",
           name: "Kaitlyn Beattie-Zarb",
           imageUrl:
-            "https://assets-cdn.sums.su/YU/Student_voice/KBZ_website_pic.jpg",
+            "https://assets-cdn.sums.digital/YU/Student_voice/KBZ_website_pic.jpg",
           email: "activitiesofficer@yorksu.org",
           twitter: "",
           instagram: "activitiesyorksu",
@@ -109,7 +109,7 @@ export default {
           uri: "sport",
           name: "Darcy Graham",
           imageUrl:
-            "https://assets-cdn.sums.su/YU/Student_voice/DG_website_pic.jpg",
+            "https://assets-cdn.sums.digital/YU/Student_voice/DG_website_pic.jpg",
           email: "sportofficer@yorksu.org",
           twitter: "",
           instagram: "sportsyorksu",

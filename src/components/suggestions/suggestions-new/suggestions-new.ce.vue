@@ -1,7 +1,7 @@
 <!-- eslint-disable -->
 <template>
   {embed="core-components/.hero-header" title="New Idea"
-  image_url="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg"}
+  image_url="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg"}
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 

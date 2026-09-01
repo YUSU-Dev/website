@@ -6,7 +6,7 @@
     >
       <h2 class="sr-only">The Courtyard</h2>
       <img
-        src="https://assets-cdn.sums.su/YU/website/Venue_logos/TheCourtyardYUSU_Logo_desktopv2.png"
+        src="https://assets-cdn.sums.digital/YU/website/Venue_logos/TheCourtyardYUSU_Logo_desktopv2.png"
         alt="The Courtyard logo"
         loading="lazy"
         class="object-contain"
@@ -18,7 +18,7 @@
     >
       <h2 class="sr-only">The Glasshouse</h2>
       <img
-        src="https://assets-cdn.sums.su/YU/website/Venue_logos/glasshouse.png"
+        src="https://assets-cdn.sums.digital/YU/website/Venue_logos/glasshouse.png"
         alt="The Glasshouse logo"
         loading="lazy"
         class="object-contain"
@@ -30,7 +30,7 @@
     >
       <h2 class="sr-only">The Kitchen at Alcuin</h2>
       <img
-        src="https://assets-cdn.sums.su/YU/website/Venue_logos/kitchen-at-alcuin.png"
+        src="https://assets-cdn.sums.digital/YU/website/Venue_logos/kitchen-at-alcuin.png"
         alt="The Kitchen at Alcuin logo"
         loading="lazy"
         class="object-contain"
@@ -42,7 +42,7 @@
     >
       <h2 class="sr-only">The Lounge</h2>
       <img
-        src="https://assets-cdn.sums.su/YU/website/Venue_logos/the-lounge.png"
+        src="https://assets-cdn.sums.digital/YU/website/Venue_logos/the-lounge.png"
         alt="The Lounge logo"
         loading="lazy"
         class="object-contain"
@@ -54,7 +54,7 @@
     >
       <h2 class="sr-only">The Vanbrugh Arms</h2>
       <img
-        src="https://assets-cdn.sums.su/YU/website/Venue_logos/vanbrugh-arms.png"
+        src="https://assets-cdn.sums.digital/YU/website/Venue_logos/vanbrugh-arms.png"
         alt="The Vanbrugh Arms logo"
         loading="lazy"
         class="object-contain"

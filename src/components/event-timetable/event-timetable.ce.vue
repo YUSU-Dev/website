@@ -348,7 +348,7 @@ export default {
 
     async fetchAllPagesForMonth(month) {
       const eventsFromAllPages = [];
-      let baseUrl = `https://pluto.sums.su/api/events?date=${month}&perPage=100`;
+      let baseUrl = `https://pluto.sums.digital/api/events?date=${month}&perPage=100`;
 
       if (this.typeId) {
         baseUrl += `&typeId=${this.typeId}`;

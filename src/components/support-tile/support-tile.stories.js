@@ -7,7 +7,7 @@ export default {
 
 export const Default = {
   args: {
-    img: "https://assets-cdn.sums.su/YU/elections2024/test-headshot.jpg",
+    img: "https://assets-cdn.sums.digital/YU/elections2024/test-headshot.jpg",
     name: "The Thinker",
     position: "President",
     url: "https://yusu.org/your-voice/president",

@@ -7,7 +7,7 @@
         <div class="pb-8">
           <a href="/">
             <img
-              src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-white-full.png"
+              src="https://assets-cdn.sums.digital/YU/website/img/yorksu-logo-white-full.png"
               alt="YorkSU Logo"
               class="w-52"
             />

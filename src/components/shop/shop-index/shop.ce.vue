@@ -187,7 +187,7 @@ export default {
     }
     //Get Categories
     axios
-      .get("https://pluto.sums.su/api/products/categories?sortBy=name", {
+      .get("https://pluto.sums.digital/api/products/categories?sortBy=name", {
         headers: {
           "X-Site-Id": self.siteid,
         },
@@ -197,7 +197,7 @@ export default {
       });
     //get groups
     axios
-      .get("https://pluto.sums.su/api/groups?sortBy=name&selectList=1", {
+      .get("https://pluto.sums.digital/api/groups?sortBy=name&selectList=1", {
         headers: {
           "X-Site-Id": self.siteid,
         },
@@ -238,7 +238,7 @@ export default {
         parameters += "&groupId=" + self.SelectedGroup;
       }
       axios
-        .get("https://pluto.sums.su/api/products?" + parameters, {
+        .get("https://pluto.sums.digital/api/products?" + parameters, {
           headers: {
             "X-Site-Id": self.siteid,
           },

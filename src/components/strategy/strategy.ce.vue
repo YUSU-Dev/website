@@ -212,7 +212,7 @@
           </div>
           <article class="body-style flex justify-center">
             <a
-              href="https://assets-cdn.sums.su/YU/Documents/Sabb_Manifesto_Document.pdf"
+              href="https://assets-cdn.sums.digital/YU/Documents/Sabb_Manifesto_Document.pdf"
               class="text-lg"
               >Read the full manifesto here</a
             >
@@ -234,7 +234,7 @@
         <Button
           title="View The Impact Report"
           is-primary
-          url="https://assets-cdn.sums.su/YU/Accountability/A4_Impact_Report_2024_2025_UPLOAD.pdf"
+          url="https://assets-cdn.sums.digital/YU/Accountability/A4_Impact_Report_2024_2025_UPLOAD.pdf"
         />
       </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="skiptocontent"><a href="#maincontent">skip to main content</a></div>
   <HeroHeader
-    image="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Advice_Support.jpg"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_Advice_Support.jpg"
     title="York SU Advice & Support"
   />
   <div id="maincontent" class="container mx-auto py-20">

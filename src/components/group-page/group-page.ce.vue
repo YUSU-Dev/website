@@ -115,18 +115,18 @@ export default {
     self.loading = true;
     axios
       .all([
-        axios.get("https://pluto.sums.su/api/groups/" + self.groupId, {
+        axios.get("https://pluto.sums.digital/api/groups/" + self.groupId, {
           headers: {
             "X-Site-Id": self.siteid,
           },
         }),
-        axios.get("https://pluto.sums.su/api/groups/categories", {
+        axios.get("https://pluto.sums.digital/api/groups/categories", {
           headers: {
             "X-Site-Id": self.siteid,
           },
         }),
         axios.get(
-          "https://pluto.sums.su/api/groups/" +
+          "https://pluto.sums.digital/api/groups/" +
             self.groupId +
             "/pages/" +
             self.pageUrl,

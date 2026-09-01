@@ -27,7 +27,7 @@ export default {
     image: {
       type: String,
       default:
-        "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_Blue.webp",
+        "https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_Blue.webp",
     },
     productId: {
       type: Number,

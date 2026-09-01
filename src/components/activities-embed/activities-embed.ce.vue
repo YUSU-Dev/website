@@ -37,7 +37,7 @@ export default {
     var groupIds = self.ids.split(",");
     for (let i in groupIds) {
       axios
-        .get("https://pluto.sums.su/api/groups/" + groupIds[i], {
+        .get("https://pluto.sums.digital/api/groups/" + groupIds[i], {
           headers: {
             "X-Site-Id": self.siteid,
           },

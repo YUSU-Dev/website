@@ -300,7 +300,7 @@ export default {
       let product = {};
       for (const item of basketItems) {
         await axios
-          .get(`https://pluto.sums.su/api/products/` + item.product_id, {
+          .get(`https://pluto.sums.digital/api/products/` + item.product_id, {
             headers: {
               "X-Site-Id": self.siteid,
             },

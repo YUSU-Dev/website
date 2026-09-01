@@ -5,6 +5,6 @@ export default create({
   brandTitle: "York Students' Union",
   brandUrl: "https://www.yorksu.org",
   brandImage:
-    "https://assets-cdn.sums.su/YU/website/img/yorksu-logo-black-full.png",
+    "https://assets-cdn.sums.digital/YU/website/img/yorksu-logo-black-full.png",
   brandTarget: "_blank",
 });

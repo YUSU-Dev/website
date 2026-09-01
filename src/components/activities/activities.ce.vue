@@ -147,9 +147,9 @@ library.add(faSearch);
 // Default web tiles for sport clubs that have no thumbnail of their own.
 // Societies fall through to the standard placeholder (randomImage) as before.
 const UNI_SPORT_TILE =
-  "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_WEB_TILES_YSU.jpg";
+  "https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_WEB_TILES_YSU.jpg";
 const COLLEGE_SPORT_TILE =
-  "https://assets-cdn.sums.su/YU/website/img/placeholders/500x500_WEB_TILES_YSU_College_Sport.jpg";
+  "https://assets-cdn.sums.digital/YU/website/img/placeholders/500x500_WEB_TILES_YSU_College_Sport.jpg";
 
 // Uni sport clubs sit under category 1 ("Sports").
 const UNI_SPORT_CATEGORY_ID = 1;
@@ -224,7 +224,7 @@ export default {
       //Get parents
       axios
         .get(
-          "https://pluto.sums.su/api/groups/categories?sortBy=name&isParent=1",
+          "https://pluto.sums.digital/api/groups/categories?sortBy=name&isParent=1",
           {
             headers: {
               "X-Site-Id": self.siteid,
@@ -241,7 +241,7 @@ export default {
       //get categories
       axios
         .get(
-          "https://pluto.sums.su/api/groups/categories?sortBy=name&isParent=0&parentIds=" +
+          "https://pluto.sums.digital/api/groups/categories?sortBy=name&isParent=0&parentIds=" +
             self.selectedparents,
           {
             headers: {
@@ -300,7 +300,7 @@ export default {
         parameters += "&parentCategoryId=" + self.SelectedParent.id;
       }
       axios
-        .get("https://pluto.sums.su/api/groups?" + parameters, {
+        .get("https://pluto.sums.digital/api/groups?" + parameters, {
           headers: {
             "X-Site-Id": self.siteid,
           },

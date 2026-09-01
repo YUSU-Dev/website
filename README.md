@@ -1,6 +1,6 @@
 <!-- markdownlint-disable-file -->
 <p align="center">
-  <img width="150px" src="https://assets-cdn.sums.su/YU/website/img/yorksu-logo-black-icon.png" alt="" loading="lazy">
+  <img width="150px" src="https://assets-cdn.sums.digital/YU/website/img/yorksu-logo-black-icon.png" alt="" loading="lazy">
 </p>
 
 # York SU Website Components

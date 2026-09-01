@@ -110,7 +110,9 @@ export default {
       try {
         const [electionResponse, pronounsResponse, manifestoSummaryResponse] =
           await Promise.all([
-            axios.get("https://pluto.sums.su/api/elections/" + this.electionId),
+            axios.get(
+              "https://pluto.sums.digital/api/elections/" + this.electionId,
+            ),
             axios.get(
               "https://yorksu.org/elections/candidate-pronouns/" +
                 this.electionId +

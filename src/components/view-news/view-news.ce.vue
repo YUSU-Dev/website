@@ -112,7 +112,7 @@ export default {
         .filter(Boolean);
       const requests = name.map((category) =>
         axios.get(
-          `https://pluto.sums.su/api/news/categories?searchTerm=${encodeURIComponent(category)}`,
+          `https://pluto.sums.digital/api/news/categories?searchTerm=${encodeURIComponent(category)}`,
         ),
       );
       const responses = await Promise.all(requests);
@@ -129,7 +129,7 @@ export default {
     self.image = self.randomImage();
     self.loading = true;
     axios
-      .get("https://pluto.sums.su/api/news/" + self.articleid)
+      .get("https://pluto.sums.digital/api/news/" + self.articleid)
       .then(function (response) {
         self.Article = response.data;
         if (self.Article.thumbnail) {

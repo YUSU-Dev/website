@@ -1,11 +1,11 @@
 <!-- eslint-disable -->
 <template>
   {embed="core-components/.hero-header" title="View Idea"
-  image_url="https://assets-cdn.sums.su/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg"}
+  image_url="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_Student_Voice.jpg"}
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-  <script src="https://assets-cdn.sums.su/YU/JS/linkify/linkify.min.js"></script>
-  <script src="https://assets-cdn.sums.su/YU/JS/linkify/linkify-jquery.min.js"></script>
+  <script src="https://assets-cdn.sums.digital/YU/JS/linkify/linkify.min.js"></script>
+  <script src="https://assets-cdn.sums.digital/YU/JS/linkify/linkify-jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/timeago@1.6.7/jquery.timeago.min.js"></script>
 
   <style>

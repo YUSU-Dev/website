@@ -97,7 +97,7 @@ export default {
       Search: "",
       selectedCategory: "",
       backgroundImage:
-        "https://assets-cdn.sums.su/YU/website/img/advice/advice-blue.webp",
+        "https://assets-cdn.sums.digital/YU/website/img/advice/advice-blue.webp",
     };
   },
   created() {
