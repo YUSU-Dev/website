@@ -108,6 +108,37 @@
           />
         </h2>
       </div>
+      <!-- ShortView search box. Not tied to title, so showSearch works on its own. -->
+      <div
+        v-if="ShortView && showSearch"
+        class="flex flex-col pb-4 sm:max-w-xs"
+      >
+        <label for="event-search" class="sr-only">Search</label>
+        <div class="input-group flex h-full border border-black">
+          <input
+            id="event-search"
+            class="form-control h-full w-full p-2 active:rounded-none"
+            aria-label="Search"
+            type="text"
+            name="search"
+            placeholder="Search events"
+            :value="Search"
+            @input="search($event)"
+          />
+          <div class="input-group-append">
+            <button
+              type="submit"
+              class="btn btn-block btn-secondary h-full"
+              aria-label="Submit"
+            >
+              <FontAwesomeIcon
+                icon="fas fa-search"
+                class="h-6 w-4 text-white"
+              ></FontAwesomeIcon>
+            </button>
+          </div>
+        </div>
+      </div>
       <div v-if="Events.length == 0 && !Loading" class="">
         <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
           There are currently no events
@@ -247,6 +278,8 @@ export default {
     title: { type: String, default: null },
     icon: { type: Boolean, default: false },
     excludedTags: { type: String, default: null },
+    // Search box for ShortView mode, without the full filter row.
+    showSearch: { type: Boolean, default: false },
   },
   components: {
     Tile,
@@ -378,7 +411,20 @@ export default {
       } else {
         parameters += "&perPage=" + self.PerPage;
       }
-      if (self.SelectedType) {
+      // typeid can be comma-separated on ShortView pages (e.g. GIAG's typeid
+      // prop). One request per type ID, merged below, since the API ignores
+      // a plural typeIds= param. The full /events view's own Category filter
+      // is single-select, so its value is left untouched here.
+      let typeIds = [];
+      if (self.ShortView && self.SelectedType) {
+        typeIds = String(self.SelectedType)
+          .split(",")
+          .map((t) => t.trim())
+          .filter(Boolean);
+        if (typeIds.length === 1) {
+          parameters += "&typeId=" + typeIds[0];
+        }
+      } else if (self.SelectedType) {
         parameters += "&typeId=" + self.SelectedType;
       }
       if (self.SelectedGroup) {
@@ -397,41 +443,51 @@ export default {
         parameters += "&categoryId=" + self.SelectedTag;
       }
       //if we're on the first page, get the premium events first
-      if (
+      // Skip this for multi-type ShortView requests: parameters carries no
+      // typeId there (each per-type request adds its own below), so it can
+      // match this baseline by coincidence and fire an unrelated fetch.
+      const firstPagePremium =
+        typeIds.length <= 1 &&
         parameters ==
-        "sortBy=start_date&futureOrOngoing=1&page=1" +
-          "&perPage=" +
-          self.PerPage
-      ) {
-        self.firstPagePremium = true;
-        Promise.all([
-          axios.get(
-            "https://pluto.sums.digital/api/events?onlyPremium=1&typeId=4&" +
-              parameters,
-            {
-              headers: {
-                "X-Site-Id": self.siteid,
+          "sortBy=start_date&futureOrOngoing=1&page=1" +
+            "&perPage=" +
+            self.PerPage;
+      self.firstPagePremium = firstPagePremium;
+
+      // Returns the premium events once loaded, or null if this isn't a
+      // first-page-premium request. Awaited below alongside the main fetch,
+      // not fired standalone, so filtering never runs against a stale
+      // self.PremiumEvents from before this data actually arrived.
+      const premiumEventsPromise = firstPagePremium
+        ? Promise.all([
+            axios.get(
+              "https://pluto.sums.digital/api/events?onlyPremium=1&typeId=4&" +
+                parameters,
+              {
+                headers: {
+                  "X-Site-Id": self.siteid,
+                },
               },
-            },
-          ),
-          axios.get(
-            "https://pluto.sums.digital/api/events?onlyPremium=1&typeId=37&" +
-              parameters,
-            {
-              headers: {
-                "X-Site-Id": self.siteid,
+            ),
+            axios.get(
+              "https://pluto.sums.digital/api/events?onlyPremium=1&typeId=37&" +
+                parameters,
+              {
+                headers: {
+                  "X-Site-Id": self.siteid,
+                },
               },
-            },
-          ),
-        ]).then(function (responses) {
-          self.PremiumEvents = responses[0].data.data.concat(
-            responses[1].data.data,
-          );
-          self.PremiumEvents.sort(
-            (a, b) => new Date(a.start_date) - new Date(b.start_date),
-          );
-        });
-      }
+            ),
+          ]).then(function (responses) {
+            const premiumEvents = responses[0].data.data.concat(
+              responses[1].data.data,
+            );
+            premiumEvents.sort(
+              (a, b) => new Date(a.start_date) - new Date(b.start_date),
+            );
+            return premiumEvents;
+          })
+        : Promise.resolve(null);
 
       const excludedTagsPromise = self.excludedTags
         ? axios.get(
@@ -447,25 +503,69 @@ export default {
           )
         : Promise.resolve(null);
 
-      //get the rest of the events
-      const mainEventsPromise = axios.get(
-        "https://pluto.sums.digital/api/events?" + parameters,
-        {
-          headers: {
-            "X-Site-Id": self.siteid,
-          },
-        },
-      );
+      //get the rest of the events, one request per type ID if more than one is set
+      const mainEventsPromise =
+        typeIds.length > 1
+          ? Promise.all(
+              typeIds.map((id) =>
+                axios.get(
+                  "https://pluto.sums.digital/api/events?" +
+                    parameters +
+                    "&typeId=" +
+                    id,
+                  {
+                    headers: {
+                      "X-Site-Id": self.siteid,
+                    },
+                  },
+                ),
+              ),
+            ).then(function (responses) {
+              let merged = [];
+              let seenIds = {};
+              responses.forEach(function (r) {
+                (r.data.data || []).forEach(function (event) {
+                  if (!seenIds[event.id]) {
+                    seenIds[event.id] = true;
+                    merged.push(event);
+                  }
+                });
+              });
+              merged.sort(
+                (a, b) => new Date(a.start_date) - new Date(b.start_date),
+              );
+              // typeIds only has more than one entry in ShortView (see the
+              // gate above), and ShortView never renders Pagination, so
+              // there's no next page to track here.
+              return {
+                data: {
+                  data: merged,
+                  next_page_url: null,
+                  prev_page_url: null,
+                },
+              };
+            })
+          : axios.get("https://pluto.sums.digital/api/events?" + parameters, {
+              headers: {
+                "X-Site-Id": self.siteid,
+              },
+            });
 
-      Promise.all([excludedTagsPromise, mainEventsPromise])
+      Promise.all([
+        excludedTagsPromise,
+        mainEventsPromise,
+        premiumEventsPromise,
+      ])
         .then(function (results) {
           const excludedResponse = results[0];
           const response = results[1];
+          const premiumEvents = results[2];
           self.excludedTaggedEvents = excludedResponse
             ? excludedResponse.data.data
             : [];
-          if (self.firstPagePremium) {
-            const premiumEventIds = self.PremiumEvents.map((event) => event.id);
+          if (firstPagePremium) {
+            self.PremiumEvents = premiumEvents;
+            const premiumEventIds = premiumEvents.map((event) => event.id);
             self.Events = response.data.data.filter((event) => {
               return !premiumEventIds.includes(event.id);
             });
