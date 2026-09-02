@@ -120,7 +120,7 @@
               <p>£{{ shopFullBasket.delivery_fee }}</p>
             </div>
             <div class="flex justify-between text-lg">
-              <p>Booking Fee</p>
+              <p>Admin Fee</p>
               <p>£{{ shopFullBasket.booking_fee }}</p>
             </div>
             <div class="mt-2 flex justify-between text-lg">
