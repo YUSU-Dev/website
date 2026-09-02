@@ -109,10 +109,7 @@
         </h2>
       </div>
       <!-- ShortView search box. Not tied to title, so showSearch works on its own. -->
-      <div
-        v-if="ShortView && showSearch"
-        class="flex flex-col pb-4 sm:max-w-xs"
-      >
+      <div v-if="ShortView && showSearch" class="flex w-full flex-col pb-4">
         <label for="event-search" class="sr-only">Search</label>
         <div class="input-group flex h-full border border-black">
           <input
@@ -139,7 +136,33 @@
           </div>
         </div>
       </div>
-      <div v-if="Events.length == 0 && !Loading" class="">
+      <!-- ShortView type filter pills. Only shown when typeid carries more than one Type ID. -->
+      <ul
+        v-if="ShortView && ShortViewTypeIds.length > 1"
+        class="mb-4 flex flex-wrap gap-2"
+      >
+        <li>
+          <a
+            href="#"
+            @click.prevent="TypeFilter = ''"
+            :class="{ '!btn-student-life-active': TypeFilter === '' }"
+            class="btn-student-life flex justify-center px-4 py-2"
+          >
+            <h4>All</h4>
+          </a>
+        </li>
+        <li v-for="option in TypeFilterOptions" :key="option.id">
+          <a
+            href="#"
+            @click.prevent="TypeFilter = option.id"
+            :class="{ '!btn-student-life-active': TypeFilter === option.id }"
+            class="btn-student-life flex justify-center px-4 py-2"
+          >
+            <h4>{{ option.name }}</h4>
+          </a>
+        </li>
+      </ul>
+      <div v-if="DisplayedEvents.length == 0 && !Loading" class="">
         <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
           There are currently no events
         </h3>
@@ -221,7 +244,7 @@
           premium-event
         />
         <Tile
-          v-for="event in Events"
+          v-for="event in DisplayedEvents"
           :key="event.id"
           :url="'/events/id/' + event.event_id + '-' + event.url_name"
           :title="event.event_date_title"
@@ -266,6 +289,14 @@ library.add(faCalendar);
 library.add(faList);
 library.add(faCalendarWeek);
 
+// Display names for the type filter pills in multi-type ShortView pages
+// (e.g. GIAG). Falls back to "Type {id}" for any Type ID not listed here.
+const EVENT_TYPE_LABELS = {
+  17: "Volunteering",
+  19: "Societies",
+  20: "Sports",
+};
+
 export default {
   props: {
     siteid: { type: String, default: null },
@@ -301,6 +332,7 @@ export default {
       SelectedGroup: "",
       SelectedVenue: "",
       SelectedTag: "",
+      TypeFilter: "",
       Search: "",
       Page: 1,
       Pages: [],
@@ -667,6 +699,36 @@ export default {
     displayTag() {
       return this.Tags.find((tag) => {
         return tag.id == this.SelectedTag;
+      });
+    },
+    // Type IDs from the typeid prop, only in ShortView. Same split logic
+    // as getEvents(), kept separate so the template can use it without
+    // depending on getEvents() having already run.
+    ShortViewTypeIds() {
+      if (!this.ShortView || !this.typeid) {
+        return [];
+      }
+      return String(this.typeid)
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+    },
+    TypeFilterOptions() {
+      return this.ShortViewTypeIds.map((id) => ({
+        id: id,
+        name: EVENT_TYPE_LABELS[id] || "Type " + id,
+      }));
+    },
+    // Events after the type filter pills, if any are set. Client-side only,
+    // since all types are already fetched and merged in getEvents(). Falls
+    // back to Events unchanged when no filter is active, so this is safe to
+    // use anywhere Events was used before.
+    DisplayedEvents() {
+      if (!this.TypeFilter) {
+        return this.Events;
+      }
+      return this.Events.filter((event) => {
+        return event.type && String(event.type.id) === String(this.TypeFilter);
       });
     },
   },
