@@ -1,19 +1,10 @@
 <template>
   <ActivitiesHeroBanner
-    v-if="loading"
-    :group="Activity.name"
-    :id="Activity.id"
+    :group="group_name || Activity.name"
+    :id="activityid"
     image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
-    :logo="Activity.thumbnail_url"
-    :category="Activity.category"
-  />
-  <ActivitiesHeroBanner
-    v-if="!loading"
-    :group="Activity.name"
-    :id="Activity.id"
-    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
-    :logo="Activity.thumbnail_url"
-    :category="Activity.category"
+    :logo="thumbnail_url || Activity.thumbnail_url"
+    :category="category_name || Activity.category"
     :constitution="constitution"
   />
   <ActivityBreadcrumb
@@ -23,7 +14,8 @@
     :group-name="Activity.name"
     :group-url="Activity.url_name"
   />
-  <div class="container mx-auto">
+  <div v-if="loading" class="container mx-auto min-h-[700px]"></div>
+  <div v-else class="container mx-auto">
     <ActivityPage :group-id="activityid" />
   </div>
 </template>
@@ -43,6 +35,18 @@ export default {
       default: null,
     },
     constitution: {
+      type: String,
+      default: null,
+    },
+    group_name: {
+      type: String,
+      default: null,
+    },
+    category_name: {
+      type: String,
+      default: null,
+    },
+    thumbnail_url: {
       type: String,
       default: null,
     },
