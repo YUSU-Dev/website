@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="w-full bg-repeat">
+    <div class="h-[400px] w-full bg-repeat">
       <div
         class="flex h-full items-center justify-center bg-cover bg-center bg-repeat-y"
         :style="{ 'background-image': 'url(' + image + ')' }"
@@ -96,28 +96,12 @@ export default {
   components: {},
   data() {
     return {
-      groupLogo: {
-        type: String,
-      },
-      showButtons: {
-        type: Boolean,
-        default: true,
-      },
+      groupLogo: null,
+      showButtons: true,
     };
   },
   mounted() {
-    if (
-      [
-        "Departments",
-        "Arts and Humanities Faculty",
-        "Sciences Faculty",
-        "Social Sciences Faculty",
-        "Faculties",
-        "Adopt an Activity",
-      ].includes(this.category)
-    ) {
-      this.showButtons = false;
-    }
+    this.updateShowButtons();
     this.getGroupLogo();
   },
   methods: {
@@ -129,6 +113,24 @@ export default {
         return (this.groupLogo = randomImageUrl("student-life"));
       }
       return (this.groupLogo = this.logo);
+    },
+    updateShowButtons() {
+      this.showButtons = ![
+        "Departments",
+        "Arts and Humanities Faculty",
+        "Sciences Faculty",
+        "Social Sciences Faculty",
+        "Faculties",
+        "Adopt an Activity",
+      ].includes(this.category);
+    },
+  },
+  watch: {
+    logo() {
+      this.getGroupLogo();
+    },
+    category() {
+      this.updateShowButtons();
     },
   },
   computed: {
