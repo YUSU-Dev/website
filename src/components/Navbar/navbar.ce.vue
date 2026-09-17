@@ -23,6 +23,12 @@
         <div v-if="signedIn" class="mb-4 hidden text-sm lg:flex">
           <a
             class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+            href="/societies"
+          >
+            Sports & Societies
+          </a>
+          <a
+            class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
             href="/events"
           >
             Events
@@ -42,6 +48,12 @@
           </a>
         </div>
         <div v-else class="mb-4 hidden text-sm lg:flex">
+          <a
+            class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+            href="/societies"
+          >
+            Sports & Societies
+          </a>
           <a
             class="hover:bg-mustard relative ml-3 rounded bg-black px-4 py-1 text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
             href="/events"
@@ -121,6 +133,12 @@
           >
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+              href="/societies"
+            >
+              Sports & Societies
+            </a>
+            <a
+              class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
               href="/events"
             >
               Events
@@ -143,6 +161,12 @@
             v-else
             class="xs:flex-row mb-8 flex flex-col flex-wrap gap-x-3 gap-y-5 lg:hidden"
           >
+            <a
+              class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
+              href="/societies"
+            >
+              Sports & Societies
+            </a>
             <a
               class="hover:bg-mustard relative bg-black px-4 py-1 text-center text-white before:absolute before:inset-x-[-4px] before:inset-y-[-8px] before:content-[''] hover:text-black"
               href="/events"
