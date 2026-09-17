@@ -134,7 +134,13 @@
     </div>
     <div class="flex flex-col">
       <Events :groupid="groupId" title="Events" icon />
-      <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
+      <Shop
+        v-if="!isAcademicRep"
+        :selectedgroup="groupId"
+        hidefilter
+        icon
+        title="Products"
+      />
       <Activities
         v-if="subgroupCategoryId"
         :selectedcategory="subgroupCategoryId"
