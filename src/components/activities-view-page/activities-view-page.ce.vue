@@ -1,90 +1,36 @@
 <template>
-  <div class="flex">
-    <div class="h-[400px] w-full bg-repeat">
-      <div
-        class="flex h-full items-center justify-center bg-cover bg-center bg-repeat-y"
-        :style="{ 'background-image': 'url(' + image + ')' }"
-      >
-        <div class="flex-col items-center justify-center">
-          <div class="grid place-items-center gap-y-2">
-            <br />
-            <img
-              v-if="groupLogo"
-              :src="groupLogo"
-              class="h-48 w-48 items-center object-contain"
-              alt=""
-            />
-            <div
-              v-if="group"
-              class="mx-2 w-fit max-w-full gap-y-2 bg-white px-6 py-3"
-            >
-              <h1
-                class="w-full text-center text-2xl font-bold break-words sm:text-3xl"
-              >
-                {{ decodedGroup }}
-              </h1>
-            </div>
-            <div
-              v-if="category"
-              class="mx-2 w-fit max-w-full bg-white px-6 py-3"
-            >
-              <h1
-                class="w-full text-center text-2xl font-bold break-words sm:text-2xl"
-              >
-                {{ category }}
-              </h1>
-            </div>
-          </div>
-          <br />
-          <div
-            v-if="showButtons"
-            class="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 p-4 md:flex-none"
-          >
-            <a
-              :href="'/shop?activity_id=' + id"
-              class="btn group hover:bg-light-blue flex w-fit items-center bg-white"
-              >Memberships & Products
-            </a>
-            <a
-              :href="'/events?activity=' + id"
-              class="btn group hover:bg-light-blue flex w-fit items-center bg-white"
-              >Events</a
-            >
-            <a
-              v-if="constitution"
-              :href="constitution"
-              class="btn group hover:bg-light-blue flex w-fit items-center bg-white"
-              target="_blank"
-              >Constitution</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+  <ActivitiesHeroBanner
+    :group="group_name || Activity.name"
+    :id="activityid"
+    image="https://assets-cdn.sums.digital/YU/website/img/Banners/1500x400_Web_Banners_General.jpg"
+    :logo="thumbnail_url || Activity.thumbnail_url"
+    :category="category_name || Activity.category"
+    :constitution="constitution"
+  />
+  <ActivityBreadcrumb
+    v-if="!loading"
+    :category-name="Activity.category"
+    :category-id="Activity.activity_category_id"
+    :group-name="Activity.name"
+    :group-url="Activity.url_name"
+  />
+  <div v-if="loading" class="container mx-auto min-h-[700px]"></div>
+  <div v-else class="container mx-auto">
+    <ActivityPage :group-id="activityid" />
   </div>
 </template>
 <script>
-import { randomImageUrl } from "../../_common/randomImage.mjs";
-
+import ActivitiesHeroBanner from "../../components/ActivitiesHeroBanner/activitiesherobanner.ce.vue";
+import ActivityBreadcrumb from "../../components/activity-breadcrumb/activity-breadcrumb.ce.vue";
+import ActivityPage from "../../components/activity-page/activity-page.ce.vue";
+import axios from "../../_common/axios.mjs";
 export default {
   props: {
-    image: {
-      type: String,
-      default: null,
-    },
-    category: {
-      type: String,
-      default: null,
-    },
-    id: {
+    activityid: {
       type: Number,
       default: null,
     },
-    group: {
-      type: String,
-      default: "",
-    },
-    logo: {
+    siteid: {
       type: String,
       default: null,
     },
@@ -92,63 +38,59 @@ export default {
       type: String,
       default: null,
     },
+    group_name: {
+      type: String,
+      default: null,
+    },
+    category_name: {
+      type: String,
+      default: null,
+    },
+    thumbnail_url: {
+      type: String,
+      default: null,
+    },
   },
-  components: {},
+  components: {
+    ActivitiesHeroBanner,
+    ActivityBreadcrumb,
+    ActivityPage,
+  },
   data() {
     return {
-      groupLogo: {
-        type: String,
-      },
-      showButtons: {
-        type: Boolean,
-        default: true,
-      },
+      Activity: {},
+      loading: true,
     };
   },
-  mounted() {
-    if (
-      [
-        "Departments",
-        "Arts and Humanities Faculty",
-        "Sciences Faculty",
-        "Social Sciences Faculty",
-        "Faculties",
-        "Adopt an Activity",
-      ].includes(this.category)
-    ) {
-      this.showButtons = false;
-    }
-    this.getGroupLogo();
+  created() {
+    var self = this;
+    self.loading = true;
+    axios
+      .all([
+        axios.get("https://pluto.sums.digital/api/groups/" + self.activityid, {
+          headers: {
+            "X-Site-Id": self.siteid,
+          },
+        }),
+        axios.get("https://pluto.sums.digital/api/groups/categories", {
+          headers: {
+            "X-Site-Id": self.siteid,
+          },
+        }),
+      ])
+      .then(
+        axios.spread((response1, response2) => {
+          self.Activity = response1.data;
+          self.Activity.category = response2.data.find(
+            (item) => item.id === self.Activity.activity_category_id,
+          ).name;
+          self.loading = false;
+        }),
+      );
   },
   methods: {
     wrapURL(URL) {
       return "'" + URL + "'";
-    },
-    getGroupLogo() {
-      if (!this.logo) {
-        return (this.groupLogo = randomImageUrl("student-life"));
-      }
-      return (this.groupLogo = this.logo);
-    },
-  },
-  watch: {
-    logo() {
-      this.getGroupLogo();
-    },
-  },
-  computed: {
-    decodedGroup() {
-      if (!this.group) return "";
-      return this.group
-        .replace(/&#39;/g, "'")
-        .replace(/&#8217;/g, "'")
-        .replace(/&quot;/g, '"')
-        .replace(/&#8220;/g, '"')
-        .replace(/&#8221;/g, '"')
-        .replace(/&lsquo;/g, "'")
-        .replace(/&rsquo;/g, "'")
-        .replace(/&ldquo;/g, '"')
-        .replace(/&rdquo;/g, '"');
     },
   },
 };

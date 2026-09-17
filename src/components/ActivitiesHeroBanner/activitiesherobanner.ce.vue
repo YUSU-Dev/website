@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div class="w-full bg-repeat">
+    <div class="h-[400px] w-full bg-repeat">
       <div
         class="flex h-full items-center justify-center bg-cover bg-center bg-repeat-y"
         :style="{ 'background-image': 'url(' + image + ')' }"
@@ -96,9 +96,7 @@ export default {
   components: {},
   data() {
     return {
-      groupLogo: {
-        type: String,
-      },
+      groupLogo: null,
       showButtons: {
         type: Boolean,
         default: true,
@@ -129,6 +127,11 @@ export default {
         return (this.groupLogo = randomImageUrl("student-life"));
       }
       return (this.groupLogo = this.logo);
+    },
+  },
+  watch: {
+    logo() {
+      this.getGroupLogo();
     },
   },
   computed: {
