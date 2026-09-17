@@ -97,25 +97,11 @@ export default {
   data() {
     return {
       groupLogo: null,
-      showButtons: {
-        type: Boolean,
-        default: true,
-      },
+      showButtons: true,
     };
   },
   mounted() {
-    if (
-      [
-        "Departments",
-        "Arts and Humanities Faculty",
-        "Sciences Faculty",
-        "Social Sciences Faculty",
-        "Faculties",
-        "Adopt an Activity",
-      ].includes(this.category)
-    ) {
-      this.showButtons = false;
-    }
+    this.updateShowButtons();
     this.getGroupLogo();
   },
   methods: {
@@ -128,10 +114,23 @@ export default {
       }
       return (this.groupLogo = this.logo);
     },
+    updateShowButtons() {
+      this.showButtons = ![
+        "Departments",
+        "Arts and Humanities Faculty",
+        "Sciences Faculty",
+        "Social Sciences Faculty",
+        "Faculties",
+        "Adopt an Activity",
+      ].includes(this.category);
+    },
   },
   watch: {
     logo() {
       this.getGroupLogo();
+    },
+    category() {
+      this.updateShowButtons();
     },
   },
   computed: {
