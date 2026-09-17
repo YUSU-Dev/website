@@ -134,7 +134,13 @@
     </div>
     <div class="flex flex-col">
       <Events :groupid="groupId" title="Events" icon />
-      <Shop :selectedgroup="groupId" hidefilter icon title="Products" />
+      <Shop
+        v-if="isAcademicRep === false"
+        :selectedgroup="groupId"
+        hidefilter
+        icon
+        title="Products"
+      />
       <Activities
         v-if="subgroupCategoryId"
         :selectedcategory="subgroupCategoryId"
@@ -181,7 +187,7 @@ export default {
       subgroupCategoryId: null,
       subgroupCategoryName: null,
       isAdoptable: false,
-      isAcademicRep: false,
+      isAcademicRep: null,
       isActivity: true,
       badges: [],
       documents: [],
