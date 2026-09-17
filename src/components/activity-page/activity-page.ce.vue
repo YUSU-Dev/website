@@ -135,7 +135,7 @@
     <div class="flex flex-col">
       <Events :groupid="groupId" title="Events" icon />
       <Shop
-        v-if="!isAcademicRep"
+        v-if="isAcademicRep === false"
         :selectedgroup="groupId"
         hidefilter
         icon
@@ -187,7 +187,7 @@ export default {
       subgroupCategoryId: null,
       subgroupCategoryName: null,
       isAdoptable: false,
-      isAcademicRep: false,
+      isAcademicRep: null,
       isActivity: true,
       badges: [],
       documents: [],
