@@ -162,17 +162,23 @@
           </a>
         </li>
       </ul>
-      <div v-if="DisplayedEvents.length == 0 && !Loading" class="">
+      <div v-if="LoadFailed && !Loading" role="status">
         <h3
-          v-if="LoadFailed"
-          class="mt-16 mb-4 text-xl font-semibold text-[#555]"
+          class="mb-4 text-xl font-semibold text-[#555]"
+          :class="{ 'mt-16': DisplayedEvents.length == 0 }"
         >
-          Events could not be loaded.
-          <button type="button" class="underline" @click="getEvents()">
+          {{
+            DisplayedEvents.length == 0
+              ? "Events could not be loaded."
+              : "Events could not be refreshed, so this list may be out of date."
+          }}
+          <button type="button" class="underline" @click="retryLoad()">
             Try again
           </button>
         </h3>
-        <h3 v-else class="mt-16 mb-4 text-xl font-semibold text-[#555]">
+      </div>
+      <div v-else-if="DisplayedEvents.length == 0 && !Loading" class="">
+        <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
           There are currently no events
         </h3>
       </div>
@@ -687,6 +693,12 @@ export default {
       this.TypeFilter = id;
       this.CurrentPage = 1;
       this.syncUrl();
+    },
+    // Only the retry button shows the loading state, so search and filter
+    // changes keep the current list on screen while they fetch
+    retryLoad() {
+      this.Loading = true;
+      this.getEvents();
     },
     /**
      * Fetch events from API
