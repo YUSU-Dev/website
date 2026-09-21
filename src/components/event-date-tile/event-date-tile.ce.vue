@@ -55,6 +55,11 @@ export default {
   name: "EventDateTile",
   props: {
     date_id: { type: String, default: "" },
+    u_start_date: { type: String, default: "" },
+    event_date_title: { type: String, default: "" },
+    venue_name: { type: String, default: "" },
+    has_products: { type: String, default: "" },
+    external_tickets: { type: String, default: "" },
   },
   data() {
     return {
@@ -69,9 +74,24 @@ export default {
   },
   created() {
     this.dateId = this.date_id;
-    this.getEvent();
+    if (Number(this.u_start_date) > 0) {
+      this.setEventFromProps();
+    } else {
+      this.getEvent();
+    }
   },
   methods: {
+    setEventFromProps: function () {
+      this.event = {
+        id: this.dateId,
+        event_date_title: this.event_date_title,
+        venue: this.venue_name ? { name: this.venue_name } : null,
+        start_date: new Date(Number(this.u_start_date) * 1000),
+        has_products: this.has_products === "1" || this.has_products === "true",
+        external_tickets: this.external_tickets,
+      };
+      this.loading = false;
+    },
     getEvent: function () {
       let self = this;
       self.loading = true;
