@@ -244,7 +244,7 @@
           premium-event
         />
         <Tile
-          v-for="event in DisplayedEvents"
+          v-for="event in VisibleEvents"
           :key="event.id"
           :url="'/events/id/' + event.event_id + '-' + event.url_name"
           :title="event.event_date_title"
@@ -260,6 +260,25 @@
       <!-- Short View Loading -->
       <div v-else class="a-z-wrap mt-10">
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
+      </div>
+
+      <!-- Show more, for multi-type ShortView pages (e.g. GIAG). -->
+      <div
+        v-if="PagedShortView && !Loading && DisplayedEvents.length > 0"
+        class="mt-8 flex flex-col items-center gap-3"
+      >
+        <p aria-live="polite">
+          Showing {{ VisibleEvents.length }} of {{ DisplayedEvents.length }}
+          events
+        </p>
+        <button
+          v-if="VisibleEvents.length < DisplayedEvents.length"
+          type="button"
+          class="btn-student-life flex justify-center px-4 py-2"
+          @click="showMore"
+        >
+          Show more events
+        </button>
       </div>
     </div>
   </div>
@@ -343,6 +362,7 @@ export default {
       PreviousResults: { type: Boolean, default: false },
       Placeholder: "Select an option",
       Loading: true,
+      VisibleCount: 24,
       firstPagePremium: false,
       viewMode: "list",
     };
@@ -433,6 +453,7 @@ export default {
       if (!append) {
         self.Page = 1;
         self.Pages = [1];
+        self.VisibleCount = self.PerPage;
       }
 
       let parameters = "sortBy=start_date&futureOrOngoing=1&page=" + self.Page;
@@ -535,28 +556,48 @@ export default {
           )
         : Promise.resolve(null);
 
+      // Fetches every page of one type's events. Multi-type ShortView pages
+      // have no server-side pagination (results are merged client-side), so
+      // asking for a single page of PerPage would silently drop the rest.
+      // A limit prop keeps its old meaning: one small page, no looping.
+      const fetchAllForType = function (id) {
+        const getPage = function (page, collected) {
+          let pageParams = parameters.replace(/&page=\d+/, "&page=" + page);
+          if (!self.limit) {
+            pageParams = pageParams.replace(/&perPage=\d+/, "&perPage=200");
+          }
+          return axios
+            .get(
+              "https://pluto.sums.digital/api/events?" +
+                pageParams +
+                "&typeId=" +
+                id,
+              {
+                headers: {
+                  "X-Site-Id": self.siteid,
+                },
+              },
+            )
+            .then(function (r) {
+              const all = collected.concat(r.data.data || []);
+              // page < 20 is a safety stop so a bad next_page_url can't loop
+              if (r.data.next_page_url && !self.limit && page < 20) {
+                return getPage(page + 1, all);
+              }
+              return all;
+            });
+        };
+        return getPage(1, []);
+      };
+
       //get the rest of the events, one request per type ID if more than one is set
       const mainEventsPromise =
         typeIds.length > 1
-          ? Promise.all(
-              typeIds.map((id) =>
-                axios.get(
-                  "https://pluto.sums.digital/api/events?" +
-                    parameters +
-                    "&typeId=" +
-                    id,
-                  {
-                    headers: {
-                      "X-Site-Id": self.siteid,
-                    },
-                  },
-                ),
-              ),
-            ).then(function (responses) {
+          ? Promise.all(typeIds.map(fetchAllForType)).then(function (lists) {
               let merged = [];
               let seenIds = {};
-              responses.forEach(function (r) {
-                (r.data.data || []).forEach(function (event) {
+              lists.forEach(function (list) {
+                list.forEach(function (event) {
                   if (!seenIds[event.id]) {
                     seenIds[event.id] = true;
                     merged.push(event);
@@ -676,6 +717,15 @@ export default {
     toggleViewMode(mode) {
       this.viewMode = mode;
     },
+    showMore() {
+      this.VisibleCount += this.PerPage;
+    },
+  },
+  watch: {
+    // Start from the first batch again when the type pill changes
+    TypeFilter() {
+      this.VisibleCount = this.PerPage;
+    },
   },
   computed: {
     filteredCategories() {
@@ -730,6 +780,17 @@ export default {
       return this.Events.filter((event) => {
         return event.type && String(event.type.id) === String(this.TypeFilter);
       });
+    },
+    // Multi-type ShortView pages fetch everything, so they page client-side.
+    // Every other ShortView keeps rendering exactly what the API returned.
+    PagedShortView() {
+      return this.ShortViewTypeIds.length > 1 && !this.limit;
+    },
+    VisibleEvents() {
+      if (!this.PagedShortView) {
+        return this.DisplayedEvents;
+      }
+      return this.DisplayedEvents.slice(0, this.VisibleCount);
     },
   },
 };
