@@ -144,25 +144,40 @@
         <li>
           <a
             href="#"
-            @click.prevent="TypeFilter = ''"
+            @click.prevent="setTypeFilter('')"
             :class="{ '!btn-student-life-active': TypeFilter === '' }"
             class="btn-student-life flex justify-center px-4 py-2"
           >
-            <h4>All</h4>
+            <span>All</span>
           </a>
         </li>
         <li v-for="option in TypeFilterOptions" :key="option.id">
           <a
             href="#"
-            @click.prevent="TypeFilter = option.id"
+            @click.prevent="setTypeFilter(option.id)"
             :class="{ '!btn-student-life-active': TypeFilter === option.id }"
             class="btn-student-life flex justify-center px-4 py-2"
           >
-            <h4>{{ option.name }}</h4>
+            <span>{{ option.name }}</span>
           </a>
         </li>
       </ul>
-      <div v-if="DisplayedEvents.length == 0 && !Loading" class="">
+      <div v-if="LoadFailed && !Loading" role="status">
+        <h3
+          class="mb-4 text-xl font-semibold text-[#555]"
+          :class="{ 'mt-16': DisplayedEvents.length == 0 }"
+        >
+          {{
+            DisplayedEvents.length == 0
+              ? "Events could not be loaded."
+              : "Events could not be refreshed, so this list may be out of date."
+          }}
+          <button type="button" class="underline" @click="retryLoad()">
+            Try again
+          </button>
+        </h3>
+      </div>
+      <div v-else-if="DisplayedEvents.length == 0 && !Loading" class="">
         <h3 class="mt-16 mb-4 text-xl font-semibold text-[#555]">
           There are currently no events
         </h3>
@@ -244,7 +259,7 @@
           premium-event
         />
         <Tile
-          v-for="event in DisplayedEvents"
+          v-for="event in VisibleEvents"
           :key="event.id"
           :url="'/events/id/' + event.event_id + '-' + event.url_name"
           :title="event.event_date_title"
@@ -261,6 +276,51 @@
       <div v-else class="a-z-wrap mt-10">
         <Tile v-for="item in PerPage" :key="item" :loading="true" />
       </div>
+
+      <!-- Numbered pages, for multi-type ShortView pages (e.g. GIAG). -->
+      <nav
+        v-if="PagedShortView && !Loading && TotalPages > 1"
+        aria-label="Events pages"
+        class="mt-8 flex flex-wrap items-center justify-center gap-1"
+      >
+        <p class="sr-only" aria-live="polite">
+          Page {{ CurrentPage }} of {{ TotalPages }}
+        </p>
+        <button
+          type="button"
+          class="px-3 py-2 disabled:opacity-40"
+          aria-label="Previous page"
+          :disabled="CurrentPage === 1"
+          @click="goToPage(CurrentPage - 1)"
+        >
+          <FontAwesomeIcon icon="fas fa-chevron-left" class="h-4 w-4" />
+        </button>
+        <template v-for="(item, index) in PageNumbers" :key="index">
+          <span v-if="item === '...'" class="px-2 py-2" aria-hidden="true"
+            >...</span
+          >
+          <button
+            v-else
+            type="button"
+            class="px-3 py-2"
+            :class="{ 'bg-mustard': item === CurrentPage }"
+            :aria-label="'Page ' + item"
+            :aria-current="item === CurrentPage ? 'page' : null"
+            @click="goToPage(item)"
+          >
+            {{ item }}
+          </button>
+        </template>
+        <button
+          type="button"
+          class="px-3 py-2 disabled:opacity-40"
+          aria-label="Next page"
+          :disabled="CurrentPage === TotalPages"
+          @click="goToPage(CurrentPage + 1)"
+        >
+          <FontAwesomeIcon icon="fas fa-chevron-right" class="h-4 w-4" />
+        </button>
+      </nav>
     </div>
   </div>
 </template>
@@ -282,12 +342,16 @@ import {
   faCalendar,
   faList,
   faCalendarWeek,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
 library.add(faCalendar);
 library.add(faList);
 library.add(faCalendarWeek);
+library.add(faChevronLeft);
+library.add(faChevronRight);
 
 // Display names for the type filter pills in multi-type ShortView pages
 // (e.g. GIAG). Falls back to "Type {id}" for any Type ID not listed here.
@@ -296,6 +360,44 @@ const EVENT_TYPE_LABELS = {
   19: "Societies",
   20: "Sports",
 };
+
+// Fetches every page of a paged API list, so a list that grows past one page
+// is never cut off. getPage(n) resolves to an axios style response.
+function fetchAllPages(getPage, maxPages = 50) {
+  const next = (page, collected) =>
+    getPage(page).then((r) => {
+      const all = collected.concat(r.data.data || []);
+      if (r.data.next_page_url && page < maxPages) {
+        return next(page + 1, all);
+      }
+      if (r.data.next_page_url && maxPages > 1) {
+        throw new Error("Events list is longer than " + maxPages + " pages");
+      }
+      return all;
+    });
+  return next(1, []);
+}
+
+// sessionStorage can throw (private mode, blocked storage), so never trust it
+function storageGet(key) {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function storageSet(key, value) {
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch {
+    // ignore, this is only a speed up
+  }
+}
+
+// How long the last list of events is reused for an instant first paint
+const CACHE_MAX_AGE = 10 * 60 * 1000;
+const SCROLL_KEY = "yorksu-events-scroll";
 
 export default {
   props: {
@@ -343,6 +445,11 @@ export default {
       PreviousResults: { type: Boolean, default: false },
       Placeholder: "Select an option",
       Loading: true,
+      LoadFailed: false,
+      CurrentPage: 1,
+      ScrollPending: false,
+      LatestRequest: 0,
+      SearchTimer: null,
       firstPagePremium: false,
       viewMode: "list",
     };
@@ -385,6 +492,10 @@ export default {
         self.SelectedTag = urlParams.get("tag");
       }
     }
+    // Multi-type ShortView pages (GIAG) keep their place in the URL
+    if (self.PagedShortView) {
+      self.restoreState();
+    }
     //Get Categories
     axios
       .get("https://pluto.sums.digital/api/events/types?sortBy=name", {
@@ -420,8 +531,175 @@ export default {
     //get Events
     self.getEvents();
   },
-  mounted() {},
+  mounted() {
+    if (this.PagedShortView) {
+      window.addEventListener("pagehide", this.saveScroll);
+      if (!this.Loading) {
+        this.$nextTick(this.restoreScroll);
+      }
+    }
+  },
+  beforeUnmount() {
+    window.removeEventListener("pagehide", this.saveScroll);
+    clearTimeout(this.SearchTimer);
+  },
   methods: {
+    // Reads page, type pill and search back out of the URL, and shows the
+    // last list straight away while fresh data loads behind it
+    restoreState() {
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get("events_type");
+      if (type && this.ShortViewTypeIds.includes(type)) {
+        this.TypeFilter = type;
+      }
+      const search = params.get("events_search");
+      if (search) {
+        this.Search = search;
+      }
+      const rawPage = params.get("events_page");
+      if (rawPage && /^[1-9]\d*$/.test(rawPage)) {
+        this.CurrentPage = parseInt(rawPage, 10);
+      }
+      if (this.Search.length < 2) {
+        const cached = this.readCache();
+        if (cached) {
+          this.Events = cached;
+          this.Loading = false;
+          this.clampPage();
+        }
+      }
+      // Back button: remember to put the scroll position back once tiles show
+      const perf = window.performance;
+      const nav =
+        perf && perf.getEntriesByType
+          ? perf.getEntriesByType("navigation")[0]
+          : null;
+      if (nav && nav.type === "back_forward" && this.savedScroll() > 0) {
+        this.ScrollPending = true;
+      }
+    },
+    cacheKey() {
+      return [
+        "yorksu-events-list",
+        this.siteid,
+        this.typeid,
+        this.excludedTags,
+      ].join(":");
+    },
+    readCache() {
+      try {
+        const saved = JSON.parse(storageGet(this.cacheKey()));
+        if (
+          saved &&
+          Array.isArray(saved.events) &&
+          Date.now() - saved.time < CACHE_MAX_AGE
+        ) {
+          return saved.events;
+        }
+      } catch {
+        // bad or missing cache, just load normally
+      }
+      return null;
+    },
+    // Only the fields the tiles and type pills use, to keep it small
+    writeCache() {
+      if (this.Search.length >= 2) {
+        return;
+      }
+      const events = this.Events.map((event) => ({
+        id: event.id,
+        event_id: event.event_id,
+        url_name: event.url_name,
+        event_date_title: event.event_date_title,
+        thumbnail_url: event.thumbnail_url,
+        start_date: event.start_date,
+        group: event.group,
+        venue: event.venue,
+        categories: event.categories,
+        type: event.type ? { id: event.type.id } : null,
+      }));
+      storageSet(
+        this.cacheKey(),
+        JSON.stringify({ time: Date.now(), events: events }),
+      );
+    },
+    // If events were removed, don't stay on a page that no longer exists
+    clampPage() {
+      if (this.CurrentPage > this.TotalPages) {
+        this.CurrentPage = this.TotalPages;
+      }
+    },
+    saveScroll() {
+      storageSet(
+        SCROLL_KEY,
+        JSON.stringify({ url: this.pageUrl(), y: window.scrollY }),
+      );
+    },
+    pageUrl() {
+      return window.location.pathname + window.location.search;
+    },
+    // The saved scroll position, but only if it was saved for this exact URL
+    savedScroll() {
+      try {
+        const saved = JSON.parse(storageGet(SCROLL_KEY));
+        if (saved && saved.url === this.pageUrl() && saved.y > 0) {
+          return saved.y;
+        }
+      } catch {
+        // nothing usable saved
+      }
+      return 0;
+    },
+    restoreScroll() {
+      if (!this.ScrollPending) {
+        return;
+      }
+      this.ScrollPending = false;
+      const y = this.savedScroll();
+      if (y > 0) {
+        window.scrollTo(0, y);
+        // images can still be pushing the page taller, so check once more
+        setTimeout(() => {
+          if (Math.abs(window.scrollY - y) > 20) {
+            window.scrollTo(0, y);
+          }
+        }, 300);
+      }
+    },
+    // Keeps ?events_page, ?events_type and ?events_search in the address bar
+    // (replaced, not pushed, so the back button leaves the page)
+    syncUrl() {
+      if (!this.PagedShortView) {
+        return;
+      }
+      try {
+        const url = new URL(window.location.href);
+        const set = (key, value) => {
+          if (value) {
+            url.searchParams.set(key, value);
+          } else {
+            url.searchParams.delete(key);
+          }
+        };
+        set("events_page", this.CurrentPage > 1 ? this.CurrentPage : "");
+        set("events_type", this.TypeFilter);
+        set("events_search", this.Search);
+        window.history.replaceState(window.history.state, "", url);
+      } catch {
+        // the URL is a nice to have, never break the list over it
+      }
+    },
+    setTypeFilter(id) {
+      this.TypeFilter = id;
+      this.CurrentPage = 1;
+      this.syncUrl();
+    },
+    // Only the retry button shows the loading state, so search and filter
+    // changes keep the current list on screen while they fetch
+    retryLoad() {
+      this.Loading = true;
+      this.getEvents();
+    },
     /**
      * Fetch events from API
      * @param bool append - are we getting more events to append to the current list?
@@ -429,6 +707,10 @@ export default {
     getEvents: function (append = false) {
       let self = this;
       self.firstPagePremium = false;
+      // Only the newest request may update the list, so a slow earlier
+      // response (e.g. from typing in search) can't overwrite a newer one
+      const requestId = ++self.LatestRequest;
+      self.LoadFailed = false;
 
       if (!append) {
         self.Page = 1;
@@ -466,7 +748,8 @@ export default {
         parameters += "&venueId=" + self.SelectedVenue;
       }
       if (self.Search && self.Search.length >= 2) {
-        parameters += "&eventDateTitleSearchTerm=" + self.Search;
+        parameters +=
+          "&eventDateTitleSearchTerm=" + encodeURIComponent(self.Search);
       }
       if (self.premiumResults) {
         parameters += "&onlyPremium=1";
@@ -521,42 +804,60 @@ export default {
           })
         : Promise.resolve(null);
 
+      // Every page of the excluded events, so the exclusion still works if
+      // more than 200 events ever carry the tag
       const excludedTagsPromise = self.excludedTags
-        ? axios.get(
-            "https://pluto.sums.digital/api/events?" +
-              "sortBy=start_date&futureOrOngoing=1&page=1" +
-              "&perPage=200&categoryIds=" +
-              self.excludedTags,
-            {
-              headers: {
-                "X-Site-Id": self.siteid,
+        ? fetchAllPages(function (page) {
+            return axios.get(
+              "https://pluto.sums.digital/api/events?" +
+                "sortBy=start_date&futureOrOngoing=1&page=" +
+                page +
+                "&perPage=200&categoryIds=" +
+                self.excludedTags,
+              {
+                headers: {
+                  "X-Site-Id": self.siteid,
+                },
               },
-            },
-          )
+            );
+          })
         : Promise.resolve(null);
+
+      // Fetches every page of one type's events. Multi-type ShortView pages
+      // have no server-side pagination (results are merged client-side), so
+      // asking for a single page of PerPage would silently drop the rest.
+      // A limit prop keeps its old meaning: one small page, no looping.
+      const fetchAllForType = function (id) {
+        return fetchAllPages(
+          function (page) {
+            let pageParams = parameters.replace(/&page=\d+/, "&page=" + page);
+            if (!self.limit) {
+              pageParams = pageParams.replace(/&perPage=\d+/, "&perPage=200");
+            }
+            return axios.get(
+              "https://pluto.sums.digital/api/events?" +
+                pageParams +
+                "&typeId=" +
+                id,
+              {
+                headers: {
+                  "X-Site-Id": self.siteid,
+                },
+              },
+            );
+          },
+          self.limit ? 1 : 50,
+        );
+      };
 
       //get the rest of the events, one request per type ID if more than one is set
       const mainEventsPromise =
         typeIds.length > 1
-          ? Promise.all(
-              typeIds.map((id) =>
-                axios.get(
-                  "https://pluto.sums.digital/api/events?" +
-                    parameters +
-                    "&typeId=" +
-                    id,
-                  {
-                    headers: {
-                      "X-Site-Id": self.siteid,
-                    },
-                  },
-                ),
-              ),
-            ).then(function (responses) {
+          ? Promise.all(typeIds.map(fetchAllForType)).then(function (lists) {
               let merged = [];
               let seenIds = {};
-              responses.forEach(function (r) {
-                (r.data.data || []).forEach(function (event) {
+              lists.forEach(function (list) {
+                list.forEach(function (event) {
                   if (!seenIds[event.id]) {
                     seenIds[event.id] = true;
                     merged.push(event);
@@ -589,12 +890,13 @@ export default {
         premiumEventsPromise,
       ])
         .then(function (results) {
-          const excludedResponse = results[0];
+          if (requestId !== self.LatestRequest) {
+            return;
+          }
+          const excludedEvents = results[0];
           const response = results[1];
           const premiumEvents = results[2];
-          self.excludedTaggedEvents = excludedResponse
-            ? excludedResponse.data.data
-            : [];
+          self.excludedTaggedEvents = excludedEvents || [];
           if (firstPagePremium) {
             self.PremiumEvents = premiumEvents;
             const premiumEventIds = premiumEvents.map((event) => event.id);
@@ -625,10 +927,18 @@ export default {
             self.PreviousResults = false;
           }
           self.Loading = false;
+          if (self.PagedShortView) {
+            self.clampPage();
+            self.writeCache();
+            self.$nextTick(self.restoreScroll);
+          }
         })
         .catch(function (error) {
           console.error("Failed to load events", error);
-          self.Loading = false;
+          if (requestId === self.LatestRequest) {
+            self.Loading = false;
+            self.LoadFailed = true;
+          }
         });
     },
     //update various fields to change events data
@@ -658,7 +968,15 @@ export default {
     },
     search(event) {
       this.Search = event.target.value;
-      this.getEvents();
+      this.CurrentPage = 1;
+      this.syncUrl();
+      if (this.ShortView) {
+        // wait for a pause in typing, the list is refetched in full
+        clearTimeout(this.SearchTimer);
+        this.SearchTimer = setTimeout(() => this.getEvents(), 250);
+      } else {
+        this.getEvents();
+      }
     },
     reset() {
       //easy way to refresh the page
@@ -675,6 +993,20 @@ export default {
     },
     toggleViewMode(mode) {
       this.viewMode = mode;
+    },
+    goToPage(page) {
+      if (page < 1 || page > this.TotalPages) {
+        return;
+      }
+      this.CurrentPage = page;
+      this.syncUrl();
+      // Bring the top of the component back into view after changing page
+      this.$nextTick(() => {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        this.$el.scrollIntoView({
+          behavior: reduce.matches ? "auto" : "smooth",
+        });
+      });
     },
   },
   computed: {
@@ -730,6 +1062,41 @@ export default {
       return this.Events.filter((event) => {
         return event.type && String(event.type.id) === String(this.TypeFilter);
       });
+    },
+    // Multi-type ShortView pages fetch everything, so they page client-side.
+    // Every other ShortView keeps rendering exactly what the API returned.
+    PagedShortView() {
+      return this.ShortViewTypeIds.length > 1 && !this.limit;
+    },
+    VisibleEvents() {
+      if (!this.PagedShortView) {
+        return this.DisplayedEvents;
+      }
+      const start = (this.CurrentPage - 1) * this.PerPage;
+      return this.DisplayedEvents.slice(start, start + this.PerPage);
+    },
+    TotalPages() {
+      return Math.max(1, Math.ceil(this.DisplayedEvents.length / this.PerPage));
+    },
+    // Page buttons: 1 and the last page always, plus two either side of the
+    // current page, with "..." filling any gap of two or more.
+    PageNumbers() {
+      const total = this.TotalPages;
+      const current = this.CurrentPage;
+      const items = [];
+      let last = 0;
+      for (let p = 1; p <= total; p++) {
+        if (p === 1 || p === total || Math.abs(p - current) <= 2) {
+          if (p - last === 2) {
+            items.push(p - 1);
+          } else if (p - last > 1) {
+            items.push("...");
+          }
+          items.push(p);
+          last = p;
+        }
+      }
+      return items;
     },
   },
 };
