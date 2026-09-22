@@ -172,7 +172,12 @@ export default {
     //check if looking for a specific activity, search, etc...
     let urlParams = new URLSearchParams(window.location.search);
     if (!self.featuredshop && !self.hidefilter) {
-      if (urlParams.has("activity_id")) {
+      if (
+        urlParams.has("activity_id") &&
+        urlParams.get("activity_id") !== "undefined" &&
+        urlParams.get("activity_id") !== "null" &&
+        urlParams.get("activity_id") !== ""
+      ) {
         self.SelectedGroup = urlParams.get("activity_id");
       }
       if (urlParams.has("search")) {
@@ -194,6 +199,9 @@ export default {
       })
       .then(function (response) {
         self.Categories = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
       });
     //get groups
     axios
@@ -204,6 +212,9 @@ export default {
       })
       .then(function (response) {
         self.Groups = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
       });
     //get Products
     self.getProducts();
@@ -256,6 +267,10 @@ export default {
           } else {
             self.PreviousResults = false;
           }
+          self.Loading = false;
+        })
+        .catch(function (error) {
+          console.log(error);
           self.Loading = false;
         });
     },

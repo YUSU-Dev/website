@@ -7,7 +7,7 @@
         >
           <!-- {if category_name != "College Sport (Groups)"} -->
           <Button
-            v-if="isActivity"
+            v-if="isActivity && pageActivity.id"
             :class="{ 'bg-light-blue': title == 'join' }"
             title="Join"
             is-student-life
@@ -56,7 +56,7 @@
       <div class="flex min-w-2/10 flex-col gap-y-8 sm:w-min">
         <div class="hidden w-max flex-col gap-y-4 sm:flex">
           <Button
-            v-if="isActivity"
+            v-if="isActivity && pageActivity.id"
             :class="{ 'bg-light-blue': title == 'join' }"
             title="Join"
             is-student-life
