@@ -361,6 +361,34 @@ const EVENT_TYPE_LABELS = {
   20: "Sports",
 };
 
+// SUMS events carry a Type set by whoever created them (Volunteering,
+// Society, Sports Club...), but that field is entered by hand per event and
+// is often wrong - e.g. a sports club's Give it a Go session filed as
+// "Society" instead of "Sports Club". The organising group's own category
+// is set once, at the club level, and is far more reliable. Top-level
+// category IDs: Sports 1, Societies 2, Volunteering 39.
+const CATEGORY_PARENT_TO_TYPE = {
+  1: "20",
+  2: "19",
+  39: "17",
+};
+
+// The type ID to filter an event by for the pills: the organising group's
+// own category when we have one (self-correcting even when the event's own
+// Type field was set wrong), falling back to the event's own Type for
+// events with no group (e.g. central SU-run events).
+function pillTypeId(event) {
+  const category = event.group && event.group.category;
+  if (category) {
+    const topId = category.parent ? category.parent.id : category.id;
+    const mapped = CATEGORY_PARENT_TO_TYPE[topId];
+    if (mapped) {
+      return mapped;
+    }
+  }
+  return event.type && String(event.type.id);
+}
+
 // Fetches every page of a paged API list, so a list that grows past one page
 // is never cut off. getPage(n) resolves to an axios style response.
 function fetchAllPages(getPage, maxPages = 50) {
@@ -1060,7 +1088,7 @@ export default {
         return this.Events;
       }
       return this.Events.filter((event) => {
-        return event.type && String(event.type.id) === String(this.TypeFilter);
+        return pillTypeId(event) === String(this.TypeFilter);
       });
     },
     // Multi-type ShortView pages fetch everything, so they page client-side.
