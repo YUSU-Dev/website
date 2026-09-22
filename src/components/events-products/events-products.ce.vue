@@ -8,7 +8,10 @@
     class="container mx-auto flex flex-col items-center justify-center pt-20 pb-10"
   >
     <Loading text :loading="loading" class="w-full" />
-    <div v-if="!loading" class="grid w-full grid-cols-5 gap-x-4">
+    <p v-if="!loading && notFound" class="py-10 text-center">
+      This item is no longer available.
+    </p>
+    <div v-if="!loading && !notFound" class="grid w-full grid-cols-5 gap-x-4">
       <div
         class="order-2 col-span-5 flex flex-col gap-y-6 border-black md:order-1 md:col-span-4 md:border-r md:pr-6"
       >
@@ -74,7 +77,8 @@ export default {
   data() {
     return {
       eventDate: {},
-      Loading: true,
+      loading: true,
+      notFound: false,
     };
   },
   created() {
@@ -93,6 +97,11 @@ export default {
         })
         .then(function (response) {
           self.eventDate = response.data;
+          self.loading = false;
+        })
+        .catch(function (error) {
+          console.log(error);
+          self.notFound = true;
           self.loading = false;
         });
     },
