@@ -104,6 +104,13 @@
           :previous-results="PreviousResults"
           :loading="Loading"
         />
+        <p class="mt-6 text-sm">
+          Each online transaction* will attract an admin fee based on the total
+          value of the basket of goods - 50p for a total basket value up to
+          £9.99, 75p for a total basket value of £10.00 to £19.99, and £1.00 for
+          a total basket value of £20.00 or more.
+        </p>
+        <p class="text-sm italic">*exclusions apply</p>
       </div>
     </div>
   </div>
