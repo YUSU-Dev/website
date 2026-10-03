@@ -182,39 +182,43 @@
       <div class="container mx-auto py-12">
         <div class="flex flex-col gap-y-8">
           <h3 class="text-center text-2xl font-semibold">
-            their focusses for 2025/26 are:
+            Their priorities for 2026/27 are:
           </h3>
-          <div class="flex flex-col gap-x-4 gap-y-4 md:flex-row">
-            <div
-              class="flex justify-center gap-y-6 border border-[#eee] bg-white p-6 text-center shadow-lg hover:scale-105 md:w-1/4 md:p-12"
+          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            <a
+              href="/about-us/strategy/priorities#civic-engagement"
+              class="flex items-center justify-center border border-[#eee] bg-white p-6 text-center font-semibold text-black no-underline shadow-lg hover:scale-105"
             >
-              <p class="mb-0 flex items-center font-semibold">
-                Inclusion and Wellbeing
-              </p>
-            </div>
-            <div
-              class="flex justify-center gap-y-6 border border-[#eee] bg-white p-6 text-center shadow-lg hover:scale-105 md:w-1/4 md:p-12"
+              Civic Engagement: A Voice for Students in our City and Region
+            </a>
+            <a
+              href="/about-us/strategy/priorities#financial-access"
+              class="flex items-center justify-center border border-[#eee] bg-white p-6 text-center font-semibold text-black no-underline shadow-lg hover:scale-105"
             >
-              <p class="mb-0 flex items-center font-semibold">Cost of Living</p>
-            </div>
-            <div
-              class="flex justify-center gap-y-6 border border-[#eee] bg-white p-6 text-center shadow-lg hover:scale-105 md:w-1/4 md:p-12"
+              Equitable Financial Access to University Life
+            </a>
+            <a
+              href="/about-us/strategy/priorities#inclusive-experience"
+              class="flex items-center justify-center border border-[#eee] bg-white p-6 text-center font-semibold text-black no-underline shadow-lg hover:scale-105"
             >
-              <p class="mb-0 flex items-center font-semibold">Employability</p>
-            </div>
-            <div
-              class="flex justify-center gap-y-6 border border-[#eee] bg-white p-6 text-center shadow-lg hover:scale-105 md:w-1/4 md:p-12"
+              Cultivating an Inclusive Student Experience
+            </a>
+            <a
+              href="/about-us/strategy/priorities#re-engaging"
+              class="flex items-center justify-center border border-[#eee] bg-white p-6 text-center font-semibold text-black no-underline shadow-lg hover:scale-105"
             >
-              <p class="mb-0 flex items-center font-semibold">
-                Access to campus spaces
-              </p>
-            </div>
+              Re-engaging the Student Body
+            </a>
+            <a
+              href="/about-us/strategy/priorities#moral-justice"
+              class="flex items-center justify-center border border-[#eee] bg-white p-6 text-center font-semibold text-black no-underline shadow-lg hover:scale-105"
+            >
+              Moral Justice in the Face of Global Conflict
+            </a>
           </div>
           <article class="body-style flex justify-center">
-            <a
-              href="https://assets-cdn.sums.digital/YU/Documents/Sabb_Manifesto_Document.pdf"
-              class="text-lg"
-              >Read the full manifesto here</a
+            <a href="/about-us/strategy/priorities" class="text-lg"
+              >Read the priorities in full</a
             >
           </article>
         </div>
