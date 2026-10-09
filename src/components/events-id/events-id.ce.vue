@@ -56,6 +56,12 @@
           <p class="text-xl font-semibold">{{ date }} {{ month }} {{ year }}</p>
           <p class="text-lg">{{ time }}</p>
         </div>
+        <div v-if="hasVenue" class="flex flex-col">
+          <h2 class="mb-4 border-b border-black pb-4 text-2xl font-bold">
+            Location
+          </h2>
+          <p class="text-lg">{{ date_venue }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -115,6 +121,9 @@ export default {
     }
   },
   computed: {
+    hasVenue() {
+      return !!this.date_venue && this.date_venue !== "{date_venue}";
+    },
     date() {
       return new Date(this.u_next_on * 1000).getDate();
     },
