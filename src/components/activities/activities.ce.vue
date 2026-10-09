@@ -11,6 +11,7 @@
           aria-label="search for an activity"
           name="search"
           placeholder="Search..."
+          :value="Search"
           @input="search($event)"
         />
         <div class="input-group-append">
@@ -221,41 +222,48 @@ export default {
     }
     //if we already have a category, don't get more info
     if (!self.selectedcategory) {
-      //Get parents
-      axios
-        .get(
-          "https://pluto.sums.digital/api/groups/categories?sortBy=name&isParent=1",
-          {
-            headers: {
-              "X-Site-Id": self.siteid,
-            },
+      //filters, category and page come back from the URL (see syncUrl)
+      let restore = {
+        parent: urlParams.get("parent"),
+        category: urlParams.get("category"),
+        page: parseInt(urlParams.get("page"), 10) || 1,
+      };
+      //Get parents and categories together so a saved selection can be matched
+      let parentsRequest = axios.get(
+        "https://pluto.sums.digital/api/groups/categories?sortBy=name&isParent=1",
+        {
+          headers: {
+            "X-Site-Id": self.siteid,
           },
-        )
-        .then(function (response) {
-          response.data.forEach((category) => {
+        },
+      );
+      let categoriesRequest = axios.get(
+        "https://pluto.sums.digital/api/groups/categories?sortBy=name&isParent=0&parentIds=" +
+          self.selectedparents,
+        {
+          headers: {
+            "X-Site-Id": self.siteid,
+          },
+        },
+      );
+      Promise.all([parentsRequest, categoriesRequest])
+        .then(function ([parentsResponse, categoriesResponse]) {
+          parentsResponse.data.forEach((category) => {
             if (self.SelectedParents.includes(category.id.toString())) {
               self.ParentCategories = [...self.ParentCategories, category];
             }
           });
-        });
-      //get categories
-      axios
-        .get(
-          "https://pluto.sums.digital/api/groups/categories?sortBy=name&isParent=0&parentIds=" +
-            self.selectedparents,
-          {
-            headers: {
-              "X-Site-Id": self.siteid,
-            },
-          },
-        )
-        .then(function (response) {
-          self.Categories = response.data;
+          self.Categories = categoriesResponse.data;
           let idArray = self.Categories.map(function (item) {
             return item["id"];
           });
           self.CategoryIDs = idArray.join();
-          self.getGroups();
+          self.restoreSelection(restore);
+          self.getGroups(restore.page > 1);
+        })
+        .catch(function (error) {
+          console.error(error);
+          self.loading = false;
         });
     } else {
       self.getGroups();
@@ -299,6 +307,7 @@ export default {
       } else if (self.SelectedParent) {
         parameters += "&parentCategoryId=" + self.SelectedParent.id;
       }
+      self.syncUrl();
       axios
         .get("https://pluto.sums.digital/api/groups?" + parameters, {
           headers: {
@@ -320,6 +329,68 @@ export default {
           }
           self.loading = false;
         });
+    },
+    /**
+     * Re-select the parent tab, category and page saved in the URL
+     * @param object restore - parent id, category id and page from the URL
+     */
+    restoreSelection(restore) {
+      let self = this;
+      if (self.Search) {
+        return;
+      }
+      let category = self.Categories.find(
+        (item) => String(item.id) === restore.category,
+      );
+      let parent = self.ParentCategories.find(
+        (item) =>
+          String(item.id) === restore.parent ||
+          (category && item.id === category.parent_id),
+      );
+      if (parent) {
+        self.SelectedParent = parent;
+        if (category && category.parent_id === parent.id) {
+          self.SelectedCategory = category;
+        }
+      }
+      if (restore.page > 1) {
+        self.Page = restore.page;
+        self.Pages = [restore.page];
+      }
+    },
+    /**
+     * Keep the URL in step with the filters so Back returns to the same view
+     */
+    syncUrl() {
+      if (this.selectedcategory) {
+        return;
+      }
+      let params = new URLSearchParams(window.location.search);
+      let setParam = (key, value) => {
+        if (value) {
+          params.set(key, value);
+        } else {
+          params.delete(key);
+        }
+      };
+      setParam("search", this.Search);
+      setParam(
+        "parent",
+        this.ParentCategories.length > 1 && this.SelectedParent
+          ? this.SelectedParent.id
+          : "",
+      );
+      setParam(
+        "category",
+        this.SelectedCategory ? this.SelectedCategory.id : "",
+      );
+      setParam("page", this.Page > 1 ? this.Page : "");
+      let query = params.toString();
+      let url =
+        window.location.pathname +
+        (query ? "?" + query : "") +
+        window.location.hash;
+      window.history.replaceState(window.history.state, "", url);
     },
     loadPage(pageNumber = null) {
       if (pageNumber) {
