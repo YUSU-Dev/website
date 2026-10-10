@@ -56,11 +56,11 @@
           <p class="text-xl font-semibold">{{ date }} {{ month }} {{ year }}</p>
           <p class="text-lg">{{ time }}</p>
         </div>
-        <div v-if="hasVenue" class="flex flex-col">
+        <div v-if="venue" class="flex flex-col">
           <h2 class="mb-4 border-b border-black pb-4 text-2xl font-bold">
             Location
           </h2>
-          <p class="text-lg">{{ date_venue }}</p>
+          <p class="text-lg">{{ venue }}</p>
         </div>
       </div>
     </div>
@@ -111,7 +111,11 @@ export default {
   data() {
     return {
       accessibilityOptions: [],
+      tileVenue: "",
     };
+  },
+  mounted() {
+    this.getTileVenue();
   },
   created() {
     if (this.accessibility) {
@@ -121,8 +125,9 @@ export default {
     }
   },
   computed: {
-    hasVenue() {
-      return !!this.date_venue && this.date_venue !== "{date_venue}";
+    venue() {
+      const own = this.date_venue;
+      return own && own !== "{date_venue}" ? own : this.tileVenue;
     },
     date() {
       return new Date(this.u_next_on * 1000).getDate();
@@ -144,6 +149,16 @@ export default {
     },
   },
   methods: {
+    getTileVenue() {
+      const tiles = document.querySelectorAll("yorksu-event-date-tile");
+      for (const tile of tiles) {
+        const name = (tile.getAttribute("venue_name") || "").trim();
+        if (name && name !== "{date_venue}") {
+          this.tileVenue = name;
+          return;
+        }
+      }
+    },
     async getAccessibility() {
       var self = this;
       var options = [];
