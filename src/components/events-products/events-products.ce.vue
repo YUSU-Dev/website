@@ -52,14 +52,10 @@
               <li class="text-sm">
                 Event tickets are non-refundable and non-transferable.
               </li>
-              <li class="text-sm">
-                Each online transaction* will attract an admin fee based on the
-                total value of the basket of goods - 50p for a total basket
-                value up to £9.99, 75p for a total basket value of £10.00 to
-                £19.99, and £1.00 for a total basket value of £20.00 or more.
+              <li v-if="adminFeeText" class="text-sm">
+                {{ adminFeeText }}
               </li>
             </ul>
-            <p class="mt-2 text-sm italic">*exclusions apply</p>
           </div>
         </div>
       </div>
@@ -72,6 +68,14 @@ import Button from "../../components/button/button.ce.vue";
 import EventsIdHeroBanner from "../../components/events-id-herobanner/events-id-herobanner.ce.vue";
 import Loading from "../../components/loading/loading.ce.vue";
 import axios from "../../_common/axios.mjs";
+
+const ADMIN_FEE_BANDS =
+  "50p for a total basket value up to £9.99, 75p for £10.00 to £19.99, and £1.00 for £20.00 or more.";
+
+function formatFee(value) {
+  return value < 1 ? Math.round(value * 100) + "p" : "£" + value.toFixed(2);
+}
+
 export default {
   props: {
     date_id: { type: String, default: "" },
@@ -114,6 +118,23 @@ export default {
     },
   },
   computed: {
+    // Admin fee line from the SUMS API, hidden if no ticket has the fee
+    adminFeeText() {
+      const products = (this.eventDate.products || []).filter(
+        (p) => p.booking_fee,
+      );
+      if (!products.length) return "";
+      const bands =
+        "The final fee is based on your total basket: " + ADMIN_FEE_BANDS;
+      const fees = [...new Set(products.map((p) => Number(p.fee_value)))];
+      const allPaid = products.every((p) => Number(p.price) > 0);
+      if (fees.length === 1 && fees[0] > 0 && allPaid) {
+        return (
+          "Admin fee: " + formatFee(fees[0]) + " if bought on its own. " + bands
+        );
+      }
+      return "An admin fee applies. " + bands;
+    },
     startDate() {
       return new Date(this.eventDate.start_date).toLocaleDateString("en-GB", {
         day: "numeric",
