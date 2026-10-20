@@ -24,13 +24,7 @@
           :product-id="productId"
           :signed-in="signedIn"
         />
-        <p class="mt-2 text-sm">
-          Each online transaction* will attract an admin fee based on the total
-          value of the basket of goods - 50p for a total basket value up to
-          £9.99, 75p for a total basket value of £10.00 to £19.99, and £1.00 for
-          a total basket value of £20.00 or more.
-        </p>
-        <p class="text-sm italic">*exclusions apply</p>
+        <p v-if="adminFeeText" class="mt-2 text-sm">{{ adminFeeText }}</p>
       </div>
     </div>
   </div>
@@ -41,6 +35,24 @@ import AddToBasket from "../../add-to-basket/add-to-basket.ce.vue";
 import Button from "../../button/button.ce.vue";
 import ShopProductFields from "../shop-product-fields/shop-product-fields.ce.vue";
 import axios from "../../../_common/axios.mjs";
+
+const ADMIN_FEE_BANDS =
+  "50p for a total basket value up to £9.99, 75p for £10.00 to £19.99, and £1.00 for £20.00 or more.";
+
+// Admin fee line from the SUMS API, empty if the product has no fee
+function getAdminFeeText(product) {
+  if (!product.booking_fee) return "";
+  // Free items aren't charged the fee
+  if (!product.variable_price && !(Number(product.price) > 0)) return "";
+  const bands =
+    "The final fee is based on your total basket: " + ADMIN_FEE_BANDS;
+  const fee = Number(product.fee_value);
+  if (!product.variable_price && fee > 0) {
+    const amount = fee < 1 ? Math.round(fee * 100) + "p" : "£" + fee.toFixed(2);
+    return "Admin fee: " + amount + " if bought on its own. " + bands;
+  }
+  return "An admin fee applies. " + bands;
+}
 
 export default {
   name: "ShopProductId",
@@ -67,6 +79,7 @@ export default {
       fields: [],
       hasStock: true,
       image: "",
+      adminFeeText: "",
     };
   },
   created() {
@@ -84,6 +97,7 @@ export default {
         } else {
           self.price = "£" + response.data.price;
         }
+        self.adminFeeText = getAdminFeeText(response.data);
         self.description = response.data.description;
         self.fields = response.data.fields;
         if (response.data.image) {
