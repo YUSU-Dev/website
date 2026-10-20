@@ -47,7 +47,7 @@ function getAdminFeeText(product) {
   const bands =
     "The final fee is based on your total basket: " + ADMIN_FEE_BANDS;
   const fee = Number(product.fee_value);
-  if (!product.variable_price && fee > 0) {
+  if (!product.variable_price && Number(product.price) > 0 && fee > 0) {
     const amount = fee < 1 ? Math.round(fee * 100) + "p" : "£" + fee.toFixed(2);
     return "Admin fee: " + amount + " if bought on its own. " + bands;
   }

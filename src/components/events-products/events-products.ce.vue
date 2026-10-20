@@ -127,7 +127,8 @@ export default {
       const bands =
         "The final fee is based on your total basket: " + ADMIN_FEE_BANDS;
       const fees = [...new Set(products.map((p) => Number(p.fee_value)))];
-      if (fees.length === 1 && fees[0] > 0) {
+      const allPaid = products.every((p) => Number(p.price) > 0);
+      if (fees.length === 1 && fees[0] > 0 && allPaid) {
         return (
           "Admin fee: " + formatFee(fees[0]) + " if bought on its own. " + bands
         );
