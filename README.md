@@ -5,16 +5,16 @@
 
 # York SU Website Components
 
-[![Build and Upload to R2](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/build.yml)
-[![Storybook Tests](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/storybook-tests.yml/badge.svg)](https://github.com/YUSU-Dev/Vue-3-Components/actions/workflows/storybook-tests.yml)
+[![Build and Upload to R2](https://github.com/YUSU-Dev/website/actions/workflows/build.yml/badge.svg)](https://github.com/YUSU-Dev/website/actions/workflows/build.yml)
+[![Storybook Tests](https://github.com/YUSU-Dev/website/actions/workflows/storybook-tests.yml/badge.svg)](https://github.com/YUSU-Dev/website/actions/workflows/storybook-tests.yml)
 
-A comprehensive Vue.js component library for the University of York Students' Union website. This repository serves as both a development environment and component distribution system, providing reusable UI components built as Vue Custom Elements that can be used across the York SU digital ecosystem.
+The Vue.js component library for the University of York Students' Union website. This repository is both a development environment and the source of the components that run on yorksu.org. Components are built as Vue Custom Elements (web components) and served from `https://assets.yorksu.org`, where the York SU website (hosted on the SUMS platform) loads them.
 
 ## ✨ Features
 
 - **Vue Custom Elements**: Components exported as web components for maximum compatibility
 - **Storybook Integration**: Interactive component documentation and testing environment
-- **Automated Deployment**: Continuous deployment to Cloudflare R2 for seamless integration
+- **Release-based Deployment**: Publishing a GitHub Release builds the components and uploads them to Cloudflare R2
 - **Design System**: Consistent UI components following York SU branding guidelines
 - **Accessibility First**: Built with accessibility standards in mind
 
@@ -30,8 +30,8 @@ A comprehensive Vue.js component library for the University of York Students' Un
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/YUSU-Dev/Vue-3-Components.git
-   cd Vue-3-Components
+   git clone https://github.com/YUSU-Dev/website.git
+   cd website
    ```
 
 2. Install dependencies:
@@ -49,12 +49,12 @@ A comprehensive Vue.js component library for the University of York Students' Un
 ### Development Workflow
 
 - **`npm run storybook`** - Start Storybook development server
-- **`npm run dev`** - Start local development server
-- **`npm run build`** - Build production-ready components
+- **`npm run dev`** - Start the local development server (served at `http://localhost:3000`)
+- **`npm run build`** - Build production-ready components into `dist/`
 - **`npm run build-css`** - Build Tailwind CSS styles
 - **`npm run new -- -c component-name`** - Generate a new component
 - **`npm run new -- -p page-name`** - Generate a new page
-- **`npm run test-storybook`** - Run Storybook tests
+- **`npm run test-storybook`** - Run Storybook tests (needs a running Storybook, see `.github/workflows/storybook-tests.yml`)
 
 ## 📁 Project Structure
 
@@ -63,13 +63,15 @@ src/
 ├── components/          # Reusable UI components
 │   ├── button/
 │   │   ├── button.ce.vue       # Vue component file
-│   │   ├── button.component.js # Component registration
+│   │   ├── button.component.js # Component registration (build entrypoint)
 │   │   └── button.stories.js   # Storybook stories
 │   └── [other components]/
 ├── pages/              # Full page components
 ├── docs/               # Documentation files
 └── _common/            # Shared utilities and helpers
 ```
+
+Every `*.component.js` file is a separate Rollup entrypoint, so each one is built to its own file in `dist/`.
 
 ## 🎨 Component Development
 
@@ -87,6 +89,8 @@ This creates:
 - `my-component.component.js` - Component registration
 - `my-component.stories.js` - Storybook stories
 
+The registration file calls `register('my-component', MyComponent)`, which defines the custom element `<yorksu-my-component>`. All tags are prefixed with `yorksu-`.
+
 ### Component Guidelines
 
 - Use **kebab-case** for all file and directory names
@@ -94,6 +98,8 @@ This creates:
 - Follow the Options API pattern for Vue components
 - Include comprehensive Storybook stories for each component
 - Ensure components are accessible and follow WCAG guidelines
+
+See the [Contributing Guide](CONTRIBUTING.md) for the API (axios) wrapper, icons and other conventions.
 
 ### Example Component Structure
 
@@ -124,24 +130,41 @@ export default {
 </script>
 ```
 
-## 🌐 Usage on York SU Website
+## 🚢 Deployment
 
-Components are automatically deployed to `https://assets.yorksu.org` when changes are merged to the `main` branch.
+**Merging to `main` does not deploy anything.** Components only go live when a GitHub Release is published.
+
+1. Merge your pull request to `main` and check the Storybook Tests workflow is green.
+2. Publish a new GitHub Release from `main`. Tags are plain semantic versions with no `v` prefix, for example `1.8.75`.
+3. Publishing the release runs the [Build and Upload to R2](.github/workflows/build.yml) workflow. It runs `npm ci`, then `npm run build && npm run build-css`, uploads `dist/` to the `components/` folder of the `website-assets` Cloudflare R2 bucket, and creates a Sentry release.
+4. The files are then served from `https://assets.yorksu.org/components/`.
+
+The workflow needs the repository secrets `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and the Sentry secrets. Do not put these values in the repository.
+
+### If the live site still shows the old version
+
+- The workflow may have failed. Check the Actions tab first.
+- `assets.yorksu.org` is cached by Cloudflare. Purging individual URLs does not always work for this domain, and bare `*.component.js` entrypoint files have been seen served stale after a deploy. If a normal purge does not help, use Purge Everything in Cloudflare.
+- Hard refresh, or check in a private window, before assuming the deploy failed.
+
+## 🌐 Usage on York SU Website
 
 ### Adding Components to Your Site
 
-1. Include the component script:
+1. Include the component script. Each component is built as `NAME.component.js`:
 
    ```html
-   <script src="https://assets.yorksu.org/components/button.js"></script>
+   <script type="module" src="https://assets.yorksu.org/components/NAME.component.js"></script>
    ```
 
-2. Use the component in your HTML:
+2. Use the component in your HTML with the `yorksu-` prefix:
    ```html
-   <york-su-button variant="primary">Click me</york-su-button>
+   <yorksu-NAME></yorksu-NAME>
    ```
 
-For detailed integration instructions, visit our [Storybook documentation](https://storybook.digital.yorksu.org/?path=/docs/introduction--docs).
+Replace `NAME` with the component's folder name, for example `my-component` becomes `my-component.component.js` and `<yorksu-my-component>`. The site's stylesheet is served from `https://assets.yorksu.org/components/components.css`.
+
+For detailed integration instructions and each component's attributes, visit our [Storybook documentation](https://storybook.digital.yorksu.org/?path=/docs/introduction--docs).
 
 ## 🛠️ Development Tools
 
@@ -157,6 +180,7 @@ For detailed integration instructions, visit our [Storybook documentation](https
 - **[Storybook](https://storybook.digital.yorksu.org/)** - Interactive component documentation
 - **[Contributing Guide](CONTRIBUTING.md)** - Technical contribution guidelines
 - **[Style Guide](src/docs/style-guide.mdx)** - Design system guidelines
+- **Infrastructure and DNS** - How the website, Cloudflare, DNS and deployments fit together is documented internally on the York SU docs site (staff sign-in required)
 
 ## 🤝 Contributing
 
@@ -164,7 +188,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ### Quick Contributing Steps
 
-1. Check [existing issues](https://github.com/YUSU-Dev/Vue-3-Components/issues)
+1. Check [existing issues](https://github.com/YUSU-Dev/website/issues)
 2. Fork the repository
 3. Create a feature branch
 4. Make your changes
@@ -206,6 +230,11 @@ This component library aims to:
 - Ensure component is properly registered in the `.component.js` file
 - Restart Storybook after making changes
 
+**Merged but not live on yorksu.org:**
+
+- Merging does not deploy. Publish a GitHub Release (see [Deployment](#-deployment))
+- Check the Build and Upload to R2 run succeeded, then see the cache notes above
+
 **Build failures:**
 
 - Check ESLint errors: `npx eslint src/`
@@ -216,7 +245,7 @@ This component library aims to:
 
 - 🎮 [SU Digital CoP Discord](https://discord.gg/fCF3Ugm8)
 - 📧 Email: [it@yorksu.org](mailto:it@yorksu.org)
-- 🐛 [GitHub Issues](https://github.com/YUSU-Dev/Vue-3-Components/issues)
+- 🐛 [GitHub Issues](https://github.com/YUSU-Dev/website/issues)
 
 ## 🔒 Security
 
