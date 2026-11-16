@@ -34,18 +34,35 @@
           </div>
         </div>
 
+        <!-- sandbox has no allow-downloads, so the viewer can never save files -->
         <iframe
-          v-if="menuItem.url"
-          :ref="`iframe-${index}`"
+          v-if="menuItem.url && startedIframes[index] && !failedIframes[index]"
+          :key="attempts[index]"
           :src="getPdfUrl(menuItem.url)"
           :title="`${menuItem.displayName} PDF`"
           class="aspect-[4/5] max-h-[90vh] min-h-[50vh] w-full"
           :aria-label="`${menuItem.displayName} menu`"
           :tabindex="openMenus[index] ? '0' : '-1'"
+          sandbox="allow-scripts allow-same-origin allow-popups"
           allow="fullscreen"
           scrolling="yes"
           @load="onIframeLoad(index)"
         />
+
+        <div
+          v-if="failedIframes[index]"
+          class="flex min-h-[30vh] flex-col items-center justify-center gap-4 p-6 text-center"
+        >
+          <p class="text-gray-600">We couldn't load the menu preview.</p>
+          <a
+            :href="menuItem.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary rounded p-4"
+          >
+            Open {{ menuItem.displayName }} (PDF)
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -85,9 +102,14 @@ export default {
         },
       ],
       openMenus: {},
-      reloadTimers: {},
+      retryTimers: {},
+      attempts: {},
+      startedIframes: {},
       loadedIframes: {},
       loadingIframes: {},
+      failedIframes: {},
+      maxAttempts: 3,
+      attemptTimeout: 6000,
     };
   },
   computed: {
@@ -106,6 +128,10 @@ export default {
         ...this.openMenus,
         [index]: !this.openMenus[index],
       };
+      // Load the viewer on first open only
+      if (this.openMenus[index] && !this.startedIframes[index]) {
+        this.startLoading(index);
+      }
     },
     getPdfUrl(menuUrl) {
       if (!menuUrl) return null;
@@ -117,51 +143,39 @@ export default {
     getButtonId(index) {
       return `menu-button-${this.title?.toLowerCase().replace(/\s+/g, "-") || "default"}-${index}`;
     },
-    startReloadTimer(index) {
-      this.loadingIframes = {
-        ...this.loadingIframes,
-        [index]: true,
-      };
-
-      if (this.reloadTimers[index]) {
-        clearInterval(this.reloadTimers[index]);
-      }
-
-      this.reloadTimers[index] = setInterval(() => {
-        const iframeRef = this.$refs[`iframe-${index}`];
-        if (iframeRef && iframeRef[0]) {
-          const currentSrc = iframeRef[0].src;
-          iframeRef[0].src = currentSrc;
+    startLoading(index) {
+      this.startedIframes = { ...this.startedIframes, [index]: true };
+      this.loadingIframes = { ...this.loadingIframes, [index]: true };
+      this.attempts = { ...this.attempts, [index]: 1 };
+      this.waitForLoad(index);
+    },
+    waitForLoad(index) {
+      clearTimeout(this.retryTimers[index]);
+      this.retryTimers[index] = setTimeout(() => {
+        if (this.loadedIframes[index]) return;
+        if (this.attempts[index] < this.maxAttempts) {
+          // New key remounts the iframe, which retries the viewer
+          this.attempts = {
+            ...this.attempts,
+            [index]: this.attempts[index] + 1,
+          };
+          this.waitForLoad(index);
+        } else {
+          this.failedIframes = { ...this.failedIframes, [index]: true };
+          this.loadingIframes = { ...this.loadingIframes, [index]: false };
         }
-      }, 1000);
+      }, this.attemptTimeout);
     },
     onIframeLoad(index) {
-      if (this.reloadTimers[index]) {
-        clearInterval(this.reloadTimers[index]);
-        delete this.reloadTimers[index];
-        this.loadedIframes[index] = true;
-        this.loadingIframes = {
-          ...this.loadingIframes,
-          [index]: false,
-        };
-      }
+      clearTimeout(this.retryTimers[index]);
+      delete this.retryTimers[index];
+      this.loadedIframes[index] = true;
+      this.loadingIframes = { ...this.loadingIframes, [index]: false };
     },
-    initializePdfLoading() {
-      this.matchingMenus.forEach((_, index) => {
-        if (!this.loadedIframes[index]) {
-          this.startReloadTimer(index);
-        }
-      });
-    },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.initializePdfLoading();
-    });
   },
   beforeUnmount() {
-    Object.values(this.reloadTimers).forEach((timer) => {
-      clearInterval(timer);
+    Object.values(this.retryTimers).forEach((timer) => {
+      clearTimeout(timer);
     });
   },
 };

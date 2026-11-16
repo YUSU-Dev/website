@@ -493,10 +493,10 @@ export default {
                 name: "Elections",
                 link: "/elections",
               },
-              /* {
+              {
                 name: "Big Ideas",
                 link: "/suggestions",
-              }, */
+              },
               {
                 name: "Campaign & Projects",
                 link: "/campaigns",
