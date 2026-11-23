@@ -326,9 +326,13 @@ export default {
         },
       );
       response.data.data.forEach((article) => {
-        article.categories = article.categories.map(
-          (category_id) => self.categoriesDictionary[category_id],
-        );
+        article.categories = article.categories
+          .map((category) =>
+            typeof category === "object"
+              ? category
+              : self.categoriesDictionary[category],
+          )
+          .filter(Boolean);
       });
       self.News = response.data.data;
       if (response.data.next_page_url) {
