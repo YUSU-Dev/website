@@ -54,6 +54,7 @@
               </li>
               <li v-if="adminFeeText" class="text-sm">
                 {{ adminFeeText }}
+                <span class="mt-1 block italic">{{ adminFeeBands }}</span>
               </li>
             </ul>
           </div>
@@ -124,16 +125,19 @@ export default {
         (p) => p.booking_fee && Number(p.price) > 0,
       );
       if (!products.length) return "";
-      const bands =
-        "The final fee is based on your total basket: " + ADMIN_FEE_BANDS;
       const fees = [...new Set(products.map((p) => Number(p.fee_value)))];
       const allPaid = products.every((p) => Number(p.price) > 0);
       if (fees.length === 1 && fees[0] > 0 && allPaid) {
         return (
-          "Admin fee: " + formatFee(fees[0]) + " if bought on its own. " + bands
+          "Admin fee for this product: " +
+          formatFee(fees[0]) +
+          " if bought on its own."
         );
       }
-      return "An admin fee applies. " + bands;
+      return "An admin fee applies to this product.";
+    },
+    adminFeeBands() {
+      return "The final fee is based on your total basket: " + ADMIN_FEE_BANDS;
     },
     startDate() {
       return new Date(this.eventDate.start_date).toLocaleDateString("en-GB", {
